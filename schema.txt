@@ -1,0 +1,2011 @@
+USE [HRMS_SAG]
+GO
+/****** Object:  Table [dbo].[Att_Permission]    Script Date: Saturday, 05-Nov-2022 12:11:38 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Att_Permission](
+	[AttPermissionID] [int] IDENTITY(1,1) NOT NULL,
+	[SubEmpID] [int] NULL,
+	[ChiefEmpID] [int] NULL,
+	[IsManager] [bit] NULL,
+	[IsMandatory] [bit] NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[createdOn] [datetime] NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](20) NULL,
+	[CompanyID] [varchar](255) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AttData]    Script Date: Saturday, 05-Nov-2022 12:11:38 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AttData](
+	[AttDataID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[RosterID] [varchar](50) NULL,
+	[EmpID] [int] NULL,
+	[ATTDate] [date] NULL,
+	[CheckIN] [time](7) NULL,
+	[CheckOut] [time](7) NULL,
+	[CheckInBy] [varchar](50) NULL,
+	[CheckOutBy] [varchar](50) NULL,
+	[AttStatus] [varchar](2) NULL,
+	[late] [int] NULL,
+	[Location] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](30) NULL,
+	[IsDeleted] [bit] NULL,
+	[GracePeriod] [int] NULL,
+	[Overtime] [int] NULL,
+	[OpeningTime] [varchar](10) NULL,
+	[ClosingTime] [varchar](10) NULL,
+	[EmpCode] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AttDatas]    Script Date: Saturday, 05-Nov-2022 12:11:38 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AttDatas](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Emp_Code] [nvarchar](max) NULL,
+	[First_Name] [nvarchar](max) NULL,
+	[Last_Name] [nvarchar](max) NULL,
+	[Department] [nvarchar](max) NULL,
+	[Punch_Time] [nvarchar](max) NULL,
+	[Punch_State] [nvarchar](max) NULL,
+	[Punch_State_Display] [nvarchar](max) NULL,
+	[Verify_Type] [int] NOT NULL,
+	[Verify_Type_Display] [nvarchar](max) NULL,
+	[Work_Code] [nvarchar](max) NULL,
+	[Area_Alias] [nvarchar](max) NULL,
+	[Terminal_Sn] [nvarchar](max) NULL,
+	[Temperature] [float] NOT NULL,
+	[Terminal_Alias] [nvarchar](max) NULL,
+	[Upload_Time] [nvarchar](max) NULL,
+ CONSTRAINT [PK_dbo.AttDatas] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Candidate_Detail]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Candidate_Detail](
+	[CandID] [int] IDENTITY(1,1) NOT NULL,
+	[CandName] [varchar](30) NULL,
+	[FatherHusband] [varchar](30) NULL,
+	[Mobile] [varchar](20) NULL,
+	[Email] [varchar](50) NULL,
+	[ExpectedSalary] [varchar](8) NULL,
+	[Photo] [varchar](250) NULL,
+	[CandAddress] [varchar](250) NULL,
+	[Curr_Salary] [money] NULL,
+	[Curr_Designation] [varchar](50) NULL,
+	[Qualification] [varchar](max) NULL,
+	[Skill] [varchar](max) NULL,
+	[experience] [varchar](255) NULL,
+	[Rating] [varchar](10) NULL,
+	[CreatedBy] [varchar](30) NULL,
+	[CreatedOn] [datetime] NULL,
+	[UpdatedBy] [varchar](30) NULL,
+	[UpdatedOn] [varchar](15) NULL,
+	[CompanyID] [nvarchar](max) NULL,
+	[stats] [varchar](50) NULL,
+	[JobID] [int] NULL,
+ CONSTRAINT [PK__Candidat__98327DE3821B0DD5] PRIMARY KEY CLUSTERED 
+(
+	[CandID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[cities]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[cities](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[city_name] [varchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[degree_programs]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[degree_programs](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[program_name] [varchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[degree_types]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[degree_types](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[type_name] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Emp_Documents]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Emp_Documents](
+	[DocumentID] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeID] [int] NULL,
+	[CompanyID] [varchar](255) NULL,
+	[Image1] [varchar](255) NULL,
+	[Image2] [varchar](255) NULL,
+	[Image3] [varchar](255) NULL,
+	[Image4] [varchar](255) NULL,
+	[Image5] [varchar](255) NULL,
+	[Image6] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[DocumentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Emp_Profile]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Emp_Profile](
+	[EmployeeID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NULL,
+	[FatherHusband] [varchar](50) NULL,
+	[Gender] [varchar](6) NULL,
+	[Religion] [varchar](10) NULL,
+	[Email] [varchar](30) NULL,
+	[Mobile] [varchar](20) NULL,
+	[Phone] [varchar](20) NULL,
+	[CNIC] [varchar](20) NULL,
+	[CnicExpiry] [varchar](50) NULL,
+	[MaritalStatus] [varchar](10) NULL,
+	[DOB] [varchar](50) NULL,
+	[BloodGroup] [varchar](4) NULL,
+	[Address] [varchar](500) NULL,
+	[City] [varchar](20) NULL,
+	[Photo] [varchar](300) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [datetime] NULL,
+	[DeletedBy] [varchar](50) NULL,
+	[DeletedOn] [datetime] NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+	[CompanyID] [varchar](255) NULL,
+	[Relation] [varchar](50) NULL,
+ CONSTRAINT [PK_Emp_Profile] PRIMARY KEY CLUSTERED 
+(
+	[EmployeeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Emp_Register]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Emp_Register](
+	[RegisterID] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeID] [int] NULL,
+	[EmployeeCode] [varchar](10) NULL,
+	[CompanyID] [varchar](50) NULL,
+	[Department] [varchar](100) NULL,
+	[Designation] [varchar](100) NULL,
+	[PostingCity] [varchar](20) NULL,
+	[CompanyEmail] [varchar](50) NULL,
+	[JoiningDate] [varchar](50) NULL,
+	[Status] [varchar](15) NULL,
+	[ReportingTo] [varchar](50) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [datetime] NULL,
+	[DeletedBy] [varchar](50) NULL,
+	[DeletedOn] [datetime] NULL,
+	[ReportingTo2] [varchar](50) NULL,
+	[JobShift] [varchar](100) NULL,
+	[Salary] [int] NULL,
+	[Stipend] [int] NULL,
+	[JobStatus] [varchar](20) NULL,
+	[ProbationEnd] [varchar](20) NULL,
+	[JobDescription] [text] NULL,
+	[ChildCompany] [int] NULL,
+	[SendNotification] [varchar](20) NULL,
+	[AllowEmployeesAttendance] [varchar](10) NULL,
+	[EportalAccess] [varchar](10) NULL,
+	[ExpStatus] [varchar](5) NULL,
+	[EduStatus] [varchar](5) NULL,
+	[DocStatus] [varchar](10) NULL,
+	[RegDate] [varchar](50) NULL,
+	[MethodType] [varchar](50) NULL,
+	[BankAccount] [varchar](50) NULL,
+	[bank_name] [varchar](100) NULL,
+	[account_name] [varchar](100) NULL,
+	[remarks] [varchar](max) NULL,
+ CONSTRAINT [PK_Emp_Register] PRIMARY KEY CLUSTERED 
+(
+	[RegisterID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Emp_Work_Experience]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Emp_Work_Experience](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeID] [int] NULL,
+	[CompanyID] [varchar](20) NULL,
+	[JobTitle] [varchar](50) NULL,
+	[CompanyName] [varchar](50) NULL,
+	[StartingDate] [varchar](25) NULL,
+	[LeavingDate] [varchar](25) NULL,
+	[Refrence] [varchar](30) NULL,
+	[CreatedBy] [varchar](30) NULL,
+	[CreatedOn] [datetime] NULL,
+	[UpdatedBy] [varchar](30) NULL,
+	[UpdatedOn] [varchar](20) NULL,
+ CONSTRAINT [PK__Emp_Work__3213E83FD9EB2B42] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[EmpGraceHours]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[EmpGraceHours](
+	[EmpGraceID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](255) NULL,
+	[EmployeeID] [int] NULL,
+	[TotalGP] [int] NULL,
+	[UsedGP] [int] NULL,
+	[IsDeleted] [bit] NULL,
+	[CreatedBy] [varchar](20) NULL,
+	[CreatedOn] [varchar](20) NULL,
+	[UpdatedBy] [varchar](20) NULL,
+	[UpdatedOn] [varchar](20) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[EmpLeave]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[EmpLeave](
+	[LeaveID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](30) NULL,
+	[EmployeeID] [int] NULL,
+	[LeaveType] [varchar](20) NULL,
+	[TotalLeave] [int] NULL,
+	[RemainingLeave] [int] NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](30) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](30) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Employee_Qualification]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Employee_Qualification](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeID] [int] NULL,
+	[DegreeType] [varchar](100) NULL,
+	[DegreeName] [varchar](100) NULL,
+	[InstituteName] [varchar](100) NULL,
+	[PassingYear] [varchar](30) NULL,
+	[CreatedBy] [varchar](30) NULL,
+	[CreatedOn] [datetime] NULL,
+	[UpdatedBy] [varchar](30) NULL,
+	[UpdatedOn] [varchar](30) NULL,
+	[CompanyID] [varchar](255) NULL,
+ CONSTRAINT [PK__Employee__3213E83F7F979DBD] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[event]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[event](
+	[id] [nchar](10) NULL,
+	[title] [nchar](10) NULL,
+	[start] [nchar](10) NULL,
+	[end] [nchar](10) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[events]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[events](
+	[event_id] [int] IDENTITY(1,1) NOT NULL,
+	[title] [varchar](250) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [datetime] NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [datetime] NULL,
+	[CompanyID] [varchar](50) NULL,
+	[start] [varchar](30) NULL,
+	[end] [varchar](30) NULL,
+	[share_with] [varchar](30) NULL,
+	[location] [varchar](max) NULL,
+	[description] [varchar](max) NULL,
+	[url] [varchar](max) NULL,
+	[start_time] [varchar](20) NULL,
+	[end_time] [varchar](20) NULL,
+ CONSTRAINT [PK_events] PRIMARY KEY CLUSTERED 
+(
+	[event_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[FinalSettlement]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[FinalSettlement](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](255) NULL,
+	[EmployeeID] [int] NULL,
+	[SessionName] [varchar](255) NULL,
+	[ResignOn] [varchar](50) NULL,
+	[Totaldays] [int] NULL,
+	[TotalPeresnt] [int] NULL,
+	[TotalAbsent] [int] NULL,
+	[TotalLeave] [int] NULL,
+	[GracePeriod] [int] NULL,
+	[OverTime] [int] NULL,
+	[Deduction] [decimal](15, 4) NOT NULL,
+	[OAmount] [money] NOT NULL,
+	[DAmount] [money] NOT NULL,
+	[TAmount] [money] NOT NULL,
+	[LoanAmount] [money] NOT NULL,
+	[Fine] [money] NOT NULL,
+	[DuesAmount] [money] NOT NULL,
+	[ArrearsAmount] [money] NOT NULL,
+	[BonusAmount] [money] NOT NULL,
+	[AllowanceAmount] [money] NOT NULL,
+	[PayableSalary] [money] NOT NULL,
+	[TotalPayables]  AS (((((([ArrearsAmount]+[BonusAmount])+[PayableSalary])-[LoanAmount])-[Fine])-[DuesAmount])+[TAmount]),
+	[DStatus] [varchar](10) NULL,
+	[MStatus] [varchar](10) NULL,
+	[HrStatus] [varchar](50) NULL,
+	[Status] [varchar](50) NULL,
+	[FStatus] [varchar](50) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+	[ReceivedBy] [varchar](255) NULL,
+	[ReceivedThrough] [varchar](255) NULL,
+	[ReceivedTime] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[FineDetail]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[FineDetail](
+	[FineId] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[EmployeeID] [int] NULL,
+	[FineSession] [varchar](100) NULL,
+	[FineAmount] [int] NULL,
+	[FineDate] [varchar](30) NULL,
+	[Remarks] [varchar](max) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+	[Status] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[FineId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Holiday]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Holiday](
+	[HolidayID] [int] IDENTITY(1,1) NOT NULL,
+	[HolidayName] [varchar](50) NULL,
+	[holidaystartDate] [varchar](50) NULL,
+	[HolidayEndDate] [varchar](50) NULL,
+	[HolidayDescription] [varchar](50) NULL,
+	[NoOfDays] [int] NULL,
+	[IsDeleted] [bit] NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](20) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](20) NULL,
+	[CompanyID] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[HrCompanyConfig]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[HrCompanyConfig](
+	[ConfigId] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[GratutyStart] [varchar](10) NULL,
+	[MaxLoan] [varchar](10) NULL,
+	[AnnualLeaves] [int] NULL,
+	[SickLeaves] [int] NULL,
+	[CasualLeaves] [int] NULL,
+	[MinutesDeduction] [int] NULL,
+	[MaxInstallment] [int] NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ConfigId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[HrSessions]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[HrSessions](
+	[SessionID] [int] IDENTITY(1,1) NOT NULL,
+	[SessionName] [varchar](255) NULL,
+	[StartDate] [varchar](255) NULL,
+	[EndDate] [varchar](255) NULL,
+	[CreateBy] [varchar](50) NULL,
+	[CreateOn] [varchar](50) NULL,
+	[CompanyID] [varchar](50) NULL,
+	[CurrentSession] [varchar](10) NULL,
+	[AttClosedPayrollStart] [varchar](10) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[SessionID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[interview_detail]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[interview_detail](
+	[CompanyID] [nvarchar](max) NULL,
+	[InterviewerName] [varchar](20) NULL,
+	[InterviewLocation] [varchar](50) NULL,
+	[rating] [varchar](20) NULL,
+	[Remarks] [varchar](50) NULL,
+	[StartTime] [varchar](20) NULL,
+	[EndTime] [varchar](20) NULL,
+	[DayDate] [date] NULL,
+	[Duration] [varchar](20) NULL,
+	[InterviewID] [int] IDENTITY(1,1) NOT NULL,
+	[CandID] [int] NULL,
+	[onlineLink] [varchar](max) NULL,
+	[firstInterviewstatus] [varchar](max) NULL,
+	[secondInterviewstatus] [varchar](max) NULL,
+	[finalInterviewstatus] [varchar](max) NULL,
+	[finalInterviewComments] [varchar](max) NULL,
+	[secondInterviewComments] [varchar](max) NULL,
+	[firstInterviewComments] [varchar](max) NULL,
+	[hire_sts] [varchar](20) NULL,
+	[updatedOn] [varchar](50) NULL,
+ CONSTRAINT [PK_interview_detail] PRIMARY KEY CLUSTERED 
+(
+	[InterviewID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[leave_Requisition]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[leave_Requisition](
+	[LeaveRQID] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeID] [int] NULL,
+	[Leavetype] [varchar](20) NULL,
+	[LeaveDescription] [varchar](max) NULL,
+	[StartDate] [date] NULL,
+	[EndDate] [date] NULL,
+	[NoOfDays] [int] NULL,
+	[Reason] [varchar](max) NULL,
+	[AppliedBy] [varchar](50) NULL,
+	[HRApproval] [varchar](50) NULL,
+	[ManagerApproval] [varchar](50) NULL,
+	[HRRemarks] [varchar](500) NULL,
+	[ManagerRemarks] [varchar](255) NULL,
+	[PendingLeaveStatus] [varchar](10) NULL,
+	[CompanyID] [varchar](50) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[leaves]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[leaves](
+	[LeaveID] [int] IDENTITY(1,1) NOT NULL,
+	[LeaveType] [varchar](20) NULL,
+	[leaveDetail] [varchar](max) NULL,
+	[IsDeleted] [bit] NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](20) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](20) NULL,
+	[CompanyID] [varchar](20) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LoanDetail]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LoanDetail](
+	[DetailId] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[EmployeeID] [int] NULL,
+	[LoanId] [int] NULL,
+	[InstallmentNo] [int] NULL,
+	[InstallmentSession] [varchar](100) NULL,
+	[InstallmentAmount] [money] NULL,
+	[InstallmentDate] [varchar](30) NULL,
+	[InstallmentStatus] [varchar](10) NULL,
+	[PaidThrough] [varchar](20) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[DetailId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LoanRequisition]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LoanRequisition](
+	[LoanId] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[EmployeeID] [int] NULL,
+	[LoanType] [varchar](30) NULL,
+	[LoanAmount] [varchar](50) NULL,
+	[LoanReason] [varchar](500) NULL,
+	[LoanInstallments] [int] NULL,
+	[LoanSession] [varchar](100) NULL,
+	[ApplyDate] [varchar](100) NULL,
+	[ReceivedDate] [varchar](100) NULL,
+	[ReceivedBy] [varchar](100) NULL,
+	[ManagerApproval] [varchar](20) NULL,
+	[HrApproval] [varchar](20) NULL,
+	[ReqStatus] [varchar](20) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[LoanId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[mytable]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[mytable](
+	[Name] [varchar](32) NOT NULL,
+	[EmployeeID] [int] NOT NULL,
+	[CompanyID] [varchar](13) NOT NULL,
+	[JobTitle] [varchar](43) NOT NULL,
+	[CompanyName] [varchar](36) NOT NULL,
+	[StartingDate] [varchar](23) NOT NULL,
+	[LeavingDate] [varchar](23) NOT NULL,
+	[Employee_Code] [varchar](9) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Payroll_Distribution]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Payroll_Distribution](
+	[DistributionID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](255) NULL,
+	[EmployeeID] [int] NULL,
+	[Name] [varchar](50) NULL,
+	[EmpCode] [varchar](10) NULL,
+	[Department] [varchar](100) NULL,
+	[Designation] [varchar](100) NULL,
+	[PostingCity] [varchar](20) NULL,
+	[SessionName] [varchar](255) NULL,
+	[Mobile] [varchar](20) NULL,
+	[CNIC] [varchar](20) NULL,
+	[Address] [varchar](500) NULL,
+	[Photo] [varchar](255) NULL,
+	[MethodType] [varchar](50) NULL,
+	[BankAcc] [varchar](50) NULL,
+	[BankName] [varchar](100) NULL,
+	[AccountName] [varchar](100) NULL,
+	[FinanceApprovalID] [int] NULL,
+	[Salary] [int] NULL,
+	[OAmount] [int] NULL,
+	[DAmount] [int] NULL,
+	[TAmount] [int] NULL,
+	[InstallmentNo] [varchar](50) NULL,
+	[InstallmentAmount] [int] NULL,
+	[Fine] [int] NULL,
+	[DuesAmount] [int] NULL,
+	[ArrearsAmount] [int] NULL,
+	[BonusAmount] [int] NULL,
+	[AllowanceAmount] [int] NULL,
+	[PayableSalary] [int] NULL,
+	[DStatus] [varchar](10) NULL,
+	[HrStatus] [varchar](50) NULL,
+	[FStatus] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+	[ReceivedThrough] [varchar](255) NULL,
+	[ReceivedTime] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PayrollAllowance]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PayrollAllowance](
+	[AllowanceID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[EmployeeID] [varchar](10) NULL,
+	[StartSession] [varchar](100) NULL,
+	[SessionEndDate] [varchar](100) NULL,
+	[ApplyDate] [varchar](50) NULL,
+	[AllowanceType] [varchar](50) NULL,
+	[AllowanceAmount] [int] NULL,
+	[Descriptions] [varchar](max) NULL,
+	[Status] [varchar](50) NULL,
+	[ApprovedBy] [varchar](50) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[AllowanceID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PayrollArrears]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PayrollArrears](
+	[ArrearsID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[EmployeeID] [int] NULL,
+	[SessionName] [varchar](100) NULL,
+	[ArrearDate] [varchar](20) NULL,
+	[ArrearsAmount] [int] NULL,
+	[Descriptions] [varchar](max) NULL,
+	[Status] [varchar](20) NULL,
+	[ApprovedBy] [varchar](50) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](50) NULL,
+ CONSTRAINT [PK__PayrollA__52EE19EA0AC4BAB1] PRIMARY KEY CLUSTERED 
+(
+	[ArrearsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PayrollBonuses]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PayrollBonuses](
+	[BonusID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[EmployeeID] [varchar](10) NULL,
+	[SessionName] [varchar](100) NULL,
+	[BonusDate] [varchar](50) NULL,
+	[BonusAmount] [int] NULL,
+	[Descriptions] [varchar](max) NULL,
+	[Status] [varchar](50) NULL,
+	[ApprovedBy] [varchar](50) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+ CONSTRAINT [PK__PayrollB__8E5547086CFC3FE7] PRIMARY KEY CLUSTERED 
+(
+	[BonusID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PayrollDues]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PayrollDues](
+	[DuesID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[EmployeeID] [varchar](10) NULL,
+	[SessionName] [varchar](100) NULL,
+	[DuesType] [varchar](50) NULL,
+	[DuesDate] [varchar](50) NULL,
+	[DuesAmount] [int] NULL,
+	[Descriptions] [varchar](max) NULL,
+	[Status] [varchar](50) NULL,
+	[ApprovedBy] [varchar](50) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+ CONSTRAINT [PK__PayrollD__A9BB1D6EE4163085] PRIMARY KEY CLUSTERED 
+(
+	[DuesID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PayrollEmployeesDetail]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PayrollEmployeesDetail](
+	[EmpDetID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[EmployeeID] [int] NULL,
+	[UpdatedSalary] [int] NULL,
+	[UpdatedPerDay] [int] NULL,
+	[UpdatedPerHours] [int] NULL,
+	[UpdatedDate] [varchar](50) NULL,
+	[Statusd] [varchar](1) NULL,
+	[Remarks] [varchar](500) NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[CreatedOn] [varchar](20) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](20) NULL,
+	[LastIncrement] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[EmpDetID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PayrollFinanceApproval]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PayrollFinanceApproval](
+	[FinanceApprovalID] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeID] [int] NULL,
+	[CompanyID] [varchar](50) NULL,
+	[SessionName] [varchar](255) NULL,
+	[Salary] [int] NULL,
+	[OAmount] [int] NULL,
+	[DAmount] [int] NULL,
+	[TAmount] [int] NULL,
+	[InstallmentNo] [varchar](50) NULL,
+	[InstallmentAmount] [int] NULL,
+	[Fine] [int] NULL,
+	[DuesType] [varchar](50) NULL,
+	[DuesAmount] [int] NULL,
+	[ArrearsAmount] [int] NULL,
+	[ArrearsDes] [varchar](max) NULL,
+	[BonusAmount] [int] NULL,
+	[AllowanceType] [varchar](50) NULL,
+	[AllowanceAmount] [int] NULL,
+	[PayableSalary] [int] NULL,
+	[DStatus] [varchar](10) NULL,
+	[HrStatus] [varchar](50) NULL,
+	[FStatus] [varchar](50) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+ CONSTRAINT [PK__PayrollF__2A6AD3BC04FF91A0] PRIMARY KEY CLUSTERED 
+(
+	[FinanceApprovalID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PayrollHrApproval]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PayrollHrApproval](
+	[ApprovalID] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeID] [int] NULL,
+	[CompanyID] [varchar](255) NULL,
+	[SessionName] [varchar](50) NULL,
+	[OverTime] [int] NULL,
+	[Deduction] [float] NULL,
+	[Salary] [int] NULL,
+	[OAmount] [int] NULL,
+	[DAmount] [float] NULL,
+	[TAmount] [int] NULL,
+	[DStatus] [varchar](50) NULL,
+	[HrStatus] [varchar](10) NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+ CONSTRAINT [PK__PayrollH__328477D44C358543] PRIMARY KEY CLUSTERED 
+(
+	[ApprovalID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Post_Job]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Post_Job](
+	[JobID] [int] IDENTITY(1,1) NOT NULL,
+	[Department] [varchar](50) NULL,
+	[PostTitle] [varchar](50) NULL,
+	[JobNumber] [int] NULL,
+	[JobDetail] [varchar](max) NULL,
+	[Education] [varchar](max) NULL,
+	[Experience] [varchar](max) NULL,
+	[StartDate] [date] NULL,
+	[EndDate] [date] NULL,
+	[Duties] [varchar](max) NULL,
+	[Skill] [varchar](max) NULL,
+	[Address] [varchar](100) NULL,
+	[CoverPhoto] [varchar](255) NULL,
+	[CreatedBy] [varchar](30) NULL,
+	[CreatedOn] [datetime] NULL,
+	[UpdatedBy] [varchar](30) NULL,
+	[UpdatedOn] [varchar](20) NULL,
+	[CompanyID] [nvarchar](max) NULL,
+ CONSTRAINT [PK__Post_Job__056690E239DFEB19] PRIMARY KEY CLUSTERED 
+(
+	[JobID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Roasters]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Roasters](
+	[RosterName] [varchar](100) NULL,
+	[Mon] [varchar](20) NULL,
+	[Tue] [varchar](20) NULL,
+	[Wed] [varchar](20) NULL,
+	[Thu] [varchar](20) NULL,
+	[Fri] [varchar](20) NULL,
+	[Sat] [varchar](20) NULL,
+	[Sun] [varchar](20) NULL,
+	[CreatedBy] [varchar](30) NULL,
+	[CreatedOn] [datetime] NOT NULL,
+	[IsDeleted] [bit] NULL,
+	[DeletedBy] [varchar](30) NULL,
+	[DeletedOn] [datetime] NULL,
+	[CompanyID] [varchar](50) NULL,
+	[RosterID] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SessionReport]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SessionReport](
+	[SessionReportID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[EmployeeID] [int] NULL,
+	[EmployeeCode] [varchar](50) NULL,
+	[Name] [varchar](100) NULL,
+	[Designation] [varchar](50) NULL,
+	[Department] [varchar](50) NULL,
+	[Totaldays] [int] NULL,
+	[TotalPeresnt] [int] NULL,
+	[TotalAbsent] [int] NULL,
+	[TotalLeave] [int] NULL,
+	[GracePeriod] [int] NULL,
+	[OverTime] [int] NULL,
+	[Deduction] [decimal](15, 4) NULL,
+	[Salary] [int] NULL,
+	[SessionName] [varchar](50) NULL,
+	[OAmount] [int] NULL,
+	[DAmount] [float] NULL,
+	[TAmount] [int] NULL,
+	[UpdatedBy] [varchar](50) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+	[DStatus] [varchar](10) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[universties_boards]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[universties_boards](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Institutes_name] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Warning_Letter]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Warning_Letter](
+	[LetterID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](50) NULL,
+	[DateIssued] [varchar](50) NULL,
+	[EmployeeID] [varchar](50) NULL,
+	[EmployeeName] [varchar](50) NULL,
+	[Department] [varchar](50) NULL,
+	[Designation] [varchar](50) NULL,
+	[Location] [varchar](50) NULL,
+	[WarningType] [varchar](50) NULL,
+	[ReasonSubject] [varchar](500) NULL,
+	[ReasonContent] [varchar](550) NULL,
+	[CreatedBy] [varchar](30) NULL,
+	[CreatedOn] [varchar](50) NULL,
+	[updatedBy] [varchar](30) NULL,
+	[UpdatedOn] [varchar](50) NULL,
+ CONSTRAINT [PK__Warning___A6F3C31C03F12D4A] PRIMARY KEY CLUSTERED 
+(
+	[LetterID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Warning_Reason]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Warning_Reason](
+	[ReasonID] [int] IDENTITY(1,1) NOT NULL,
+	[CompanyID] [varchar](100) NULL,
+	[ReasonName] [varchar](100) NULL,
+	[ReasonContent] [varchar](500) NULL,
+	[CreatedBy] [varchar](30) NULL,
+	[CreatedOn] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ReasonID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[AttData] ADD  CONSTRAINT [DF_AttData_GracePeriod]  DEFAULT ((0)) FOR [GracePeriod]
+GO
+ALTER TABLE [dbo].[AttData] ADD  CONSTRAINT [DF_AttData_Overtime]  DEFAULT ((0)) FOR [Overtime]
+GO
+ALTER TABLE [dbo].[Emp_Profile] ADD  CONSTRAINT [DF_Emp_Profile_CreatedOn]  DEFAULT (getdate()) FOR [CreatedOn]
+GO
+ALTER TABLE [dbo].[Emp_Register] ADD  CONSTRAINT [DF_Emp_Register_CreatedOn]  DEFAULT (getdate()) FOR [CreatedOn]
+GO
+ALTER TABLE [dbo].[EmpGraceHours] ADD  CONSTRAINT [DF_EmpGraceHours_TotalGP]  DEFAULT ((0)) FOR [TotalGP]
+GO
+ALTER TABLE [dbo].[Employee_Qualification] ADD  CONSTRAINT [DF_Employee_Qualification_created_time]  DEFAULT (getdate()) FOR [CreatedOn]
+GO
+ALTER TABLE [dbo].[Employee_Qualification] ADD  CONSTRAINT [DF_Employee_Qualification_updated_time]  DEFAULT (getdate()) FOR [UpdatedOn]
+GO
+ALTER TABLE [dbo].[FinalSettlement] ADD  CONSTRAINT [DF_FinalSettlement_LoanAmount]  DEFAULT ((0)) FOR [LoanAmount]
+GO
+ALTER TABLE [dbo].[FinalSettlement] ADD  CONSTRAINT [DF_Payroll_Settlement_Fine]  DEFAULT ((0)) FOR [Fine]
+GO
+ALTER TABLE [dbo].[FinalSettlement] ADD  CONSTRAINT [DF_Payroll_Settlement_DuesAmount]  DEFAULT ((0)) FOR [DuesAmount]
+GO
+ALTER TABLE [dbo].[FinalSettlement] ADD  CONSTRAINT [DF_Payroll_Settlement_ArrearsAmount]  DEFAULT ((0)) FOR [ArrearsAmount]
+GO
+ALTER TABLE [dbo].[FinalSettlement] ADD  CONSTRAINT [DF_Payroll_Settlement_BonusAmount]  DEFAULT ((0)) FOR [BonusAmount]
+GO
+ALTER TABLE [dbo].[FinalSettlement] ADD  CONSTRAINT [DF_Payroll_Settlement_AllowanceAmount]  DEFAULT ((0)) FOR [AllowanceAmount]
+GO
+ALTER TABLE [dbo].[FinalSettlement] ADD  CONSTRAINT [DF_FinalSettlement_PayableSalary]  DEFAULT ((0)) FOR [PayableSalary]
+GO
+ALTER TABLE [dbo].[Payroll_Distribution] ADD  CONSTRAINT [DF_Payroll_Distribution_Fine]  DEFAULT ((0)) FOR [Fine]
+GO
+ALTER TABLE [dbo].[Payroll_Distribution] ADD  CONSTRAINT [DF_Payroll_Distribution_DuesAmount]  DEFAULT ((0)) FOR [DuesAmount]
+GO
+ALTER TABLE [dbo].[Payroll_Distribution] ADD  CONSTRAINT [DF_Payroll_Distribution_ArrearsAmount]  DEFAULT ((0)) FOR [ArrearsAmount]
+GO
+ALTER TABLE [dbo].[Payroll_Distribution] ADD  CONSTRAINT [DF_Payroll_Distribution_BonusAmount]  DEFAULT ((0)) FOR [BonusAmount]
+GO
+ALTER TABLE [dbo].[Payroll_Distribution] ADD  CONSTRAINT [DF_Payroll_Distribution_AllowanceAmount]  DEFAULT ((0)) FOR [AllowanceAmount]
+GO
+ALTER TABLE [dbo].[PayrollFinanceApproval] ADD  CONSTRAINT [DF_PayrollFinanceApproval_Fine]  DEFAULT ((0)) FOR [Fine]
+GO
+ALTER TABLE [dbo].[PayrollFinanceApproval] ADD  CONSTRAINT [DF_PayrollFinanceApproval_DuesAmount]  DEFAULT ((0)) FOR [DuesAmount]
+GO
+ALTER TABLE [dbo].[PayrollFinanceApproval] ADD  CONSTRAINT [DF_PayrollFinanceApproval_ArrearsAmount]  DEFAULT ((0)) FOR [ArrearsAmount]
+GO
+ALTER TABLE [dbo].[PayrollFinanceApproval] ADD  CONSTRAINT [DF_PayrollFinanceApproval_BonusAmount]  DEFAULT ((0)) FOR [BonusAmount]
+GO
+ALTER TABLE [dbo].[PayrollFinanceApproval] ADD  CONSTRAINT [DF_PayrollFinanceApproval_AllowanceAmount]  DEFAULT ((0)) FOR [AllowanceAmount]
+GO
+ALTER TABLE [dbo].[PayrollFinanceApproval] ADD  CONSTRAINT [DF_PayrollFinanceApproval_PayableSalary]  DEFAULT ((0)) FOR [PayableSalary]
+GO
+ALTER TABLE [dbo].[Roasters] ADD  CONSTRAINT [DF_Roasters_CreatedOn]  DEFAULT (getdate()) FOR [CreatedOn]
+GO
+ALTER TABLE [dbo].[Roasters] ADD  CONSTRAINT [DF_Roasters_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [dbo].[SessionReport] ADD  CONSTRAINT [DF_SessionReport_TotalAbsent]  DEFAULT ((0)) FOR [TotalAbsent]
+GO
+ALTER TABLE [dbo].[SessionReport] ADD  CONSTRAINT [DF_SessionReport_TotalLeave]  DEFAULT ((0)) FOR [TotalLeave]
+GO
+ALTER TABLE [dbo].[SessionReport] ADD  CONSTRAINT [DF_SessionReport_GracePeriod]  DEFAULT ((0)) FOR [GracePeriod]
+GO
+ALTER TABLE [dbo].[SessionReport] ADD  CONSTRAINT [DF_SessionReport_OverTime]  DEFAULT ((0)) FOR [OverTime]
+GO
+ALTER TABLE [dbo].[SessionReport] ADD  CONSTRAINT [DF_SessionReport_Deduction]  DEFAULT ((0)) FOR [Deduction]
+GO
+ALTER TABLE [dbo].[SessionReport] ADD  CONSTRAINT [DF_SessionReport_Salary]  DEFAULT ((0)) FOR [Salary]
+GO
+ALTER TABLE [dbo].[SessionReport] ADD  CONSTRAINT [DF_SessionReport_OAmount]  DEFAULT ((0)) FOR [OAmount]
+GO
+ALTER TABLE [dbo].[SessionReport] ADD  CONSTRAINT [DF_SessionReport_DAmount]  DEFAULT ((0)) FOR [DAmount]
+GO
+ALTER TABLE [dbo].[SessionReport] ADD  CONSTRAINT [DF_SessionReport_TAmount]  DEFAULT ((0)) FOR [TAmount]
+GO
+ALTER TABLE [dbo].[Candidate_Detail]  WITH CHECK ADD  CONSTRAINT [FK__Candidate__JobID__2022C2A6] FOREIGN KEY([JobID])
+REFERENCES [dbo].[Post_Job] ([JobID])
+GO
+ALTER TABLE [dbo].[Candidate_Detail] CHECK CONSTRAINT [FK__Candidate__JobID__2022C2A6]
+GO
+ALTER TABLE [dbo].[Candidate_Detail]  WITH CHECK ADD  CONSTRAINT [FK__Candidate__JobID__2116E6DF] FOREIGN KEY([JobID])
+REFERENCES [dbo].[Post_Job] ([JobID])
+GO
+ALTER TABLE [dbo].[Candidate_Detail] CHECK CONSTRAINT [FK__Candidate__JobID__2116E6DF]
+GO
+ALTER TABLE [dbo].[Candidate_Detail]  WITH CHECK ADD  CONSTRAINT [FK_Candidate_Detail_Candidate_Detail] FOREIGN KEY([CandID])
+REFERENCES [dbo].[Candidate_Detail] ([CandID])
+GO
+ALTER TABLE [dbo].[Candidate_Detail] CHECK CONSTRAINT [FK_Candidate_Detail_Candidate_Detail]
+GO
+ALTER TABLE [dbo].[Candidate_Detail]  WITH CHECK ADD  CONSTRAINT [FK_Candidates_Candidates] FOREIGN KEY([CandID])
+REFERENCES [dbo].[Candidate_Detail] ([CandID])
+GO
+ALTER TABLE [dbo].[Candidate_Detail] CHECK CONSTRAINT [FK_Candidates_Candidates]
+GO
+ALTER TABLE [dbo].[Emp_Profile]  WITH CHECK ADD  CONSTRAINT [FK_Emp_Register_Emp_Profile] FOREIGN KEY([EmployeeID])
+REFERENCES [dbo].[Emp_Profile] ([EmployeeID])
+GO
+ALTER TABLE [dbo].[Emp_Profile] CHECK CONSTRAINT [FK_Emp_Register_Emp_Profile]
+GO
+ALTER TABLE [dbo].[interview_detail]  WITH CHECK ADD  CONSTRAINT [FK__interview__CandI__25DB9BFC] FOREIGN KEY([CandID])
+REFERENCES [dbo].[Candidate_Detail] ([CandID])
+GO
+ALTER TABLE [dbo].[interview_detail] CHECK CONSTRAINT [FK__interview__CandI__25DB9BFC]
+GO
+ALTER TABLE [dbo].[interview_detail]  WITH CHECK ADD  CONSTRAINT [FK__interview__CandI__26CFC035] FOREIGN KEY([CandID])
+REFERENCES [dbo].[Candidate_Detail] ([CandID])
+GO
+ALTER TABLE [dbo].[interview_detail] CHECK CONSTRAINT [FK__interview__CandI__26CFC035]
+GO
+/****** Object:  StoredProcedure [dbo].[Add_Absent]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[Add_Absent]
+as begin 
+UPDATE    AttData
+     set  AttStatus   = 'A'
+    
+     where AttStatus   is null 
+     and   CheckIN     is null
+     and   OpeningTime <   (select (substring (convert (varchar (20),getdate (),120) ,12,5)))
+     and   ATTDate     = '2022-06-19' --(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+    
+     
+     
+     end
+    
+GO
+/****** Object:  StoredProcedure [dbo].[Add_EmpAttData]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[Add_EmpAttData]
+as begin
+
+  insert into [HRMS_SAs].[dbo].[AttData] 
+              (CompanyID ,RosterID  ,EmpID,ATTDate         ,Location     ,EmpCode)
+  select      [CompanyID],[JobShift],[EmployeeID],getdate(),[PostingCity], [EmployeeCode] 
+  from        Emp_Register
+  end
+GO
+/****** Object:  StoredProcedure [dbo].[Add_GracePeriod]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[Add_GracePeriod]
+--cron job to calculate daily used GracePeriod
+As
+ Begin
+Create table #temptime (id int,minutess varchar (20) , mint varchar (20)  )
+Insert into  #temptime
+Select  EmpID, sum(cast(DATEDIFF(MI, OpeningTime,CheckIN)as int)), sum(cast(DATEDIFF(MI,CheckOut,closingTime)as int))
+From    AttData
+Where   ATTDate     = '2022-06-19'   --(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+And     AttStatus   in ('L','P')
+group by EmpID
+update    AttData          
+set       GracePeriod  =  (case when  minutess < 0 then 0 else minutess end + case when  mint < 0 then 0 else mint end )
+from      AttData    a
+join      #temptime  t
+on        a.EmpID      =  t.id
+where     ATTDate      = '2022-06-19'--(select (substring (convert (varchar(10),getdate (),120) ,1,10 ))) -- to get only date from getdate to match the format of data in attdata
+drop      table        #temptime
+                 end
+GO
+/****** Object:  StoredProcedure [dbo].[Add_Late]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[Add_Late]
+as begin 
+ create table #temptb (id int, CheckIN varchar (8))
+ insert into  #temptb
+select EmpID ,CheckIN 
+from   AttData
+where  OpeningTime <  CheckIN
+AND    ATTDate     =  '2022-06-19'  --(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+--select * from #temptb
+--drop table #temptb
+update AttData
+set    AttStatus  = 'L'
+from   AttData a
+join   #temptb t
+on     a.EmpID = t.id
+WHERE  a.ATTDate    = '2022-06-19' --(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+AND    a.CheckIN      IS NOT NULL
+end 
+GO
+/****** Object:  StoredProcedure [dbo].[Add_Leave]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROCEDURE [dbo].[Add_Leave]
+ AS
+  BEGIN
+ 
+--   WITH    DATERANGE (DT )   AS  
+--(  SELECT  StartDate 
+--   FROM    leave_Requisition 
+--   WHERE   EndDate           >= (select (substring (convert (varchar(10),getdate (),120) ,1,10 ))) 
+--   UNION    ALL  
+   
+--   SELECT DATEADD(DD, 1, DT)  
+--   FROM   DATERANGE  ,leave_Requisition
+--   WHERE  DATEADD(DD, 1, DT)            <= EndDate )
+--   SELECT   * INTO #TMP_DATE  
+--   FROM            DATERANGE 
+--   GROUP BY        DT
+--   SELECT   * from  #TMP_DATE  
+ 
+ create table #temptb (id int, LeaveType varchar (20))
+ insert into  #temptb
+ SELECT       [EmployeeID]  ,Leavetype
+ FROM         leave_Requisition 
+ WHERE        PendingLeaveStatus = 'A' 
+ --AND          EndDate            >= '2022-06-19'--(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+ AND          StartDate          <=  '2022-06-19'--(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+ UPDATE AttData
+ SET    AttStatus  = (case when t.LeaveType = 'UnPaid' then 'UL' else 'LE' end)
+ from   AttData a
+ join   #temptb t
+ on     a.EmpID    = t.id
+ WHERE  ATTDate    = '2022-06-19' --(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+ AND    [CheckIN]  IS NULL
+   
+   --DROP TABLE #TMP_DATE
+   DROP TABLE #temptb
+END
+GO
+/****** Object:  StoredProcedure [dbo].[Add_OverTime]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[Add_OverTime]
+
+As
+ Begin
+
+Create table #temptime (id int,minutess varchar (10))
+Insert into  #temptime
+
+Select  EmpID,      cast (DATEDIFF(MI, ClosingTime, CheckOut ) as varchar (10)) 
+From    AttData
+Where   ATTDate     = '2022-06-19'--(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+And     ClosingTime < CheckOut
+
+
+
+  update     AttData 
+  set        Overtime    = CONVERT(INT, t.minutess)
+  from       AttData a
+  join       #temptime t
+  on         a.EmpID     = t.id
+  where      ATTDate     = '2022-06-19'--(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+
+  drop       table         #temptime
+                    end
+
+GO
+/****** Object:  StoredProcedure [dbo].[Add_Payroll_Distribution]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[Add_Payroll_Distribution]
+@companyID varchar (255) ,
+@session varchar (255)
+
+as begin 
+
+insert into  [dbo].[Payroll_Distribution]
+(
+ CompanyID  , EmployeeID , Name ,EmpCode  ,Department ,Designation ,PostingCity,[SessionName] ,Mobile ,CNIC,Address ,Photo ,MethodType 
+,BankAcc ,BankName ,AccountName ,[FinanceApprovalID] ,[Salary] ,[OAmount] ,[DAmount] ,[TAmount] ,[InstallmentNo] ,InstallmentAmount ,[Fine],[DuesAmount],[ArrearsAmount],[BonusAmount],[AllowanceAmount]
+,[PayableSalary]  ,[DStatus] ,[HrStatus],[FStatus] ,[UpdatedBy] ,[UpdatedOn] 
+)
+select
+ p.CompanyID ,p.EmployeeID ,p.Name ,r.EmployeeCode  ,r.Department,r.Designation ,r.PostingCity,f.SessionName,p.Mobile ,p.CNIC,p.Address,
+p.Photo ,r.MethodType,r.BankAccount ,r.bank_name ,r.account_name ,f.[FinanceApprovalID] ,f.[Salary] ,f.[OAmount] ,f.[DAmount] ,f.[TAmount] ,f.[InstallmentNo] ,
+f.[InstallmentAmount] ,f.[Fine],f.[DuesAmount],f.[ArrearsAmount],f.[BonusAmount],f.[AllowanceAmount],f.[PayableSalary]  ,f.[DStatus] ,f.[HrStatus],f.[FStatus] ,f.[UpdatedBy] ,f.[UpdatedOn] 
+
+from [dbo].[Emp_Profile] p
+join [dbo].[Emp_Register]  r on p.EmployeeID = r.EmployeeID
+join [dbo].[PayrollFinanceApproval] f on r.EmployeeID =f.EmployeeID
+where  p.CompanyID = @companyID
+and    f.SessionName = @session
+and    f.FStatus = 'P'
+and    r.Status in ( 'Registered' , 'Suspended')
+
+end
+GO
+/****** Object:  StoredProcedure [dbo].[Add_Present]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[Add_Present] 
+as
+begin
+update AttData
+set    AttStatus = 'P'
+where  ATTDate   = '2022-06-19' --(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+and    CheckIN   <  OpeningTime
+end
+GO
+/****** Object:  StoredProcedure [dbo].[Add_PunchTime]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[Add_PunchTime]
+as begin 
+
+   ;with cte as (
+  
+   SELECT   substring (Emp_Code,4,len(Emp_Code)) as ecode, max (substring (Punch_time,1,10)) as date,min(substring(Punch_time,12,len(Punch_time))) as openinig, MAX(substring(Punch_time,12,len(Punch_time))) as closing  from AttDatas
+   where    
+  (select  (substring (Punch_Time ,1,10 )))      = '2022-03-20' --(select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+   group by Emp_Code
+  
+
+)
+  select * into #time 
+  from     cte
+
+  update AttData
+  set    AttData.CheckIN  =  t.openinig   , AttData.CheckOut    =   t.closing  
+  from   AttData
+  join   #time t 
+  on     AttData.EmpCode = t.ecode
+  where  AttData.CheckIN  is   null
+  and    AttData.CheckOut  is null
+  and    ATTDate = (select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+  drop   table #time
+ end
+GO
+/****** Object:  StoredProcedure [dbo].[Add_Roastertime]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[Add_Roastertime]
+as begin
+ declare @date VARCHAR (3)
+ set     @date=(select substring(datename  (dw,getdate()),1,3))
+ if 
+         @date = 'Tue'
+begin 
+CREATE TABLE #TMPTIME1 (ID INT ,  CTIME VARCHAR(6),OTIME VARCHAR (6))
+INSERT INTO  #TMPTIME1
+select       [EmpID] , substring (Tue,7,len(Tue))  ,substring (Tue,1,5) 
+from         Roasters r  
+join         AttData a
+on           r.RosterID = a.RosterID
+update     [AttData]
+set        [ClosingTime] = T.CTIME , [OpeningTime] = T.OTIME
+FROM       AttData A
+JOIN       #TMPTIME1 T
+ON         T.ID = A.EmpID
+where      ATTDate = (select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+DROP TABLE #TMPTIME1
+end
+ else if
+         @date = 'Mon'
+begin 
+CREATE TABLE #TMPTIME2 (ID INT ,  CTIME VARCHAR(6),OTIME VARCHAR (6))
+INSERT INTO  #TMPTIME2
+select       [EmpID] ,substring (Mon,7,len(Mon)) , substring (Mon,1,5) 
+from         Roasters r  
+join         AttData a
+on           r.RosterID = a.RosterID
+update     [AttData]
+set        [ClosingTime] = T2.CTIME , [OpeningTime] = T2.OTIME
+FROM       AttData A
+JOIN       #TMPTIME2 T2
+ON         T2.ID = A.EmpID
+where      ATTDate = (select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+DROP TABLE #TMPTIME2
+  end
+  else 
+ if 
+         @date = 'Wed'
+begin 
+CREATE TABLE #TMPTIME3 (ID INT ,  CTIME VARCHAR(6),OTIME VARCHAR (6))
+INSERT INTO  #TMPTIME3
+select       [EmpID] ,substring (Wed,7,len(Wed)) , substring (Wed,1,5) 
+from         Roasters r  
+join         AttData a
+on           r.RosterID = a.RosterID
+update     [AttData]
+set        [ClosingTime] = T3.CTIME , [OpeningTime] = T3.OTIME
+FROM       AttData A
+JOIN       #TMPTIME3 T3
+ON         T3.ID = A.EmpID
+where      ATTDate = (select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+DROP TABLE #TMPTIME3
+  end
+  else   
+ if 
+         @date = 'Thu'
+begin 
+CREATE TABLE #TMPTIME4 (ID INT ,  CTIME VARCHAR(6),OTIME VARCHAR (6))
+INSERT INTO  #TMPTIME4
+select       [EmpID] ,substring (Thu,7,len(Thu)),substring (Thu,1,5) 
+from         Roasters r  
+join         AttData a
+on           r.RosterID = a.RosterID
+update     [AttData]
+set        [ClosingTime] = T4.CTIME , [OpeningTime] = T4.OTIME
+FROM       AttData A
+JOIN       #TMPTIME4 T4
+ON         T4.ID = A.EmpID
+where      ATTDate = (select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+DROP TABLE #TMPTIME4
+  end
+   else
+ if 
+         @date = 'Fri'
+begin 
+CREATE TABLE #TMPTIME5 (ID INT ,  CTIME VARCHAR(6),OTIME VARCHAR (6))
+INSERT INTO  #TMPTIME5
+select       [EmpID] ,substring (Fri,7,len(Fri)) , substring (Fri,1,5) 
+from         Roasters r  
+join         AttData a
+on           r.RosterID = a.RosterID
+update     [AttData]
+set        [ClosingTime] = T5.CTIME , [OpeningTime] = T5.OTIME
+FROM       AttData A
+JOIN       #TMPTIME5 T5
+ON         T5.ID = A.EmpID
+where      ATTDate = (select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+DROP TABLE #TMPTIME5
+  end
+  else 
+ if 
+         @date = 'Sat'
+begin 
+CREATE TABLE #TMPTIME6 (ID INT ,  CTIME VARCHAR(6),OTIME VARCHAR (6))
+INSERT INTO  #TMPTIME6
+select       [EmpID] ,substring (Sat,7,len(Sat)),substring (Sat,1,5) 
+from         Roasters r  
+join         AttData a
+on           r.RosterID = a.RosterID
+update     [AttData]
+set        [ClosingTime] = T6.CTIME , [OpeningTime] = T6.OTIME
+FROM       AttData A
+JOIN       #TMPTIME6 T6
+ON         T6.ID = A.EmpID
+where      ATTDate = (select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+DROP TABLE #TMPTIME6
+  end
+  else
+  if 
+         @date = 'Sun'
+begin 
+CREATE TABLE #TMPTIME7 (ID INT ,  CTIME VARCHAR(6),OTIME VARCHAR (6))
+INSERT INTO  #TMPTIME7
+select       [EmpID] ,substring (Sun,7,len(Sun)),substring (Sun,1,5) 
+from         Roasters r  
+join         AttData a
+on           r.RosterID = a.RosterID
+update     [AttData]
+set        [ClosingTime] = T7.CTIME , [OpeningTime] = T7.OTIME
+FROM       AttData A
+JOIN       #TMPTIME7 T7
+ON         T7.ID = A.EmpID
+where      ATTDate = (select (substring (convert (varchar(10),getdate (),120) ,1,10 )))
+DROP TABLE #TMPTIME7
+  end
+  end
+GO
+/****** Object:  StoredProcedure [dbo].[GET_DepartmentAttReport]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[GET_DepartmentAttReport]   
+@STARTDATE DATETIME,  
+@ENDDATE DATETIME ,
+@Department varchar (20)
+AS BEGIN  
+--Now generate the dates between two dates using a Common Table Expression and store the values in one temporary table (#TMP_DATES).
+--WITH DATERANGE AS  
+--(  
+--   SELECT DT =DATEADD(DD,0, @STARTDATE)  
+--   WHERE DATEADD(DD, 1, @STARTDATE) <= @ENDDATE  
+--   UNION ALL  
+--   SELECT DATEADD(DD, 1, DT)  
+--   FROM DATERANGE  
+--   WHERE DATEADD(DD, 1, DT) <= @ENDDATE  
+--)  
+--SELECT * INTO #TMP_DATES  
+--FROM DATERANGE   
+
+
+--SELECT * FROM AttData WHERE ATTDate 
+--	BETWEEN @STARTDATE AND @ENDDATE
+ select EmployeeCode ,Name ,Designation, Department ,cast(CheckIN as time(0))as CheckIn ,cast(CheckOut as time(0)) as CheckOut ,ATTDate,AttStatus
+ from Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID
+ where  Department = @Department and  ATTDate 
+	BETWEEN @STARTDATE AND @ENDDATE
+	order by ATTDate;
+ end
+GO
+/****** Object:  StoredProcedure [dbo].[Get_FianlSettelment]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[Get_FianlSettelment]
+@session varchar (50),
+ @startdate date ,
+ @enddate   date   
+
+ 
+
+as
+ Begin 
+  create table #temptable1 (EmpID int ,usedgp int)
+  insert into  #temptable1 
+  
+  SELECT   a.EmpID ,  sum (a.GracePeriod) as usedgp
+  from     AttData a
+  where    ATTDate 
+  BETWEEN  @STARTDATE 
+  AND      @ENDDATE
+  group by a.EmpID
+   
+  create table  #temptable ( ID int ,Deduction DECIMAL(16,2))
+  insert into   #temptable
+  SELECT        t.EmpID , CONVERT(DECIMAL(16,2), (g.TotalGP -  t.usedgp)*1.0/ h.MinutesDeduction)AS Deduction
+  from          HrCompanyConfig  h
+  join          EmpGraceHours    g   on       g.CompanyID= h.CompanyID 
+  join          #temptable1      t   on       g.EmployeeID=t.EmpID
+
+   
+
+   select  p.CompanyID,EmpID,EmpCode ,Name ,Designation, Department 
+    ,count(*) AS TotalDays,
+    sum(case when AttStatus = 'P' then 1 else 0 end) AS TotalPresent,
+    sum(case when AttStatus = 'A' then 1 else 0 end) AS TotalAbsent,
+	sum(case when AttStatus = 'L' then 1 else 0 end) AS TotalLeave,
+	sum(case when GracePeriod is null then 0 else GracePeriod end) AS GP,
+	sum(case when Overtime is null then 0 else Overtime end) AS OT,
+	((case when Deduction >0 OR Deduction is null  then 0 else   Deduction end )+sum(case when AttStatus = 'A' then -1 else 0 end)) as Deduction
+	,Salary ,
+	@session,
+	(case when sum((Overtime)*(((Salary/30)/8)/60)) is null then 0 else (sum(Overtime)*(((Salary/30)/8)/60)) end) as OAmount,
+	(case when (Deduction*(Salary/30)) is null then 0 else ( ABS((Deduction*(Salary/30)))+(ABS(sum(case when AttStatus = 'A' then 1 else 0 end)*(Salary/30)))) end) as DAmount,
+	(Salary+(sum(Overtime)*(((Salary/30)/8)/60))-(case when (Deduction*(Salary/30)) is null then 0 else ( ABS((Deduction*(Salary/30)))+(ABS(sum(case when AttStatus = 'A' then 1 else 0 end)*(Salary/30)))) end)) as TPayable,
+	('P') AS DStatus
+ from      Emp_Profile   p 
+ join      AttData       a on p.EmployeeID = a.EmpID 
+ join      EmpGraceHours g on g.EmployeeID = a.EmpID 
+ join      #temptable    t on g.EmployeeID = t.ID
+ join      Emp_Register  r on p.EmployeeID = r.EmployeeID 
+
+ where    
+       ATTDate 
+ BETWEEN   @STARTDATE 
+ AND       @ENDDATE
+
+ AND r.Status in ( 'Resigned' , 'Resinged' , 'Terminate')
+ GROUP BY p.CompanyID, EmpID,EmpCode
+, Name
+, Designation
+, Department ,Deduction,Salary 
+
+
+
+drop table #temptable
+drop table #temptable1
+end
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[Get_FinalSettlement]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[Get_FinalSettlement]
+ @createdby varchar (50) ,
+ @createdon varchar (50) ,
+ @session varchar (50),
+ @startdate date  ,
+ @enddate   date  ,
+ @id int 
+ as
+ Begin
+  create table #temptable1 (EmpID int, usedgp int)
+  insert into  #temptable1
+  SELECT   a.EmpID, sum (a.GracePeriod) as usedgp
+  from     AttData a
+  where    ATTDate
+  BETWEEN  @STARTDATE
+  AND      @ENDDATE
+  group by a.EmpID
+  create table  #temptable ( ID int ,Deduction DECIMAL(16,2))
+  insert into   #temptable
+  SELECT        t.EmpID, CONVERT(DECIMAL(16,2), (g.TotalGP -  t.usedgp)*1.0/ h.MinutesDeduction)AS Deduction
+  from          HrCompanyConfig  h
+  join          EmpGraceHours    g   on       g.CompanyID= h.CompanyID
+  join          #temptable1      t   on       g.EmployeeID=t.EmpID
+
+   insert into FinalSettlement (CompanyID, EmployeeID, ResignOn, Totaldays, TotalPeresnt, TotalAbsent, TotalLeave, GracePeriod, OverTime, Deduction, SessionName, OAmount, DAmount, TAmount, Status, MStatus, DStatus, HrStatus, FStatus, CreatedBy, CreatedOn, LoanAmount, Fine, ArrearsAmount, BonusAmount)
+   select  p.CompanyID, EmpID, @ENDDATE, count(*) AS TotalDays,
+    sum(case when AttStatus = 'P' then 1 else 0 end) AS TotalPresent,
+    sum(case when AttStatus = 'A' then 1 else 0 end) AS TotalAbsent,
+	sum(case when AttStatus = 'L' then 1 else 0 end) AS TotalLeave,
+	sum(case when GracePeriod is null then 0 else GracePeriod end) AS GP,
+	sum(case when Overtime is null then 0 else Overtime end) AS OT,
+	((case when Deduction >0 OR Deduction is null  then 0 else   Deduction end )+sum(case when AttStatus = 'A' then -1 else 0 end)) as Deduction,
+	@session,
+	(case when sum((Overtime)*(((Salary/30)/8)/60)) is null then 0 else (sum(Overtime)*(((Salary/30)/8)/60)) end) as OAmount,
+	(case when (Deduction*(Salary/30)) is null then 0 else ( ABS((Deduction*(Salary/30)))+(ABS(sum(case when AttStatus = 'A' then 1 else 0 end)*(Salary/30)))) end) as DAmount,
+	(Salary+(sum(Overtime)*(((Salary/30)/8)/60))-(case when (Deduction*(Salary/30)) is null then 0 else ( ABS((Deduction*(Salary/30)))+(ABS(sum(case when AttStatus = 'A' then 1 else 0 end)*(Salary/30)))) end)) as TPayable,
+
+	'Pending', 'Pending', 'Pending', 'Pending', 'Pending', @createdby, @createdon,
+	case when  sum (l.InstallmentAmount) is null then 0 else sum (l.InstallmentAmount)  end, 
+	case when  f.Status = 'Approved' then sum ( f.FineAmount) else 0 end,
+	case when pa.Status = 'Approved' then sum (pa.ArrearsAmount) else 0 end,
+	case when  pb.Status = 'Approved' then sum (pb.BonusAmount) else 0 end
+ from      Emp_Profile   p
+	 join      AttData       a on p.EmployeeID = a.EmpID
+	 join      EmpGraceHours g on g.EmployeeID = a.EmpID
+	 join      #temptable    t on g.EmployeeID = t.ID
+	 join      Emp_Register  r on p.EmployeeID = r.EmployeeID
+left join      FineDetail    f  on p.EmployeeID = f.EmployeeID and f.Status = 'Approved'
+left join   LoanDetail l  on p.EmployeeID = l.EmployeeID and l.InstallmentStatus = 'Unpaid'
+left join PayrollArrears pa on p.EmployeeID = pa.EmployeeID and pa.Status = 'Approved'
+left join PayrollBonuses pb  on p.EmployeeID = pb.EmployeeID and pb.Status = 'Approved'
+ where
+       ATTDate
+ BETWEEN   @STARTDATE
+ AND       @ENDDATE
+ and p.EmployeeID = @id
+ GROUP BY p.CompanyID, EmpID, Deduction, Salary, f.Status , l.EmployeeID, pa.Status , pb.Status
+drop table #temptable
+drop table #temptable1
+
+
+end
+GO
+/****** Object:  StoredProcedure [dbo].[Get_TotalReport]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[Get_TotalReport]
+ @startdate date ,
+ @enddate   date   
+
+ 
+
+
+AS
+ Begin 
+  create table #temptable1 (EmpID int ,usedgp int)
+  insert into  #temptable1 
+  
+  SELECT   a.EmpID ,  sum (a.GracePeriod) as usedgp
+  from     AttData a
+  where    ATTDate 
+  BETWEEN  @STARTDATE 
+  AND      @ENDDATE
+  group by a.EmpID
+   
+  create table  #temptable ( ID int ,Deduction DECIMAL(16,2))
+  insert into   #temptable
+  SELECT        t.EmpID , CONVERT(DECIMAL(16,2), (g.TotalGP -  t.usedgp)*1.0/ h.MinutesDeduction)AS Deduction
+  from          HrCompanyConfig  h
+  join          EmpGraceHours    g   on       g.CompanyID= h.CompanyID 
+  join          #temptable1      t   on       g.EmployeeID=t.EmpID
+
+   
+  
+
+   select  EmpID,EmpCode ,Name ,Designation, Department 
+    ,count(*) AS TotalDays,
+    sum(case when AttStatus = 'P' then 1 else 0 end) AS TotalPresent,
+    sum(case when AttStatus = 'A' then 1 else 0 end) AS TotalAbsent,
+	sum(case when AttStatus = 'L' then 1 else 0 end) AS TotalLeave,
+	sum(GracePeriod) AS GP,
+	sum(Overtime) as OT,
+	(case when Deduction >0 then 0 else   Deduction end )as Deduction
+ from      Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID 
+ join      EmpGraceHours g on g.EmployeeID=a.EmpID join #temptable t on g.EmployeeID =t.ID
+ where    
+       ATTDate 
+ BETWEEN   @STARTDATE 
+ AND       @ENDDATE
+ GROUP BY  EmpID,EmpCode
+, Name
+, Designation
+, Department ,Deduction
+
+drop table #temptable
+drop table #temptable1
+end
+GO
+/****** Object:  StoredProcedure [dbo].[Get_TotalReport_Session]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[Get_TotalReport_Session]
+@session varchar (50),
+ @startdate date ,
+ @enddate   date   
+
+ 
+
+as
+ Begin 
+  create table #temptable1 (EmpID int ,usedgp int)
+  insert into  #temptable1 
+  
+  SELECT   a.EmpID ,  sum (a.GracePeriod) as usedgp
+  from     AttData a
+  where    ATTDate 
+  BETWEEN  @STARTDATE 
+  AND      @ENDDATE
+  group by a.EmpID
+   
+  create table  #temptable ( ID int ,Deduction DECIMAL(16,2))
+  insert into   #temptable
+  SELECT        t.EmpID , CONVERT(DECIMAL(16,2), (g.TotalGP -  t.usedgp)*1.0/ h.MinutesDeduction)AS Deduction
+  from          HrCompanyConfig  h
+  join          EmpGraceHours    g   on       g.CompanyID= h.CompanyID 
+  join          #temptable1      t   on       g.EmployeeID=t.EmpID
+
+   
+
+   select  p.CompanyID,EmpID,EmpCode ,Name ,Designation, Department 
+    ,count(*) AS TotalDays,
+    sum(case when AttStatus = 'P' then 1 else 0 end) AS TotalPresent,
+    sum(case when AttStatus = 'A' then 1 else 0 end) AS TotalAbsent,
+	sum(case when AttStatus = 'L' then 1 else 0 end) AS TotalLeave,
+	sum(case when GracePeriod is null then 0 else GracePeriod end) AS GP,
+	sum(case when Overtime is null then 0 else Overtime end) AS OT,
+	((case when Deduction >0 OR Deduction is null  then 0 else   Deduction end )+sum(case when AttStatus = 'A' then -1 else 0 end)) as Deduction
+	,Salary ,
+	@session,
+	(case when sum((Overtime)*(((Salary/30)/8)/60)) is null then 0 else (sum(Overtime)*(((Salary/30)/8)/60)) end) as OAmount,
+	(case when (Deduction*(Salary/30)) is null then 0 else ( ABS((Deduction*(Salary/30)))+(ABS(sum(case when AttStatus = 'A' then 1 else 0 end)*(Salary/30)))) end) as DAmount,
+	(Salary+(sum(Overtime)*(((Salary/30)/8)/60))-(case when (Deduction*(Salary/30)) is null then 0 else ( ABS((Deduction*(Salary/30)))+(ABS(sum(case when AttStatus = 'A' then 1 else 0 end)*(Salary/30)))) end)) as TPayable,
+	('P') AS DStatus
+ from      Emp_Profile   p 
+ join      AttData       a on p.EmployeeID = a.EmpID 
+ join      EmpGraceHours g on g.EmployeeID = a.EmpID 
+ join      #temptable    t on g.EmployeeID = t.ID
+ join      Emp_Register  r on p.EmployeeID = r.EmployeeID 
+
+ where    
+       ATTDate 
+ BETWEEN   @STARTDATE 
+ AND       @ENDDATE
+
+ AND r.Status in ( 'Registered' , 'Suspended')
+ GROUP BY p.CompanyID, EmpID,EmpCode
+, Name
+, Designation
+, Department ,Deduction,Salary 
+
+
+
+drop table #temptable
+drop table #temptable1
+end
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[GetDailyAtt]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE procedure [dbo].[GetDailyAtt] 
+
+as 
+begin
+set nocount on
+
+declare @todaydate datetime = getdate()
+ select EmpID ,Name ,Designation, Department , cast(CheckIN as time(0))as CheckIn ,cast(CheckOut as time(0)) as CheckOut ,ATTDate,AttStatus
+ from Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID
+ where year(ATTDate)  = year(@todaydate) and month(ATTDate) = month(@todaydate) and day(ATTDate) = day(@todaydate)
+
+  select count(*) as 'TotalPresent'
+ from Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID
+ where  year(ATTDate)  = year(@todaydate) and month(ATTDate) = month(@todaydate) and day(ATTDate) = day(@todaydate) and AttStatus = 'P'
+
+   select count(*) as 'TotalAbsent'
+ from Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID
+ where year(ATTDate)  = year(@todaydate) and month(ATTDate) = month(@todaydate) and day(ATTDate) = day(@todaydate) and AttStatus = 'A'
+   select count(*) as 'TotalLeave'
+ from Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID
+where year(ATTDate)  = year(@todaydate) and month(ATTDate) = month(@todaydate) and day(ATTDate) = day(@todaydate) and AttStatus = 'L'
+   select count(*) as 'NotMarked'
+ from Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID
+ where year(ATTDate)  = year(@todaydate) and month(ATTDate) = month(@todaydate) and day(ATTDate) = day(@todaydate) and AttStatus = NULL
+
+ end
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[GetDateList]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[GetDateList]
+ @STARTDATE DATE,  
+@ENDDATE DATE  
+AS BEGIN  
+set nocount on 
+--Now generate the dates between two dates using a Common Table Expression and store the values in one temporary table (#TMP_DATES).
+;WITH DATERANGE AS  
+(  
+   SELECT DT =DATEADD(DD,0, @STARTDATE)  
+   WHERE DATEADD(DD, 1, @STARTDATE) <= @ENDDATE  
+   UNION ALL  
+   SELECT DATEADD(DD, 1, DT)  
+   FROM DATERANGE  
+   WHERE DATEADD(DD, 1, DT) <= @ENDDATE  
+)  
+SELECT * INTO  #TMP_DATES  
+FROM DATERANGE 
+select * from #TMP_DATES
+end
+GO
+/****** Object:  StoredProcedure [dbo].[GetEmpAttReport]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[GetEmpAttReport]   
+@STARTDATE DATETIME,  
+@ENDDATE DATETIME ,
+@EmpID varchar (20)
+AS BEGIN  
+
+select EmpID ,Name ,Designation, Department  ,ATTDate,cast(CheckIN as time(0))as CheckIn ,cast(CheckOut as time(0)) as CheckOut ,AttStatus
+ from Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID
+ where  EmpID = @EmpID and  ATTDate 
+	BETWEEN @STARTDATE AND @ENDDATE
+	order by ATTDate;
+with cte as 
+(select EmpID ,Name ,Designation, Department  ,ATTDate,AttStatus
+ from Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID
+ where  EmpID = @EmpID and  ATTDate 
+	BETWEEN @STARTDATE AND @ENDDATE)
+select * into #tmpresult
+from cte
+  select  count(*) as 'TotalPresent' 
+ from #tmpresult
+  where AttStatus = 'P'
+  
+	select  count(*) as 'TotalAbsent' 
+ from #tmpresult
+  where AttStatus = 'A'
+  
+	select  count(*) as 'TotalLeaves' 
+ from #tmpresult
+  where AttStatus = 'L'
+
+ end
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[GetMonthltAttReport]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[GetMonthltAttReport]   
+@STARTDATE DATETIME,  
+@ENDDATE DATETIME  
+AS BEGIN  
+--Now generate the dates between two dates using a Common Table Expression and store the values in one temporary table (#TMP_DATES).
+WITH DATERANGE AS  
+(  
+   SELECT DT =DATEADD(DD,0, @STARTDATE)  
+   WHERE DATEADD(DD, 1, @STARTDATE) <= @ENDDATE  
+   UNION ALL  
+   SELECT DATEADD(DD, 1, DT)  
+   FROM DATERANGE  
+   WHERE DATEADD(DD, 1, DT) <= @ENDDATE  
+)  
+SELECT * INTO #TMP_DATES  
+FROM DATERANGE   
+
+
+dECLARE @COLUMN VARCHAR(MAX)  
+SELECT @COLUMN=ISNULL(@COLUMN+',','')+ '['+ CAST(CONVERT(DATE , DT) AS VARCHAR) + ']' FROM #TMP_DATES
+
+DECLARE @Columns2 VARCHAR(MAX) 
+sET @Columns2 = SUBSTRING((SELECT DISTINCT ',ISNULL(['+ CAST(CONVERT(DATE , DT) as varchar )+'],''-'') AS ['+CAST(CONVERT(DATE , DT) as varchar )+']' 
+FROM #TMP_DATES GROUP BY dt FOR XML PATH('')),2,8000) 
+
+-- ,' + @Columns2 +'
+
+DECLARE @QUERY VARCHAR(MAX)  
+SET @QUERY = 'SELECT EmpID,Name,Designation,Department ,' + @Columns2 +' FROM   
+(  
+ select  EmpID,Name,Designation,Department  ,ATTDate,AttStatus
+  from   Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID ) X  
+PIVOT   
+(  
+MIN([AttStatus])  
+FOR [AttDate] IN (' + @COLUMN + ')  
+) P   
+WHERE ISNULL(NAME,'''')<>''''  
+'  
+  
+EXEC (@QUERY)  
+--Drop the temporary table.
+DROP TABLE #TMP_DATES  
+  
+END 
+GO
+/****** Object:  StoredProcedure [dbo].[GetMonthltAttReport_filterwise]    Script Date: Saturday, 05-Nov-2022 12:11:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[GetMonthltAttReport_filterwise]   
+@STARTDATE DATETIME,  
+@ENDDATE DATETIME 
+,@dep   varchar (30),
+@design varchar(30)
+AS BEGIN  
+--Now generate the dates between two dates using a Common Table Expression and store the values in one temporary table (#TMP_DATES).
+WITH DATERANGE AS  
+(  
+   SELECT DT =DATEADD(DD,0, @STARTDATE)  
+   WHERE DATEADD(DD, 1, @STARTDATE) <= @ENDDATE  
+   UNION ALL  
+   SELECT DATEADD(DD, 1, DT)  
+   FROM DATERANGE  
+   WHERE DATEADD(DD, 1, DT) <= @ENDDATE  
+)  
+SELECT * INTO #TMP_DATES  
+FROM DATERANGE   
+dECLARE @COLUMN VARCHAR(MAX)  
+SELECT @COLUMN=ISNULL(@COLUMN+',','')+ '['+ CAST(CONVERT(DATE , DT) AS VARCHAR) + ']' FROM #TMP_DATES
+DECLARE @Columns2 VARCHAR(MAX) 
+sET @Columns2 = SUBSTRING((SELECT DISTINCT ',ISNULL(['+ CAST(CONVERT(DATE , DT) as varchar )+'],''N/A'') AS ['+CAST(CONVERT(DATE , DT) as varchar )+']' 
+FROM #TMP_DATES GROUP BY dt FOR XML PATH('')),2,8000) 
+-- ,' + @Columns2 +'
+DECLARE @QUERY VARCHAR(MAX)  
+SET @QUERY = ' if ( '''+ @dep +''' is not null And '''+ @design +''' is not null)
+begin
+SELECT EmpID,Name,Designation,Department ,' + @Columns2 +' FROM   
+(  
+ select  EmpID,Name,Designation,Department  ,ATTDate,AttStatus
+  from   Emp_Profile p inner join Emp_Register r on p.EmployeeID = r.EmployeeID  join AttData a on p.EmployeeID= a.EmpID 
+  where  Department = '''+ @dep +''' and Designation = '''+ @design +''') X  
+PIVOT   
+(  
+MIN([AttStatus])  
+FOR [AttDate] IN (' + @COLUMN + ')  
+) P   
+WHERE ISNULL(NAME,'''')<>''''  
+end'  
+  
+EXEC (@QUERY)  
+--Drop the temporary table.
+DROP TABLE #TMP_DATES  
+  
+END 
+
+GO

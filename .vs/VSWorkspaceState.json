@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Contracts\\Services",
+    "\\app\\Contracts\\Services\\Procurement",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers",
+    "\\app\\Providers",
+    "\\app\\Services",
+    "\\app\\Traits"
+  ],
+  "SelectedNode": "\\app\\Http\\Controllers\\HrController.php",
+  "PreviewInSolutionExplorer": true
+}
