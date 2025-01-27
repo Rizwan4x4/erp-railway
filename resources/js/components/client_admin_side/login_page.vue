@@ -12,13 +12,15 @@
                         <!-- Brand logo-->
                         <router-link class="brand-logo" style="width:300px;text-decoration:none" to="/">
                             <h2 class="brand-text text-primary ms-1"><img class="img-fluid"
-                                    src="public/images/loginLogo.png" height="60" width="150" /></h2>
+                                    src="public/images/loginLogo.png" height="60" width="150" />
+                                </h2>
                         </router-link>
                         <!-- /Brand logo-->
-                        <!-- Left Text-->
+                         <!-- Left Text-->
                         <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
-                            <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img
-                                    class="img-fluid" src="public/app-assets/images/pages/login-v2.svg" alt="Login V2" />
+                            <div class="w-100 d-lg-flex align-items-center justify-content-center px-5">
+                                    <img
+                                    class="img-fluid" src="/public/app-assets/images/pages/login-v2.svg" alt="Login V2" />
                             </div>
                         </div>
                         <!-- /Left Text-->

@@ -187,7 +187,7 @@ class companyController extends Controller
                     $user_detail51 = DB::table('tb_users')->where('email', '=', $username)->where('user_password', '=', $password)->first();
                     $user_code = $user_detail51->emp_code;
                     $emp_reg_detail1 = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', $company_id)->where('EmployeeCode', '=', $user_code)->first();
-//                    dd($emp_reg_detail1);
+                //    dd($emp_reg_detail1);
                     $emp_i = $emp_reg_detail1->EmployeeID;
                     Session::put('employee_id', $emp_i);
                     Session::put('employee_department', $emp_department);

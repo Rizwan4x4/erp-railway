@@ -63,7 +63,7 @@ class LoginController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        $email = $request->input('username');
+        $email = $request->input('email');
         $password = $request->input('password');
         $credentials = $request->only($email, $password);
         dd(auth::attempt($credentials));

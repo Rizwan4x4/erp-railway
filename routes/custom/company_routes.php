@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 
 //Live Chat
-Route::get('fetch_only_company_name','App\Http\Controllers\companyController@fetch_only_company_name')->middleware('permission:Accounts Configurations COA'); 
+Route::get('fetch_only_company_name','App\Http\Controllers\companyController@fetch_only_company_name')->middleware('permission:Accounts Configurations COA');
 Route::get('/chat_allusers','App\Http\Controllers\companyController@chat_allusers') ;
 Route::get('/userlivesearch','App\Http\Controllers\companyController@userlivesearch') ;
 Route::post('conv_messages','App\Http\Controllers\companyController@conv_messages');
@@ -69,7 +69,7 @@ Route::get('/is_online/', 'App\Http\Controllers\companyController@online_fn');
 Route::get('find_usertype/','App\Http\Controllers\companyController@find_usertype');
 Route::get('/fetch_user_audit_roles','App\Http\Controllers\companyController@fetch_user_audit_roles');
 
-Route::post('/login_success/', 'App\Http\Controllers\companyController@login_success' );
+Route::match(['GET','POST'],'/login_success/', 'App\Http\Controllers\companyController@login_success' );
 
 //Route::middleware(['auth:sanctum'])->post('/login_success', 'App\Http\Controllers\Auth\LoginController@login_success');
 

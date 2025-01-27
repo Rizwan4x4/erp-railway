@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 //use Laravel\Passport\Passport;
@@ -20,5 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-//Route::post('/login_success', 'App\Http\Controllers\Auth\LoginController@login_success');
+Route::match(['GET','POST'],'/login_success', 'App\Http\Controllers\Auth\LoginController@login_success');
+// Route::post('/login_success', [LoginController::class,'login_success']);
 
