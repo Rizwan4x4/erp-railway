@@ -26,6 +26,8 @@ class EmployeeDetailsService implements EmployeeServiceInterface
     {
 
         try {
+
+            // dd("good");
             if ($id == 0 || $id == null || $id == '') {
                 $id = Session::get('employee_id');
             } elseif (Session::get('hr_write') != true && !in_array($id, array_column(reporting_team(), 'EmployeeID'))) {

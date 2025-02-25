@@ -59,19 +59,19 @@
                                         <div class="row">
                                             <div class="col-12 col-sm-12 mb-1">
                                                 <img v-if="url" :src="url" id="account-upload-img"
-                                                     class="uploadedAvatar rounded me-50" alt="profile image"
-                                                     style="width:155px;height:180px">
+                                                    class="uploadedAvatar rounded me-50" alt="profile image"
+                                                    style="width:155px;height:180px">
                                                 <img v-else src="public/app-assets/images/portrait/small/profile.jpg"
-                                                     id="account-upload-img" class="uploadedAvatar rounded me-50"
-                                                     alt="profile image">
+                                                    id="account-upload-img" class="uploadedAvatar rounded me-50"
+                                                    alt="profile image">
                                                 <!-- upload and reset button -->
                                                 <div class="col-12 col-sm-6 mb-1">
                                                     <div>
                                                         <input type="file" id="image_file" :v-model="image_file"
-                                                               name="image_file" @change="onFileChange" accept="image/*"
-                                                               class="input-file">
+                                                            name="image_file" @change="onFileChange" accept="image/*"
+                                                            class="input-file">
                                                         <button type="button" @click="clear_image()" id="account-reset"
-                                                                class="btn btn-sm btn-outline-secondary mb-75 waves-effect">
+                                                            class="btn btn-sm btn-outline-secondary mb-75 waves-effect">
                                                             Clear
                                                         </button>
                                                         <p class="mb-0">Add profile image(png, jpg, jpeg. ) </p>
@@ -86,17 +86,17 @@
                                                 <label class="form-label" for="accountFirstName">Full Name</label>
                                                 <label style="color: #d93025">*</label>
                                                 <input type="text" class="form-control" id="accountFirstName"
-                                                       v-model="full_name" placeholder="Full Name Here">
-                                                <span style="color: #d93025"
-                                                      v-if="full_name==''">{{ e_full_name }}</span>
+                                                    v-model="full_name" placeholder="Full Name Here">
+                                                <span style="color: #d93025" v-if="full_name == ''">{{ e_full_name
+                                                    }}</span>
                                             </div>
                                             <div class="col-12 col-sm-6 mb-1">
                                                 <label class="form-label" for="accountLastName">Father's Name</label>
                                                 <label style="color: #d93025">*</label>
                                                 <input type="text" class="form-control" id="accountLastName"
-                                                       v-model="father_name" placeholder="Father's Name Here">
-                                                <span style="color: #d93025"
-                                                      v-if="father_name==''">{{ e_father_name }}</span>
+                                                    v-model="father_name" placeholder="Father's Name Here">
+                                                <span style="color: #d93025" v-if="father_name == ''">{{ e_father_name
+                                                    }}</span>
                                             </div>
                                             <div class="col-12 col-sm-3 mb-1">
                                                 <div class="mb-1">
@@ -104,119 +104,122 @@
                                                     <label style="color: #d93025">*</label>
                                                     <div class="demo-inline-spacing">
                                                         <div class="form-check form-check-inline"
-                                                             style="margin-top:0px">
+                                                            style="margin-top:0px">
                                                             <input class="form-check-input" type="radio"
-                                                                   v-model="gender" name="inlineRadioOptions"
-                                                                   id="inlineRadio1" value="Male" checked="">
+                                                                v-model="gender" name="inlineRadioOptions"
+                                                                id="inlineRadio1" value="Male" checked="">
                                                             <label class="form-check-label"
-                                                                   for="inlineRadio1">Male</label>
+                                                                for="inlineRadio1">Male</label>
                                                         </div>
                                                         <div class="form-check form-check-inline"
-                                                             style="margin-top:0px">
+                                                            style="margin-top:0px">
                                                             <input class="form-check-input" type="radio"
-                                                                   v-model="gender" name="inlineRadioOptions"
-                                                                   id="inlineRadio2" value="Female">
+                                                                v-model="gender" name="inlineRadioOptions"
+                                                                id="inlineRadio2" value="Female">
                                                             <label class="form-check-label"
-                                                                   for="inlineRadio2">Female</label>
+                                                                for="inlineRadio2">Female</label>
                                                         </div>
                                                     </div>
-                                                    <span style="color: #d93025" v-if="gender==''">{{ e_gender }}</span>
+                                                    <span style="color: #d93025" v-if="gender == ''">{{ e_gender
+                                                        }}</span>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-3 mb-1">
                                                 <label class="form-label">Martial Status</label>
                                                 <label style="color: #d93025">*</label>
                                                 <multiselect :show-labels="false" style="margin-right: 10px;"
-                                                             placeholder="Select Status"
-                                                             v-model="m_status" :options="options2">
+                                                    placeholder="Select Status" v-model="m_status" :options="options2">
                                                 </multiselect>
-                                                <span style="color: #d93025" v-if="m_status==''">{{ e_m_status }}</span>
+                                                <span style="color: #d93025" v-if="m_status == ''">{{ e_m_status
+                                                    }}</span>
                                             </div>
                                             <div class="col-12 col-sm-6 mb-1">
                                                 <label class="form-label">Blood Group</label>
                                                 <multiselect :show-labels="false" style="margin-right: 10px;"
-                                                             placeholder="Select Group"
-                                                             v-model="blood_group" :options="options">
+                                                    placeholder="Select Group" v-model="blood_group" :options="options">
                                                 </multiselect>
                                             </div>
                                             <div class="col-12 col-sm-6 mb-1">
                                                 <label class="form-label" for="accountEmail">Email</label>
                                                 <input type="email" class="form-control" id="accountEmail"
-                                                       v-model="email" placeholder="abc@gmail.com">
-                                                <span style="color: #d93025"
-                                                      v-if="!validEmail(email)">{{ e_email }}</span>
+                                                    v-model="email" placeholder="abc@gmail.com">
+                                                <span style="color: #d93025" v-if="!validEmail(email)">{{ e_email
+                                                    }}</span>
                                             </div>
 
                                             <div class="col-12 col-sm-3 mb-1">
                                                 <label class="form-label" for="accountOrganization">CNIC No.</label>
                                                 <label style="color: #d93025">*</label>
                                                 <masked-input class="form-control account-number-mask"
-                                                              mask="11111-1111111-1" v-model="cnic"
-                                                              placeholder="00000-0000000-0"/>
-                                                <span style="color: #d93025" v-if="cnic==''">{{ e_cnic }}</span>
+                                                    mask="11111-1111111-1" v-model="cnic"
+                                                    placeholder="00000-0000000-0" />
+                                                <span style="color: #d93025" v-if="cnic == ''">{{ e_cnic }}</span>
                                             </div>
                                             <div class="col-12 col-sm-3 mb-1">
                                                 <label class="form-label" for="accountOrganization">CNIC Expiry</label>
                                                 <label style="color: #d93025">*</label>
                                                 <input type="date" class="form-control" v-model="cnic_expiry">
-                                                <span style="color: #d93025"
-                                                      v-if="cnic_expiry==''">{{ e_cnic_expiry }}</span>
+                                                <span style="color: #d93025" v-if="cnic_expiry == ''">{{ e_cnic_expiry
+                                                    }}</span>
                                             </div>
                                             <div class="col-12 col-sm-3 mb-1">
                                                 <label class="form-label" for="accountPhoneNumber">Personal
                                                     Number</label>
                                                 <label style="color: #d93025">*</label>
                                                 <masked-input class="form-control account-number-mask"
-                                                              v-model="phone_number" mask="0311-1111111"
-                                                              placeholder="Phone Number Here"/>
-                                                <span style="color: #d93025"
-                                                      v-if="phone_number==''">{{ e_phone_number }}</span>
+                                                    v-model="phone_number" mask="0311-1111111"
+                                                    placeholder="Phone Number Here" />
+                                                <span style="color: #d93025" v-if="phone_number == ''">{{ e_phone_number
+                                                    }}</span>
                                             </div>
                                             <div class="col-12 col-sm-3 mb-1">
                                                 <label class="form-label" for="accountPhoneNumber">Date of Birth</label>
                                                 <label style="color: #d93025">*</label>
                                                 <input type="date" class="form-control account-number-mask"
-                                                       v-model="dob">
-                                                <span style="color: #d93025" v-if="dob==''">{{ e_dob }}</span>
+                                                    v-model="dob">
+                                                <span style="color: #d93025" v-if="dob == ''">{{ e_dob }}</span>
                                             </div>
 
                                             <div class="col-12 col-sm-3 mb-1">
                                                 <label class="form-label">Religion</label>
                                                 <label style="color: #d93025">*</label>
                                                 <multiselect :show-labels="false" style=" font-size: 12px;"
-                                                             placeholder="Select Religion" class="multiselect"
-                                                             v-model="religion" :options="options1">
+                                                    placeholder="Select Religion" class="multiselect" v-model="religion"
+                                                    :options="options1">
                                                 </multiselect>
-                                                <span style="color: #d93025" v-if="religion==''">{{ e_religion }}</span>
+                                                <span style="color: #d93025" v-if="religion == ''">{{ e_religion
+                                                    }}</span>
                                             </div>
                                             <div class="col-12 col-sm-3 mb-1">
                                                 <label class="form-label" for="accountPhoneNumber">Emergency
                                                     Number</label>
                                                 <label style="color: #d93025">*</label>
                                                 <masked-input class="form-control account-number-mask"
-                                                              mask="0311-1111111" v-model="phone_number2"
-                                                              placeholder="Phone Number Here"/>
-                                                <span style="color: #d93025"
-                                                      v-if="phone_number2==''">{{ e_phone_number2 }}</span>
+                                                    mask="0311-1111111" v-model="phone_number2"
+                                                    placeholder="Phone Number Here" />
+                                                <span style="color: #d93025" v-if="phone_number2 == ''">{{
+                                                    e_phone_number2
+                                                    }}</span>
                                             </div>
                                             <div class="col-12 col-sm-6 mb-1">
                                                 <label class="form-label" for="accountPhoneNumber">Relationship</label>
                                                 <label style="color: #d93025">*</label>
                                                 <input type="text" class="form-control account-number-mask"
-                                                       id="accountPhoneNumber" v-model="relation"
-                                                       placeholder="Contact Number Relationship">
-                                                <span style="color: #d93025" v-if="relation==''">{{ e_relation }}</span>
+                                                    id="accountPhoneNumber" v-model="relation"
+                                                    placeholder="Contact Number Relationship">
+                                                <span style="color: #d93025" v-if="relation == ''">{{ e_relation
+                                                    }}</span>
                                             </div>
                                             <div class="col-12 col-sm-3 mb-1">
                                                 <label class="form-label" for="countrySelect">Country</label>
                                                 <label style="color: #d93025">*</label>
                                                 <multiselect :show-labels="false"
-                                                             style="margin-right: 10px; font-size: 15px;"
-                                                             placeholder="Select Country" v-model="selectedCountry"
-                                                             :options="countries"></multiselect>
+                                                    style="margin-right: 10px; font-size: 15px;"
+                                                    placeholder="Select Country" v-model="selectedCountry"
+                                                    :options="countries"></multiselect>
 
                                                 <span style="color: #d93025" v-if="!selectedCountry">{{
-                                                        e_country
+                                                    e_country
                                                     }}</span>
                                             </div>
 
@@ -224,8 +227,7 @@
                                                 <label class="form-label" for="cityInput">City</label>
                                                 <label style="color: #d93025">*</label>
                                                 <multiselect :show-labels="false" style="margin-right: 10px;"
-                                                             placeholder="City Name Here"
-                                                             v-model="city" :options="options3">
+                                                    placeholder="City Name Here" v-model="city" :options="options3">
                                                 </multiselect>
                                                 <span style="color: #d93025" v-if="!this.city">{{ e_city }}</span>
                                             </div>
@@ -233,8 +235,8 @@
                                                 <label class="form-label" for="accountAddress">Address</label>
                                                 <label style="color: #d93025">*</label>
                                                 <input type="text" class="form-control" v-model="address"
-                                                       placeholder="Your Address">
-                                                <span style="color: #d93025" v-if="address==''">{{ e_address }}</span>
+                                                    placeholder="Your Address">
+                                                <span style="color: #d93025" v-if="address == ''">{{ e_address }}</span>
                                             </div>
 
                                         </div>
@@ -243,7 +245,8 @@
                                 </form>
                                 <div class="col-12" style="text-align:center">
                                     <button :disabled="disabled" @click="submit_employee()" type="button"
-                                            class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Add employee
+                                        class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Add
+                                        employee
                                     </button>
                                 </div>
                                 <br>
@@ -257,6 +260,7 @@
     </div>
 </template>
 <script>
+import { ref } from 'vue';
 import MaskedInput from 'vue-masked-input'
 import Multiselect from 'vue-multiselect'
 
@@ -335,17 +339,30 @@ export default {
             return re.test(email);
         },
         onFileChange(e) {
-            let files = e.target.files || e.dataTransfer.files;
+            let files = e.target.files;
+            if (!files || files.length === 0) {
+                console.warn("No file selected.");
+                return;
+            }
             const file = files[0];
-            this.image = files[0];
-            this.url = URL.createObjectURL(file);
-            const fileSize = file.size;
-            this.fileSize = fileSize;
+            this.image = file; // Store the file
+            this.url = URL.createObjectURL(file); // Create a preview URL
+            this.fileSize = file.size; // Store the file size
         },
+        // onFileChange(e) {
+        //     let files = e.target.files || e.dataTransfer.files;
+        //     const file = files[0];
+        //     this.image = files[0];
+        //     this.url = URL.createObjectURL(file);
+        //     const fileSize = file.size;
+        //     this.fileSize = fileSize;
+        // },
         submit_form(e) {
             const formData = new FormData();
             formData.append('image_file', this.image, this.image.name);
             axios.post('./test_image/submit', formData, {}).then((response) => {
+                console.log("response in creater employee iss", response.data);
+
                 this.image_path = response.data;
                 alert(this.image_path);
             })
@@ -359,7 +376,7 @@ export default {
                 this.timeout = setTimeout(() => {
                     this.disabled = false;
                 }, 5000);
-
+                // show error messsage if any field in missing
                 function setErrorMessage(variable, errorMessage) {
                     return !variable ? errorMessage : '';
                 }
@@ -401,8 +418,15 @@ export default {
                 formData.append('relation', this.relation);
                 formData.append('cnic_expiry', this.cnic_expiry);
 
+                console.log(formData); //testing
+
+
                 axios.post('create_employee', formData)
                     .then(data => {
+                        console.log(
+                            "I am hereeeee"
+                        );
+
                         if (data.data == 'Employee added') {
                             this.timeout = setTimeout(() => {
                                 this.disabled = false;
@@ -447,6 +471,7 @@ export default {
         },
     },
     mounted() {
+
         axios.get('overall_cities')
             .then(response => {
                 this.cities = response.data
@@ -474,7 +499,7 @@ export default {
                 console.error(error);
             });
 
-      
+
     }
 }
 

@@ -1,3 +1,4 @@
+<!-- view single emploee detail from clicking humanresource_dashboard.vue-->
 <template>
     <div>
         <div class="app-content content ">
@@ -11,7 +12,7 @@
                                 <router-link to="/hr/dashboard" style="text-decoration: none;">Dashboard</router-link>
                             </li>
                             <li class="breadcrumb-item">
-                                <router-link to="/hr/employees_detail" style="text-decoration: none;">Employees Detail
+                                <router-link to="/hr/employees_detail" style="text-decoration: none;">Employees Detail 2
                                 </router-link>
                             </li>
                             <li class="breadcrumb-item active" v-for='emp_detail1 in emp_detail'>
@@ -1283,7 +1284,7 @@ export default {
     },
     methods: {
 
-    
+
         dayname(dateS) {
             var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             var d = new Date(dateS);
@@ -1555,7 +1556,7 @@ this.page1 = page;
     },
     mounted() {
 
-        
+
         this.employee_salaries();
 
         axios.get('getindemployee_detail/' + this.id)
@@ -1612,13 +1613,13 @@ this.page1 = page;
         axios.get('./success_array/' + this.id)
             .then((response) => this.percent = response.data.data)
             .catch(error => {
-                this.$toastr.e('error Occur while getting success arrary');
+                this.$toastr.e('Error Occur while getting success arrary');
             });
-    
-  
 
- 
-       
+
+
+
+
 
     },
 }

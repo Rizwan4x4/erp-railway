@@ -1,42 +1,98 @@
 <template>
     <nav
-        class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow container-xxl">
+        class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow container-xxl rounded-4">
         <div class="navbar-container d-flex content">
             <div class="bookmark-wrapper d-flex align-items-center">
                 <ul class="nav navbar-nav d-xl-none">
                     <li class="nav-item"><a class="nav-link menu-toggle is-active" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-menu ficon">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                    </a></li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-menu ficon">
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
+                        </a></li>
                 </ul>
                 <ul class="nav navbar-nav bookmark-icons">
-                    <li class="nav-item d-none d-lg-block"><router-link to="/chat" class="nav-link" href="app-chat.html"
-                                                              data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                              title="" data-bs-original-title="Chat" aria-label="Chat">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-message-square ficon">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                    </router-link></li>
-                    <li class="nav-item d-none d-lg-block"><router-link to="/calander" class="nav-link" href="app-calendar.html"
-                                                              data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                              title="" data-bs-original-title="Calendar"
-                                                              aria-label="Calendar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="feather feather-calendar ficon">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
-                    </router-link></li>
+                    <li class="nav-item dropdown dropdown-user">
+
+                        <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="avatar">
+                                <img class="round" v-if="this.fetchimage == ''" src="public/images/profile_images/pro.png"
+                                    alt="avatar" height="40" width="40">
+                                <img class="round" v-else v-bind:src="`public/images/profile_images/${this.fetchimage}`"
+                                    alt="avatar" height="40" width="40">
+
+                                <span v-if="checkConnection" class="avatar-status-online" title="You are online"></span>
+                                <span v-else class="avatar-status-busy" title="You are offline"></span>
+                            </span>
+                            <div class="user-nav d-sm-flex d-none align-items-baseline p-1">
+                                <span class="user-name fw-bolder text-start">{{ user_session.first_name }} {{
+                                    user_session.last_name }}</span><span class="user-status">{{ user_session.user_role
+                                    }}</span>
+                            </div>
+                            <!-- <span class="avatar">
+                                <img class="round" v-if="this.fetchimage == ''" src="public/images/profile_images/pro.png"
+                                    alt="avatar" height="40" width="40">
+                                <img class="round" v-else v-bind:src="`public/images/profile_images/${this.fetchimage}`"
+                                    alt="avatar" height="40" width="40">
+
+                                <span v-if="checkConnection" class="avatar-status-online" title="You are online"></span>
+                                <span v-else class="avatar-status-busy" title="You are offline"></span>
+                            </span> -->
+                        </a>
+                        <div style="width:230px;" class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="dropdown-user">
+                            <a v-b-modal.modal-profile class="dropdown-item"><i class="me-50" data-feather="user"></i>
+                                Profile</a>
+                            <a class="dropdown-item" href="app-email.html"><i class="me-50" data-feather="mail"></i>
+                                Inbox</a>
+                            <router-link class="dropdown-item" to="/calander"><i class="me-50"
+                                    data-feather="check-square"></i> Task
+                            </router-link>
+                            <router-link to="/chat" class="dropdown-item"><i class="me-50"
+                                    data-feather="message-square"></i> Chats
+                            </router-link>
+                            <div class="dropdown-divider"></div>
+                            <a @click="send_update()" class="dropdown-item"><i class="me-50"
+                                    data-feather="message-square"></i>Send
+                                update notification</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" v-b-modal.modal-pass><i class="me-50" data-feather="settings"></i>
+                                Change Password</a>
+                            <router-link class="dropdown-item" to="/FAQs"><i class="me-50"
+                                    data-feather="help-circle"></i>
+                                FAQs
+                            </router-link>
+                            <button @click="logout()" style="width:100%" class="dropdown-item"><i class="me-50"
+                                    data-feather="power"></i>
+                                Logout
+                            </button>
+                        </div>
+                    </li>
+                    <!-- <li class="nav-item d-none d-lg-block"><router-link to="/chat" class="nav-link" href="app-chat.html"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat"
+                            aria-label="Chat">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-message-square ficon">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </router-link></li>
+                    <li class="nav-item d-none d-lg-block"><router-link to="/calander" class="nav-link"
+                            href="app-calendar.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
+                            data-bs-original-title="Calendar" aria-label="Calendar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-calendar ficon">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </router-link></li> -->
                 </ul>
             </div>
             <!--            <div class="bookmark-wrapper d-flex align-items-center">-->
@@ -51,15 +107,15 @@
             <!--            </div>-->
             <ul class="nav navbar-nav align-items-center ms-auto ">
                 <li class="nav-item d-none d-lg-block"><a @click="setLayout()" class="nav-link nav-link-style"><i
-                    class="ficon" data-feather="moon"></i></a></li>
+                            class="ficon" data-feather="moon"></i></a></li>
 
-                <li class="nav-item" :title="'Wind: '+windspeed+', Humidity: '+humidity">
+                <!-- <li class="nav-item" :title="'Wind: '+windspeed+', Humidity: '+humidity">
                     <a class="nav-link nav-link-style">
                         <img class="img-fluid" :src="`https://openweathermap.org/img/wn/${icon}`" height="30"
                              width="30"/>
                         {{ Math.floor(temp - 273.15) }}°C, {{ desc }}
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item d-none d-lg-block">
                     <a class="nav-link nav-link-style">
                         <i class="fa-solid fa-location-dot"></i> {{ city }}, {{ country }}
@@ -68,36 +124,37 @@
                 <li class="nav-item dropdown dropdown-notification me-25">
                     <a class="nav-link" href="#" data-bs-toggle="dropdown">
                         <i class="ficon" data-feather="bell"></i>
-                        <span v-if="notifications.status==3" class="badge rounded-pill bg-danger badge-up">1</span>
+                        <span v-if="notifications.status == 3" class="badge rounded-pill bg-danger badge-up">1</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end">
                         <li class="dropdown-menu-header">
                             <div class="dropdown-header d-flex">
                                 <h4 class="notification-title mb-0 me-auto">Notifications</h4>
-                                <div v-if="notifications.status==3" class="badge rounded-pill badge-light-primary">1
+                                <div v-if="notifications.status == 3" class="badge rounded-pill badge-light-primary">1
                                     New
                                 </div>
                                 <div v-else class="badge rounded-pill badge-light-primary">0 New</div>
                             </div>
                         </li>
-                        <li v-if="notifications.status==3" class="scrollable-container media-list">
+                        <li v-if="notifications.status == 3" class="scrollable-container media-list">
                             <a class="d-flex" href="#">
                                 <div class="list-item d-flex align-items-start">
                                     <div class="me-1">
                                         <div class="avatar" v-for='emp_detail1 in emp_detail'>
                                             <img v-bind:src="`public/images/profile_images/${notifications.sender}`"
-                                                 alt="avatar" width="32" height="32">
+                                                alt="avatar" width="32" height="32">
                                         </div>
                                     </div>
                                     <div class="list-item-body flex-grow-1">
-                                        <p class="media-heading"><span class="fw-bolder">Application updated 🎉</span>yahooo!
+                                        <p class="media-heading"><span class="fw-bolder">Application updated
+                                                🎉</span>yahooo!
                                         </p><small>Hi {{ user_session.first_name }} {{ user_session.last_name }}, I just
-                                        made an update, Please clear your cache to install this update</small>
+                                            made an update, Please clear your cache to install this update</small>
                                     </div>
                                 </div>
                             </a>
                         </li>
-                        <li v-if="notifications.status==3" class="dropdown-menu-footer row">
+                        <li v-if="notifications.status == 3" class="dropdown-menu-footer row">
                             <button @click="delay2()" :disabled="disabled2" class="btn btn-success w-75">I have cleared
                                 my cache
                             </button>
@@ -105,7 +162,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown dropdown-user">
+                <!-- <li class="nav-item dropdown dropdown-user">
+
                     <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#"
                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="user-nav d-sm-flex d-none"><span
@@ -148,7 +206,29 @@
                             Logout
                         </button>
                     </div>
-                </li>
+                </li> -->
+                <li class="nav-item d-none d-lg-block"><router-link to="/calander" class="nav-link"
+                        href="app-calendar.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
+                        data-bs-original-title="Calendar" aria-label="Calendar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-calendar ficon">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </router-link></li>
+                <li class="nav-item d-none d-lg-block"><router-link to="/chat" class="nav-link" href="app-chat.html"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat"
+                        aria-label="Chat">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-message-square ficon">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </router-link></li>
+
             </ul>
             <b-modal id="modal-pass" size="md" title="Change your Password" hide-footer>
                 <div class="auth-login-form mt-2">
@@ -159,8 +239,8 @@
                             </div>
                             <div class="input-group input-group-merge form-password-toggle">
                                 <input v-bind:type="[showPassword1 ? 'text' : 'password']" v-model="oldPass"
-                                       type="password" class="form-control form-control-merge"
-                                       placeholder="Type Password Here"/>
+                                    type="password" class="form-control form-control-merge"
+                                    placeholder="Type Password Here" />
                                 <span class="input-group-text cursor-pointer" @click="showPassword1 = !showPassword1">
                                     <i v-if="this.showPassword1 == false" class="fa-regular fa-eye"></i>
                                     <i v-else class="fa-regular fa-eye-slash"></i>
@@ -169,18 +249,18 @@
                         </div>
 
                         <div v-if="this.e_oldPass == 'Password must not be empty'"
-                             style="margin-top:5px;margin-bottom:5px;">
+                            style="margin-top:5px;margin-bottom:5px;">
                             <p class="alert alert-danger"
-                               style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
+                                style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
                                 {{ e_oldPass }}</p>
                         </div>
                         <div v-if="this.e_oldPass == 'Password not exist!'" style="margin-top:5px;margin-bottom:5px;">
                             <p class="alert alert-danger"
-                               style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
+                                style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
                                 {{ e_oldPass }}</p>
                         </div>
                         <button :disabled="disabled" @click="delay()" v-if="this.old_success == '0'"
-                                class="btn btn-primary w-100" tabindex="4">Confirm
+                            class="btn btn-primary w-100" tabindex="4">Confirm
                         </button>
                     </div>
 
@@ -191,16 +271,16 @@
                             </div>
                             <div class="input-group input-group-merge form-password-toggle">
                                 <input v-bind:type="[showPassword2 ? 'text' : 'password']" v-model="newPass1"
-                                       type="password" class="form-control form-control-merge"
-                                       placeholder="Type Password Here"/>
+                                    type="password" class="form-control form-control-merge"
+                                    placeholder="Type Password Here" />
                             </div>
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="login-password">Confirm New Password</label>
                             </div>
                             <div class="input-group input-group-merge form-password-toggle">
                                 <input v-bind:type="[showPassword2 ? 'text' : 'password']" v-model="newPass2"
-                                       type="password" class="form-control form-control-merge"
-                                       placeholder="Type Password Here"/>
+                                    type="password" class="form-control form-control-merge"
+                                    placeholder="Type Password Here" />
                                 <span class="input-group-text cursor-pointer" @click="showPassword2 = !showPassword2">
                                     <i v-if="this.showPassword2 == false" class="fa-regular fa-eye"></i>
                                     <i v-else class="fa-regular fa-eye-slash"></i>
@@ -209,33 +289,33 @@
                         </div>
 
                         <div v-if="this.e_newPass1 == 'New password must not be empty'"
-                             style="margin-top:5px;margin-bottom:5px;">
+                            style="margin-top:5px;margin-bottom:5px;">
                             <p class="alert alert-danger"
-                               style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
+                                style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
                                 {{ e_newPass1 }}</p>
                         </div>
-                        <div v-if="this.newPass1!='' && this.e_newPass2 == 'Confirm with same password'"
-                             style="margin-top:5px;margin-bottom:5px;">
+                        <div v-if="this.newPass1 != '' && this.e_newPass2 == 'Confirm with same password'"
+                            style="margin-top:5px;margin-bottom:5px;">
                             <p class="alert alert-danger"
-                               style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
+                                style="padding-left:10px; padding-right:10px; padding-top:5px; padding-bottom:5px">
                                 {{ e_newPass2 }}</p>
                         </div>
                         <b-button :disabled="disabled1" @click="delay1()" v-if="this.old_success == '1'"
-                                  class="btn btn-primary w-100" tabindex="4" data-bs-dismiss="b-modal"
-                                  style="background-color: #6258cc !important ">Change
+                            class="btn btn-primary w-100" tabindex="4" data-bs-dismiss="b-modal"
+                            style="background-color: #6258cc !important ">Change
                         </b-button>
                     </div>
                 </div>
             </b-modal>
             <b-modal id="modal-profile" size="xl" title="Your Personal Profile" ok-only>
                 <div class="content-wrapper container-xxl p-0"
-                     style="height:500px; overflow-y:scroll; overflow-x:hidden;">
+                    style="height:500px; overflow-y:scroll; overflow-x:hidden;">
                     <div class="content-header row">
                         <div class="breadcrumb-wrapper">
                             <b-progress
-                                :value="percent.address+percent.city+percent.cnic+percent.company_email+percent.department+percent.designation+percent.dob+percent.edu_status+percent.email+percent.emp_code+percent.exp_status+percent.father+percent.gender+percent.job_des+percent.marital+percent.mobile+percent.photo+percent.reporting"
+                                :value="percent.address + percent.city + percent.cnic + percent.company_email + percent.department + percent.designation + percent.dob + percent.edu_status + percent.email + percent.emp_code + percent.exp_status + percent.father + percent.gender + percent.job_des + percent.marital + percent.mobile + percent.photo + percent.reporting"
                                 variant="success"
-                                :label="`${(((percent.address+percent.city+percent.cnic+percent.company_email+percent.department+percent.designation+percent.dob+percent.edu_status+percent.email+percent.emp_code+percent.exp_status+percent.father+percent.gender+percent.job_des+percent.marital+percent.mobile+percent.photo+percent.reporting) / max) * 100).toFixed(0)}%`"
+                                :label="`${(((percent.address + percent.city + percent.cnic + percent.company_email + percent.department + percent.designation + percent.dob + percent.edu_status + percent.email + percent.emp_code + percent.exp_status + percent.father + percent.gender + percent.job_des + percent.marital + percent.mobile + percent.photo + percent.reporting) / max) * 100).toFixed(0)}%`"
                                 :striped="striped" animated class="mb-3">
                             </b-progress>
                         </div>
@@ -245,23 +325,23 @@
                             <div class="row">
                                 <!-- User Sidebar -->
                                 <div v-for='emp_detail1 in emp_detail'
-                                     class="col-xl-4 col-lg-5 col-md-5 order-1 order-md-0">
+                                    class="col-xl-4 col-lg-5 col-md-5 order-1 order-md-0">
                                     <!-- User Card -->
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="user-avatar-section">
                                                 <div class="d-flex align-items-center flex-column">
-                                                    <img v-if="emp_detail1.Photo==''"
-                                                         class="img-fluid rounded mt-3 mb-2"
-                                                         src="public/images/profile_images/pro.png" height="110"
-                                                         width="110" alt="User avatar"/>
+                                                    <img v-if="emp_detail1.Photo == ''"
+                                                        class="img-fluid rounded mt-3 mb-2"
+                                                        src="public/images/profile_images/pro.png" height="110"
+                                                        width="110" alt="User avatar" />
                                                     <img v-else class="img-fluid rounded mt-3 mb-2"
-                                                         v-bind:src="`public/images/profile_images/${emp_detail1.Photo}`"
-                                                         height="110" width="110" alt="User avatar"/>
+                                                        v-bind:src="`public/images/profile_images/${emp_detail1.Photo}`"
+                                                        height="110" width="110" alt="User avatar" />
                                                     <div class="user-info text-center">
                                                         <h4>{{ emp_detail1.Name }}</h4>
-                                                        <span
-                                                            class="badge bg-light-secondary">{{ emp_detail1.Designation }}</span>
+                                                        <span class="badge bg-light-secondary">{{
+                                                            emp_detail1.Designation }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -270,7 +350,7 @@
                                                     <span class="badge bg-light-primary p-75 rounded">
 
                                                         <i class="font-medium-2 fa-solid fa-check"
-                                                           style="margin-right: 5px"></i>
+                                                            style="margin-right: 5px"></i>
                                                     </span>
                                                     <div class="ms-75">
                                                         <h4 class="mb-0">{{ com_year }}</h4>
@@ -281,11 +361,17 @@
                                                     <span class="badge bg-light-primary p-75 rounded">
 
                                                         <i class="fa-solid fa-bars-progress font-medium-2"
-                                                           style="margin-right: 5px"></i>
+                                                            style="margin-right: 5px"></i>
                                                     </span>
                                                     <div class="ms-75">
                                                         <h4 class="mb-0">
-                                                            {{ percent.address + percent.city + percent.cnic + percent.company_email + percent.department + percent.designation + percent.dob + percent.edu_status + percent.email + percent.emp_code + percent.exp_status + percent.father + percent.gender + percent.job_des + percent.marital + percent.mobile + percent.photo + percent.reporting }}%</h4>
+                                                            {{ percent.address + percent.city + percent.cnic +
+                                                                percent.company_email + percent.department +
+                                                                percent.designation + percent.dob + percent.edu_status +
+                                                                percent.email + percent.emp_code + percent.exp_status +
+                                                                percent.father + percent.gender + percent.job_des +
+                                                                percent.marital + percent.mobile + percent.photo +
+                                                                percent.reporting }}%</h4>
                                                         <small>Profile</small>
                                                     </div>
                                                 </div>
@@ -328,8 +414,8 @@
                                                     </li>
                                                     <li class="mb-75">
                                                         <span class="fw-bolder me-25">Status:</span>
-                                                        <span
-                                                            class="badge bg-light-success">{{ emp_detail1.Status }}</span>
+                                                        <span class="badge bg-light-success">{{ emp_detail1.Status
+                                                            }}</span>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -344,14 +430,14 @@
                                                 <div class="d-flex justify-content-center">
                                                     <sup class="h5 pricing-currency text-primary mt-1 mb-0">Rs.</sup>
                                                     <span class="fw-bolder display-5 mb-0 text-primary"
-                                                          style="font-size:18px">{{ emp_detail1.Salary }}</span>
+                                                        style="font-size:18px">{{ emp_detail1.Salary }}</span>
                                                     <sub
                                                         class="pricing-duration font-small-4 ms-25 mt-auto mb-2">/month</sub>
                                                 </div>
                                             </div>
                                             <div style="font-size:18px;margin-top:20px">
                                                 <span class="fw-bolder display-5 mb-0 text-primary"
-                                                      style="font-size:18px">Job Description</span>
+                                                    style="font-size:18px">Job Description</span>
                                             </div>
                                             <label v-html='emp_detail1.JobDescription'></label>
                                         </div>
@@ -368,15 +454,14 @@
                                                 <h4 class="card-title mb-50">Complete Details</h4>
                                             </div>
                                             <div style="float:right">
-                                                <a v-if="percent.address+percent.city+percent.cnic+percent.company_email+percent.department+percent.designation+percent.dob+percent.edu_status+percent.email+percent.emp_code+percent.exp_status+percent.father+percent.gender+percent.job_des+percent.marital+percent.mobile+percent.photo+percent.reporting>89"
-                                                   target="_blank"
-                                                   v-bind:href="`../sa_sass1.1/cv_builder/${emp_detail1.EmployeeID}/${emp_detail1.EmployeeCode}/${emp_detail1.RegisterID}`"
-                                                   class="btn btn-primary btn-sm edit-address waves-effect waves-float waves-light">
+                                                <a v-if="percent.address + percent.city + percent.cnic + percent.company_email + percent.department + percent.designation + percent.dob + percent.edu_status + percent.email + percent.emp_code + percent.exp_status + percent.father + percent.gender + percent.job_des + percent.marital + percent.mobile + percent.photo + percent.reporting > 89"
+                                                    target="_blank"
+                                                    v-bind:href="`../sa_sass1.1/cv_builder/${emp_detail1.EmployeeID}/${emp_detail1.EmployeeCode}/${emp_detail1.RegisterID}`"
+                                                    class="btn btn-primary btn-sm edit-address waves-effect waves-float waves-light">
                                                     CV Builder
                                                 </a>
-                                                <a v-else target="_blank"
-                                                   href="#"
-                                                   class="btn btn-primary btn-sm edit-address waves-effect waves-float waves-light">
+                                                <a v-else target="_blank" href="#"
+                                                    class="btn btn-primary btn-sm edit-address waves-effect waves-float waves-light">
                                                     CV Builder
                                                 </a>
                                             </div>
@@ -404,17 +489,17 @@
                                                         <dt class="col-sm-6 fw-bolder mb-1">Relation:</dt>
                                                         <dd class="col-sm-6 mb-1">{{ emp_detail1.Relation }}</dd>
                                                         <dt class="col-sm-6 fw-bolder mb-1">Send Notification:</dt>
-                                                        <dd v-if="emp_detail1.SendNotification==1"
+                                                        <dd v-if="emp_detail1.SendNotification == 1"
                                                             class="col-sm-6 mb-1">Allow
                                                         </dd>
                                                         <dd v-else class="col-sm-6 mb-1">Not Allow</dd>
                                                         <dt class="col-sm-6 fw-bolder mb-1">Eportal Access:</dt>
-                                                        <dd v-if="emp_detail1.EportalAccess==1" class="col-sm-6 mb-1">
+                                                        <dd v-if="emp_detail1.EportalAccess == 1" class="col-sm-6 mb-1">
                                                             Allow
                                                         </dd>
                                                         <dd v-else class="col-sm-6 mb-1">Not Allow</dd>
                                                         <dt class="col-sm-6 fw-bolder mb-1">Team Attendance:</dt>
-                                                        <dd v-if="emp_detail1.AllowEmployeesAttendance==1"
+                                                        <dd v-if="emp_detail1.AllowEmployeesAttendance == 1"
                                                             class="col-sm-6 mb-1">Yes
                                                         </dd>
                                                         <dd v-else class="col-sm-6 mb-1">No</dd>
@@ -458,22 +543,22 @@
                                         <div class="table-responsive">
                                             <table class="table">
                                                 <thead>
-                                                <tr>
-                                                    <th></th>
-                                                    <th>Institute Name</th>
-                                                    <th>Degree Type</th>
-                                                    <th>Degree Name</th>
-                                                    <th>Passing Year</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Institute Name</th>
+                                                        <th>Degree Type</th>
+                                                        <th>Degree Name</th>
+                                                        <th>Passing Year</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody style="text-align:center">
-                                                <tr v-for='edu_detail1 in edu_detail'>
-                                                    <td></td>
-                                                    <td style="text-align:left">{{ edu_detail1.InstituteName }}</td>
-                                                    <td style="text-align:left">{{ edu_detail1.DegreeType }}</td>
-                                                    <td style="text-align:left">{{ edu_detail1.DegreeName }}</td>
-                                                    <td style="text-align:left">{{ edu_detail1.PassingYear }}</td>
-                                                </tr>
+                                                    <tr v-for='edu_detail1 in edu_detail'>
+                                                        <td></td>
+                                                        <td style="text-align:left">{{ edu_detail1.InstituteName }}</td>
+                                                        <td style="text-align:left">{{ edu_detail1.DegreeType }}</td>
+                                                        <td style="text-align:left">{{ edu_detail1.DegreeName }}</td>
+                                                        <td style="text-align:left">{{ edu_detail1.PassingYear }}</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -490,8 +575,9 @@
                                                         <div
                                                             class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
                                                             <h6>{{ exp_detail1.JobTitle }}</h6>
-                                                            <span
-                                                                class="timeline-event-time me-1">{{ exp_detail1.StartingDate }} to {{ exp_detail1.LeavingDate }}</span>
+                                                            <span class="timeline-event-time me-1">{{
+                                                                exp_detail1.StartingDate }} to {{
+                                                                    exp_detail1.LeavingDate }}</span>
                                                         </div>
                                                         <p>{{ exp_detail1.CompanyName }}</p>
                                                         <div class="d-flex flex-row align-items-center mb-50">
@@ -725,8 +811,8 @@ export default {
                         localStorage.clear();
 
                         window.location.reload();
-                        
-                        this.$toastr.i("Logout Successfully"); 
+
+                        this.$toastr.i("Logout Successfully");
 
                     })
                 .catch((error) => console.log(error));
@@ -739,15 +825,15 @@ export default {
             })
                 .then((responce) => responce.json())
                 .then((data) => {
-                        this.weather = data;
-                        this.city = data.name;
-                        this.country = data.sys.country;
-                        this.desc = data.weather[0].main;
-                        this.temp = data.main.temp;
-                        this.humidity = data.main.humidity + '%';
-                        this.windspeed = ((data.wind.speed) * (3.6)).toFixed(0) + 'km/h';
-                        this.icon = data.weather[0].icon + '.png';
-                    },
+                    this.weather = data;
+                    this.city = data.name;
+                    this.country = data.sys.country;
+                    this.desc = data.weather[0].main;
+                    this.temp = data.main.temp;
+                    this.humidity = data.main.humidity + '%';
+                    this.windspeed = ((data.wind.speed) * (3.6)).toFixed(0) + 'km/h';
+                    this.icon = data.weather[0].icon + '.png';
+                },
                     error => {
                         console.log(error.message);
                     },
@@ -781,20 +867,21 @@ export default {
             .then(data => {
                 this.rep_employees = data.data.data;
             })
-            const cachedData = localStorage.getItem('user_session');
+        const cachedData = localStorage.getItem('user_session');
 
-if (cachedData) {
-  // Use the cached data
-  this.user_session = JSON.parse(cachedData);
-} else {
-        axios.get('./user_session')
-            .then((response) => {this.user_session = response.data
-            
-                localStorage.setItem('user_session', JSON.stringify(response.data));
+        if (cachedData) {
+            // Use the cached data
+            this.user_session = JSON.parse(cachedData);
+        } else {
+            axios.get('./user_session')
+                .then((response) => {
+                    this.user_session = response.data
 
-            })
+                    localStorage.setItem('user_session', JSON.stringify(response.data));
 
-            .catch((error) => console.log(error));
+                })
+
+                .catch((error) => console.log(error));
         }
         axios.get('./fetch_image')
             .then((response) => this.fetchimage = response.data)
@@ -805,4 +892,3 @@ if (cachedData) {
 }
 
 </script>
-

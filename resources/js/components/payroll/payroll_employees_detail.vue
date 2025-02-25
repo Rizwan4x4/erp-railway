@@ -312,7 +312,7 @@
                     p_current_remarks: this.p_current_remarks,
                 })
                     .then(data => {
-                     
+
                         this.$toastr.s("Employee Salary Detail Updated Successfully!", "Congratulations!");
                         this.adsdata=data.data
                         this.p_emp_id = '';

@@ -95,6 +95,7 @@ const permissionMixin = {
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 const PdcReceivable = require('./components/accounts/PdcReceivable.vue').default;
+// vue.component('chart', require('./components/human_resource/chart.vue').default);
 
 const sam_voucher = require('./components/accounts/unit_pending_sam_voucher.vue').default;
 const create_received_voucher2 = require('./components/accounts/sale_received_voucher2.vue').default;

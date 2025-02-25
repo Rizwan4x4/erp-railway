@@ -80,6 +80,7 @@ Route::get('get_warningreason_byId/{id}', 'App\Http\Controllers\HRMS\HrControlle
 Route::get('/getindemployee_detail/{id}', 'App\Http\Controllers\HRMS\EmployeDetails\IndEmployeDetailsController@getindemployee_detail');
 Route::get('/getemployee_education/{id}', 'App\Http\Controllers\HRMS\EmployeDetails\IndEmployeDetailsController@getemployee_education');
 Route::get('cash_distributionlist_detail', 'App\Http\Controllers\HRMS\HrController@cash_distributionlist_detail');
+Route::get('count_leaves_d', 'App\Http\Controllers\HRMS\HrController@count_leaves_d');
 
 Route::post('update_warningdetail', 'App\Http\Controllers\HRMS\HrController@update_warning');
 Route::get('/roster_detail1', 'App\Http\Controllers\HRMS\HrController@roster_detail1');
@@ -170,7 +171,8 @@ Route::get('test_pull', 'App\Http\Controllers\HRMS\HrController@test_pull');
 
 
 Route::get('/count_firing_d/', 'App\Http\Controllers\HRMS\HrController@count_firing_d')->middleware('permission:Human Resource Dashboard overall-view');
-Route::post('create_employee', 'App\Http\Controllers\HRMS\HrController@create_employee')->middleware('permission:HRMS employees_detail create_employee');
+Route::get('/count_resign_d/', 'App\Http\Controllers\HRMS\HrController@count_resign_d')->middleware('permission:Human Resource Dashboard overall-view');
+Route::match(['get', 'post'],'create_employee', 'App\Http\Controllers\HRMS\HrController@create_employee')->middleware('permission:HRMS employees_detail create_employee');
 Route::post('submit_roster', 'App\Http\Controllers\HRMS\HrController@submit_roster')->middleware('permission:HRMS Attendance Shifts add new');
 Route::post('submit_update_roster', 'App\Http\Controllers\HRMS\HrController@submit_update_roster')->middleware('permission:HRMS Attendance Shifts Edit');
 Route::get('/organization_chart', 'App\Http\Controllers\HRMS\HrController@organization_chart')->middleware('permission:HRMS Organization_Cart  view');  //update time Adjstment  status//organization_chart

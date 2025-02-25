@@ -15,7 +15,7 @@
                                 </router-link>
                             </li>
                             <li class="breadcrumb-item active">
-                                Employement details
+                                Employement details 1
                             </li>
                         </ol>
                     </div>
@@ -571,7 +571,7 @@ export default {
     mounted() {
         this.fetchDesignation();
 
-     
+
 
         axios.get('overall_child_companies_emp')
             .then(response => {

@@ -1,6 +1,5 @@
 <template>
-    <div
->
+    <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
             <div class="header-navbar-shadow"></div>
@@ -16,27 +15,27 @@
                 </div>
                 <div class="content-body">
                     <div class="row match-height">
-                        <div  class="col-lg-12 col-sm-6 col-12">
+                        <div class="col-lg-12 col-sm-6 col-12">
                             <!--/ Medal Card -->
                             <div class="row">
 
                                 <div class="col-lg-12 col-6 col-12">
-                                    <div class="card">
+                                    <div class="card top-radius bottom-radius border-0 shadow-sm">
                                         <div class="card-body">
                                             <div>
                                                 <apexchart :height="300" type="bar" :options="options3"
-                                                           :series="series3"></apexchart>
+                                                    :series="series3"></apexchart>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-6 col-12">
-                                    <div class="card">
+                                    <div class="card top-radius bottom-radius border-0 shadow-sm">
                                         <div class="card-body">
 
                                             <div>
                                                 <apexchart :height="300" type="bar" :options="options4"
-                                                           :series="series4"></apexchart>
+                                                    :series="series4"></apexchart>
                                             </div>
                                         </div>
                                     </div>
@@ -45,26 +44,25 @@
                             </div>
                         </div>
                     </div>
-                    <div  class="col-lg-12 col-sm-12 col-12">
+                    <div class="col-lg-12 col-sm-12 col-12">
 
-                        <div class="card card-congratulation-medal">
+                        <div class="card card-congratulation-medal top-radius bottom-radius border-0 shadow-sm">
                             <div class="card-body">
                                 <div id="chart">
-                                    <apexchart :height="500" type="bar" :options="options2"
-                                               :series="series2"></apexchart>
+                                    <apexchart :height="500" type="bar" :options="options2" :series="series2">
+                                    </apexchart>
 
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div  class="col-lg-12 col-sm-12 col-12">
-                        <div class="card card-congratulation-medal">
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <div class="card card-congratulation-medal top-radius bottom-radius border-0 shadow-sm">
                             <div class="card-body">
                                 <div id="chart">
 
-                                    <apexchart type="bar" height="750" :options="chartOptions1"
-                                               :series="series1"></apexchart>
+                                    <apexchart type="bar" height="750" :options="chartOptions1" :series="series1">
+                                    </apexchart>
                                 </div>
                             </div>
                         </div>
@@ -90,6 +88,31 @@ export default {
     },
     data: function () {
         return {
+
+            //this is Just for testing
+            // series3: [{
+            //     name: 'Total',
+            //     data: [50000, 60000, 70000, 80000, 90000]
+            // }, {
+            //     name: 'Paid',
+            //     data: [45000, 55000, 65000, 75000, 85000]
+            // }, {
+            //     name: 'Pending',
+            //     data: [5000, 5000, 5000, 5000, 5000]
+            // }],
+            series3: [{
+                name: 'Total',
+                data: [0]
+            }, {
+                name: 'Paid',
+                data: [0]
+            },
+            {
+                name: 'Pending',
+                data: [0]
+            }
+
+            ],
             options3: {
                 chart: {
                     type: 'bar',
@@ -111,12 +134,18 @@ export default {
                     colors: ['transparent']
                 },
                 xaxis: {
-                    categories: [],
-
+                    categories: [], //for dynamic values
+                    // categories: ['January', 'February', 'March', 'April', 'May'], this is just for testing
                 },
                 title: {
                     text: 'Salaries Distribution Report',
-                    align: 'left'
+                    align: 'left',
+                    floating: true
+                },
+                legend: {
+                    position: 'top',
+                    horizontalAlign: 'right', // Moves legend to the top-right
+                    floating: true
                 },
                 yaxis: {
                     // title: {
@@ -134,19 +163,6 @@ export default {
                     }
                 }
             },
-            series3: [{
-                name: 'Total',
-                data: [0]
-            }, {
-                name: 'Paid',
-                data: [0]
-            },
-                {
-                    name: 'Pending',
-                    data: [0]
-                }
-
-            ],
 
 
             options4: {
@@ -198,34 +214,34 @@ export default {
                 name: 'Loan',
                 data: [0]
             },
-                {
-                    name: 'Advance',
-                    data: [0]
-                },
-                {
-                    name: 'Approved Advance',
-                    data: [0]
-                },
-                {
-                    name: 'Pending Advance',
-                    data: [0]
-                },
-                {
-                    name: 'Rejected Advance',
-                    data: [0]
-                },
-                {
-                    name: 'Approved Loan',
-                    data: [0]
-                },
-                {
-                    name: 'Pending Loan',
-                    data: [0]
-                },
-                {
-                    name: 'Rejected Loan',
-                    data: [0]
-                }],
+            {
+                name: 'Advance',
+                data: [0]
+            },
+            {
+                name: 'Approved Advance',
+                data: [0]
+            },
+            {
+                name: 'Pending Advance',
+                data: [0]
+            },
+            {
+                name: 'Rejected Advance',
+                data: [0]
+            },
+            {
+                name: 'Approved Loan',
+                data: [0]
+            },
+            {
+                name: 'Pending Loan',
+                data: [0]
+            },
+            {
+                name: 'Rejected Loan',
+                data: [0]
+            }],
 
             series1: [{
                 name: '',
@@ -237,69 +253,69 @@ export default {
                 name: '',
                 data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             },
-                {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }, {
-                    name: ' ',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }, {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                },
-                {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                },
-                {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }, {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }, {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                },
-                {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }, {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }, {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                },
-                {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }, {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }, {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                },
-                {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }, {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                },
-                {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                },
-                {
-                    name: ' ',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                },
-                {
-                    name: '',
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                }
+            {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }, {
+                name: ' ',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }, {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }, {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }, {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }, {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }, {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }, {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }, {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }, {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: ' ',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: '',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }
             ],
             chartOptions1: {
                 chart: {
@@ -435,9 +451,13 @@ export default {
                 } else {
                     this.options3.xaxis.categories[i] = '';
                 }
-                this.series3[0].data[i] = this.SDR[i].TotalPayable;
-                this.series3[1].data[i] = this.SDR[i].Paid;
-                this.series3[2].data[i] = this.SDR[i].Pending;
+
+                this.series3[0].data[i] = 9000;
+                this.series3[1].data[i] = 7000;
+                this.series3[2].data[i] = 2000;
+                // this.series3[0].data[i] = this.SDR[i].TotalPayable;
+                // this.series3[1].data[i] = this.SDR[i].Paid;
+                // this.series3[2].data[i] = this.SDR[i].Pending;
             }
         },
         set3() {
@@ -464,7 +484,7 @@ export default {
                 }
             }
         },
-        
+
     }
     ,
     mounted() {
@@ -472,6 +492,8 @@ export default {
         axios.get('Salary_DistributionReport')
             .then(response => {
                 this.SDR = response.data;
+                // console.log("SDR",this.SDR);
+
                 this.set2();
             })
             .catch(error => {
@@ -514,8 +536,27 @@ export default {
             .catch(error => {
             });
 
-      
+
     }
 }
 
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

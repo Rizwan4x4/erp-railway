@@ -24,16 +24,14 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "apexcharts": "^3.33.2",
+        "apexcharts": "^3.54.1",
         "bootstrap-vue": "^2.21.2",
         "bootstrap-vue-datatable": "^1.0.7",
-        "chart.js": "^4.3.0",
-
+        "chart.js": "^4.4.7",
         "laravel-vue-pagination": "^2.3.1",
         "moment": "^2.29.4",
         "openai": "^4.0.0",
         "v-select2-component": "^0.4.7",
-   
         "vue-apexcharts": "^1.6.2",
         "vue-barcode": "^1.3.0",
         "vue-chartjs": "^5.2.0",

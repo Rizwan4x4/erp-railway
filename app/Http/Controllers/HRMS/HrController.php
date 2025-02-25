@@ -174,7 +174,6 @@ class HrController extends Controller
                 ->where('CompanyID', '=', company_id())->where('SessionName', '=', $session)->where('ReceivedThrough', 'like', '%' . $location . '%')->get();
             return request()->json(200, $emp_detail);
         }
-
     }
 
     public function session_wise_cashdistribution_count($session, $location)
@@ -189,7 +188,6 @@ class HrController extends Controller
                 ->where('CompanyID', '=', company_id())->where('SessionName', '=', $session)->where('ReceivedThrough', 'like', '%' . $location . '%')->sum("CashAmount");
             return request()->json(200, $emp_detail);
         }
-
     }
 
     public function session_wise_bankdistribution_count($session, $location)
@@ -204,7 +202,6 @@ class HrController extends Controller
                 ->where('CompanyID', '=', company_id())->where('SessionName', '=', $session)->where('ReceivedThrough', 'like', '%' . $location . '%')->sum("BankAmount");
             return request()->json(200, $emp_detail);
         }
-
     }
 
     public function cash_distribution_totalamount($date)
@@ -226,7 +223,6 @@ class HrController extends Controller
 
         $find_session_closed = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('AttClosedPayrollStart', '=', 'Closed')->get();
         foreach ($find_session_closed as $find_session1) {
-
         }
         $sesson_name = $find_session1->SessionName;
         $result = DB::connection('sqlsrv2')->table("Payroll_Distribution")->where('SessionName', '=', $sesson_name)->where('ReceivedThrough', '!=', 'NULL')->select('Payroll_Distribution.ReceivedTime')->groupBy('ReceivedTime')->orderBy('ReceivedTime', 'desc')->get();
@@ -273,7 +269,6 @@ class HrController extends Controller
             $this->fpdf->SetTextColor(41, 46, 46);
             $fetch_image = DB::connection('sqlsrv3')->table('CompanyLogo')->where('CompanyID', '=', company_id())->get();
             foreach ($fetch_image as $fetch_image1) {
-
             }
             $this->fpdf->Image('public/images/logo/' . $fetch_image1->LeftLogo, 10, 7, 35, 18);
             $this->fpdf->Text(95, 17, 'Loan Slip');
@@ -388,7 +383,6 @@ class HrController extends Controller
 
             $fetch_user_detail = DB::table('tb_users')->where('company_id', '=', company_id())->where('email', username())->get();
             foreach ($fetch_user_detail as $fetch_user_detail1) {
-
             }
 
             $this->fpdf->SetFont('Times', 'B', 12);
@@ -409,7 +403,6 @@ class HrController extends Controller
             $find_session_closed = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('AttClosedPayrollStart', '=', 'Closed')->orderby('SessionID', 'asc')->get();
 
             foreach ($find_session_closed as $find_session1) {
-
             }
             $sesson_name = $find_session1->SessionName;
 
@@ -417,7 +410,6 @@ class HrController extends Controller
 
             return request()->json(200, $emp_detail);
         }
-
     }
 
     public function employee_loan1($id)
@@ -438,7 +430,6 @@ class HrController extends Controller
             $this->fpdf->SetTextColor(41, 46, 46);
             $fetch_image = DB::connection('sqlsrv3')->table('CompanyLogo')->where('CompanyID', '=', company_id())->get();
             foreach ($fetch_image as $fetch_image1) {
-
             }
             $this->fpdf->Image('public/images/logo/' . $fetch_image1->LeftLogo, 140, 15, 35, 17);
             $this->fpdf->ln(25);
@@ -491,8 +482,6 @@ class HrController extends Controller
             ->select('Emp_Profile.*', 'Emp_Register.*')->where('Emp_Profile.CompanyID', '=', company_id())
             ->paginate(15);
         return request()->json(200, $emp_detail);
-
-
     }
 
 
@@ -500,7 +489,7 @@ class HrController extends Controller
     {
         $machines = \Illuminate\Support\Facades\DB::connection('sqlsrv2')->table('Devices')->where('Is_Sync', '=', 1)->where('CompanyID', '=', company_id())->get();
         $machineIDs = $machines->pluck('Id')->toArray();
-//        dd($machineIDs);
+        //        dd($machineIDs);
 
         $lastUIDs = \Illuminate\Support\Facades\DB::connection('sqlsrv2')
             ->table('Machine_Attendance')
@@ -509,19 +498,19 @@ class HrController extends Controller
             ->orderBy('ID', 'asc')
             ->pluck('uid', 'DeviceID')
             ->toArray();
-//dd($lastUIDs);
+        //dd($lastUIDs);
 
         $insertData = [];
         foreach ($machines as $machines1) {
-//            dd($machines1->Id);
+            //            dd($machines1->Id);
             $zk = new ZKTeco($machines1->DeviceIP, 4370, null, '../storage/logs/error.log');
             $connect = $zk->connect();
-//            dd($connect, $machines1->Id);
+            //            dd($connect, $machines1->Id);
             if ($connect == 1) {
                 $device_attendance = $zk->getAttendance();
                 $lastUID = $lastUIDs[$machines1->Id] ?? 0;
-//                dd($lastUID);
-//                dd($device_attendance);
+                //                dd($lastUID);
+                //                dd($device_attendance);
                 foreach ($device_attendance as $device_attendance1) {
                     if ($device_attendance1['uid'] > $lastUID) {
                         $insertData[] = [
@@ -536,7 +525,7 @@ class HrController extends Controller
                         ];
                     }
                 }
-//                dd($insertData);
+                //                dd($insertData);
                 insertLog('Attendance fetched', count($insertData) . ' Attendance records fetched from machine "' . $machines1->DeviceName . '" automaticaly');
             } else {
                 continue;
@@ -576,9 +565,12 @@ class HrController extends Controller
 
         if ($request->hasFile('image_file')) {
             $file = $request->file('image_file');
-            $name_image = time() . $file->getClientOriginalName();
-            $file->move(public_path() . '/images/profile_images/', $name_image);
+            $name_image = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('/images/profile_images/'), $name_image);
+        } else {
+            $name_image = null;
         }
+        // dd($SelectedCountry);
 
         $lastEmployee = DB::connection('sqlsrv2')->table("Emp_Register")->where('CompanyID', '=', company_id())->orderBy('EmployeeID', 'desc')->first();
         $lastEmpCode = explode("-", $lastEmployee->EmployeeCode);
@@ -673,7 +665,6 @@ class HrController extends Controller
 
         $message = "Employee added";
         return request()->json(200, $message);
-
     }
 
     public function getemployment_att_detail($id)
@@ -767,7 +758,7 @@ class HrController extends Controller
             ]);
         }
 
-//        dd($isInMachine);
+        //        dd($isInMachine);
 
         $update_date3 = date("Y-m-d");
         $emp_day = intval($emp_salary / 30);
@@ -847,7 +838,6 @@ class HrController extends Controller
             $data = "Warning Updated";
         } else {
             $data = "Warning Not Updated";
-
         }
         return request()->json(200, $data);
     }
@@ -865,7 +855,6 @@ class HrController extends Controller
 
         $arr = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('EmployeeID', '=', $id)->get();
         foreach ($arr as $arr1) {
-
         }
         $emp_code = $arr1->EmployeeCode;
 
@@ -894,7 +883,6 @@ class HrController extends Controller
 
             DB::connection('sqlsrv2')->insert("insert into Employee_Qualification(EmployeeID,DegreeType,DegreeName,InstituteName
             ,PassingYear,CreatedBy,CompanyID) values (?,?,?,?,?,?,?)", [$id, $de_type[$x], $de_name[$x], $ins_name[$x], $pas_year[$x], username(), company_id()]);
-
         }
         $skip = 'Added';
         $result = DB::connection('sqlsrv2')->update('update  Emp_Register set EduStatus=? where EmployeeID=?', [$skip, $id]);
@@ -905,14 +893,12 @@ class HrController extends Controller
 
         $arr = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('EmployeeID', '=', $id)->get();
         foreach ($arr as $arr1) {
-
         }
         $emp_code = $arr1->EmployeeCode;
 
         DB::insert("INSERT INTO Activity_Log(CompanyId,UserEmail,EmployeeName,EventStatus,Description,ActivityTime) values (?,?,?,?,?,?)", [company_id(), username(), UserFullName(), 'Update Education Detail', 'Added Education Detail of Employee Code: ' . $emp_code, $update_date]);
         $message = 'Successfully Added';
         return request()->json(200, $message);
-
     }
 
     public function skip_experience(Request $request)
@@ -928,7 +914,6 @@ class HrController extends Controller
 
         $arr = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('EmployeeID', '=', $id)->get();
         foreach ($arr as $arr1) {
-
         }
         $emp_code = $arr1->EmployeeCode;
 
@@ -958,7 +943,6 @@ class HrController extends Controller
             $p_ending_date = explode(",", $ending_date);
             $p_reference = explode(",", $reference);
             DB::connection('sqlsrv2')->insert("insert into Emp_Work_Experience(EmployeeID,CompanyID,JobTitle,CompanyName,StartingDate,LeavingDate,Refrence,CreatedBy) values (?,?,?,?,?,?,?,?)", [$id, company_id(), $p_position[$x], $p_company_name[$x], $p_starting_date[$x], $p_ending_date[$x], $p_reference[$x], username()]);
-
         }
         $skip = 'Added';
         $result = DB::connection('sqlsrv2')->update('update  Emp_Register set ExpStatus=? where EmployeeID=?', [$skip, $id]);
@@ -969,14 +953,12 @@ class HrController extends Controller
 
         $arr = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('EmployeeID', '=', $id)->get();
         foreach ($arr as $arr1) {
-
         }
         $emp_code = $arr1->EmployeeCode;
 
         DB::insert("INSERT INTO Activity_Log(CompanyId,UserEmail,EmployeeName,EventStatus,Description,ActivityTime) values (?,?,?,?,?,?)", [company_id(), username(), UserFullName(), 'Update Experience Detail', 'Added Experience Detail of Employee Code: ' . $emp_code, $update_date]);
         $message = 'Successfully Added';
         return request()->json(200, $message);
-
     }
 
     public function geteducation_detail($id)
@@ -985,7 +967,7 @@ class HrController extends Controller
         return request()->json(200, $arr);
     }
 
-    public function getemployee_detail($id)
+    public function getemployee_detail123($id)
     {
         $arr = DB::connection('sqlsrv2')->table('Emp_Profile')->where('EmployeeID', '=', $id)->get();
         return request()->json(200, $arr);
@@ -1013,6 +995,9 @@ class HrController extends Controller
       ISNULL(SUM(CASE WHEN Status = 'Registered' THEN 1 ELSE 0 END), 0) AS RegisteredCount,
       ISNULL(SUM(CASE WHEN Status = 'Resigned' THEN 1 ELSE 0 END), 0) AS ResignedCount,
       ISNULL(SUM(CASE WHEN Status = 'Terminated' THEN 1 ELSE 0 END), 0) AS TerminatedCount,
+      ISNULL(SUM(CASE WHEN Status = 'Suspended' THEN 1 ELSE 0 END), 0) AS TerminatedCount,
+      ISNULL(SUM(CASE WHEN Status = 'Probation' THEN 1 ELSE 0 END), 0) AS ProbationCount,
+      ISNULL(SUM(CASE WHEN Status = 'Contract' THEN 1 ELSE 0 END), 0) AS ContractsCount,
       ISNULL(COUNT(EmployeeID), 0) AS TotalEmp
   FROM
       Emp_Register
@@ -1020,7 +1005,6 @@ class HrController extends Controller
       Department;");
 
         return request()->json(200, $all_users);
-
     }
 
     public function update_employee(Request $request)
@@ -1058,7 +1042,26 @@ class HrController extends Controller
             SET Name = ?, FatherHusband = ?, Gender = ?, Religion = ?, Email = ?, Mobile = ?, Phone = ?, CNIC = ?, CnicExpiry = ?, MaritalStatus = ?, DOB = ?, BloodGroup = ?, Address = ?, Country = ?, City = ?, Photo = ?, UpdatedBy = ?, UpdatedOn = ?, Relation = ?
             WHERE EmployeeID = ?
         ', [
-                $full_name, $father_name, $gender, $religion, $email, $phone_number, $phone_number2, $cnic, $cnic_expiry, $m_status, $dob, $blood_group, $address, $SelectedCountry, $city, $name_image, username(), $update_date, $relation, $id
+                $full_name,
+                $father_name,
+                $gender,
+                $religion,
+                $email,
+                $phone_number,
+                $phone_number2,
+                $cnic,
+                $cnic_expiry,
+                $m_status,
+                $dob,
+                $blood_group,
+                $address,
+                $SelectedCountry,
+                $city,
+                $name_image,
+                username(),
+                $update_date,
+                $relation,
+                $id
             ]);
 
             // DB::connection('sqlsrv2')->update('update  Emp_Profile set Name=?,FatherHusband=?,Gender=?,Religion=?
@@ -1070,7 +1073,25 @@ class HrController extends Controller
     SET Name = ?, FatherHusband = ?, Gender = ?, Religion = ?, Email = ?, Mobile = ?, Phone = ?, CNIC = ?, CnicExpiry = ?, MaritalStatus = ?, DOB = ?, BloodGroup = ?, Address = ?, Country = ?, City = ?,  UpdatedBy = ?, UpdatedOn = ?, Relation = ?
     WHERE EmployeeID = ?
 ', [
-                $full_name, $father_name, $gender, $religion, $email, $phone_number, $phone_number2, $cnic, $cnic_expiry, $m_status, $dob, $blood_group, $address, $SelectedCountry, $city, username(), $update_date, $relation, $id
+                $full_name,
+                $father_name,
+                $gender,
+                $religion,
+                $email,
+                $phone_number,
+                $phone_number2,
+                $cnic,
+                $cnic_expiry,
+                $m_status,
+                $dob,
+                $blood_group,
+                $address,
+                $SelectedCountry,
+                $city,
+                username(),
+                $update_date,
+                $relation,
+                $id
             ]);
 
             // DB::connection('sqlsrv2')->update('update  Emp_Profile set Name=?,FatherHusband=?,Gender=?,Religion=?
@@ -1089,7 +1110,6 @@ class HrController extends Controller
 
         $arr[0] = DB::connection('sqlsrv2')->table('FuelBill')->where('CompanyID', '=', company_id())->sum("FuelQuantity");
         return request()->json(200, $arr);
-
     }
 
     public function registered($id)
@@ -1112,7 +1132,6 @@ class HrController extends Controller
 
         $find_session_closed = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('CurrentSession', '=', 1)->get();
         foreach ($find_session_closed as $find_session1) {
-
         }
         $sesson_name = $find_session1->SessionName;
 
@@ -1124,7 +1143,6 @@ class HrController extends Controller
             $update_date = long_date();
             $full_name_arr = DB::connection('sqlsrv2')->table('Emp_Profile')->select('Name')->where('EmployeeID', '=', $id)->get();
             foreach ($full_name_arr as $full_name_arr1) {
-
             }
             $full_name = $full_name_arr1->Name;
             DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?)", [company_id(), username(), UserFullName(), 'Update Status', 'Update status of ' . $full_name . ' to Resigned', $update_date]);
@@ -1199,7 +1217,6 @@ class HrController extends Controller
 
             $full_name_arr = DB::connection('sqlsrv2')->table('Emp_Profile')->select('Name')->where('EmployeeID', '=', $id)->get();
             foreach ($full_name_arr as $full_name_arr1) {
-
             }
             $full_name = $full_name_arr1->Name;
             DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?)", [company_id(), username(), UserFullName(), 'Update Status', 'Update status of ' . $full_name . ' to Suspended', $update_date]);
@@ -1220,7 +1237,6 @@ class HrController extends Controller
         if ($result5) {
             $find_session_closed = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('CurrentSession', '=', 1)->get();
             foreach ($find_session_closed as $find_session1) {
-
             }
             $sesson_name = $find_session1->SessionName;
             DB::connection('sqlsrv2')->insert("INSERT INTO FinalSettlement(CompanyID, EmployeeID, SessionName, ResignOn, DStatus, MStatus, HrStatus, Status, FStatus, CreatedBy, CreatedOn) values (?,?,?,?,?,?,?,?,?,?,?)", [company_id(), $id, $sesson_name, $date, 'Pending', 'Pending', 'Pending', 'Pending', 'Pending', username(), $update_date]);
@@ -1228,7 +1244,6 @@ class HrController extends Controller
             $emp_detail = DB::connection('sqlsrv2')->table('Emp_Profile')->join('Emp_Register', 'Emp_Profile.EmployeeID', 'Emp_Register.EmployeeID')->where('Emp_Profile.CompanyID', '=', company_id())->where('Emp_Profile.EmployeeID', '=', $id)->get();
             $full_name_arr = DB::connection('sqlsrv2')->table('Emp_Profile')->select('Name')->where('EmployeeID', '=', $id)->get();
             foreach ($full_name_arr as $full_name_arr1) {
-
             }
             $full_name = $full_name_arr1->Name;
             DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?)", [company_id(), username(), UserFullName(), 'Update Status', 'Update status of ' . $full_name . ' to Terminated', $update_date]);
@@ -1256,31 +1271,26 @@ class HrController extends Controller
             $name_image = time() . $file->getClientOriginalName();
             $file->move(public_path() . '/images/documents/', $name_image);
             $result = DB::connection('sqlsrv2')->update('update  Emp_Documents set Image1=? where EmployeeID=?', [$name_image, $id]);
-
         } elseif ($request->hasFile('image_file2')) {
             $file = $request->file('image_file2');
             $name_image2 = time() . $file->getClientOriginalName();
             $file->move(public_path() . '/images/documents/', $name_image2);
             $result = DB::connection('sqlsrv2')->update('update  Emp_Documents set Image2=? where EmployeeID=?', [$name_image2, $id]);
-
         } elseif ($request->hasFile('image_file3')) {
             $file = $request->file('image_file3');
             $name_image3 = time() . $file->getClientOriginalName();
             $file->move(public_path() . '/images/documents/', $name_image3);
             $result = DB::connection('sqlsrv2')->update('update  Emp_Documents set Image3=? where EmployeeID=?', [$name_image3, $id]);
-
         } elseif ($request->hasFile('image_file4')) {
             $file = $request->file('image_file4');
             $name_image4 = time() . $file->getClientOriginalName();
             $file->move(public_path() . '/images/documents/', $name_image4);
             $result = DB::connection('sqlsrv2')->update('update  Emp_Documents set Image4=? where EmployeeID=?', [$name_image4, $id]);
-
         } elseif ($request->hasFile('image_file5')) {
             $file = $request->file('image_file5');
             $name_image5 = time() . $file->getClientOriginalName();
             $file->move(public_path() . '/images/documents/', $name_image5);
             $result = DB::connection('sqlsrv2')->update('update  Emp_Documents set Image5=? where EmployeeID=?', [$name_image5, $id]);
-
         } elseif ($request->hasFile('image_file6')) {
             $file = $request->file('image_file6');
             $name_image6 = time() . $file->getClientOriginalName();
@@ -1290,7 +1300,6 @@ class HrController extends Controller
 
 
             return request()->json(200, $arr);
-
         }
 
         DB::connection('sqlsrv2')->update('update  Emp_Register set DocStatus=? where EmployeeID=?', ['Added', $id]);
@@ -1324,7 +1333,6 @@ class HrController extends Controller
         if ($emp_detail9) {
             $emp_detail = DB::connection('sqlsrv2')->table('Emp_Profile')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->select('Emp_Profile.*', 'Emp_Register.*')->where('Emp_Profile.CompanyID', '=', company_id())->where('Emp_Profile.EmployeeID', '=', $id)->get();
             foreach ($emp_detail as $emp_detail1) {
-
             }
 
 
@@ -1628,13 +1636,9 @@ class HrController extends Controller
 
             $this->fpdf->Output();
             exit;
-
-
         } else {
             "Please Type Valid Information";
         }
-
-
     }
 
     public function get_emp_detail(Request $request)
@@ -1686,7 +1690,6 @@ class HrController extends Controller
 
         $emp_rep1 = DB::connection('sqlsrv2')->table('Emp_Register')->select('EmployeeID')->where('EmployeeCode', '=', $emp_code)->where('CompanyID', '=', company_id())->get();
         foreach ($emp_rep1 as $emp_rep11) {
-
         }
         $emp_id = $emp_rep11->EmployeeID;
 
@@ -1871,7 +1874,6 @@ class HrController extends Controller
             $arr = DB::table('tb_company_locations')->select('location_name as num')->where('company_id', '=', company_id())->orderBy('location_name', 'asc')->get();
             return request()->json(200, $arr);
         }
-
     }
 
     public function update_ind_grace(Request $request)
@@ -1887,7 +1889,6 @@ class HrController extends Controller
             $update_date = long_date();
             $find_grace5 = DB::connection('sqlsrv2')->table('EmpGraceHours')->where('CompanyID', '=', company_id())->where('EmpGraceID', '=', $grace_id)->get();
             foreach ($find_grace5 as $find_grace51) {
-
             }
             $pre_grace = $find_grace51->TotalGP;
             $em_totalgp = $pre_grace + $em_totalgp3;
@@ -1904,8 +1905,6 @@ class HrController extends Controller
 
             return request()->json(200, $arr);
         }
-
-
     }
 
     public function update_overall_grace(Request $request)
@@ -1926,7 +1925,6 @@ class HrController extends Controller
             for ($x = 0; $x < count($find_dep_graceperiod); $x++) {
                 $find_grace5 = DB::connection('sqlsrv2')->table('EmpGraceHours')->where('CompanyID', '=', company_id())->where('EmployeeID', '=', $find_dep_graceperiod[$x]->EmployeeID)->get();
                 foreach ($find_grace5 as $find_grace51) {
-
                 }
                 $pre_grace = $find_grace51->TotalGP;
                 $overall_totalgp = $pre_grace + $overall_totalgp3;
@@ -1941,7 +1939,6 @@ class HrController extends Controller
             for ($x = 0; $x < count($find_dep_graceperiod); $x++) {
                 $find_grace5 = DB::connection('sqlsrv2')->table('EmpGraceHours')->where('CompanyID', '=', company_id())->where('EmployeeID', '=', $find_dep_graceperiod[$x]->EmployeeID)->get();
                 foreach ($find_grace5 as $find_grace51) {
-
                 }
                 $pre_grace = $find_grace51->TotalGP;
                 $overall_totalgp = $pre_grace + $overall_totalgp3;
@@ -1958,7 +1955,6 @@ class HrController extends Controller
             for ($x = 0; $x < count($find_dep_graceperiod); $x++) {
                 $find_grace5 = DB::connection('sqlsrv2')->table('EmpGraceHours')->where('CompanyID', '=', company_id())->where('EmployeeID', '=', $find_dep_graceperiod[$x]->EmployeeID)->get();
                 foreach ($find_grace5 as $find_grace51) {
-
                 }
                 $pre_grace = $find_grace51->TotalGP;
                 $overall_totalgp = $pre_grace + $overall_totalgp3;
@@ -1989,10 +1985,7 @@ class HrController extends Controller
         return request()->json(200, $arr);
     }
 
-    public function leaves_detail()
-    {
-
-    }
+    public function leaves_detail() {}
 
     public function getattendance_report($department, $location, $designation, $emp_id, $start, $close)
     {
@@ -2022,8 +2015,6 @@ class HrController extends Controller
 
             return request()->json(200, $arr);
         }
-
-
     }
 
     public function getattendance_summary()
@@ -2031,7 +2022,6 @@ class HrController extends Controller
 
         $find_session = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('CurrentSession', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $s_date = $find_session1->StartDate;
         $e_date = $find_session1->EndDate;
@@ -2039,8 +2029,11 @@ class HrController extends Controller
 
         $startDate = strtotime($s_date);
         $endDate = strtotime($e_date);
-        for ($currentDate = $startDate; $currentDate <= $endDate;
-             $currentDate += (86400)) {
+        for (
+            $currentDate = $startDate;
+            $currentDate <= $endDate;
+            $currentDate += (86400)
+        ) {
             $date = date('Y-m-d', $currentDate);
             $rangArray[] = $date;
         }
@@ -2228,7 +2221,6 @@ class HrController extends Controller
         }
 
         return request()->json(200, $d);
-
     }
 
     public function get_column_name()
@@ -2237,7 +2229,6 @@ class HrController extends Controller
 
         $find_session = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('CurrentSession', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $s_date = $find_session1->StartDate;
         $e_date = $find_session1->EndDate;
@@ -2298,7 +2289,6 @@ class HrController extends Controller
             $arr = DB::connection('sqlsrv2')->table("HrSessions")->where('CompanyID', '=', company_id())->orderBy('SessionID', 'desc')->paginate(5);
             return request()->json(200, $arr);
         }
-
     }
 
     public function find_emp_id()
@@ -2358,7 +2348,6 @@ class HrController extends Controller
             'PostingCity' => $getdata1->PostingCity,
         );
         return request()->json(200, $myJSON);
-
     }
 
     public function getemploydetail($emp_department, $emp_location, $emp_designation, $emp_emp_id, $emp_type, $emp_status)
@@ -2398,9 +2387,7 @@ class HrController extends Controller
                 ->select('Emp_Profile.*', 'Emp_Register.*')->where('Emp_Profile.CompanyID', '=', company_id())->where('Emp_Register.Department', 'like', '%' . $emp_department . '%')->where('Emp_Register.Designation', 'like', '%' . $emp_designation . '%')->where('Emp_Register.PostingCity', 'like', '%' . $emp_location . '%')->where('Emp_Register.EmployeeID', 'like', '%' . $emp_emp_id . '%')->where('Emp_Register.Status', 'like', '%' . $emp_status . '%')->where('Emp_Register.JobStatus', 'like', '%' . $emp_type . '%')
                 ->get();
             return request()->json(200, $emp_detail);
-
         }
-
     }
 
     public function gethireemploy($hire_department, $hire_location, $hire_designation, $hire_emp_id, $hire_start_date, $hire_end_date)
@@ -2436,7 +2423,6 @@ class HrController extends Controller
                 ->select('Emp_Profile.*', 'Emp_Register.*')->where('Emp_Profile.CompanyID', '=', company_id())->where('Emp_Register.JoiningDate', '>=', $hire_start_date)->where('Emp_Register.JoiningDate', '<=', $hire_end_date)->where('Emp_Register.Department', 'like', '%' . $hire_department . '%')->where('Emp_Register.Designation', 'like', '%' . $hire_designation . '%')->where('Emp_Register.PostingCity', 'like', '%' . $hire_location . '%')->where('Emp_Register.EmployeeID', 'like', '%' . $hire_emp_id . '%')->get();
             return request()->json(200, $emp_detail);
         }
-
     }
 
     public function gethireemploycount($hire_department, $hire_location, $hire_designation, $hire_emp_id, $hire_start_date, $hire_end_date)
@@ -2445,7 +2431,6 @@ class HrController extends Controller
         if ($hire_department == 'All' && $hire_location == 'All' && $hire_designation == 'All' && $hire_emp_id == 'All' && $hire_start_date != '' && $hire_end_date != '') {
             $all_emp = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('JoiningDate', '>=', $hire_start_date)->where('JoiningDate', '<=', $hire_end_date)->count();
             return request()->json(200, $all_emp);
-
         } else {
             if ($hire_department == 'All') {
                 $hire_department = '';
@@ -2462,8 +2447,6 @@ class HrController extends Controller
             $all_emp = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('JoiningDate', '>=', $hire_start_date)->where('JoiningDate', '<=', $hire_end_date)->where('Department', 'like', '%' . $hire_department . '%')->where('Designation', 'like', '%' . $hire_designation . '%')->where('PostingCity', 'like', '%' . $hire_location . '%')->where('EmployeeID', 'like', '%' . $hire_emp_id . '%')->count();
             return request()->json(200, $all_emp);
         }
-
-
     }
 
     public function overall_leaves()
@@ -2506,8 +2489,6 @@ class HrController extends Controller
 
 
             return request()->json(200, $arr);
-
-
         }
     }
 
@@ -2525,7 +2506,6 @@ class HrController extends Controller
 
 
             return request()->json(200, $arr);
-
         } else {
             if ($department == 'All') {
                 $department = '';
@@ -2547,10 +2527,7 @@ class HrController extends Controller
                 ->select('Emp_Profile.Name', 'Emp_Profile.Photo', 'EmpLeave.*', 'Emp_Register.Department', 'Emp_Register.PostingCity', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')->where('EmpLeave.CompanyID', '=', company_id())->where('EmpLeave.LeaveType', '=', $leave_type)->where('Emp_Register.Department', 'like', '%' . $department . '%')->where('Emp_Register.Designation', 'like', '%' . $designation . '%')->where('Emp_Register.PostingCity', 'like', '%' . $location . '%')->where('EmpLeave.EmployeeID', 'like', '%' . $emp_id . '%')->get();
 
             return request()->json(200, $arr);
-
         }
-
-
     }
 
     public function fetch_roster_detail($id)
@@ -2645,7 +2622,7 @@ class HrController extends Controller
         $datetime1 = new \DateTime($h_date_from);
         $datetime2 = new \DateTime($h_date_to);
         $interval = $datetime1->diff($datetime2);
-// Get the number of days
+        // Get the number of days
         $days = $interval->days + 1;
 
         if (DB::connection('sqlsrv2')->table('Holiday')->where('HolidayName', '=', $holiday_name)->where('IsDeleted', '=', 0)->where('CompanyID', '=', company_id())->exists()) {
@@ -2714,7 +2691,6 @@ class HrController extends Controller
         $update_date = date("Y-m-d");
         $find_session = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('CurrentSession', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $s_date = $find_session1->StartDate;
         $e_date = $find_session1->EndDate;
@@ -2729,7 +2705,6 @@ class HrController extends Controller
         }
         $full_name_arr = DB::connection('sqlsrv2')->table('Emp_Register')->where('EmployeeID', '=', $emp_emp_id)->get();
         foreach ($full_name_arr as $full_name_arr1) {
-
         }
         $emp_code = $full_name_arr1->EmployeeCode;
         $update_date1 = long_date();
@@ -2751,8 +2726,6 @@ class HrController extends Controller
         $arr = DB::connection('sqlsrv2')->table('Emp_Profile')->join('FineDetail', 'Emp_Profile.EmployeeID', '=', 'FineDetail.EmployeeID')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('FineDetail.FineDate', 'desc')->select('Emp_Profile.Name', 'FineDetail.*', 'Emp_Register.Department', 'Emp_Register.PostingCity', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')->where('FineDetail.CompanyID', '=', company_id())->paginate(10);
 
         return request()->json(200, $arr);
-
-
     }
 
     public function delete_fine($id)
@@ -2763,10 +2736,7 @@ class HrController extends Controller
             $arr = DB::connection('sqlsrv2')->table('Emp_Profile')->join('FineDetail', 'Emp_Profile.EmployeeID', '=', 'FineDetail.EmployeeID')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('FineDetail.FineDate', 'desc')->select('Emp_Profile.Name', 'FineDetail.*', 'Emp_Register.Department', 'Emp_Register.PostingCity', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')->where('FineDetail.CompanyID', '=', company_id())->paginate(10);
 
             return request()->json(200, $arr);
-
-
         }
-
     }
 
     public function delete_leave_type($id)
@@ -2784,7 +2754,6 @@ class HrController extends Controller
             $arr = DB::connection('sqlsrv2')->table("leaves")->where('CompanyID', '=', company_id())->orderBy('LeaveID', 'desc')->paginate(5);
             return request()->json(200, $arr);
         }
-
     }
 
     public function delete_holiday($id)
@@ -2850,12 +2819,10 @@ class HrController extends Controller
 
         $emp_id_arr = DB::connection('sqlsrv2')->table('AttData')->select('EmpID')->where('CompanyID', '=', company_id())->where('AttDataID', '=', $att_id)->get();
         foreach ($emp_id_arr as $emp_id_arr1) {
-
         }
         $emp_id = $emp_id_arr1->EmpID;
         $full_name_arr = DB::connection('sqlsrv2')->table('Emp_Profile')->select('Name')->where('EmployeeID', '=', $emp_id)->get();
         foreach ($full_name_arr as $full_name_arr1) {
-
         }
         $full_name = $full_name_arr1->Name;
         DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?)", [company_id(), username(), UserFullName(), 'Attendace Updated', 'Attendace of ' . $full_name . ' updated', $update_date]);
@@ -2868,7 +2835,6 @@ class HrController extends Controller
 
         $find_session = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('CurrentSession', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $s_date = $find_session1->StartDate;
         $e_date = $find_session1->EndDate;
@@ -2889,7 +2855,6 @@ class HrController extends Controller
 
         $find_session = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('CurrentSession', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $s_date = $find_session1->StartDate;
         $e_date = $find_session1->EndDate;
@@ -2956,27 +2921,26 @@ class HrController extends Controller
             '11' => $dec,
         );
         return request()->json(200, $myJSON);
-
     }
 
-    public function count_firing_d()
+    public function count_resign_d()
     {
 
 
         $year = date("Y");
-        //$count=DB::connection('sqlsrv2')->select("SELECT   COUNT(*) as num FROM      Emp_Register WHERE     YEAR(JoiningDate) = '2022' GROUP BY  MONTH(JoiningDate)");
-        $jan = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-01-%')->count();
-        $feb = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-02-%')->count();
-        $mar = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-03-%')->count();
-        $april = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-04-%')->count();
-        $may = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-05-%')->count();
-        $june = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-06-%')->count();
-        $july = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-07-%')->count();
-        $aug = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-08-%')->count();
-        $sept = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-09-%')->count();
-        $oct = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-10-%')->count();
-        $nov = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-11-%')->count();
-        $dec = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('RegDate', 'like', $year . '-12-%')->count();
+        //$count=DB::connection('sqlsrv2')->select("SELECT   COUNT(*) as num FROM      Emp_Register WHERE     YEAR(ResignDate) = '2022' GROUP BY  MONTH(JoiningDate)");
+        $jan = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-01-%')->count();
+        $feb = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-02-%')->count();
+        $mar = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-03-%')->count();
+        $april = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-04-%')->count();
+        $may = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-05-%')->count();
+        $june = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-06-%')->count();
+        $july = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-07-%')->count();
+        $aug = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-08-%')->count();
+        $sept = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-09-%')->count();
+        $oct = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-10-%')->count();
+        $nov = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-11-%')->count();
+        $dec = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('ResignDate', 'like', $year . '-12-%')->count();
         $myJSON = array(
             '0' => $jan,
             '1' => $feb,
@@ -2992,7 +2956,61 @@ class HrController extends Controller
             '11' => $dec,
         );
         return request()->json(200, $myJSON);
+    }
+    public function count_firing_d()
+    {
 
+
+        $year = date("Y");
+        //$count=DB::connection('sqlsrv2')->select("SELECT   COUNT(*) as num FROM      Emp_Register WHERE     YEAR(TerminateDate) = '2022' GROUP BY  MONTH(JoiningDate)");
+        $jan = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-01-%')->count();
+        $feb = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-02-%')->count();
+        $mar = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-03-%')->count();
+        $april = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-04-%')->count();
+        $may = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-05-%')->count();
+        $june = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-06-%')->count();
+        $july = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-07-%')->count();
+        $aug = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-08-%')->count();
+        $sept = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-09-%')->count();
+        $oct = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-10-%')->count();
+        $nov = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-11-%')->count();
+        $dec = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('TerminateDate', 'like', $year . '-12-%')->count();
+        $myJSON = array(
+            '0' => $jan,
+            '1' => $feb,
+            '2' => $mar,
+            '3' => $april,
+            '4' => $may,
+            '5' => $june,
+            '6' => $july,
+            '7' => $aug,
+            '8' => $sept,
+            '9' => $oct,
+            '10' => $nov,
+            '11' => $dec,
+        );
+        return request()->json(200, $myJSON);
+    }
+
+    public function CompanyWise_EmpAge()
+    {
+        $ageGroups = DB::connection('sqlsrv2')
+            ->table(DB::raw("(SELECT
+            CASE
+                WHEN DATEDIFF(YEAR, Emp_Profile.DOB, GETDATE()) BETWEEN 0 AND 20 THEN '0-20'
+                WHEN DATEDIFF(YEAR, Emp_Profile.DOB, GETDATE()) BETWEEN 21 AND 30 THEN '21-30'
+                WHEN DATEDIFF(YEAR, Emp_Profile.DOB, GETDATE()) BETWEEN 31 AND 40 THEN '31-40'
+                WHEN DATEDIFF(YEAR, Emp_Profile.DOB, GETDATE()) BETWEEN 41 AND 50 THEN '41-50'
+                ELSE '51+'
+            END AS AgeGroup
+        FROM Emp_Profile) AS age_subquery"))
+            ->selectRaw("AgeGroup, COUNT(*) AS EmployeeCount")
+            ->groupBy('AgeGroup')
+            // ->orderByRaw("MIN(DATEDIFF(YEAR, DOB, GETDATE()))")
+            ->get();
+
+
+        return response()->json($ageGroups);
     }
 
     public function overall_cities()
@@ -3085,8 +3103,6 @@ class HrController extends Controller
         $currencyDetails = DB::connection('sqlsrv2')->table('currencies')->get();
 
         return response()->json($currencyDetails);
-
-
     }
 
     //View logged-in employee detail
@@ -3121,7 +3137,7 @@ class HrController extends Controller
         return request()->json(200, $this_emp_qual);
     }
 
-//Get all team of logged in employee
+    //Get all team of logged in employee
     public function att_ind_team()
     {
         $company_id = Session::get('company_id');
@@ -3169,7 +3185,7 @@ class HrController extends Controller
     }
 
 
-//Mark team attandence
+    //Mark team attandence
     public function mark_team_att(Request $request)
     {
         $date = $request->get('date');
@@ -3315,7 +3331,6 @@ class HrController extends Controller
 
         $arr = DB::connection('sqlsrv2')->table('Emp_Profile')->join('PayrollEmployeesDetail', 'Emp_Profile.EmployeeID', '=', 'PayrollEmployeesDetail.EmployeeID')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('PayrollEmployeesDetail.EmployeeID', 'desc')->select('Emp_Profile.Name', 'Emp_Profile.Photo', 'PayrollEmployeesDetail.*', 'Emp_Register.Department', 'Emp_Register.PostingCity', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')->where('PayrollEmployeesDetail.CompanyID', '=', company_id())->where('PayrollEmployeesDetail.Statusd', '=', 'C')->where('PayrollEmployeesDetail.EmployeeID', '=', $id)->get();
         return request()->json(200, $arr);
-
     }
 
     public function submit_payroll_detail(Request $request)
@@ -3341,7 +3356,6 @@ class HrController extends Controller
 
             $arr = DB::connection('sqlsrv2')->table('Emp_Profile')->join('PayrollEmployeesDetail', 'Emp_Profile.EmployeeID', '=', 'PayrollEmployeesDetail.EmployeeID')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('PayrollEmployeesDetail.EmployeeID', 'desc')->select('Emp_Profile.Name', 'Emp_Profile.Photo', 'PayrollEmployeesDetail.*', 'Emp_Register.Department', 'Emp_Register.PostingCity', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')->where('PayrollEmployeesDetail.CompanyID', '=', company_id())->where('PayrollEmployeesDetail.Statusd', '=', 'C')->paginate(20);
             return request()->json(200, $arr);
-
         }
     }
 
@@ -3412,8 +3426,10 @@ class HrController extends Controller
         }
 
         $results = DB::connection('sqlsrv2')
-            ->select('EXEC [dbo].[Get_TotalReport_Session] @session = ?, @startdate = ?, @enddate = ?',
-                [$session->SessionName, $session->StartDate, $session->EndDate]);
+            ->select(
+                'EXEC [dbo].[Get_TotalReport_Session] @session = ?, @startdate = ?, @enddate = ?',
+                [$session->SessionName, $session->StartDate, $session->EndDate]
+            );
 
         $insertData = collect($results)->map(function ($result) {
             return [
@@ -3456,7 +3472,6 @@ class HrController extends Controller
     {
         $find_session_closed = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('CurrentSession', '=', 1)->where('AttClosedPayrollStart', '=', 'Closed')->get();
         foreach ($find_session_closed as $find_session1) {
-
         }
         $sesson_name = $find_session1->SessionName;
 
@@ -3481,8 +3496,6 @@ class HrController extends Controller
             $result = DB::connection('sqlsrv2')->table('SessionReport')->where('CompanyID', '=', company_id())->where('SessionName', '=', $sesson_name)->where('EmployeeID', 'LIKE', '%' . $emp_id . '%')->where('Department', 'LIKE', '%' . $department . '%')->where('Designation', 'LIKE', '%' . $designation . '%')->where('DStatus', 'LIKE', '%' . $status . '%')->where('IsDeleted', 0)->get();
             return request()->json(200, $result);
         }
-
-
     }
 
     public function search_payroll(Request $request)
@@ -3546,7 +3559,7 @@ class HrController extends Controller
     }
 
     public function session_pre_dis()
-    {//session who's salary is proceeding in payroll
+    { //session who's salary is proceeding in payroll
 
         $find_session_closed = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('AttClosedPayrollStart', '=', 'Closed')->get();
         foreach ($find_session_closed as $find_session1) {
@@ -3557,7 +3570,7 @@ class HrController extends Controller
     }
 
     public function session_not_in_dist()
-    {//session who's salary is not in distribution
+    { //session who's salary is not in distribution
 
         $find_session_closed = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->get();
         foreach ($find_session_closed as $find_session1) {
@@ -3600,7 +3613,7 @@ class HrController extends Controller
         //$tpayable=round($t_amount+$oamount-$damount);
 
 
-//$result=DB::connection('sqlsrv2')->update('update SessionReport set Deduction=?,OverTime=?,OAmount=?, DAmount=?, TAmount=?, UpdatedBy=?, DStatus=? where SessionReportID=? and CompanyID=?',[$m_deduction,$m_overtime,$oamount,$damount,$tpayable,username(),$m_salary_status,$m_session_reportID, company_id()]);
+        //$result=DB::connection('sqlsrv2')->update('update SessionReport set Deduction=?,OverTime=?,OAmount=?, DAmount=?, TAmount=?, UpdatedBy=?, DStatus=? where SessionReportID=? and CompanyID=?',[$m_deduction,$m_overtime,$oamount,$damount,$tpayable,username(),$m_salary_status,$m_session_reportID, company_id()]);
         $result = DB::connection('sqlsrv2')->update('update SessionReport set Deduction=?,OverTime=?,OAmount=?,DAmount=?,UpdatedBy=?,DStatus=?  where SessionReportID=? and CompanyID=?', [$m_deduction, $m_overtime, $oamount, $damount, username(), $m_salary_status, $m_session_reportID, company_id()]);
         if ($result) {
             $find_pre_sa1 = DB::connection('sqlsrv2')->table('SessionReport')->where('CompanyID', '=', company_id())->where('SessionReportID', '=', $m_session_reportID)->where('IsDeleted', 0)->first();
@@ -3695,10 +3708,18 @@ class HrController extends Controller
             ->whereIn('SessionName', $flatSessions)
             ->where('CompanyID', company_id());
         $data = $baseQuery->select([
-            'EmployeeID', 'CompanyID', 'SessionName', 'Salary',
-            'OAmount', DB::raw('CAST(DAmount AS INT) as DAmount'), 'TAmount', DB::raw("'' as InstallmentNo"),
-            DB::raw("0 as InstallmentAmount"), DB::raw("PayrollHrApproval.TAmount as PayableSalary"),
-            'DStatus', DB::raw("'P' as FStatus")
+            'EmployeeID',
+            'CompanyID',
+            'SessionName',
+            'Salary',
+            'OAmount',
+            DB::raw('CAST(DAmount AS INT) as DAmount'),
+            'TAmount',
+            DB::raw("'' as InstallmentNo"),
+            DB::raw("0 as InstallmentAmount"),
+            DB::raw("PayrollHrApproval.TAmount as PayableSalary"),
+            'DStatus',
+            DB::raw("'P' as FStatus")
         ])->get()->toArray();
 
         $insertData = array_map('get_object_vars', $data);
@@ -3721,7 +3742,7 @@ class HrController extends Controller
         return request()->json(200, "submitted");
     }
 
-//
+    //
     public function loan_report($id)
     {
         $update_date = date("Y-m-d");
@@ -3735,7 +3756,6 @@ class HrController extends Controller
             $this->fpdf->SetTextColor(41, 46, 46);
             $fetch_image = DB::connection('sqlsrv3')->table('CompanyLogo')->where('CompanyID', '=', company_id())->get();
             foreach ($fetch_image as $fetch_image1) {
-
             }
 
 
@@ -3791,11 +3811,11 @@ class HrController extends Controller
         }
     }
 
-//
+    //
     public function chech_installments()
     {
         $sesson_name = hr_closed_session()->SessionName;
-//dd($sesson_name);
+        //dd($sesson_name);
         $result = DB::connection('sqlsrv2')->table('PayrollFinanceApproval')->where('CompanyID', '=', company_id())->where('SessionName', '=', $sesson_name)->where('PayrollFinanceApproval.IsDeleted', '=', 0)->get();
         foreach ($result as $result1) {
             $employee_id = $result1->EmployeeID;
@@ -3817,7 +3837,6 @@ class HrController extends Controller
             if ($find_adv) {
                 $find_adv2 = DB::connection('sqlsrv2')->table('LoanDetail')->where('CompanyID', '=', company_id())->where('InstallmentStatus', '=', 'Unpaid')->where('LoanType', '=', 'Advance')->where('InstallmentSession', '=', $ses_name)->where('EmployeeID', '=', $employee_id)->get();
                 foreach ($find_adv2 as $find_adv21) {
-
                 }
 
                 DB::connection('sqlsrv2')->update('update PayrollFinanceApproval set  AdvanceAmount=? where CompanyID=? and EmployeeID=? and SessionName=? and IsDeleted=?', [$find_adv21->InstallmentAmount, company_id(), $employee_id, $ses_name, 0]);
@@ -3885,7 +3904,6 @@ class HrController extends Controller
 
 
             DB::connection('sqlsrv2')->update('update PayrollFinanceApproval set PayableSalary=? where CompanyID=? and EmployeeID=? and SessionName=? and IsDeleted=?', [$salary_payable5, company_id(), $employee_id5, $ses_name5, 0]);
-
         }
 
         $update_date = long_date();
@@ -3894,8 +3912,6 @@ class HrController extends Controller
         $arr = DB::connection('sqlsrv2')->table('Emp_Profile')->join('PayrollFinanceApproval', 'Emp_Profile.EmployeeID', '=', 'PayrollFinanceApproval.EmployeeID')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('Emp_Register.Department', 'Desc')->select('Emp_Profile.Name', 'Emp_Profile.Photo', 'PayrollFinanceApproval.*', 'Emp_Register.Department', 'Emp_Register.PostingCity', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode', 'Emp_Register.MethodType')->where('PayrollFinanceApproval.CompanyID', '=', company_id())->where('PayrollFinanceApproval.SessionName', '=', $sesson_name)->where('PayrollFinanceApproval.IsDeleted', '=', 0)->get();
 
         return request()->json(200, $arr);
-
-
     }
 
     public function get_dept_bycompany($comp)
@@ -3909,12 +3925,12 @@ class HrController extends Controller
     public function allowance_arrears()
     {
         $fuelRate = DB::connection('sqlsrv2')->table('FuelRate')->where('CompanyID', '=', company_id())->where('IsCurrent', '=', 1)->sum('PetrolRate'); //Get fuel rate
-//        dd($fuelRate);
+        //        dd($fuelRate);
         $basicQuery = DB::connection('sqlsrv2')->table('PayrollFinanceApproval')->where('PayrollFinanceApproval.IsDeleted', '=', 0)->where('CompanyID', '=', company_id());
         $result = $basicQuery->get();
-//        dd($result);
+        //        dd($result);
         foreach ($result as $result1) {
-//            dd($result1->SessionName);
+            //            dd($result1->SessionName);
             $totalArrears = DB::connection('sqlsrv2')->table('PayrollArrears')->where('CompanyID', '=', company_id())->where('SessionName', '=', $result1->SessionName)->where('EmployeeID', '=', $result1->EmployeeID)->where('Status', '=', 'Approved')->sum('ArrearsAmount');
 
             $totalBonus = DB::connection('sqlsrv2')->table('PayrollBonuses')->where('CompanyID', '=', company_id())->where('SessionName', '=', $result1->SessionName)->where('EmployeeID', '=', $result1->EmployeeID)->where('Status', '=', 'Approved')->sum('BonusAmount');
@@ -3939,7 +3955,7 @@ class HrController extends Controller
                 'FuelAmount' => $fuelAmount,
                 'PayableSalary' => $salaryPayable,
             ];
-//dd($updateData);
+            //dd($updateData);
             DB::connection('sqlsrv2')
                 ->table('PayrollFinanceApproval')
                 ->where('CompanyID', '=', company_id())
@@ -3958,7 +3974,6 @@ class HrController extends Controller
 
         $find_session_closed = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('CurrentSession', '=', 1)->where('AttClosedPayrollStart', '=', 'Closed')->get();
         foreach ($find_session_closed as $find_session1) {
-
         }
         $sesson_name = $find_session1->SessionName;
 
@@ -4001,12 +4016,11 @@ class HrController extends Controller
                 $keyword = $request->keyword1;
                 return Str::contains($element->EmployeeCode, $keyword, true) || Str::contains($element->Name, $keyword, true);
             });
-
         } else {
             $collection = collect(Cache::get('FinanceData'));
 
             $filteredUsers = $collection->filter(function ($element) use ($request) {
-//                dd('2');
+                //                dd('2');
                 $keyword = $request->keyword1;
                 return Str::contains($element->EmployeeCode, $keyword, true) ||
                     Str::contains($element->Name, $keyword, true);
@@ -4030,7 +4044,6 @@ class HrController extends Controller
         return response()->json($paginatedCollection);
 
         return response()->json(200, $paginatedData);
-
     }
 
     public function find_payroll_emp_financeapproval($id)
@@ -4259,7 +4272,7 @@ class HrController extends Controller
                         ->insert($ledgerEntries);
                 }
             }
-            foreach ($financeSessions as $financeSession){
+            foreach ($financeSessions as $financeSession) {
                 insertLog('Salaries moved', 'Salaries of session ' . $financeSession->SessionName . ' moved for Distribution');
                 try {
                     DB::connection('sqlsrv2')->select("SET NOCOUNT ON EXEC [dbo].[Add_Payroll_Distribution]
@@ -4269,14 +4282,13 @@ class HrController extends Controller
                     $match = Str::contains($e, 'The active result for the query contains no fields');
                     if ($match) {
                         return response()->json(['message' => 'No Field'], 422);
-
                     } else {
                         throw $e;
                     }
                 }
             }
         }
-        return"salaries moved";
+        return "salaries moved";
     }
 
     public function view_emp_salary_slip($id)
@@ -4294,7 +4306,7 @@ class HrController extends Controller
     public function generate_slip1($emp_id, $slip_id, $emp_code, $session)
     {
         $test1 = DB::connection('sqlsrv2')->table('Payroll_Distribution')->join('Emp_Profile', 'Payroll_Distribution.EmployeeID', '=', 'Emp_Profile.EmployeeID')->join('Emp_Register', 'Emp_Register.EmployeeID', '=', 'Emp_Profile.EmployeeID')->select('Emp_Profile.CNIC', 'Emp_Profile.DOB', 'Emp_Register.JoiningDate', 'Emp_Register.JobStatus', 'Emp_Profile.Address', 'Emp_Profile.Mobile', 'Payroll_Distribution.*')->where('Payroll_Distribution.DistributionID', '=', $slip_id)->where('Payroll_Distribution.EmployeeID', '=', $emp_id)->first();
-//dd(company_detail());
+        //dd(company_detail());
         if (!empty($session) && $test1) {
             $this->fpdf->AddPage("P", ['210', '297']);
             if (strpos($test1->Photo, ".pdf") === false && strpos($test1->Photo, ".jfif") === false) {
@@ -4906,8 +4918,6 @@ class HrController extends Controller
             $employeeIDs = array_column(reporting_team(), 'EmployeeID');
             return $loanQuery->whereIn('Emp_Register.EmployeeID', $employeeIDs)->paginate(15);
         }
-
-
     }
 
     //fetch Employee detail for loan and advance
@@ -4929,9 +4939,9 @@ class HrController extends Controller
         $type = $request->get('type1');
         $emp_id = $request->get('emp_id1');
         $emp_id1 = ($emp_id == '0') ? employee_id() : $emp_id;
-//dd('ok');
+        //dd('ok');
         if (username() != 'ahmadshahbazkz@gmail.com' && username() != 'umairahmad@sasystems.solutions' && username() != 'husnain@sasystems.solutions') {
-            $alreadyappliedid = DB:: connection('sqlsrv2')->table('LoanDetail')->join('LoanRequisition', 'LoanDetail.LoanId', '=', 'LoanRequisition.LoanId')->where('LoanDetail.InstallmentStatus', '=', "Unpaid")->where('LoanDetail.EmployeeID', '=', $emp_id1)->where('LoanDetail.CompanyID', '=', company_id())->where('LoanRequisition.LoanType', '=', $type)->exists();
+            $alreadyappliedid = DB::connection('sqlsrv2')->table('LoanDetail')->join('LoanRequisition', 'LoanDetail.LoanId', '=', 'LoanRequisition.LoanId')->where('LoanDetail.InstallmentStatus', '=', "Unpaid")->where('LoanDetail.EmployeeID', '=', $emp_id1)->where('LoanDetail.CompanyID', '=', company_id())->where('LoanRequisition.LoanType', '=', $type)->exists();
             if ($alreadyappliedid) {
                 return $type . ' already provided!';
             }
@@ -4975,13 +4985,13 @@ class HrController extends Controller
         insertLog($type . ' Applied', $type . ' application received from ' . $full_name_arr1->Name);
         // return "Loan added Successfully!";
         $data = DB::connection('sqlsrv2')
-        ->table('LoanRequisition')
-        ->join('Emp_Register', 'LoanRequisition.EmployeeID', '=', 'Emp_Register.EmployeeID')
-        ->join('Emp_Profile', 'Emp_Register.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-        ->where('LoanRequisition.LoanId', $result)
-        ->orderBy('LoanRequisition.LoanId', 'desc')
-        ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeID', 'Emp_Register.EmployeeCode')
-        ->first();
+            ->table('LoanRequisition')
+            ->join('Emp_Register', 'LoanRequisition.EmployeeID', '=', 'Emp_Register.EmployeeID')
+            ->join('Emp_Profile', 'Emp_Register.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+            ->where('LoanRequisition.LoanId', $result)
+            ->orderBy('LoanRequisition.LoanId', 'desc')
+            ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeID', 'Emp_Register.EmployeeCode')
+            ->first();
         return [
             'message' => 'Loan added Successfully!',
             'data' => $data,
@@ -4998,234 +5008,234 @@ class HrController extends Controller
 
     //View filtered loans
 
-   public function fetch_filtered_loans($check)
-   {
+    public function fetch_filtered_loans($check)
+    {
 
-       if ($check == 0) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 1) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', '=', 'App')
-               ->where('LoanRequisition.HrApproval', '=', 'App')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 2) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
-               ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 3) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
-               ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')
-               ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 4) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
-               ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 5) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')
-               ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 6) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')->where('LoanRequisition.CompanyID', '=', company_id())->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 7) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('LoanRequisition.LoanId', 'desc')->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')->where('LoanRequisition.CompanyID', '=', company_id())->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       //Department manager
-       if ($check == 10) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 11) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', '=', 'App')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 12) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')
-               ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 13) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')
-               ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')
-               ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 14) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')
-               ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 15) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')
-               ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 16) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 17) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       //HR manager
-       if ($check == 20) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 21) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.HrApproval', '=', 'App')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 22) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
-               ->orwhere('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 23) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
-               ->orwhere('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')
-               ->orwhere('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 24) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
-               ->orwhere('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 25) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')
-               ->orwhere('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 26) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       if ($check == 27) {
-           $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
-               ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
-               ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-               ->orderBy('LoanRequisition.LoanId', 'desc')
-               ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
-               ->where('LoanRequisition.CompanyID', '=', company_id())
-               ->where('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
-       }
-       return request()->json(200, $filtered_loans);
-   }
+        if ($check == 0) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 1) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', '=', 'App')
+                ->where('LoanRequisition.HrApproval', '=', 'App')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 2) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
+                ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 3) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
+                ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')
+                ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 4) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
+                ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 5) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')
+                ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 6) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')->where('LoanRequisition.CompanyID', '=', company_id())->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 7) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('LoanRequisition.LoanId', 'desc')->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')->where('LoanRequisition.CompanyID', '=', company_id())->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        //Department manager
+        if ($check == 10) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 11) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', '=', 'App')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 12) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')
+                ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 13) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')
+                ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')
+                ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 14) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'App' . '%')
+                ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 15) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')
+                ->orwhere('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 16) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 17) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.ManagerApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        //HR manager
+        if ($check == 20) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 21) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.HrApproval', '=', 'App')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 22) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
+                ->orwhere('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 23) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
+                ->orwhere('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')
+                ->orwhere('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 24) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.HrApproval', 'like', '%' . 'App' . '%')
+                ->orwhere('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 25) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')
+                ->orwhere('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 26) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.HrApproval', 'like', '%' . 'Pen' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        if ($check == 27) {
+            $filtered_loans = DB::connection('sqlsrv2')->table('LoanRequisition')
+                ->join('Emp_Profile', 'LoanRequisition.EmployeeID', '=', 'Emp_Profile.EmployeeID')
+                ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+                ->orderBy('LoanRequisition.LoanId', 'desc')
+                ->select('Emp_Profile.Name', 'LoanRequisition.*', 'Emp_Register.Department', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode')
+                ->where('LoanRequisition.CompanyID', '=', company_id())
+                ->where('LoanRequisition.HrApproval', 'like', '%' . 'Rej' . '%')->where('LoanRequisition.IsDeleted', '=', 0)->paginate(20);
+        }
+        return request()->json(200, $filtered_loans);
+    }
 
     public function fetch_rel_loan($cid)
     {
@@ -5256,7 +5266,7 @@ class HrController extends Controller
         return request()->json(200, $all_inst);
     }
 
-//Update status
+    //Update status
     public function update_loan_m_sts(Request $request)
     {
         $status = $request->get('status');
@@ -5287,7 +5297,7 @@ class HrController extends Controller
 
     public function pay_loan(Request $request)
     {
-//        dd('ok');
+        //        dd('ok');
         $pay_loanID = $request['pay_loanID'];
         $pay_amount = $request['cash_amount'];
         $bank_amount = $request['bank_amount'];
@@ -5297,7 +5307,7 @@ class HrController extends Controller
         $cash_typ = explode("_", $request['cash_type']);
         $bank_typ = explode("_", $request['bank_type']);
         $total_amount = $pay_amount + $bank_amount;
-//        dd($pay_amount, $bank_amount, $total_amount);
+        //        dd($pay_amount, $bank_amount, $total_amount);
         $cashinhand_balance = DB::connection('sqlsrv3')->select("SET NOCOUNT ON ;EXEC  [dbo].[dashboard]
         @Datefrom = N'2000-01-01',
         @DateTo = N'" . short_date() . "',
@@ -5310,17 +5320,17 @@ class HrController extends Controller
         }
         if ($pay_type == "Loan") {
             $InstallmentAmount = intval(round((float)$total_amount / $pay_installments, 2));
-//            dd($InstallmentAmount);
+            //            dd($InstallmentAmount);
 
             $thisLoan = DB::connection('sqlsrv2')->table("LoanRequisition")->where('LoanId', '=', $request['pay_loanID'])->where('CompanyID', '=', company_id())->first();
-//            dd($insSession);
+            //            dd($insSession);
             if ($thisLoan->LoanSession == '-1') {
                 $lastInstallment = DB::connection('sqlsrv2')->table("LoanDetail")->where('EmployeeID', '=', $request['pay_emp_id'])->where('InstallmentStatus', '=', 'Unpaid')->where('CompanyID', '=', company_id())->orderByRaw("CONVERT(DATE, '01-' + InstallmentSession, 103) DESC")->first();
                 $InstallmentSession = date("F-Y", strtotime("+" . 1 . " months", strtotime($lastInstallment->InstallmentSession)));
             } else {
                 $InstallmentSession = $thisLoan->LoanSession;
             }
-//            dd($InstallmentSession);
+            //            dd($InstallmentSession);
             $installmentNumber = 0;
             $insData = [];
             for ($x = $request['ins_start']; $x < ($pay_installments + $request['ins_start']); $x++) {
@@ -5342,7 +5352,7 @@ class HrController extends Controller
                     'InstallmentDate' => $insDate,
                 ];
             }
-//            dd($insData);
+            //            dd($insData);
             //Insert installments
             DB::connection('sqlsrv2')->table('LoanDetail')->insert($insData);
             //Update loan status
@@ -5408,7 +5418,7 @@ class HrController extends Controller
         } else if ($pay_type == "Advance") {
             $insSession = DB::connection('sqlsrv2')->table("LoanRequisition")->where('CompanyID', '=', company_id())->where('LoanId', '=', $request['pay_loanID'])->first();
             $inDistribution = DB::connection('sqlsrv2')->table("Payroll_Distribution")->where('SessionName', '=', $insSession->LoanSession)->where('EmployeeID', '=', $request['pay_emp_id'])->where('CompanyID', '=', company_id())->first();
-//            dd($inDistribution);
+            //            dd($inDistribution);
             if ($inDistribution && ($inDistribution->SalaryStatus == 'Not Received' || $inDistribution->SalaryStatus == 'Partially Received')) {
                 return request()->json(200, "Since the salary is ready for distribution, the advance payment cannot be processed. Please pay the amount from the salary!");
             } else if ($inDistribution && $inDistribution->SalaryStatus == 'Fully Received') {
@@ -5429,7 +5439,7 @@ class HrController extends Controller
                 'LoanType' => $pay_type,
                 'InstallmentDate' => $insDate,
             ];
-//dd($insData);
+            //dd($insData);
             //Insert installment
             DB::connection('sqlsrv2')->table('LoanDetail')->insert($insData);
             //Update loan status
@@ -5463,7 +5473,7 @@ class HrController extends Controller
                             'Description' => 'Loan Paid to ' . $request['rcvBy'],
                             'CompanyID' => company_id(),
                         ]);
-//dd($find_tran_id1->ID, $transactionId);
+                    //dd($find_tran_id1->ID, $transactionId);
                     $entries = [
                         [
                             'TransactionID' => $transactionId,
@@ -5598,7 +5608,6 @@ class HrController extends Controller
             'emp_emp_id' => 'required',
             'emp_amount' => 'required|numeric|gt:0|lt:1000',
         ];
-
     }
 
     public function submit_EmpFuelAllowance(Request $request)
@@ -5663,7 +5672,6 @@ class HrController extends Controller
 
         $full_name_arr = DB::connection('sqlsrv2')->table('Emp_Profile')->select('Name')->where('EmployeeID', '=', $emp_id)->where('CompanyID', '=', company_id())->get();
         foreach ($full_name_arr as $full_name_arr1) {
-
         }
         $full_name = $full_name_arr1->Name;
 
@@ -5694,7 +5702,6 @@ class HrController extends Controller
 
         $id_arr = DB::connection('sqlsrv2')->table('PayrollArrears')->select('EmployeeID')->where('ArrearsID', '=', $id)->where('CompanyID', '=', company_id())->get();
         foreach ($id_arr as $id_arr1) {
-
         }
         $emp_id = $id_arr1->EmployeeID;
         DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?)", [company_id(), username(), UserFullName(), 'Arrears Status Changed', ' Arrears of ' . $emp_id . ' approved', $update_date]);
@@ -5715,7 +5722,6 @@ class HrController extends Controller
 
         $result = DB::connection('sqlsrv2')->table('PayrollArrears')->where('CompanyID', '=', company_id())->where('ArrearsID', '=', $id)->get();
         return request()->json(200, $result);
-
     }
 
     public function update_ind_arrears(Request $request)
@@ -5822,7 +5828,6 @@ class HrController extends Controller
             'edit_amount' => 'required|numeric|gt:0|lt:1000',
             'edit_emp_id' => 'required',
         ];
-
     }
 
     public function update_EmpFuelAllowance(Request $request)
@@ -5833,7 +5838,8 @@ class HrController extends Controller
                 ->table('Emp_FuelAllowance')
                 ->where('EmployeeID', $request->edit_emp_id)
                 ->where('CompanyID', company_id())
-                ->update(['FuelQuantity' => $request->edit_amount,
+                ->update([
+                    'FuelQuantity' => $request->edit_amount,
                     'FuelType' => $request->edit_emp_FuelType,
                     'UpdatedBy' => username(),
                     'UpdatedOn' => long_date()
@@ -5842,16 +5848,12 @@ class HrController extends Controller
 
                 return $this->sendSuccess('Employee Fuel Allowance Updated');
                 insertLog('Emp Fuel Allowance updated  ', 'Emp Fuel Allowance of ' . $request->edit_emp_id . 'Deleted ');
-
             } else {
                 return $this->sendError('Employee Fuel Allowance not Updated');
-
             }
         } catch (\Exception $exception) {
             return $this->sendError($exception->getMessage());
         }
-
-
     }
 
     protected function getValidationRules1()
@@ -5861,7 +5863,6 @@ class HrController extends Controller
             'edit_DieselRate' => 'required|numeric|gt:0|lt:1000',
             'edit_HOBCRate' => 'required|numeric|gt:0|lt:1000',
         ];
-
     }
 
     public function update_FuelRate(Request $request)
@@ -5938,25 +5939,24 @@ class HrController extends Controller
             $sub_emp_id = $find_employee_id1->EmployeeID;
             // $result = DB::connection('sqlsrv2')->insert("INSERT INTO PayrollDues(CompanyID,EmployeeID,SessionName,DuesType,DuesDate,DuesAmount,Descriptions,Status,CreatedBy,CreatedOn) values (?,?,?,?,?,?,?,?,?,?)", [company_id(), $sub_emp_id, $session_name, $dues_type, $emp_date, $emp_amount, $emp_description, 'Pending', username(), $update_date]);
             $result = DB::connection('sqlsrv2')->table('PayrollDues')
-            ->insertGetId([
-                'CompanyID' => company_id(),
-                'EmployeeID' => $sub_emp_id,
-                'SessionName' => $session_name,
-                'DuesType' => $dues_type,
-                'DuesDate' => $emp_date,
-                'DuesAmount' => $emp_amount,
-                'Descriptions' => $emp_description,
-                'Status' => 'Pending',
-                'CreatedBy' => username(),
-                'CreatedOn' => $update_date,
-            ]);
+                ->insertGetId([
+                    'CompanyID' => company_id(),
+                    'EmployeeID' => $sub_emp_id,
+                    'SessionName' => $session_name,
+                    'DuesType' => $dues_type,
+                    'DuesDate' => $emp_date,
+                    'DuesAmount' => $emp_amount,
+                    'Descriptions' => $emp_description,
+                    'Status' => 'Pending',
+                    'CreatedBy' => username(),
+                    'CreatedOn' => $update_date,
+                ]);
 
-        $insertedData[] = $result;
+            $insertedData[] = $result;
 
             $full_name_arr = DB::connection('sqlsrv2')->table('Emp_Profile')
                 ->select('Name')->where('EmployeeID', '=', $sub_emp_id)->where('CompanyID', '=', company_id())->get();
             foreach ($full_name_arr as $full_name_arr1) {
-
             }
             $full_name = $full_name_arr1->Name;
 
@@ -5965,13 +5965,13 @@ class HrController extends Controller
         $arr = DB::connection('sqlsrv2')->table('Emp_Profile')->join('PayrollDues', 'Emp_Profile.EmployeeID', '=', 'PayrollDues.EmployeeID')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('PayrollDues.DuesDate', 'desc')->select('Emp_Profile.Name', 'PayrollDues.*', 'Emp_Register.Department', 'Emp_Register.PostingCity', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode', 'Emp_Register.Salary', 'Emp_Register.JoiningDate')->where('PayrollDues.CompanyID', '=', company_id())->paginate(100);
         // return request()->json(200, $arr);
         $arr = DB::connection('sqlsrv2')->table('PayrollDues')
-        ->join('Emp_Profile', 'Emp_Profile.EmployeeID', '=', 'PayrollDues.EmployeeID')
-        ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
-        ->whereIn('DuesID', $insertedData)
-        ->select('Emp_Profile.Name', 'PayrollDues.*', 'Emp_Register.Department', 'Emp_Register.PostingCity', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode', 'Emp_Register.Salary', 'Emp_Register.JoiningDate')
-        ->get();
+            ->join('Emp_Profile', 'Emp_Profile.EmployeeID', '=', 'PayrollDues.EmployeeID')
+            ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+            ->whereIn('DuesID', $insertedData)
+            ->select('Emp_Profile.Name', 'PayrollDues.*', 'Emp_Register.Department', 'Emp_Register.PostingCity', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode', 'Emp_Register.Salary', 'Emp_Register.JoiningDate')
+            ->get();
 
-    return request()->json(200, $arr);
+        return request()->json(200, $arr);
     }
 
     public function fetch_payroll_dues(Request $request)
@@ -6003,7 +6003,6 @@ class HrController extends Controller
 
         $full_name_arr = DB::connection('sqlsrv2')->table('Emp_Profile')->select('Name')->where('EmployeeID', '=', $emp_id)->where('CompanyID', '=', company_id())->get();
         foreach ($full_name_arr as $full_name_arr1) {
-
         }
         $full_name = $full_name_arr1->Name;
 
@@ -6012,7 +6011,7 @@ class HrController extends Controller
         $result = DB::connection('sqlsrv2')->update('update PayrollDues set EmployeeID=?,DuesType=?,DuesDate=?,DuesAmount=?,Descriptions=? where DuesID=? and CompanyID=?', [$emp_id, $edit_dues_type, $emp_date, $emp_amount, $emp_description, $edit_arrear_id, company_id()]);
         if ($result) {
             // $arr = DB::connection('sqlsrv2')->table('Emp_Profile')->join('PayrollDues', 'Emp_Profile.EmployeeID', '=', 'PayrollDues.EmployeeID')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('PayrollDues.DuesDate', 'desc')->select('Emp_Profile.Name', 'PayrollDues.*', 'Emp_Register.Department', 'Emp_Register.PostingCity', 'Emp_Register.Designation', 'Emp_Register.EmployeeCode', 'Emp_Register.Salary', 'Emp_Register.JoiningDate')->where('PayrollDues.CompanyID', '=', company_id())->paginate(15);
-$arr='Arrears updated';
+            $arr = 'Arrears updated';
             return request()->json(200, $arr);
         }
     }
@@ -6130,8 +6129,10 @@ $arr='Arrears updated';
     {
         $leaveBalanceQuery = DB::connection('sqlsrv2')->table('Emp_Profile')->join('EmpLeave', 'Emp_Profile.EmployeeID', '=', 'EmpLeave.EmployeeID')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('Emp_Register.EmployeeCode', 'asc')
             ->selectRaw("Emp_Register.EmployeeID, Emp_Register.employeecode, Emp_Profile.Name, Emp_Profile.Photo, Emp_Register.department, Emp_Register.Designation, SUM(CASE WHEN EmpLeave.LeaveType = 'casual' THEN TotalLeave ELSE 0 END) AS casualtotal, SUM(CASE WHEN LeaveType = 'casual' THEN RemainingLeave ELSE 0 END) AS casualremaining, SUM(CASE WHEN LeaveType = 'sick' THEN TotalLeave ELSE 0 END) AS sicktotal, SUM(CASE WHEN LeaveType = 'sick' THEN RemainingLeave ELSE 0 END) AS sickremaining, SUM(CASE WHEN LeaveType = 'Annual' THEN TotalLeave ELSE 0 END) AS Annualtotal, SUM(CASE WHEN LeaveType = 'Annual' THEN RemainingLeave ELSE 0 END) AS Annualremaining")
-            ->whereRaw("(Emp_Register.EmployeeCode like ? or Emp_Profile.Name like ?) and EmpLeave.CreatedOn like ? and EmpLeave.CompanyID = ?",
-                ['%' . $request->emp_name_code . '%', '%' . $request->emp_name_code . '%', '%' . date("Y") . '%', company_id()])->groupby('Emp_Register.EmployeeID', 'Emp_Register.employeecode', 'Emp_Profile.Name', 'Emp_Profile.Photo', 'Emp_Register.department', 'Emp_Register.Designation');
+            ->whereRaw(
+                "(Emp_Register.EmployeeCode like ? or Emp_Profile.Name like ?) and EmpLeave.CreatedOn like ? and EmpLeave.CompanyID = ?",
+                ['%' . $request->emp_name_code . '%', '%' . $request->emp_name_code . '%', '%' . date("Y") . '%', company_id()]
+            )->groupby('Emp_Register.EmployeeID', 'Emp_Register.employeecode', 'Emp_Profile.Name', 'Emp_Profile.Photo', 'Emp_Register.department', 'Emp_Register.Designation');
 
 
         if (emp_department() == 'Software Development' || emp_department() == 'Human Resource') {
@@ -6142,7 +6143,7 @@ $arr='Arrears updated';
         }
 
 
-//        ->paginate(20);
+        //        ->paginate(20);
         return request()->json(200, $arr);
     }
 
@@ -6201,13 +6202,17 @@ $arr='Arrears updated';
 
     public function job_exp_employee(Request $request)
     {
-
-
         $date = date("Y-m-d");
 
         $exp_date = date('Y-m-d', strtotime($date . " + 30 days"));
 
-        $job_exp_emp = DB::connection('sqlsrv2')->table('Emp_Profile')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('Emp_Register.ProbationEnd', 'desc')->select('Emp_Profile.Name', 'Emp_Register.EmployeeCode', 'Emp_Register.Status', 'Emp_Register.JobStatus', 'Emp_Register.Designation', 'Emp_Register.Department', 'Emp_Register.ProbationEnd')->where('Emp_Register.ProbationEnd', '<=', $exp_date)->where('Emp_Register.JobStatus', '=', 'Probation')->where('Emp_Profile.CompanyID', '=', company_id())->get();
+        $job_exp_emp = DB::connection('sqlsrv2')->table('Emp_Profile')
+            ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+            ->orderBy('Emp_Register.ProbationEnd', 'desc')
+            ->select('Emp_Profile.Name', 'Emp_Register.EmployeeCode', 'Emp_Register.Status', 'Emp_Register.JobStatus', 'Emp_Register.Designation', 'Emp_Register.Department', 'Emp_Register.ProbationEnd')
+            ->where('Emp_Register.ProbationEnd', '<=', $exp_date)
+            ->where('Emp_Register.JobStatus', '=', 'Probation')
+            ->where('Emp_Profile.CompanyID', '=', company_id())->get();
         return request()->json(200, $job_exp_emp);
     }
 
@@ -6241,8 +6246,40 @@ $arr='Arrears updated';
 
         $exp_date = date('Y-m-d', strtotime($date . " + 30 days"));
 
-        $cnic_exp_emp = DB::connection('sqlsrv2')->table('Emp_Profile')->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')->orderBy('Emp_Register.ProbationEnd', 'desc')->select('Emp_Profile.Name', 'Emp_Register.EmployeeCode', 'Emp_Register.Status', 'Emp_Register.Designation', 'Emp_Register.Department', 'Emp_Profile.CnicExpiry')->where('Emp_Profile.CnicExpiry', '<=', $exp_date)->where('Emp_Profile.CompanyID', '=', company_id())->get();
+        $cnic_exp_emp = DB::connection('sqlsrv2')
+            ->table('Emp_Profile')
+            ->join('Emp_Register', 'Emp_Profile.EmployeeID', '=', 'Emp_Register.EmployeeID')
+            ->orderBy('Emp_Register.ProbationEnd', 'desc')
+            ->select('Emp_Profile.Name', 'Emp_Register.EmployeeCode', 'Emp_Register.Status', 'Emp_Register.Designation', 'Emp_Register.Department', 'Emp_Profile.CnicExpiry')
+            ->where('Emp_Profile.CnicExpiry', '<=', $exp_date)
+            ->where('Emp_Profile.CompanyID', '=', company_id())->get();
         return request()->json(200, $cnic_exp_emp);
+    }
+
+
+    // getting annual leave data
+    public function count_leaves_d()
+    {
+        $leaves = DB::connection('sqlsrv2')
+            ->table('EmpLeave')
+            ->selectRaw("
+            SUM(CASE WHEN LeaveType = 'Annual' THEN TotalLeave ELSE 0 END) AS Annual,
+            SUM(CASE WHEN LeaveType = 'Casual' THEN TotalLeave ELSE 0 END) AS Casual,
+            SUM(CASE WHEN LeaveType = 'Sick' THEN TotalLeave ELSE 0 END) AS Sick,
+            SUM(CASE WHEN LeaveType = 'Maternity' THEN TotalLeave ELSE 0 END) AS Maternity,
+            SUM(CASE WHEN LeaveType = 'Paternity' THEN TotalLeave ELSE 0 END) AS Paternity,
+            SUM(CASE WHEN LeaveType = 'Hajj/Ziarat' THEN TotalLeave ELSE 0 END) AS Hajj_Ziarat
+        ")
+            ->first();
+
+        return response()->json([
+            $leaves->Annual,
+            $leaves->Casual,
+            $leaves->Sick,
+            $leaves->Maternity,
+            $leaves->Paternity,
+            $leaves->Hajj_Ziarat
+        ]);
     }
 
     public function return_loan(Request $request)
@@ -6283,7 +6320,6 @@ $arr='Arrears updated';
 
                 $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                 foreach ($find_tran_id as $find_tran_id1) {
-
                 }
 
                 //find_Account id
@@ -6309,7 +6345,7 @@ $arr='Arrears updated';
 
         DB::connection('sqlsrv2')->insert("INSERT INTO Warning_Reason(ReasonName, ReasonContent, CreatedBy, CreatedOn, CompanyID) values (?,?,?,?,?)", [$reason_name, $reason_desc, username(), $update_date, company_id()]);
         DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?)", [company_id(), username(), UserFullName(), 'Warning Reason added', 'Warning Reason ' . $reason_name . ' added', $update_date]);
-      
+
         $arr = DB::connection('sqlsrv2')->table("Warning_Reason")->where('CompanyID', '=', company_id())->orderBy('ReasonID', 'desc')->paginate(5);
         return request()->json(200, $arr);
     }
@@ -6361,7 +6397,6 @@ $arr='Arrears updated';
         if ($man == 'hr') {
             DB::connection('sqlsrv2')->update('update FinalSettlement set HrStatus=?, UpdatedOn=?, UpdatedBy=? where ID=? and CompanyID=?', [$us_man, $update_date, username(), $usid, company_id()]);
             $data = "Final settlement " . $us_man . " successfully by HR Manager!";
-
         } else if ($man == 'finance') {
             if ($us_man == 'Approved') {
                 $result = DB::connection('sqlsrv2')->update('update FinalSettlement set FStatus=?,Status=?, UpdatedOn=?, UpdatedBy=? where ID=? and CompanyID=?', [$us_man, $us_man, $update_date, username(), $usid, company_id()]);
@@ -6373,7 +6408,6 @@ $arr='Arrears updated';
                             if ($doc) {
                                 $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', 'Final Settlement ' . $save_ledger1->EmployeeCode)->get();
                                 foreach ($find_doc_id as $find_doc_id1) {
-
                                 }
 
                                 $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $doc_date, 'Final Settlement of ' . $save_ledger1->EmployeeCode . ':' . $save_ledger1->Name . '', company_id()]);
@@ -6413,20 +6447,14 @@ $arr='Arrears updated';
                                 if ($save_ledger1->PayableSalary != 0) {
                                     $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, '201002001002', 'C', $save_ledger1->PayableSalary, company_id()]);
                                 }
-
-
                             }
-
-
                         }
 
                         //}
 
 
                     }
-
-
-                }//result
+                } //result
 
 
                 $data = "Final settlement " . $us_man . " successfully by Finance Manager!";
@@ -6435,15 +6463,12 @@ $arr='Arrears updated';
 
                 $data = "Final settlement " . $us_man . " successfully by Finance Manager!";
             }
-
-
         } else if ($man == 'distribution') {
             DB::connection('sqlsrv2')->update('update FinalSettlement set DStatus=?, UpdatedOn=?, UpdatedBy=? where ID=? and CompanyID=?', [$us_man, $update_date, username(), $usid, company_id()]);
             if ($us_man == 'Approved') {
                 DB::connection('sqlsrv2')->update('update FinalSettlement set Status=?, UpdatedOn=?, UpdatedBy=? where ID=? and CompanyID=?', ['Approved', $update_date, username(), $usid, company_id()]);
             }
             $data = "Final settlement " . $us_man . " successfully by Salary distribution department!";
-
         } else {
             $data = "Final settlement's status not updated!";
         }
@@ -6565,7 +6590,7 @@ $arr='Arrears updated';
                         DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $bank_typ[0], 'C', $bank_amount, company_id()]);
                     }
                     $Settlement = DB::connection('sqlsrv2')->table('FinalSettlement')->where('ID', '=', $usid)->where('CompanyID', '=', company_id())->first();
-//                    dd($Settlement);
+                    //                    dd($Settlement);
                     DB::connection('sqlsrv2')->table('Payroll_Distribution')
                         ->where('EmployeeID', $Settlement->EmployeeID)
                         ->where('CompanyID', company_id())
@@ -6576,7 +6601,7 @@ $arr='Arrears updated';
                             'UpdatedOn' => long_date()
                         ]);
                 }
-            }//accounts
+            } //accounts
 
             $data = "Final settlement has been paid successfully!";
             return request()->json(200, $data);
@@ -6703,7 +6728,6 @@ $arr='Arrears updated';
         $this->fpdf->SetTextColor(41, 46, 46);
         $fetch_image = DB::connection('sqlsrv3')->table('CompanyLogo')->where('CompanyID', '=', company_id())->get();
         foreach ($fetch_image as $fetch_image1) {
-
         }
 
 
@@ -6828,7 +6852,6 @@ $arr='Arrears updated';
                 $find_config = "Empty field";
                 return request()->json(200, $find_config);
             }
-
         }
         //
         $find_session = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('CurrentSession', '=', 1)->get();
@@ -6948,7 +6971,6 @@ $arr='Arrears updated';
             $emp_rep1 = DB::connection('sqlsrv2')->table('Emp_Register')->select('Emp_Profile.EmployeeID', 'Emp_Profile.Name')->join('Emp_Profile', 'Emp_Register.EmployeeID', '=', 'Emp_Profile.EmployeeID')->where('Emp_Register.EmployeeCode', '=', $emp_id[1])->where('Emp_Register.CompanyID', '=', company_id())->get();
 
             foreach ($emp_rep1 as $emp_rep11) {
-
             }
             $stipend_exist = DB::connection('sqlsrv2')->table('StipendDetail')->where('EmpID', '=', $emp_rep11->EmployeeID)->where('CompanyID', '=', company_id())->exists();
             if ($stipend_exist) {
@@ -7227,8 +7249,6 @@ $arr='Arrears updated';
                     Str::contains($element->Name, $keyword, true) ||
                     Str::contains($element->CNIC, $keyword, true);
             });
-
-
         } else {
             $collection = collect(Cache::get('SalaryData'));
 
@@ -7326,7 +7346,7 @@ $arr='Arrears updated';
         $us_amount = $request->get('us_amount');
         $us_reason = $request->get('us_reason');
         $us_wished_deduction = $request->get('us_wished_deduction');
-//dd($us_wished_deduction);
+        //dd($us_wished_deduction);
         DB::connection('sqlsrv2')
             ->table('LoanRequisition')
             ->where('CompanyID', '=', company_id())
@@ -7406,7 +7426,7 @@ $arr='Arrears updated';
     {
 
 
-        $arr = DB::connection('sqlsrv2')->table('Payroll_Distribution')/*->whereNotNull('ReceivedThrough')*/ ->where('EmpCode', '=', $code)->where('SessionName', '=', $session)->where('CompanyID', '=', company_id())->select('EmpCode', 'EmployeeID', 'DistributionID')->get();
+        $arr = DB::connection('sqlsrv2')->table('Payroll_Distribution')/*->whereNotNull('ReceivedThrough')*/->where('EmpCode', '=', $code)->where('SessionName', '=', $session)->where('CompanyID', '=', company_id())->select('EmpCode', 'EmployeeID', 'DistributionID')->get();
 
         return request()->json(200, $arr);
     }
@@ -7612,24 +7632,22 @@ $arr='Arrears updated';
 
         $find_session = DB::connection('sqlsrv2')->table('HrSessions')->where('CompanyID', '=', company_id())->where('SessionName', '=', $id)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $month = date('F-Y', strtotime($find_session1->EndDate));
 
         return request()->json(200, $month);
-
     }
 
     public function add_settlement(Request $request)
     {
-        $emp_id = $request->get('emp_id');//
-        $set_id = $request->get('set_id');//
-        $loan = $request->get('loan');//
-        $fine = $request->get('fine');//
-        $arrears = $request->get('arrears');//
-        $allowance = $request->get('allowance');//
-        $graduaty = $request->get('graduaty');//
-        $bonus = $request->get('bonus');//
+        $emp_id = $request->get('emp_id'); //
+        $set_id = $request->get('set_id'); //
+        $loan = $request->get('loan'); //
+        $fine = $request->get('fine'); //
+        $arrears = $request->get('arrears'); //
+        $allowance = $request->get('allowance'); //
+        $graduaty = $request->get('graduaty'); //
+        $bonus = $request->get('bonus'); //
         $set_amount = $request->get('set_amount');
         $remarks = $request->get('remarks');
         $TAmount = $arrears + $graduaty + $bonus + $set_amount + $allowance;
@@ -7738,7 +7756,6 @@ $arr='Arrears updated';
             $month = 'L';
         }
         return $month . $year_fetch;
-
     }
 
     //
@@ -7794,7 +7811,6 @@ $arr='Arrears updated';
             $this->fpdf->SetTextColor(41, 46, 46);
             $fetch_image = DB::connection('sqlsrv3')->table('CompanyLogo')->where('CompanyID', '=', company_id())->get();
             foreach ($fetch_image as $fetch_image1) {
-
             }
             $this->fpdf->Image('public/images/logo/' . $fetch_image1->LeftLogo, 140, 15, 35, 17);
             $this->fpdf->ln(25);
@@ -7916,7 +7932,6 @@ $arr='Arrears updated';
 
         $id_arr = DB::connection('sqlsrv2')->table('PayrollWelfareAllowance')->select('EmployeeID')->where('AllowanceID', '=', $id)->where('CompanyID', '=', company_id())->get();
         foreach ($id_arr as $id_arr1) {
-
         }
         $emp_id = $id_arr1->EmployeeID;
         DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?)", [company_id(), username(), UserFullName(), 'Welfare Allowance Status Changed', ' Allowance of ' . $emp_id . ' approved', $update_date]);
@@ -7950,9 +7965,9 @@ $arr='Arrears updated';
 
         $result = DB::connection('sqlsrv2')->update('update PayrollWelfareAllowance set Status=?,PaidThrough=?,PaidDate=?,UpdatedBy=?,UpdatedOn=?,PVID=? where AllowanceID=? and CompanyID=?', ['Paid', $paid_through, $paid_date, username(), $update_date, $final_PoCode, $allowance_id, company_id()]);
         $id_arr1 = DB::connection('sqlsrv2')->table('PayrollWelfareAllowance')->where('AllowanceID', '=', $allowance_id)->where('CompanyID', '=', company_id())->first();
-//            foreach ($id_arr as $id_arr1) {
-//
-//            }
+        //            foreach ($id_arr as $id_arr1) {
+        //
+        //            }
         $emp_id = $id_arr1->EmployeeID;
         if ($result) {
             if (Session::get('company_accounts_plan') == 'true') {
@@ -7965,13 +7980,11 @@ $arr='Arrears updated';
                 if ($doc) {
                     $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $final_PoCode)->get();
                     foreach ($find_doc_id as $find_doc_id1) {
-
                     }
 
                     $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $doc_date, $id_arr1->AllowanceType . ' Allowance Paid : ' . $id_arr1->PaidThrough, company_id()]);
                     $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                     foreach ($find_tran_id as $find_tran_id1) {
-
                     }
 
 
@@ -7980,10 +7993,7 @@ $arr='Arrears updated';
 
                     $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, '504002008', 'D', $id_arr1->AllowanceAmount, company_id()]);
                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, '101001001001', 'C', $id_arr1->AllowanceAmount, company_id()]);
-
-
                 }
-
             }
         }
 
@@ -8144,7 +8154,6 @@ $arr='Arrears updated';
             $message = 'Disabled';
             return request()->json(200, $message);
         }
-
     }
 
     public function active_department($id)
@@ -8171,24 +8180,24 @@ $arr='Arrears updated';
             $message = 'Already Exist';
         } else {
             $insertedId = DB::connection('sqlsrv2')
-            ->table('Employee_Dep_Comp')
-            ->insertGetId([
-                'Department' => $department_name,
-                'Company' => $company_name,
-                'CreatedBy' => username(),
-                'CreatedOn' => $update_date,
-                'CompanyID' => company_id(),
-            ]);
+                ->table('Employee_Dep_Comp')
+                ->insertGetId([
+                    'Department' => $department_name,
+                    'Company' => $company_name,
+                    'CreatedBy' => username(),
+                    'CreatedOn' => $update_date,
+                    'CompanyID' => company_id(),
+                ]);
 
-        // Retrieve the inserted data by querying the table with the ID
-        $insertedData = DB::connection('sqlsrv2')
-            ->table('Employee_Dep_Comp')
-            ->find($insertedId);
+            // Retrieve the inserted data by querying the table with the ID
+            $insertedData = DB::connection('sqlsrv2')
+                ->table('Employee_Dep_Comp')
+                ->find($insertedId);
 
-        $message = 'Department added';
-    }
+            $message = 'Department added';
+        }
 
-    return response()->json(['message' => $message, 'data' => $insertedData], 200);
+        return response()->json(['message' => $message, 'data' => $insertedData], 200);
     }
 
     public function delete_hr_department($id)
@@ -8244,7 +8253,6 @@ $arr='Arrears updated';
 
         $arr = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('EmployeeCode', '=', $code)->get();
         foreach ($arr as $arr1) {
-
         }
         return request()->json(200, $arr1->EmployeeID);
     }
@@ -8355,10 +8363,9 @@ $arr='Arrears updated';
         //Log::info('Attempting to send email');
         $email = new EmailClass();
         $isSend1 = Mail::to('ahmadshahbazkz@gmail.com')->send($email);
-//        $isSend = Mail::to('dashboard@sasystems.solutions')->send($email);
+        //        $isSend = Mail::to('dashboard@sasystems.solutions')->send($email);
         dd($isSend1, $isSend1);
 
         return 'Email sent successfully';
     }
-
 }
