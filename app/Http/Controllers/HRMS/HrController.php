@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\HRMS;
 
 use Session;
-use DB;
+// use DB;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Controller;
 use App\Traits\CommonTrait;

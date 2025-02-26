@@ -20,68 +20,62 @@ class Dashboard_permissions extends Seeder
      */
     public function run()
     {
-          // Remove foreign key constraints
-     // Remove foreign key constraints
-    //  DB::unprepared("EXEC sp_MSforeachtable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'");
+        // Remove foreign key constraints
+        // Remove foreign key constraints
+        //  DB::unprepared("EXEC sp_MSforeachtable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'");
 
-    //  // Truncate the permissions table
-    //  DB::table('permissions')->delete();
-    //     DB::table('roles')->delete();
+        //  // Truncate the permissions table
+        //  DB::table('permissions')->delete();
+        //     DB::table('roles')->delete();
 
-    //  // Enable foreign key constraints
-    //  DB::unprepared("EXEC sp_MSforeachtable 'ALTER TABLE ? WITH CHECK CHECK CONSTRAINT ALL'");
+        //  // Enable foreign key constraints
+        //  DB::unprepared("EXEC sp_MSforeachtable 'ALTER TABLE ? WITH CHECK CHECK CONSTRAINT ALL'");
 
 
         DB::table('permissions')->delete();;
         DB::table('roles')->delete();
-        
-Permission::create(['name' => 'Dashboard', 'type' => 'Dashboard']);
-    
+
+        Permission::create(['name' => 'Dashboard', 'type' => 'Dashboard']);
+
         //permissions
-        
+
         //journal voucher
         Permission::create(['name' => 'Recuriment Dashboard overall-view']);
         Permission::create(['name' => 'Human Resource Dashboard overall-view']);
         Permission::create(['name' => 'Payroll Dashboard overall-view']);
-
         Permission::create(['name' => 'Accounts Dashboard overall-view']);
         Permission::create(['name' => 'Procurement Dashboard overall-view']);
 
-       
-
-        // Roles 
-           $backendSource = 'backend';
-           $type = 'Dashboard';
-        $Dashboards = Role::create(['name' => 'All Dashboards', 'source' => $backendSource,'type' => $type]);
 
 
-        $dashboard=[
+        // Roles
+        $backendSource = 'backend';
+        $type = 'Dashboard';
+        $Dashboards = Role::create(['name' => 'All Dashboards', 'source' => $backendSource, 'type' => $type]);
+
+
+        $dashboard = [
             'Recuriment Dashboard overall-view',
             'Human Resource Dashboard overall-view',
             'Payroll Dashboard overall-view',
             'Accounts Dashboard overall-view',
             'Procurement Dashboard overall-view'
         ];
-  
-    
-
-$Dashboards->syncPermissions($dashboard);
-
-
-$userEmail = env('USER_EMAIL');
-$user = User::where('email', $userEmail)->first();
-$dashboardpermission = Permission::findByName('Dashboard');
-if ($user) {
-    $user->givePermissionTo($dashboardpermission);
-    $user->assignRole('All Dashboards');
-
-  
-} else {
-    // Handle the case when the user with the specified email is not found
-    $this->command->info("User with email $userEmail not found.");
-}
 
 
 
+        $Dashboards->syncPermissions($dashboard);
+
+
+        $userEmail = env('USER_EMAIL');
+        $user = User::where('email', $userEmail)->first();
+        $dashboardpermission = Permission::findByName('Dashboard');
+        if ($user) {
+            $user->givePermissionTo($dashboardpermission);
+            $user->assignRole('All Dashboards');
+        } else {
+            // Handle the case when the user with the specified email is not found
+            $this->command->info("User with email $userEmail not found.");
+        }
     }
 }

@@ -14,37 +14,37 @@
                     </div>
                 </div>
                 <div class="content-body">
-
                     <div class="row match-height">
                         <!-- Birthday Banner -->
-                        <div class="container">
-                            <div class="row justify-content-center align-items-center" style="height: auto;">
+                        <div class="container mt-2">
+                            <div class="row justify-content-center align-items-center">
                                 <div class="col-xl-12 col-lg-10 col-md-12">
                                     <div class="card bg-image p-4 border-0">
                                         <div
-                                            class=" d-flex justify-content-around align-items-center text-center gap-3">
+                                            class="d-flex flex-md-row flex-column align-items-center text-md-start gap-3">
 
                                             <!-- Left Side: Profile Info -->
-                                            <div class="d-flex align-items-center gap-2">
+                                            <div class="d-flex align-items-center justify-content-end gap-2 col-md-4">
                                                 <span class="avatar">
                                                     <img src="public/images/profile_images/pro.png" alt="avatar"
                                                         height="40" width="40" class="rounded-circle">
                                                     <span title="You are online" class="avatar-status-online"></span>
                                                 </span>
-                                                <div class="user-nav d-flex flex-column text-start">
+                                                <div class="user-nav d-flex flex-column">
                                                     <span class="user-name fw-bold">Austin Mark</span>
                                                     <span class="user-status text-muted">Senior Software Engineer</span>
                                                 </div>
                                             </div>
 
                                             <!-- Center: Birthday Message -->
-                                            <div class="w-md-100">
+                                            <div class=" col-md-4 text-center">
                                                 <h6 class="mb-0">Her Birthday Today</h6>
                                             </div>
 
                                             <!-- Right Side: Button -->
-                                            <div>
-                                                <button class="btn birth-btn rounded-3">Wish Her</button>
+                                            <div class=" col-md-4 justify-content-start">
+                                                <button class="btn birth-btn rounded-3  w-md-auto">Wish
+                                                    Her</button>
                                             </div>
 
                                         </div>
@@ -52,6 +52,7 @@
                                 </div>
                             </div>
                         </div>
+
 
 
 
@@ -74,16 +75,16 @@
                         </div> -->
                         <!--/ Medal Card
                          Statistics Card -->
-                        <div class="col-xl-12 col-md-6 col-12">
+                        <div class="col-xl-12 col-md-12 col-12">
                             <div class="card card-statistics rounded-4 shadow-sm border-0">
                                 <div class="card-header top-radius">
                                     <h4 class="p-1 pt-0 pb-0 fw-semibold">Today's Employee Attendance</h4>
 
                                 </div>
-                                <div class="card-body statistics-body pb-0 ">
-                                    <div class="row  justify-content-around">
+                                <div class="card-body statistics-body pb-2 ">
+                                    <div class="row  justify-content-around g-2">
                                         <div
-                                            class="col-xl-2 col-sm-6 col-12 mb-xl-0 bg-custom  shadow-sm text-muted rounded-4 p-4 ">
+                                            class="col-xl-2 col-sm-5 col-12 mb-xl-0 bg-custom  shadow-sm text-muted rounded-4 p-4 mb-2 ">
                                             <div class="d-flex flex-row justify-content-center">
                                                 <div class="my-auto ">
                                                     <h4 class="fw-bolder mb-0 text-center">{{ att_daily_count.total }}
@@ -93,7 +94,7 @@
                                             </div>
                                         </div>
                                         <div
-                                            class="col-xl-2 col-sm-6 col-12 mb-2 mb-xl-0 bg-custom shadow-sm text-success rounded-4 p-4 ">
+                                            class="col-xl-2 col-sm-5 col-12 mb-2 mb-xl-0 bg-custom shadow-sm text-success rounded-4 p-4 mb-2">
                                             <div class="d-flex flex-row justify-content-center">
                                                 <!-- <div class="avatar bg-custom me-2">
                                                     <div class="avatar-content">
@@ -108,7 +109,7 @@
                                             </div>
                                         </div>
                                         <div
-                                            class="col-xl-2 col-sm-6 col-12 bg-custom shadow-sm text-primary rounded-4 p-4 ">
+                                            class="col-xl-2 col-sm-5 col-12 mb-2 mb-xl-0 bg-custom shadow-sm text-primary rounded-4 p-4 mb-2">
                                             <div class="d-flex flex-row justify-content-center">
                                                 <!-- <div class="avatar bg-light-success me-2">
                                                     <div class="avatar-content">
@@ -124,7 +125,7 @@
                                         </div>
 
                                         <div
-                                            class="col-xl-2 col-sm-6 col-12 mb-2 mb-sm-0 bg-custom shadow-sm text-danger rounded-4 p-4 ">
+                                            class="col-xl-2 col-sm-5 col-12 mb-2 mb-sm-0  bg-custom shadow-sm text-danger rounded-4 p-4 mb-2">
                                             <div class="d-flex flex-row justify-content-center">
                                                 <!-- <div class="avatar bg-light-danger me-2">
                                                     <div class="avatar-content">
@@ -139,7 +140,7 @@
                                             </div>
                                         </div>
                                         <div
-                                            class="col-xl-2 col-sm-6 col-12 mb-2 mb-sm-0 bg-custom shadow-sm text-warning rounded-4 p-4 ">
+                                            class="col-xl-2 col-sm-5 col-12 mb-2 mb-sm-0 bg-custom shadow-sm text-warning rounded-4 p-4 mb-2">
                                             <div class="d-flex flex-row justify-content-center">
                                                 <!-- <div class="avatar bg-light-danger me-2">
                                                     <div class="avatar-content">
@@ -163,7 +164,7 @@
                     <div class="row match-height">
 
                         <!-- employee composition -->
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-4 col-md-4 col-12">
                             <div class="card card-developer-meetup rounded-4 shadow-sm border-0">
                                 <h4 class="p-4 pb-0 fw-semibold">Employee Composition</h4>
                                 <div>
@@ -179,10 +180,10 @@
                         </div>
                         <!--/ employee composition -->
                         <!-- Employee Details -->
-                        <div class="col-xl-8 col-md-6 col-12">
+                        <div class="col-xl-8 col-md-8 col-12">
                             <div class="card card-developer-meetup rounded-4 border-0">
-                                <div class="d-flex">
-                                    <div class="w-50 p-4 ">
+                                <div class="row">
+                                    <div class="col-lg-6 col-sm-12 p-4">
                                         <h4 class=" fw-semibold">Employee Details</h4>
                                         <div class="p-4">
                                             <div class="d-flex justify-content-between mb-1">
@@ -201,7 +202,7 @@
                                                 </div>
                                                 <span>{{
                                                     (Math.floor(this.count_users.data.active_users)).toLocaleString()
-                                                    }}</span>
+                                                }}</span>
                                             </div>
                                             <div class="d-flex justify-content-between mb-1">
                                                 <div class="d-flex align-items-center">
@@ -210,7 +211,7 @@
                                                 </div>
                                                 <span>{{
                                                     (Math.floor(this.count_users.data.contractual_users)).toLocaleString()
-                                                    }}</span>
+                                                }}</span>
                                             </div>
 
                                             <div class="d-flex justify-content-between mb-1">
@@ -237,7 +238,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="w-50 p-3 ">
+                                    <div class="col-lg-6 col-sm-12 p-3 ">
                                         <div>
                                             <apexchart type="donut" height="280" :options="chartOptions10"
                                                 :series="series10">
@@ -361,7 +362,7 @@
                         <!--/ Medal Card -->
 
                         <!-- Statistics Card  Month-wise Employees Report-->
-                        <div class="col-xl-12 col-md-6 col-12">
+                        <div class="col-xl-12  col-sm-12 col-12">
                             <div class="card card-statistics border-0 shadow rounded-4">
                                 <div class="card-header top-radius">
                                     <h4 class="fw-semibold">Monthly Employee’s Report</h4>
@@ -375,7 +376,7 @@
                             </div>
                         </div>
                         <!-- Department-wise Employees status -->
-                        <div class="col-lg-12 col-md-6 col-12 ">
+                        <div class="col-lg-12 col-sm-12 col-12 ">
                             <div class="card-header border-bottom top-radius">
                                 <h4 class="fw-semibold">Department-wise Employees status
                                     ({{ emp_count.cnic_exp_cnt }})</h4>
@@ -1156,7 +1157,7 @@
                                                     </td>
                                                     <td class="text-center border-end-solid" style="width: 28%;">{{
                                                         exp_emp1.Department
-                                                        }}
+                                                    }}
                                                     </td>
                                                     <td class="border-end-solid" style="text-align:right; width: 22%;">
                                                         {{ exp_emp1.ProbationEnd
@@ -1172,7 +1173,7 @@
                     </div>
                     <!--/ Company Table Card -->
                     <!-- chart for Annual Leaves Data -->
-                    <div class="col-lg-4 col-md-6 col-12">
+                    <div class="col-lg-4  col-12">
                         <div class="card-header border-bottom top-radius">
                             <h4 class="fw-bolder">Annual Leaves Data</h4>
                         </div>
@@ -1370,8 +1371,8 @@ export default {
                 },
                 labels: ["Men", "Women"],
                 colors: ["#0070F2", "#FF6900"],
-                dataLabels:{
-                    style:{
+                dataLabels: {
+                    style: {
                         fontSize: '11px',
                     }
                 },
