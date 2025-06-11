@@ -120,6 +120,7 @@ class LeavesApplicationService implements LeavesApplicationServiceInterface
             $HRStatus = $HRStatus == 'All' ? '' : $HRStatus;
 
             $ids = ['P', 'A', 'R'];
+
             return $this->LeavesApplicationRepositoryInterface->filterLeavesRequisitions($leave_type, $department, $location, $designation, $status, $ManagerStatus, $HRStatus);
         } catch (ErrorException $e) {
             // Handle the custom exception here

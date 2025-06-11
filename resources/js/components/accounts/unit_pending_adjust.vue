@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -27,13 +27,13 @@
                                 <div class="col-sm-3 col-lg-3 ps-xl-75 ps-0">
                                    <input type="date" @change="getResult()" v-model="dated" class="form-control" />
                                 <h6>Not Supervised Amount: {{Number(get_sum.cash).toLocaleString()}}</h6>
-                             
+
                                 </div>
                                 <div class="col-sm-3 col-lg-3 ps-xl-75 ps-0" style="margin-top: -23px;">
                                 <select v-model="bank_type" @change="getResult()" class="invoiceto form-select">
                                     <option value='All'>Both</option>
                                      <option value='HBL'>HBL</option>
-                                     <option value='DIB'>DIB</option>   
+                                     <option value='DIB'>DIB</option>
                                 </select>
                                 </div>
                                 <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0" v-if=" hasPermission('Units-Management units-data supervision')">
@@ -46,9 +46,9 @@
                                                     <span style="color: #DB4437; font-size:11px;" v-if="deposit_bank==''">{{e_deposit_bank}}</span>
                                             </div>
                                         </div>
-                                        <div class="invoice_status ms-sm-2" >        
+                                        <div class="invoice_status ms-sm-2" >
                                             <button style="float:left;margin-bottom:20px;" @click="delay1()"  class="btn btn-primary waves-effect">Proceed</button>
-                                            </div>       
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -81,27 +81,27 @@
                                             <td>{{adsdata1.Module}}</td>
                                              <td>{{adsdata1.Plot_Type}}</td>
                                             <td>{{adsdata1.Block}}</td>
-                                            <td>Rs. {{Number(adsdata1.Amount).toLocaleString()}}/-</td> 
+                                            <td>Rs. {{Number(adsdata1.Amount).toLocaleString()}}/-</td>
                                             <td>
                                                 <div class="d-flex align-items-center col-actions">
                                                 <input readonly name="first[]" :value="adsdata1.AdjustID" hidden  class="form-control invoice-edit-input " />
                                                   <input style="margin-top: 10px;margin-left: 5px;" class="form-check-input" type="checkbox"
-                                                                   name="second[]" 
-                                                                   id="inlineRadio1" /> 
+                                                                   name="second[]"
+                                                                   id="inlineRadio1" />
                                                 </div>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                         </div>
                     </section>
                     <!-- users list ends -->
                 </div>
             </div>
         </div>
-     
+
     </div>
 </template>
 <script>
@@ -139,16 +139,16 @@ export default {
     methods: {
    toggle() {
             //var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-           
+
             var added = document.getElementsByName('second[]');
         for (var g = 0; g < added.length; g++) {
                         if (added[g] != this.test){
                         added[g].checked = this.test;
                         }
 
-                    
+
                     }
-           
+
         },
         delay1() {
             this.disabled1 = true
@@ -182,14 +182,14 @@ export default {
                         .then(data => {
                           if(data.data=='submitted'){
                            this.$toastr.s("Ledger Hit Successfully", "Congratulations!");
-                          this.getResult(); 
+                          this.getResult();
 
                           }
                         })
         }
 
         },
-       
+
 
 
         getResult() {
@@ -197,9 +197,9 @@ export default {
                 .then(response => this.adsdata = response.data)
                 .catch(error => {});
              axios.get('./accounts/get_counter_sum_online_adjust/'+this.dated+'/'+this.bank_type)
-            .then(response => this.get_sum = response.data) 
+            .then(response => this.get_sum = response.data)
         },
-        
+
     },
     watch: {
         keyword1(after, before) {

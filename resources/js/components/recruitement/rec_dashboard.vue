@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                 </div>
@@ -30,7 +30,7 @@
                                         </div>
                                         <h2 class="fw-bolder mb-0" v-if="postsct < 10 && postsct != 0">0{{ postsct }}
                                         </h2>
-                                        <h2 class="fw-bolder mb-0" v-else>0{{ postsct }}</h2>
+                                        <h2 class="fw-bolder mb-0" v-else>{{ postsct }}</h2>
                                         <p class="card-text">Posts</p>
                                     </div>
                                     <div class=" m-0">
@@ -50,8 +50,10 @@
                                 <div class="card-header align-items-start top-radius bottom-radius ">
                                     <div>
                                         <h6 class="fw-bolder">Total Applications</h6>
-                                        <h2 class="fw-bolder mb-0">0{{ top_counters.short_listed }}</h2>
-                                        <h2 class="fw-bolder mb-0"></h2>
+                                        <h2 class="fw-bolder mb-0"
+                                            v-if="candsct < 10 && candsct !=0">0{{
+                                            candsct }}</h2>
+                                        <h2 class="fw-bolder mb-0" v-else>{{ candsct }}</h2>
                                         <p class="card-text">Applications</p>
                                     </div>
                                     <div class=" m-0">
@@ -95,7 +97,7 @@
                                         <h6 class="fw-bolder">Short Listed</h6>
                                         <h2 class="fw-bolder mb-0" v-if="slcandsct < 10 && slcandsct != 0">
                                             0{{ slcandsct }}</h2>
-                                        <h2 class="fw-bolder mb-0" v-else>0{{ slcandsct }}</h2>
+                                        <h2 class="fw-bolder mb-0" v-else>{{ slcandsct }}</h2>
                                         <p class="card-text">Listed</p>
                                     </div>
                                     <div class=" m-0">
@@ -144,9 +146,7 @@
                                                 </apexchart>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -157,28 +157,15 @@
                                     <div class="w-100 p-4 ">
                                         <h4 class=" fw-semibold">Hires by source</h4>
                                         <div class="chart-container">
-                                            <div class="card-body statistics-body d-flex  align-items-center p-2">
-                                                <span class="text-primary rounded-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                                                        fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                                                    </svg>
-                                                </span>
-                                                <span class="h6 fw-bold p-2">LinkedIn</span>
-                                                <span class="ms-auto p-2"><strong>65%</strong></span>
-                                            </div>
-                                            <div class="card-body statistics-body d-flex  align-items-center p-2">
-                                                <span class="text-primary rounded-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32"
-                                                        height="32" viewBox="0 0 32 32">
-                                                        <path
-                                                            d="M 18.5 2 C 10.75 2 6 11.25 6 16 C 6 16 9.25 4 19 4 C 22.625 4 25 6 25 6 C 25 6 24 2 18.5 2 z M 17.5 7 A 3.5 3.5 0 1 0 17.5 14 A 3.5 3.5 0 1 0 17.5 7 z M 20 16 C 20 16 19 17 15 17 L 15 27.5 C 15 28.881 16.119 30 17.5 30 C 18.881 30 20 28.881 20 27.5 L 20 16 z">
-                                                        </path>
-                                                    </svg>
-                                                </span>
-                                                <span class="h6 fw-bold p-2">Indeed</span>
-                                                <span class="ms-auto p-2"><strong>35%</strong></span>
+                                            <div>
+                                                <div v-for="(value, key) in percentages" :key="key"
+                                                    class="card-body statistics-body d-flex align-items-center p-2">
+                                                    <span class="text-primary rounded-2" v-html="icons[key]"></span>
+                                                    <span class="h6 fw-bold p-2 text-capitalize">{{ key }}</span>
+                                                    <span class="ms-auto p-2">
+                                                        <strong>{{ value }}%</strong>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -187,12 +174,53 @@
                             <div class="card card-developer-meetup rounded-4 border-0">
                                 <div class="d-flex">
                                     <div class="w-100 p-4 ">
-                                        <h4 class=" fw-semibold">Calender</h4>
-                                        <div class="chart-container">
-                                            <div class="card-body statistics-body d-flex  align-items-center p-2">
-                                                <!-- body -->
+                                        <!-- <h4 class=" fw-semibold">Calender</h4> -->
+                                        <!-- <div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label">Select Interview Date:</label>
+                                                <input v-model="interview_date" type="date" class="form-control"
+                                                    @change="getInterviews" />
+                                            </div>
+
+                                        </div> -->
+                                        <div>
+                                            <!-- Date Picker -->
+                                            <div class="mb-3">
+                                                <label class="form-label">Select Interview Date:</label>
+                                                <input v-model="interview_date" type="date" class="form-control"
+                                                    @change="getInterviews" />
+                                            </div>
+
+                                            <!-- Interviews List -->
+                                            <div v-if="interviews.length" class="mt-4">
+                                                <h5>{{ formatDate(interview_date) }}</h5>
+                                                <hr />
+                                                <div v-for="interview in interviews" :key="interview.CandID"
+                                                    class="mb-2 border rounded">
+                                                    <div :class="['p-3 rounded', getColor()]">
+                                                        <strong>Interview with {{ interview.CandName }}</strong><br />
+                                                        <small>{{ interview.StartTime }} - {{ interview.EndTime
+                                                            }}</small>
+                                                    </div>
+                                                </div>
+                                                <!-- <div v-for="interview in interviews" :key="interview.CandID"
+                                                    class="mb-3">
+                                                    <div :class="['p-3 rounded', getColor(interview)]">
+                                                        <strong>Interview with {{ interview.CandName }}</strong><br />
+                                                        {{ interview.StartTime }} - {{ interview.EndTime }}
+                                                    </div>
+                                                </div> -->
+                                            </div>
+
+                                            <!-- If no interviews -->
+                                            <div v-else-if="interview_date" class="mt-3 text-muted">
+                                                No interviews scheduled for this date.
                                             </div>
                                         </div>
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -203,7 +231,32 @@
                                     <div class="w-100 p-4 ">
                                         <h4 class=" fw-semibold">Active Posts</h4>
                                         <div class="chart-container">
-                                            <div
+                                            <div v-for="job in jobStats" :key="job.JobID"
+                                                class="card-body statistics-body d-flex justify-content-between align-items-center w-100 p-2">
+                                                <span class="p-2 fw-bold" style="width: 20%; max-width: 20%;">{{
+                                                    job.PostTitle }}</span>
+
+                                                <span class="px-2 bg-primary-subtle text-primary rounded-2">
+                                                    {{ job.total_candidates }} Inbox
+                                                </span>
+
+                                                <span class="px-2 bg-danger-subtle text-danger rounded-2">
+                                                    {{ job.interviews }} Interview
+                                                </span>
+
+                                                <span class="px-2 bg-success-subtle text-success rounded-2">
+                                                    {{ job.hired }} Hired
+                                                </span>
+
+                                                <span class="px-2 pb-1 rounded-2 self-align-center"
+                                                    data-bs-target="#job_detail" data-bs-toggle="modal"
+                                                    style="cursor:pointer;" @click="openJobModal(job.JobID)">
+                                                    <i class="fa fa-eye"></i>
+                                                </span>
+
+                                            </div>
+
+                                            <!-- <div
                                                 class="card-body statistics-body d-flex justify-content-between align-items-center w-100 p-2">
                                                 <span class="p-2 fw-bold">Product Designer</span>
                                                 <span class="px-2 bg-primary-subtle text-primary rounded-2">31
@@ -238,24 +291,58 @@
                                                     Hired</span>
                                                 <span
                                                     class="px-2 pb-1 bg-body-secondary rounded-2 self-align-center"><strong>...</strong></span>
-                                            </div>
-                                            <div
-                                                class="card-body statistics-body d-flex justify-content-between align-items-center w-100 p-2">
-                                                <span class="p-2 fw-bold">Product Designer</span>
-                                                <span class="px-2 bg-primary-subtle text-primary rounded-2">31
-                                                    Inbox</span>
-                                                <span class="px-2 bg-danger-subtle text-danger rounded-2">12
-                                                    Interview</span>
-                                                <span class="px-2 bg-success-subtle text-success rounded-2">05
-                                                    Hired</span>
-                                                <span
-                                                    class="px-2 pb-1 bg-body-secondary rounded-2 self-align-center"><strong>...</strong></span>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card card-developer-meetup rounded-4 border-0">
+                            <div class="card border-0 top-radius  bottom-radius">
+                                <div class="card-header top-radius">
+                                    <h4 class="card-title fw-bolder py-50 mb-1 fs-5">Activities Performed</h4>
+                                </div>
+                                <div class="card-body" style="height: 500px; overflow: scroll;">
+                                    <ul class="timeline" v-for="recs1 in recs">
+                                        <li class="timeline-item" style="border-left-color: #c1c1c180 !important ">
+                                            <span class="timeline-point timeline-point-success timeline-point-indicator"
+                                                v-if="recs1.EventStatus == 'Interview scheduled' || recs1.EventStatus == 'Candidate added'"></span>
+                                            <span class="timeline-point timeline-point-success"
+                                                v-else-if="recs1.EventStatus == 'Candidate shortlisted'">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-user">
+                                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2">
+                                                    </path>
+                                                    <circle cx="12" cy="7" r="4"></circle>
+                                                </svg>
+                                            </span>
+                                            <span class="timeline-point timeline-point-success"
+                                                v-else-if="recs1.EventStatus == 'Candidate hired'">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="none" class="bi bi-person-check-fill" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                                    <path
+                                                        d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                                </svg>
+                                            </span>
+                                            <span class="timeline-point timeline-point-warning timeline-point-indicator"
+                                                v-else></span>
+                                            <div class="timeline-event">
+                                                <div
+                                                    class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                                                    <h6 class="mb-50">{{ recs1.EventStatus }}</h6>
+                                                    <span class="timeline-event-time">{{ recs1.ActivityTime
+                                                        }}</span>
+                                                </div>
+                                                <p>{{ recs1.Description }}</p>
+                                                <hr />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- <div class="card card-developer-meetup rounded-4 border-0">
                                 <div class="d-flex">
                                     <div class="w-100 p-4 ">
                                         <h4 class=" fw-semibold">Performed Activities</h4>
@@ -285,7 +372,8 @@
                                             <div
                                                 class="card-body statistics-body d-flex justify-content-between align-items-center border-bottom w-100 p-2 set-overlap">
                                                 <div class="d-flex flex-column  w-100 ">
-                                                    <span class="fw-bold">Hired Candidates for multiple positions.</span>
+                                                    <span class="fw-bold">Hired Candidates for multiple
+                                                        positions.</span>
                                                     <p>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-calendar-week"
@@ -323,13 +411,14 @@
 
                                                 <img src="../../../../public/images/logo/sagroup.png" alt="Profile-img"
                                                     class="ms-auto rounded-circle pro-img ">
-                                                <img src="../../../../public/images/logo/sasystems.png" alt="Profile-img"
-                                                    class="ms-auto rounded-circle pro-img">
+                                                <img src="../../../../public/images/logo/sasystems.png"
+                                                    alt="Profile-img" class="ms-auto rounded-circle pro-img">
                                             </div>
                                             <div
                                                 class="card-body statistics-body d-flex justify-content-between align-items-center border-bottom w-100 p-2 set-overlap">
                                                 <div class="d-flex flex-column  w-100 ">
-                                                    <span class="fw-bold">Hired Candidates for multiple positions.</span>
+                                                    <span class="fw-bold">Hired Candidates for multiple
+                                                        positions.</span>
                                                     <p>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-calendar-week"
@@ -352,17 +441,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <!-- Inner third Section -->
-
-
-
-
-
-
-
 
                         <!-- <div class="col-lg-4 col-md-6 col-12">
                             <div class="card">
@@ -468,8 +550,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-12">
+                        </div> -->
+                        <!-- <div class="col-lg-4 col-md-6 col-12">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h4 class="card-title">Hiring ratio</h4>
@@ -762,7 +844,7 @@
                         </div> -->
                         <!--/  hired candidate  -->
                     </div>
-                    <div class="col-md-12 col-12">
+                    <!-- <div class="col-md-12 col-12">
                         <div clas="card" style="background-color:white !important">
                             <div class="table-responsive" style="overflow-x: auto !important;">
                                 <table class="table mb-0">
@@ -805,7 +887,7 @@
                                                     style="vertical-align: middle; text-align: center; white-space: nowrap;">
                                                     <span class="badge rounded-pill badge-light-primary me-1">{{
                                                         a
-                                                    }}</span>
+                                                        }}</span>
                                                 </td>
                                                 <td
                                                     style="font-size: 0px; overflow: hidden; width: 0px; max-height: 10px">
@@ -817,7 +899,7 @@
                                                     style="width: 26%; vertical-align: middle; text-align: center; white-space: nowrap;">
                                                     <span class="badge rounded-pill badge-light-primary me-1">{{
                                                         b
-                                                    }}</span>
+                                                        }}</span>
                                                 </td>
                                                 <td
                                                     style="text-align: center; visibility: hidden; overflow: hidden; width: 13%;">
@@ -830,11 +912,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-12 col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Activities Performed</h4>
+                    </div> -->
+                    <!-- <div class="col-lg-12 col-12">
+                        <div class="card border-0 top-radius  bottom-radius">
+                            <div class="card-header top-radius">
+                                <h4 class="card-title fw-bolder py-50 mb-1 fs-5">Activities Performed</h4>
                             </div>
                             <div class="card-body" style="height: 500px; overflow: scroll;">
                                 <ul class="timeline" v-for="recs1 in recs">
@@ -869,7 +951,7 @@
                                                 class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
                                                 <h6 class="mb-50">{{ recs1.EventStatus }}</h6>
                                                 <span class="timeline-event-time">{{ recs1.ActivityTime
-                                                    }}</span>
+                                                }}</span>
                                             </div>
                                             <p>{{ recs1.Description }}</p>
                                             <hr />
@@ -878,7 +960,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- view posts modal -->
                 <div class="modal fade" id="viewposts" tabindex="-1" aria-labelledby="pricingModalTitle"
@@ -898,7 +980,7 @@
                                                     <div class="d-flex justify-content-between">
                                                         <span><span v-if="jobs3.JobNumber < 2">Only</span><span
                                                                 v-else>Total</span> {{ jobs3.JobNumber
-                                                            }} <span v-if="jobs3.JobNumber < 2">vacancy</span><span
+                                                                }} <span v-if="jobs3.JobNumber < 2">vacancy</span><span
                                                                 v-else>vacancies</span></span>
                                                         <ul
                                                             class="list-unstyled d-flex align-items-center avatar-group mb-0">
@@ -946,6 +1028,124 @@
                     </div>
                 </div>
                 <!--/ view posts modal -->
+
+                <!-- view job details -->
+                <!-- <div class="modal fade" id="job_detail" tabindex="-1" aria-labelledby="jobDetailLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="jobDetailLabel">
+                                    {{ selectedJob ? selectedJob.PostTitle : 'Job Details' }}
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div v-if="selectedJob">
+                                    <p><strong>Department:</strong> {{ selectedJob.Department }}</p>
+                                    <p><strong>Job Number:</strong> {{ selectedJob.JobNumber }}</p>
+                                    <p><strong>Education:</strong> {{ selectedJob.Education }}</p>
+                                    <p><strong>Experience:</strong> {{ selectedJob.Experience }}</p>
+                                    <p><strong>Start Date:</strong> {{ selectedJob.StartDate }}</p>
+                                    <p><strong>End Date:</strong> {{ selectedJob.EndDate }}</p>
+                                    <p><strong>Duties:</strong> {{ selectedJob.Duties }}</p>
+
+                                </div>
+                                <div v-else>
+                                    <p>No job selected.</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div> -->
+                <div class="modal fade" id="job_detail" tabindex="-1" aria-labelledby="jobDetailLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="jobDetailLabel">
+                                    {{ ed_post_title }}
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <center>
+                                    <table class="w-75">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Job Number:</strong></td>
+                                                <td>{{ ed_job_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Department:</strong></td>
+                                                <td>{{ ed_job_dept }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Education:</strong></td>
+                                                <td v-html="ed_educational_requirements"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Skills:</strong></td>
+                                                <td v-html="ed_skill_set"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Duties:</strong></td>
+                                                <td v-html="ed_duties"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Experience:</strong></td>
+                                                <td>{{ ed_experiance }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Start Date:</strong></td>
+                                                <td>{{ ed_date_opened }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>End Date:</strong></td>
+                                                <td>{{ ed_target_date }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Address:</strong></td>
+                                                <td>{{ ed_address }}</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+
+                                </center>
+
+                                <!-- <div>
+                                    <p><strong>Job Number:</strong> {{ ed_job_number }}</p>
+                                    <p><strong>Department:</strong> {{ ed_job_dept }}</p>
+                                    <div><strong>Education:</strong>
+                                        <p v-html="ed_educational_requirements"></p>
+                                    </div>
+                                    <p><strong>Skills:</strong></p>
+                                    <p v-html="ed_skill_set"></p>
+
+                                    <p><strong>Duties:</strong></p>
+                                    <p v-html="ed_duties"></p>
+                                    <p><strong>Experience:</strong> {{ ed_experiance }}</p>
+                                    <p><strong>Start Date:</strong> {{ ed_date_opened }}</p>
+                                    <p><strong>End Date:</strong> {{ ed_target_date }}</p>
+                                    <p><strong>Address:</strong> {{ ed_address }}</p>
+                                </div> -->
+                            </div>
+
+                            <!-- <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!--/ view job details -->
             </div>
         </div>
     </div>
@@ -959,12 +1159,43 @@ export default {
     // },
     data() {
         return {
+            percentages: {
+                facebook: 0,
+                instagram: 0,
+                linkedin: 0,
+                other: 0
+            },
+            icons: {
+                facebook: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16"><path d="M8.94 16V8.98H11.1l.32-2.5H8.94V5.07c0-.7.19-1.18 1.2-1.18h1.28V1.72A17.77 17.77 0 0 0 9.29 1c-1.81 0-3.05 1.1-3.05 3.13v1.74H4v2.5h2.24V16h2.7z"/></svg>`,
+                indeed: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 32 32"><path d="M 18.5 2 C 10.75 2 6 11.25 6 16 C 6 16 9.25 4 19 4 C 22.625 4 25 6 25 6 C 25 6 24 2 18.5 2 z M 17.5 7 A 3.5 3.5 0 1 0 17.5 14 A 3.5 3.5 0 1 0 17.5 7 z M 20 16 C 20 16 19 17 15 17 L 15 27.5 C 15 28.881 16.119 30 17.5 30 C 18.881 30 20 28.881 20 27.5 L 20 16 z"/></svg>`,
+                linkedin: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>`,
+                other: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8zm8 7A7 7 0 0 1 1 8a7 7 0 0 1 7-7 7 7 0 0 1 7 7 7 7 0 0 1-7 7z"/><path d="M8 1c-.858 0-1.714.146-2.536.43C5.558 2.014 6 2.968 6 4h4c0-1.032.442-1.986 1.536-2.57A6.993 6.993 0 0 0 8 1zM4.07 2.929A6.96 6.96 0 0 0 1.93 7H4a5.978 5.978 0 0 1 .07-4.071zM1.93 9A6.96 6.96 0 0 0 4.07 13.071 5.978 5.978 0 0 1 4 9H1.93zm2.14 4.071A6.96 6.96 0 0 0 8 15a6.96 6.96 0 0 0 3.93-1.929A5.978 5.978 0 0 1 8 13a5.978 5.978 0 0 1-3.93-1.929zM12 9c0 1.032-.442 1.986-1.536 2.57A6.993 6.993 0 0 0 15 9h-3zm1.93-2A6.96 6.96 0 0 0 11.93 2.929 5.978 5.978 0 0 1 12 7h1.93z"/></svg>`,
+            },
+            colors: ['custom-light-blue',
+                'custom-light-green',
+                'custom-light-orange',
+                'custom-light-yellow',
+                'custom-light-pink',
+                'custom-light-purple'],
+            ed_post_title: '',
+            ed_job_dept: '',
+            ed_job_number: '',
+            ed_experiance: '',
+            ed_date_opened: '',
+            ed_target_date: '',
+            ed_educational_requirements: '',
+            ed_skill_set: '',
+            ed_duties: '',
+            ed_address: '',
+            series9: [],
             a: 1,
             b: 1,
             c: 1,
             value: 0,
             postsct: '',
-            candsct: '',
+            candsct: 0,
+            short_listed: 0,
+            cnd_hir: 0,
             slcandsct: '',
             ct_ong_int: '',
             top_counters: {},
@@ -974,12 +1205,14 @@ export default {
             candidates: {},
             recs: {},
             jobs: {},
-            cnd_hir: '',
+
             rel_int_ct: '',
-            interview: {},
+            interviews: [],
+            interview_date: '',
+            // interviews: [],
 
 
-            series9: [20, 22],  //Will be populated with API data Employee Composition
+            // series9: [],  //Will be populated with API data Employee Composition
             //  chartKey: 0,
             chartOptions9: {
                 pie: {
@@ -1007,17 +1240,17 @@ export default {
                 }
             },
 
-            series: [
-                {
-                    name: 'Hired Persons',
-                    data: [44, 55, 41, 67, 22],
-                    color: '#FF6900'
-                }, {
-                    name: 'Pendding Persons',
-                    data: [21, 7, 25, 13, 22],
-                    color: '#0070F2'
-                }
-            ],
+            // series: [
+            //     {
+            //         name: 'Hired Persons',
+            //         data: [44, 55, 41, 67, 22],
+            //         color: '#FF6900'
+            //     }, {
+            //         name: 'Pendding Persons',
+            //         data: [21, 7, 25, 13, 22],
+            //         color: '#0070F2'
+            //     }
+            // ],
             options: {
                 chart: {
                     type: 'bar',
@@ -1079,26 +1312,135 @@ export default {
 
         }
     },
+    comouted: {
+
+        //     series9() {
+        //     return [this.candsct, this.short_listed];
+        // },
+        // Fixed time slots
+        timeSlots() {
+            return [
+                '09:00 am', '10:00 am', '11:00 am', '12:00 pm',
+                '01:00 pm', '02:00 pm', '03:00 pm', '04:00 pm'
+            ];
+        },
+
+        // Filter interviews by selected date
+        filteredInterviews() {
+            return this.interviews.filter(interview => interview.InterviewDate === this.interview_date);
+        },
+
+        // Group filtered interviews by time slot
+        interviewsByTime() {
+            const result = {};
+            this.timeSlots.forEach(time => {
+                result[time] = this.filteredInterviews.filter(interview => interview.StartTime === time);
+            });
+            return result;
+        }
+    },
     methods: {
+
+        fetchPercentages() {
+            axios.get('/get-source-percentage')
+                .then(response => {
+                    this.percentages = response.data;
+                    console.log("resources data", this.percentages);
+
+                })
+                .catch(error => {
+                    console.error('Error fetching percentages:', error);
+                });
+        },
+        // Fetch interviews from server
+        getInterviews() {
+            this.selectedDate = this.interview_date;
+            axios.get('/rel_cand_count', {
+                params: {
+                    date: this.selectedDate
+                }
+            })
+                .then(response => {
+                    this.interviews = response.data;
+                    console.log(this.interviews, "baby");
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+        getColor() {
+            return this.colors[Math.floor(Math.random() * this.colors.length)];
+        },
+        formatDate(date) {
+            if (!date) return '';
+            return new Date(date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+        },
+        openJobModal(JobID) {
+            this.selectedJob = JobID;
+            axios.get('fetch_jobs/' + this.selectedJob)
+                .then(responce => {
+                    // console.log('Response Data:', responce.data);
+                    this.id2 = responce.data[0].JobID;
+                    this.ed_job_number = responce.data[0].JobNumber;
+                    this.ed_post_title = responce.data[0].PostTitle;
+                    this.ed_educational_requirements = responce.data[0].Education;
+                    this.ed_skill_set = responce.data[0].Skill;
+                    this.ed_duties = responce.data[0].Duties;
+                    this.ed_date_opened = responce.data[0].StartDate;
+                    this.ed_job_dept = responce.data[0].Department;
+                    this.ed_experiance = responce.data[0].Experience;
+                    this.ed_target_date = responce.data[0].EndDate;
+                    this.ed_address = responce.data[0].Address;
+                })
+                .catch(error => { });
+        }
+
+
 
     },
     mounted() {
 
+        this.fetchPercentages();
 
-
-
-
+        const today = new Date().toISOString().substr(0, 10);
+        this.interview_date = today;
+        this.getInterviews(); // page load pe fetch
 
         axios.get('top_counters') //Count top list of dashboard
             .then(data => {
                 this.top_counters = data.data;
+                console.log(this.top_counters, "All counts ");
                 this.postsct = this.top_counters.jobs_count;
                 this.candsct = this.top_counters.applications;
                 this.ct_ong_int = this.top_counters.ongoing_interview;
                 this.slcandsct = this.top_counters.short_listed;
+
+                this.series9 = [this.candsct, this.slcandsct];
+
+                this.hired_data = this.top_counters.hired_data;
+                this.pending_data = this.top_counters.pending_data;
+                this.series = [
+                    {
+                        name: 'Hired Persons',
+                        data: this.hired_data,
+                        color: '#FF6900'
+                    },
+                    {
+                        name: 'Pending Persons',
+                        data: this.pending_data,
+                        color: '#0070F2'
+                    }
+                ];
             })
             .catch(error => {
             });
+
+
+        axios.get('/get-job-stats')
+            .then(response => {
+                this.jobStats = response.data;
+            });
+
 
         axios.get('job_detail2')  //Get all posts
             .then(data => this.jobs = data.data)
@@ -1134,6 +1476,36 @@ export default {
 }
 </script>
 <style scoped>
+.custom-light-blue {
+    background-color: #e0f7fa;
+    color: #007bff;
+}
+
+.custom-light-green {
+    background-color: #e8f5e9;
+    color: #28a745;
+}
+
+.custom-light-orange {
+    background-color: #fff3e0;
+    color: #fd7e14;
+}
+
+.custom-light-yellow {
+    background-color: #fffde7;
+    color: #ffc107;
+}
+
+.custom-light-pink {
+    background-color: #fce4ec;
+    color: #e83e8c;
+}
+
+.custom-light-purple {
+    background-color: #ede7f6;
+    color: #6f42c1;
+}
+
 .border-0 {
     border: 0 !important;
 }
@@ -1154,9 +1526,12 @@ export default {
     object-fit: cover;
     position: relative;
 }
+
 .set-overlap img:not(:last-child) {
-    position: relative; /* Ensures controlled movement */
-    left: 5%; /* Overlaps previous image */
+    position: relative;
+    /* Ensures controlled movement */
+    left: 5%;
+    /* Overlaps previous image */
     z-index: 0;
 }
 </style>

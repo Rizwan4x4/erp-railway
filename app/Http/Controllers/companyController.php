@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Session;
-use DB;
+// use Session;
+// use DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
@@ -88,6 +90,7 @@ class companyController extends Controller
             DB::insert('INSERT INTO tb_roles_permissions(user_id,user_email,hr_read,hr_write,hr_restricted,company_id,hr_superadmin,hr_overall,payroll_read,payroll_write,payroll_restricted,payroll_superadmin,payroll_overall,accounts_read,accounts_write,accounts_overall,accounts_superadmin,store_read,store_write,store_overall) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [$user_id, $email, 'true', 'true', 'true', $company_id, 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true']);
 
             $data = "Data Submit Successfully";
+            dd($data);
             return request()->json(200, $data);
         }
     }

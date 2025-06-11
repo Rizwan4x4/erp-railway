@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                 </div>
@@ -63,7 +63,7 @@
                                     <th style="width:200px; text-align:center;">Outsider fee</th>
                                     <th style="width:200px; text-align:center;">status</th>
                                     <th style="width:200px; text-align:center;">Description</th>
-                                
+
                                     <th style="width:200px; text-align:center;">Action</th>
 
                                 </tr>
@@ -81,7 +81,7 @@
                                     <td v-if="foundClubData.status=='Non active'" style="vertical-align: middle; text-align: center; color: red;"> {{ foundClubData.status }}</td>
                                     <td style="vertical-align: middle; text-align: center;">{{ foundClubData.Description }}
                                     </td>
-                                    
+
                                     <td class="td-center">
 
                                         <a class="me-25" @click="editclub(c_data1.id)" data-bs-toggle="modal"
@@ -145,7 +145,7 @@
                                             <span style="color: #DB4437; font-size: 11px;" v-if="club_name == ''">{{
                                                 name_error }}</span>
                                         </div>
-                                       
+
 
                                         <div class="col-12 col-md-6">
                                             <label class="form-label">Type</label>
@@ -227,7 +227,7 @@
                                             <span style="color: #DB4437; font-size: 11px;" v-if="edit_club_name == ''">{{
                                                 edit_name_error }}</span>
                                         </div>
-                                 
+
 
                                         <div class="col-12 col-md-6">
                                             <label class="form-label">Type</label>
@@ -582,7 +582,7 @@ export default {
 
         },
         search_club() {
-            
+
             if(this.search_club_name !=''){
             const lowerCaseSearchName = this.search_club_name.toLowerCase();
             this.foundClubData = this.club_data.find(club => club.Name.toLowerCase() === lowerCaseSearchName);
@@ -599,7 +599,7 @@ export default {
         reset_filters(){
             this.search_club_name='';
             this.foundClubData=null;
-            
+
         },
 
         update_club(id) {

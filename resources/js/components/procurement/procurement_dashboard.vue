@@ -2,7 +2,7 @@
     <div >
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -278,7 +278,7 @@
                                             </div>
                                             <br>
                                             <router-link to="/purchase/requistion_detail"
-                                                        
+
                                                          class="btn btn-primary waves-effect waves-float waves-light">
                                                 View Requisitions
                                             </router-link>
@@ -1015,12 +1015,12 @@ export default {
                 this.series6[i] = parseFloat(percentage);
             }
         },
-  
+
     },
     mounted() {
 
 
-    
+
 
         axios.get('account_stock_counter')
             .then(data => {
@@ -1077,7 +1077,7 @@ export default {
                         ]
 
                     })
-           
+
 
         axios.get('accounts/Assets_D')
             .then(response => {

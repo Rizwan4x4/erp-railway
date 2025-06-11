@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                 <div class="breadcrumb-wrapper">
@@ -93,7 +93,7 @@
                                                         <option value="">Select Status</option>
                                                         <option value="Single">Single</option>
                                                         <option value="Married">Married</option>
-                                                        
+
                                                     </select>
                                                 </div>
                                                 <div class="col-12 col-sm-6 mb-1">
@@ -118,7 +118,7 @@
                                                 </div>
                                                 <div class="col-12 col-sm-6 mb-1">
                                                     <label class="form-label" for="accountOrganization">CNIC No.</label>
-                                                   
+
                                                     <masked-input class="form-control account-number-mask" mask="11111-1111111-1" v-model="cnic" placeholder="00000-0000000-0" />
                                                 </div>
                                                 <div class="col-12 col-sm-6 mb-1">
@@ -127,7 +127,7 @@
                                                 </div>
                                                 <div class="col-12 col-sm-6 mb-1">
                                                     <label class="form-label" for="accountPhoneNumber">Personal Number</label>
-                                                   
+
                                                     <masked-input class="form-control account-number-mask" v-model="phone_number"mask="0092-111 -1111111" placeholder="Phone Number Here" />
                                                 </div>
                                                 <div class="col-12 col-sm-6 mb-1">
@@ -149,7 +149,7 @@
                                                 </div>
                                                 <div class="col-12 col-sm-6 mb-1">
                                                     <label class="form-label" for="accountPhoneNumber">Emergency Number</label>
-                                                   
+
                                                      <masked-input class="form-control account-number-mask"  mask="0092-111 -1111111" v-model="phone_number2" placeholder="Phone Number Here" />
                                                 </div>
                                                 <div class="col-12 col-sm-6 mb-1">
@@ -345,7 +345,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -382,7 +382,7 @@
             <option value="">Select Location</option>
         </select>
     </div>
-   
+
     <div class="col-md-4 col-sm-6 mb-1">
         <label class="form-label" for="accountEmail">Date Of Joining</label>
         <input type="date" class="form-control" id="accountEmail" v-model="doj" placeholder="">
@@ -421,7 +421,7 @@
         <label class="form-label">Job Description</label>
         <textarea class="form-control" v-model="job_description"></textarea>
     </div>
-   
+
 
 </div>
 
@@ -439,9 +439,9 @@
             <option value="">Select Department</option>
         </select>
     </div>
-    
-    
-    
+
+
+
     <div class="col-md-4 col-sm-6 mb-1">
         <label class="form-label" for="accountPhoneNumber">Designation</label>
         <select class="form-select" v-model="emp_status">
@@ -452,10 +452,10 @@
             <option value="Registered">Registered</option>
         </select>
     </div>
-   
-   
-   
-   
+
+
+
+
 
 </div>
 
@@ -495,8 +495,8 @@
                                                 </div>
                                             </div>
     </div>
-    
-    
+
+
     <div class="col-12" style="text-align:center">
         <button type="submit" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Save Employee Profile</button>
     </div>

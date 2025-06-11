@@ -3,7 +3,7 @@
     <!-- BEGIN: Content-->
     <div class="app-content content ">
     <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
+    <div class="header-navbar-shadow-tem-change"></div>
     <div class="content-wrapper container-xxl p-0">
     <div class="content-header row">
     <div class="breadcrumb-wrapper">
@@ -117,7 +117,7 @@
                             <table class="table table-flush-spacing">
                                 <tbody>
                                     <tr>
-                                      
+
                                         <td class="text-nowrap">
                                             <label class="form-label">Start Date:</label>
                                             <span style="color: #DB4437; font-size: 11px;">*</span>
@@ -199,7 +199,7 @@
     export default {
     data() {
     return {
-   
+
     session_start: '',
     session_end: '',
     c_session: false,
@@ -231,20 +231,20 @@
     }
     if (this.receipt_end == '') {
     this.e_receipt_end = 'Enter End date';
-    } 
+    }
     this.$toastr.e("Please fill required fields!", "Error");
     }
     else {
        axios.get('Accounts/update_receipt_data/'+this.receipt_start+'/'+this.receipt_end)
     .then(response => {
     if(response.data=="Transfered Successfully"){
-      this.$toastr.i("Transfered Receipt Data Successfully!", "Information");  
+      this.$toastr.i("Transfered Receipt Data Successfully!", "Information");
     }
     else {
-        this.$toastr.e(response.data, "Cautions!"); 
+        this.$toastr.e(response.data, "Cautions!");
     }
-    }) 
-    }  
+    })
+    }
     },
     getByName(page = 1) {
     axios.get('./accounts_sessionByName/?page=' + page, { params: { name: this.name } })
@@ -316,9 +316,8 @@
     }
     },
     mounted() {
- 
+
     this.getResult();
     }
     }
     </script>
-    

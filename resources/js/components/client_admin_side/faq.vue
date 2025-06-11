@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                 </div>
@@ -47,7 +47,7 @@
                                             <!-- icon and header -->
                                             <div class="d-flex align-items-center" v-if="this.catag != ''">
                                                 <div class="avatar avatar-tag bg-light-primary me-1">
-                                                   
+
                                                     <i class="fa-solid fa-question"></i>
                                                 </div>
                                                 <div>
@@ -176,7 +176,7 @@
 </script>
 <style scoped>
 @media (max-width: 1200px)
-{  
+{
     .embed-video{
         width: 400px;
         height: 215px;

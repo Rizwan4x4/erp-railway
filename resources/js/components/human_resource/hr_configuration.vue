@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -705,13 +705,13 @@
                     this.$toastr.s(data.data, "Congratulations");
                         const updatedIndex = this.warning_reason.data.findIndex(item => item.ReasonID === this.warn_id);
             if (updatedIndex !== -1) {
-         
-                this.warning_reason.data[updatedIndex].ReasonName = this.edit_warning_reason; 
-                this.warning_reason.data[updatedIndex].ReasonContent = this.edit_warning_description; 
 
-            
-                
-          
+                this.warning_reason.data[updatedIndex].ReasonName = this.edit_warning_reason;
+                this.warning_reason.data[updatedIndex].ReasonContent = this.edit_warning_description;
+
+
+
+
                 // Update other properties as needed
             }
                 });
@@ -773,7 +773,7 @@
                 })
             // this.$router.go(0);
         },
- 
+
             submit_warning_reason() {
                 if (this.reason_name == '' || this.reason_desc == '') {
                     if (this.reason_name == '') {
@@ -876,13 +876,17 @@
                 if (this.l_type == '') {
                     this.e_l_type = "Defile leave type";
                     this.$toastr.e("Please fill required fields!", "Caution!");
+                    // console.log("empty data");
+
                 }
                 else {
                     this.e_l_type = "";
+                    // console.log("Submitting leave type:", this.l_type);
                     axios.post('submit_l', {
                         l_type: this.l_type
                     })
                         .then(data => {
+                            // console.log("we are in done condition   ", this.l_type);
                             this.l_types = data.data;
                             this.l_type = "";
                             this.$toastr.s("Add Leave Type Successfully!", "Congratulations");
@@ -1048,7 +1052,7 @@
             },
         },
         mounted() {
-       
+
 
 
             this.getResult();

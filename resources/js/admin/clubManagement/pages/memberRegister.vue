@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                 </div>
@@ -105,13 +105,13 @@
                                 <tr v-for="member in member_data">
                                     <th scope="row" class="text-center">{{ member.employee_code == null ? member.Name :
                                         member.Name }}</th>
-                                    <td class="text-center">{{ 
+                                    <td class="text-center">{{
                                         member.Cnic }}
                                     </td>
                                     <td class="text-center">{{
                                         member.Email}}
                                     </td>
-                                    <td class="text-center">{{ 
+                                    <td class="text-center">{{
                                         member.PhoneNo }}</td>
 
                                     <td class="text-center">
@@ -398,7 +398,7 @@
                                                     v-if="resident.street == ''">{{ resident_error.street_error }}</span>
                                             </div>
 
-                                            
+
 
 
 
@@ -475,7 +475,7 @@
                                             </multiselect>
                                             <span style="color: #DB4437; font-size: 11px;" v-if="outsider.club_n==''">{{outsider_error.club_error}}</span>
                                         </div> -->
-                                        
+
 
 
 
@@ -500,7 +500,7 @@
                                             </div>
 
 
-                                
+
                                             <div class="col-12 col-md-6">
                                                 <label class="form-label">Mobile Number</label>
                                                 <span style="color: #DB4437; font-size: 11px;">*</span>
@@ -627,7 +627,7 @@ export default {
                 plot: "",
                 street: "",
 
-                
+
             },
             outsider: {
                 m_name: '',
@@ -637,7 +637,7 @@ export default {
                 m_address: "",
                 club_id:'',
                 club_n: "",
-               
+
             },
             outsider_error: {
                 name_error: '',
@@ -647,7 +647,7 @@ export default {
                 club_error: "",
                 address_error: '',
                 fee_error: "",
-                
+
             },
             employee_error: {
                 address_error: "",
@@ -666,9 +666,9 @@ export default {
                 club_error: "",
                 block_error: "",
                 plot_error: "",
-              
+
                 fee_error: "",
-              
+
             },
             find_emp: [],
             options4: [],
@@ -834,7 +834,7 @@ export default {
                     }
 
 
-                 
+
                     this.formdata = []
                     this.$toastr.e("Please Fill the Fields!", "Caution!");
                     return
@@ -964,11 +964,11 @@ export default {
                                 this.$toastr.e('You were not registered then');
                             }
                         for (const key in errors) {
-                          
+
                             if(errors[key][0] =='record already exists.')
                             {
                                 this.$toastr.e('This month fee has already been paid');
-                            } 
+                            }
                         }
                     } else {
                         // Handle other errors or show a generic error message
@@ -1043,7 +1043,7 @@ this.employee.cnic ='',
               this.resident.block = '';
               this.resident.plot = '';
               this.resident.street = '';
-            
+
               // Resetting outsider fields
               this.outsider.m_name = '';
               this.outsider.m_mobile = '';
@@ -1052,7 +1052,7 @@ this.employee.cnic ='',
               this.outsider.m_address = '';
               this.outsider.club_n = this.selected_club;
               this.outsider.club_id = this.selected_club_id;
-         
+
               // Resetting outsider_error fields to empty strings
               this.outsider_error.name_error = '';
               this.outsider_error.mobile_error = '';
@@ -1061,7 +1061,7 @@ this.employee.cnic ='',
               this.outsider_error.club_error = '';
               this.outsider_error.address_error = '';
               this.outsider_error.fee_error = '';
-        
+
               // Resetting employee_error fields to empty strings
               this.employee_error.emp_error = '';
               this.employee_error.address_error='';
@@ -1082,7 +1082,7 @@ this.employee.cnic ='',
               this.resident_error.plot_error = '';
               this.resident_error.street_error = '';
               this.resident_error.fee_error = '';
-            
+
 
               this.formdata = [];
 },

@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-body">
                     <div class="content-header row">
@@ -19,16 +19,16 @@
                     </div>
                     <div class="row" id="basic-table">
                         <div class="col-12">
-                            <div class="card">
+                            <div class="card border-0 top-radius bottom-radius">
                                 <div class="row" style="margin-top:20px">
                                     <div class="col-md-3 col-12 mb-2 position-relative">
                                         <h5 style="padding-left:10px;padding-top:10px">Session Name: {{this.session_name}}</h5>
                                     </div>
                                     <div class="col-md-4 col-12 mb-2 position-relative">
-                                        <input type="text" v-model="keyword1" class="form-control" placeholder="Search By Name or Employee code">
+                                        <input type="text" v-model="keyword1" class="form-control p-2" placeholder="Search By Name or Employee code">
                                     </div>
                                     <div class="col-md-3 col-12 mb-2 position-relative">
-                                        <button v-if="hasPermission('Payroll apply Stipend')" data-bs-toggle="modal" data-bs-target="#applystipend" class="btn btn-primary">Apply Stipend</button>
+                                        <button v-if="hasPermission('Payroll apply Stipend')" data-bs-toggle="modal" data-bs-target="#applystipend" class="btn btn-primary bg-primary p-2">Apply Stipend</button>
                                         <button v-else   class="btn btn-danger">Apply Stipend</button>
                                     </div>
                                 </div>
@@ -408,3 +408,22 @@
         },
     }
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

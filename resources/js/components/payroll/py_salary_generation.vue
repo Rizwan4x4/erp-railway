@@ -2,7 +2,7 @@
  <div >
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-body">
                     <div class="content-header row">
@@ -271,11 +271,11 @@
             }
         },
         methods: {
-      
+
             myCustomMethod() {
       // Access the hasPermission function from this.$helpers
       const hasPermission = this.$helpers.hasPermission('Payroll Salary Processsing');
-      
+
       // Use the hasPermission result in your method logic
       if (hasPermission) {
         // Perform actions when the user has the permission
@@ -351,7 +351,7 @@ console.log(existingRecordIndex)
                             axios.get('salary_state')
                                 .then(data => this.salary_state = data.data)
                                 .catch(error => { });
-                          
+
                         })
                 }
             },
@@ -398,9 +398,9 @@ console.log(existingRecordIndex)
                 .then(response => {
                     this.session_name = response.data;
                 })
-          
 
-          
+
+
         },
 
     }

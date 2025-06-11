@@ -2,7 +2,7 @@
  <div>
    <div class="app-content content ">
         <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
+        <div class="header-navbar-shadow-tem-change"></div>
         <div class="content-wrapper container-xxl p-0">
             <div class="content-header row">
             <ol class="breadcrumb">
@@ -122,7 +122,7 @@
                                             <li>Basic Support</li>
                                              <li>Basic Support</li>
                                     </ul>
-                                    
+
                                 </div>
                             </div>
                             <!-- /Plan Card -->
@@ -169,7 +169,7 @@
                                         <h4 class="card-title">Connections</h4>
                                     </div>
                                     <div class="card-body pt-2">
-                                        
+
                                         <!-- Social Accounts -->
                                         <div class="d-flex mt-2">
                                             <div class="flex-shrink-0">
@@ -255,8 +255,8 @@
                                     </div>
                                 </div>
                             <!-- /Project table -->
-                          
-                             
+
+
                         </div>
                         <!--/ User Content -->
                     </div>
@@ -266,7 +266,7 @@
         </div>
     </div>
     <!-- END: Content-->
-   
+
    </div>
 </template>
 
@@ -279,10 +279,10 @@
         }
         },
         methods:{
-            
+
         },
         mounted() {
-        
+
         }
     }
 </script>

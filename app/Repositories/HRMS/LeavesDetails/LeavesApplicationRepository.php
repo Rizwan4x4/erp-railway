@@ -96,7 +96,7 @@ class LeavesApplicationRepository implements LeavesApplicationRepositoryInterfac
     public function search_Employee_leave($keyword1)
     {
         try {
-//            dd('ok1');
+        //    dd('ok1');
             $leaveQuery = DB::connection('sqlsrv2')
                 ->table('Emp_Profile')
                 ->join('leave_Requisition', 'Emp_Profile.EmployeeID', '=', 'leave_Requisition.EmployeeID')
@@ -111,8 +111,10 @@ class LeavesApplicationRepository implements LeavesApplicationRepositoryInterfac
                 ->orderByRaw("CASE WHEN PendingLeaveStatus = 'P' then 1 WHEN PendingLeaveStatus = 'OL' then 2 WHEN PendingLeaveStatus = 'A' then 3 WHEN PendingLeaveStatus = 'R' then 4 END ASC");
 
             if (emp_department() == 'Software Development' || emp_department() == 'Human Resource') {
+
                 return $leaveQuery->paginate(15);
             } else {
+
                 $employeeIDs = array_column(reporting_team(), 'EmployeeID');
                 return $leaveQuery->whereIn('leave_Requisition.EmployeeID', $employeeIDs)->paginate(15);
             }

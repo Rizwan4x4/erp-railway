@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -58,7 +58,7 @@
                                         </div>
                                         <div
                                             class="col-md-2"
-                                       
+
                                         >
                                             <label
                                                 class="form-label"
@@ -269,7 +269,7 @@
                                                     </td>
                                                     <td
                                                         class="td-center"
-                                                    
+
                                                     >
                                                         <a
                                                             @click="
@@ -510,7 +510,7 @@ export default {
         };
     },
     methods: {
-    
+
         async fetchDepartment() {
             try {
                 this.departments = await this.$helpers.checkLocal('department_detail');;
@@ -677,7 +677,7 @@ export default {
         this.fetchRoles();
         this.fetchDesignation();
         this.fetchLocations();
-        
+
 
         this.daily_attendance();
 

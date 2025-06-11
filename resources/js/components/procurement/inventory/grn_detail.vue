@@ -4,7 +4,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -125,7 +125,7 @@
                                     <div class="dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
                                         <div class="col-md-2 me-1">
                                             <router-link
-                                            
+
                                             v-if="hasPermission('Inventory Grn create-grn') "
                                             to="/Inventory/create_grn" class="dt-button add-new btn btn-primary" tabindex="0" type="button"><span>+ Create GRN</span></router-link>
                                         </div>
@@ -981,12 +981,12 @@
                         this.$toastr.s("Verified GRN Successfully", "Congratulations!");
                         const updatedIndex = this.adsdata.data.findIndex(item => item.GrnOrderID === this.get_id);
             if (updatedIndex !== -1) {
-         
+
                 this.adsdata.data[updatedIndex].Status2 =  this.up_sts;
-              
+
                 this.get_id = "";
                                 this.up_sts = "";
-             
+
                 // Update other properties as needed
             }
                         }
@@ -1049,15 +1049,15 @@
                                 this.$toastr.s("Status updated successfully!", "Congratulations");
                                 const updatedIndex = this.adsdata.data.findIndex(item => item.ReceavingOrderID === this.eget_id);
             if (updatedIndex !== -1) {
-         
+
                 this.adsdata.data[updatedIndex].status8 =  this.eup_sts;
-              
+
                 this.eget_id = "";
                                 this.eup_sts = "";
-             
+
                 // Update other properties as needed
             }
-                           
+
                             }
                             else{
                                 this.$toastr.e(data.data, "Caution!");
@@ -1099,7 +1099,7 @@
             axios.get('./accounts/get_vendor')
                 .then(response => this.vendors = response.data)
 
-          
+
 
             axios.get('fetch_companyDetail')
                 .then(response => this.companydetail = response.data)

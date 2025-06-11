@@ -28,7 +28,7 @@ try{
 
         return $this->sendSuccess('Count warning success',$this->WarningDetailsRepository->count_warnings());
     } catch (\Exception $e) {
-      
+
                     Log::error('Unhandled Exception: ' . $e->getMessage());
                     return $this->sendError($e->getMessage(), $e->getCode());
                 }
@@ -39,7 +39,7 @@ try{
         $Page = $request->query('page');
         return $this->sendSuccess('search warning success',$this->WarningDetailsRepository->searchWarnings($keyword, $Page));
     } catch (\Exception $e) {
-      
+
         Log::error('Unhandled Exception: ' . $e->getMessage());
         return $this->sendError($e->getMessage(), $e->getCode());
     }
@@ -47,12 +47,12 @@ try{
     public function filter_warnings($location, $designation, $department)
     {
 try{
-      
+
 
        return $this->sendSuccess('filter warning success',$this->WarningDetailservice->filterWarnings($designation, $department, $location));
 
     } catch (\Exception $e) {
-      
+
         Log::error('Unhandled Exception: ' . $e->getMessage());
         return $this->sendError($e->getMessage(), $e->getCode());
     }

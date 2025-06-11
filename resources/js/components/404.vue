@@ -1,10 +1,10 @@
 <template>
  <div>
- 
-  
+
+
     <div class="app-content content ">
         <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
+        <div class="header-navbar-shadow-tem-change"></div>
         <div class="content-wrapper container-xxl p-0">
             <div class="content-header row">
             </div>
@@ -24,7 +24,7 @@
         </div>
     </div>
     <!-- END: Content-->
-   
+
 </div>
     </template>
 
@@ -32,7 +32,7 @@
     export default {
         mounted() {
 
-         
+
         }
     }
 </script>

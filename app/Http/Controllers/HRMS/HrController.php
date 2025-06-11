@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\HRMS;
 
-use Session;
+// use Session;
 // use DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Controller;
@@ -675,6 +676,7 @@ class HrController extends Controller
             $id = Session::get('employee_id');
         }
         $arr = DB::connection('sqlsrv2')->table('Att_Permission')->join('Emp_Register', 'Att_Permission.SubEmpID', '=', 'Emp_Register.EmployeeID')->join('Emp_Profile', 'Emp_Register.EmployeeID', '=', 'Emp_Profile.EmployeeID')->orderBy('Emp_Profile.Name', 'asc')->select('Emp_Profile.Name', 'Emp_Register.EmployeeCode')->where('Att_Permission.CompanyID', '=', $company_id)->where('Att_Permission.ChiefEmpID', '=', $id)->where('Att_Permission.IsMandatory', '=', 1)->get();
+        dd($arr);
         return request()->json(200, $arr);
     }
 
@@ -740,26 +742,31 @@ class HrController extends Controller
 
         $shift = null;
         if ($job_shift != null && $job_shift != '') {
+            // dd("ok");
             $check_shift1 = DB::connection('sqlsrv2')->table('Roasters')->select('RosterID')->where('CompanyID', '=', company_id())->where('RosterName', '=', $job_shift)->first();
+            // dd($check_shift1);
             $shift = $check_shift1->RosterID;
         }
 
         DB::connection('sqlsrv2')->update('update  Emp_Register set  Department=?, Designation=?, PostingCity=?, CompanyEmail=?, JoiningDate=?, Status=?, ReportingTo=?, CreatedBy=?, ReportingTo2=?, JobShift=?, Salary=?,Salary_Currency=?,  Stipend=?, JobStatus=?, ProbationEnd=?, AttendanceMachine=?, JobDescription=?, CompanyName=?, SendNotification=?, AllowEmployeesAttendance=?, EportalAccess=?, MethodType=?, BankAccount=?, bank_name=?, account_name=?, remarks=? where EmployeeID=?', [$emp_department, $emp_designation, $work_location, $company_email_id, $doj, $emp_status, $reporting_to, username(), $second_reporting, $shift, $emp_salary, $emp_currency, $emp_stipend, $emp_job_status, $emp_pro_end, $emp_att_machine, $job_description, $child_company, $hr_notifications, $att_check, $login_check, $methodtype, $bankaccount, $bankname, $accountname, $remarks, $id]);
 
-        $isInMachine = DB::connection('sqlsrv2')->table('MachineUsers')->where('EmployeeCode', '=', $emp_code)->where('MachineId', '=', $emp_att_machine)->where('CompanyID', '=', company_id())->exists();
-        if (!$isInMachine) {
-            $Employee = DB::connection('sqlsrv2')->table('Emp_Profile')->where('Employee_Code', '=', $emp_code)->select('Name')->first();
-            //dd($name);
-            DB::connection('sqlsrv2')->table('MachineUsers')->insert([
-                'CompanyID' => company_id(),
-                'EmployeeCode' => $emp_code,
-                'EmployeeName' => $Employee->Name,
-                'MachineId' => $emp_att_machine,
-                'IsAdded' => 0,
-            ]);
-        }
 
-        //        dd($isInMachine);
+        // comment by rizwan
+
+        // $isInMachine = DB::connection('sqlsrv2')->table('MachineUsers')->where('EmployeeCode', '=', $emp_code)->where('MachineId', '=', $emp_att_machine)->where('CompanyID', '=', company_id())->exists();
+        // if (!$isInMachine) {
+        //     $Employee = DB::connection('sqlsrv2')->table('Emp_Profile')->where('Employee_Code', '=', $emp_code)->select('Name')->first();
+        //     //dd($name);
+        //     DB::connection('sqlsrv2')->table('MachineUsers')->insert([
+        //         'CompanyID' => company_id(),
+        //         'EmployeeCode' => $emp_code,
+        //         'EmployeeName' => $Employee->Name,
+        //         'MachineId' => $emp_att_machine,
+        //         'IsAdded' => 0,
+        //     ]);
+        // }
+
+        //    dd($isInMachine);
 
         $update_date3 = date("Y-m-d");
         $emp_day = intval($emp_salary / 30);
@@ -968,7 +975,7 @@ class HrController extends Controller
         return request()->json(200, $arr);
     }
 
-    public function getemployee_detail123($id)
+    public function getemployee_detail($id)
     {
         $arr = DB::connection('sqlsrv2')->table('Emp_Profile')->where('EmployeeID', '=', $id)->get();
         return request()->json(200, $arr);
@@ -976,21 +983,34 @@ class HrController extends Controller
 
     public function getemployment_detail($id)
     {
-        $employeeDetail = DB::connection('sqlsrv2')->table('Emp_Register')->join('Roasters', 'Emp_Register.JobShift', 'Roasters.RosterID')->where('EmployeeID', '=', $id)->where('Emp_Register.CompanyID', '=', company_id());
+        $company_id = Session::get('company_id');
+        $employeeDetail = DB::connection('sqlsrv2')
+            ->table('Emp_Register')
+            ->join('Roasters', 'Emp_Register.JobShift', 'Roasters.RosterID')
+            ->where('EmployeeID', '=', $id)
+            ->where('Emp_Register.CompanyID', '=', $company_id);
         $employeeDetail1 = clone $employeeDetail;
         $employeeDetail2 = clone $employeeDetail;
-
         if ($employeeDetail1->exists()) {
+
             $arr = $employeeDetail2->select('Emp_Register.*', 'Roasters.RosterName')->get();
         } else {
-            $arr = DB::connection('sqlsrv2')->table('Emp_Register')->where('EmployeeID', '=', $id)->where('Emp_Register.CompanyID', '=', company_id())->get();
+
+            $arr = DB::connection('sqlsrv2')
+                ->table('Emp_Register')
+                ->where('EmployeeID', '=', $id)
+                ->where('Emp_Register.CompanyID', '=', $company_id)
+                ->get();
+            // dd($arr);
         }
 
-        return request()->json(200, $arr);
+        // return request()->json(200, $arr);
+        return response()->json($arr, 200);
     }
 
     public function DepartmentWise_EmpStatus()
     {
+        $companyId = company_id();
         $all_users = DB::connection('sqlsrv2')->select("SELECT
       Department,
       ISNULL(SUM(CASE WHEN Status = 'Registered' THEN 1 ELSE 0 END), 0) AS RegisteredCount,
@@ -1000,10 +1020,11 @@ class HrController extends Controller
       ISNULL(SUM(CASE WHEN Status = 'Probation' THEN 1 ELSE 0 END), 0) AS ProbationCount,
       ISNULL(SUM(CASE WHEN Status = 'Contract' THEN 1 ELSE 0 END), 0) AS ContractsCount,
       ISNULL(COUNT(EmployeeID), 0) AS TotalEmp
-  FROM
-      Emp_Register
+  FROM Emp_Register
+  WHERE CompanyID = ?
   GROUP BY
-      Department;");
+      Department;", [$companyId]);
+        //   dd($all_users);
 
         return request()->json(200, $all_users);
     }
@@ -2658,7 +2679,7 @@ class HrController extends Controller
     public function submit_l(Request $request)
     {
         $leave_type = $request->get('l_type');
-        $isLimited = $request->get('isLimited');
+        // $isLimited = $request->get('isLimited',0);
 
         $isExist = DB::connection('sqlsrv2')->table("leaves")->where('LeaveType', '=', $leave_type)->where('CompanyID', '=', company_id())->exists();
         if ($isExist) {
@@ -2669,15 +2690,29 @@ class HrController extends Controller
             ->insert([
                 'CompanyID' => company_id(),
                 'LeaveType' => $leave_type,
-                'IsLimited' => $isLimited,
+                // 'IsLimited' => $isLimited, // this column in not exist in table
                 'CreatedBy' => username(),
-                'CreatedOn' => long_date(),
+                'CreatedOn' => short_date(),
+                // 'CreatedOn' => "2025-04-21 06:00",
             ]);
         if ($result) {
             insertLog('Insert Leave Type', 'New leave type ' . $leave_type . ' added');
             return 'Leave added';
         }
     }
+    // LeaveController.php
+
+    // get leave type
+    public function getLeaveTypes()
+    {
+        $leaveTypes = DB::connection('sqlsrv2')
+            ->table('leaves')
+            ->where('CompanyID', company_id())
+            ->pluck('LeaveType');
+
+        return response()->json($leaveTypes);
+    }
+
 
     public function view_leave_type()
     {
@@ -2995,6 +3030,7 @@ class HrController extends Controller
 
     public function CompanyWise_EmpAge()
     {
+        $companyID = company_id();
         $ageGroups = DB::connection('sqlsrv2')
             ->table(DB::raw("(SELECT
             CASE
@@ -3004,14 +3040,28 @@ class HrController extends Controller
                 WHEN DATEDIFF(YEAR, Emp_Profile.DOB, GETDATE()) BETWEEN 41 AND 50 THEN '41-50'
                 ELSE '51+'
             END AS AgeGroup
-        FROM Emp_Profile) AS age_subquery"))
+            FROM Emp_Profile
+            WHERE CompanyID = '$companyID' ) AS age_subquery"))
             ->selectRaw("AgeGroup, COUNT(*) AS EmployeeCount")
             ->groupBy('AgeGroup')
             // ->orderByRaw("MIN(DATEDIFF(YEAR, DOB, GETDATE()))")
             ->get();
 
+        $birthdaysToday = DB::connection('sqlsrv2')
+            ->table('Emp_Profile as ep')
+            ->join('Emp_Register as er', 'ep.EmployeeID', '=', 'er.EmployeeID')
+            ->where('ep.CompanyID', $companyID)
+            ->whereMonth('ep.DOB', now()->month)
+            ->whereDay('ep.DOB', now()->day)
+            ->select('ep.EmployeeID', 'ep.Name', 'ep.DOB', 'ep.photo', 'ep.Gender', 'er.Designation')
+            ->get();
+        // dd($birthdaysToday);
+        // dd($ageGroups);
 
-        return response()->json($ageGroups);
+        return response()->json([
+            'ageGroups' => $ageGroups,
+            'birthdaysToday' => $birthdaysToday,
+        ]);
     }
 
     public function overall_cities()
@@ -4301,6 +4351,7 @@ class HrController extends Controller
     public function overall_child_companies_emp()
     {
         $emp_detail = DB::connection('sqlsrv2')->table('Employee_Dep_Comp')->where('CompanyID', '=', company_id())->groupBy('Company')->select('Company')->get();
+        // dd($emp_detail);
         return request()->json(200, $emp_detail);
     }
 
@@ -6261,26 +6312,76 @@ class HrController extends Controller
     // getting annual leave data
     public function count_leaves_d()
     {
+        $companyID = company_id();
+
         $leaves = DB::connection('sqlsrv2')
             ->table('EmpLeave')
-            ->selectRaw("
-            SUM(CASE WHEN LeaveType = 'Annual' THEN TotalLeave ELSE 0 END) AS Annual,
-            SUM(CASE WHEN LeaveType = 'Casual' THEN TotalLeave ELSE 0 END) AS Casual,
-            SUM(CASE WHEN LeaveType = 'Sick' THEN TotalLeave ELSE 0 END) AS Sick,
-            SUM(CASE WHEN LeaveType = 'Maternity' THEN TotalLeave ELSE 0 END) AS Maternity,
-            SUM(CASE WHEN LeaveType = 'Paternity' THEN TotalLeave ELSE 0 END) AS Paternity,
-            SUM(CASE WHEN LeaveType = 'Hajj/Ziarat' THEN TotalLeave ELSE 0 END) AS Hajj_Ziarat
-        ")
-            ->first();
+            ->where('CompanyID', $companyID)
+            ->select('LeaveType', DB::raw('SUM(TotalLeave) as TotalLeave'))
+            ->groupBy('LeaveType')
+            ->limit(5)
+            ->pluck('TotalLeave', 'LeaveType');
 
-        return response()->json([
-            $leaves->Annual,
-            $leaves->Casual,
-            $leaves->Sick,
-            $leaves->Maternity,
-            $leaves->Paternity,
-            $leaves->Hajj_Ziarat
-        ]);
+        return response()->json($leaves);
+
+
+        // $companyID = company_id();
+
+
+        // $leaves = DB::connection('sqlsrv2')
+        //     ->table('leaves as l')
+        //     ->leftJoin('EmpLeave as el', 'l.LeaveID', '=', 'el.LeaveID')
+        //     ->where('l.companyId', $companyID)
+        //     ->where('el.companyID', $companyID)
+        //     ->select('l.LeaveType', DB::raw('ISNULL(SUM(EL.TotalLeave),0) as TotalLeave'))
+        //     ->groupBy('l.LeaveType')
+        //     ->pluck('TotalLeave', 'LeaveType');
+
+        // return response()->json($leaves);
+
+        // $leaves = DB::connection('sqlsrv2')
+        //     ->table('leaves as l')
+        //     ->leftJoin('EmpLeave as el', function ($join) use ($companyID) {
+        //         $join->on('l.LeaveID', '=', 'el.LeaveType')
+        //             ->where('el.CompanyID', '=', $companyID);
+        //     })
+        //     ->where('l.CompanyID', $companyID)
+        //     ->groupBy('l.LeaveType')
+        //     ->select(
+        //         'l.LeaveType',
+        //         DB::raw('ISNULL(SUM(el.TotalLeave), 0) as TotalLeave')
+        //     )
+        //     ->get();
+
+        // $response = [];
+
+        // foreach ($leaves as $leave) {
+        //     $response[$leave->LeaveType] = $leave->TotalLeave;
+        // }
+
+        // return response()->json($response);
+
+
+        // $leaves = DB::connection('sqlsrv2')
+        //     ->table('EmpLeave')
+        //     ->selectRaw("
+        //     SUM(CASE WHEN LeaveType = 'Annual' THEN TotalLeave ELSE 0 END) AS Annual,
+        //     SUM(CASE WHEN LeaveType = 'Casual' THEN TotalLeave ELSE 0 END) AS Casual,
+        //     SUM(CASE WHEN LeaveType = 'Sick' THEN TotalLeave ELSE 0 END) AS Sick,
+        //     SUM(CASE WHEN LeaveType = 'Maternity' THEN TotalLeave ELSE 0 END) AS Maternity,
+        //     SUM(CASE WHEN LeaveType = 'Paternity' THEN TotalLeave ELSE 0 END) AS Paternity,
+        //     SUM(CASE WHEN LeaveType = 'Hajj/Ziarat' THEN TotalLeave ELSE 0 END) AS Hajj_Ziarat
+        // ")
+        //     ->first();
+
+        // return response()->json([
+        //     $leaves->Annual,
+        //     $leaves->Casual,
+        //     $leaves->Sick,
+        //     $leaves->Maternity,
+        //     $leaves->Paternity,
+        //     $leaves->Hajj_Ziarat
+        // ]);
     }
 
     public function return_loan(Request $request)
@@ -7040,24 +7141,30 @@ class HrController extends Controller
 
     public function att_time($id)
     {
-
-
         $add_date = date("Y-m-d");
         if ($id == 0) {
             $id = employee_id();
         }
         $arr = DB::connection('sqlsrv2')->table('AttData')->where('CompanyID', '=', company_id())->where('ATTDate', '=', $add_date)->get();
+        // dd($arr);
         return request()->json(200, $arr);
     }
 
     public function mark_attendance(Request $request)
+
     {
-        //$check_in = $request -> get('check_in');
-        //$check_out = $request -> get('check_out');
+        // dd( $request->emp_id);
+        // dd($request->emp_id, company_id());
+        // dd(short_date());
+        $check_in = $request->get('check_in');
+        $check_out = $request->get('check_out');
         $check_in = date("H:i");
         $att_status = NULL;
         $attendanceQuery = DB::connection('sqlsrv2')->table('AttData')->where('ATTDate', '=', short_date())->where('EmpID', '=', $request->emp_id)->where('CompanyID', '=', company_id());
-        $attendance = $attendanceQuery->exists();
+
+        $attendance = $attendanceQuery;
+        // dd($attendance);
+
         if ($attendance) {
             $markedQuery = clone $attendanceQuery;
             $marked = $markedQuery->whereNotNull('CheckIn')->exists();
@@ -7066,6 +7173,7 @@ class HrController extends Controller
                 return request()->json(200, $data);
             }
             $openingTime = $attendanceQuery->first()->OpeningTime;
+
             $att_status = ($check_in <= $openingTime) ? 'P' : 'L';
             try {
                 $attendanceQuery->update([

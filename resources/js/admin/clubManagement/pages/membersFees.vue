@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                 </div>
@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                             </div>
-                    
+
                             <div class="col-lg-3 col-sm-12">
                                 <div class="card">
                                     <div class="card-body d-flex align-items-center justify-content-between">
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                     <div class="row" style="margin-top:10px">
-                                   
+
                         <div class="row justify-content-end">
     <div class="col-md-4 col-12 mb-2 position-relative">
         <div class="row">
@@ -98,7 +98,7 @@
         </div>
     </div>
 </div>
-                       
+
                                 </div>
                                 <div class="card p-1">
                     <table class="user-list-table table" >
@@ -110,7 +110,7 @@
                             <th class="text-center">Email</th>
                             <th class="text-center"><strong>Fees</strong></th>
                             <th class="text-center">Date</th>
-                           
+
                         </tr>
                         </thead>
                         <tbody>
@@ -123,7 +123,7 @@
 
                             <td class="text-center">{{new Date(member.date).toISOString().split('T')[0] }}</td>
 
-    
+
 
                         </tr>
                         </tbody>
@@ -175,7 +175,7 @@ export default {
 
                 this.page = page;
             }).catch(error => this.error = error.response.data.errors)
-         
+
     },
         fetchFees(page = 1){
             axios.get('./get_fees'+'/?page=' + page).then(res => {
@@ -190,9 +190,9 @@ export default {
             });
         }
     },
-   
+
     mounted() {
-       
+
        this.fetchFees();
         axios.get('./get_Totalfees').then(res => {
 
@@ -204,7 +204,7 @@ export default {
             });
 
     },
-   
+
 }
 </script>
 

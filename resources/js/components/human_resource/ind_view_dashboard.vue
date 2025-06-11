@@ -5,7 +5,7 @@
         <div v-else>
             <div v-if="this.fetchempcode != 'a'" class="app-content content ">
                 <div class="content-overlay"></div>
-                <div class="header-navbar-shadow"></div>
+                <div class="header-navbar-shadow-tem-change"></div>
                 <div class="content-wrapper container-xxl p-0">
                     <div class="content-header row">
                         <div class="breadcrumb-wrapper">
@@ -160,23 +160,116 @@
                             </div>
                             <!--/ Statistics Card -->
 
+                            <!-- check in and out section -->
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div
+                                        class="card p-3 d-flex flex-column flex-md-row align-items-center justify-content-between border-0 top-radius bottom-radius">
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Check In <i class="fa fa-clock-o"></i></h6>
+                                            <small>Average Time: <strong>
+                                                    {{ formatTimes(arrival_time) || 'Not Marked Yet' }}</strong></small>
+                                            <span class="mx-2">|</span>
+                                            <small>Office Time: <strong>{{ this.check_in }}</strong></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div
+                                        class="card p-3 d-flex flex-column flex-md-row align-items-center justify-content-between border-0 top-radius bottom-radius">
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Check Out <i class="fa fa-clock-o"></i></h6>
+                                            <small>Average Time: <strong>
+                                                    {{ formatTimes(departure_time) || 'Not Marked Yet' }}
+                                                </strong></small>
+                                            <span class="mx-2">|</span>
+                                            <small>Office Time: <strong>{{ this.check_out }}</strong></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <!-- /check in and out section -->
+
+
+                            <!-- leaves chart -->
                             <div class="row match-height">
+                                <div class="col-lg-4 col-md-4 col-12 ">
+                                    <div class="card card-tiny-line-stats border-0 top-radius bottom-radius p-3"
+                                        data-v-step="8">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../../../public/images/logo/sagroup.png" alt="User"
+                                                    height="50" width="50"
+                                                    style="border-radius: 50%; margin-right: 15px;">
+                                                <div>
+                                                    <h5 class="fw-bolder mb-0">My Profile</h5>
+                                                </div>
+                                                <router-link to="/hr/emp_detail"
+                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light ms-auto">
+                                                    View Profile
+                                                </router-link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="card border-0 top-radius bottom-radius py-3 px-2" data-v-step="7">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../../../public/images/logo/sagroup.png" alt="Attendance"
+                                                    height="50" width="50"
+                                                    style="border-radius: 50%; margin-right: 15px;">
+                                                <div>
+                                                    <h5 class="fw-bolder mb-0">Attendance</h5>
+                                                    <p class="mb-0">Manual Mark</p>
+                                                </div>
+                                                <a data-bs-toggle="modal" data-bs-target="#markAttendance"
+                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light ms-auto">
+                                                    Mark Now
+                                                </a>
+                                                <!-- <a v-else @click="not_Att_access()" style="width:100%;"
+                                               class="btn btn-danger waves-effect waves-float waves-light">Mark
+                                                Now</a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="card border-0 top-radius bottom-radius p-3" data-v-step="7">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../../../public/images/logo/sagroup.png"
+                                                    alt="Time Adjustment" height="50" width="50"
+                                                    style="border-radius: 50%; margin-right: 15px;">
+                                                <div>
+                                                    <h5 class="fw-bolder mb-0">Time</h5>
+                                                    <p class="mb-0">Adjustment</p>
+                                                </div>
+                                                <a data-bs-toggle="modal" data-bs-target="#timeAdj"
+                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light ms-auto">
+                                                    Apply Now
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-xl-12 col-md-12 col-12">
                                     <div data-v-step="4" class="card card-statistics border-0 top-radius bottom-radius">
                                         <div class="card-header top-radius">
                                             <h4 class=" fw-bolder">Leave data</h4>
                                             <button
-                                                class="btn btn-primary btn-sm d-flex align-items-center justify-content-center px-4 py-2 rounded-3 shadow position-relative"
-                                                style="width: 130px;">
+                                                class="btn btn-primary bg-primary btn-sm d-flex align-items-center justify-content-center px-4 py-2 rounded-3 shadow position-relative"
+                                                data-bs-toggle="modal" data-bs-target="#addNewCard">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-cloud-upload" viewBox="0 0 16 16">
+                                                    fill="currentColor" class="bi bi-cloud-upload me-1"
+                                                    viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd"
                                                         d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383" />
                                                     <path fill-rule="evenodd"
                                                         d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708z" />
-                                                </svg>
-                                                <span class="flex-grow-1 text-center">Apply</span>
+                                                </svg>Apply Leave
+                                                <!-- <span class="flex-grow-1 text-center "><a >Apply Leave</a></span> -->
                                             </button>
 
 
@@ -208,8 +301,7 @@
                                                             <div class="row mt-1 pl-2">
                                                                 <div class="col-12 col-md-6  p-0 text-center rounded">
                                                                     <apexchart :options="chartOptions1"
-                                                                        :series="series1[0]" type="radialBar"
-                                                                        height="450">
+                                                                        :series="series1" type="radialBar" height="450">
                                                                     </apexchart>
                                                                 </div>
                                                                 <div
@@ -248,15 +340,14 @@
                                                             <div class="row mt-1 pl-2">
                                                                 <div class="col-12 col-md-6  p-0 text-center rounded">
                                                                     <apexchart :options="chartOptions2"
-                                                                        :series="series1[1]" type="radialBar"
-                                                                        height="450">
+                                                                        :series="series2" type="radialBar" height="450">
                                                                     </apexchart>
                                                                 </div>
                                                                 <div
                                                                     class="col-12 col-md-6 pr-3 d-flex flex-column align-items-center justify-content-center text-end rounded">
                                                                     <span class="text-truncate text-danger">Used - {{
                                                                         leaves_dtl.ttl_sick - leaves_dtl.rem_sick
-                                                                        }}
+                                                                    }}
                                                                     </span>
                                                                     <small>Available - {{
                                                                         leaves_dtl.ttl_sick }}</small>
@@ -289,15 +380,14 @@
                                                             <div class="row mt-1 pl-2">
                                                                 <div class="col-12 col-md-6  p-0 text-center rounded">
                                                                     <apexchart :options="chartOptions3"
-                                                                        :series="series1[2]" type="radialBar"
-                                                                        height="450">
+                                                                        :series="series3" type="radialBar" height="450">
                                                                     </apexchart>
                                                                 </div>
                                                                 <div
                                                                     class="col-12 col-md-6 pr-3 d-flex flex-column align-items-center justify-content-center text-end rounded">
                                                                     <span class="text-truncate text-warning">Used - {{
                                                                         leaves_dtl.ttl_casual - leaves_dtl.rem_casual
-                                                                        }}
+                                                                    }}
                                                                     </span>
                                                                     <small>Available - {{
                                                                         leaves_dtl.ttl_casual }}</small>
@@ -330,8 +420,7 @@
                                                             <div class="row mt-1 pl-2">
                                                                 <div class="col-12 col-md-6  p-0 text-center rounded">
                                                                     <apexchart :options="chartOptions4"
-                                                                        :series="series1[3]" type="radialBar"
-                                                                        height="450">
+                                                                        :series="series4" type="radialBar" height="450">
                                                                     </apexchart>
                                                                 </div>
                                                                 <div
@@ -350,34 +439,26 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!--                                <div class="col-lg-3 col-md-3 col-12">-->
-                                <!--                                    <div class="card" data-v-step="7">-->
-                                <!--                                        <div class="card-body pb-50" style="position: relative;">-->
-                                <!--                                            <h6>Apply</h6>-->
-                                <!--                                            <h3 class="fw-bolder mb-1" style="padding-bottom: 15px;">Leave</h3>-->
-                                <!--                                            <a data-bs-toggle="modal" style="width:100%;" data-bs-target="#addNewCard"-->
-                                <!--                                               class="btn btn-primary waves-effect waves-float waves-light">Apply-->
-                                <!--                                                Now</a>-->
-                                <!--                                        </div>-->
-                                <!--                                    </div>-->
-                                <!--                                </div>-->
-
-
-                                <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="card card-tiny-line-stats" data-v-step="8">
-                                        <div class="card-body pb-50" style="position: relative;">
-                                            <h6>My</h6>
-                                            <h3 class="fw-bolder mb-1" style="padding-bottom: 15px;">
-                                                Profile</h3>
-                                            <router-link style="width:100%;" to="/hr/emp_detail"
-                                                class="btn btn-primary waves-effect waves-float waves-light">
-                                                View
-                                            </router-link>
+                                <!-- alter one -->
+                                <!-- <div class="col-lg-3 col-md-3 col-12">
+                                    <div class="card" data-v-step="7">
+                                        <div class="card-body " style="position: relative;">
+                                            <h6>Apply</h6>
+                                            <h3 class="fw-bolder mb-1" style="padding-bottom: 15px;">Leave</h3>
+                                            <a data-bs-toggle="modal" style="width:100%;" data-bs-target="#addNewCard"
+                                                class="btn btn-primary waves-effect waves-float waves-light">Apply
+                                                Now</a>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-12">
+                                </div> -->
+
+
+
+
+
+
+
+                                <!-- <div class="col-lg-4 col-md-4 col-12">
                                     <div class="card" data-v-step="7">
                                         <div class="card-body pb-50" style="position: relative;">
                                             <h6>
@@ -389,12 +470,10 @@
                                                 style="width:100%;"
                                                 class="btn btn-primary waves-effect waves-float waves-light">Mark
                                                 Now</a>
-                                            <!-- <a v-else @click="not_Att_access()" style="width:100%;"
-                                               class="btn btn-danger waves-effect waves-float waves-light">Mark
-                                                Now</a> -->
+
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!--                                <div class="col-lg-3 col-md-3 col-12">-->
                                 <!--                                    <div class="card card-tiny-line-stats" data-v-step="7">-->
                                 <!--                                        <div class="card-body pb-50" style="position: relative;">-->
@@ -406,7 +485,12 @@
                                 <!--                                        </div>-->
                                 <!--                                    </div>-->
                                 <!--                                </div>-->
-                                <div class="col-lg-4 col-md-4 col-12">
+
+
+
+
+
+                                <!-- <div class="col-lg-4 col-md-4 col-12">
                                     <div class="card" data-v-step="7">
                                         <div class="card-body pb-50" style="position: relative;">
                                             <h6>Time</h6>
@@ -416,9 +500,10 @@
                                                 Now</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
-                            <div class="row match-height">
+
+                            <!-- <div class="row match-height">
                                 <div class="col-lg-3 col-md-3 col-12">
                                     <div class="card shadow-none border cursor-pointer">
                                         <div class="card-body">
@@ -528,7 +613,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- Company Table Card -->
                             <!-- <div class="col-lg-12 col-12">
                                 <div class="row breadcrumbs-top">
@@ -547,39 +632,43 @@
                             </div> -->
                             <div class="col-lg-12 col-12">
                                 <div>
-                                    <div class="col-lg-12 col-12 d-flex flex-wrap card-header border-bottom top-radius py-2 align-items-center">
-    <div class="flex-grow-1">
-        <h5 class="fw-semibold">Attendance Sheet</h5>
-        <span class="text-primary">View all
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-            </svg>
-        </span>
-    </div>
+                                    <div
+                                        class="col-lg-12 col-12 d-flex flex-wrap card-header border-bottom top-radius py-2 align-items-center">
+                                        <div class="flex-grow-1">
+                                            <h5 class="fw-semibold">Attendance Sheet</h5>
+                                            <span class="text-primary">View all
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                                </svg>
+                                            </span>
+                                        </div>
 
-    <!-- Button container with responsive flex -->
-    <div class="d-flex gap-2 align-items-center flex-wrap">
-        <div data-v-step="7">
-            <div class="card-body pb-50 text-center">
-                <a data-bs-toggle="modal" data-bs-target="#timeAdj"
-                    class="btn btn-sm btn-primary waves-effect waves-float waves-light d-flex align-items-center justify-content-center w-100">
-                    <img class="px-2" src="/images/vector.png" alt="Absent">
-                    Adjustment
-                </a>
-            </div>
-        </div>
+                                        <!-- Button container with responsive flex -->
+                                        <div class="d-flex gap-2 align-items-center flex-wrap">
+                                            <div data-v-step="7">
+                                                <div class="card-body pb-50 text-center">
+                                                    <a data-bs-toggle="modal" data-bs-target="#timeAdj"
+                                                        class="p-2 btn btn-sm btn-primary bg-primary waves-effect waves-float waves-light d-flex align-items-center justify-content-center w-100">
+                                                        <img class="px-2" src="/images/vector.png" alt="Absent">
+                                                        Adjustment
+                                                    </a>
+                                                </div>
+                                            </div>
 
-        <div data-v-step="7">
-            <div class="card-body pb-50 text-center">
-                <a data-bs-toggle="modal" data-bs-target="#markAttendance"
-                    class="btn btn-sm btn-primary waves-effect waves-float waves-light d-flex align-items-center justify-content-center w-100">
-                    <img class="px-2" src="/images/mark_attendance.png" alt="Absent">
-                    Mark Attendance
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+                                            <div data-v-step="7">
+                                                <div class="card-body pb-50 text-center">
+                                                    <a data-bs-toggle="modal" data-bs-target="#markAttendance"
+                                                        class="p-2 btn btn-sm btn-primary bg-primary waves-effect waves-float waves-light d-flex align-items-center justify-content-center w-100">
+                                                        <img class="px-2" src="/images/mark_attendance.png"
+                                                            alt="Absent">
+                                                        Mark Attendance
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <!-- <div class="col-lg-6 card-header border-bottom top-radius">
                                         <div class="">
@@ -630,7 +719,7 @@
                                                     <td class="td-right">
                                                         <label style="margin-left: -20px;">{{
                                                             dayname(attendance1.ATTDate)
-                                                        }}, {{ attendance1.ATTDate }} </label>
+                                                            }}, {{ attendance1.ATTDate }} </label>
                                                     </td>
                                                     <td class="text-center"
                                                         v-if="attendance1?.AttStatus == 'P' || attendance1.AttStatus == 'L'">
@@ -758,7 +847,7 @@
             </div>
             <div v-else-if="this.fetchempcode == 'a'" class="app-content content ">
                 <div class="content-overlay"></div>
-                <div class="header-navbar-shadow"></div>
+                <div class="header-navbar-shadow-tem-change"></div>
                 <div class="content-wrapper container-xxl p-0">
                     <div class="content-header row">
                         <div class=" breadcrumb-wrapper">
@@ -1879,7 +1968,7 @@
                                         </option>
                                     </select>
                                     <span style="color: #DB4437; font-size: 11px;" v-if="type == ''">{{ type_error
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div class="col-12 col-sm-12 mb-1">
                                     <label class="form-label" for="basicSelect">Number of days</label>
@@ -1904,7 +1993,7 @@
                                     <span style="color: #DB4437; font-size: 11px;">*</span>
                                     <input type="date" v-model="d_from" id="modalAddCardName" class="form-control" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="d_from == ''">{{ d_from_error
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div class="col-md-02" v-if="this.days == 'Multiple Days'">
                                     <label class="form-label" for="modalAddCardName">Date To<span
@@ -1917,7 +2006,7 @@
                                     <input type="text" v-model="reason" id="modalAddCardName" class="form-control"
                                         placeholder="Reason of leave" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="reason == ''">{{ reason_error
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div class="col-12 text-center" style="margin-top:6%">
                                     <button
@@ -1979,14 +2068,14 @@
                                     <multiselect style="margin-right: 10px;" @input="count_max_limit()" v-model="type1"
                                         :show-labels="false" placeholder="Select" :options="options4"></multiselect>
                                     <span style="color: #DB4437; font-size: 11px;" v-if="type1 == ''">{{ type_error1
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label class="form-label">Amount<span
                                             style="color: #DB4437; font-size: 11px;">*</span></label>
                                     <input type="number" class="form-control" v-model="amount" placeholder="Amount" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="amount == ''">{{ amount_error
-                                        }}</span>
+                                    }}</span>
                                     <span style="color: #DB4437; font-size: 11px;" v-if="amount > max_advance">Ammount
                                         is too much</span>
                                 </div>
@@ -2026,7 +2115,7 @@
                                     <input type="text" class="form-control" v-model="reason"
                                         placeholder="Type reason here" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="reason == ''">{{ reason_error
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div class="col-12 text-center">
                                     <button
@@ -2071,7 +2160,7 @@
                                         style="color: #DB4437; font-size: 11px;">*</span>
                                     <input type="time" class="form-control" v-model="check_in" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="check_in == ''">{{ e_check_in
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div hidden class="col-12 col-md-3">
                                     <label class="form-label">Check out time</label>
@@ -2160,7 +2249,7 @@
                                 <label class="form-label">Adjust Hours:</label>
                                 <input type="number" class="form-control" v-model="Hours" placeholder="Enter hours" />
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Hours == ''">{{ Hours_error
-                                    }}</span>
+                                }}</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Hours > 23">Houres cannot more
                                     then 23</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Hours < 0">Houres cannot less
@@ -2172,7 +2261,7 @@
                                     placeholder="Enter minuts" />
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Minutes == ''">{{
                                     Minutes_error
-                                }}</span>
+                                    }}</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Minutes > 59">Minutes cannot
                                     more then 59</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Minutes < 0">Minutes cannot
@@ -2184,7 +2273,7 @@
                                 <input type="text" class="form-control" v-model="Reason"
                                     placeholder="Enter reason here" />
                                 <span style="color: #DB4437; font-size: 11px;" v-if="Reason == ''">{{ Reason_error
-                                    }}</span>
+                                }}</span>
                             </div>
                             <div class="col-12 text-center">
                                 <button :disabled="disabled3" @click="delay3()" type="submit"
@@ -2469,24 +2558,24 @@ export default {
             // other_total: this.leaves_dtl.ttl_other,
             // other_used: this.leaves_dtl.other_used,
 
-            annual_total: 12,
-            annual_rem: 4,
-            sick_total: 13,
-            sick_rem: 8,
-            casual_total: 19,
-            casual_rem: 10,
-            other_total: 16,
-            other_used: 7,
-            series1: [
-                {
-                },
-                {
-                },
-                {
-                },
-                {
-                }
-            ],
+            annual_total: '',
+            annual_rem: '',
+            sick_total: '',
+            sick_rem: '',
+            casual_total: '',
+            casual_rem: '',
+            other_total: '',
+            other_used:'',
+            // series1: [
+            //     {
+            //     },
+            //     {
+            //     },
+            //     {
+            //     },
+            //     {
+            //     }
+            // ],
 
 
         }
@@ -2631,32 +2720,32 @@ export default {
             };
         }
     },
-    watch: {
-        annual_total() {
-            this.updateSeries();
-        },
-        annual_rem() {
-            this.updateSeries();
-        },
-        sick_total() {
-            this.updateSeries();
-        },
-        sick_rem() {
-            this.updateSeries();
-        },
-        casual_total() {
-            this.updateSeries();
-        },
-        casual_rem() {
-            this.updateSeries();
-        },
-        other_total() {
-            this.updateSeries();
-        },
-        other_used() {
-            this.updateSeries();
-        }
-    },
+    // watch: {
+    //     annual_total() {
+    //         this.updateSeries();
+    //     },
+    //     annual_rem() {
+    //         this.updateSeries();
+    //     },
+    //     sick_total() {
+    //         this.updateSeries();
+    //     },
+    //     sick_rem() {
+    //         this.updateSeries();
+    //     },
+    //     casual_total() {
+    //         this.updateSeries();
+    //     },
+    //     casual_rem() {
+    //         this.updateSeries();
+    //     },
+    //     other_total() {
+    //         this.updateSeries();
+    //     },
+    //     other_used() {
+    //         this.updateSeries();
+    //     }
+    // },
 
     components: {
         Multiselect,
@@ -2665,13 +2754,20 @@ export default {
     },
 
     methods: {
-        // updating leaves
-        updateSeries() {
-            this.series1[0] = [Math.round((this.annual_rem / this.annual_total) * 100)];
-            this.series1[1] = [Math.round((this.sick_rem / this.sick_total) * 100)];
-            this.series1[2] = [Math.round((this.casual_rem / this.casual_total) * 100)];
-            this.series1[3] = [Math.round((this.other_used / this.other_total) * 100)];
+
+        formatTimes(time) {
+            if (!time) return 'Not Marked Yet';
+            let t = time.split(':');
+            return `${t[0]}:${t[1]}`;
         },
+
+        // updating leaves
+        // updateSeries() {
+        //     this.series1[0] = [Math.round((this.annual_rem / this.annual_total) * 100)];
+        //     this.series1[1] = [Math.round((this.sick_rem / this.sick_total) * 100)];
+        //     this.series1[2] = [Math.round((this.casual_rem / this.casual_total) * 100)];
+        //     this.series1[3] = [Math.round((this.other_used / this.other_total) * 100)];
+        // },
         get_attendance_count() {
             const startDate = new Date(this.dateRange.startDate);
             const formattedStartDate = `${startDate.getFullYear()}-${(startDate.getMonth() + 1).toString().padStart(2, '0')}-${startDate.getDate().toString().padStart(2, '0')}`;
@@ -2723,8 +2819,8 @@ export default {
         },
         mark_attendance() {
             axios.post('./mark_attendance', {
-                //check_in: this.check_in,
-                //check_out: this.check_out,
+                check_in: this.check_in,
+                check_out: this.check_out,
                 emp_id: this.name,
             })
                 .then(data => {
@@ -2960,7 +3056,7 @@ export default {
         },
     },
     mounted() {
-        this.updateSeries();
+        // this.updateSeries();
         this.fetch_emp_detail();
 
         const currentDate = new Date();
@@ -2970,6 +3066,8 @@ export default {
         axios.get('avg_attendance_times/' + 0)
             .then(data => {
                 this.avg_times = data.data[0];
+                console.log(this.avg_times, "AVRAGE TIME");
+
                 // this.formatTime();
             })
             .catch(error => {
@@ -3021,18 +3119,48 @@ export default {
             .then(data => {
                 this.check_in = data.data[0]?.OpeningTime;
                 this.check_out = data.data[0]?.ClosingTime;
+                this.arrival_time = data.data[0]?.CheckIN;
+                this.departure_time = data.data[0]?.CheckOut;
                 this.show_roaster = this.check_in + ' to ' + this.check_out
             })
             .catch(error => {
             });
 
         axios.get('this_user_attendence/' + 0) //Get attendance of logged in employee
-            .then(response => this.attendance = response.data.data)
+            .then(response => {
+                console.log(response, "this_user_attendence");
+                this.attendance = response.data.data
+                const empCodes = this.attendance.map(item => item.EmpCode);
+            })
             .catch(error => {
             });
 
         axios.get('leaves_dtl') //Count leaves detail
-            .then(data => this.leaves_dtl = data.data)
+            .then(data => {
+                this.leaves_dtl = data.data
+
+                this.annual_total = this.leaves_dtl.ttl_annual;
+                this.annual_rem = this.leaves_dtl.rem_annual;
+                this.sick_total = this.leaves_dtl.ttl_sick;
+                this.sick_rem = this.leaves_dtl.rem_sick;
+                this.casual_total = this.leaves_dtl.ttl_casual;
+                this.casual_rem = this.leaves_dtl.rem_casual;
+                this.other_total = this.leaves_dtl.ttl_other;
+                this.other_used = this.leaves_dtl.other_used;
+
+                // Series for Annual Leave
+                this.series1 = [Math.round((this.annual_rem / this.annual_total) * 100) || 0];
+
+                // Series for Sick Leave
+                this.series2 = [Math.round((this.sick_rem / this.sick_total) * 100) || 0];
+
+                // Series for Casual Leave
+                this.series3 = [Math.round((this.casual_rem / this.casual_total) * 100) || 0];
+
+                // Series for Other Leave (used)
+                this.series4 = [Math.round((this.other_used / this.other_total) * 100) || 0];
+
+            })
             .catch(error => {
             });
 

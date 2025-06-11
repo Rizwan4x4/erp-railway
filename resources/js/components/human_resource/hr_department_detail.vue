@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                 </div>
@@ -205,9 +205,9 @@
                             const updatedIndex = this.adsdata.data.findIndex(item => item.ID === id);
                             console.log(updatedIndex)
             if (updatedIndex !== -1) {
-         
+
                 this.adsdata.data.splice(updatedIndex, 1);
-                
+
             }
                         }
                     })
@@ -227,20 +227,20 @@
                         }
                         else if (data.data == 'Department updated') {
                             this.$toastr.s("Department updated Successfully!", "Congratulations!");
-                           
+
                             const updatedIndex = this.adsdata.data.findIndex(item => item.ID === this.dep_id);
             if (updatedIndex !== -1) {
-         
-                this.adsdata.data[updatedIndex].Department = this.ed_department_name;  
-                this.adsdata.data[updatedIndex].Company = this.ed_company_name;  
 
-            
+                this.adsdata.data[updatedIndex].Department = this.ed_department_name;
+                this.adsdata.data[updatedIndex].Company = this.ed_company_name;
+
+
                 this.dep_id = '';
                             this.ed_department_name = '';
                             this.ed_company_name = '';
                             this.department_cons = '';
                             this.company_cons = '';
-             
+
                 // Update other properties as needed
             }
                         }
@@ -310,7 +310,7 @@
                                 this.company_name = '';
                                 this.company_name1 = '';
                                 this.new_company_name = '';
-                              
+
                                 this.adsdata.data.unshift(data.data.data);
                             }
                             else {
@@ -337,29 +337,29 @@
                         this.$toastr.s('Department has been disabled!', "Success!");
                         const updatedIndex = this.adsdata.data.findIndex(item => item.ID === id);
             if (updatedIndex !== -1) {
-         
-                this.adsdata.data[updatedIndex].Status =  "Disabled";
-              
 
-             
+                this.adsdata.data[updatedIndex].Status =  "Disabled";
+
+
+
                 // Update other properties as needed
             }
-                   
+
                     })
                     .catch(error => console.log(error));
             },
             active(id) {
                 axios.get('./active_department/' + id)
                     .then((response) => {
-                    
+
                         this.$toastr.s('Department has been activated!', "Success!");
                         const updatedIndex = this.adsdata.data.findIndex(item => item.ID === id);
             if (updatedIndex !== -1) {
-         
-                this.adsdata.data[updatedIndex].Status =  "Active";
-              
 
-             
+                this.adsdata.data[updatedIndex].Status =  "Active";
+
+
+
                 // Update other properties as needed
             }
                     })

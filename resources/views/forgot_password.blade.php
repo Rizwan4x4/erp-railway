@@ -112,7 +112,7 @@ border: none !important;
       <div id="app">
        <div class="app-content content ">
         <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
+        <div class="header-navbar-shadow-tem-change"></div>
         <div class="content-wrapper">
             <div class="content-header row">
             </div>

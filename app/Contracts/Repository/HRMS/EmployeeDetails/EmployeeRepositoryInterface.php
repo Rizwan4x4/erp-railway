@@ -3,7 +3,7 @@ namespace App\Contracts\Repository\HRMS\EmployeeDetails;
 interface EmployeeRepositoryInterface {
     public function searchEmployeeByNameCnic( $keyword);
     public function searchEmployeeByFilter($department, $location, $designation, $gender, $status, $min_price, $max_price, $cnic, $emp_id, $emp_sts);
-    public function department_detail( );
+    public function department_detail();
     public function overall_designation();
     public function overall_location();
     public function  count_employees();

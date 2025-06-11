@@ -1,8 +1,8 @@
 <template>
-    <div >
+    <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -15,7 +15,7 @@
                                 </router-link>
                             </li>
                             <li class="breadcrumb-item active">
-                                Employement details 1
+                                Employement details
                             </li>
                         </ol>
                     </div>
@@ -24,310 +24,300 @@
                     <div class="card">
                         <div class="card-body">
                             <p>
-                                <div class="row"
-                                     style="border: 1px solid lightgrey;padding-top:20px;padding-bottom:10px">
-                                    <div class="col-md-2 col-sm-6 mb-1">
-                                        <label class="form-label" for="accountEmail">Employee Code</label>
-                                        <input type="text" class="form-control" id="accountEmail" readonly=""
-                                               v-model="emp_code" placeholder="">
-                                    </div>
-                                    <div class="col-md-2 col-sm-6 mb-1">
-                                        <label class="form-label" for="accountEmail">Salary</label>
-                                        <input v-if="!this.emp_salary9 || this.emp_salary9==0" type="number"
-                                               class="form-control" v-model="emp_salary">
-                                        <input v-else readonly type="number" class="form-control" v-model="emp_salary">
-                                    </div>
+                            <div class="row" style="border: 1px solid lightgrey;padding-top:20px;padding-bottom:10px">
+                                <div class="col-md-2 col-sm-6 mb-1">
+                                    <label class="form-label" for="accountEmail">Employee Code</label>
+                                    <input type="text" class="form-control" id="accountEmail" readonly=""
+                                        v-model="emp_code" placeholder="">
+                                </div>
+                                <div class="col-md-2 col-sm-6 mb-1">
+                                    <label class="form-label" for="accountEmail">Salary</label>
+                                    <input v-if="!this.emp_salary9 || this.emp_salary9 == 0" type="number"
+                                        class="form-control" v-model="emp_salary">
+                                    <input v-else readonly type="number" class="form-control" v-model="emp_salary">
+                                </div>
 
-                                    <div class="col-md-4 col-sm-6 mb-1">
-                                        <label class="form-label">Reporting To <label
+                                <div class="col-md-4 col-sm-6 mb-1">
+                                    <label class="form-label">Reporting To <label
                                             style="color: #d93025">*</label></label>
-                                        <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                     placeholder="Select Employee" v-model="reporting_to" value="id"
-                                                     label="label"
-                                                     :options="options7"></multiselect>
-                                        <label style="color: #d93025"
-                                               v-if="!reporting_to">{{ e_reporting_to }}</label>
-                                        <label class="text-danger"
-                                               v-if="reporting_to && reporting_to == second_reporting">Please Select
-                                            Different Reporting Persons</label>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 mb-1">
-                                        <label class="form-label">Secondary Reporting</label>
-                                        <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                     value="id" label="label"
-                                                     placeholder="Select Employee" v-model="second_reporting"
-                                                     :options="options7"></multiselect>
-                                    </div>
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
+                                        placeholder="Select Employee" v-model="reporting_to" value="id" label="label"
+                                        :options="options7"></multiselect>
+                                    <label style="color: #d93025" v-if="!reporting_to">{{ e_reporting_to }}</label>
+                                    <label class="text-danger"
+                                        v-if="reporting_to && reporting_to == second_reporting">Please Select
+                                        Different Reporting Persons</label>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-1">
+                                    <label class="form-label">Secondary Reporting</label>
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
+                                        value="id" label="label" placeholder="Select Employee"
+                                        v-model="second_reporting" :options="options7"></multiselect>
+                                </div>
 
-                                    <div class="col-md-4 col-sm-4 mb-1">
-                                        <label class="form-label">Currency <label
+                                <div class="col-md-4 col-sm-4 mb-1">
+                                    <label class="form-label">Currency <label style="color: #d93025">*</label></label>
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
+                                        placeholder="Select Currency" v-model="selectedCurrency"
+                                        :options="currencyNames"></multiselect>
+                                    <label style="color: #d93025" v-if="!selectedCurrency">{{ e_selectedCurrency
+                                        }}</label>
+                                    <!-- <label style="color: red" v-if="selectedCurrency && selectedCurrency === secondReporting">Please select a different currency</label> -->
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-1">
+                                    <label class="form-label">Job Shift</label>
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
+                                        id="accountPhoneNumber" placeholder="Select Shift" v-model="job_shift"
+                                        :options="options4"></multiselect>
+                                    <label style="color: #d93025" v-if="!job_shift">{{ e_job_shift }}</label>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-1">
+                                    <label class="form-label">Work Location</label>
+                                    <multiselect :show-labels="false" style="margin-right: 10px;"
+                                        placeholder="Select Location" v-model="work_location" :options="options1">
+                                    </multiselect>
+                                    <label style="color: #d93025" v-if="!work_location">{{ e_work_location }}</label>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-1">
+                                    <label class="form-label">Company Email Id</label>
+                                    <input type="email" class="form-control" v-model="company_email_id"
+                                        placeholder="Provided by company">
+                                    <span style="color: #d93025"
+                                        v-if="company_email_id && !validEmail(company_email_id)">{{
+                                            e_company_email_id
+                                        }}</span>
+                                </div>
+                                <div class="col-md-2 col-sm-6 mb-1">
+                                    <label class="form-label">Employee Status <label
                                             style="color: #d93025">*</label></label>
-                                        <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                     placeholder="Select Currency" v-model="selectedCurrency"
-                                                     :options="currencyNames"></multiselect>
-                                        <label style="color: #d93025"
-                                               v-if="!selectedCurrency">{{ e_selectedCurrency }}</label>
-                                        <!-- <label style="color: red" v-if="selectedCurrency && selectedCurrency === secondReporting">Please select a different currency</label> -->
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 mb-1">
-                                        <label class="form-label">Job Shift</label>
-                                        <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                     id="accountPhoneNumber" placeholder="Select Shift"
-                                                     v-model="job_shift" :options="options4"></multiselect>
-                                        <label style="color: #d93025" v-if="!job_shift">{{ e_job_shift }}</label>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 mb-1">
-                                        <label class="form-label">Work Location</label>
-                                        <multiselect :show-labels="false" style="margin-right: 10px;"
-                                                     placeholder="Select Location" v-model="work_location"
-                                                     :options="options1"></multiselect>
-                                        <label style="color: #d93025"
-                                               v-if="!work_location">{{ e_work_location }}</label>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 mb-1">
-                                        <label class="form-label">Company Email Id</label>
-                                        <input type="email" class="form-control" v-model="company_email_id"
-                                               placeholder="Provided by company">
-                                        <span style="color: #d93025"
-                                              v-if="company_email_id && !validEmail(company_email_id)">{{
-                                                e_company_email_id
-                                            }}</span>
-                                    </div>
-                                    <div class="col-md-2 col-sm-6 mb-1">
-                                        <label class="form-label">Employee Status <label
+                                    <select class="form-select" v-model="emp_status">
+                                        <option value=''>Select Status</option>
+                                        <option value='Registered'>Registered</option>
+                                        <option value='Resigned'>Resigned</option>
+                                        <option value='Suspended'>Suspended</option>
+                                        <option value='Terminated'>Terminated</option>
+                                    </select>
+                                    <label style="color: #d93025" v-if="!emp_status">{{ e_emp_status }}</label>
+                                </div>
+                                <div class="col-md-2 col-sm-6 mb-1">
+                                    <label class="form-label">Attendance machine<label
                                             style="color: #d93025">*</label></label>
-                                        <select class="form-select" v-model="emp_status">
-                                            <option value=''>Select Status</option>
-                                            <option value='Registered'>Registered</option>
-                                            <option value='Resigned'>Resigned</option>
-                                            <option value='Suspended'>Suspended</option>
-                                            <option value='Terminated'>Terminated</option>
-                                        </select>
-                                        <label style="color: #d93025" v-if="!emp_status">{{ e_emp_status }}</label>
-                                    </div>
-                                    <div class="col-md-2 col-sm-6 mb-1">
-                                        <label class="form-label">Attendance machine<label
+                                    <select class="form-select" v-model="emp_att_machine">
+                                        <option value=''>Select Machine</option>
+                                        <option v-for="attendanceMachine in attendanceMachines"
+                                            :value='attendanceMachine.Id'>
+                                            {{ attendanceMachine.DeviceName }}</option>
+                                    </select>
+                                    <label style="color: #d93025" v-if="!emp_job_status">{{ e_emp_job_status }}</label>
+                                </div>
+                                <div class="col-md-2 col-sm-6 mb-1">
+                                    <label class="form-label">Job Status <label style="color: #d93025">*</label></label>
+                                    <select class="form-select" v-model="emp_job_status">
+                                        <option value=''>Select Status</option>
+                                        <option value='Permanent'>Permanent</option>
+                                        <option value='Probation'>Probation</option>
+                                        <option value='Contract'>Contract</option>
+                                    </select>
+                                    <label style="color: #d93025" v-if="!emp_job_status">{{ e_emp_job_status }}</label>
+                                </div>
+                                <div class="col-md-2 col-sm-6 mb-1">
+                                    <label class="form-label" for="accountEmail">Date Of Joining <label
                                             style="color: #d93025">*</label></label>
-                                        <select class="form-select" v-model="emp_att_machine">
-                                            <option value=''>Select Machine</option>
-                                            <option v-for="attendanceMachine in attendanceMachines" :value='attendanceMachine.Id'>
-                                                {{ attendanceMachine.DeviceName }}</option>
-                                        </select>
-                                        <label style="color: #d93025"
-                                               v-if="!emp_job_status">{{ e_emp_job_status }}</label>
-                                    </div>
-                                    <div class="col-md-2 col-sm-6 mb-1">
-                                        <label class="form-label">Job Status <label
-                                            style="color: #d93025">*</label></label>
-                                        <select class="form-select" v-model="emp_job_status">
-                                            <option value=''>Select Status</option>
-                                            <option value='Permanent'>Permanent</option>
-                                            <option value='Probation'>Probation</option>
-                                            <option value='Contract'>Contract</option>
-                                        </select>
-                                        <label style="color: #d93025"
-                                               v-if="!emp_job_status">{{ e_emp_job_status }}</label>
-                                    </div>
-                                    <div class="col-md-2 col-sm-6 mb-1">
-                                        <label class="form-label" for="accountEmail">Date Of Joining <label
-                                            style="color: #d93025">*</label></label>
-                                        <input type="date" class="form-control" id="accountEmail" v-model="doj">
-                                        <label style="color: #d93025" v-if="!doj">{{ e_doj }}</label>
-                                    </div>
-                                    <div class="col-md-2 col-sm-6 mb-1">
-                                        <label class="form-label">Probation Days <label style="color: #d93025"
-                                                                                        v-if="emp_job_status == 'Probation'">*</label></label>
-                                        <input type="number" class="form-control account-number-mask"
-                                               v-model="emp_pro_days" placeholder="Enter number of days"
-                                               v-if="emp_job_status=='Probation'">
-                                        <input type="number" disabled class="form-control account-number-mask"
-                                               v-model="emp_pro_days" placeholder="No probation days" v-else>
-                                        <label style="color: #d93025"
-                                               v-if="!emp_pro_days">{{ e_emp_pro_days }}</label>
-                                    </div>
-                                    <div class="col-md-2 col-sm-12 mb-1">
-                                        <div class="mb-1">
-                                            <label class="form-label">Salary Method</label>
-                                            <div class="demo-inline-spacing">
-                                                <div class="form-check form-check-inline" style="margin-top:0px">
-                                                    <input class="form-check-input" type="radio" v-model="methodtype"
-                                                           name="inlineRadioOptions" id="inlineRadio1" value="Cash"
-                                                           checked="">
-                                                    <label class="form-check-label" for="inlineRadio1">Cash</label>
-                                                </div>
-                                                <div class="form-check form-check-inline" style="margin-top:0px">
-                                                    <input class="form-check-input" type="radio" v-model="methodtype"
-                                                           name="inlineRadioOptions" id="inlineRadio2"
-                                                           value="Bank Transfer">
-                                                    <label class="form-check-label" for="inlineRadio2">Bank
-                                                        Transfer</label>
-                                                </div>
+                                    <input type="date" class="form-control" id="accountEmail" v-model="doj">
+                                    <label style="color: #d93025" v-if="!doj">{{ e_doj }}</label>
+                                </div>
+                                <div class="col-md-2 col-sm-6 mb-1">
+                                    <label class="form-label">Probation Days <label style="color: #d93025"
+                                            v-if="emp_job_status == 'Probation'">*</label></label>
+                                    <input type="number" class="form-control account-number-mask" v-model="emp_pro_days"
+                                        placeholder="Enter number of days" v-if="emp_job_status == 'Probation'">
+                                    <input type="number" disabled class="form-control account-number-mask"
+                                        v-model="emp_pro_days" placeholder="No probation days" v-else>
+                                    <label style="color: #d93025" v-if="!emp_pro_days">{{ e_emp_pro_days }}</label>
+                                </div>
+                                <div class="col-md-2 col-sm-12 mb-1">
+                                    <div class="mb-1">
+                                        <label class="form-label">Salary Method</label>
+                                        <div class="demo-inline-spacing">
+                                            <div class="form-check form-check-inline" style="margin-top:0px">
+                                                <input class="form-check-input" type="radio" v-model="methodtype"
+                                                    name="inlineRadioOptions" id="inlineRadio1" value="Cash" checked="">
+                                                <label class="form-check-label" for="inlineRadio1">Cash</label>
+                                            </div>
+                                            <div class="form-check form-check-inline" style="margin-top:0px">
+                                                <input class="form-check-input" type="radio" v-model="methodtype"
+                                                    name="inlineRadioOptions" id="inlineRadio2" value="Bank Transfer">
+                                                <label class="form-check-label" for="inlineRadio2">Bank
+                                                    Transfer</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-10 col-sm-12 mb-1 row" v-if="methodtype=='Bank Transfer'">
-                                        <div class="col-md-4 col-sm-12 mb-1">
-                                            <label class="form-label">Bank Name <label style="color: #d93025">*</label></label>
-                                            <input type="text" placeholder="Bank name" class="form-control"
-                                                   v-model="bankname"/>
-                                        </div>
-                                        <div class="col-md-4 col-sm-12 mb-1">
-                                            <label class="form-label">Account Number <label
+                                </div>
+                                <div class="col-md-10 col-sm-12 mb-1 row" v-if="methodtype == 'Bank Transfer'">
+                                    <div class="col-md-4 col-sm-12 mb-1">
+                                        <label class="form-label">Bank Name <label
                                                 style="color: #d93025">*</label></label>
-                                            <input type="text" placeholder="Bank account number" class="form-control"
-                                                   v-model="bankaccount"/>
-                                        </div>
-                                        <div class="col-md-4 col-sm-12 mb-1">
-                                            <label class="form-label">Account Name <label
+                                        <input type="text" placeholder="Bank name" class="form-control"
+                                            v-model="bankname" />
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 mb-1">
+                                        <label class="form-label">Account Number <label
                                                 style="color: #d93025">*</label></label>
-                                            <input type="text" placeholder="Account name" class="form-control"
-                                                   v-model="accountname"/>
-                                        </div>
+                                        <input type="text" placeholder="Bank account number" class="form-control"
+                                            v-model="bankaccount" />
                                     </div>
-                                    <div class="col-md-10 col-sm-12 mb-1" v-else>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 mb-1">
-                                        <label class="form-label">Job Description</label>
-                                        <label style="color: #d93025">*</label>
-                                        <vue-editor style="height:200px;" v-model="job_description"
-                                                    placeholder="Add Job Description"></vue-editor>
-                                        <div style="height:80px;"></div>
-                                        <label style="color: #d93025"
-                                               v-if="!job_description">{{ e_job_description }}</label>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 mb-1">
-                                        <label class="form-label">Remarks</label>
-                                        <vue-editor style="height:200px;" v-model="remarks"
-                                                    placeholder="Add Remarks"></vue-editor>
-                                        <div style="height:80px;"></div>
+                                    <div class="col-md-4 col-sm-12 mb-1">
+                                        <label class="form-label">Account Name <label
+                                                style="color: #d93025">*</label></label>
+                                        <input type="text" placeholder="Account name" class="form-control"
+                                            v-model="accountname" />
                                     </div>
                                 </div>
-                                <div class="row"
-                                     style="border: 1px solid lightgrey;margin-top:20px;padding-top:20px;padding-bottom:20px">
-                                    <div class=" col-12 col-sm-12 mb-1card-header"><h4 class="card-title">Department &
-                                        Designation</h4></div>
-                                    <div class="col-md-4 col-sm-6 mb-1">
-                                        <label class="form-label">Child Company <span
-                                            style="color: #d93025">*</span></label>
-                                        <multiselect :show-labels="false" @input="get_dept_bycomp()"
-                                                     style="margin-right: 10px; font-size: 15px;"
-                                                     placeholder="Child Company" v-model="child_company"
-                                                     :options="options_child">
-                                        </multiselect>
-                                        <span style="color: #DB4437; font-size: 11px;"
-                                              v-if="!child_company">{{ e_child_company }}</span>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 mb-1">
-                                        <label class="form-label">Department</label>
-                                        <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                     id="accountPhoneNumber" placeholder="Select Department"
-                                                     v-model="emp_department" :options="options6"></multiselect>
-                                        <label style="color: #d93025"
-                                               v-if="!emp_department">{{ e_emp_department }}</label><br/>
-                                        <label style="color: RED" v-if="!child_company">First
-                                            Select Child Company</label>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 mb-1">
-                                        <label class="form-label">Designation</label>
-                                        <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                     id="accountPhoneNumber" placeholder="Select Designation"
-                                                     v-model="emp_designation" :options="options5"></multiselect>
-                                        <label style="color: #d93025"
-                                               v-if="!emp_designation">{{ e_emp_designation }}</label>
-                                    </div>
+                                <div class="col-md-10 col-sm-12 mb-1" v-else>
                                 </div>
-                                <div class="row"
-                                     style="border: 1px solid lightgrey;margin-top:20px;padding-top:20px;padding-bottom:20px">
-                                    <table style="margin-left:9px;">
-                                        <tr>
-                                            <td style="width:130px;">
-                                                <label class="form-label" style="font-size:14px;padding-right:20px">Notifications:</label>
-                                            </td>
-                                            <td>
-                                                <input disabled class="form-check-input" type="checkbox"
-                                                       v-model="hr_notifications" id="inlineCheckbox2">
-                                                <label class="form-check-label" for="inlineCheckbox2">Send email and SMS
-                                                    notifications of HR Activities</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="form-label" style="font-size:14px;padding-right:20px">Permissions:</label>
-                                            </td>
-                                            <td>
-                                                <input class="form-check-input" type="checkbox" v-model="att_check"
-                                                       id="inlineCheckbox1">
-                                                <label class="form-check-label" for="inlineCheckbox1">Allow to other
-                                                    employees Punch In & Out from Application</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <div v-if="att_check==true" class="row">
-                                                    <div class="col-md-12 col-sm-12 mb-1">
-                                                        <multiselect :show-labels="false" style="margin-right: 10px;"
-                                                                     v-model="selected" :multiple="true"
-                                                                     :options="options"></multiselect>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="form-label" style="font-size:14px;padding-right:20px">Portal
-                                                    Access:</label>
-                                            </td>
-                                            <td>
-                                                <input class="form-check-input" type="checkbox" v-model="login_check"
-                                                       id="inlineCheckbox3" v-bind:disabled="isCheckboxDisabled">
-                                                <label class="form-check-label" for="inlineCheckbox3">Login to the
-                                                    Application, Employee can login with their eMail and Password to the
-                                                    Application</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <div class="col-md-12 col-sm-6 mb-1">
-                                                    <div v-if="login_check==true" class="row">
-                                                        <div class="col-md-4 col-sm-6 mb-1">
-                                                            <label class="form-label" for="accountEmail">User
-                                                                Email</label>
-                                                            <input type="email" class="form-control" id="accountEmail"
-                                                                   v-model="user_email" placeholder="abc@gmail.com">
-                                                            <label style="color: #d93025"
-                                                                   v-if="!validEmail(user_email)">{{
-                                                                    e_user_email
-                                                                }}</label>
-                                                        </div>
-                                                        <div class="col-md-4 col-sm-6 mb-1">
-                                                            <label class="form-label">User Password</label>
-                                                            <input type="password" class="form-control" id="password"
-                                                                   v-model="user_password">
-                                                            <label style="color: #d93025"
-                                                                   v-if="!user_password">{{
-                                                                    e_user_password
-                                                                }}</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <label style="color: #d93025"
-                                           v-if="hr_notifications != true && att_check != true && login_check!=true">{{
-                                            e_check
+                                <div class="col-md-6 col-sm-12 mb-1">
+                                    <label class="form-label">Job Description</label>
+                                    <label style="color: #d93025">*</label>
+                                    <vue-editor style="height:200px;" v-model="job_description"
+                                        placeholder="Add Job Description"></vue-editor>
+                                    <div style="height:80px;"></div>
+                                    <label style="color: #d93025" v-if="!job_description">{{ e_job_description
                                         }}</label>
-                                    <div class="col-12" style="text-align:center">
-                                        <button :disabled="disabled" @click="delay()" type="button"
-                                                class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">
-                                            Update Employee Profile
-                                        </button>
-                                        <div>
-                                        </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 mb-1">
+                                    <label class="form-label">Remarks</label>
+                                    <vue-editor style="height:200px;" v-model="remarks"
+                                        placeholder="Add Remarks"></vue-editor>
+                                    <div style="height:80px;"></div>
+                                </div>
+                            </div>
+                            <div class="row"
+                                style="border: 1px solid lightgrey;margin-top:20px;padding-top:20px;padding-bottom:20px">
+                                <div class=" col-12 col-sm-12 mb-1card-header">
+                                    <h4 class="card-title">Department &
+                                        Designation</h4>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-1">
+                                    <label class="form-label">Child Company <span
+                                            style="color: #d93025">*</span></label>
+                                    <multiselect :show-labels="false" @input="get_dept_bycomp()"
+                                        style="margin-right: 10px; font-size: 15px;" placeholder="Child Company"
+                                        v-model="child_company" :options="options_child">
+                                    </multiselect>
+                                    <span style="color: #DB4437; font-size: 11px;" v-if="!child_company">{{
+                                        e_child_company }}</span>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-1">
+                                    <label class="form-label">Department</label>
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
+                                        id="accountPhoneNumber" placeholder="Select Department" v-model="emp_department"
+                                        :options="options6"></multiselect>
+                                    <label style="color: #d93025" v-if="!emp_department">{{ e_emp_department
+                                        }}</label><br />
+                                    <label style="color: RED" v-if="!child_company">First
+                                        Select Child Company</label>
+                                </div>
+                                <div class="col-md-4 col-sm-6 mb-1">
+                                    <label class="form-label">Designation</label>
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
+                                        id="accountPhoneNumber" placeholder="Select Designation"
+                                        v-model="emp_designation" :options="options5"></multiselect>
+                                    <label style="color: #d93025" v-if="!emp_designation">{{ e_emp_designation
+                                        }}</label>
+                                </div>
+                            </div>
+                            <div class="row"
+                                style="border: 1px solid lightgrey;margin-top:20px;padding-top:20px;padding-bottom:20px">
+                                <table style="margin-left:9px;">
+                                    <tr>
+                                        <td style="width:130px;">
+                                            <label class="form-label"
+                                                style="font-size:14px;padding-right:20px">Notifications:</label>
+                                        </td>
+                                        <td>
+                                            <input disabled class="form-check-input" type="checkbox"
+                                                v-model="hr_notifications" id="inlineCheckbox2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Send email and SMS
+                                                notifications of HR Activities</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="form-label"
+                                                style="font-size:14px;padding-right:20px">Permissions:</label>
+                                        </td>
+                                        <td>
+                                            <input class="form-check-input" type="checkbox" v-model="att_check"
+                                                id="inlineCheckbox1">
+                                            <label class="form-check-label" for="inlineCheckbox1">Allow to other
+                                                employees Punch In & Out from Application</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div v-if="att_check == true" class="row">
+                                                <div class="col-md-12 col-sm-12 mb-1">
+                                                    <multiselect :show-labels="false" style="margin-right: 10px;"
+                                                        v-model="selected" :multiple="true" :options="options">
+                                                    </multiselect>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="form-label" style="font-size:14px;padding-right:20px">Portal
+                                                Access:</label>
+                                        </td>
+                                        <td>
+                                            <input class="form-check-input" type="checkbox" v-model="login_check"
+                                                id="inlineCheckbox3" v-bind:disabled="isCheckboxDisabled">
+                                            <label class="form-check-label" for="inlineCheckbox3">Login to the
+                                                Application, Employee can login with their eMail and Password to the
+                                                Application</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="col-md-12 col-sm-6 mb-1">
+                                                <div v-if="login_check == true" class="row">
+                                                    <div class="col-md-4 col-sm-6 mb-1">
+                                                        <label class="form-label" for="accountEmail">User
+                                                            Email</label>
+                                                        <input type="email" class="form-control" id="accountEmail"
+                                                            v-model="user_email" placeholder="abc@gmail.com">
+                                                        <label style="color: #d93025" v-if="!validEmail(user_email)">{{
+                                                            e_user_email
+                                                        }}</label>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-6 mb-1">
+                                                        <label class="form-label">User Password</label>
+                                                        <input type="password" class="form-control" id="password"
+                                                            v-model="user_password">
+                                                        <label style="color: #d93025" v-if="!user_password">{{
+                                                            e_user_password
+                                                        }}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <label style="color: #d93025"
+                                    v-if="hr_notifications != true && att_check != true && login_check != true">{{
+                                        e_check
+                                    }}</label>
+                                <div class="col-12" style="text-align:center">
+                                    <button :disabled="disabled" @click="delay()" type="button"
+                                        class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">
+                                        Update Employee Profile
+                                    </button>
+                                    <div>
                                     </div>
                                 </div>
+                            </div>
                             </p>
                         </div>
                     </div>
@@ -345,9 +335,9 @@ import Multiselect from 'vue-multiselect'
 export default {
     data() {
         return {
-            attendanceMachines:{},
-            emp_att_machine:'',
-            e_emp_att_machine:'',
+            attendanceMachines: {},
+            emp_att_machine: '',
+            e_emp_att_machine: '',
             id: this.$route.params.id,
             report1: '',
             report2: '',
@@ -435,7 +425,7 @@ export default {
             reporting2Id: '',
         }
     },
-    components: {Multiselect},
+    components: { Multiselect },
     methods: {
         delay() {
             this.disabled = true
@@ -464,14 +454,14 @@ export default {
             if (this.second_reporting) {
                 isReportingValid = this.second_reporting && this.reporting_to.id !== this.second_reporting.id;
             }
-            if(this.emp_job_status == 'Probation') {
+            if (this.emp_job_status == 'Probation') {
                 if (this.emp_pro_days > 0) {
                     var isEmpProDaysValid = true;
                 } else {
                     var isEmpProDaysValid = false;
                 }
             }
-            else{
+            else {
                 var isEmpProDaysValid = true;
             }
 
@@ -493,6 +483,26 @@ export default {
                 this.e_emp_pro_days = this.emp_job_status === 'Probation' && !this.emp_pro_days ? 'Enter probation days' : '';
                 this.check_reporting = this.reporting_to === this.second_reporting && this.reporting_to !== null;
                 this.$toastr.e("Please fill required fields!", "Caution!");
+
+                // debuging
+                console.log({
+                    company_email_id: this.company_email_id,
+                    isEmailValid,
+                    reporting_to: this.reporting_to,
+                    emp_pro_days: this.emp_pro_days,
+                    emp_job_status: this.emp_job_status,
+                    job_shift: this.job_shift,
+                    work_location: this.work_location,
+                    doj: this.doj,
+                    emp_status: this.emp_status,
+                    emp_code: this.emp_code,
+                    emp_job_status: this.emp_job_status,
+                    job_description: this.job_description,
+                    emp_department: this.emp_department,
+                    emp_att_machine: this.emp_att_machine,
+                    emp_designation: this.emp_designation,
+                    child_company: this.child_company
+                });
             } else {
                 if (this.second_reporting != null) {
                     var second_reporting = this.second_reporting.id;
@@ -608,9 +618,17 @@ export default {
             })
 
         axios.get('get_machines')
-            .then(data => {
-                this.attendanceMachines = data.data.data;
-            })
+        Promise.resolve({
+            data: {
+                data: [
+                    { Id: 1, DeviceName: 'Machine A' },
+                    { Id: 2, DeviceName: 'Machine B' },
+                    { Id: 3, DeviceName: 'Machine C' }
+                ]
+            }
+        }).then(data => {
+            this.attendanceMachines = data.data.data;
+        });
 
         axios.get('roster_detail1')
             .then(data => {
@@ -624,6 +642,8 @@ export default {
 
         axios.get('getemployment_att_detail/' + this.id)
             .then(response => {
+                // console.log(response,"getemployment_att_detail");
+
                 this.att_emp = response.data;
                 this.selected = [];
                 var $this = this;
@@ -642,7 +662,10 @@ export default {
 
         axios.get('getemployment_detail/' + this.id)
             .then(data => {
+                console.log(data, "this is the reponse ok ");
                 this.emp_data = data.data;
+                // console.log(this.emp_data, "this is the reponse ok ");
+
                 this.login_check = false; //used false as no need now
 
                 this.reporting1Id = data.data[0].ReportingTo;
@@ -682,6 +705,7 @@ export default {
                     this.att_check = true;
                 }
                 this.emp_code = data.data[0].EmployeeCode;
+                console.log(this.emp_code, "this the emp.code")
                 this.company_email_id = data.data[0].CompanyEmail;
             })
 

@@ -94,8 +94,11 @@ Route::get('/find_emp_id', 'App\Http\Controllers\HRMS\LeavesDetails\LeavesApplic
 Route::get('fetch_loan_slip/{id}', 'App\Http\Controllers\HRMS\HrController@fetch_loan_slip');  //Fetch rel loan for slip
 Route::get('overall_leaves', 'App\Http\Controllers\HRMS\LeavesDetails\LeavesDashboardController@overall_leaves');
 
+
 Route::post('submit_holidays', 'App\Http\Controllers\HRMS\HrController@submit_holidays')->middleware('permission:HR Controller inchlude holiday');
 Route::get('holiday_detail/', 'App\Http\Controllers\HRMS\HrController@holiday_detail')->middleware('permission:HR Controller overall-view');
+Route::get('/get-leave-types', 'App\Http\Controllers\HRMS\HrController@getLeaveTypes'); //getting leaves type
+
 Route::post('submit_l', 'App\Http\Controllers\HRMS\HrController@submit_l')->middleware('permission:HR Controller Add leave type');
 Route::post('submit_fine', 'App\Http\Controllers\HRMS\HrController@submit_fine')->middleware('permission:HR Controller add new fine');
 Route::get('view_fine_detail/', 'App\Http\Controllers\HRMS\HrController@view_fine_detail')->middleware('permission:HR Controller overall-view');
@@ -138,7 +141,9 @@ Route::post('submit_warn_reas', 'App\Http\Controllers\HRMS\HrController@submit_w
 Route::get('/delete_warn_reas/{id}', 'App\Http\Controllers\HRMS\HrController@delete_warn_reas');
 Route::get('overall_child_companies_emp', 'App\Http\Controllers\HRMS\HrController@overall_child_companies_emp')->middleware('permission:Department overall-view');
 Route::get('att_time/{id}', 'App\Http\Controllers\HRMS\HrController@att_time');  //Fetch rel leave balance
-Route::post('mark_attendance', 'App\Http\Controllers\HRMS\HrController@mark_attendance'); //Add
+Route::match(['GET', 'POST'], 'mark_attendance', 'App\Http\Controllers\HRMS\HrController@mark_attendance');
+
+// Route::match('mark_attendance', 'App\Http\Controllers\HRMS\HrController@mark_attendance'); //Add
 Route::get('find_sess_date/{id}', 'App\Http\Controllers\HRMS\HrController@find_sess_date');
 Route::get('pull_attendance', 'App\Http\Controllers\HRMS\HrController@pull_attendance'); //Pull  attendance
 Route::get('pull_attendance1', 'App\Http\Controllers\HRMS\HrController@pull_attendance1'); //Pull  attendance1

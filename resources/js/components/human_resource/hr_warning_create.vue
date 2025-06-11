@@ -1,8 +1,8 @@
 <template>
-    <div >
+    <div>
         <div class="app-content content ">
             <div class="noprint content-overlay"></div>
-            <div class="noprint cheader-navbar-shadow"></div>
+            <div class="noprint cheader-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="noprint content-header row">
                     <div class="breadcrumb-wrapper">
@@ -46,18 +46,18 @@
 
                                                     <div class="invoice-date-wrapper">
                                                         <p style="margin-bottom:5px !important"
-                                                           class="invoice-date-title">
+                                                            class="invoice-date-title">
                                                             <strong>Date Issued:</strong>
-                                                            <input type="date" v-model="date"/>
+                                                            <input type="date" v-model="date" />
                                                         </p>
                                                     </div>
-                                                    <label style="color: #d93025" v-if="date==''">{{ mydate }}</label>
+                                                    <label style="color: #d93025" v-if="date == ''">{{ mydate }}</label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr class="invoice-spacing"/>
+                                        <hr class="invoice-spacing" />
                                         <div class="card-body invoice-padding pt-0"
-                                             style="margin-left:5%;margin-right:5%;">
+                                            style="margin-left:5%;margin-right:5%;">
                                             <div class="row invoice-spacing">
                                                 <div class="col-xl-6 p-0">
                                                     <h6 class="mb-2">
@@ -67,42 +67,43 @@
                                                             <option v-for='empcode1 in empcode' :value='empcode1.EmployeeCode'>{{ empcode1.EmployeeCode }}</option>
                                                         </select>-->
                                                         <multiselect v-model="emp_code1" @input="getemp_detail()"
-                                                                     :show-labels="false"
-                                                                     style="margin-right: 10px; font-size: 15px;"
-                                                                     id="accountPhoneNumber"
-                                                                     placeholder="Select Employee"
-                                                                     :options="options"></multiselect>
-                                                        <label style="color: #d93025"
-                                                               v-if="emp_code==''">{{ e_emp_id }}</label>
+                                                            :show-labels="false"
+                                                            style="margin-right: 10px; font-size: 15px;"
+                                                            id="accountPhoneNumber" placeholder="Select Employee"
+                                                            :options="options"></multiselect>
+                                                        <label style="color: #d93025" v-if="emp_code == ''">{{ e_emp_id
+                                                            }}</label>
                                                     </h6>
                                                     <h6 class="mb-2">
                                                         <strong>Name:</strong>
                                                         <input type="text" style="width:50%" v-model="emp_name"
-                                                               readonly/>
-                                                        <label style="color: #d93025"
-                                                               v-if="emp_name==''">{{ e_emp_name }}</label>
+                                                            readonly />
+                                                        <label style="color: #d93025" v-if="emp_name == ''">{{
+                                                            e_emp_name
+                                                        }}</label>
                                                     </h6>
                                                     <h6 class="mb-25">
                                                         <strong>Department:</strong>
                                                         <input type="text" style="width:50%" v-model="department"
-                                                               readonly/>
+                                                            readonly />
 
-                                                        <label style="color: #d93025"
-                                                               v-if="department==''">{{ e_department }}</label>
+                                                        <label style="color: #d93025" v-if="department == ''">{{
+                                                            e_department }}</label>
                                                     </h6>
                                                     <h6 class="card-text mb-25">
                                                         <strong>Designation:</strong>
                                                         <input type="text" style="width:50%" v-model="designation"
-                                                               readonly/>
-                                                        <label style="color: #d93025"
-                                                               v-if="designation==''">{{ e_designation }}</label>
+                                                            readonly />
+                                                        <label style="color: #d93025" v-if="designation == ''">{{
+                                                            e_designation }}</label>
                                                     </h6>
                                                     <h6 class="card-text mb-25">
                                                         <strong>Location:</strong>
                                                         <input type="text" style="width:50%" v-model="location"
-                                                               readonly/>
-                                                        <label style="color: #d93025"
-                                                               v-if="location==''">{{ e_location }}</label>
+                                                            readonly />
+                                                        <label style="color: #d93025" v-if="location == ''">{{
+                                                            e_location
+                                                        }}</label>
                                                     </h6>
                                                 </div>
                                             </div>
@@ -113,13 +114,12 @@
                                                 <h6 class="card-text mb-25" style="padding-left:0px">
                                                     <strong>Subject:</strong>
                                                     <multiselect value="ID" v-model="subject" :show-labels="false"
-                                                                 style="margin-right: 10px; font-size: 15px;"
-                                                                 id="accountPhoneNumber"
-                                                                 placeholder="Select Warning Reason" :options="options1"
-                                                                 @input="get_warndetail()"></multiselect>
+                                                        style="margin-right: 10px; font-size: 15px;"
+                                                        id="accountPhoneNumber" placeholder="Select Warning Reason"
+                                                        :options="options1" @input="get_warndetail()"></multiselect>
 
-                                                    <label style="color: #d93025"
-                                                           v-if="subject==''">{{ e_subject }}</label>
+                                                    <label style="color: #d93025" v-if="subject == ''">{{ e_subject
+                                                        }}</label>
                                                 </h6>
                                                 <br>
                                                 <div class="card-body invoice-padding">
@@ -131,9 +131,11 @@
                                                                         <vue-editor
                                                                             style="height:500px; margin-bottom:50px;"
                                                                             v-model="warningContent"
-                                                                            placeholder="Add Warning"></vue-editor>
+                                                                            placeholder="Add Warning">
+                                                                        </vue-editor>
                                                                         <label style="color: #d93025; margin-top:35px;"
-                                                                               v-if="this.sliced != this.companyname">{{ e_sliced }}</label>
+                                                                            v-if="this.sliced != this.companyname">{{
+                                                                                e_sliced }}</label>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -149,7 +151,7 @@
                                             <div class="row invoice-sales-total-wrapper">
                                             </div>
                                         </div>
-                                        <hr class="noprint invoice-spacing"/>
+                                        <hr class="noprint invoice-spacing" />
                                     </div>
                                 </div>
                             </div>
@@ -159,10 +161,10 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <button :disabled="disabled" @click="delay()"
-                                                class="btn btn-primary w-100 btn-download-invoice mb-75">Save
+                                            class="btn btn-primary w-100 btn-download-invoice mb-75">Save
                                         </button>
                                         <button :disabled="disabled" @click="delay1()"
-                                                class="btn btn-outline-success  w-100 mb-75">Save & Print
+                                            class="btn btn-outline-success  w-100 mb-75">Save & Print
                                         </button>
                                     </div>
                                 </div>
@@ -174,21 +176,10 @@
             </div>
         </div>
 
-        <vue-html2pdf :show-layout="false"
-                      :float-layout="true"
-                      :enable-download="false"
-                      :preview-modal="true"
-                      :paginate-elements-by-height="5000"
-                      filename="Warning_Issued"
-                      :pdf-quality="2"
-                      :manual-pagination="false"
-                      pdf-format="a4"
-                      pdf-orientation="landscape"
-                      pdf-content-width="1100px"
-                      @progress="onProgress($event)"
-                      @hasStartedGeneration="hasStartedGeneration()"
-                      @hasGenerated="hasGenerated($event)"
-                      ref="htmlempdetailPdfs">
+        <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="false" :preview-modal="true"
+            :paginate-elements-by-height="5000" filename="Warning_Issued" :pdf-quality="2" :manual-pagination="false"
+            pdf-format="a4" pdf-orientation="landscape" pdf-content-width="1100px" @progress="onProgress($event)"
+            @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)" ref="htmlempdetailPdfs">
             <div slot="pdf-content">
                 <div class="content-body" v-for='warning_detail1 in warning_detail'>
                     <section class="invoice-preview-wrapper">
@@ -221,14 +212,14 @@
                                                 </div>
                                                 <div class="">
                                                     <p style="margin-bottom:5px !important" class="invoice-date-title">
-                                                        Warning Type:<span
-                                                        style="color:red">{{ warning_detail1.WarningType }}</span></p>
+                                                        Warning Type:<span style="color:red">{{
+                                                            warning_detail1.WarningType }}</span></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Header ends -->
                                     </div>
-                                    <hr class="invoice-spacing"/>
+                                    <hr class="invoice-spacing" />
                                     <div class="card-body invoice-padding pt-0" style="margin-left:5%;margin-right:5%;">
                                         <div class="row invoice-spacing">
                                             <div class="col-xl-8 p-0">
@@ -258,8 +249,9 @@
                                             <p style="padding-left:0px">
                                                 As intimated by the management / your supervisor, we are putting you on
                                                 a Corrective Action Plan commencing from < mention date>. This plan is
-                                                being introduced to bring your performance up to an acceptable standard,
-                                                considering your capabilities and requirements of your job role.
+                                                    being introduced to bring your performance up to an acceptable
+                                                    standard,
+                                                    considering your capabilities and requirements of your job role.
                                             </p>
                                             <p style="padding-left:0px">
                                                 Each member in our company is expected to contribute to the best of
@@ -283,7 +275,7 @@
                                         <div class="row invoice-sales-total-wrapper">
                                         </div>
                                     </div>
-                                    <hr class="invoice-spacing"/>
+                                    <hr class="invoice-spacing" />
                                 </div>
                             </div>
                             <!-- /Invoice -->
@@ -299,7 +291,7 @@
     </div>
 </template>
 <script>
-import {VueEditor} from 'vue2-editor';
+import { VueEditor } from 'vue2-editor';
 import VueHtml2pdf from 'vue-html2pdf';
 import Multiselect from 'vue-multiselect';
 
@@ -424,7 +416,6 @@ export default {
             axios.get('fetch_warningdetail/' + this.subject)
                 .then(response => {
                     this.warningContent = response.data.ReasonContent;
-
                 })
 
         },
@@ -445,8 +436,10 @@ export default {
             }
         },
         issue_warning() {
+            this.warning_content = this.warning_content.replace(/<h4><strong>.*?<\/strong><\/h4>\s*$/, `<h4><strong>${this.companyname}</strong></h4>`);
             this.sliced1 = this.warning_content.slice(-(this.companyname.length) - 14);
             this.sliced = this.sliced1.slice(0, this.companyname.length);
+
             if (this.emp_code == '' || this.department == '' || this.designation == '' || this.location == '' || this.subject == '' || this.emp_name == '' || this.sliced != this.companyname) {
                 if (this.emp_code == '') {
                     this.e_emp_id = 'Select employee code!';
@@ -476,8 +469,15 @@ export default {
                 if (this.emp_name == '') {
                     this.e_emp_name = 'Add name in employee profile!';
                 } else {
+                    9
                     this.e_emp_name = '';
                 }
+
+                // console.log('Company Name:', this.companyname);
+                // console.log('Content:', this.warning_content);
+                // console.log('Sliced1:', this.sliced1);
+                // console.log('Sliced:', this.sliced);
+
                 if (this.sliced != this.companyname) {
                     this.e_sliced = 'You cannot change company name in warning letter!';
                     this.error = 'You cannot change company name in warning letter!';
@@ -513,7 +513,7 @@ export default {
                             this.designation = '';
                             this.location = '';
                             this.subject = '';
-                            this.$router.push({name: 'warning_detail'});
+                            this.$router.push({ name: 'warning_detail' });
                         } else if (response.data.message == 'Employee is already terminated') {
                             this.$toastr.i("Employee is already terminated", "Information!");
                             this.emp_id_warn = 'null';
@@ -532,6 +532,8 @@ export default {
         getemp_detail() {
             var empcode1 = this.emp_code1.split('_');
             this.emp_code = empcode1[1];
+            console.log(this.emp_code, "employee code");
+
             axios.post('./get_emp_detail', {
                 emp_id: this.emp_code,
             })
@@ -540,6 +542,7 @@ export default {
                     this.designation = response.data[0].Designation;
                     this.location = response.data[0].PostingCity;
                     this.emp_name = response.data[0].Name;
+
                 })
                 .catch(error => this.error = error.response.data.errors)
 
@@ -552,7 +555,7 @@ export default {
     },
     mounted() {
 
-        this.fetchRoles();
+        // this.fetchRoles();
         this.overall_empcode();
 
 
@@ -577,10 +580,10 @@ export default {
             .then(response => {
                 this.companydetail = response.data;
                 this.companyname = response.data[0].company_name;
+                // console.log(this.companyname,"compny name    bibrfre");
+
             })
 
     }
 }
 </script>
-
-

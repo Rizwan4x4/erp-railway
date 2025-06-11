@@ -2,7 +2,7 @@
       <div >
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-body">
                     <div class="content-header row">
@@ -486,7 +486,7 @@
                                                                @click="fetch_emp_payroll(all_sals11.DistributionID)"
                                                                data-bs-toggle="modal"><i style="color:#0d6efd"
                                                                                          class="fa-solid fa-eye"></i><span></span></a>
-                                                            <a 
+                                                            <a
                                                                target="_blank"
                                                                v-bind:href="`${url}/generate_slip/${all_sals11.EmployeeID}/${all_sals11.DistributionID}/${all_sals11.EmpCode}`"><i
                                                                 class="fa-solid fa-download"></i></a>
@@ -1143,9 +1143,9 @@ export default {
                 this.session_name = response.data;
             })
 
-    
 
-     
+
+
     },
 
     beforeDestroy() {

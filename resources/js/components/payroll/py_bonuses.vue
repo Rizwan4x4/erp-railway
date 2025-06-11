@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-body">
                     <div class="content-header row">
@@ -22,18 +22,18 @@
                     </div>
                     <div class="row" id="basic-table">
                         <div class="col-12">
-                            <div class="card">
-                                <div class="row" style="margin-top:20px">
+                            <div class="card border-0 top-radius bottom-radius">
+                                <div class="row p-3">
                                     <div class="col-md-3 col-12 mb-2 position-relative">
-                                        <h5 style="padding-left:10px;padding-top:10px">Session Name: {{this.session_name}}</h5>
+                                        <h5 >Session Name: {{this.session_name}}</h5>
                                     </div>
                                     <div class="col-md-4 col-12 mb-2 position-relative">
-                                        <input type="text" v-model="keyword1" class="form-control" placeholder="Search By Name or Employee code">
+                                        <input type="text" v-model="keyword1" class="form-control p-2" placeholder="Search By Name or Employee code">
                                     </div>
                                     <div class="col-md-3 col-12 mb-2 position-relative">
-                                        <button v-if="hasPermission('Payroll Appply Bonuses')" data-bs-toggle="modal" data-bs-target="#applybonus" class="btn btn-primary">Apply Bonus</button>
+                                        <button v-if="hasPermission('Payroll Appply Bonuses')" data-bs-toggle="modal" data-bs-target="#applybonus" class="btn btn-primary bg-primary p-2">Apply Bonus</button>
                                         <button v-else class="btn btn-danger">Apply Bonus</button>
-                                    
+
                                     </div>
 
                                 </div>

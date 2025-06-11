@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -670,19 +670,19 @@
                                 this.$toastr.s("Status updated successfully!", "Congratulations");
                                 const updatedIndex = this.adsdata.data.findIndex(item => item.ReceavingOrderID === this.get_id);
             if (updatedIndex !== -1) {
-         
+
                 this.adsdata.data[updatedIndex].Status2 =  this.up_sts;
-              
+
                 this.get_id = "";
                                 this.up_sts = "";
-             
+
                 // Update other properties as needed
             }
-                               
+
                             }
                             else{
                                 this.$toastr.e(data.data, "Errors!");
-                              
+
                             }
                         })
                 }
@@ -748,10 +748,10 @@
             }
         },
         mounted() {
-           
+
 
             this.getResult()
-         
+
 
             axios.get('get_currency').then((response) => {
                 this.currency = response.data[0].Currency;

@@ -2,7 +2,7 @@
   <div>
    <div class="app-content content ">
          <div class="content-overlay"></div>
-         <div class="header-navbar-shadow"></div>
+         <div class="header-navbar-shadow-tem-change"></div>
 
          <!-- <h1 v-if="show==1" >Loading....<h2>Please wait</h2></h1> -->
          <div  v-if="show==1"  class="d-flex justify-content-center w-100 h-100">

@@ -1,8 +1,9 @@
 <template>
+
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -18,40 +19,54 @@
                         <!-- Birthday Banner -->
                         <div class="container mt-2">
                             <div class="row justify-content-center align-items-center">
-                                <div class="col-xl-12 col-lg-10 col-md-12">
-                                    <div class="card bg-image p-4 border-0">
-                                        <div
-                                            class="d-flex flex-md-row flex-column align-items-center text-md-start gap-3">
 
-                                            <!-- Left Side: Profile Info -->
-                                            <div class="d-flex align-items-center justify-content-end gap-2 col-md-4">
-                                                <span class="avatar">
-                                                    <img src="public/images/profile_images/pro.png" alt="avatar"
-                                                        height="40" width="40" class="rounded-circle">
-                                                    <span title="You are online" class="avatar-status-online"></span>
-                                                </span>
-                                                <div class="user-nav d-flex flex-column">
-                                                    <span class="user-name fw-bold">Austin Mark</span>
-                                                    <span class="user-status text-muted">Senior Software Engineer</span>
+                                <!-- Check birthdays -->
+                                <div v-if="birthdaysToday && birthdaysToday.length > 0">
+                                    <div v-for="emp in birthdaysToday" :key="emp.EmployeeID"
+                                        class="col-xl-12 col-lg-10 col-md-12 mb-2">
+                                        <div class="card bg-image p-4 border-0">
+                                            <div
+                                                class="d-flex  align-items-center  justify-content-between">
+
+                                                <!-- Left Side: Profile Info -->
+                                                <div
+                                                    class="d-flex align-items-center justify-content-end gap-2 col-md-4 me-3">
+                                                    <span class="avatar">
+                                                        <img :src="emp.photo || images.profileImage" alt="avatar"
+                                                            height="40" width="40" class="rounded-circle">
+                                                        <span title="Online" class="avatar-status-online"></span>
+                                                    </span>
+                                                    <div class="user-nav d-flex flex-column">
+                                                        <span class="user-name fw-bold">{{ emp.Name }}</span>
+                                                        <span class="user-status text-muted">{{ emp.Designation ||
+                                                            'Employee' }}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <!-- Center: Birthday Message -->
-                                            <div class=" col-md-4 text-center">
-                                                <h6 class="mb-0">Her Birthday Today</h6>
-                                            </div>
+                                                <!-- Center: Birthday Message -->
+                                                <div class="col-md-4 text-center px-4">
+                                                    <h6 class="mb-0">🎂 Happy Birthday Today!</h6>
+                                                </div>
 
-                                            <!-- Right Side: Button -->
-                                            <div class=" col-md-4 justify-content-start">
-                                                <button class="btn birth-btn rounded-3  w-md-auto">Wish
-                                                    Her</button>
-                                            </div>
+                                                <!-- Right Side: Button -->
+                                                <div class="col-md-4 justify-content-start ms-3">
+                                                    <button class="btn birth-btn rounded-3 w-md-auto">Wish {{ emp.Gender
+                                                        === 'Male' ? 'Him' : 'Her' }}</button>
+                                                </div>
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- If no birthday -->
+                                <div v-else class="text-center text-muted py-4">
+                                    <h5>🎉 Today no birthday</h5>
+                                </div>
+
                             </div>
                         </div>
+
 
 
 
@@ -171,10 +186,9 @@
                                     <apexchart type="donut" height="220" :options="chartOptions9" :series="series9">
                                     </apexchart>
                                 </div>
-                                <p class="text-center"><strong>
-                                        {{ Department_data.reduce((sum, dept) => sum + (dept.TotalEmp || 0), 0)
-                                        }}</strong> Total
-                                    Employees
+                                <p class="text-center">
+                                    <!-- <strong>{{Department_data.reduce((sum, dept) => sum + (dept.TotalEmp || 0), 0)}}</strong> -->
+                                    <strong>{{ emp_count.all }}</strong> Total Employees
                                 </p>
                             </div>
                         </div>
@@ -379,7 +393,7 @@
                         <div class="col-lg-12 col-sm-12 col-12 ">
                             <div class="card-header border-bottom top-radius">
                                 <h4 class="fw-semibold">Department-wise Employees status
-                                    ({{ emp_count.cnic_exp_cnt }})</h4>
+                                </h4>
                             </div>
                             <div class="card card-company-table border-0 rounded-bottom-4 shadow">
                                 <div class="card-body p-0">
@@ -1245,7 +1259,6 @@
                             <h4 class="fw-semibold">Employees Age Wise Data</h4>
                         </div>
                         <apexchart type="bar" height="400" :options="chartOptions" :series="chartSeries1"></apexchart>
-
                     </div>
                 </div>
             </div>
@@ -1339,8 +1352,15 @@ export default {
             emp_count: {},
             exp_emp: {},
             exp_cnic: {},
-
+            birthdaysToday: [],
             events: {},
+
+
+            // images path
+            images: {
+                profileImage: "/images/profile_images/pro.png",
+            },
+
 
             // Employeee Details
             series10: [],
@@ -1354,7 +1374,6 @@ export default {
                     show: false,
                 },
             },
-
 
 
 
@@ -1500,8 +1519,8 @@ export default {
             },
             chartSeries1: [
                 {
-                    name: 'Employees',
-                    data: [5, 20, 35, 25, 10]
+                    // name: 'Employees',
+                    // data: [5, 20, 35, 25, 10]
                 }
             ],
             chartDataLoaded: false,
@@ -1519,7 +1538,9 @@ export default {
                     type: 'bar',
                     height: 400
                 },
-                labels: ['Annual', 'Casual', 'Sick', 'Maternity', 'Paternity', 'Hajj/Ziarat'],
+                // labels: [
+                //     'Annual', 'Casual', 'Sick', 'Maternity', 'Paternity', 'Hajj/Ziarat'
+                // ],
                 plotOptions: {
                     bar: {
                         borderRadius: 4,
@@ -1530,7 +1551,7 @@ export default {
                     enabled: true
                 },
                 xaxis: {
-                    categories: ['Annual', 'Casual', 'Sick', 'Maternity', 'Paternity', 'Hajj/Ziarat'],
+                    categories: [],
                 },
 
             },
@@ -1730,7 +1751,7 @@ export default {
                                 this.series = [
                                     {
                                         name: 'Hiring',
-                                        color: 'green',
+                                        color: '#198754',
                                         data: this.dde
                                     },
                                     {
@@ -1756,18 +1777,28 @@ export default {
 
         axios.get('CompanyWise_EmpAge')
             .then(response => {
+                // console.log('Birthdays:', response.data.birthdaysToday);
                 const responseData = response.data;
-                console.log("okokokokok");
+                this.birthdaysToday = responseData.birthdaysToday;
+                // console.log(birthdaysToday,"birthday");
 
-                // console.log(responseData);
-                const ageGroups = responseData.map(item => item.AgeGroup);
-                const employeeCounts = responseData.map(item => parseInt(item.EmployeeCount, 10));
-                // console.log("employee Counts",employeeCounts);
 
-                this.chartOptions.xaxis.categories = ageGroups;
+
+
+                // age wise data chart
+                const ageGroups = responseData.ageGroups.map(item => item.AgeGroup);
+                const employeeCounts = responseData.ageGroups.map(item => parseInt(item.EmployeeCount, 10));
+                this.chartOptions = {
+                    ...this.chartOptions,
+                    xaxis: {
+                        ...this.chartOptions.xaxis,
+                        categories: ageGroups,
+                    },
+                    labels: ageGroups,
+                };
                 this.chartSeries1 = [
                     {
-                        name: 'Employee Count',
+                        name: 'Employee',
                         data: employeeCounts,
                     },
                 ];
@@ -1778,15 +1809,20 @@ export default {
             });
 
 
-        axios.get('./count_leaves_d/') // API endpoint for fetching leave data
+        axios.get('./count_leaves_d/')
             .then(response => {
-                this.series5Data = response.data; // Store the fetched data
-                // console.log("Series data", this.series5Data);
+                this.series5Data = response.data;
+                console.log(this.series5Data);
+
+                this.chartOptions5 = {
+                    ...this.chartOptions5,
+                    labels: Object.keys(this.series5Data),
+                };
 
                 this.series5 = [
                     {
-                        name: 'Leaves', // Meaningful name for the series
-                        data: this.series5Data // Assign dynamic data
+                        name: 'Leaves',
+                        data: Object.values(this.series5Data)
                     }
                 ];
             })
@@ -1795,10 +1831,11 @@ export default {
             });
 
 
+
         axios.get('DepartmentWise_EmpStatus')
             .then(response => {
                 this.Department_data = response.data;
-                // console.log(this.Department_data);
+                console.log(this.Department_data, "DepartmentWise_EmpStatus");
 
             })
             .catch(error => {
@@ -1820,6 +1857,7 @@ export default {
         axios.get('./hrdb_employee_count')
             .then(response => {
                 this.emp_count = response.data; // Assign API response to emp_count
+                console.log(this.emp_count, "hrdb_employee_count");
 
                 // Update the chart series dynamically
                 this.series9 = [this.emp_count.males, this.emp_count.females];

@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -279,7 +279,7 @@ this.category_list = response.data
         this.option.push($this.category_list[j].ID+'_'+$this.category_list[j].CategoryName);
     }
 })
-    
+
         axios.get('fetch_companyDetail')
             .then(response => this.companydetail = response.data)
 

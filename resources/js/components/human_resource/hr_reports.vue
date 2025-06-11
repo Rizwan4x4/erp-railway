@@ -1,8 +1,7 @@
 <template>
-    <div class="app-content content "
-       >
+    <div class="app-content content ">
         <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
+        <div class="header-navbar-shadow-tem-change"></div>
         <div class="content-wrapper container-xxl p-0">
             <div class="content-header row">
                 <div class="breadcrumb-wrapper">
@@ -17,49 +16,68 @@
                 </div>
             </div>
             <div class="content-body">
-                <div class="card"  style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                <div class="card" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
                     <br>
                     <div class="row" style="margin-left:5%;margin-right:5%;margin-top:20px;margin-bottom:20px ">
-                        <div v-if="hasPermission('HRMS HR-Reports  Employee-Overview-Reports')" class="col-md-4"  style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"> <i class="fa-solid fa-address-card" style="padding-right:10px"></i> Employee Overview Reports</h6>
+                        <div v-if="hasPermission('HRMS HR-Reports  Employee-Overview-Reports')" class="col-md-4"
+                            style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"> <i
+                                    class="fa-solid fa-address-card" style="padding-right:10px"></i> Employee Overview
+                                Reports</h6>
                             <div class="ng-star-inserted">
                                 <a data-bs-toggle="modal" data-bs-target="#modalToggle"><i class="fa-solid fa-star"
-                                                                                           style="font-size:16px !important;padding-right:20px"></i><span> Employee Detail</span></a>
+                                        style="font-size:16px !important;padding-right:20px"></i><span> Employee
+                                        Detail</span></a>
                                 <a data-bs-toggle="modal" data-bs-target="#employeehire1"><i class="fa-solid fa-star"
-                                                                                             style="font-size:16px !important;padding-right:20px"></i><span> Employee Hire</span></a>
+                                        style="font-size:16px !important;padding-right:20px"></i><span> Employee
+                                        Hire</span></a>
                                 <!-- <a data-bs-toggle="modal" data-bs-target="#employeeappraisal"><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span>Employee Appraisals</span></a> -->
                             </div>
                         </div>
-                        <div v-if="hasPermission('HRMS HR-Reports  Employee-Attendance-Reports')" class="col-md-4" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"> <i class="fa-solid fa-address-card" style="padding-right:10px"></i> Employee Attendance Reports</h6>
+                        <div v-if="hasPermission('HRMS HR-Reports  Employee-Attendance-Reports')" class="col-md-4"
+                            style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"> <i
+                                    class="fa-solid fa-address-card" style="padding-right:10px"></i> Employee Attendance
+                                Reports</h6>
                             <div class="ng-star-inserted">
                                 <a data-bs-toggle="modal" data-bs-target="#att_detail"><i class="fa-solid fa-star"
-                                                                                          style="font-size:16px !important;padding-right:20px"></i><span>Employee attendance report</span></a>
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Employee
+                                        attendance report</span></a>
 
                                 <a data-bs-toggle="modal" data-bs-target="#employees_attendance"><i
-                                    class="fa-solid fa-star"
-                                    style="font-size:16px !important;padding-right:20px"></i><span>Custom attendance report</span></a>
+                                        class="fa-solid fa-star"
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Custom attendance
+                                        report</span></a>
 
                                 <a data-bs-toggle="modal" data-bs-target="#ind_att_report"><i class="fa-solid fa-star"
-                                                                                              style="font-size:16px !important;padding-right:20px"></i><span>Session Wise Individual</span></a>
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Session Wise
+                                        Individual</span></a>
 
                                 <a data-bs-toggle="modal" data-bs-target="#att_summary" style="max-width:300px"><i
-                                    class="fa-solid fa-star"
-                                    style="font-size:16px !important;padding-right:20px"></i><span>Session Wise Summary</span></a>
+                                        class="fa-solid fa-star"
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Session Wise
+                                        Summary</span></a>
                                 <a data-bs-toggle="modal" data-bs-target="#att_payroll" style="max-width:300px"><i
-                                    class="fa-solid fa-star"
-                                    style="font-size:16px !important;padding-right:20px"></i><span>Session Wise Payrol Att.</span></a>
+                                        class="fa-solid fa-star"
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Session Wise
+                                        Payrol Att.</span></a>
                             </div>
                         </div>
-                        <div v-if="hasPermission('HRMS HR-Reports  Employee-Leave-Reports')" class="col-md-4" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"> <i class="fa-solid fa-address-card" style="padding-right:10px"></i> Employee Leave Reports</h6>
+                        <div v-if="hasPermission('HRMS HR-Reports  Employee-Leave-Reports')" class="col-md-4"
+                            style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"> <i
+                                    class="fa-solid fa-address-card" style="padding-right:10px"></i> Employee Leave
+                                Reports</h6>
                             <div class="ng-star-inserted">
                                 <a data-bs-toggle="modal" data-bs-target="#absent_summary"><i class="fa-solid fa-star"
-                                                                                              style="font-size:16px !important;padding-right:20px"></i><span> Absent Summary</span></a>
+                                        style="font-size:16px !important;padding-right:20px"></i><span> Absent
+                                        Summary</span></a>
                                 <a data-bs-toggle="modal" data-bs-target="#leave_detail"><i class="fa-solid fa-star"
-                                                                                            style="font-size:16px !important;padding-right:20px"></i><span>Employees Leaves Detail</span></a>
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Employees Leaves
+                                        Detail</span></a>
                                 <a data-bs-toggle="modal" data-bs-target="#leave_summary"><i class="fa-solid fa-star"
-                                                                                             style="font-size:16px !important;padding-right:20px"></i><span>Leave Balance Summary</span></a>
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Leave Balance
+                                        Summary</span></a>
 
                             </div>
                         </div>
@@ -68,57 +86,72 @@
                         <!--                            <div class="ng-star-inserted">-->
                         <!--                                &lt;!&ndash; <a data-bs-toggle="modal" data-bs-target="#hiringReport"><i class="fa-solid fa-star" style="font-size: 16px !important; padding-right: 20px"></i><span>Hiring Report</span></a>-->
 
-<!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Today's Candidate</span></a>-->
-<!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Candidate By Status</span></a>-->
-<!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Interview vs User</span></a>-->
-<!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Published Job Openings</span></a>-->
-<!--                                <a style="max-width:300px"><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> JobOpenings vs Candidates</span></a> &ndash;&gt;-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div v-if="user_access.hr_write=='true'" class="col-md-4" style="margin-top:30px">-->
-<!--                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"> <i class="fa-solid fa-address-card" style="padding-right:10px"></i> Other Reports</h6>-->
-<!--                            <div class="ng-star-inserted">-->
-<!--                                &lt;!&ndash; <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Company Docs Expiry Detail</span></a>-->
-<!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Employee Docs Expiry Detail</span></a> &ndash;&gt;-->
-<!--                            </div>-->
-<!--                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"> <i class="fa-solid fa-address-card" style="padding-right:10px"></i> Employee Performance Reports</h6>-->
-<!--                            <div class="ng-star-inserted">-->
-<!--                                &lt;!&ndash; <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Goals</span></a>-->
-<!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Appraisals</span></a> &ndash;&gt;-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <div  v-if="hasPermission('HRMS HR-Reports  Employee-Payroll-Reports')"  class="col-md-4"  style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);margin-top:30px">
-                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"><i class="fa-solid fa-address-card" style="padding-right:10px"></i> Employee Payroll Reports</h6>
-                            <div  class="ng-star-inserted">
-                                <a  data-bs-toggle="modal" data-bs-target="#loadvancereport"><i class="fa-solid fa-star" style="font-size: 16px !important; padding-right: 20px"></i><span>Loan Advance Report</span></a>
-                                <a  data-bs-toggle="modal" data-bs-target="#arrearsreport"><i class="fa-solid fa-star" style="font-size: 16px !important; padding-right: 20px"></i><span>Arrears Report</span></a>
-                                <a data-bs-toggle="modal" data-bs-target="#modalToggle9"><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span>Cash Distribution Report</span></a>
+                        <!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Today's Candidate</span></a>-->
+                        <!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Candidate By Status</span></a>-->
+                        <!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Interview vs User</span></a>-->
+                        <!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Published Job Openings</span></a>-->
+                        <!--                                <a style="max-width:300px"><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> JobOpenings vs Candidates</span></a> &ndash;&gt;-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                        <div v-if="user_access.hr_write=='true'" class="col-md-4" style="margin-top:30px">-->
+                        <!--                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"> <i class="fa-solid fa-address-card" style="padding-right:10px"></i> Other Reports</h6>-->
+                        <!--                            <div class="ng-star-inserted">-->
+                        <!--                                &lt;!&ndash; <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Company Docs Expiry Detail</span></a>-->
+                        <!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Employee Docs Expiry Detail</span></a> &ndash;&gt;-->
+                        <!--                            </div>-->
+                        <!--                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"> <i class="fa-solid fa-address-card" style="padding-right:10px"></i> Employee Performance Reports</h6>-->
+                        <!--                            <div class="ng-star-inserted">-->
+                        <!--                                &lt;!&ndash; <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Goals</span></a>-->
+                        <!--                                <a><i class="fa-solid fa-star" style="font-size:16px !important;padding-right:20px"></i><span> Appraisals</span></a> &ndash;&gt;-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <div v-if="hasPermission('HRMS HR-Reports  Employee-Payroll-Reports')" class="col-md-4"
+                            style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);margin-top:30px">
+                            <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"><i
+                                    class="fa-solid fa-address-card" style="padding-right:10px"></i> Employee Payroll
+                                Reports</h6>
+                            <div class="ng-star-inserted">
+                                <a data-bs-toggle="modal" data-bs-target="#loadvancereport"><i class="fa-solid fa-star"
+                                        style="font-size: 16px !important; padding-right: 20px"></i><span>Loan Advance
+                                        Report</span></a>
+                                <a data-bs-toggle="modal" data-bs-target="#arrearsreport"><i class="fa-solid fa-star"
+                                        style="font-size: 16px !important; padding-right: 20px"></i><span>Arrears
+                                        Report</span></a>
+                                <a data-bs-toggle="modal" data-bs-target="#modalToggle9"><i class="fa-solid fa-star"
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Cash Distribution
+                                        Report</span></a>
                             </div>
                         </div>
-                        <div v-if="hasPermission('HRMS HR-Reports  Salary-&-Stipend-Reports')" class="col-md-4" style="margin-top:30px">
+                        <div v-if="hasPermission('HRMS HR-Reports  Salary-&-Stipend-Reports')" class="col-md-4"
+                            style="margin-top:30px">
                             <div class="ng-star-inserted">
                                 <h6 class="mb-25" style="font-weight:bold;padding-left:0px;padding-top:10px"><i
-                                    class="fa-solid fa-address-card" style="padding-right:10px"></i>Salary & Stipend
+                                        class="fa-solid fa-address-card" style="padding-right:10px"></i>Salary & Stipend
                                     Reports</h6>
                                 <a target="_blank" v-bind:href="`salary_detail_deptreport`">
                                     <i class="fa-solid fa-star"
-                                       style="font-size:16px !important;padding-right:20px"></i><span>Department Stipend Report</span>
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Department
+                                        Stipend Report</span>
                                 </a>
                                 <a target="_blank" v-bind:href="`employee_stipend_report`">
                                     <i class="fa-solid fa-star"
-                                       style="font-size:16px !important;padding-right:20px"></i><span>Employee Stipend Report</span>
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Employee Stipend
+                                        Report</span>
                                 </a>
                                 <a target="_blank" v-bind:href="`salary_detail_deptsalaryreport`">
                                     <i class="fa-solid fa-star"
-                                       style="font-size:16px !important;padding-right:20px"></i><span>Employee Salary Report</span>
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Employee Salary
+                                        Report</span>
                                 </a>
                                 <a target="_blank" v-bind:href="`company_salary_report`">
                                     <i class="fa-solid fa-star"
-                                       style="font-size:16px !important;padding-right:20px"></i><span>Company Salary Report</span>
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Company Salary
+                                        Report</span>
                                 </a>
                                 <a target="_blank" v-bind:href="`employee_stipend`">
                                     <i class="fa-solid fa-star"
-                                       style="font-size:16px !important;padding-right:20px"></i><span>Overall Stipend Report</span>
+                                        style="font-size:16px !important;padding-right:20px"></i><span>Overall Stipend
+                                        Report</span>
                                 </a>
                             </div>
                         </div>
@@ -130,8 +163,8 @@
             </div>
         </div>
         <div class="modal fade" id="cashdistributionReport" aria-labelledby="cashdistributionReport" tabindex="-1"
-             style="display: none" aria-hidden="true">
-            <div v-if="emp_cash_distribution==''" class="modal-dialog modal-dialog-centered">
+             aria-hidden="true">
+            <div v-if="emp_cash_distribution == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Filter Cash Distribution Report</h5>
@@ -144,11 +177,11 @@
                                 <div class="col-md-12">
                                     <label class="form-label" for="modalAddCardName">Session</label>
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Session" v-model="dist_session"
-                                                 :options="optionssession">
+                                        id="FilterTransaction" placeholder="All Session" v-model="dist_session"
+                                        :options="optionssession">
                                     </multiselect>
-                                    <span style="color: #DB4437; font-size: 11px;"
-                                          v-if="dist_session==''">{{ e_dist_session }}</span>
+                                    <span style="color: #DB4437; font-size: 11px;" v-if="dist_session == ''">{{
+                                        e_dist_session }}</span>
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label" for="modalAddCardName">Username</label>
@@ -176,7 +209,7 @@
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel16">Employee Cash Distribution Report</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="cdist_report1()"></button>
+                            @click="cdist_report1()"></button>
                     </div>
 
                     <div class="modal-body" id="cash_distribution_id">
@@ -186,26 +219,26 @@
                             <h5>Bank Paid:{{ Number(sess_dist_sum1).toLocaleString() }}</h5>
                             <table class="table" id="Employees_Detail">
                                 <thead>
-                                <tr>
-                                    <th scope="col">Emp Code</th>
-                                    <th scope="col">Employmee Detail</th>
-                                    <th scope="col">Payable Salary</th>
-                                    <th scope="col">Received Date</th>
-                                    <th scope="col">Received Through</th>
-                                    <th scope="col">Cash Payable</th>
-                                    <th scope="col">Bank Payable</th>
-                                </tr>
+                                    <tr>
+                                        <th scope="col">Emp Code</th>
+                                        <th scope="col">Employmee Detail</th>
+                                        <th scope="col">Payable Salary</th>
+                                        <th scope="col">Received Date</th>
+                                        <th scope="col">Received Through</th>
+                                        <th scope="col">Cash Payable</th>
+                                        <th scope="col">Bank Payable</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="getemployeecash1 in sess_dist_list">
-                                    <td scope="col">{{ getemployeecash1.EmpCode }}</td>
-                                    <td scope="col">{{ getemployeecash1.Name }}</td>
-                                    <td scope="col">{{ getemployeecash1.PayableSalary }}</td>
-                                    <td scope="col">{{ getemployeecash1.ReceivedTime }}</td>
-                                    <td scope="col">{{ getemployeecash1.ReceivedThrough }}</td>
-                                    <td scope="col">{{ getemployeecash1.CashAmount }}</td>
-                                    <td scope="col">{{ getemployeecash1.BankAmount }}</td>
-                                </tr>
+                                    <tr v-for="getemployeecash1 in sess_dist_list">
+                                        <td scope="col">{{ getemployeecash1.EmpCode }}</td>
+                                        <td scope="col">{{ getemployeecash1.Name }}</td>
+                                        <td scope="col">{{ getemployeecash1.PayableSalary }}</td>
+                                        <td scope="col">{{ getemployeecash1.ReceivedTime }}</td>
+                                        <td scope="col">{{ getemployeecash1.ReceivedThrough }}</td>
+                                        <td scope="col">{{ getemployeecash1.CashAmount }}</td>
+                                        <td scope="col">{{ getemployeecash1.BankAmount }}</td>
+                                    </tr>
 
 
                                 </tbody>
@@ -213,8 +246,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','cash_distribution_id')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'cash_distribution_id')"
+                            class="btn btn-gradient-info">Excel
                         </button>
 
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="cdist_report1()">
@@ -224,9 +257,9 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modalToggle9" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none"
-             aria-hidden="true">
-            <div v-if="emp_cash==''" class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="modalToggle9" aria-labelledby="modalToggleLabel" tabindex="-1"
+            aria-hidden="true">
+            <div v-if="emp_cash == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Filter Reports</h5>
@@ -239,39 +272,37 @@
                                 <div class="col-md-12">
                                     <label class="form-label" for="modalAddCardName">Session</label>
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Session" v-model="dist_session"
-                                                 :options="optionssession">
+                                        id="FilterTransaction" placeholder="All Session" v-model="dist_session"
+                                        :options="optionssession">
                                     </multiselect>
-                                    <span style="color: #DB4437; font-size: 11px;"
-                                          v-if="dist_session==''">{{ e_dist_session }}</span>
+                                    <span style="color: #DB4437; font-size: 11px;" v-if="dist_session == ''">{{
+                                        e_dist_session }}</span>
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label" for="modalAddCardName">Department</label>
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Departments"
-                                                 v-model="emp_department" :options="options2">
+                                        id="FilterTransaction" placeholder="All Departments" v-model="emp_department"
+                                        :options="options2">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label" for="modalAddCardName">Salary status</label>
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" v-model="sal_status"
-                                                 :options="optionssal_status">
+                                        id="FilterTransaction" v-model="sal_status" :options="optionssal_status">
                                     </multiselect>
                                 </div>
-                                <div class="col-md-12" v-if="sal_status=='Paid'">
+                                <div class="col-md-12" v-if="sal_status == 'Paid'">
                                     <label class="form-label" for="modalAddCardName">Distributed by</label>
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Username" v-model="emp_user_sa"
-                                                 :options="optionsusername">
+                                        id="FilterTransaction" placeholder="All Username" v-model="emp_user_sa"
+                                        :options="optionsusername">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-12" v-else>
                                     <label class="form-label" for="modalAddCardName">Distributed by</label>
                                     <multiselect :disabled="true" :show-labels="false"
-                                                 style="margin-right: 10px; font-size: 12px;" id="FilterTransaction"
-                                                 placeholder="All Username" v-model="emp_user_sa"
-                                                 :options="optionsusername">
+                                        style="margin-right: 10px; font-size: 12px;" id="FilterTransaction"
+                                        placeholder="All Username" v-model="emp_user_sa" :options="optionsusername">
                                     </multiselect>
                                 </div>
                             </div>
@@ -292,7 +323,7 @@
                         <h4 class="modal-title" id="myModalLabel16">Employees Cash Distribution Report for session:
                             {{ dist_session }}</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="view_report91()"></button>
+                            @click="view_report91()"></button>
                     </div>
 
                     <div class="modal-body" id="Cash_Distribution_Report">
@@ -303,111 +334,112 @@
                                 Paid:{{ getemployeecashsum1.toLocaleString() }}/-</h5>
                             <table class="table" id="Employees_Detail">
                                 <thead>
-                                <tr>
-                                    <th scope="col" class="reports-th-center">Employee Detail</th>
-                                    <th scope="col" class="reports-th-center">Company &<br/>Department</th>
-                                    <th scope="col" class="reports-th-center">Salary<br/>& Stip.</th>
-                                    <th scope="col" class="reports-th-center">O.T<br/>& Ded.</th>
-                                    <th scope="col" class="reports-th-center">Arrears<br/>& Bonus</th>
-                                    <th scope="col" class="reports-th-center">Allow. <br/>& Fuel</th>
-                                    <th scope="col" class="reports-th-center">Payable Sal.</th>
-                                    <th scope="col" class="reports-th-center">Received Through</th>
-                                    <th scope="col" class="reports-th-center">Received On</th>
-                                    <th scope="col" class="reports-th-center">Total Cash Paid</th>
-                                    <th scope="col" class="reports-th-center"> Cash<br/> Paid</th>
-                                    <th scope="col" class="reports-th-center">Total Bank Paid</th>
-                                    <th scope="col" class="reports-th-center">Total Paid</th>
-                                </tr>
+                                    <tr>
+                                        <th scope="col" class="reports-th-center">Employee Detail</th>
+                                        <th scope="col" class="reports-th-center">Company &<br />Department</th>
+                                        <th scope="col" class="reports-th-center">Salary<br />& Stip.</th>
+                                        <th scope="col" class="reports-th-center">O.T<br />& Ded.</th>
+                                        <th scope="col" class="reports-th-center">Arrears<br />& Bonus</th>
+                                        <th scope="col" class="reports-th-center">Allow. <br />& Fuel</th>
+                                        <th scope="col" class="reports-th-center">Payable Sal.</th>
+                                        <th scope="col" class="reports-th-center">Received Through</th>
+                                        <th scope="col" class="reports-th-center">Received On</th>
+                                        <th scope="col" class="reports-th-center">Total Cash Paid</th>
+                                        <th scope="col" class="reports-th-center"> Cash<br /> Paid</th>
+                                        <th scope="col" class="reports-th-center">Total Bank Paid</th>
+                                        <th scope="col" class="reports-th-center">Total Paid</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="getemployeecash1 in getemployeecash"
-                                    v-if="toggle_payroll_distribution==false">
-                                    <td scope="col" class="td-left">
-                                        {{ getemployeecash1.Name }}<br/>{{ getemployeecash1.EmpCode }}
-                                    </td>
-                                    <td scope="col" class="td-center">
-                                        <strong>{{
+                                    <tr v-for="getemployeecash1 in getemployeecash"
+                                        v-if="toggle_payroll_distribution == false">
+                                        <td scope="col" class="td-left">
+                                            {{ getemployeecash1.Name }}<br />{{ getemployeecash1.EmpCode }}
+                                        </td>
+                                        <td scope="col" class="td-center">
+                                            <strong>{{
                                                 getemployeecash1.Company
-                                            }}</strong><br/>{{ getemployeecash1.Department }}
-                                    </td>
-                                    <td scope="col" class="td-right">
-                                        {{
-                                            Number(getemployeecash1.Salary).toLocaleString()
-                                        }}/-<br/>{{ Number(getemployeecash1.StipendAmount).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right">
-                                        {{
-                                            Number(getemployeecash1.OAmount).toLocaleString()
-                                        }}/-<br/>{{ Number(getemployeecash1.DAmount).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right">
-                                        {{
-                                            Number(getemployeecash1.ArrearsAmount).toLocaleString()
-                                        }}/-<br/>{{ Number(getemployeecash1.BonusAmount).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right">
-                                        {{
-                                            Number(getemployeecash1.AllowanceAmount).toLocaleString()
-                                        }}/-<br/>{{ Number(getemployeecash1.FuelAmount).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right">
-                                        {{ Number(getemployeecash1.PayableSalary).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-center" v-if="getemployeecash1.Received!=null">
-                                        {{ getemployeecash1.Received }}
-                                    </td>
-                                    <td scope="col" class="td-center" v-else>{{ getemployeecash1.ReceivedThrough }}</td>
-                                    <td scope="col" class="td-center" v-if="getemployeecash1.ReceivedTi!=null">
-                                        {{ getemployeecash1.ReceivedTi?.split(" ")[0] }}
-                                    </td>
-                                    <td scope="col" class="td-center" v-else>
-                                        {{ getemployeecash1.ReceivedTime?.split(" ")[0] }}
-                                    </td>
-                                    <td scope="col" class="td-right" v-if="getemployeecash1.CCAmount !=null">
-                                        {{ Number(getemployeecash1.CCAmount).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right" v-else>
-                                        {{ Number(getemployeecash1.CashAmount).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right" v-if="getemployeecash1.currentpaying !=null">
-                                        {{ Number(getemployeecash1.currentpaying).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right" v-else>
-                                        {{ Number(getemployeecash1.CurrentCashPaid).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right" v-if="getemployeecash1.BAmount !=null">
-                                        {{ Number(getemployeecash1.BAmount).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right" v-else>
-                                        {{ Number(getemployeecash1.BankAmount).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right" v-if="getemployeecash1.PAmount !=null">
-                                        {{ Number(getemployeecash1.PAmount).toLocaleString() }}/-
-                                    </td>
-                                    <td scope="col" class="td-right" v-else>
-                                        {{ Number(getemployeecash1.PaidAmount).toLocaleString() }}/-
-                                    </td>
-                                </tr>
-                                <tr v-if="toggle_payroll_distribution==true">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                            <div class="ldio-qxxhsg5wen">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
+                                                }}</strong><br />{{ getemployeecash1.Department }}
+                                        </td>
+                                        <td scope="col" class="td-right">
+                                            {{
+                                                Number(getemployeecash1.Salary).toLocaleString()
+                                            }}/-<br />{{ Number(getemployeecash1.StipendAmount).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right">
+                                            {{
+                                                Number(getemployeecash1.OAmount).toLocaleString()
+                                            }}/-<br />{{ Number(getemployeecash1.DAmount).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right">
+                                            {{
+                                                Number(getemployeecash1.ArrearsAmount).toLocaleString()
+                                            }}/-<br />{{ Number(getemployeecash1.BonusAmount).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right">
+                                            {{
+                                                Number(getemployeecash1.AllowanceAmount).toLocaleString()
+                                            }}/-<br />{{ Number(getemployeecash1.FuelAmount).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right">
+                                            {{ Number(getemployeecash1.PayableSalary).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-center" v-if="getemployeecash1.Received != null">
+                                            {{ getemployeecash1.Received }}
+                                        </td>
+                                        <td scope="col" class="td-center" v-else>{{ getemployeecash1.ReceivedThrough }}
+                                        </td>
+                                        <td scope="col" class="td-center" v-if="getemployeecash1.ReceivedTi != null">
+                                            {{ getemployeecash1.ReceivedTi?.split(" ")[0] }}
+                                        </td>
+                                        <td scope="col" class="td-center" v-else>
+                                            {{ getemployeecash1.ReceivedTime?.split(" ")[0] }}
+                                        </td>
+                                        <td scope="col" class="td-right" v-if="getemployeecash1.CCAmount != null">
+                                            {{ Number(getemployeecash1.CCAmount).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right" v-else>
+                                            {{ Number(getemployeecash1.CashAmount).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right" v-if="getemployeecash1.currentpaying != null">
+                                            {{ Number(getemployeecash1.currentpaying).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right" v-else>
+                                            {{ Number(getemployeecash1.CurrentCashPaid).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right" v-if="getemployeecash1.BAmount != null">
+                                            {{ Number(getemployeecash1.BAmount).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right" v-else>
+                                            {{ Number(getemployeecash1.BankAmount).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right" v-if="getemployeecash1.PAmount != null">
+                                            {{ Number(getemployeecash1.PAmount).toLocaleString() }}/-
+                                        </td>
+                                        <td scope="col" class="td-right" v-else>
+                                            {{ Number(getemployeecash1.PaidAmount).toLocaleString() }}/-
+                                        </td>
+                                    </tr>
+                                    <tr v-if="toggle_payroll_distribution == true">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                                <div class="ldio-qxxhsg5wen">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -466,8 +498,8 @@
                         </div>
                     </div> -->
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Cash_Distribution_Report')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Cash_Distribution_Report')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="view_report91()">
                             close
@@ -477,9 +509,9 @@
             </div>
         </div>
         <!-- Modal 1-->
-        <div class="modal fade" id="hiringReport" aria-labelledby="hiringReport" tabindex="-1" style="display: none"
-             aria-hidden="true">
-            <div v-if="hiring_employee_report==''" class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="hiringReport" aria-labelledby="hiringReport" tabindex="-1"
+            aria-hidden="true">
+            <div v-if="hiring_employee_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Filter Hiring Report Reports</h5>
@@ -491,22 +523,21 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range From</label>
-                                    <input type="date" v-model="hiring_start_date" class="form-control"/>
-                                    <span style="color: #db4437; font-size: 11px"
-                                          v-if="hiring_start_date == ''">{{ e_hiring_start_date }}</span>
+                                    <input type="date" v-model="hiring_start_date" class="form-control" />
+                                    <span style="color: #db4437; font-size: 11px" v-if="hiring_start_date == ''">{{
+                                        e_hiring_start_date }}</span>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range To</label>
-                                    <input v-model="hiring_end_date" type="date" class="form-control"/>
-                                    <span style="color: #db4437; font-size: 11px"
-                                          v-if="hiring_end_date == ''">{{ e_hiring_end_date }}</span>
+                                    <input v-model="hiring_end_date" type="date" class="form-control" />
+                                    <span style="color: #db4437; font-size: 11px" v-if="hiring_end_date == ''">{{
+                                        e_hiring_end_date }}</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="form-label" for="modalAddCardName">Department</label>
-                                    <multiselect style="margin-right: 10px;"
-                                                 v-model="hiring_dept" :options="options2">
+                                    <multiselect style="margin-right: 10px;" v-model="hiring_dept" :options="options2">
                                     </multiselect>
                                 </div>
 
@@ -528,14 +559,14 @@
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel16">Employee Hiring Report</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="hiring_rep1()"></button>
+                            @click="hiring_rep1()"></button>
                     </div>
                     <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
-                                  :preview-modal="false" :paginate-elements-by-height="5000" filename="Hiring_Report"
-                                  :pdf-quality="2" :manual-pagination="false" pdf-format="a4"
-                                  pdf-orientation="landscape" pdf-content-width="1100px" @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
-                                  ref="hiringpdf">
+                        :preview-modal="false" :paginate-elements-by-height="5000" filename="Hiring_Report"
+                        :pdf-quality="2" :manual-pagination="false" pdf-format="a4" pdf-orientation="landscape"
+                        pdf-content-width="1100px" @progress="onProgress($event)"
+                        @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
+                        ref="hiringpdf">
                         <div slot="pdf-content">
                             <div class="modal-body">
                                 <div style="margin-top: 20px;margin-bottom: 20px;">
@@ -546,24 +577,24 @@
                                 <div class="table-responsive" style="overflow-x: initial !important;">
                                     <table class="table">
                                         <thead>
-                                        <tr>
-                                            <th>Employee Code</th>
-                                            <th scope="col" style="    min-width: 100px;">Name</th>
-                                            <th scope="col">Father Name</th>
-                                            <th scope="col">Department</th>
-                                            <th scope="col">Joining Date</th>
-                                            <th scope="col">Job Status</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Employee Code</th>
+                                                <th scope="col" style="    min-width: 100px;">Name</th>
+                                                <th scope="col">Father Name</th>
+                                                <th scope="col">Department</th>
+                                                <th scope="col">Joining Date</th>
+                                                <th scope="col">Job Status</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr v-for="hiring_list1 in hiring_list">
-                                            <td>{{ hiring_list1.EmployeeCode }}</td>
-                                            <td>{{ hiring_list1.Name }}</td>
-                                            <td>{{ hiring_list1.FatherHusband }}</td>
-                                            <td>{{ hiring_list1.Department }}</td>
-                                            <td>{{ hiring_list1.JoiningDate }}</td>
-                                            <td>{{ hiring_list1.JobStatus }}</td>
-                                        </tr>
+                                            <tr v-for="hiring_list1 in hiring_list">
+                                                <td>{{ hiring_list1.EmployeeCode }}</td>
+                                                <td>{{ hiring_list1.Name }}</td>
+                                                <td>{{ hiring_list1.FatherHusband }}</td>
+                                                <td>{{ hiring_list1.Department }}</td>
+                                                <td>{{ hiring_list1.JoiningDate }}</td>
+                                                <td>{{ hiring_list1.JobStatus }}</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -578,31 +609,31 @@
                         <div class="table-responsive" style="overflow-x: initial !important;">
                             <table class="table">
                                 <thead>
-                                <tr>
-                                    <th>Employee Code</th>
-                                    <th scope="col" style="    min-width: 100px;">Name</th>
-                                    <th scope="col">Father Name</th>
-                                    <th scope="col">Department</th>
-                                    <th scope="col">Joining Date</th>
-                                    <th scope="col">Job Status</th>
-                                </tr>
+                                    <tr>
+                                        <th>Employee Code</th>
+                                        <th scope="col" style="    min-width: 100px;">Name</th>
+                                        <th scope="col">Father Name</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Joining Date</th>
+                                        <th scope="col">Job Status</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="hiring_list1 in hiring_list">
-                                    <td>{{ hiring_list1.EmployeeCode }}</td>
-                                    <td>{{ hiring_list1.Name }}</td>
-                                    <td>{{ hiring_list1.FatherHusband }}</td>
-                                    <td>{{ hiring_list1.Department }}</td>
-                                    <td>{{ hiring_list1.JoiningDate }}</td>
-                                    <td>{{ hiring_list1.JobStatus }}</td>
-                                </tr>
+                                    <tr v-for="hiring_list1 in hiring_list">
+                                        <td>{{ hiring_list1.EmployeeCode }}</td>
+                                        <td>{{ hiring_list1.Name }}</td>
+                                        <td>{{ hiring_list1.FatherHusband }}</td>
+                                        <td>{{ hiring_list1.Department }}</td>
+                                        <td>{{ hiring_list1.JoiningDate }}</td>
+                                        <td>{{ hiring_list1.JobStatus }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Hiring_Report_id')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Hiring_Report_id')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" @click="generateEmployeeHiringReport()" class="btn btn-gradient-info">
                             Pdf
@@ -615,8 +646,8 @@
             </div>
         </div>
         <div class="modal fade" id="loadvancereport" aria-labelledby="loadvancereport" tabindex="-1"
-             style="display: none" aria-hidden="true">
-            <div v-if="loan_advance_report==''" class="modal-dialog modal-dialog-centered">
+             aria-hidden="true">
+            <div v-if="loan_advance_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Filter Loan Advance Reports</h5>
@@ -628,22 +659,21 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range From</label>
-                                    <input type="date" v-model="la_start_date" class="form-control"/>
-                                    <span style="color: #db4437; font-size: 11px"
-                                          v-if="la_start_date == ''">{{ e_la_start_date }}</span>
+                                    <input type="date" v-model="la_start_date" class="form-control" />
+                                    <span style="color: #db4437; font-size: 11px" v-if="la_start_date == ''">{{
+                                        e_la_start_date }}</span>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range To</label>
-                                    <input v-model="la_end_date" type="date" class="form-control"/>
-                                    <span style="color: #db4437; font-size: 11px"
-                                          v-if="la_end_date == ''">{{ e_la_end_date }}</span>
+                                    <input v-model="la_end_date" type="date" class="form-control" />
+                                    <span style="color: #db4437; font-size: 11px" v-if="la_end_date == ''">{{
+                                        e_la_end_date }}</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="form-label" for="modalAddCardName">Department</label>
-                                    <multiselect style="margin-right: 10px;"
-                                                 v-model="la_dept" :options="options2">
+                                    <multiselect style="margin-right: 10px;" v-model="la_dept" :options="options2">
                                     </multiselect>
                                 </div>
 
@@ -651,8 +681,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="form-label" for="modalAddCardName">Loan Type</label>
-                                    <multiselect style="margin-right: 10px;"
-                                                 v-model="la_type" :options="optionstype">
+                                    <multiselect style="margin-right: 10px;" v-model="la_type" :options="optionstype">
                                     </multiselect>
                                 </div>
 
@@ -660,8 +689,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="form-label" for="modalAddCardName">Req. Status</label>
-                                    <multiselect style="margin-right: 10px;"
-                                                 v-model="la_status" :options="optionstatus">
+                                    <multiselect style="margin-right: 10px;" v-model="la_status"
+                                        :options="optionstatus">
                                     </multiselect>
                                 </div>
 
@@ -683,14 +712,14 @@
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel16">Loan Advance Report Report</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="la_report1()"></button>
+                            @click="la_report1()"></button>
                     </div>
                     <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
-                                  :preview-modal="false" :paginate-elements-by-height="5000" filename="Loan_Advance"
-                                  :pdf-quality="2" :manual-pagination="false" pdf-format="a4"
-                                  pdf-orientation="landscape" pdf-content-width="1100px" @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
-                                  ref="loanadvancepdf">
+                        :preview-modal="false" :paginate-elements-by-height="5000" filename="Loan_Advance"
+                        :pdf-quality="2" :manual-pagination="false" pdf-format="a4" pdf-orientation="landscape"
+                        pdf-content-width="1100px" @progress="onProgress($event)"
+                        @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
+                        ref="loanadvancepdf">
                         <div slot="pdf-content">
                             <div class="modal-body">
                                 <div style="margin-top: 20px;margin-bottom: 20px;">
@@ -700,32 +729,32 @@
                                 <div class="table-responsive" style="overflow-x: initial !important;">
                                     <table class="table">
                                         <thead>
-                                        <tr>
-                                            <th scope="col">Apply Date</th>
-                                            <th>Employee Code</th>
-                                            <th scope="col" style="    min-width: 100px;">Name</th>
+                                            <tr>
+                                                <th scope="col">Apply Date</th>
+                                                <th>Employee Code</th>
+                                                <th scope="col" style="    min-width: 100px;">Name</th>
 
-                                            <th scope="col">Department</th>
-                                            <th scope="col">Loan Reason</th>
-                                            <th scope="col">Loan Installments</th>
-                                            <th scope="col">Loan Type</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Amount</th>
-                                        </tr>
+                                                <th scope="col">Department</th>
+                                                <th scope="col">Loan Reason</th>
+                                                <th scope="col">Loan Installments</th>
+                                                <th scope="col">Loan Type</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Amount</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr v-for="hiring_list1 in la_list">
-                                            <td>{{ hiring_list1.ApplyDate }}</td>
-                                            <td>{{ hiring_list1.EmployeeCode }}</td>
-                                            <td>{{ hiring_list1.Name }}</td>
+                                            <tr v-for="hiring_list1 in la_list">
+                                                <td>{{ hiring_list1.ApplyDate }}</td>
+                                                <td>{{ hiring_list1.EmployeeCode }}</td>
+                                                <td>{{ hiring_list1.Name }}</td>
 
-                                            <td>{{ hiring_list1.Department }}</td>
-                                            <td>{{ hiring_list1.LoanReason }}</td>
-                                            <td>{{ hiring_list1.LoanInstallments }}</td>
-                                            <td>{{ hiring_list1.LoanType }}</td>
-                                            <td>{{ hiring_list1.ReqStatus }}</td>
-                                            <td>{{ Number(hiring_list1.LoanAmount) }}</td>
-                                        </tr>
+                                                <td>{{ hiring_list1.Department }}</td>
+                                                <td>{{ hiring_list1.LoanReason }}</td>
+                                                <td>{{ hiring_list1.LoanInstallments }}</td>
+                                                <td>{{ hiring_list1.LoanType }}</td>
+                                                <td>{{ hiring_list1.ReqStatus }}</td>
+                                                <td>{{ Number(hiring_list1.LoanAmount) }}</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -740,60 +769,60 @@
                         <div class="table-responsive" style="overflow-x: initial !important;">
                             <table class="table">
                                 <thead>
-                                <tr>
-                                    <th scope="col">Apply Date</th>
-                                    <th>Employee Code</th>
-                                    <th scope="col" style="    min-width: 100px;">Name</th>
+                                    <tr>
+                                        <th scope="col">Apply Date</th>
+                                        <th>Employee Code</th>
+                                        <th scope="col" style="    min-width: 100px;">Name</th>
 
-                                    <th scope="col">Department</th>
-                                    <th scope="col">Loan Reason</th>
-                                    <th scope="col">Loan Installments</th>
-                                    <th scope="col">Loan Type</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Amount</th>
-                                </tr>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Loan Reason</th>
+                                        <th scope="col">Loan Installments</th>
+                                        <th scope="col">Loan Type</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Amount</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="hiring_list1 in la_list" v-if="toggle_loan_advance==false">
-                                    <td>{{ hiring_list1.ApplyDate }}</td>
-                                    <td>{{ hiring_list1.EmployeeCode }}</td>
-                                    <td>{{ hiring_list1.Name }}</td>
+                                    <tr v-for="hiring_list1 in la_list" v-if="toggle_loan_advance == false">
+                                        <td>{{ hiring_list1.ApplyDate }}</td>
+                                        <td>{{ hiring_list1.EmployeeCode }}</td>
+                                        <td>{{ hiring_list1.Name }}</td>
 
-                                    <td>{{ hiring_list1.Department }}</td>
-                                    <td>{{ hiring_list1.LoanReason }}</td>
-                                    <td>{{ hiring_list1.LoanInstallments }}</td>
-                                    <td>{{ hiring_list1.LoanType }}</td>
-                                    <td>{{ hiring_list1.ReqStatus }}</td>
-                                    <td>{{ Number(hiring_list1.LoanAmount) }}</td>
-                                </tr>
-                                <tr v-if="toggle_loan_advance==true">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                            <div class="ldio-qxxhsg5wen">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
+                                        <td>{{ hiring_list1.Department }}</td>
+                                        <td>{{ hiring_list1.LoanReason }}</td>
+                                        <td>{{ hiring_list1.LoanInstallments }}</td>
+                                        <td>{{ hiring_list1.LoanType }}</td>
+                                        <td>{{ hiring_list1.ReqStatus }}</td>
+                                        <td>{{ Number(hiring_list1.LoanAmount) }}</td>
+                                    </tr>
+                                    <tr v-if="toggle_loan_advance == true">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                                <div class="ldio-qxxhsg5wen">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','loan_Report_id')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'loan_Report_id')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" @click="generateLoanAdvanceReport()" class="btn btn-gradient-info">Pdf
                         </button>
@@ -804,9 +833,9 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="arrearsreport" aria-labelledby="arrearsreport" tabindex="-1" style="display: none"
-             aria-hidden="true">
-            <div v-if="emp_arrears_report==''" class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="arrearsreport" aria-labelledby="arrearsreport" tabindex="-1"
+            aria-hidden="true">
+            <div v-if="emp_arrears_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Filter Arrears Reports</h5>
@@ -818,22 +847,21 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range From</label>
-                                    <input type="date" v-model="arrears_start_date" class="form-control"/>
-                                    <span style="color: #db4437; font-size: 11px"
-                                          v-if="arrears_start_date == ''">{{ e_arrears_start_date }}</span>
+                                    <input type="date" v-model="arrears_start_date" class="form-control" />
+                                    <span style="color: #db4437; font-size: 11px" v-if="arrears_start_date == ''">{{
+                                        e_arrears_start_date }}</span>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range To</label>
-                                    <input v-model="arrears_end_date" type="date" class="form-control"/>
-                                    <span style="color: #db4437; font-size: 11px"
-                                          v-if="arrears_end_date == ''">{{ e_arrears_end_date }}</span>
+                                    <input v-model="arrears_end_date" type="date" class="form-control" />
+                                    <span style="color: #db4437; font-size: 11px" v-if="arrears_end_date == ''">{{
+                                        e_arrears_end_date }}</span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="form-label" for="modalAddCardName">Department</label>
-                                    <multiselect style="margin-right: 10px;"
-                                                 v-model="arrears_dept" :options="options2">
+                                    <multiselect style="margin-right: 10px;" v-model="arrears_dept" :options="options2">
                                     </multiselect>
                                 </div>
 
@@ -856,14 +884,14 @@
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel16">Arrears Report</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="arrears_report1()"></button>
+                            @click="arrears_report1()"></button>
                     </div>
                     <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
-                                  :preview-modal="false" :paginate-elements-by-height="5000" filename="Arrears_Report"
-                                  :pdf-quality="2" :manual-pagination="false" pdf-format="a4"
-                                  pdf-orientation="landscape" pdf-content-width="1100px" @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
-                                  ref="arrearspdf">
+                        :preview-modal="false" :paginate-elements-by-height="5000" filename="Arrears_Report"
+                        :pdf-quality="2" :manual-pagination="false" pdf-format="a4" pdf-orientation="landscape"
+                        pdf-content-width="1100px" @progress="onProgress($event)"
+                        @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
+                        ref="arrearspdf">
                         <div slot="pdf-content">
                             <div class="modal-body">
                                 <div style="margin-top: 20px;margin-bottom: 20px;">
@@ -874,29 +902,29 @@
                                 <div class="table-responsive" style="overflow-x: initial !important;">
                                     <table class="table">
                                         <thead>
-                                        <tr>
-                                            <th scope="col">Date</th>
-                                            <th>Employee Code</th>
-                                            <th scope="col" style="    min-width: 100px;">Name</th>
+                                            <tr>
+                                                <th scope="col">Date</th>
+                                                <th>Employee Code</th>
+                                                <th scope="col" style="    min-width: 100px;">Name</th>
 
-                                            <th scope="col">Department</th>
-                                            <th scope="col">Descriptions</th>
+                                                <th scope="col">Department</th>
+                                                <th scope="col">Descriptions</th>
 
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Amount</th>
-                                        </tr>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Amount</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr v-for="hiring_list1 in la_list">
-                                            <td>{{ hiring_list1.ArrearsAmount }}</td>
-                                            <td>{{ hiring_list1.EmployeeCode }}</td>
-                                            <td>{{ hiring_list1.Name }}</td>
+                                            <tr v-for="hiring_list1 in la_list">
+                                                <td>{{ hiring_list1.ArrearsAmount }}</td>
+                                                <td>{{ hiring_list1.EmployeeCode }}</td>
+                                                <td>{{ hiring_list1.Name }}</td>
 
-                                            <td>{{ hiring_list1.Department }}</td>
-                                            <td>{{ hiring_list1.Descriptions }}</td>
-                                            <td>{{ hiring_list1.Status }}</td>
-                                            <td>{{ Number(hiring_list1.ArrearsAmount) }}</td>
-                                        </tr>
+                                                <td>{{ hiring_list1.Department }}</td>
+                                                <td>{{ hiring_list1.Descriptions }}</td>
+                                                <td>{{ hiring_list1.Status }}</td>
+                                                <td>{{ Number(hiring_list1.ArrearsAmount) }}</td>
+                                            </tr>
 
                                         </tbody>
                                     </table>
@@ -912,68 +940,68 @@
                         <div class="table-responsive" style="overflow-x: initial !important;">
                             <table class="table">
                                 <thead>
-                                <tr>
-                                    <th scope="col">Date</th>
-                                    <th>Employee Code</th>
-                                    <th scope="col" style="    min-width: 100px;">Name</th>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th>Employee Code</th>
+                                        <th scope="col" style="    min-width: 100px;">Name</th>
 
-                                    <th scope="col">Department</th>
-                                    <th scope="col">Descriptions</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Descriptions</th>
 
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Amount</th>
-                                </tr>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Amount</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="hiring_list1 in la_list" v-if="toggle_arrears==false">
-                                    <td>{{ hiring_list1.ArrearsAmount }}</td>
-                                    <td>{{ hiring_list1.EmployeeCode }}</td>
-                                    <td>{{ hiring_list1.Name }}</td>
+                                    <tr v-for="hiring_list1 in la_list" v-if="toggle_arrears == false">
+                                        <td>{{ hiring_list1.ArrearsAmount }}</td>
+                                        <td>{{ hiring_list1.EmployeeCode }}</td>
+                                        <td>{{ hiring_list1.Name }}</td>
 
-                                    <td>{{ hiring_list1.Department }}</td>
-                                    <td>{{ hiring_list1.Descriptions }}</td>
-                                    <td>{{ hiring_list1.Status }}</td>
-                                    <td>{{ Number(hiring_list1.ArrearsAmount) }}</td>
-                                </tr>
-                                <tr v-if="toggle_arrears==true">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                            <div class="ldio-qxxhsg5wen">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
+                                        <td>{{ hiring_list1.Department }}</td>
+                                        <td>{{ hiring_list1.Descriptions }}</td>
+                                        <td>{{ hiring_list1.Status }}</td>
+                                        <td>{{ Number(hiring_list1.ArrearsAmount) }}</td>
+                                    </tr>
+                                    <tr v-if="toggle_arrears == true">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                                <div class="ldio-qxxhsg5wen">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','arrear_Report_id')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'arrear_Report_id')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" @click="generateArrearsReport()" class="btn btn-gradient-info">Pdf
                         </button>
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                                @click="arrears_report1()">close
+                            @click="arrears_report1()">close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modalToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none"
-             aria-hidden="true">
-            <div v-if="emp_detail==''" class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="modalToggle" aria-labelledby="modalToggleLabel" tabindex="-1"
+            aria-hidden="true">
+            <div v-if="emp_detail == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Filter Reports</h5>
@@ -987,16 +1015,16 @@
                                     <label class="form-label" for="modalAddCardName">Work Location</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserPlan" placeholder="All Locations"
-                                                 v-model="emp_location" :options="options1">
+                                        id="UserPlan" placeholder="All Locations" v-model="emp_location"
+                                        :options="options1">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Department</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Departments"
-                                                 v-model="emp_department" :options="options2">
+                                        id="FilterTransaction" placeholder="All Departments" v-model="emp_department"
+                                        :options="options2">
                                     </multiselect>
                                 </div>
                             </div>
@@ -1005,8 +1033,8 @@
                                     <label class="form-label" for="modalAddCardName">Designation</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserRole" placeholder="All Designations"
-                                                 v-model="emp_designation" :options="options">
+                                        id="UserRole" placeholder="All Designations" v-model="emp_designation"
+                                        :options="options">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
@@ -1025,16 +1053,14 @@
                                     <label class="form-label" for="modalAddCardName">Employee Type</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserRole" placeholder="All"
-                                                 v-model="emp_type" :options="options3">
+                                        id="UserRole" placeholder="All" v-model="emp_type" :options="options3">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Employee Status</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserRole" placeholder="All"
-                                                 v-model="emp_status" :options="options4">
+                                        id="UserRole" placeholder="All" v-model="emp_status" :options="options4">
                                     </multiselect>
 
                                 </div>
@@ -1056,271 +1082,272 @@
                         <h4 class="modal-title" id="myModalLabel16">Employee Detail Report</h4>
 
                         <div style="margin-left:10%;">
-                            <button type="button" @click="html_table_to_excel('xlsx','Employees_Detail')"
-                                    class="btn btn-gradient-info">Download in Excel
+                            <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Detail')"
+                                class="btn btn-gradient-info">Download in Excel
                             </button>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="view_report1()"></button>
+                            @click="view_report1()"></button>
                     </div>
 
                     <div class="modal-body">
                         <div class="table-responsive" style="overflow-x: initial !important;">
                             <table class="table">
                                 <thead>
-                                <tr>
-                                    <th scope="col">Employment Detail</th>
-                                    <th scope="col">Basic Info</th>
-                                    <th scope="col">Contact Info</th>
-                                    <th scope="col">Home Address</th>
-                                    <th scope="col">Payment</th>
-                                </tr>
+                                    <tr>
+                                        <th scope="col">Employment Detail</th>
+                                        <th scope="col">Basic Info</th>
+                                        <th scope="col">Contact Info</th>
+                                        <th scope="col">Home Address</th>
+                                        <th scope="col">Payment</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <!---->
-                                <tr class="ng-star-inserted" v-for="getemployee1 in getemployee"
-                                    v-if="toggle_employee_detail==false">
-                                    <td rows="6">
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Name:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.EmployeeCode }} - {{
+                                    <!---->
+                                    <tr class="ng-star-inserted" v-for="getemployee1 in getemployee"
+                                        v-if="toggle_employee_detail == false">
+                                        <td rows="6">
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Name:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.EmployeeCode }} - {{
                                                             getemployee1.Name
-                                                        }}</span>
+                                                            }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Department:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.Department }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Designation:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.Designation }}</span>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Department:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.Department }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Location:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.PostingCity }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td rows="6">
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Gender:</strong>
-                                                </div>
-                                                <div>
-                                                    <!----><span
-                                                    class="ng-star-inserted">{{ getemployee1.Gender }}</span>
-                                                    <!---->
-                                                    <!---->
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Designation:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.Designation }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>DOB:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.DOB }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Hired:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.JoiningDate }}</span>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Location:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.PostingCity }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Job Shift:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.JobShift }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td rows="6">
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Email:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.Email }}</span>
+                                        </td>
+                                        <td rows="6">
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Gender:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <!----><span class="ng-star-inserted">{{ getemployee1.Gender
+                                                            }}</span>
+                                                        <!---->
+                                                        <!---->
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Mobile:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.Mobile }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Job Status:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.Status }}-{{ getemployee1.JobStatus }}</span>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>DOB:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.DOB }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Relation:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.Relation }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Emergency Phone:</strong>
-                                                </div>
-                                                <div>
-                                                    <span>{{ getemployee1.Phone }}</span>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Hired:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.JoiningDate }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td style="width:300px !important">
-                                        <p rows="6" readonly>{{ getemployee1.Address }}, {{ getemployee1.City }}</p>
-                                    </td>
-                                    <td rows="6">
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Method:</strong> <span>{{ getemployee1.MethodType }}</span>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Job Shift:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.JobShift }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Salary:</strong><span>{{
-                                                        (getemployee1.Salary).toLocaleString()
-                                                    }}</span>
-                                                </div>
-                                                <div>
-                                                    <strong>Stipend:</strong><span
-                                                    v-if="getemployee1.Stipend > 0">{{
-                                                        getemployee1.Stipend
-                                                    }}</span><span
-                                                    v-else>0</span>
+                                        </td>
+                                        <td rows="6">
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Email:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.Email }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    <strong>Job Description:</strong>
-                                                </div>
-                                                <div>
-                                                    <span></span>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Mobile:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.Mobile }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr v-if="toggle_employee_detail==true">
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                            <div class="ldio-qxxhsg5wen">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Job Status:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.Status }}-{{ getemployee1.JobStatus
+                                                            }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Relation:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.Relation }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Emergency Phone:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{ getemployee1.Phone }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="width:300px !important">
+                                            <p rows="6" readonly>{{ getemployee1.Address }}, {{ getemployee1.City }}</p>
+                                        </td>
+                                        <td rows="6">
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Method:</strong> <span>{{ getemployee1.MethodType
+                                                            }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Salary:</strong><span>{{
+                                                            (getemployee1.Salary).toLocaleString()
+                                                            }}</span>
+                                                    </div>
+                                                    <div>
+                                                        <strong>Stipend:</strong><span
+                                                            v-if="getemployee1.Stipend > 0">{{
+                                                                getemployee1.Stipend
+                                                            }}</span><span v-else>0</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        <strong>Job Description:</strong>
+                                                    </div>
+                                                    <div>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr v-if="toggle_employee_detail == true">
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                                <div class="ldio-qxxhsg5wen">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                             <table style="visibility: collapse;" class="table" id="Employees_Detail">
                                 <thead>
-                                <tr>
-                                    <th>Emp. Code</th>
-                                    <th scope="col" style="min-width: 100px;">Name</th>
-                                    <th scope="col">Department</th>
-                                    <th scope="col">Designation</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Mobile</th>
-                                    <th scope="col">Date of Joining</th>
-                                    <th scope="col">Salary</th>
-                                    <th scope="col">Stipend</th>
-                                    <th scope="col">Emergency Phone</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Relation</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Job Status</th>
-                                </tr>
+                                    <tr>
+                                        <th>Emp. Code</th>
+                                        <th scope="col" style="min-width: 100px;">Name</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Designation</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Mobile</th>
+                                        <th scope="col">Date of Joining</th>
+                                        <th scope="col">Salary</th>
+                                        <th scope="col">Stipend</th>
+                                        <th scope="col">Emergency Phone</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Relation</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Job Status</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="getemployee1 in getemployee">
-                                    <td>{{ getemployee1.EmployeeCode }}</td>
-                                    <td>{{ getemployee1.Name }}</td>
-                                    <td>{{ getemployee1.Department }}</td>
-                                    <td>{{ getemployee1.Designation }}</td>
-                                    <td>{{ getemployee1.Email }}</td>
-                                    <td>{{ getemployee1.Mobile }}</td>
-                                    <td>{{ getemployee1.JoiningDate }}</td>
-                                    <td>{{ getemployee1.Salary }}</td>
-                                    <td>{{ getemployee1.Stipend }}</td>
-                                    <td>{{ getemployee1.Phone }}</td>
-                                    <td>{{ getemployee1.PostingCity }}</td>
-                                    <td>{{ getemployee1.Relation }}</td>
-                                    <td>{{ getemployee1.Status }}</td>
-                                    <td>{{ getemployee1.JobStatus }}</td>
-                                </tr>
+                                    <tr v-for="getemployee1 in getemployee">
+                                        <td>{{ getemployee1.EmployeeCode }}</td>
+                                        <td>{{ getemployee1.Name }}</td>
+                                        <td>{{ getemployee1.Department }}</td>
+                                        <td>{{ getemployee1.Designation }}</td>
+                                        <td>{{ getemployee1.Email }}</td>
+                                        <td>{{ getemployee1.Mobile }}</td>
+                                        <td>{{ getemployee1.JoiningDate }}</td>
+                                        <td>{{ getemployee1.Salary }}</td>
+                                        <td>{{ getemployee1.Stipend }}</td>
+                                        <td>{{ getemployee1.Phone }}</td>
+                                        <td>{{ getemployee1.PostingCity }}</td>
+                                        <td>{{ getemployee1.Relation }}</td>
+                                        <td>{{ getemployee1.Status }}</td>
+                                        <td>{{ getemployee1.JobStatus }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Employees_Detail')"
-                                class="btn btn-gradient-info">Download in Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Detail')"
+                            class="btn btn-gradient-info">Download in Excel
                         </button>
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="view_report1()">
                             close
@@ -1332,8 +1359,8 @@
 
         <!-- Modal 1-->
         <div class="modal fade" id="employeehire1" aria-labelledby="employeehire1Label" tabindex="-1"
-             style="display: none" aria-hidden="true">
-            <div v-if="emp_hire==''" class="modal-dialog modal-dialog-centered">
+            aria-hidden="true">
+            <div v-if="emp_hire == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Hiring Report</h5>
@@ -1345,11 +1372,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range From</label>
-                                    <input type="date" v-model="hire_start_date" class="form-control"/>
+                                    <input type="date" v-model="hire_start_date" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range To</label>
-                                    <input v-model="hire_end_date" type="date" class="form-control"/>
+                                    <input v-model="hire_end_date" type="date" class="form-control" />
                                 </div>
                             </div>
                             <div class="row">
@@ -1357,16 +1384,16 @@
                                     <label class="form-label" for="modalAddCardName">Work Location</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserPlan" placeholder="All Locations"
-                                                 v-model="hire_location" :options="options1">
+                                        id="UserPlan" placeholder="All Locations" v-model="hire_location"
+                                        :options="options1">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Department</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Departments"
-                                                 v-model="hire_department" :options="options2">
+                                        id="FilterTransaction" placeholder="All Departments" v-model="hire_department"
+                                        :options="options2">
                                     </multiselect>
                                 </div>
                             </div>
@@ -1375,8 +1402,8 @@
                                     <label class="form-label" for="modalAddCardName">Designation</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserRole" placeholder="All Designations"
-                                                 v-model="hire_designation" :options="options">
+                                        id="UserRole" placeholder="All Designations" v-model="hire_designation"
+                                        :options="options">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
@@ -1408,101 +1435,200 @@
                         </h4>
                         <span class="role-edit-modal"> {{ this.hire_start_date }} - {{ this.hire_end_date }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="employee_hire_report1()"></button>
+                            @click="employee_hire_report1()"></button>
                     </div>
-                    <vue-html2pdf :show-layout="false"
-                                  :float-layout="true"
-                                  :enable-download="true"
-                                  :preview-modal="false"
-                                  :paginate-elements-by-height="5000"
-                                  filename="Employee_Hiring_Report"
-                                  :pdf-quality="2"
-                                  :manual-pagination="false"
-                                  pdf-format="a4"
-                                  pdf-orientation="landscape"
-                                  pdf-content-width="1100px"
-                                  @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()"
-                                  @hasGenerated="hasGenerated($event)"
-                                  ref="htmlemphirePdf">
+                    <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
+                        :preview-modal="false" :paginate-elements-by-height="5000" filename="Employee_Hiring_Report"
+                        :pdf-quality="2" :manual-pagination="false" pdf-format="a4" pdf-orientation="landscape"
+                        pdf-content-width="1100px" @progress="onProgress($event)"
+                        @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
+                        ref="htmlemphirePdf">
                         <div slot="pdf-content">
                             <div class="modal-header d-flex justify-content-between">
-                                <h4 class="modal-title" style="width:80%"><span
-                                    style="width:80%">Employee Hire Report </span></h4>
-                                <span
-                                    class="role-edit-modal"> {{ this.hire_start_date }} - {{
-                                        this.hire_end_date
-                                    }}</span>
+                                <h4 class="modal-title" style="width:80%"><span style="width:80%">Employee Hire Report
+                                    </span></h4>
+                                <span class="role-edit-modal"> {{ this.hire_start_date }} - {{
+                                    this.hire_end_date
+                                }}</span>
 
                             </div>
                             <div class="modal-body">
                                 <div class="table-responsive EmployeeHireReport">
                                     <table class="table employeeHireReport" id="Employees_Hiring_Report">
                                         <thead style="">
-                                        <tr>
-                                            <th scope="col" style="width:20%;">Employment Detail</th>
-                                            <th scope="col" style="width:80%; min-width: 500px;">
-                                                <table style="width:100%;">
-                                                    <thead>
+                                            <tr>
+                                                <th scope="col" style="width:20%;">Employment Detail</th>
+                                                <th scope="col" style="width:80%; min-width: 500px;">
+                                                    <table style="width:100%;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col" style="width:50%;">Personal Detail</th>
+                                                                <th scope="col" style="width:25%;">Hire Date</th>
+                                                                <th scope="col" style="width:25%;">Job Detail</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot style="">
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <!---->
+                                                <!---->
+                                                <th scope="col" class="ng-star-inserted">Total
+                                                    Employees:{{ this.gethireemplocount }}
+                                                </th>
+                                                <th scope="col"></th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <!---->
+                                            <tr class="ng-star-inserted" v-for="gethireemplo1 in gethireemplo">
+                                                <td style="width:20%;">
+                                                    <div class="row">
+                                                        <div class="mt-display-flex">
+                                                            <div>
+                                                                Department:{{ gethireemplo1.Department }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="mt-display-flex">
+                                                            <div>
+                                                                Designation:{{ gethireemplo1.Designation }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="mt-display-flex">
+                                                            <div>
+                                                                Location:{{ gethireemplo1.PostingCity }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width:80%;min-width: 500px;">
+                                                    <table style="width:100%;">
+                                                        <tbody>
+                                                            <!---->
+                                                            <tr class="ng-star-inserted">
+                                                                <td style="width:50%;">
+                                                                    <div class="row">
+                                                                        <div class="mt-display-flex">
+                                                                            <div>
+                                                                                <span>{{
+                                                                                    gethireemplo1.EmployeeCode
+                                                                                    }} - {{ gethireemplo1.Name }}</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <span>Cnic:{{ gethireemplo1.CNIC }}
+                                                                                </span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <span>Phone:{{ gethireemplo1.Mobile }}
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="width:25%;">
+                                                                    <div>
+                                                                        <span> {{ gethireemplo1.JoiningDate }}</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span> {{ gethireemplo1.JobStatus }} </span>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="width:25%;">
+                                                                    <div>
+                                                                        <span>Salary: {{ gethireemplo1.Salary }}/-
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span v-html="gethireemplo1.JobDescription">
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </vue-html2pdf>
+                    <div class="modal-body">
+                        <div class="table-responsive EmployeeHireReport">
+                            <table class="table employeeHireReport">
+                                <thead style="">
+                                    <tr>
+                                        <th scope="col" style="width:20%;">Employment Detail</th>
+                                        <th scope="col" style="width:80%; min-width: 500px;">
+                                            <table style="width:100%;">
+                                                <thead>
                                                     <tr>
                                                         <th scope="col" style="width:50%;">Personal Detail</th>
                                                         <th scope="col" style="width:25%;">Hire Date</th>
                                                         <th scope="col" style="width:25%;">Job Detail</th>
                                                     </tr>
-                                                    </thead>
-                                                </table>
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tfoot style="">
-                                        <tr>
-                                            <th scope="col"></th>
-                                            <!---->
-                                            <!---->
-                                            <th scope="col" class="ng-star-inserted">Total
-                                                Employees:{{ this.gethireemplocount }}
-                                            </th>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                        </tfoot>
-                                        <tbody>
-                                        <!---->
-                                        <tr class="ng-star-inserted" v-for="gethireemplo1 in gethireemplo">
-                                            <td style="width:20%;">
-                                                <div class="row">
-                                                    <div class="mt-display-flex">
-                                                        <div>
-                                                            Department:{{ gethireemplo1.Department }}
-                                                        </div>
+                                                </thead>
+                                            </table>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tfoot style="">
+                                    <tr>
+                                        <th scope="col"></th>
+
+                                        <th scope="col" class="ng-star-inserted">Total
+                                            Employees:{{ this.gethireemplocount }}
+                                        </th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <!---->
+                                    <tr class="ng-star-inserted" v-for="gethireemplo1 in gethireemplo"
+                                        v-if="toggle_employeehire == false">
+                                        <td style="width:20%;">
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        Department:{{ gethireemplo1.Department }}
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="mt-display-flex">
-                                                        <div>
-                                                            Designation:{{ gethireemplo1.Designation }}
-                                                        </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        Designation:{{ gethireemplo1.Designation }}
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="mt-display-flex">
-                                                        <div>
-                                                            Location:{{ gethireemplo1.PostingCity }}
-                                                        </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="mt-display-flex">
+                                                    <div>
+                                                        Location:{{ gethireemplo1.PostingCity }}
                                                     </div>
                                                 </div>
-                                            </td>
-                                            <td style="width:80%;min-width: 500px;">
-                                                <table style="width:100%;">
-                                                    <tbody>
-                                                    <!---->
+                                            </div>
+                                        </td>
+                                        <td style="width:80%;min-width: 500px;">
+                                            <table style="width:100%;">
+                                                <tbody>
                                                     <tr class="ng-star-inserted">
                                                         <td style="width:50%;">
                                                             <div class="row">
                                                                 <div class="mt-display-flex">
                                                                     <div>
                                                                         <span>{{
-                                                                                gethireemplo1.EmployeeCode
+                                                                            gethireemplo1.EmployeeCode
                                                                             }} - {{ gethireemplo1.Name }}</span>
                                                                     </div>
                                                                     <div>
@@ -1531,151 +1657,46 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </vue-html2pdf>
-                    <div class="modal-body">
-                        <div class="table-responsive EmployeeHireReport">
-                            <table class="table employeeHireReport">
-                                <thead style="">
-                                <tr>
-                                    <th scope="col" style="width:20%;">Employment Detail</th>
-                                    <th scope="col" style="width:80%; min-width: 500px;">
-                                        <table style="width:100%;">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col" style="width:50%;">Personal Detail</th>
-                                                <th scope="col" style="width:25%;">Hire Date</th>
-                                                <th scope="col" style="width:25%;">Job Detail</th>
-                                            </tr>
-                                            </thead>
-                                        </table>
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tfoot style="">
-                                <tr>
-                                    <th scope="col"></th>
 
-                                    <th scope="col" class="ng-star-inserted">Total
-                                        Employees:{{ this.gethireemplocount }}
-                                    </th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                <!---->
-                                <tr class="ng-star-inserted" v-for="gethireemplo1 in gethireemplo"
-                                    v-if="toggle_employeehire==false">
-                                    <td style="width:20%;">
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    Department:{{ gethireemplo1.Department }}
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr v-if="toggle_employeehire == true">
+                                        <td></td>
+                                        <td>
+                                            <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                                <div class="ldio-qxxhsg5wen">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    Designation:{{ gethireemplo1.Designation }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mt-display-flex">
-                                                <div>
-                                                    Location:{{ gethireemplo1.PostingCity }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td style="width:80%;min-width: 500px;">
-                                        <table style="width:100%;">
-                                            <tbody>
-                                            <tr class="ng-star-inserted">
-                                                <td style="width:50%;">
-                                                    <div class="row">
-                                                        <div class="mt-display-flex">
-                                                            <div>
-                                                                <span>{{
-                                                                        gethireemplo1.EmployeeCode
-                                                                    }} - {{ gethireemplo1.Name }}</span>
-                                                            </div>
-                                                            <div>
-                                                                <span>Cnic:{{ gethireemplo1.CNIC }} </span>
-                                                            </div>
-                                                            <div>
-                                                                <span>Phone:{{ gethireemplo1.Mobile }} </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td style="width:25%;">
-                                                    <div>
-                                                        <span> {{ gethireemplo1.JoiningDate }}</span>
-                                                    </div>
-                                                    <div>
-                                                        <span> {{ gethireemplo1.JobStatus }} </span>
-                                                    </div>
-                                                </td>
-                                                <td style="width:25%;">
-                                                    <div>
-                                                        <span>Salary: {{ gethireemplo1.Salary }}/- </span>
-                                                    </div>
-                                                    <div>
-                                                        <span v-html="gethireemplo1.JobDescription"> </span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr v-if="toggle_employeehire==true">
-                                    <td></td>
-                                    <td>
-                                        <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                            <div class="ldio-qxxhsg5wen">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                            </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
 
-                                    <td></td>
-                                </tr>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Employees_Hiring_Report')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Hiring_Report')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" @click="htmlemphirereport()" class="btn btn-gradient-info">Pdf</button>
                         <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
-                                @click="employee_hire_report1()">close
+                            @click="employee_hire_report1()">close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="modal fade" id="employeeappraisal" aria-labelledby="employeehire1Label" tabindex="-1"
-             style="display: none" aria-hidden="true">
-            <div v-if="emp_appraisal==''" class="modal-dialog modal-dialog-centered">
+            aria-hidden="true">
+            <div v-if="emp_appraisal == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Employee Appraisal Report</h5>
@@ -1687,11 +1708,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range From</label>
-                                    <input type="date" class="form-control"/>
+                                    <input type="date" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range To</label>
-                                    <input type="date" class="form-control"/>
+                                    <input type="date" class="form-control" />
                                 </div>
                             </div>
                             <div class="row">
@@ -1699,16 +1720,14 @@
                                     <label class="form-label" for="modalAddCardName">Work Location</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
+                                        id="modalAddCardName" placeholder="All" :options="options5">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Department</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
+                                        id="modalAddCardName" placeholder="All" :options="options5">
                                     </multiselect>
                                 </div>
                             </div>
@@ -1717,16 +1736,14 @@
                                     <label class="form-label" for="modalAddCardName">Designation</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
+                                        id="modalAddCardName" placeholder="All" :options="options5">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Employee Id</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
+                                        id="modalAddCardName" placeholder="All" :options="options5">
                                     </multiselect>
                                 </div>
                             </div>
@@ -1745,33 +1762,33 @@
             <div v-else class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between">
-                        <h4 class="modal-title" style="width:80%"><span
-                            style="width:80%">Employee Appraisal Report </span></h4>
+                        <h4 class="modal-title" style="width:80%"><span style="width:80%">Employee Appraisal Report
+                            </span></h4>
                         <span class="role-edit-modal"> 01/01/2022 - 31/12/2022</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="employee_appraisal_report1()"></button>
+                            @click="employee_appraisal_report1()"></button>
                     </div>
                     <div class="modal-body">
                         <div class="table-responsive EmployeeHireReport">
                             <table class="table employeeHireReport">
                                 <thead style="">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Designation</th>
-                                    <th>Department</th>
-                                    <th>Appraisal Amount</th>
-                                    <th>Date</th>
-                                </tr>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Designation</th>
+                                        <th>Department</th>
+                                        <th>Appraisal Amount</th>
+                                        <th>Date</th>
+                                    </tr>
                                 </thead>
 
                                 <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1780,16 +1797,15 @@
                         <button type="button" class="btn btn-gradient-info">Excel</button>
                         <button type="button" class="btn btn-gradient-info">Pdf</button>
                         <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
-                                @click="employee_appraisal_report1()">close
+                            @click="employee_appraisal_report1()">close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="modal fade" id="absent_summary" aria-labelledby="employeehire1Label" tabindex="-1"
-             style="display: none" aria-hidden="true">
-            <div v-if="abs_summary==''" class="modal-dialog modal-dialog-centered">
+            aria-hidden="true">
+            <div v-if="abs_summary == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Absent Summary Report</h5>
@@ -1801,11 +1817,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range From</label>
-                                    <input type="date" v-model="absent_from" class="form-control"/>
+                                    <input type="date" v-model="absent_from" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range To</label>
-                                    <input type="date" v-model="absent_to" class="form-control"/>
+                                    <input type="date" v-model="absent_to" class="form-control" />
                                 </div>
                             </div>
                             <div class="row">
@@ -1813,16 +1829,16 @@
                                     <label class="form-label" for="modalAddCardName">Work Location</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserPlan" placeholder="All Locations"
-                                                 v-model="abs_location" :options="options1">
+                                        id="UserPlan" placeholder="All Locations" v-model="abs_location"
+                                        :options="options1">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Department</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Departments"
-                                                 v-model="abs_department" :options="options2">
+                                        id="FilterTransaction" placeholder="All Departments" v-model="abs_department"
+                                        :options="options2">
                                     </multiselect>
                                 </div>
                             </div>
@@ -1831,8 +1847,8 @@
                                     <label class="form-label" for="modalAddCardName">Designation</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserRole" placeholder="All Designations"
-                                                 v-model="abs_designation" :options="options">
+                                        id="UserRole" placeholder="All Designations" v-model="abs_designation"
+                                        :options="options">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
@@ -1864,50 +1880,41 @@
                         </h4>
                         <span class="role-edit-modal"> {{ this.absent_from }} - {{ this.absent_to }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="absent_summary1()"></button>
+                            @click="absent_summary1()"></button>
                     </div>
-                    <vue-html2pdf :show-layout="false"
-                                  :float-layout="true"
-                                  :enable-download="true"
-                                  :preview-modal="false"
-                                  :paginate-elements-by-height="1400"
-                                  filename="Employee_Absent_Report"
-                                  :pdf-quality="2"
-                                  :manual-pagination="false"
-                                  pdf-format="a4"
-                                  pdf-orientation="portrait"
-                                  pdf-content-width="800px"
-                                  @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()"
-                                  @hasGenerated="hasGenerated($event)"
-                                  ref="htmlempabsentPdf">
+                    <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
+                        :preview-modal="false" :paginate-elements-by-height="1400" filename="Employee_Absent_Report"
+                        :pdf-quality="2" :manual-pagination="false" pdf-format="a4" pdf-orientation="portrait"
+                        pdf-content-width="800px" @progress="onProgress($event)"
+                        @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
+                        ref="htmlempabsentPdf">
                         <div class="modal-body" slot="pdf-content">
                             <div class="table-responsive">
                                 <table class="table attendancesummaryreport" id="Employees_Absent_Report">
                                     <thead style="">
-                                    <tr>
-                                        <th scope="col" colspan="6">Absent Report</th>
-                                    </tr>
+                                        <tr>
+                                            <th scope="col" colspan="6">Absent Report</th>
+                                        </tr>
                                     </thead>
                                     <thead style="">
-                                    <tr>
-                                        <th scope="col">Emp. Code</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Designation</th>
-                                        <th scope="col">Department</th>
-                                        <th scope="col">Location</th>
-                                        <th scope="col">Date</th>
-                                    </tr>
+                                        <tr>
+                                            <th scope="col">Emp. Code</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Designation</th>
+                                            <th scope="col">Department</th>
+                                            <th scope="col">Location</th>
+                                            <th scope="col">Date</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="absent_detail1 in absent_detail">
-                                        <td>{{ absent_detail1.EmployeeCode }}</td>
-                                        <td>{{ absent_detail1.Name }}</td>
-                                        <td>{{ absent_detail1.Designation }}</td>
-                                        <td>{{ absent_detail1.Department }}</td>
-                                        <td>{{ absent_detail1.PostingCity }}</td>
-                                        <td>{{ absent_detail1.ATTDate }}</td>
-                                    </tr>
+                                        <tr v-for="absent_detail1 in absent_detail">
+                                            <td>{{ absent_detail1.EmployeeCode }}</td>
+                                            <td>{{ absent_detail1.Name }}</td>
+                                            <td>{{ absent_detail1.Designation }}</td>
+                                            <td>{{ absent_detail1.Department }}</td>
+                                            <td>{{ absent_detail1.PostingCity }}</td>
+                                            <td>{{ absent_detail1.ATTDate }}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -1917,61 +1924,60 @@
                         <div class="table-responsive">
                             <table class="table attendancesummaryreport">
                                 <thead style="">
-                                <tr>
-                                    <th scope="col">Emp. Code</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Designation</th>
-                                    <th scope="col">Department</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Date</th>
-                                </tr>
+                                    <tr>
+                                        <th scope="col">Emp. Code</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Designation</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="absent_detail1 in absent_detail" v-if="toggle_absent_summary==false">
-                                    <td>{{ absent_detail1.EmployeeCode }}</td>
-                                    <td>{{ absent_detail1.Name }}</td>
-                                    <td>{{ absent_detail1.Designation }}</td>
-                                    <td>{{ absent_detail1.Department }}</td>
-                                    <td>{{ absent_detail1.PostingCity }}</td>
-                                    <td>{{ absent_detail1.ATTDate }}</td>
-                                </tr>
-                                <tr v-if="toggle_absent_summary==true">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                            <div class="ldio-qxxhsg5wen">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
+                                    <tr v-for="absent_detail1 in absent_detail" v-if="toggle_absent_summary == false">
+                                        <td>{{ absent_detail1.EmployeeCode }}</td>
+                                        <td>{{ absent_detail1.Name }}</td>
+                                        <td>{{ absent_detail1.Designation }}</td>
+                                        <td>{{ absent_detail1.Department }}</td>
+                                        <td>{{ absent_detail1.PostingCity }}</td>
+                                        <td>{{ absent_detail1.ATTDate }}</td>
+                                    </tr>
+                                    <tr v-if="toggle_absent_summary == true">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                                <div class="ldio-qxxhsg5wen">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Employees_Absent_Report')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Absent_Report')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" @click="empabsentpdfreport()" class="btn btn-gradient-info">Pdf</button>
                         <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
-                                @click="absent_summary1()">close
+                            @click="absent_summary1()">close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="modal fade" id="employees_attendance" aria-labelledby="employeehire1Label" tabindex="-1"
-             style="display: none" aria-hidden="true">
+            aria-hidden="true">
             <div v-if="!this.isEmployeesCustomAttendance" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1984,30 +1990,24 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Date Range</label>
-                                    <date-range-picker
-                                        ref="picker"
-                                        minDate="'2022-01-01'"
-                                        :maxDate="att_date"
-                                        v-model="dateRange"
-                                        :locale-data="{ firstDay: 1, format: 'dd-mm-yyyy' }"
-                                        style="width: 100%;"
-                                    ></date-range-picker>
+                                    <date-range-picker ref="picker" minDate="'2022-01-01'" :maxDate="att_date"
+                                        v-model="dateRange" :locale-data="{ firstDay: 1, format: 'dd-mm-yyyy' }"
+                                        style="width: 100%;"></date-range-picker>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Department</label>
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Departments"
-                                                 v-model="custom_att_department" :options="options2">
+                                        id="FilterTransaction" placeholder="All Departments"
+                                        v-model="custom_att_department" :options="options2">
                                     </multiselect>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <label class="form-label" for="modalAddCardName">Employee(s)</label>
                                 <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                             value="id"
-                                             label="label" placeholder="All Employees" v-model="employeesForAttendance"
-                                             :options="registeredEmployees"
-                                             :multiple="true"></multiselect>
+                                    value="id" label="label" placeholder="All Employees"
+                                    v-model="employeesForAttendance" :options="registeredEmployees" :multiple="true">
+                                </multiselect>
                             </div>
                         </div>
                     </div>
@@ -2023,47 +2023,91 @@
             <div v-else class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between">
-                        <h4 class="modal-title" style="width:80%"><span
-                            style="width:80%">Custom Attendance Report</span>
+                        <h4 class="modal-title" style="width:80%"><span style="width:80%">Custom Attendance
+                                Report</span>
                         </h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="exitCustomAttendance()"></button>
+                            @click="exitCustomAttendance()"></button>
                     </div>
-                    <vue-html2pdf :show-layout="false"
-                                  :float-layout="true"
-                                  :enable-download="true"
-                                  :preview-modal="false"
-                                  :paginate-elements-by-height="1600"
-                                  filename="CustomAttendance"
-                                  :pdf-quality="2"
-                                  :manual-pagination="false"
-                                  :pdf-format="this.page"
-                                  pdf-orientation="landscape"
-                                  :pdf-content-width="pixel"
-                                  @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()"
-                                  @hasGenerated="hasGenerated($event)"
-                                  ref="customAttendancePDF">
+                    <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
+                        :preview-modal="false" :paginate-elements-by-height="1600" filename="CustomAttendance"
+                        :pdf-quality="2" :manual-pagination="false" :pdf-format="this.page" pdf-orientation="landscape"
+                        :pdf-content-width="pixel" @progress="onProgress($event)"
+                        @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
+                        ref="customAttendancePDF">
                         <div class="modal-body" slot="pdf-content">
                             <div class="table-responsive">
                                 <table border="1" class="table tableMain payrollSheetTable"
-                                       style="font-family:Arial !important; font-size: 10px !important;margin-bottom:30px;">
+                                    style="font-family:Arial !important; font-size: 10px !important;margin-bottom:30px;">
                                     <thead class="grid-header">
+                                        <tr>
+                                            <th class="td-center"
+                                                style="min-width: 70px; position: sticky; left: 0; z-index: 1;">Emp.
+                                                Code
+                                            </th>
+                                            <th class="td-center" style="min-width: 200px;">Employee Name</th>
+                                            <th class="td-center" style="min-width: 200px;">Department</th>
+                                            <th class="td-center" style="min-width: 200px;">Designation</th>
+                                            <th class="td-center" v-for='date in dateArray' style="min-width: 83px;">
+                                                {{ date }}
+                                            </th>
+                                            <th class="td-center">GP</th>
+                                            <th class="td-center">Late Instance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(employeeAttendance, index) in employeesCustomAttendance"
+                                            :key="index">
+                                            <td class="td-center"
+                                                style="position: sticky; left: 0; background-color: white !important; z-index: 1;">
+                                                {{ employeeAttendance['EmployeeCode'] }}
+                                            </td>
+                                            <td class="td-left">
+                                                <div class="d-flex flex-column">
+                                                    <a class="user_name text-truncate text-body"><span
+                                                            class="fw-bolder">{{ employeeAttendance['Employee Name'] }}
+                                                        </span></a>
+                                                </div>
+                                            </td>
+                                            <td class="td-center">
+                                                {{ employeeAttendance['Department'] }}
+                                            </td>
+                                            <td class="td-center">
+                                                {{ employeeAttendance['Designation'] }}
+                                            </td>
+                                            <td class="td-center" v-for='date in dateArray'>
+                                                {{ employeeAttendance[date] }}
+                                            </td>
+                                            <td class="td-center">
+                                                {{ employeeAttendance['GracePeriod'] }}
+                                            </td>
+                                            <td class="td-center">
+                                                {{ employeeAttendance['LateInstance'] }}
+                                            </td>
+                                            <!-- Add other date columns here -->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </vue-html2pdf>
+                    <div class="modal-body">
+                        <div class="table-responsive" style="overflow-x: auto;">
+                            <table class="table table-bordered table-hover" style="width: 100%;" slot="pdf-content">
+                                <thead class="grid-header">
                                     <tr>
                                         <th class="td-center"
-                                            style="min-width: 70px; position: sticky; left: 0; z-index: 1;">Emp. Code
+                                            style="min-width: 90px; position: sticky; left: 0; z-index: 1;">Emp. Code
                                         </th>
-                                        <th class="td-center" style="min-width: 200px;">Employee Name</th>
-                                        <th class="td-center" style="min-width: 200px;">Department</th>
-                                        <th class="td-center" style="min-width: 200px;">Designation</th>
-                                        <th class="td-center" v-for='date in dateArray' style="min-width: 83px;">
+                                        <th class="td-center" style="min-width: 350px;">Employee Name</th>
+                                        <th class="td-center" v-for='date in dateArray' style="min-width: 105px;">
                                             {{ date }}
                                         </th>
                                         <th class="td-center">GP</th>
                                         <th class="td-center">Late Instance</th>
                                     </tr>
-                                    </thead>
-                                    <tbody>
+                                </thead>
+                                <tbody>
                                     <tr v-for="(employeeAttendance, index) in employeesCustomAttendance" :key="index">
                                         <td class="td-center"
                                             style="position: sticky; left: 0; background-color: white !important; z-index: 1;">
@@ -2071,8 +2115,56 @@
                                         </td>
                                         <td class="td-left">
                                             <div class="d-flex flex-column">
-                                                <a class="user_name text-truncate text-body"><span
-                                                    class="fw-bolder">{{ employeeAttendance['Employee Name'] }} </span></a>
+                                                <a class="user_name text-truncate text-body"><span class="fw-bolder">{{
+                                                    employeeAttendance['Employee Name'] }} </span></a>
+                                                <small class="emp_post text-muted">
+                                                    {{ employeeAttendance['Department'] }} -
+                                                    {{ employeeAttendance['Designation'] }}
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="td-center" v-for='date in dateArray'>
+                                            {{ employeeAttendance[date] }}
+                                        </td>
+                                        <td class="td-center">
+                                            {{ employeeAttendance['GracePeriod'] }}
+                                        </td>
+                                        <td class="td-center">
+                                            {{ employeeAttendance['LateInstance'] }}
+                                        </td>
+                                        <!-- Add other date columns here -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-responsive" style="overflow-x: auto; display: none;" id="customAttendance">
+                            <table class="table table-bordered table-hover" style="width: 100%;" slot="pdf-content">
+                                <thead class="grid-header">
+                                    <tr>
+                                        <th class="td-center"
+                                            style="min-width: 90px; position: sticky; left: 0; z-index: 1;">Emp. Code
+                                        </th>
+                                        <th class="td-center" style="min-width: 200px;">Employee Name</th>
+                                        <th class="td-center" style="min-width: 200px;">Department</th>
+                                        <th class="td-center" style="min-width: 200px;">Designation</th>
+                                        <th class="td-center" v-for='date in dateArray' style="min-width: 105px;">
+                                            {{ date }}
+                                        </th>
+                                        <th class="td-center">GP</th>
+                                        <th class="td-center">Late Instance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(employeeAttendance, index) in employeesCustomAttendance" :key="index">
+                                        <td class="td-center"
+                                            style="position: sticky; left: 0; background-color: white !important; z-index: 1;">
+                                            {{ employeeAttendance['EmployeeCode'] }}
+                                        </td>
+                                        <td class="td-left">
+                                            <div class="d-flex flex-column">
+                                                <a class="user_name text-truncate text-body"><span class="fw-bolder">{{
+                                                    employeeAttendance['Employee Name'] }} </span></a>
                                             </div>
                                         </td>
                                         <td class="td-center">
@@ -2092,126 +2184,26 @@
                                         </td>
                                         <!-- Add other date columns here -->
                                     </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </vue-html2pdf>
-                    <div class="modal-body">
-                        <div class="table-responsive" style="overflow-x: auto;" >
-                            <table class="table table-bordered table-hover" style="width: 100%;" slot="pdf-content">
-                                <thead class="grid-header">
-                                <tr>
-                                    <th class="td-center"
-                                        style="min-width: 90px; position: sticky; left: 0; z-index: 1;">Emp. Code
-                                    </th>
-                                    <th class="td-center" style="min-width: 350px;">Employee Name</th>
-                                    <th class="td-center" v-for='date in dateArray' style="min-width: 105px;">
-                                        {{ date }}
-                                    </th>
-                                    <th class="td-center">GP</th>
-                                    <th class="td-center">Late Instance</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr v-for="(employeeAttendance, index) in employeesCustomAttendance" :key="index">
-                                    <td class="td-center"
-                                        style="position: sticky; left: 0; background-color: white !important; z-index: 1;">
-                                        {{ employeeAttendance['EmployeeCode'] }}
-                                    </td>
-                                    <td class="td-left">
-                                        <div class="d-flex flex-column">
-                                            <a class="user_name text-truncate text-body"><span
-                                                class="fw-bolder">{{ employeeAttendance['Employee Name'] }} </span></a>
-                                            <small class="emp_post text-muted">
-                                                {{ employeeAttendance['Department'] }} -
-                                                {{ employeeAttendance['Designation'] }}
-                                            </small>
-                                        </div>
-                                    </td>
-                                    <td class="td-center" v-for='date in dateArray'>
-                                        {{ employeeAttendance[date] }}
-                                    </td>
-                                    <td class="td-center">
-                                        {{ employeeAttendance['GracePeriod'] }}
-                                    </td>
-                                    <td class="td-center">
-                                        {{ employeeAttendance['LateInstance'] }}
-                                    </td>
-                                    <!-- Add other date columns here -->
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="table-responsive" style="overflow-x: auto; display: none;" id="customAttendance">
-                            <table class="table table-bordered table-hover" style="width: 100%;" slot="pdf-content">
-                                <thead class="grid-header">
-                                <tr>
-                                    <th class="td-center"
-                                        style="min-width: 90px; position: sticky; left: 0; z-index: 1;">Emp. Code
-                                    </th>
-                                    <th class="td-center" style="min-width: 200px;">Employee Name</th>
-                                    <th class="td-center" style="min-width: 200px;">Department</th>
-                                    <th class="td-center" style="min-width: 200px;">Designation</th>
-                                    <th class="td-center" v-for='date in dateArray' style="min-width: 105px;">
-                                        {{ date }}
-                                    </th>
-                                    <th class="td-center">GP</th>
-                                    <th class="td-center">Late Instance</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr v-for="(employeeAttendance, index) in employeesCustomAttendance" :key="index">
-                                    <td class="td-center"
-                                        style="position: sticky; left: 0; background-color: white !important; z-index: 1;">
-                                        {{ employeeAttendance['EmployeeCode'] }}
-                                    </td>
-                                    <td class="td-left">
-                                        <div class="d-flex flex-column">
-                                            <a class="user_name text-truncate text-body"><span
-                                                class="fw-bolder">{{ employeeAttendance['Employee Name'] }} </span></a>
-                                        </div>
-                                    </td>
-                                    <td class="td-center">
-                                        {{ employeeAttendance['Department'] }}
-                                    </td>
-                                    <td class="td-center">
-                                        {{ employeeAttendance['Designation'] }}
-                                    </td>
-                                    <td class="td-center" v-for='date in dateArray'>
-                                        {{ employeeAttendance[date] }}
-                                    </td>
-                                    <td class="td-center">
-                                        {{ employeeAttendance['GracePeriod'] }}
-                                    </td>
-                                    <td class="td-center">
-                                        {{ employeeAttendance['LateInstance'] }}
-                                    </td>
-                                    <!-- Add other date columns here -->
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xls','customAttendance')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xls', 'customAttendance')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" class="btn btn-gradient-info" @click="customAttendancePDF()">PDF
                         </button>
                         <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
-                                @click="exitCustomAttendance()">close
+                            @click="exitCustomAttendance()">close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="modal fade" id="att_detail" aria-labelledby="employeehire1Label" tabindex="-1" style="display: none"
-             aria-hidden="true">
-            <div v-if="daily_att==''" class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="att_detail" aria-labelledby="employeehire1Label" tabindex="-1" aria-hidden="false">
+            <div v-if="daily_att == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Daily Attendance Report</h5>
@@ -2223,11 +2215,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range From</label>
-                                    <input v-model="att_startingdate" type="date" class="form-control"/>
+                                    <input v-model="att_startingdate" type="date" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Range To</label>
-                                    <input v-model="att_closingdate" type="date" class="form-control"/>
+                                    <input v-model="att_closingdate" type="date" class="form-control" />
                                 </div>
                             </div>
                             <div class="row">
@@ -2235,16 +2227,16 @@
                                     <label class="form-label" for="modalAddCardName">Work Location</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserPlan" placeholder="All Locations"
-                                                 v-model="att_location" :options="options1">
+                                        id="UserPlan" placeholder="All Locations" v-model="att_location"
+                                        :options="options1">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Department</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Departments"
-                                                 v-model="att_department" :options="options2">
+                                        id="FilterTransaction" placeholder="All Departments" v-model="att_department"
+                                        :options="options2">
                                     </multiselect>
                                 </div>
                             </div>
@@ -2253,8 +2245,8 @@
                                     <label class="form-label" for="modalAddCardName">Designation</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserRole" placeholder="All Designations"
-                                                 v-model="att_designation" :options="options">
+                                        id="UserRole" placeholder="All Designations" v-model="att_designation"
+                                        :options="options">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
@@ -2282,32 +2274,56 @@
             <div v-else class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between">
-                        <h4 class="modal-title" style="width:80%"><span style="width:80%">Overall Attendance Detail Report </span>
+                        <h4 class="modal-title" style="width:80%"><span style="width:80%">Overall Attendance Detail
+                                Report </span>
                         </h4>
                         <span class="role-edit-modal"> {{ this.att_startingdate }}-{{ this.att_closingdate }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="daily_attendance1()"></button>
+                            @click="daily_attendance1()"></button>
                     </div>
-                    <vue-html2pdf :show-layout="false"
-                                  :float-layout="true"
-                                  :enable-download="true"
-                                  :preview-modal="false"
-                                  :paginate-elements-by-height="1400"
-                                  filename="Overall_att_Detail"
-                                  :pdf-quality="2"
-                                  :manual-pagination="false"
-                                  pdf-format="a4"
-                                  pdf-orientation="landscape"
-                                  pdf-content-width="1100px"
-                                  @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()"
-                                  @hasGenerated="hasGenerated($event)"
-                                  ref="htmloverallattPdf">
+                    <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
+                        :preview-modal="false" :paginate-elements-by-height="1400" filename="Overall_att_Detail"
+                        :pdf-quality="2" :manual-pagination="false" pdf-format="a4" pdf-orientation="landscape"
+                        pdf-content-width="1100px" @progress="onProgress($event)"
+                        @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
+                        ref="htmloverallattPdf">
                         <div class="modal-body" slot="pdf-content">
                             <div class="table-responsive">
                                 <table border="1" class="table tableMain payrollSheetTable"
-                                       style="font-family:Arial !important; font-size: 10px !important;margin-bottom:30px;">
+                                    style="font-family:Arial !important; font-size: 10px !important;margin-bottom:30px;">
                                     <thead>
+                                        <tr>
+                                            <th>Emp Code</th>
+                                            <th>Employee Name</th>
+                                            <th>Designation</th>
+                                            <th>Department</th>
+                                            <th>Date</th>
+                                            <th>Check In</th>
+                                            <th>Check Out</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="ng-star-inserted">
+                                        <tr v-for="att_report1 in attendance_alldata">
+                                            <td>{{ att_report1.EmpCode }}</td>
+                                            <td>{{ att_report1.Name }}</td>
+                                            <td>{{ att_report1.Designation }}</td>
+                                            <td>{{ att_report1.Department }}</td>
+                                            <td>{{ att_report1.ATTDate }}</td>
+                                            <td>{{ att_report1.CheckIN }}</td>
+                                            <td>{{ att_report1.CheckOut }}</td>
+                                            <td>{{ att_report1.AttStatus }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </vue-html2pdf>
+                    <div class="modal-body">
+                        <div class="table-responsive" id="Employees_Overall_Attendance">
+                            <table border="1" class="table tableMain payrollSheetTable"
+                                style="font-family:Arial !important; font-size: 10px !important;margin-bottom:30px;">
+                                <thead>
                                     <tr>
                                         <th>Emp Code</th>
                                         <th>Employee Name</th>
@@ -2318,9 +2334,10 @@
                                         <th>Check Out</th>
                                         <th>Status</th>
                                     </tr>
-                                    </thead>
-                                    <tbody class="ng-star-inserted">
-                                    <tr v-for="att_report1 in attendance_alldata">
+                                </thead>
+                                <tbody class="ng-star-inserted">
+                                    <tr v-for="att_report1 in attendance_alldata"
+                                        v-if="toggle_overallattendance == false">
                                         <td>{{ att_report1.EmpCode }}</td>
                                         <td>{{ att_report1.Name }}</td>
                                         <td>{{ att_report1.Designation }}</td>
@@ -2330,78 +2347,45 @@
                                         <td>{{ att_report1.CheckOut }}</td>
                                         <td>{{ att_report1.AttStatus }}</td>
                                     </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </vue-html2pdf>
-                    <div class="modal-body">
-                        <div class="table-responsive" id="Employees_Overall_Attendance">
-                            <table border="1" class="table tableMain payrollSheetTable"
-                                   style="font-family:Arial !important; font-size: 10px !important;margin-bottom:30px;">
-                                <thead>
-                                <tr>
-                                    <th>Emp Code</th>
-                                    <th>Employee Name</th>
-                                    <th>Designation</th>
-                                    <th>Department</th>
-                                    <th>Date</th>
-                                    <th>Check In</th>
-                                    <th>Check Out</th>
-                                    <th>Status</th>
-                                </tr>
-                                </thead>
-                                <tbody class="ng-star-inserted">
-                                <tr v-for="att_report1 in attendance_alldata" v-if="toggle_overallattendance==false">
-                                    <td>{{ att_report1.EmpCode }}</td>
-                                    <td>{{ att_report1.Name }}</td>
-                                    <td>{{ att_report1.Designation }}</td>
-                                    <td>{{ att_report1.Department }}</td>
-                                    <td>{{ att_report1.ATTDate }}</td>
-                                    <td>{{ att_report1.CheckIN }}</td>
-                                    <td>{{ att_report1.CheckOut }}</td>
-                                    <td>{{ att_report1.AttStatus }}</td>
-                                </tr>
-                                <tr v-if="toggle_overallattendance==true">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                            <div class="ldio-qxxhsg5wen">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
+                                    <tr v-if="toggle_overallattendance == true">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                                <div class="ldio-qxxhsg5wen">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Employees_Overall_Attendance')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Overall_Attendance')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" class="btn btn-gradient-info" @click="generateoverallattreport()">Pdf
                         </button>
                         <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
-                                @click="daily_attendance1()">close
+                            @click="daily_attendance1()">close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="att_payroll" aria-labelledby="employeehire1Label" tabindex="-1"
-             style="display: none" aria-hidden="true">
-            <div v-if="att_pay==''" class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="att_payroll" aria-labelledby="employeehire1Label" tabindex="-1" aria-hidden="true">
+            <div v-if="att_pay == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Attendance Payroll Report</h5>
@@ -2416,16 +2400,14 @@
                                     <label class="form-label" for="modalAddCardName">Work Location</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
+                                        id="modalAddCardName" placeholder="All" :options="options5">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Department</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
+                                        id="modalAddCardName" placeholder="All" :options="options5">
                                     </multiselect>
                                 </div>
                             </div>
@@ -2434,16 +2416,14 @@
                                     <label class="form-label" for="modalAddCardName">Designation</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
+                                        id="modalAddCardName" placeholder="All" :options="options5">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Employee Id</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
+                                        id="modalAddCardName" placeholder="All" :options="options5">
                                     </multiselect>
                                 </div>
                             </div>
@@ -2461,60 +2441,51 @@
             <div v-else class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between">
-                        <h4 class="modal-title" style="width:80%"><span
-                            style="width:80%">Attendance Summary Report</span></h4>
+                        <h4 class="modal-title" style="width:80%"><span style="width:80%">Attendance Summary
+                                Report</span></h4>
                         <span>Session Name: {{ this.session_name }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="attendance_payroll1()"></button>
+                            @click="attendance_payroll1()"></button>
                     </div>
-                    <vue-html2pdf :show-layout="false"
-                                  :float-layout="true"
-                                  :enable-download="true"
-                                  :preview-modal="false"
-                                  :paginate-elements-by-height="1400"
-                                  filename="Sessionwise_Payroll_Employee_Attendance"
-                                  :pdf-quality="2"
-                                  :manual-pagination="true"
-                                  pdf-format="a4"
-                                  pdf-orientation="landscape"
-                                  pdf-content-width="1100px"
-                                  @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()"
-                                  @hasGenerated="hasGenerated($event)"
-                                  ref="htmlsessionpayrollPdf">
+                    <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
+                        :preview-modal="false" :paginate-elements-by-height="1400"
+                        filename="Sessionwise_Payroll_Employee_Attendance" :pdf-quality="2" :manual-pagination="true"
+                        pdf-format="a4" pdf-orientation="landscape" pdf-content-width="1100px"
+                        @progress="onProgress($event)" @hasStartedGeneration="hasStartedGeneration()"
+                        @hasGenerated="hasGenerated($event)" ref="htmlsessionpayrollPdf">
                         <div slot="pdf-content">
                             <div class="modal-body">
                                 <table style="width: 100%;">
                                     <thead class="grid-header">
-                                    <tr class="mat-header-row">
-                                        <th>Emp. Code</th>
-                                        <th>Name</th>
-                                        <th>Designation</th>
-                                        <th>Department</th>
-                                        <th>T. Days</th>
-                                        <th>Presents</th>
-                                        <th>Absents</th>
-                                        <th>Leaves</th>
-                                        <th>Used GP</th>
-                                        <th>Overtime</th>
-                                        <th>Deduction</th>
-                                    </tr>
+                                        <tr class="mat-header-row">
+                                            <th>Emp. Code</th>
+                                            <th>Name</th>
+                                            <th>Designation</th>
+                                            <th>Department</th>
+                                            <th>T. Days</th>
+                                            <th>Presents</th>
+                                            <th>Absents</th>
+                                            <th>Leaves</th>
+                                            <th>Used GP</th>
+                                            <th>Overtime</th>
+                                            <th>Deduction</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="att_payroll_detail1 in att_payroll_detail">
-                                        <td>{{ att_payroll_detail1.EmpCode }}</td>
-                                        <td>{{ att_payroll_detail1.Name }}</td>
-                                        <td>{{ att_payroll_detail1.Designation }}</td>
-                                        <td>{{ att_payroll_detail1.Department }}</td>
-                                        <td>{{ att_payroll_detail1.TotalDays }}</td>
-                                        <td>{{ att_payroll_detail1.TotalPresent }}</td>
-                                        <td>{{ att_payroll_detail1.TotalAbsent }}</td>
-                                        <td>{{ att_payroll_detail1.TotalLeave }}</td>
-                                        <td>{{ att_payroll_detail1.GP }}</td>
-                                        <td>{{ att_payroll_detail1.OT }}</td>
-                                        <td>{{ att_payroll_detail1.Deduction }}</td>
+                                        <tr v-for="att_payroll_detail1 in att_payroll_detail">
+                                            <td>{{ att_payroll_detail1.EmpCode }}</td>
+                                            <td>{{ att_payroll_detail1.Name }}</td>
+                                            <td>{{ att_payroll_detail1.Designation }}</td>
+                                            <td>{{ att_payroll_detail1.Department }}</td>
+                                            <td>{{ att_payroll_detail1.TotalDays }}</td>
+                                            <td>{{ att_payroll_detail1.TotalPresent }}</td>
+                                            <td>{{ att_payroll_detail1.TotalAbsent }}</td>
+                                            <td>{{ att_payroll_detail1.TotalLeave }}</td>
+                                            <td>{{ att_payroll_detail1.GP }}</td>
+                                            <td>{{ att_payroll_detail1.OT }}</td>
+                                            <td>{{ att_payroll_detail1.Deduction }}</td>
 
-                                    </tr>
+                                        </tr>
 
                                     </tbody>
                                 </table>
@@ -2524,395 +2495,37 @@
                     <div class="modal-body">
                         <table style="width: 100%;" id="Employees_Payroll_Attendance">
                             <thead class="grid-header">
-                            <tr class="mat-header-row">
-                                <th>Emp. Code</th>
-                                <th>Name</th>
-                                <th>Designation</th>
-                                <th>Department</th>
-                                <th>T. Days</th>
-                                <th>Presents</th>
-                                <th>Absents</th>
-                                <th>Leaves</th>
-                                <th>Used GP</th>
-                                <th>Overtime</th>
-                                <th>Deduction</th>
-                            </tr>
+                                <tr class="mat-header-row">
+                                    <th>Emp. Code</th>
+                                    <th>Name</th>
+                                    <th>Designation</th>
+                                    <th>Department</th>
+                                    <th>T. Days</th>
+                                    <th>Presents</th>
+                                    <th>Absents</th>
+                                    <th>Leaves</th>
+                                    <th>Used GP</th>
+                                    <th>Overtime</th>
+                                    <th>Deduction</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="att_payroll_detail1 in att_payroll_detail"
-                                v-if="toggle_sessionwiseattendance==false">
-                                <td>{{ att_payroll_detail1.EmpCode }}</td>
-                                <td>{{ att_payroll_detail1.Name }}</td>
-                                <td>{{ att_payroll_detail1.Designation }}</td>
-                                <td>{{ att_payroll_detail1.Department }}</td>
-                                <td>{{ att_payroll_detail1.TotalDays }}</td>
-                                <td>{{ att_payroll_detail1.TotalPresent }}</td>
-                                <td>{{ att_payroll_detail1.TotalAbsent }}</td>
-                                <td>{{ att_payroll_detail1.TotalLeave }}</td>
-                                <td>{{ att_payroll_detail1.GP }}</td>
-                                <td>{{ att_payroll_detail1.OT }}</td>
-                                <td>{{ att_payroll_detail1.Deduction }}</td>
-                            </tr>
-                            <tr v-if="toggle_sessionwiseattendance==true">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                        <div class="ldio-qxxhsg5wen">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Employees_Payroll_Attendance')"
-                                class="btn btn-gradient-info">Excel
-                        </button>
-                        <button type="button" @click="generatesessionpayrollReport()" class="btn btn-gradient-info">
-                            Pdf
-                        </button>
-                        <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
-                                @click="attendance_payroll1()">close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="att_summary" aria-labelledby="employeehire1Label" tabindex="-1"
-             style="display: none" aria-hidden="true">
-            <div v-if="att_sum==''" class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalToggleLabel">Attendance Summary Report</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- form -->
-                        <div id="addNewCardValidation" class="row gy-1 gx-2 mt-75" onsubmit="return false">
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label" for="modalAddCardName">Work Location</label>
-
-                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
-                                    </multiselect>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="modalAddCardName">Department</label>
-
-                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
-                                    </multiselect>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label" for="modalAddCardName">Designation</label>
-
-                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
-                                    </multiselect>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="modalAddCardName">Employee Id</label>
-
-                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 :options="options5">
-                                    </multiselect>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" @click="attendance_summary()">
-                            View Report
-                        </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div v-else class="modal-dialog modal-dialog-centered modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-between">
-                        <h4 class="modal-title" style="width:80%"><span
-                            style="width:80%">Attendance Summary Report</span></h4>
-                        <span>Session Name: {{ this.session_name }}</span>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="attendance_summary1()"></button>
-                    </div>
-
-
-                    <vue-html2pdf :show-layout="false"
-                                  :float-layout="true"
-                                  :enable-download="true"
-                                  :preview-modal="false"
-                                  :paginate-elements-by-height="1400"
-                                  filename="Sessionwise_Employee_Attendance"
-                                  :pdf-quality="2"
-                                  :manual-pagination="false"
-                                  pdf-format="a4"
-                                  pdf-orientation="landscape"
-                                  pdf-content-width="1100px"
-                                  @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()"
-                                  @hasGenerated="hasGenerated($event)"
-                                  ref="htmlsessionEmpPdf">
-                        <table style="width: 100%;" slot="pdf-content">
-                            <thead class="grid-header">
-                            <tr class="mat-header-row">
-                                <th>Name</th>
-                                <th>Designation</th>
-                                <th>Department</th>
-                                <th v-for='attandance_header1 in attandance_header'>
-                                    {{ attandance_header1.DT.substring(8, 10) }}
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody v-html="attandance_summary">
-                            </tbody>
-                        </table>
-
-                    </vue-html2pdf>
-                    <div class="modal-body">
-                        <table style="width: 100%;" id="Employees_Attendance_Summary">
-                            <thead class="grid-header">
-                            <tr class="mat-header-row">
-                                <th>Name</th>
-                                <th>Designation</th>
-                                <th>Department</th>
-                                <th v-for='attandance_header1 in attandance_header'>
-                                    {{ attandance_header1.DT.substring(8, 10) }}
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody v-html="attandance_summary" v-if="toggle_attsummary==false">
-                            </tbody>
-                            <tbody v-if="toggle_attsummary==true">
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                        <div class="ldio-qxxhsg5wen">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Employees_Attendance_Summary')"
-                                class="btn btn-gradient-info">Excel
-                        </button>
-                        <button type="button" @click="generatesessionReport()" class="btn btn-gradient-info">Pdf
-                        </button>
-                        <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
-                                @click="attendance_summary1()">close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="leave_detail" aria-labelledby="employeehire1Label" tabindex="-1"
-             style="display: none" aria-hidden="true">
-            <div v-if="lve_detail==''" class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalToggleLabel">Employees Leaves Detail Report</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- form -->
-                        <div id="addNewCardValidation" class="row gy-1 gx-2 mt-75" onsubmit="return false">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label" for="modalAddCardName">Range From</label>
-                                    <input type="date" v-model="l_date_from" class="form-control"/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="modalAddCardName">Range To</label>
-
-                                    <input type="date" v-model="l_date_end" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label class="form-label" for="modalAddCardName">Leave Type</label>
-
-                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserPlan" placeholder="All"
-                                                 v-model="l_leave_type" :options="options6">
-                                    </multiselect>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label" for="modalAddCardName">Work Location</label>
-
-                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserPlan" placeholder="All Locations"
-                                                 v-model="l_location" :options="options1">
-                                    </multiselect>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="modalAddCardName">Department</label>
-
-                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Departments"
-                                                 v-model="l_department" :options="options2">
-                                    </multiselect>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label" for="modalAddCardName">Designation</label>
-
-                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserRole" placeholder="All Designations"
-                                                 v-model="l_designation" :options="options">
-                                    </multiselect>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="modalAddCardName">Employee Id</label>
-                                    <select v-model="l_emp_id" class="form-control">
-                                        <option value="All">All</option>
-                                        <option v-for='find_emp1 in find_emp' :value='find_emp1.EmployeeID'>
-                                            {{ find_emp1.EmployeeCode }}-{{ find_emp1.Name }}
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" @click="leave_detail_() ">
-                            View Report
-                        </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div v-else class="modal-dialog modal-dialog-centered modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-between">
-                        <h4 class="modal-title" style="width:80%"><span style="width:80%">Leave Detail Report </span>
-                        </h4>
-                        <span class="role-edit-modal">{{ this.l_date_from }} - {{ this.l_date_end }} </span>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="leave_detail_1()"></button>
-                    </div>
-                    <vue-html2pdf :show-layout="false"
-                                  :float-layout="true"
-                                  :enable-download="true"
-                                  :preview-modal="false"
-                                  :paginate-elements-by-height="1400"
-                                  filename="Leave_Employees"
-                                  :pdf-quality="2"
-                                  :manual-pagination="false"
-                                  pdf-format="a4"
-                                  pdf-orientation="landscape"
-                                  pdf-content-width="1100px"
-                                  @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()"
-                                  @hasGenerated="hasGenerated($event)"
-                                  ref="htmlleavedetailEmpPdf">
-                        <div class="modal-body" slot="pdf-content">
-                            <div class="table-responsive">
-                                <table class="table attendancesummaryreport">
-                                    <thead style="">
-                                    <tr>
-                                        <th scope="col">Employee Code</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Designation</th>
-                                        <th scope="col">Department</th>
-                                        <th scope="col">Location</th>
-                                        <th scope="col">Leave Type</th>
-                                        <th scope="col">Period</th>
-                                        <th scope="col">Reason</th>
-                                        <th scope="col">Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr v-for="getleavedetail1 in getleavedetail">
-                                        <td>{{ getleavedetail1.EmployeeCode }}</td>
-                                        <td>{{ getleavedetail1.Name }}</td>
-                                        <td>{{ getleavedetail1.Designation }}</td>
-                                        <td>{{ getleavedetail1.Department }}</td>
-                                        <td>{{ getleavedetail1.PostingCity }}</td>
-                                        <td>{{ getleavedetail1.Leavetype }}</td>
-                                        <td>{{ getleavedetail1.StartDate }}-{{ getleavedetail1.EndDate }}</td>
-                                        <td>{{ getleavedetail1.Reason }}</td>
-                                        <td>{{ getleavedetail1.HRApproval }}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </vue-html2pdf>
-                    <div class="modal-body" slot="pdf-content">
-                        <div class="table-responsive">
-                            <table class="table attendancesummaryreport" id="Employees_Leaves_Detail">
-                                <thead style="">
-                                <tr>
-                                    <th scope="col">Employee Code</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Designation</th>
-                                    <th scope="col">Department</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Leave Type</th>
-                                    <th scope="col">Period</th>
-                                    <th scope="col">Reason</th>
-                                    <th scope="col">Status</th>
+                                <tr v-for="att_payroll_detail1 in att_payroll_detail"
+                                    v-if="toggle_sessionwiseattendance == false">
+                                    <td>{{ att_payroll_detail1.EmpCode }}</td>
+                                    <td>{{ att_payroll_detail1.Name }}</td>
+                                    <td>{{ att_payroll_detail1.Designation }}</td>
+                                    <td>{{ att_payroll_detail1.Department }}</td>
+                                    <td>{{ att_payroll_detail1.TotalDays }}</td>
+                                    <td>{{ att_payroll_detail1.TotalPresent }}</td>
+                                    <td>{{ att_payroll_detail1.TotalAbsent }}</td>
+                                    <td>{{ att_payroll_detail1.TotalLeave }}</td>
+                                    <td>{{ att_payroll_detail1.GP }}</td>
+                                    <td>{{ att_payroll_detail1.OT }}</td>
+                                    <td>{{ att_payroll_detail1.Deduction }}</td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                <tr v-for="getleavedetail1 in getleavedetail" v-if="toggle_leaves_summary==false">
-                                    <td>{{ getleavedetail1.EmployeeCode }}</td>
-                                    <td>{{ getleavedetail1.Name }}</td>
-                                    <td>{{ getleavedetail1.Designation }}</td>
-                                    <td>{{ getleavedetail1.Department }}</td>
-                                    <td>{{ getleavedetail1.PostingCity }}</td>
-                                    <td>{{ getleavedetail1.Leavetype }}</td>
-                                    <td>{{ getleavedetail1.StartDate }}-{{ getleavedetail1.EndDate }}</td>
-                                    <td>{{ getleavedetail1.Reason }}</td>
-                                    <td>{{ getleavedetail1.HRApproval }}</td>
-                                </tr>
-                                <tr v-if="toggle_leaves_summary==true">
+                                <tr v-if="toggle_sessionwiseattendance == true">
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2932,28 +2545,361 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Payroll_Attendance')"
+                            class="btn btn-gradient-info">Excel
+                        </button>
+                        <button type="button" @click="generatesessionpayrollReport()" class="btn btn-gradient-info">
+                            Pdf
+                        </button>
+                        <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
+                            @click="attendance_payroll1()">close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="att_summary" aria-labelledby="employeehire1Label" tabindex="-1" aria-hidden="true">
+            <div v-if="att_sum == ''" class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalToggleLabel">Attendance Summary Report</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- form -->
+                        <div id="addNewCardValidation" class="row gy-1 gx-2 mt-75" onsubmit="return false">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="modalAddCardName">Work Location</label>
+
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
+                                        id="modalAddCardName" placeholder="All" :options="options5">
+                                    </multiselect>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="modalAddCardName">Department</label>
+
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
+                                        id="modalAddCardName" placeholder="All" :options="options5">
+                                    </multiselect>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="modalAddCardName">Designation</label>
+
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
+                                        id="modalAddCardName" placeholder="All" :options="options5">
+                                    </multiselect>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="modalAddCardName">Employee Id</label>
+
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
+                                        id="modalAddCardName" placeholder="All" :options="options5">
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" @click="attendance_summary()">
+                            View Report
+                        </button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div v-else class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <h4 class="modal-title" style="width:80%"><span style="width:80%">Attendance Summary
+                                Report</span></h4>
+                        <span>Session Name: {{ this.session_name }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            @click="attendance_summary1()"></button>
+                    </div>
+
+
+                    <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
+                        :preview-modal="false" :paginate-elements-by-height="1400"
+                        filename="Sessionwise_Employee_Attendance" :pdf-quality="2" :manual-pagination="false"
+                        pdf-format="a4" pdf-orientation="landscape" pdf-content-width="1100px"
+                        @progress="onProgress($event)" @hasStartedGeneration="hasStartedGeneration()"
+                        @hasGenerated="hasGenerated($event)" ref="htmlsessionEmpPdf">
+                        <table style="width: 100%;" slot="pdf-content">
+                            <thead class="grid-header">
+                                <tr class="mat-header-row">
+                                    <th>Name</th>
+                                    <th>Designation</th>
+                                    <th>Department</th>
+                                    <th v-for='attandance_header1 in attandance_header'>
+                                        {{ attandance_header1.DT.substring(8, 10) }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody v-html="attandance_summary">
+                            </tbody>
+                        </table>
+
+                    </vue-html2pdf>
+                    <div class="modal-body">
+                        <table style="width: 100%;" id="Employees_Attendance_Summary">
+                            <thead class="grid-header">
+                                <tr class="mat-header-row">
+                                    <th>Name</th>
+                                    <th>Designation</th>
+                                    <th>Department</th>
+                                    <th v-for='attandance_header1 in attandance_header'>
+                                        {{ attandance_header1.DT.substring(8, 10) }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody v-html="attandance_summary" v-if="toggle_attsummary == false">
+                            </tbody>
+                            <tbody v-if="toggle_attsummary == true">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                            <div class="ldio-qxxhsg5wen">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Attendance_Summary')"
+                            class="btn btn-gradient-info">Excel
+                        </button>
+                        <button type="button" @click="generatesessionReport()" class="btn btn-gradient-info">Pdf
+                        </button>
+                        <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
+                            @click="attendance_summary1()">close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="leave_detail" aria-labelledby="employeehire1Label" tabindex="-1" aria-hidden="true">
+            <div v-if="lve_detail == ''" class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalToggleLabel">Employees Leaves Detail Report</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- form -->
+                        <div id="addNewCardValidation" class="row gy-1 gx-2 mt-75" onsubmit="return false">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="modalAddCardName">Range From</label>
+                                    <input type="date" v-model="l_date_from" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="modalAddCardName">Range To</label>
+
+                                    <input type="date" v-model="l_date_end" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="form-label" for="modalAddCardName">Leave Type</label>
+
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
+                                        id="UserPlan" placeholder="All" v-model="l_leave_type" :options="options6">
+                                    </multiselect>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="modalAddCardName">Work Location</label>
+
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
+                                        id="UserPlan" placeholder="All Locations" v-model="l_location"
+                                        :options="options1">
+                                    </multiselect>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="modalAddCardName">Department</label>
+
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
+                                        id="FilterTransaction" placeholder="All Departments" v-model="l_department"
+                                        :options="options2">
+                                    </multiselect>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="modalAddCardName">Designation</label>
+
+                                    <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
+                                        id="UserRole" placeholder="All Designations" v-model="l_designation"
+                                        :options="options">
+                                    </multiselect>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="modalAddCardName">Employee Id</label>
+                                    <select v-model="l_emp_id" class="form-control">
+                                        <option value="All">All</option>
+                                        <option v-for='find_emp1 in find_emp' :value='find_emp1.EmployeeID'>
+                                            {{ find_emp1.EmployeeCode }}-{{ find_emp1.Name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" @click="leave_detail_()">
+                            View Report
+                        </button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div v-else class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <h4 class="modal-title" style="width:80%"><span style="width:80%">Leave Detail Report </span>
+                        </h4>
+                        <span class="role-edit-modal">{{ this.l_date_from }} - {{ this.l_date_end }} </span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            @click="leave_detail_1()"></button>
+                    </div>
+                    <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
+                        :preview-modal="false" :paginate-elements-by-height="1400" filename="Leave_Employees"
+                        :pdf-quality="2" :manual-pagination="false" pdf-format="a4" pdf-orientation="landscape"
+                        pdf-content-width="1100px" @progress="onProgress($event)"
+                        @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
+                        ref="htmlleavedetailEmpPdf">
+                        <div class="modal-body" slot="pdf-content">
+                            <div class="table-responsive">
+                                <table class="table attendancesummaryreport">
+                                    <thead style="">
+                                        <tr>
+                                            <th scope="col">Employee Code</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Designation</th>
+                                            <th scope="col">Department</th>
+                                            <th scope="col">Location</th>
+                                            <th scope="col">Leave Type</th>
+                                            <th scope="col">Period</th>
+                                            <th scope="col">Reason</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="getleavedetail1 in getleavedetail">
+                                            <td>{{ getleavedetail1.EmployeeCode }}</td>
+                                            <td>{{ getleavedetail1.Name }}</td>
+                                            <td>{{ getleavedetail1.Designation }}</td>
+                                            <td>{{ getleavedetail1.Department }}</td>
+                                            <td>{{ getleavedetail1.PostingCity }}</td>
+                                            <td>{{ getleavedetail1.Leavetype }}</td>
+                                            <td>{{ getleavedetail1.StartDate }}-{{ getleavedetail1.EndDate }}</td>
+                                            <td>{{ getleavedetail1.Reason }}</td>
+                                            <td>{{ getleavedetail1.HRApproval }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </vue-html2pdf>
+                    <div class="modal-body" slot="pdf-content">
+                        <div class="table-responsive">
+                            <table class="table attendancesummaryreport" id="Employees_Leaves_Detail">
+                                <thead style="">
+                                    <tr>
+                                        <th scope="col">Employee Code</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Designation</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Leave Type</th>
+                                        <th scope="col">Period</th>
+                                        <th scope="col">Reason</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="getleavedetail1 in getleavedetail" v-if="toggle_leaves_summary == false">
+                                        <td>{{ getleavedetail1.EmployeeCode }}</td>
+                                        <td>{{ getleavedetail1.Name }}</td>
+                                        <td>{{ getleavedetail1.Designation }}</td>
+                                        <td>{{ getleavedetail1.Department }}</td>
+                                        <td>{{ getleavedetail1.PostingCity }}</td>
+                                        <td>{{ getleavedetail1.Leavetype }}</td>
+                                        <td>{{ getleavedetail1.StartDate }}-{{ getleavedetail1.EndDate }}</td>
+                                        <td>{{ getleavedetail1.Reason }}</td>
+                                        <td>{{ getleavedetail1.HRApproval }}</td>
+                                    </tr>
+                                    <tr v-if="toggle_leaves_summary == true">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                                <div class="ldio-qxxhsg5wen">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Employees_Leaves_Detail')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Leaves_Detail')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" @click="generateleavedetailReport()" class="btn btn-gradient-info">Pdf
                         </button>
                         <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
-                                @click="leave_detail_1()">close
+                            @click="leave_detail_1()">close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="modal fade" id="leave_summary" aria-labelledby="employeehire1Label" tabindex="-1"
-             style="display: none" aria-hidden="true">
-            <div v-if="lve_summary==''" class="modal-dialog modal-dialog-centered">
+            aria-hidden="true">
+            <div v-if="lve_summary == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Leaves Summary Report</h5>
@@ -2967,8 +2913,8 @@
                                     <label class="form-label" for="modalAddCardName">Leave Type</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 15px;"
-                                                 id="modalAddCardName" placeholder="All"
-                                                 v-model="s_leave_type" :options="options6">
+                                        id="modalAddCardName" placeholder="All" v-model="s_leave_type"
+                                        :options="options6">
                                     </multiselect>
                                 </div>
                             </div>
@@ -2977,16 +2923,16 @@
                                     <label class="form-label" for="modalAddCardName">Work Location</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserPlan" placeholder="All Locations"
-                                                 v-model="s_location" :options="options1">
+                                        id="UserPlan" placeholder="All Locations" v-model="s_location"
+                                        :options="options1">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="modalAddCardName">Department</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="FilterTransaction" placeholder="All Departments"
-                                                 v-model="s_department" :options="options2">
+                                        id="FilterTransaction" placeholder="All Departments" v-model="s_department"
+                                        :options="options2">
                                     </multiselect>
                                 </div>
                             </div>
@@ -2995,8 +2941,8 @@
                                     <label class="form-label" for="modalAddCardName">Designation</label>
 
                                     <multiselect :show-labels="false" style="margin-right: 10px; font-size: 12px;"
-                                                 id="UserRole" placeholder="All Designations"
-                                                 v-model="s_designation" :options="options">
+                                        id="UserRole" placeholder="All Designations" v-model="s_designation"
+                                        :options="options">
                                     </multiselect>
                                 </div>
                                 <div class="col-md-6">
@@ -3029,27 +2975,51 @@
                         </h4>
 
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="leave_summary1()"></button>
+                            @click="leave_summary1()"></button>
                     </div>
-                    <vue-html2pdf :show-layout="false"
-                                  :float-layout="true"
-                                  :enable-download="true"
-                                  :preview-modal="false"
-                                  :paginate-elements-by-height="1400"
-                                  filename="Emp_Leaves_Detail"
-                                  :pdf-quality="2"
-                                  :manual-pagination="false"
-                                  pdf-format="a4"
-                                  pdf-orientation="landscape"
-                                  pdf-content-width="1100px"
-                                  @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()"
-                                  @hasGenerated="hasGenerated($event)"
-                                  ref="htmlleavesummaryEmpPdf">
+                    <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
+                        :preview-modal="false" :paginate-elements-by-height="1400" filename="Emp_Leaves_Detail"
+                        :pdf-quality="2" :manual-pagination="false" pdf-format="a4" pdf-orientation="landscape"
+                        pdf-content-width="1100px" @progress="onProgress($event)"
+                        @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
+                        ref="htmlleavesummaryEmpPdf">
                         <div class="modal-body" slot="pdf-content">
                             <div class="table-responsive">
                                 <table class="table attendancesummaryreport">
                                     <thead style="">
+                                        <tr>
+                                            <th scope="col">Employee Code</th>
+                                            <th scope="col">Employee Name</th>
+                                            <th scope="col">Designation</th>
+                                            <th scope="col">Department</th>
+                                            <th scope="col">Location</th>
+                                            <th scope="col">Leave Type</th>
+                                            <th scope="col">Total Leaves</th>
+                                            <th scope="col">Remaining Balance</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody v-for="getleavesummary1 in getleavesummary">
+                                        <tr>
+                                            <td>{{ getleavesummary1.EmployeeCode }}</td>
+                                            <td>{{ getleavesummary1.Name }}</td>
+                                            <td>{{ getleavesummary1.Designation }}</td>
+                                            <td>{{ getleavesummary1.Department }}</td>
+                                            <td>{{ getleavesummary1.PostingCity }}</td>
+                                            <td>{{ getleavesummary1.LeaveType }}</td>
+                                            <td>{{ getleavesummary1.TotalLeave }}</td>
+                                            <td>{{ getleavesummary1.RemainingLeave }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </vue-html2pdf>
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table attendancesummaryreport" id="Employees_Leaves_Summary">
+                                <thead style="">
                                     <tr>
                                         <th scope="col">Employee Code</th>
                                         <th scope="col">Employee Name</th>
@@ -3061,9 +3031,9 @@
                                         <th scope="col">Remaining Balance</th>
 
                                     </tr>
-                                    </thead>
-                                    <tbody v-for="getleavesummary1 in getleavesummary">
-                                    <tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="getleavesummary1 in getleavesummary" v-if="toggle_leaves == false">
                                         <td>{{ getleavesummary1.EmployeeCode }}</td>
                                         <td>{{ getleavesummary1.Name }}</td>
                                         <td>{{ getleavesummary1.Designation }}</td>
@@ -3073,77 +3043,43 @@
                                         <td>{{ getleavesummary1.TotalLeave }}</td>
                                         <td>{{ getleavesummary1.RemainingLeave }}</td>
                                     </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </vue-html2pdf>
-                    <div class="modal-body">
-                        <div class="table-responsive">
-                            <table class="table attendancesummaryreport" id="Employees_Leaves_Summary">
-                                <thead style="">
-                                <tr>
-                                    <th scope="col">Employee Code</th>
-                                    <th scope="col">Employee Name</th>
-                                    <th scope="col">Designation</th>
-                                    <th scope="col">Department</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Leave Type</th>
-                                    <th scope="col">Total Leaves</th>
-                                    <th scope="col">Remaining Balance</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr v-for="getleavesummary1 in getleavesummary" v-if="toggle_leaves==false">
-                                    <td>{{ getleavesummary1.EmployeeCode }}</td>
-                                    <td>{{ getleavesummary1.Name }}</td>
-                                    <td>{{ getleavesummary1.Designation }}</td>
-                                    <td>{{ getleavesummary1.Department }}</td>
-                                    <td>{{ getleavesummary1.PostingCity }}</td>
-                                    <td>{{ getleavesummary1.LeaveType }}</td>
-                                    <td>{{ getleavesummary1.TotalLeave }}</td>
-                                    <td>{{ getleavesummary1.RemainingLeave }}</td>
-                                </tr>
-                                <tr v-if="toggle_leaves==true">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                            <div class="ldio-qxxhsg5wen">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
+                                    <tr v-if="toggle_leaves == true">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                                <div class="ldio-qxxhsg5wen">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Employees_Leaves_Summary')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Leaves_Summary')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" @click="empleavesummary()" class="btn btn-gradient-info">Pdf</button>
                         <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
-                                @click="leave_summary1()">close
+                            @click="leave_summary1()">close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="ind_att_report" aria-labelledby="ind_att_report" tabindex="-1" style="display: none"
-             aria-hidden="true">
-            <div v-if="ind_report==''" class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="ind_att_report" aria-labelledby="ind_att_report" tabindex="-1" aria-hidden="true">
+            <div v-if="ind_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalToggleLabel">Session wise Individual Report</h5>
@@ -3164,8 +3100,9 @@
                                             {{ find_emp1.EmployeeCode }}-{{ find_emp1.Name }}
                                         </option>
                                     </select>
-                                    <span style="color: #DB4437; font-size: 11px;"
-                                          v-if="ind_emp_id==''">{{ e_ind_emp_id }}</span>
+                                    <span style="color: #DB4437; font-size: 11px;" v-if="ind_emp_id == ''">{{
+                                        e_ind_emp_id
+                                    }}</span>
 
                                 </div>
                             </div>
@@ -3183,31 +3120,23 @@
             <div v-else class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between">
-                        <h4 class="modal-title" style="width:60%"><span
-                            style="width:60%">Session Wise Indivdual Report </span></h4>
+                        <h4 class="modal-title" style="width:60%"><span style="width:60%">Session Wise Indivdual Report
+                            </span></h4>
                         <span>Session Name: {{ this.session_name }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                @click="ind_attendance_re1()"></button>
+                            @click="ind_attendance_re1()"></button>
                     </div>
 
-                    <vue-html2pdf :show-layout="false"
-                                  :float-layout="true"
-                                  :enable-download="true"
-                                  :preview-modal="false"
-                                  :paginate-elements-by-height="1400"
-                                  filename="Ind_Employee_Attendance"
-                                  :pdf-quality="2"
-                                  :manual-pagination="false"
-                                  pdf-format="a4"
-                                  pdf-orientation="portrait"
-                                  pdf-content-width="800px"
-                                  @progress="onProgress($event)"
-                                  @hasStartedGeneration="hasStartedGeneration()"
-                                  @hasGenerated="hasGenerated($event)"
-                                  ref="html2Pdf">
+                    <vue-html2pdf :show-layout="false" :float-layout="true" :enable-download="true"
+                        :preview-modal="false" :paginate-elements-by-height="1400" filename="Ind_Employee_Attendance"
+                        :pdf-quality="2" :manual-pagination="false" pdf-format="a4" pdf-orientation="portrait"
+                        pdf-content-width="800px" @progress="onProgress($event)"
+                        @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)"
+                        ref="html2Pdf">
                         <div slot="pdf-content">
                             <div class="modal-header d-flex justify-content-between">
-                                <h4 class="modal-title" style="width:60%"><span style="width:60%">Session Wise Indivdual Report </span>
+                                <h4 class="modal-title" style="width:60%"><span style="width:60%">Session Wise Indivdual
+                                        Report </span>
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -3216,10 +3145,10 @@
                                     <table class="" style="width:100%">
                                         <tr>
                                             <td style="width:70%;font-size:bold"><strong>Employee
-                                                Code: </strong>{{ att_individual_count.EmployeeCode }}
+                                                    Code: </strong>{{ att_individual_count.EmployeeCode }}
                                             </td>
                                             <td style="width:30%;font-size:bold"><strong>Total
-                                                Days: </strong>{{ att_individual_count.totaldays }}
+                                                    Days: </strong>{{ att_individual_count.totaldays }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -3227,7 +3156,7 @@
                                                 <strong>Name: </strong>{{ att_individual_count.Name }}
                                             </td>
                                             <td style="width:30%;font-size:bold"><strong>Present
-                                                Days:</strong>{{ att_individual_count.present }}
+                                                    Days:</strong>{{ att_individual_count.present }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -3235,7 +3164,7 @@
                                                 <strong>Designation: </strong>{{ att_individual_count.Designation }}
                                             </td>
                                             <td style="width:30%;font-size:bold"><strong>Absent
-                                                Days: </strong>{{ att_individual_count.absent }}
+                                                    Days: </strong>{{ att_individual_count.absent }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -3258,20 +3187,20 @@
                                 <div class="table-responsive">
                                     <table class="table attendancesummaryreport">
                                         <thead style="">
-                                        <tr>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">CheckIn</th>
-                                            <th scope="col">CheckOut</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
+                                            <tr>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">CheckIn</th>
+                                                <th scope="col">CheckOut</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr v-for="att_individual_report1 in att_individual_report">
-                                            <td>{{ att_individual_report1.ATTDate }}</td>
-                                            <td>{{ att_individual_report1.CheckIN }}</td>
-                                            <td>{{ att_individual_report1.CheckOut }}</td>
-                                            <td>{{ att_individual_report1.AttStatus }}</td>
-                                        </tr>
+                                            <tr v-for="att_individual_report1 in att_individual_report">
+                                                <td>{{ att_individual_report1.ATTDate }}</td>
+                                                <td>{{ att_individual_report1.CheckIN }}</td>
+                                                <td>{{ att_individual_report1.CheckOut }}</td>
+                                                <td>{{ att_individual_report1.AttStatus }}</td>
+                                            </tr>
 
                                         </tbody>
                                     </table>
@@ -3287,10 +3216,10 @@
                             <table class="" style="width:100%">
                                 <tr>
                                     <td rows="2" style="width:70%;font-size:bold"><strong>Employee
-                                        Code: </strong>{{ att_individual_count.EmployeeCode }}
+                                            Code: </strong>{{ att_individual_count.EmployeeCode }}
                                     </td>
                                     <td rows="2" style="width:30%;font-size:bold"><strong>Total
-                                        Days: </strong>{{ att_individual_count.totaldays }}
+                                            Days: </strong>{{ att_individual_count.totaldays }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -3298,7 +3227,7 @@
                                         <strong>Name: </strong>{{ att_individual_count.Name }}
                                     </td>
                                     <td rows="2" style="width:30%;font-size:bold"><strong>Present
-                                        Days:</strong>{{ att_individual_count.present }}
+                                            Days:</strong>{{ att_individual_count.present }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -3306,7 +3235,7 @@
                                         <strong>Designation: </strong>{{ att_individual_count.Designation }}
                                     </td>
                                     <td rows="2" style="width:30%;font-size:bold"><strong>Absent
-                                        Days: </strong>{{ att_individual_count.absent }}
+                                            Days: </strong>{{ att_individual_count.absent }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -3329,37 +3258,37 @@
                         <div class="table-responsive">
                             <table class="table attendancesummaryreport">
                                 <thead style="">
-                                <tr>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">CheckIn</th>
-                                    <th scope="col">CheckOut</th>
-                                    <th scope="col">Status</th>
-                                </tr>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">CheckIn</th>
+                                        <th scope="col">CheckOut</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="att_individual_report1 in att_individual_report"
-                                    v-if="toggle_indattendance==false">
-                                    <td>{{ att_individual_report1.ATTDate }}</td>
-                                    <td>{{ att_individual_report1.CheckIN }}</td>
-                                    <td>{{ att_individual_report1.CheckOut }}</td>
-                                    <td>{{ att_individual_report1.AttStatus }}</td>
-                                </tr>
-                                <tr v-if="toggle_indattendance==true">
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <div class="loadingio-spinner-bars-0opevbvvjcw">
-                                            <div class="ldio-qxxhsg5wen">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
+                                    <tr v-for="att_individual_report1 in att_individual_report"
+                                        v-if="toggle_indattendance == false">
+                                        <td>{{ att_individual_report1.ATTDate }}</td>
+                                        <td>{{ att_individual_report1.CheckIN }}</td>
+                                        <td>{{ att_individual_report1.CheckOut }}</td>
+                                        <td>{{ att_individual_report1.AttStatus }}</td>
+                                    </tr>
+                                    <tr v-if="toggle_indattendance == true">
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="loadingio-spinner-bars-0opevbvvjcw">
+                                                <div class="ldio-qxxhsg5wen">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td></td>
-                                </tr>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -3369,12 +3298,12 @@
 
 
                     <div class="modal-footer">
-                        <button type="button" @click="html_table_to_excel('xlsx','Individual_Employees_Attendance')"
-                                class="btn btn-gradient-info">Excel
+                        <button type="button" @click="html_table_to_excel('xlsx', 'Individual_Employees_Attendance')"
+                            class="btn btn-gradient-info">Excel
                         </button>
                         <button type="button" @click="generateReport()" class="btn btn-gradient-info">Pdf</button>
                         <button type="button" class="btn btn-gradient-primary" data-bs-dismiss="modal"
-                                @click="ind_attendance_re1()">close
+                            @click="ind_attendance_re1()">close
                         </button>
                     </div>
 
@@ -3383,7 +3312,7 @@
             </div>
         </div>
         <div class="modal fade" id="employeesalary" aria-labelledby="employeesalarylabel" tabindex="-1"
-             style="display: none" aria-hidden="true">
+            style="display: none" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -3531,7 +3460,7 @@ export default {
             gethireemplocount: '',
             e_ind_emp_id: '',
             toggle_leaves_summary: true,
-            options: [],
+            // options: [],
             options1: [],
             options2: [],
             options4: ["All", "Registered", "Terminated", "Suspended", "Resigned"],
@@ -3608,13 +3537,16 @@ export default {
         DateRangePicker
     },
     methods: {
+
+
+
         custom_attendance() {
             const startDate = new Date(this.dateRange.startDate);
             const formattedStartDate = `${startDate.getFullYear()}-${(startDate.getMonth() + 1).toString().padStart(2, '0')}-${startDate.getDate().toString().padStart(2, '0')}`;
 
             const endDate = new Date(this.dateRange.endDate);
             const formattedEndDate = `${endDate.getFullYear()}-${(endDate.getMonth() + 1).toString().padStart(2, '0')}-${endDate.getDate().toString().padStart(2, '0')}`;
-//
+            //
             const dateArray = [];
             let currentDate = new Date(startDate);
             while (currentDate <= endDate) {
@@ -3665,7 +3597,7 @@ export default {
         exitCustomAttendance() {
             this.isEmployeesCustomAttendance = false;
             this.dateRange.startDate = new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().substr(0, 10);
-            this.dateRange.endDate =  new Date().toISOString().substr(0, 10);
+            this.dateRange.endDate = new Date().toISOString().substr(0, 10);
 
             this.employeesForAttendance = null;
             this.isEmployeesCustomAttendance = false;
@@ -4231,8 +4163,31 @@ export default {
                 // Additional error handling if needed
             }
         },
+
+
+        fixModalBackdrop() {
+            if ($('.modal.show').length > 0) {
+                $('body').addClass('modal-open');
+            } else {
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+            }
+        }
+
     },
     mounted() {
+        $(document).on('hidden.bs.modal', '.modal', this.fixModalBackdrop);
+
+        // $(document).on('hidden.bs.modal', '.modal', function () {
+        //     if ($('.modal.show').length > 0) {
+        //         $('body').addClass('modal-open');
+        //     } else {
+        //         $('body').removeClass('modal-open');
+        //         $('.modal-backdrop').remove();
+        //     }
+        // });
+
+
         this.fetchLocations()
         this.fetchDesignation()
         axios.get('overall_employees')
@@ -4245,7 +4200,7 @@ export default {
                 }));
             })
 
-    
+
 
         let pdfJS = document.createElement('script')
         pdfJS.setAttribute('src', 'https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js')
@@ -4296,7 +4251,7 @@ export default {
             .then(response => {
                 this.session_name = response.data;
             })
-    
+
 
     }
 
@@ -4305,14 +4260,15 @@ export default {
 
 </script>
 <style scoped>
-
 @keyframes ldio-qxxhsg5wen {
     0% {
         opacity: 1
     }
+
     50% {
         opacity: .5
     }
+
     100% {
         opacity: 1
     }
@@ -4364,7 +4320,8 @@ export default {
     position: relative;
     transform: translateZ(0) scale(1);
     backface-visibility: hidden;
-    transform-origin: 0 0; /* see note above */
+    transform-origin: 0 0;
+    /* see note above */
 }
 
 .reports-th-center {
@@ -4388,7 +4345,7 @@ export default {
 }
 
 /* generated by https://loading.io/ */
-.ng-star-inserted > a {
+.ng-star-inserted>a {
     cursor: pointer;
     border-bottom: 1px dashed #ccc;
     padding-top: 5px;
@@ -4403,5 +4360,10 @@ export default {
 .mt-HeaderDialouge .table-responsive {
     height: calc(80vh - 100px);
     overflow-y: auto;
+}
+
+.modal-backdrop.show {
+    display: none !important;
+    /* Hide extra backdrop */
 }
 </style>

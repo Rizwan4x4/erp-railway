@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="noprint content-overlay"></div>
-            <div class="noprint cheader-navbar-shadow"></div>
+            <div class="noprint cheader-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="noprint content-header row">
                     <div class="breadcrumb-wrapper">
@@ -571,7 +571,7 @@ export default {
                 this.payment_term = response.data;
             })
 
-     
+
         this.fetch_items_detail();
 
         axios.get('accounts/get_delivery')

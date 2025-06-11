@@ -16,7 +16,7 @@
             font-size:22px !important;
         }
         .dropdown-menu .dropdown-item {
-                  
+
                     padding-top: 10px !important;
                     padding-bottom: 10px !important;
                 }
@@ -72,7 +72,7 @@ border: none !important;
 
 }
 .modal .modal-footer{
-  border: none !important;  
+  border: none !important;
 }
 
     </style>
@@ -112,7 +112,7 @@ border: none !important;
       <div id="app">
        <div class="app-content content ">
         <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
+        <div class="header-navbar-shadow-tem-change"></div>
         <div class="content-wrapper">
             <div class="content-header row">
             </div>

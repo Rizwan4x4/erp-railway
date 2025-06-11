@@ -9,7 +9,8 @@ use App\Exceptions\ErrorException;
 use App\Repositories\HRMS\AttendenceDetails\OverallAttendenceRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Session;
+// use Session;
+use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use maliklibs\Zkteco\Lib\ZKTeco;
 
@@ -31,6 +32,7 @@ class OverallAttendenceService implements OverallAttendenceServiceInterface
                 return;
             }
             $attstartDate = date('Y-m-d', strtotime(short_date() . " - 30 days"));
+            // return $this->OverallAttendenceRepositoryInterface->getAttData(company_id(), $id, short_date(), $attstartDate);
             return $this->OverallAttendenceRepositoryInterface->getUserAttendance(company_id(), $id, short_date(), $attstartDate);
         } catch (ErrorException $e) {
             // Handle the custom exception here

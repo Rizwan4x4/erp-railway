@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -20,7 +20,7 @@
                     <section class="app-user-view-account">
                         <div class="row">
                             <!-- User Sidebar -->
-                          
+
                             <!--/ User Sidebar -->
                                     <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
                                 <!-- User Card -->
@@ -28,8 +28,8 @@
                                 <div class="card-header">
                                                                 <h4 class="card-title">Currencies Detail</h4>
                                                                 <div style="text-align: right;width: 30% !important;">
-                                                               
-                                                                
+
+
                                                                  </div>
                                                             </div>
                                     <div class="card-body">
@@ -39,7 +39,7 @@
                                                 <div class="col-sm-12">
                                                     <div id="accordionWrapa50" role="tablist" aria-multiselectable="true">
                                                         <div class="card">
-                                                            
+
                                                             <div class="card-body">
                                                                 <div class="table-responsive" style="overflow-x: initial !important;">
                                                                     <table class="table table-hover">
@@ -49,7 +49,7 @@
                                                                                 <th>Symbols</th>
                                                                                 <th>Name</th>
                                                                                 <th>Status</th>
-                                                                               
+
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -60,9 +60,9 @@
                                                                                 <td>
                                                                                    <div style="margin-bottom:10px" class="form-check form-check-info form-switch">
                                                                                     <input style="width: 50px;" type="checkbox" v-model="c_session" class="form-check-input" id="customSwitch3">
-                                                                                </div> 
+                                                                                </div>
                                                                                 </td>
-                                                                              
+
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -77,14 +77,14 @@
                                             </div>
                                         </section>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                                 <!-- /User Card -->
                             </div>
                         </div>
                     </section>
-                   
+
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body px-sm-5 mx-50 pb-5">
-                   
+
                             <form id="addNewCardValidation" class="row gy-1 gx-2 mt-75" onsubmit="return false">
                             <div class="col-12">
                                 <label class="form-label" for="modalAddCardName">Start From</label>
@@ -112,7 +112,7 @@
                               <input style="width: 50px;" type="checkbox" v-model="c_session" class="form-check-input" id="customSwitch3">
                                 </div>
                              </div>
-                            
+
                             <div class="col-12 text-center">
                                 <button type="submit" @click="submit_session()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
@@ -130,14 +130,14 @@
 export default {
     data() {
         return {
-         
+
             session_start: '',
             session_end: '',
             c_session: '',
             adsdata: {
 
             },
-          
+
         }
     },
 
@@ -203,7 +203,7 @@ export default {
     },
 
     mounted() {
-     
+
         this.getResult();
         this.getResult2();
         this.getResult3();

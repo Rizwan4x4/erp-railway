@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                 </div>
@@ -137,14 +137,14 @@
                                                         <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
                                                         <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
                                                     </svg>{{adsdata1.user_role}}
-                                               
+
                                                 </span>
                                             </td>
                                             <td>
                                                 <span v-if="adsdata1.u_status=='Active'" class="badge bg-light-success">{{adsdata1.u_status}}</span>
                                                 <span v-else class="badge bg-light-danger">{{adsdata1.u_status}}</span>
                                             </td>
-                                         
+
                                             <td>
                                                 <div class="btn-group">
                                                     <a class="btn btn-sm dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -377,34 +377,34 @@
             <p class="my-4">Are you sure ? you want to Un-assign this Role !</p>
         </b-modal>
         <b-modal id="modal-edit-lg" size="lg" title="Role Permissions To User" ok-only="false">
-      
+
 
                 <div class="row ">
                     <div class="col-md-6 col-12 mb-2 position-relative">
-                    
+
                                         <label class="form-label" for="UserRole">Roles</label>
-                                     
+
 
                                         <multiselect v-model="roles" :multiple="true"  :options="userrolenames"  group-label="select" :group-select="true">
 
 </multiselect>
                                     </div>
                                     <div class="col-md-6 col-12 mb-2 position-relative">
-                                   
-               
-                
+
+
+
             </div>
-            
+
             <div class="row">
 
-          
-           
+
+
         <!-- Display user roles with attractive background color -->
         <h3 class="fw-bolder my-2" style=" color: #68676d;">Assigned Roles:</h3>
 
         <div class="user-roles " v-if="userroles.length > 0">
             <span v-for="userRole in userroles" class="badge bg-success mx-1 my-1">{{ userRole.name }}
-                <button class="badge-close " v-b-modal.modal-1 @click="openConfirmationModal(userRole.id)"> 
+                <button class="badge-close " v-b-modal.modal-1 @click="openConfirmationModal(userRole.id)">
                 <i class="fa-solid fa-circle-xmark"></i>
             </button>
         </span>
@@ -420,12 +420,12 @@
 
                 </div>
 
-            
-      
+
+
                 <template slot="modal-footer">
         <button @click="assignrole" class="btn btn-primary">Assign Role</button>
     </template>
-        
+
         </b-modal>
     </div>
 </template>
@@ -488,9 +488,9 @@ import Multiselect from 'vue-multiselect'
         },
         methods: {
      openConfirmationModal(roleId) {
-       
+
             this.roleToRemoveId = roleId;
-      
+
             this.$bvModal.show('modal-1');
         },
             removeRole() {
@@ -570,7 +570,7 @@ if (roleIndex !== -1) {
       this.roles = '';
       console.log(response.data);
       this.$bvModal.hide('modal-edit-lg');
-    
+
 
     }
 
@@ -579,11 +579,11 @@ if (roleIndex !== -1) {
           })
           .catch((error) => {
             // Handle the error
-        
 
-        
+
+
       this.$toastr.e('Error', error.response.data.message.error);
-            
+
           });
       } else {
         // Handle case where a user or role is not selected
@@ -591,7 +591,7 @@ if (roleIndex !== -1) {
       }
 
                 // Prepare the data you want to send to the API
-              
+
             } catch (error) {
                 // Handle errors
                 console.error('API error:', error);
@@ -617,7 +617,7 @@ this.userroles= response.data.message.roles;
                 this.pageNo = 1
                 axios.get('./search_users?page=' + page, { params: { keyword1: this.keyword1 } })
                     .then(response =>
-                    
+
                     this.adsdata = response.data)
                     .catch(error => console.log(error));
             },
@@ -698,7 +698,7 @@ this.userroles= response.data.message.roles;
                     .catch(error => { });
             },
 
-      
+
         },
         watch: {
             keyword1(after, before) {

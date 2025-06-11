@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-body">
                     <div class="content-header row">
@@ -63,7 +63,7 @@
                                     <div class="col-md-3 col-12 mb-2">
                                         <button  v-if="hasPermission('Payroll Apply Welfare Allowance')" data-bs-toggle="modal" data-bs-target="#applyallowance" class="btn btn-primary">Apply Welfare Allowance</button>
                                         <button v-else class="btn btn-danger">Apply Welfare Allowance</button>
-                                    
+
                                     </div>
                                 </div>
                                 <div class="table-responsive" style="overflow-x: initial !important;">
@@ -115,7 +115,7 @@
                                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                                         </a>
                                                     </div>
-                                            
+
                                             </td>
                                             <td class="td-center" v-else></td>
                                         </tr>

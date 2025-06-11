@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -22,27 +22,31 @@
                 <div class="row">
                     <!-- User Sidebar -->
                     <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
+                        <div class="card top-radius bottom-radius border-0">
+                            <div class="card-body p-0">
+                                <div class="row p-3">
                                     <div class="col-md-3">
-                                        <label class="form-label">Employee Name<span style="color:red"></span></label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear"
+                                            alt="icon">Employee Name<span style="color:red"></span></label>
                                         <multiselect style="margin-right: 10px;" :options="options_emp" value="id" label="label" v-model="emp_code" placeholder="Select Employee"></multiselect>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="form-label">Department</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear"
+                                            alt="icon">Department</label>
                                         <multiselect placeholder="All Departments" :show-labels="false" v-model="department" :options="options2"></multiselect>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="form-label">Designation</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear"
+                                            alt="icon">Designation</label>
                                         <multiselect :show-labels="false" v-model="designation" :options="options"></multiselect>
                                     </div>
                                     <div class="col-md-2">
-                                        <label class="form-label">Location</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear"
+                                            alt="icon">Location</label>
                                         <multiselect placeholder="All Locations" :show-labels="false" v-model="location" :options="options1"></multiselect>
                                     </div>
                                     <div class="col-md-1">
-                                        <button @click="getbyfilter()" style="height: 35px !important;margin-top: 25px;" class="btn btn-secondary">Search</button>
+                                        <button @click="getbyfilter()" style="margin-top: 28px;" class="btn btn-secondary p-2">Search</button>
                                     </div>
                                 </div>
                                 <br>
@@ -240,6 +244,10 @@
         components: { Multiselect },
         data() {
             return {
+                images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
                 limit:10,
                 department: 'All',
                 location: 'All',
@@ -408,3 +416,22 @@
     }
 
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

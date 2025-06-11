@@ -1,7 +1,7 @@
 <template>
     <div class="app-content content ">
         <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
+        <div class="header-navbar-shadow-tem-change"></div>
         <div class="content-wrapper container-xxl p-0">
             <div class="content-header row">
             </div>
@@ -12,17 +12,17 @@
                             <h3 class="fw-bolder  mb-100" style=" color: #7367f0;">Roles List:</h3>
 
                         </div>
-                        
+
                         <div class="col-md-2">
-                      
+
                             <router-link to="/settings/CreateRoles" type="button" class="btn btn-primary"
                                         >
                                         <i class="fas fa-plus"></i> Create Roles
                                     </router-link>
                         </div>
-                       
-                
-                     
+
+
+
                     </div>
                 </section>
                 <div class="table-responsive" style="overflow-x: initial !important;">
@@ -46,8 +46,8 @@
                                 <td class="td-center ">
                                     <ul  v-for="(user, index) in role.users.slice(0, 3)" :key="user.id" class="badge  rounded-pill badge-light-success">
                                         <li >{{ user.first_name }}</li>
-                       
-   
+
+
                                     </ul>
                                     <ul v-if="role.users.length > 3 && !showMoreUsers" class="badge  rounded-pill badge-success">
         <li>
@@ -58,12 +58,12 @@
       <!-- Show additional users when "More" is clicked -->
       <br>
       <ul v-if="showMoreUsers"  v-for="(user, index) in role.users.slice(3, 6)" class="badge rounded-pill badge-light-success">
-       
+
         <li :key="index">
           {{ user.first_name }}
         </li>
       </ul>
-                
+
                                 </td>
                                 <td class="td-center ">{{ formatCreatedAt(role.created_at) }}</td>
                                 <!-- <td class="td-center">yes</td>
@@ -74,16 +74,16 @@
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
                                 </td>
-                                <td class="td-center"> 
+                                <td class="td-center">
                                    <i @click="clickEditRole(role.id, role.permissions, role.name)" style="color: #dc3545;" class="fa-solid fa-trash " v-b-modal.modal-1></i>
-                                       
-               
+
+
                                 </td>
                             </tr>
 
                         </tbody>
                     </table>
-                
+
                 </div>
 
 
@@ -94,7 +94,7 @@
         <b-modal @ok="deleteRole" id="modal-1" title="Delete Role">
             <p class="my-4">Are you sure ? you want delete this Role !</p>
         </b-modal>
-    
+
         <b-modal id="modal-edit-lg" size="xl" title="Role Permissions To User" ok-only>
             <div class="row" style="margin-top:10px">
 
@@ -118,7 +118,7 @@
             <role-accordion :Showpermissions="permissionsToUpdate" :Showroles="roleNameToUpdate"
                 @pass-data="receiveDataFromChild" />
 
-        
+
         </b-modal>
     </div>
 </template>
@@ -126,7 +126,7 @@
 <script>
 import axios from 'axios';
 import RoleAccordions from './RoleAccordions.vue';
-import EventBus from '../../app.js'; 
+import EventBus from '../../app.js';
 
 export default {
     data() {
@@ -230,7 +230,7 @@ console.log('dateee',responseData);
                     console.log('pass to child', this.permissionsToUpdate, this.roleNameToUpdate)
 
                     EventBus.$emit('update-data', {
-                        
+
                 permissionsToUpdate: this.permissionsToUpdate,
                 roleNameToUpdate: this.roleNameToUpdate
             });
@@ -242,9 +242,9 @@ console.log('dateee',responseData);
                     // Handle errors here
                     console.error('API Error:', error);
                 });
-       
+
             this.roleID = roleId;
-    
+
 
         },
 

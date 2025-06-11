@@ -141,7 +141,7 @@ class IndEmployeDetailsController extends Controller
         }
     }
 
-    public function selected_emp_leaves_blnc($id)
+     public function selected_emp_leaves_blnc($id)
     {
         try {
             if ($id == 0 || $id == null || $id == '') {

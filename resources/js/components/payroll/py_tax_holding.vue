@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-body">
                     <div class="content-header row">
@@ -20,7 +20,7 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <div class="alert alert-primary" style="padding-top:0px;padding-bottom:0px" role="alert">
+                            <div class="alert alert-primary border-0 top-radius bottom-radius" role="alert">
                                 <div class="alert-body" style="min-height: 55px;margin-bottom: 10px;">
                                     <ul class="nav nav-pills mb-2" style="float:left">
                                         <li class="nav-item">
@@ -42,27 +42,27 @@
                     </div>
                     <div class="row" id="basic-table">
                         <div class="col-12">
-                            <div class="card">
+                            <div class="card border-0 top-radius bottom-radius">
                                 <div class="row" style="margin-top:20px">
                                     <div class="col-md-3 col-12 mb-2 position-relative">
                                         <h5 style="padding-left:10px;padding-top:10px">Session Name:
                                             {{ this.session_name }}</h5>
                                     </div>
                                     <div class="col-md-4 col-12 mb-2 position-relative">
-                                        <input type="text" v-model="keyword1" class="form-control"
+                                        <input type="text" v-model="keyword1" class="form-control p-2"
                                                placeholder="Search By Name or Employee code">
                                     </div>
                                     <div class="col-md-3 col-12 mb-2 position-relative">
                                         <button v-if="hasPermission('Payroll Appply Tax')" data-bs-toggle="modal" data-bs-target="#applytax"
-                                                class="btn btn-primary">Apply Tax
+                                                class="btn btn-primary bg-primary p-2">Apply Tax
                                         </button>
                                         <button  v-else
                                                 class="btn btn-danger">Apply Tax
                                         </button>
                                         <button v-if="hasPermission('Payroll download excel file of Tax')" type="button" @click="html_table_to_excel('xlsx','Tax_holding_report')"
-                                                class="btn btn-gradient-info">Excel
+                                                class="btn btn-gradient-info p-2">Excel
                                         </button>
-                                        <button  v-else type="button" 
+                                        <button  v-else type="button"
                                                 class="btn btn-danger">Excel
                                         </button>
                                     </div>
@@ -431,3 +431,22 @@ export default {
 
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

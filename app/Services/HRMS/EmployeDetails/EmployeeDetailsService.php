@@ -9,7 +9,8 @@ use App\Exceptions\ErrorException;
 use App\Repositories\HRMS\EmployeDetails\EmployeeRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Session;
+use Illuminate\Support\Facades\Session;
+// use Session;
 use Carbon\Carbon;
 
 class EmployeeDetailsService implements EmployeeServiceInterface
@@ -26,29 +27,24 @@ class EmployeeDetailsService implements EmployeeServiceInterface
     {
 
         try {
-
-            // dd("good");
             if ($id == 0 || $id == null || $id == '') {
                 $id = Session::get('employee_id');
+                // dd($id,"tykmfvmfdkl");
             } elseif (Session::get('hr_write') != true && !in_array($id, array_column(reporting_team(), 'EmployeeID'))) {
                 return;
             }
+
             $stipend = $this->EmployeeRepositoryInterface->StipendDetail($id);
             $emp_detail = $stipend ? $this->EmployeeRepositoryInterface->emp_detail($id) : $this->EmployeeRepositoryInterface->Else_emp_detail($id);
+
             return $emp_detail;
+
         } catch (ErrorException $e) {
-            // Handle the custom exception here
-            // Log the error or take any other necessary action
-            Log::error('Custom Exception in YourService: ' . $e->getMessage());
-
-            // Rethrow the exception to propagate it to the controller
+            Log::error('Custom Exception in EmployeeController: ' . $e->getMessage());
             throw $e;
-        } catch (\Exception $e) {
-            // Handle other exceptions here
-            // Log the error or take any other necessary action
-            Log::error('Exception in YourService: ' . $e->getMessage());
 
-            // Rethrow the exception to propagate it to the controller
+        } catch (\Exception $e) {
+            Log::error('Exception in EmployeeController: ' . $e->getMessage());
             throw $e;
         }
     }

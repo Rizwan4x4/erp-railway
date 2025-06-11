@@ -2,7 +2,7 @@
     <div >
         <div class="app-content content ">
             <div class="noprint content-overlay"></div>
-            <div class="noprint cheader-navbar-shadow"></div>
+            <div class="noprint cheader-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="noprint content-header row">
                     <div class="breadcrumb-wrapper">
@@ -155,7 +155,7 @@
     export default {
         data() {
             return {
-             
+
                   counter: 1,
                 companydetail: {},
 
@@ -189,7 +189,7 @@
             axios.get('fetch_companyDetail')
                 .then(response => this.companydetail = response.data)
             console.log('warning')
-        
+
         }
     }
 </script>

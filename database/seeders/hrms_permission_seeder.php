@@ -49,7 +49,7 @@ Permission::create(['name' => 'HRMS employees_detail  add_documents']);
 Permission::create(['name' => 'HRMS employees_detail view employee profile']);
 Permission::create(['name' => 'HRMS employees_detail update-Employee-status']);
 
-Permission::create(['name' => 'HRMS warning_detail overall-view']); 
+Permission::create(['name' => 'HRMS warning_detail overall-view']);
 Permission::create(['name' => 'HRMS warning_detail create_warning']);
 Permission::create(['name' => 'HRMS warning_detail actions']);
 Permission::create(['name' => 'HRMS leaves_detail overall-view']);
@@ -118,14 +118,14 @@ $Interview = Role::create(['name' => 'Interview', 'source' => $backendSource, 't
 // ];
 // $Recruiment->syncPermissions($recruitment);
 $jobopening = [
-  
+
    'Recruitment job opening view',
   'Recruitment Post job',
-   
+
 ];
 $Jobopening->syncPermissions($jobopening);
 $candidates = [
- 
+
    'Recruitment Candidates view',
    'Add new Candidates',
  'Actions on added candidates',
@@ -133,7 +133,7 @@ $candidates = [
 ];
 $Candidates->syncPermissions($candidates);
 $interview = [
- 
+
     'Recruitment Interview view',
   'Actions on interview candidates',
  'status updation of interview',
@@ -249,7 +249,7 @@ if ($user) {
     $user->assignRole('Organization chart');
 
 
-  
+
 } else {
     // Handle the case when the user with the specified email is not found
     $this->command->info("User with email $userEmail not found.");

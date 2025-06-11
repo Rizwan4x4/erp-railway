@@ -893,7 +893,16 @@ export default {
 
 }
 </script>
-<style>
+<style scoped>
+li.active a{
+  background-color: #0d6efd !important;
+  border-radius: 5px !important;
+      box-shadow: none;
+  /* color: #0d47a1 !important; */
+}
+li.active {
+ box-shadow: none !important;
+}
 .menu-dark {
     background-color: #283046;
 }

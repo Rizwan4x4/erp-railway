@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -224,7 +224,7 @@ import MaskedInput from 'vue-masked-input';
 export default {
     data() {
         return {
-           
+
             adsdata: {},
             paymentVchrs: {},
             paymentVchrs_items:{},
@@ -273,7 +273,7 @@ export default {
     },
     mounted() {
 
-     
+
         this.getResult();
     }
 }

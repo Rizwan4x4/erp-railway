@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -66,7 +66,7 @@
                                             to="/Inventory/create_issuance" class="dt-button add-new btn btn-primary" tabindex="0" type="button"><span>New Issuance</span></router-link>
                                         </div>
 										 <div class="dt-buttons d-inline-flex mt-50" style="margin-left:20px !important">
-                                            <router-link 
+                                            <router-link
                                             v-if="hasPermission('Inventory Issuance create-issuance-site') " to="/Inventory/create_site_issuance" class="dt-button add-new btn btn-primary" tabindex="0" type="button"><span>Issuance Site-to-Site</span></router-link>
                                         </div>
                                     </div>

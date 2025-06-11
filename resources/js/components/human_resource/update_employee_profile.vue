@@ -2,7 +2,7 @@
     <div >
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -453,7 +453,7 @@ export default {
         }
     },
     mounted() {
- 
+
 
         axios.get('https://countriesnow.space/api/v0.1/countries')
             .then(response => {
@@ -473,6 +473,8 @@ export default {
         axios.get('getemployee_detail/' + this.$route.params.id)
             .then(data => {
                 this.emp_data = data.data;
+                console.log(this.emp_data," getting employee data");
+
 
                 this.cnic_expiry = data.data[0].CnicExpiry;
                 this.full_name = data.data[0].Name;

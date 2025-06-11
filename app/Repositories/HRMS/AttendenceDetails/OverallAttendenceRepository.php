@@ -27,6 +27,7 @@ class OverallAttendenceRepository implements OverallAttendenceRepositoryInterfac
     public function getUserAttendance($company_id, $emp_id, $attendDate, $attstartDate)
     {
         try {
+            // dd('its ok');
             return DB::connection('sqlsrv2')->table('AttData')
                 ->orderBy('ATTDate', 'desc')
                 ->select('AttData.*')

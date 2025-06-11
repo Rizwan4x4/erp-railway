@@ -4,7 +4,8 @@ namespace App\Repositories\HRMS\EmployeDetails;
 
 use App\Contracts\Repository\HRMS\EmployeeDetails\EmployeeRepositoryInterface;
 use Illuminate\Support\Facades\DB;
-use Session;
+// use Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\QueryException;
 use App\Exceptions\ErrorException;
@@ -382,6 +383,46 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 
     public function getEmployeeSuccessDetail($id)
     {
+        try {
+
+            if ($id == 0) {
+                $id = employee_id();
+            }
+            return DB::connection('sqlsrv2')
+                ->select(DB::raw("
+                    SELECT
+                        (
+                            SUM(CASE WHEN Address IS NOT NULL AND Address != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN CNIC IS NOT NULL AND CNIC != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN City IS NOT NULL AND City != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN CompanyEmail IS NOT NULL AND CompanyEmail != '' THEN 0 ELSE 0 END) +
+                            SUM(CASE WHEN DOB IS NOT NULL AND DOB != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN Department IS NOT NULL AND Department != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN Designation IS NOT NULL AND Designation != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN EduStatus IS NOT NULL AND EduStatus != '' THEN 17 ELSE 0 END) +
+                            SUM(CASE WHEN ExpStatus IS NOT NULL AND ExpStatus != '' THEN 17 ELSE 0 END) +
+                            SUM(CASE WHEN Email IS NOT NULL AND Email != '' THEN 0 ELSE 0 END) +
+                            SUM(CASE WHEN EmployeeCode IS NOT NULL AND EmployeeCode != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN FatherHusband IS NOT NULL AND FatherHusband != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN Gender IS NOT NULL AND Gender != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN JobDescription IS NOT NULL AND JobDescription != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN MaritalStatus IS NOT NULL AND MaritalStatus != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN Mobile IS NOT NULL AND Mobile != '' THEN 4 ELSE 0 END) +
+                            SUM(CASE WHEN Photo IS NOT NULL AND Photo != '' AND Photo != 'pro.png' THEN 6 ELSE 0 END) +
+                            SUM(CASE WHEN ReportingTo IS NOT NULL AND ReportingTo != '' THEN 4 ELSE 0 END)
+                        ) AS profile_completion
+                    FROM Emp_Profile
+                    JOIN Emp_Register ON Emp_Profile.EmployeeID = Emp_Register.EmployeeID
+                    WHERE Emp_Profile.EmployeeID = :employee_id
+                "), ['employee_id' => $id]);
+        } catch (\Exception $e) {
+            // Log the error and return a friendly message
+            Log::error("Error fetching profile completion: " . $e->getMessage());
+            return response()->json(['error' => 'An error occurred while fetching the profile completion data.'], 500);
+        }
+
+
+
 
     //     try {
     //         if ($id == 0) {
@@ -415,42 +456,42 @@ class EmployeeRepository implements EmployeeRepositoryInterface
     //     WHERE Emp_Profile.EmployeeID = $id
     // "));
 
-        try {
-            if ($id == 0) {
-                $id = employee_id();
-            }
-            return DB::connection('sqlsrv2')
-                ->select(DB::raw("
-                SELECT
-                    (
-                        SUM(CASE WHEN Address IS NOT NULL AND CAST(Address AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN CNIC IS NOT NULL AND CAST(CNIC AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN City IS NOT NULL AND CAST(City AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN CompanyEmail IS NOT NULL AND CAST(CompanyEmail AS VARCHAR(MAX)) != '' THEN 0 ELSE 0 END) +
-                        SUM(CASE WHEN DOB IS NOT NULL AND CAST(DOB AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN Department IS NOT NULL AND CAST(Department AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN Designation IS NOT NULL AND CAST(Designation AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN EduStatus IS NOT NULL AND CAST(EduStatus AS VARCHAR(MAX)) != '' THEN 17 ELSE 0 END) +
-                        SUM(CASE WHEN ExpStatus IS NOT NULL AND CAST(ExpStatus AS VARCHAR(MAX)) != '' THEN 17 ELSE 0 END) +
-                        SUM(CASE WHEN Email IS NOT NULL AND CAST(Email AS VARCHAR(MAX)) != '' THEN 0 ELSE 0 END) +
-                        SUM(CASE WHEN EmployeeCode IS NOT NULL AND CAST(EmployeeCode AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN FatherHusband IS NOT NULL AND CAST(FatherHusband AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN Gender IS NOT NULL AND CAST(Gender AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN JobDescription IS NOT NULL AND CAST(JobDescription AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN MaritalStatus IS NOT NULL AND CAST(MaritalStatus AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN Mobile IS NOT NULL AND CAST(Mobile AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
-                        SUM(CASE WHEN Photo IS NOT NULL AND CAST(Photo AS VARCHAR(MAX)) != '' AND Photo != 'pro.png' THEN 6 ELSE 0 END) +
-                        SUM(CASE WHEN ReportingTo IS NOT NULL AND CAST(ReportingTo AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END)
-                    ) as profile_completion
-                FROM Emp_Profile
-                JOIN Emp_Register ON Emp_Profile.EmployeeID = Emp_Register.EmployeeID
-                WHERE Emp_Profile.EmployeeID = $id
-            "));
-        }
-        catch (QueryException $e) {
-            // Throw a custom exception with the original message
-            throw new ErrorException("Error getting available value: " . $e->getMessage());
-        }
+        // try {
+        //     if ($id == 0) {
+        //         $id = employee_id();
+        //     }
+        //     return DB::connection('sqlsrv2')
+        //         ->select(DB::raw("
+        //         SELECT
+        //             (
+        //                 SUM(CASE WHEN Address IS NOT NULL AND CAST(Address AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN CNIC IS NOT NULL AND CAST(CNIC AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN City IS NOT NULL AND CAST(City AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN CompanyEmail IS NOT NULL AND CAST(CompanyEmail AS VARCHAR(MAX)) != '' THEN 0 ELSE 0 END) +
+        //                 SUM(CASE WHEN DOB IS NOT NULL AND CAST(DOB AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN Department IS NOT NULL AND CAST(Department AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN Designation IS NOT NULL AND CAST(Designation AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN EduStatus IS NOT NULL AND CAST(EduStatus AS VARCHAR(MAX)) != '' THEN 17 ELSE 0 END) +
+        //                 SUM(CASE WHEN ExpStatus IS NOT NULL AND CAST(ExpStatus AS VARCHAR(MAX)) != '' THEN 17 ELSE 0 END) +
+        //                 SUM(CASE WHEN Email IS NOT NULL AND CAST(Email AS VARCHAR(MAX)) != '' THEN 0 ELSE 0 END) +
+        //                 SUM(CASE WHEN EmployeeCode IS NOT NULL AND CAST(EmployeeCode AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN FatherHusband IS NOT NULL AND CAST(FatherHusband AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN Gender IS NOT NULL AND CAST(Gender AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN JobDescription IS NOT NULL AND CAST(JobDescription AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN MaritalStatus IS NOT NULL AND CAST(MaritalStatus AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN Mobile IS NOT NULL AND CAST(Mobile AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END) +
+        //                 SUM(CASE WHEN Photo IS NOT NULL AND CAST(Photo AS VARCHAR(MAX)) != '' AND Photo != 'pro.png' THEN 6 ELSE 0 END) +
+        //                 SUM(CASE WHEN ReportingTo IS NOT NULL AND CAST(ReportingTo AS VARCHAR(MAX)) != '' THEN 4 ELSE 0 END)
+        //             ) as profile_completion
+        //         FROM Emp_Profile
+        //         JOIN Emp_Register ON Emp_Profile.EmployeeID = Emp_Register.EmployeeID
+        //         WHERE Emp_Profile.EmployeeID = $id
+        //     "));
+        // }
+        // catch (QueryException $e) {
+        //     // Throw a custom exception with the original message
+        //     throw new ErrorException("Error getting available value: " . $e->getMessage());
+        // }
     }
 
 
@@ -545,6 +586,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
                 $id = employee_id();
             }
             return DB::connection('sqlsrv2')->table('EmpLeave')->orderBy('LeaveType', 'asc')->select('EmpLeave.*')->where('CompanyID', '=', company_id())->where('CreatedOn', 'like', '%' . $this_year . '%')->where('EmployeeID', '=', $id)->get();
+            dd("its ok");
         } catch (QueryException $e) {
             // Throw a custom exception with the original message
             throw new ErrorException("Error getting available value: " . $e->getMessage());

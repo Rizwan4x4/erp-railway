@@ -1,7 +1,7 @@
 <template>
     <div class="app-content content chat-application">
         <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
+        <div class="header-navbar-shadow-tem-change"></div>
         <div class="content-area-wrapper container-xxl p-0" style="height: auto;">
             <div class="sidebar-left">
                 <div class="sidebar">

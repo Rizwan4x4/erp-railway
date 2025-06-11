@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-body">
                     <div class="content-header row">
@@ -301,13 +301,13 @@
                     })
                     .then(response => {
                         if (response.data == 'updated') {
-                       
-                           
+
+
                             const updatedIndex = this.fuel_allowances.data.findIndex(item => item.AllowanceID === this.allowance_id);
             if (updatedIndex !== -1) {
-         
+
                 this.fuel_allowances.data[updatedIndex].FuelQuantity = this.emp_limit;  // Adjust the properties accordingly
-            
+
                 this.allowance_id = '';
                 this.$toastr.s("Fuel Allowance Limit Updated Successfully!", "Congratulations");
                 // Update other properties as needed

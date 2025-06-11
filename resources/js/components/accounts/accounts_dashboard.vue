@@ -3,7 +3,7 @@
        >
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -17,7 +17,7 @@
                 <div class="content-body">
                     <div class="row match-height">
                         <!-- Medal Card -->
-                        
+
                         <div  class="col-lg-6 col-sm-6 col-12">
                             <div class="card card-congratulation-medal">
                                 <div class="card-body">
@@ -761,11 +761,11 @@ export default {
             }
         },
 
-   
+
     },
     mounted() {
 
-       
+
 
         axios.get('account_stock_counter')
             .then(data => {
@@ -807,14 +807,14 @@ export default {
         axios.get('Accounts/count_sales_d/')
             .then(response => {
                 this.dde = response.data;
-             
+
                         this.series = [{
                             name: 'Sales',
                             data: this.dde
                         }
                         ]
 
-                  
+
             })
 
         axios.get('Accounts/count_revenue_d/')

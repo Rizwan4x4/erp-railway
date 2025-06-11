@@ -36,17 +36,17 @@ class LiveAttendenceController extends Controller
         }
     }
 
-//    public function get_machines()
-//    {
-//        try {
-//            return $this->sendSuccess('get machines success', $this->LiveAttendenceRepositoryInterface->get_machines());
-//        } catch (\Exception $e) {
-//
-//
-//            Log::error('Unhandled Exception: ' . $e->getMessage());
-//            return $this->sendError($e->getMessage(), $e->getCode());
-//        }
-//    }
+   public function get_machines()
+   {
+       try {
+           return $this->sendSuccess('get machines success', $this->LiveAttendenceRepositoryInterface->get_machines());
+       } catch (\Exception $e) {
+
+
+           Log::error('Unhandled Exception: ' . $e->getMessage());
+           return $this->sendError($e->getMessage(), $e->getCode());
+       }
+   }
 
     public function count_today_attendance()
     {

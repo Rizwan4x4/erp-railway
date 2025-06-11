@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -28,20 +28,20 @@
                                    <input type="date" @change="getResult()" v-model="dated" class="form-control" />
                                 <h5>Not Supervised Amount: {{Number(get_sum.cash).toLocaleString()}}</h5>
                                 <h5 style="margin-top:30px;">Selected: {{Math.floor(get_sum_total).toLocaleString()}}</h5>
-                             
+
                                 </div>
                                 <div class="col-sm-7 col-lg-7 ps-xl-75 ps-0" v-if=" this.$helpers.hasPermission('Units-Management units-data supervision')">
                                     <div class="dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
                                         <div class="me-1">
                                             <div class="dataTables_filter" style="margin-top:5px;width:300px">
-                                                
+
                                             </div>
                                         </div>
                                         <div class="invoice_status ms-sm-2" >
-                                           
+
                                             <button style="float:left" @click="delay1()"  class="btn btn-primary waves-effect">Proceed</button>
                                             </div>
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            
+
                                             <th>Date</th>
                                             <th>Receipt No</th>
                                             <th>File Plot No</th>
@@ -60,8 +60,8 @@
                                             <th>Plot_Type</th>
                                             <th>Block</th>
                                             <th>Amount</th>
-                                            
-                                        
+
+
                                             <th> <input type="checkbox" v-model="test" @change="toggling()" id="maincheck" /></th>
                                         </tr>
                                     </thead>
@@ -77,7 +77,7 @@
                                             <td>{{adsdata1.Module}}</td>
                                              <td>{{adsdata1.Plot_Type}}</td>
                                             <td>{{adsdata1.Block}}</td>
-                                            <td>Rs. {{Number(adsdata1.Amount).toLocaleString()}}/-</td> 
+                                            <td>Rs. {{Number(adsdata1.Amount).toLocaleString()}}/-</td>
                                             <td>
                                                 <div class="d-flex align-items-center col-actions">
                                                 <input readonly name="first[]" :value="adsdata1.DbtID" hidden  class="form-control invoice-edit-input " />
@@ -93,14 +93,14 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                         </div>
                     </section>
                     <!-- users list ends -->
                 </div>
             </div>
         </div>
-     
+
     </div>
 </template>
 <script>
@@ -149,9 +149,9 @@ export default {
                     if (!added[g].checked) {
                         this.get_sum_total = 0
                     }
-                    
+
                     }
-           
+
         },
         sum_total(Amount, id) {
                 let inlineRadio1 = document.getElementById("inlineRadio1" + id)
@@ -177,7 +177,7 @@ export default {
             this.proced_booking();
         },
         proced_booking() {
-       
+
         var item_name = document.getElementsByName('first[]');
        var added = document.getElementsByName('second[]');
        var k = 'zero';
@@ -192,13 +192,13 @@ export default {
                     }
                         axios.post('./accounts/submit_unitdebt', {
                                 id:k,
-                                added:addpurchase,   
-                            
+                                added:addpurchase,
+
                             })
                         .then(data => {
                            if(data.data=='submitted'){
                            this.$toastr.s("Ledger Hit Successfully", "Congratulations!");
-                          this.getResult(); 
+                          this.getResult();
                           var added = document.getElementsByName('second[]');
                             for (var g = 0; g < added.length; g++) {
                                 added[g].checked = false
@@ -212,18 +212,18 @@ export default {
                            this.$toastr.e("Transaction Type Not Linked with Accounts COA", "Cautions!");
                           }
                         })
-        
 
 
 
-       
+
+
 
 
 
 
 
         },
-       
+
 
 
         getResult() {
@@ -231,9 +231,9 @@ export default {
                 .then(response => this.adsdata = response.data)
                 .catch(error => {});
               axios.get('./accounts/get_counter_sum_debt/'+this.dated)
-            .then(response => this.get_sum = response.data)   
+            .then(response => this.get_sum = response.data)
         },
-        
+
     },
     watch: {
         keyword1(after, before) {

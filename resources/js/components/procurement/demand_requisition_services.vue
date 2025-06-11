@@ -3,7 +3,7 @@
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
@@ -1022,15 +1022,15 @@
                                 this.$toastr.s("Status updated successfully!", "Congratulations");
                                 const updatedIndex = this.adsdata.data.findIndex(item => item.RequisitionId === this.id);
             if (updatedIndex !== -1) {
-         
+
                 this.adsdata.data[updatedIndex].Status =  this.up_sts;
-              
+
                 this.e_rid = "";
                                 this.up_sts = "";
-             
+
                 // Update other properties as needed
             }
-                              
+
                             } else {
                                 this.$toastr.e("Status not changed", "Error!");
                             }
@@ -1199,7 +1199,7 @@
                 this.currency = response.data[0].Currency;
             })
 
-         
+
 
             axios.get('fetch_companyDetail')
                 .then(response => this.companydetail = response.data)

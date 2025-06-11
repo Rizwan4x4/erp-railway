@@ -2,7 +2,7 @@
     <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <div class="header-navbar-shadow-tem-change"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-body">
                     <div class="content-header row">
@@ -78,7 +78,7 @@
                                                 class="btn btn-primary" title="Update Fuel Average Rate">Update fuel
                                             Rates
                                         </button>
-                                        <button  v-else 
+                                        <button  v-else
                                                 class="btn btn-primary" title="Update Fuel Average Rate">Update fuel
                                             Rates
                                         </button>

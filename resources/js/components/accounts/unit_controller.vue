@@ -3,7 +3,7 @@
     <!-- BEGIN: Content-->
     <div class="app-content content ">
     <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
+    <div class="header-navbar-shadow-tem-change"></div>
     <div class="content-wrapper container-xxl p-0">
     <div class="content-header row">
     <div class="breadcrumb-wrapper">
@@ -27,7 +27,7 @@
     <div class="card">
     <div class="card-header">
         <h4 class="card-title">Units Controller</h4>
-       
+
     </div>
     <div class="card-body">
         <div style="margin-bottom:20px;" class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="col-12">
                                             <button type="button" :disabled="disabled" @click="delay()" class="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
-                                            
+
                                         </div>
                                     </div>
                                 </form>
@@ -116,7 +116,7 @@
                                     </div>
                                 </div>
                         </div>
-    
+
        <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0" v-if="hasPermission('Units-Management units-data fetch-data')">
                         <div class="card">
                             <div class="card-header">
@@ -137,7 +137,7 @@
                                                                     <input type="month" v-model="booking_services" class="form-control" />
                                                                     <span style="color: #DB4437; font-size: 11px;" v-if="booking_start==''">{{e_booking_services}}</span>
                                                                 </td>
-                                                               
+
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -146,14 +146,14 @@
                                         </div>
                                         <div class="col-12">
                                             <button type="button" :disabled="disabled8" @click="delay8()" class="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
-                                            
+
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-    
+
      <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0" v-if="hasPermission('Units-Management units-data fetch-data')">
                         <div class="card">
                             <div class="card-header">
@@ -174,7 +174,7 @@
                                                                     <input type="month" v-model="booking_electricity" class="form-control" />
                                                                     <span style="color: #DB4437; font-size: 11px;" v-if="booking_electricity==''">{{e_booking_electricity}}</span>
                                                                 </td>
-    
+
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -183,24 +183,24 @@
                                         </div>
                                         <div class="col-12">
                                             <button type="button" :disabled="disabled7" @click="delay7()" class="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
-                                            
+
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
                      <div class="col-md-12" v-if="hasPermission('Units-Management units-data supervision')">
                                 <section class="app-user-list">
                                     <div clas="card" style="background-color: white !important">
@@ -210,8 +210,8 @@
                                             </div>
                                             <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
                                                 <div class=" dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
-                                                    
-                                                    
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -264,20 +264,20 @@
                                     </div>
                                     <div class="modal-body px-sm-5 mx-50 pb-5">
                                         <div id="addNewCardValidation" class="row gy-1 gx-2 mt-75">
-                                            
+
                                                <div class="invoice-customer" >
                                                <label class="form-label" for="modalAddCardName">Select Item Name</label>
-                                                <input type="text" hidden v-model="ide"  /> 
+                                                <input type="text" hidden v-model="ide"  />
                                                 </div>
-                                                <input type="text" v-model="typename" class="form-control" readonly /> 
+                                                <input type="text" v-model="typename" class="form-control" readonly />
                                                 </div>
                                                 <div class="invoice-customer" >
                                                 <label class="form-label" for="modalAddCardName">Select Link Account</label>
                                                 <multiselect style="margin-right: 10px; font-size: 12px;" id="FilterTransaction"  :show-labels="false"  v-model="account_idname_sep" :options="options2">
-                                                                </multiselect>  
+                                                                </multiselect>
                                                 </div>
-    
-    
+
+
                                             <div class="col-12 text-center">
                                                 <button type="submit" :disabled="disabled4" @click="delay4()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
@@ -297,24 +297,24 @@
     data() {
     return {
     types: {},
-    
-    
-    
+
+
+
     booking_end: '',
     booking_start: '',
     e_booking_start: '',
     e_booking_end: '',
     disabled: false,
     timeout: null,
-    
+
     receipt_end: '',
     receipt_start: '',
     e_receipt_start: '',
     e_receipt_end: '',
     disabled1: false,
     timeout1: null,
-    
-    
+
+
     disabled4: false,
     timeout4: null,
     ide:'',
@@ -322,19 +322,19 @@
     agnstpayment:{},
     account_idname_sep:'',
     options2:[],
-    
-    
+
+
     booking_services:'',
     e_booking_services: '',
     disabled8: false,
     timeout8: null,
-    
-    
+
+
     disabled7: false,
     timeout7: null,
     booking_electricity:'',
     e_booking_electricity:'',
-    
+
     }
     },
      components: {
@@ -366,9 +366,9 @@
     } else {
     this.$toastr.e(response.data, "Cautions!");
     }
-    
+
     })
-    }  
+    }
     },
     delay8() {
     this.disabled = true
@@ -391,12 +391,12 @@
     } else {
     this.$toastr.e(response.data, "Cautions!");
     }
-    
+
     })
     }
     },
-    
-    
+
+
     delay() {
     this.disabled = true
     this.timeout = setTimeout(() => {
@@ -421,7 +421,7 @@
     } else {
     this.$toastr.e(response.data, "Cautions!");
     }
-    
+
     })
     }
     },
@@ -433,7 +433,7 @@
     this.submit_typename()
     },
     submit_typename(){
-    
+
         axios.post('./Accounts/update_typename/'+this.ide+'/'+this.account_idname_sep)
         .then(response => {
         this.$toastr.s("Linked Type With COA Successfully!", "Congratulations");
@@ -464,26 +464,26 @@
     } else {
     this.$toastr.e(response.data, "Cautions!");
     }
-    
+
     })
     }
     },
-    
-    
+
+
     getResult2(page = 1) {
                     axios.get('./accounts/fetch_typesdata/?page=' + page)
                     .then((response) => (this.types = response.data));
                 },
-    
-    
+
+
     },
-    
+
     mounted() {
      axios.get('accounts/fetch_all_transaction_head')
                 .then(response => {
                     this.agnstpayment = response.data
                     this.options2 = [];
-    
+
                     var $this = this;
                     for (var i = 0; i < $this.agnstpayment.length; i++) {
                         this.options2.push($this.agnstpayment[i].ID + '_' + $this.agnstpayment[i].AccountName);
@@ -492,6 +492,5 @@
     this.getResult2();
     }
     }
-    
+
     </script>
-    
