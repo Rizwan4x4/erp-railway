@@ -38,5 +38,5 @@ yarn-error.log
 # vendor
 # *.7z
 
-# resources/views/main_dashboard.blade.php
-# resources/views/index.blade.php
+resources/views/main_dashboard.blade.php
+resources/views/index.blade.php
