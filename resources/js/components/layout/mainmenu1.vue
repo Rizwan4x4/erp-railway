@@ -1,7 +1,8 @@
 <template>
     <!-- BEGIN: Main Menu-->
-    <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="top-radius bottom-radius main-menu menu-fixed menu-light menu-accordion menu-shadow shadow-sm" data-scroll-to-active="true">
         <!-- <div :class="menuClass" data-scroll-to-active="true"> -->
+
             <div class="navbar-header">
                 <ul class="nav navbar-nav flex-row">
                     <li class="nav-item me-auto">
@@ -905,5 +906,22 @@ li.active {
 }
 .menu-dark {
     background-color: #283046;
+}
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
 }
 </style>

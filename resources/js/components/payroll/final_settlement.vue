@@ -1,6 +1,5 @@
 <template>
     <div>
-        <div>okokokokokoo</div>
         <div class="app-content content">
             <div class="content-overlay"></div>
             <div class="header-navbar-shadow-tem-change"></div>

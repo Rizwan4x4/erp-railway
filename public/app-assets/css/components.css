@@ -20,7 +20,7 @@ html .content {
   transition: 300ms ease all;
   backface-visibility: hidden;
   min-height: calc(100% - 3.35rem);
-  margin-left: 260px; }
+  margin-left: 281px; }
 
 html .content.app-content {
   padding: calc(2rem + 4.45rem + 1.3rem) 2rem 0; }
@@ -496,7 +496,7 @@ html .blank-page .content {
   margin-left: 0; }
 
 html .blank-page .content.app-content {
- 
+
   padding: 0 !important;
   transition: none; }
 
@@ -1005,7 +1005,8 @@ footer.footer-border {
   pointer-events: none;
   margin-top: -0.7rem;
   filter: blur(5px);
-  background: linear-gradient(#fff 41%, rgba(255, 255, 255, 0.11) 95%, rgba(255, 255, 255, 0)); }
+  /* background: linear-gradient(#fff 41%, rgba(255, 255, 255, 0.11) 95%, rgba(255, 255, 255, 0)); */
+ }
 
 .bordered-layout .main-menu .shadow-bottom {
   background: linear-gradient(#f8f8f8 41%, rgba(255, 255, 255, 0.11) 95%, rgba(255, 255, 255, 0)); }

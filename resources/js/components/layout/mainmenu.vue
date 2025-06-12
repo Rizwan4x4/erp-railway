@@ -44,7 +44,7 @@
             axios.get('session_check2')
                 .then((response) => this.company1 = response.data)
 
-       
+
         }
     }
 </script>
