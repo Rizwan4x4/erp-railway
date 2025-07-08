@@ -22,7 +22,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="alert alert-primary" style="padding-top:0px;padding-bottom:0px" role="alert">
+                            <div class="alert alert-primary border-0 top-radius bottom-radius p-3" style="padding-top:0px;padding-bottom:0px" role="alert">
                                 <div class="alert-body" style="min-height: 55px;margin-bottom: 10px;">
                                     <ul class="nav nav-pills mb-2" style="float:left">
                                         <li v-if="hasPermission('Payroll Other Allowances')" class="nav-item">
@@ -50,10 +50,10 @@
                     </div>
                     <div class="row" id="basic-table">
                         <div class="col-12">
-                            <div class="card">
-                                <div class="row" style="margin-top:20px">
+                            <div class="card border-0 top-radius bottom-radius">
+                                <div class="row p-3">
                                     <div class="col-md-5 col-12 mb-2">
-                                        <h5 style="padding-left:10px;padding-top:10px">Session Name:
+                                        <h5 style="padding-left:10px;">Session Name:
                                             {{ this.session_name }}</h5>
                                     </div>
                                     <div class="col-md-4 col-12 mb-2">
@@ -61,7 +61,7 @@
                                                placeholder="Search By Emp.Name/Code">
                                     </div>
                                     <div class="col-md-3 col-12 mb-2">
-                                        <button  v-if="hasPermission('Payroll Apply Welfare Allowance')" data-bs-toggle="modal" data-bs-target="#applyallowance" class="btn btn-primary">Apply Welfare Allowance</button>
+                                        <button  v-if="hasPermission('Payroll Apply Welfare Allowance')" data-bs-toggle="modal" data-bs-target="#applyallowance" class="btn btn-primary bg-primary">Apply Welfare Allowance</button>
                                         <button v-else class="btn btn-danger">Apply Welfare Allowance</button>
 
                                     </div>
@@ -142,7 +142,7 @@
                                         <h5>Do you want to approve the welfare allowance of selected employee?</h5>
                                         <div class="text-center" style="text-align:center">
                                             <button type="button" :disabled="disabled2" @click="delay2()"
-                                                    class="btn btn-primary waves-effect waves-float waves-light"
+                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                                     data-bs-dismiss="modal" aria-label="Close">Yes
                                             </button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect"
@@ -167,7 +167,7 @@
                                         <h5>Do you want to delete the allowance?</h5>
                                         <div class="text-center" style="text-align:center">
                                             <button type="button" :disabled="disabled4" @click="delayDelete()"
-                                                    class="btn btn-primary waves-effect waves-float waves-light"
+                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                                     data-bs-dismiss="modal" aria-label="Close">Yes
                                             </button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect"
@@ -245,11 +245,11 @@
                                             </div>
                                             <div class="col-12 text-center">
                                                 <button v-if="rcvBy == ''" type="submit" :disabled="disabled3"
-                                                        @click="delay3()" class="btn btn-primary me-1 mt-2">Pay
+                                                        @click="delay3()" class="btn btn-primary bg-primary me-1 mt-2">Pay
                                                     Allowance Amount
                                                 </button>
                                                 <button v-else type="submit" :disabled="disabled3" @click="delay3()"
-                                                        class="btn btn-primary me-1 mt-2" data-bs-dismiss="modal"
+                                                        class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal"
                                                         aria-label="Close">Pay Loan Amount
                                                 </button>
                                                 <button type="reset" class="btn btn-outline-secondary mt-2"
@@ -326,7 +326,7 @@
                                                 class="btn btn-danger">Apply Now
                                             </button>
                                             <button v-else type="submit" :disabled="disabled" @click="delay()"
-                                                    class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal"
+                                                    class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal"
                                                     aria-label="Close">Apply Now
                                             </button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1"

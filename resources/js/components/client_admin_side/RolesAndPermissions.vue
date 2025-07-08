@@ -15,7 +15,7 @@
 
                         <div class="col-md-2">
 
-                            <router-link to="/settings/CreateRoles" type="button" class="btn btn-primary"
+                            <router-link to="/settings/CreateRoles" type="button" class="btn btn-primary bg-primary"
                                         >
                                         <i class="fas fa-plus"></i> Create Roles
                                     </router-link>
@@ -69,7 +69,7 @@
                                 <!-- <td class="td-center">yes</td>
                                             <td class="td-center">yes</td> -->
                                 <td class="td-center">
-                                    <button type="button" class="btn btn-primary"
+                                    <button type="button" class="btn btn-primary bg-primary"
                                         @click="clickEditRole(role.id, role.permissions, role.name), openEditRoleModal()">
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
@@ -105,7 +105,7 @@
                                 <input type="text" v-model="role_name" class="form-control" placeholder="Enter Role Name">
                             </div>
                             <div class="col-md-4 col-12 mb-2">
-                                <button @click="updateRole()" class="dt-button add-new btn btn-primary" tabindex="0"
+                                <button @click="updateRole()" class="dt-button add-new btn btn-primary bg-primary" tabindex="0"
                                     type="button">
                                     <span>Update Role</span>
                                 </button>

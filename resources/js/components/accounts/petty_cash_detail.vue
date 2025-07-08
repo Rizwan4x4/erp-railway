@@ -20,31 +20,31 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div class="card">
+                        <div class="card top-radius bottom-radius border-0">
                             <div class="card-body border-bottom">
                                 <div class="row">
                                     <div class="col-md-2 col-12 mb-2">
-                                        <label class="form-label">Date From</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date From</label>
                                         <input type="date" v-model="startingdate" class="form-control">
                                     </div>
                                     <div class="col-md-2 col-12 mb-3">
-                                        <label class="form-label">Date To</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date To</label>
                                         <input type="date" class="form-control" v-model="closingdate">
                                     </div>
                                     <div class="col-md-3 col-12 mb-3">
-                                        <label class="form-label">ID / Department</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">ID / Department</label>
                                         <input type="text" placeholder="ID or Department name" class="form-control" v-model="keyword">
                                     </div>
                                     <div class="col-md-1 col-12 mb-3">
-                                        <button @click="filtered_GRN()" style="margin-top: 25px" class="btn btn-secondary">Search</button>
+                                        <button @click="filtered_GRN()" style="margin-top: 25px" class="btn btn-primary bg-primary">Search</button>
                                     </div>
                                     <div class="col-md-1 col-12 mb-3">
                                         <button @click="startingdate='', closingdate='', filtered_GRN()" style="margin-top: 25px" class="btn btn-outline-secondary waves-effect">Clear</button>
                                     </div>
-                                    <div class="col-md-1 col-12 mb-3">
-                                    </div>
-                                    <div class="col-md-2 col-12 mb-3">
-                                        <router-link v-if="hasPermission('Accounting petty-cash create-pettycash')" to="/create_petty_cash" class="btn btn-primary" style="margin-top: 25px"><span>+ New Petty Cash</span></router-link>
+                                    <!-- <div class="col-md-1 col-12 mb-3">
+                                    </div> -->
+                                    <div class="col-md-3 col-12 mb-3">
+                                        <router-link v-if="hasPermission('Accounting petty-cash create-pettycash')" to="/create_petty_cash" class="btn btn-primary bg-primary" style="margin-top: 25px"><span>+ New Petty Cash</span></router-link>
                                     </div>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                             </div>
                             <br>
                             <div class="text-center" style="text-align:center">
-                                <button v-if="paid_amount!='' && paid_amount <= p_remaining" type="button" :disabled="disabled3" @click="delay3()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
+                                <button v-if="paid_amount!='' && paid_amount <= p_remaining" type="button" :disabled="disabled3" @click="delay3()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                 <button v-else type="button" :disabled="disabled3" class="btn btn-danger waves-effect waves-float waves-light">Yes</button>
                                 <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">No</button>
                             </div>
@@ -268,7 +268,7 @@
                             <!-- Invoice Description ends -->
                             <hr class="invoice-spacing">
                             <div class="col-12 text-center mt-2 pt-50">
-                                <button :disabled="disabled" @click="delay1()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                <button :disabled="disabled" @click="delay1()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                     Close
                                 </button>
@@ -373,7 +373,7 @@
                             <!-- Invoice Description ends -->
                             <hr class="invoice-spacing">
                             <div class="col-12 text-center mt-2 pt-50">
-                                <button :disabled="disabled" @click="delay()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                <button :disabled="disabled" @click="delay()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                     Close
                                 </button>
@@ -504,6 +504,10 @@
     export default {
         data() {
             return {
+                 images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
                 keyword:'',
                 adsdata: {},
                 currency: '',

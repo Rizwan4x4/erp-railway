@@ -101,7 +101,7 @@
                                        </div>
                                         <div class="col-md-12 text-center">
                                             <button v-if="quantity==''" class="btn btn-danger" @click="update_stock()">Update Stock</button>
-                                            <button v-else class="btn btn-primary" @click="update_stock()" data-bs-dismiss="modal" aria-label="Close">Update Stock</button>
+                                            <button v-else class="btn btn-primary bg-primary" @click="update_stock()" data-bs-dismiss="modal" aria-label="Close">Update Stock</button>
                                             <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                                         </div>
                                     </form>

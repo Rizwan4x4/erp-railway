@@ -24,7 +24,7 @@
                             <div style="margin-bottom:20px;padding-top:20px" class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                                 <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
                                     <div class="dt-buttons d-inline-flex mt-50">
-                                        <router-link style="float:left" to="/sales/quotation" class="btn btn-primary waves-effect">Create Quotation</router-link>
+                                        <router-link style="float:left" to="/sales/quotation" class="btn btn-primary bg-primary waves-effect">Create Quotation</router-link>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">

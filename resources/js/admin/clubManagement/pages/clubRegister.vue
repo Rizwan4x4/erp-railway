@@ -32,7 +32,7 @@
 
                             <div class="col-md-3">
                                 <div style="height:27px;"></div>
-                                <button @click="search_club()" class="dt-button add-new btn btn-primary" tabindex="0"
+                                <button @click="search_club()" class="dt-button add-new btn btn-primary bg-primary" tabindex="0"
                                     type="button"><span>Search</span></button>
                                 <button @click="reset_filters()" class="dt-button add-new btn btn-secondary" tabindex="0"
                                     type="button">
@@ -45,7 +45,7 @@
                         class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                         <div class="col-sm-12 col-lg-12 ps-xl-75 ps-0">
                             <div v-if="hasPermission('Admin Club Management Create Club AddNewClub')"  style="float:left;">
-                                <router-link to="" class="dt-button add-new btn btn-primary" data-bs-toggle="modal"
+                                <router-link to="" class="dt-button add-new btn btn-primary bg-primary" data-bs-toggle="modal"
                                     data-bs-target="#addclub" tabindex="0" type="button"><span>+ Add new
                                         Club</span></router-link>
                             </div>
@@ -194,7 +194,7 @@
                                         </div>
                                         <div class="col-12 text-center mt-2 pt-50">
                                             <button :disabled="disabled" @click="delay()"
-                                                class="btn btn-primary me-1">Add</button>
+                                                class="btn btn-primary bg-primary me-1">Add</button>
                                             <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
                                                 aria-label="Close">
                                                 Cancel
@@ -283,7 +283,7 @@
                                         </div>
                                         <div class="col-12 text-center mt-2 pt-50">
                                             <button :disabled="disabled" @click="update_club(club_id)"
-                                                class="btn btn-primary me-1">Update</button>
+                                                class="btn btn-primary bg-primary me-1">Update</button>
                                             <button type="reset" id="cancelButton" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
@@ -310,7 +310,7 @@
                                     </div>
                                     <div class="col-12 text-center mt-2 pt-50">
                                         <button :disabled="disabled" @click="del_club(club_id_del)"
-                                            class="btn btn-primary me-1" data-bs-dismiss="modal"
+                                            class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal"
                                             aria-label="Close">Yes</button>
                                         <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
                                             aria-label="Close">

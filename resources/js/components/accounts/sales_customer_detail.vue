@@ -171,7 +171,7 @@
                                 <span style="color: #db4437; font-size: 11px" v-if="c_mobile == ''">{{ e_c_mobile }}</span>
                             </div>
                             <div class="col-12" style="text-align:center">
-                                <button :disabled="disabled" @click="delay()" type="button" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Save Customer</button>
+                                <button :disabled="disabled" @click="delay()" type="button" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">Save Customer</button>
                             </div>
                         </form>
                     </div>
@@ -240,7 +240,7 @@
                                 <span style="color: #db4437; font-size: 11px" v-if="edc_mobile == ''">{{ e_edc_mobile }}</span>
                             </div>
                             <div class="col-12" style="text-align:center">
-                                <button :disabled="disabled1" @click="delay1()" type="button" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Update Customer</button>
+                                <button :disabled="disabled1" @click="delay1()" type="button" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Update Customer</button>
                             </div>
                         </form>
                     </div>

@@ -39,7 +39,7 @@
                             >
                                 <div class="card">
                                     <div class="card-header">
-                                        <h2 style="32px" class="card-title">
+                                        <h2 class="card-title">
                                             Grace Period(s) Detail
                                         </h2>
                                         <div
@@ -48,7 +48,7 @@
                                             <a v-if="hasPermission('HRMS Attendance Grace-periods update-Overall grace-periods')"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#overall_grace"
-                                                class="dt-button add-new btn btn-primary"
+                                                class="dt-button add-new btn btn-primary bg-primary"
                                                 tabindex="0"
                                                 type="button"
                                             ><span
@@ -358,7 +358,7 @@
                     </div>
                     <div class="modal-footer">
                         <button
-                            class="btn btn-primary"
+                            class="btn btn-primary bg-primary"
                             @click="update_ind()"
                             data-bs-dismiss="modal"
                             aria-label="Close"
@@ -367,7 +367,7 @@
                         </button>
                         <button
                             type="button"
-                            class="btn btn-primary"
+                            class="btn btn-primary  bg-primary"
                             @click="cleargrace_id()"
                             data-bs-dismiss="modal"
                             aria-label="Close"
@@ -505,14 +505,14 @@
                     </div>
                     <div class="modal-footer">
                         <button
-                            class="btn btn-primary"
+                            class="btn btn-primary bg-primary"
                             @click="update_overall()"
                         >
                             Update
                         </button>
                         <button
                             type="button"
-                            class="btn btn-primary"
+                            class="btn btn-primary bg-primary"
                             @click="cleargrace_id()"
                             data-bs-dismiss="modal"
                             aria-label="Close"

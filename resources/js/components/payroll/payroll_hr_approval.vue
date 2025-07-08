@@ -19,7 +19,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="alert alert-primary" style="padding-top:0px;padding-bottom:0px" role="alert">
+                            <div class="alert alert-primary border-0 top-radius bottom-radius p-3" role="alert">
                                 <div class="alert-body">
                                     <ul class="nav nav-pills mb-2">
                                         <li class="nav-item">
@@ -57,8 +57,8 @@
                     </div>
                     <div class="row" id="basic-table">
                         <div class="col-12">
-                            <div class="card">
-                                <div class="row" style="margin-top:10px">
+                            <div class="card border-0 top-radius bottom-radius">
+                                <div class="row p-3" style="margin-top:10px">
                                     <div class="col-md-5">
                                         <h5 style="padding-left:10px;padding-top:10px">Session: {{session_name}}</h5>
                                     </div>
@@ -66,7 +66,7 @@
                                         <input type="text" v-model="keyword1" class="form-control" placeholder="Search By Name or Employee code">
                                     </div>
                                     <div v-if="hasPermission('Payroll Proceed to Finance Approval')" class="col-md-3">
-                                        <button :disabled="disabled1" @click="delay1()" data-bs-toggle="modal" data-bs-target="#apprfinance" class="btn btn-primary">Proceed to Finance Approval</button>
+                                        <button :disabled="disabled1" @click="delay1()" data-bs-toggle="modal" data-bs-target="#apprfinance" class="btn btn-primary bg-primary">Proceed to Finance Approval</button>
                                     </div>
                                     <div v-else class="col-md-3">
                                         <button class="btn btn-primary">Proceed to Finance Approval </button>
@@ -144,7 +144,7 @@
                                         <h1 class="fw-bolder">Confirmation</h1>
                                         <h5>Do you want to proceed employees salaries for Finance Approval?</h5>
                                         <div class="text-center" style="text-align:center">
-                                            <button type="button" @click="proceedtofinanceapproval()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
+                                            <button type="button" @click="proceedtofinanceapproval()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">No</button>
                                         </div>
                                     </div>
@@ -185,7 +185,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 text-center mt-2 pt-50">
-                                            <button type="submit" :disabled="disabled" @click="delay()" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                            <button type="submit" :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                             <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                                 Discard
                                             </button>
@@ -324,3 +324,22 @@
     }
 
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

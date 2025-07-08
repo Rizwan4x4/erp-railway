@@ -287,7 +287,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <button :disabled="disabled" @click="delay()"
-                                                class="btn btn-primary w-100 mb-75">Post Quotation
+                                                class="btn btn-primary bg-primary w-100 mb-75">Post Quotation
                                         </button>
                                         <input type="file" id="image_file" :v-model="image_file" name="image_file"
                                                @change="onFileChange" accept="image/*"

@@ -795,6 +795,11 @@ const routes = [
         }
     },
     {
+    path: '/accounts/session',
+    name: 'accounts_session',
+    component: accounts_session,
+},
+    {
         path: '/accounting/journal_voucher',
         name: 'accounting_jv_detail',
         component:accounting_jv_detail,

@@ -40,7 +40,7 @@
                         class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                         <div class="col-sm-12 col-lg-12 ps-xl-75 ps-0">
                             <div v-if="hasPermission('Admin Club Management Register Member AddNewMember')"  style="float:right;">
-                                <router-link to="" class="dt-button add-new btn btn-primary" data-bs-toggle="modal"
+                                <router-link to="" class="dt-button add-new btn btn-primary bg-primary" data-bs-toggle="modal"
                                     data-bs-target="#addcandidate" tabindex="0" type="button"><span>+ Add new
                                         Member</span></router-link>
                             </div>
@@ -63,7 +63,7 @@
 
                                         <div class="col-md-3">
                                             <div style="height:27px;"></div>
-                                            <button @click="search_member()" class="dt-button add-new btn btn-primary"
+                                            <button @click="search_member()" class="dt-button add-new btn btn-primary bg-primary"
                                                 tabindex="0" type="button"><span>Search</span></button>
 
                                         </div>
@@ -266,7 +266,7 @@
                                     </div>
                                     <div class="col-12 text-center mt-2 pt-50">
                                         <button :disabled="disabled1" @click="delay1()"
-                                            class="btn btn-primary me-1">Pay</button>
+                                            class="btn btn-primary bg-primary me-1">Pay</button>
                                         <button type="reset" id="receipt_cancel" class="btn btn-outline-secondary"
                                             data-bs-dismiss="modal" aria-label="Close">
                                             Cancel
@@ -546,7 +546,7 @@
                                     <!-- data-bs-dismiss="modal" aria-label="Close" -->
                                     <div class="col-12 text-center mt-2 pt-50">
                                         <button :disabled="disabled" @click="delay()"
-                                            class="btn btn-primary me-1">Add</button>
+                                            class="btn btn-primary bg-primary me-1">Add</button>
                                         <button type="reset" id="cancelButton1" class="btn btn-outline-secondary"
                                             data-bs-dismiss="modal" aria-label="Close">
                                             Cancel

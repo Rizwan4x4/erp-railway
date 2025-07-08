@@ -18,12 +18,12 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div clas="card" style="background-color: white !important">
-                            <div style="margin-bottom: 20px; padding-top: 20px" class="d-flex justify-content-between align-items-center header-actions  mx-2 row mt-75 ">
-                                <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
-                                    <h4 class="card-title">Search & Filter</h4>
+                        <div class="card top-radius bottom-radius border-0" style="background-color: white !important">
+                            <div  class="d-flex justify-content-between align-items-center header-actions p-3">
+                                <div class="col-sm-6 col-lg-6 ">
+                                    <h4 class="card-title m-0">Search & Filter</h4>
                                 </div>
-                                <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
+                                <div class="col-sm-6 col-lg-6 ">
                                     <div class=" dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
                                         <div class="me-1">
                                             <div class="dataTables_filter" style="margin-top: 5px">
@@ -110,21 +110,21 @@
                     <div class="row" v-if="this.$helpers.hasPermission('Inventory Products inventory-link')">
                         <div class="col-md-6">
                             <section class="app-user-list">
-                                <div clas="card" style="background-color: white !important">
-                                    <div style="margin-bottom: 20px; padding-top: 20px" class="d-flex justify-content-between align-items-center header-actions  mx-2 row mt-75 ">
-                                        <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
-                                            <h4 class="card-title">Inventory Link</h4>
+                                <div class="card top-radius bottom-radius border-0">
+                                    <div class="d-flex justify-content-between align-items-center header-actions p-3">
+                                        <div class="col-sm-6 col-lg-6">
+                                            <h4 class="card-title m-0">Inventory Link</h4>
                                         </div>
-                                        <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
+                                        <div class="col-sm-6 col-lg-6">
                                             <div class=" dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
                                                 <div class="me-1">
-                                                    <div class="dataTables_filter" style="margin-top: 5px">
+                                                    <div class="dataTables_filter">
                                                         <label>
                                                             <input autocomplete="off" v-model="keyword1" name="keyword1" @change="search_by_inventory()" type="text" class="form-control" placeholder="Search By Name" />
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="dt-buttons d-inline-flex mt-50">
+                                                <div class="dt-buttons d-inline-flex ">
                                                     <a   v-if="hasPermission('Inventory Products inventory-link') " style="float: left" data-bs-toggle="modal" data-bs-target="#leavetype2" class="btn btn-outline-primary waves-effect">Multiple</a>
                                                 </div>
                                             </div>
@@ -160,12 +160,12 @@
                         </div>
                         <div class="col-md-6" v-if="this.$helpers.hasPermission('Inventory Products asset-link')">
                             <section class="app-user-list">
-                                <div clas="card" style="background-color: white !important">
-                                    <div style="margin-bottom: 20px; padding-top: 20px" class="d-flex justify-content-between align-items-center header-actions  mx-2 row mt-75 ">
-                                        <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
-                                            <h4 class="card-title">Assets Link</h4>
+                                <div class="card top-radius bottom-radius border-0" >
+                                    <div class="d-flex justify-content-between align-items-center header-actions p-3">
+                                        <div class="col-sm-6 col-lg-6">
+                                            <h4 class="card-title m-0">Assets Link</h4>
                                         </div>
-                                        <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
+                                        <div class="col-sm-6 col-lg-6">
                                             <div class=" dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
                                                 <!--<div class="me-1">
                                                     <div class="dataTables_filter" style="margin-top: 5px">
@@ -381,7 +381,7 @@
                                 </div>
                             </div>
                             <div class="col-12" style="text-align: center">
-                                <button :disabled="disabled" @click="delay()" type="button" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Save Product Detail</button>
+                                <button :disabled="disabled" @click="delay()" type="button" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Save Product Detail</button>
                                 <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">Close</button>
                             </div>
                         </form>
@@ -490,7 +490,7 @@
                                 </div>
                             </div>
                             <div class="col-12" style="text-align: center">
-                                <button :disabled="disabled1" @click="delay1()" type="button" class=" btn btn-primary mt-1 me-1 waves-effect waves-float waves-light ">
+                                <button :disabled="disabled1" @click="delay1()" type="button" class=" btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light ">
                                     Create Product
                                 </button>
                                 <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close" @click="closeModal">Close</button>
@@ -520,7 +520,7 @@
                                 </multiselect>
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" :disabled="disabled3" @click="delay3()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                <button type="submit" :disabled="disabled3" @click="delay3()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                     Close
                                 </button>
@@ -550,7 +550,7 @@
                                 </multiselect>
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" :disabled="disabled7" @click="delay7()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                <button type="submit" :disabled="disabled7" @click="delay7()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                     Close
                                 </button>
@@ -581,7 +581,7 @@
                             </multiselect>
                         </div>
                         <div class="col-12 text-center">
-                            <button type="submit" :disabled="disabled4" @click="delay4()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                            <button type="submit" :disabled="disabled4" @click="delay4()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                 Close
                             </button>
@@ -591,7 +591,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 </template>
 <script>
     import VueBarcode from 'vue-barcode';
@@ -1143,3 +1143,22 @@
     };
 
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

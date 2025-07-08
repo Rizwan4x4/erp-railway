@@ -22,7 +22,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="alert alert-primary" style="padding-top:0px;padding-bottom:0px" role="alert">
+                            <div class="alert alert-primary border-0 top-radius bottom-radius p-3" style="padding-top:0px;padding-bottom:0px" role="alert">
                                 <div class="alert-body" style="min-height: 55px;margin-bottom: 10px;">
                                     <ul class="nav nav-pills mb-2" style="float:left">
                                         <li v-if="hasPermission('Payroll Other Allowances')" class="nav-item">
@@ -139,7 +139,7 @@
                                         <h1 class="fw-bolder">Confirmation</h1>
                                         <h5>Are you want to approve the allowance of selected employee?</h5>
                                         <div class="text-center" style="text-align:center">
-                                            <button type="button" :disabled="disabled2" @click="delay2()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
+                                            <button type="button" :disabled="disabled2" @click="delay2()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">No</button>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@
                                             <input v-model="emp_description" type="text" class="form-control" />
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button type="submit" :disabled="disabled" @click="delay()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Apply Now</button>
+                                            <button type="submit" :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Apply Now</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>
@@ -247,7 +247,7 @@
                                 <input v-model="edit_description" type="text" class="form-control" />
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                <button type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                     Cancel
                                 </button>
@@ -301,7 +301,7 @@
                                 <input v-model="edit_description" type="text" class="form-control" />
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                <button type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                     Cancel
                                 </button>

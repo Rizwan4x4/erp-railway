@@ -20,7 +20,7 @@
                                                        placeholder="Enter Role Name">
                                             </div>
                                             <div class="col-md-4 col-12 float-end">
-                                                <button @click="Add_Role" class="dt-button add-new btn btn-primary my-2"
+                                                <button @click="Add_Role" class="dt-button add-new btn btn-primary bg-primary my-2"
                                             tabindex="0" type="button">
                                         <span>Create Role</span>
                                     </button>
@@ -32,7 +32,7 @@
                             <role-accordion @pass-data="receiveDataFromChild"/>
                             <!-- <div class="row justify-content-end">
                                 <div class="col-md-2 mr-5">
-                                    <button @click="Add_Role" class="dt-button add-new btn btn-primary my-2"
+                                    <button @click="Add_Role" class="dt-button add-new btn btn-primary bg-primary my-2"
                                             tabindex="0" type="button">
                                         <span>Create Role</span>
                                     </button>

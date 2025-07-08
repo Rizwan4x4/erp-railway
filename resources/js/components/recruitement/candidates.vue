@@ -52,13 +52,13 @@
                                 <div class="col-md-2 d-flex align-items-center mt-4">
                                     <!-- <div style="height:27px;"></div> -->
                                     <button @click="search_candidate()"
-                                        class="dt-button add-new btn btn-primary bg-primary py-2 px-5" tabindex="0"
+                                        class="dt-button add-new btn btn-primary bg-primary bg-primary py-2 px-5" tabindex="0"
                                         type="button"><span>Search</span></button>
                                 </div>
                                 <div
                                     class="col-sm-12 col-md-3 col-lg-3 ps-xl-75 ps-0  d-flex align-items-center justify-content-end mt-4">
                                     <div v-if="hasPermission('Add new Candidates')" style="float:left;">
-                                        <router-link to="" class="dt-button add-new btn btn-primary bg-primary p-2"
+                                        <router-link to="" class="dt-button add-new btn btn-primary bg-primary bg-primary p-2"
                                             data-bs-toggle="modal" data-bs-target="#addcandidate" tabindex="0"
                                             type="button"><span>+ Add new
                                                 candidate</span></router-link>
@@ -68,7 +68,7 @@
                                     class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75 py-2">
                                     <div class="col-sm-12 col-lg-12 ps-xl-75 ps-0">
                                         <div v-if="hasPermission('Add new Candidates')" style="float:left;">
-                                            <router-link to="" class="dt-button add-new btn btn-primary"
+                                            <router-link to="" class="dt-button add-new btn btn-primary bg-primary"
                                                 data-bs-toggle="modal" data-bs-target="#addcandidate" tabindex="0"
                                                 type="button"><span>+ Add new
                                                     candidate</span></router-link>
@@ -82,7 +82,7 @@
                         class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                         <div class="col-sm-12 col-lg-12 ps-xl-75 ps-0">
                             <div v-if="hasPermission('Add new Candidates')" style="float:left;">
-                                <router-link to="" class="dt-button add-new btn btn-primary" data-bs-toggle="modal"
+                                <router-link to="" class="dt-button add-new btn btn-primary bg-primary" data-bs-toggle="modal"
                                     data-bs-target="#addcandidate" tabindex="0" type="button"><span>+ Add new
                                         candidate</span></router-link>
                             </div>
@@ -442,7 +442,7 @@
                                                 placeholder="Applied Via" />
                                         </div>
                                         <div class="col-12 text-center mt-2 pt-50">
-                                            <button :disabled="disabled" @click="delay()" class="btn btn-primary me-1"
+                                            <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1"
                                                 data-bs-dismiss="modal" aria-label="Close">Add</button>
                                             <button type="reset" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
@@ -539,7 +539,7 @@
                         </div>
                     </div> -->
                     <!-- Offcanvas Trigger Button -->
-                    <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#candidateDetail">
+                    <!-- <button class="btn btn-primary bg-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#candidateDetail">
   View Candidate
 </button> -->
 
@@ -584,7 +584,7 @@
                                 </div>
                                 <div class="ms-auto d-flex align-items-center gap-2">
                                     <button class="btn btn-outline-secondary btn-lg">...</button>
-                                    <button class="btn btn-primary btn-lg">Send Mail</button>
+                                    <button class="btn btn-primary bg-primary btn-lg">Send Mail</button>
                                 </div>
                             </div>
 
@@ -916,7 +916,7 @@
 
                                 <div class="col-12 text-center mt-2 pt-2">
                                     <button :disabled="disabled1" @click="delay1()" type="submit"
-                                        class="btn btn-primary me-1" data-bs-dismiss="offcanvas">Update</button>
+                                        class="btn btn-primary bg-primary me-1" data-bs-dismiss="offcanvas">Update</button>
                                     <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">
                                         Cancel
                                     </button>
@@ -1050,7 +1050,7 @@
                                         <div class="col-12 col-md-6"></div>
                                         <div class="col-12 text-center mt-2 pt-50">
                                             <button :disabled="disabled1" @click="delay1()" type="submit"
-                                                class="btn btn-primary me-1" data-bs-dismiss="modal"
+                                                class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal"
                                                 aria-label="Close">Update</button>
                                             <button type="reset" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
@@ -1085,7 +1085,7 @@
                                             </select>
                                             <br />
                                             <button type="button" :disabled="disabled2" @click="delay2()"
-                                                class="btn btn-primary waves-effect waves-float waves-light"
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                                 data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect"
                                                 data-bs-dismiss="modal" aria-label="Close">No</button>

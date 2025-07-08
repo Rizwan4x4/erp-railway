@@ -33,7 +33,7 @@
                                             <div class="demo-inline-spacing">
                                                 <button type="button" data-bs-toggle="modal"
                                                     data-bs-target="#addNewCard"
-                                                    class="btn btn-primary bg-primary waves-effect">Apply Leave
+                                                    class="btn btn-primary bg-primary  waves-effect">Apply Leave
                                                 </button>
                                                 <router-link to="/hr/leaves_dashbaord" type="button"
                                                     class="btn btn-success waves-effect">Leave Balances
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="col-md-1 user_status d-flex align-items-center mt-4">
                                             <button @click="getbyfilter()"
-                                                class="btn btn-primary bg-primary py-2 px-3">Search
+                                                class="btn btn-primary bg-primary  py-2 px-3">Search
                                             </button>
                                         </div>
                                         <div class="col-md-1 user_status">
@@ -147,7 +147,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="leaves2 in leaves" style="vertical-align: middle;">
+                                            <tr v-for="leaves2 in leaves.data" style="vertical-align: middle;">
                                                 <td style="text-align: center;">{{ leaves2.EmployeeCode }}</td>
                                                 <td>
                                                     <div @click="fetch_leave_upSts(leaves2.LeaveRQID, '')"
@@ -380,7 +380,7 @@
 
                                             <div class="text-center" style="text-align:center; margin-top:30px;">
                                                 <button :disabled="disabled" @click="delay()" type="button"
-                                                    class="btn btn-primary waves-effect waves-float waves-light"
+                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                                     data-bs-dismiss="modal" aria-label="Close">Update
                                                 </button>
                                                 <button type="submit" class="btn btn-outline-primary waves-effect"
@@ -480,7 +480,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button :disabled="disabled" @click="delay1()" type="submit"
-                                    class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">
+                                    class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">
                                     Apply Leave
                                 </button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal"
@@ -504,7 +504,7 @@ import MaskedInput from 'vue-masked-input'
 export default {
     data() {
         return {
-        images: {
+            images: {
                 solar_filter_linear: "/images/solar_filter_linear.png",
                 search_icon: "/images/search_icon.png",
             },
@@ -545,7 +545,7 @@ export default {
 
             lv_status: '',
             lv_status_error: '',
-
+            // page= '',
             lv_app_id: '',
             lv_app_date: '',
             lv_emp_id: '',
@@ -689,7 +689,7 @@ export default {
                             console.log(response.data.data)
                             this.leaves.data.unshift(response.data.data);
                             console.log(this.leaves, "unshift data ");
-                            // this.getbyfilter();
+                            this.getbyfilter();
                         } else {
                             this.$toastr.e(data.data, "Caution!");
                         }
@@ -754,12 +754,12 @@ export default {
                 // Additional error handling if needed
             }
         },
-        // use for search
+        // use for search by keyword
         getbyfilter1(page = 1) {
             axios.get('./search_Employee_leave/' + this.keyword1 + '/?page=' + page)
                 .then(data => {
                     this.leaves = data.data.data
-                    console.log(this.leaves, "get by filter 1");
+                    console.log(data, "get by filter 1");
 
                 })
                 .catch(error => {
@@ -782,7 +782,7 @@ export default {
             }, 5000)
             this.update_leave_status()
         },
-        // for fillter
+        // for search
         getbyfilter(page = 1) {
             axios.get('./filter_leaves_requisitions/' + this.leave + '/' + this.department + '/' + this.location + '/' + this.designation + '/' + this.status1 + '/' + this.ManagerStatus + '/' + this.HRStatus + '/?page=' + page)
                 .then(data => {
@@ -797,10 +797,10 @@ export default {
         },
         fetch_leave_upSts(id1, who) {
             this.lv_app_id = id1;
-            console.log(this.lv_app_id, "lv app id");
+            // console.log(this.lv_app_id, "lv app id");
 
             this.who = who;
-            console.log(this.who, "who");
+            // console.log(this.who, "who");
             axios.get('fetch_leave_upSts/' + this.lv_app_id)
                 .then(responce => {
                     this.ind_lave_dtl = responce.data.data[0];
@@ -863,8 +863,9 @@ export default {
         },
     },
     mounted() {
-        // this.getbyfilter1();
         // this.getbyfilter();
+        // this.getbyfilter1();
+        //fetch department, designation, location
         this.fetchDepartment();
         this.fetchRoles();
         this.fetchDesignation();
@@ -873,20 +874,34 @@ export default {
         axios.get('overall_leaves')
             .then(response => {
 
-                this.leaves = response.data.data;
-                // console.log(this.leave, "overall leaves");
-                this.options = [];
+                const leaveData = response.data.data.original.leaveData;
+                const leaveTypes = response.data.data.original.leaveTypes;
 
-                var $this = this;
-                for (var i = 0; i < $this.leaves.length; i++) {
-                    this.options.push($this.leaves[i].LeaveType);
-                    // console.log(this.options, "leveassssss");
-
-                }
+                this.leaves = leaveData;
+                this.options = leaveTypes.map(item => item.LeaveType);
             })
             .catch(error => {
-                this.$toastr.e('Error Occur while getting overall leaves of employee!');
+                this.$toastr.e('Error occurred while getting overall leaves of employee!');
+                console.error(error);
             });
+
+
+
+        // axios.get('overall_leaves')
+        //     .then(response => {
+
+        //         this.leaves = response.data.data;
+
+        //         this.options = [];
+
+        //         var $this = this;
+        //         for (var i = 0; i < $this.leaves.length; i++) {
+        //             this.options.push($this.leaves[i].LeaveType);
+        //         }
+        //     })
+        //     .catch(error => {
+        //         this.$toastr.e('Error Occur while getting overall leaves of employee!');
+        //     });
 
         axios.get('registered_empcode')
             .then(data => {

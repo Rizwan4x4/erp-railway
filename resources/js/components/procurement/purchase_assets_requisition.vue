@@ -18,9 +18,10 @@
                     </div>
                 </div>
                 <div class="content-body">
+<div class="card top-radius bottom-radius px-3 py-4">
                     <div class="row">
                         <div class="col-lg-3 col-sm-12">
-                            <div class="card">
+                            <div class="card top-radius bottom-radius border-0 m-0">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
                                         <h3 class="fw-bolder mb-75">{{count_req.total}}</h3>
@@ -35,7 +36,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-12">
-                            <div class="card">
+                            <div class="card top-radius bottom-radius border-0 m-0">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
                                         <h3 class="fw-bolder mb-75">{{count_req.approved}}</h3>
@@ -50,7 +51,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-12">
-                            <div class="card">
+                            <div class="card top-radius bottom-radius border-0 m-0">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
                                         <h3 class="fw-bolder mb-75">{{count_req.pending}}</h3>
@@ -65,7 +66,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-12">
-                            <div class="card">
+                            <div class="card top-radius bottom-radius border-0 m-0">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
                                         <h3 class="fw-bolder mb-75">{{count_req.issued}}</h3>
@@ -80,6 +81,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                     <popover name="foo" style="width:25%;">
                         <div class="card card-developer-meetup">
                             <div class="card-body">
@@ -96,12 +98,12 @@
                         </div>
                     </popover>
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <div class="dt-buttons d-inline-flex mt-50">
-                                <router-link style="float:left" to="/purchase/purchase_merge_requisition" class="btn btn-primary waves-effect"><i class="fa-regular fa-object-ungroup"></i> Merge Requisitions</router-link>
+                                <router-link style="float:left" to="/purchase/purchase_merge_requisition" class="btn btn-primary bg-primary waves-effect bg-primary"><i class="fa-regular fa-object-ungroup"></i> Merge Requisitions</router-link>
                             </div>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <ul class="nav nav-pills mb-2" style="padding-left:20px !important">
                                 <li class="nav-item col-md-4">
                                     <router-link to="/purchase/requistion_detail" class="nav-link">
@@ -126,7 +128,7 @@
                     </div>
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div clas="card" style="background-color:white !important">
+                        <div class="card top-radius bottom-radius border-0" style="background-color:white !important">
                             <div class="d-flex justify-content-around align-items-center header-actions mx-2 row mt-75">
                                 <div class="col-sm-12 col-lg-12 ps-xl-75 ps-0">
                                     <div class="card-body">
@@ -134,21 +136,21 @@
                                             <div class="col-md-12">
                                                 <div class="row g-1">
                                                     <div class="col-md-2">
-                                                        <label class="form-label">Department Name</label>
+                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Department Name</label>
                                                         <select v-model="dept_name1" class="form-select mb-md-0 mb-2">
                                                             <option value="All">All Departments </option>
                                                             <option v-for="departments1 in departments" :value='departments1.department_name'>{{departments1.department_name}}</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label class="form-label">Project Name</label>
+                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Project Name</label>
                                                         <select v-model="proj_name" class="form-select mb-md-0 mb-2">
                                                             <option value="All">All Projects </option>
                                                             <option v-for="projects1 in projects" :value='projects1.ProjectName'>{{projects1.ProjectName}}</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <label class="form-label">Status</label>
+                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Status</label>
                                                         <select v-model="status" class="form-select mb-md-0 mb-2">
                                                             <option value="All"> All Status </option>
                                                             <option value="merged">Merged</option>
@@ -158,15 +160,15 @@
                                                         </select>
                                                     </div>
                                                     <div  class="col-md-2">
-                                        <label class="form-label">Date From</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date From</label>
                                         <input type="date" v-model="startingdate" class="form-control" placeholder="" required="">
                                     </div>
                                     <div class="col-md-2">
-                                        <label class="form-label">Date To</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date To</label>
                                         <input type="date" class="form-control" v-model="closingdate" placeholder="" required="">
                                     </div>
                                     <div class="col-md-1">
-                                                        <button @click="filter_byStatus()" style="margin-left: 10px;background: rgb(193, 193, 193); width: 80% !important; height: 33px !important; margin-bottom: 20px; margin-top: 25px;" class="btn btn-secondary">Search</button>
+                                                        <button @click="filter_byStatus()" style="margin-left: 10px;background: rgb(193, 193, 193); width: 80% !important; height: 33px !important; margin-bottom: 20px; margin-top: 25px;" class="btn btn-primary bg-primary bg-primary">Search</button>
                                                     </div>
                                                     <div class="col-md-2 ">
                                                         <input type="text" v-model="keyword1" class="form-control" style="margin-top: 25px;" placeholder="Assets Req ID" />
@@ -427,7 +429,7 @@
                             </div>
                         </div>
                     </vue-html2pdf>
-                    <div class="table-responsive" style="padding: 30px; !important">
+                    <div class="table-responsive" style="padding: 30px;">
                         <table class="table" v-html="get_comp_data">
                         </table>
                     </div>
@@ -561,7 +563,7 @@
                             <!-- Invoice Description ends -->
                             <hr class="invoice-spacing">
                             <div class="col-12 text-center mt-2 pt-50">
-                                <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                     Cancel
                                 </button>
@@ -749,7 +751,7 @@
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-3" style="text-align: right;padding-top: 20px;">
-                                        <button class="btn btn-primary" @click="sum_total()">Calculate Total</button>
+                                        <button class="btn btn-primary bg-primary" @click="sum_total()">Calculate Total</button>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
@@ -831,7 +833,7 @@
                                 </div>
                                 <div class="row mt-1">
                                     <div class="col-12 px-0" style="margin-left: 15px;">
-                                        <div data-repeater-create="" class="btn btn-primary btn-sm btn-add-new" v-on:click="add_xz_repeater();">
+                                        <div data-repeater-create="" class="btn btn-primary bg-primary btn-sm btn-add-new" v-on:click="add_xz_repeater();">
                                             <i data-feather="plus" class="me-25"></i>
                                             <span class="align-middle">Add Item</span>
                                         </div>
@@ -852,7 +854,7 @@
                                 </div>
                                 <!-- Invoice Note ends -->
                                 <div class="col-12 text-center mt-2 pt-50" style="margin-bottom:20px">
-                                    <button :disabled="disabled" @click="delay()" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                    <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                     <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                         Cancel
                                     </button>
@@ -870,6 +872,10 @@
     export default {
         data() {
             return {
+                 images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
                 dept_name1: 'All',
                 proj_name: 'All',
                 departments: {},

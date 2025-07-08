@@ -50,8 +50,7 @@
                                 <div class="card-header align-items-start top-radius bottom-radius ">
                                     <div>
                                         <h6 class="fw-bolder">Total Applications</h6>
-                                        <h2 class="fw-bolder mb-0"
-                                            v-if="candsct < 10 && candsct !=0">0{{
+                                        <h2 class="fw-bolder mb-0" v-if="candsct < 10 && candsct != 0">0{{
                                             candsct }}</h2>
                                         <h2 class="fw-bolder mb-0" v-else>{{ candsct }}</h2>
                                         <p class="card-text">Applications</p>
@@ -74,8 +73,8 @@
                                     <div>
                                         <h6 class="fw-bolder">Ongoing Interviews</h6>
                                         <h2 class="fw-bolder mb-0" v-if="ct_ong_int < 10 && ct_ong_int != 0">
-                                            {{ ct_ong_int }}</h2>
-                                        <h2 class="fw-bolder mb-0" v-else>0{{ ct_ong_int }}</h2>
+                                            0{{ ct_ong_int }}</h2>
+                                        <h2 class="fw-bolder mb-0" v-else>{{ ct_ong_int }}</h2>
                                         <p class="card-text">Interviews</p>
                                     </div>
                                     <div class=" m-0">
@@ -195,10 +194,11 @@
                                             <!-- Interviews List -->
                                             <div v-if="interviews.length" class="mt-4">
                                                 <h5>{{ formatDate(interview_date) }}</h5>
+                                                <!-- <h5>Interviews Found: {{ interviews.length }}</h5> -->
                                                 <hr />
-                                                <div v-for="interview in interviews" :key="interview.CandID"
+                                                <div v-for="interview in interviews" :key="interview.InterviewID"
                                                     class="mb-2 border rounded">
-                                                    <div :class="['p-3 rounded', getColor()]">
+                                                    <div :class="['p-3 rounded', getColor(interview)]">
                                                         <strong>Interview with {{ interview.CandName }}</strong><br />
                                                         <small>{{ interview.StartTime }} - {{ interview.EndTime
                                                             }}</small>
@@ -984,13 +984,13 @@
                                                                 v-else>vacancies</span></span>
                                                         <ul
                                                             class="list-unstyled d-flex align-items-center avatar-group mb-0">
-                                                            <li class="avatar avatar-sm pull-up"
+                                                            <!-- <li class="avatar avatar-sm pull-up"
                                                                 v-for="candidates3 in candidates"
                                                                 v-if="candidates3.JobID == jobs3.JobID">
                                                                 <img class="rounded-circle"
                                                                     src="public/app-assets/images/avatars/2.png"
                                                                     alt="Avatar" />
-                                                            </li>
+                                                            </li> -->
                                                         </ul>
                                                     </div>
                                                     <div
@@ -1159,6 +1159,7 @@ export default {
     // },
     data() {
         return {
+            length: 0,
             percentages: {
                 facebook: 0,
                 instagram: 0,
@@ -1208,7 +1209,10 @@ export default {
 
             rel_int_ct: '',
             interviews: [],
-            interview_date: '',
+            interview_date: null,
+            selectedDate: '',
+            jobStats: '',
+            JobID: '',
             // interviews: [],
 
 
@@ -1240,17 +1244,17 @@ export default {
                 }
             },
 
-            // series: [
-            //     {
-            //         name: 'Hired Persons',
-            //         data: [44, 55, 41, 67, 22],
-            //         color: '#FF6900'
-            //     }, {
-            //         name: 'Pendding Persons',
-            //         data: [21, 7, 25, 13, 22],
-            //         color: '#0070F2'
-            //     }
-            // ],
+            series: [
+                //     {
+                //         name: 'Hired Persons',
+                //         data: [44, 55, 41, 67, 22],
+                //         color: '#FF6900'
+                //     }, {
+                //         name: 'Pendding Persons',
+                //         data: [21, 7, 25, 13, 22],
+                //         color: '#0070F2'
+                //     }
+            ],
             options: {
                 chart: {
                     type: 'bar',
@@ -1312,32 +1316,33 @@ export default {
 
         }
     },
-    comouted: {
+    computed: {
 
         //     series9() {
         //     return [this.candsct, this.short_listed];
         // },
         // Fixed time slots
-        timeSlots() {
-            return [
-                '09:00 am', '10:00 am', '11:00 am', '12:00 pm',
-                '01:00 pm', '02:00 pm', '03:00 pm', '04:00 pm'
-            ];
-        },
+        // timeSlots() {
+        //     return [
+        //         '09:00 am', '10:00 am', '11:00 am', '12:00 pm',
+        //         '01:00 pm', '02:00 pm', '03:00 pm', '04:00 pm'
+        //     ];
+        // },
 
         // Filter interviews by selected date
         filteredInterviews() {
-            return this.interviews.filter(interview => interview.InterviewDate === this.interview_date);
+            console.log('filteredInterviews running', this.interview_date, this.interviews);
+            return this.interviews.filter(interview => interview.DayDate === this.interview_date);
         },
 
         // Group filtered interviews by time slot
-        interviewsByTime() {
-            const result = {};
-            this.timeSlots.forEach(time => {
-                result[time] = this.filteredInterviews.filter(interview => interview.StartTime === time);
-            });
-            return result;
-        }
+        // interviewsByTime() {
+        //     const result = {};
+        //     this.timeSlots.forEach(time => {
+        //         result[time] = this.filteredInterviews.filter(interview => interview.StartTime === time);
+        //     });
+        //     return result;
+        // }
     },
     methods: {
 
@@ -1362,15 +1367,19 @@ export default {
             })
                 .then(response => {
                     this.interviews = response.data;
-                    console.log(this.interviews, "baby");
+                    console.log(this.interviews, "its ok main");
+                    // console.log(this.interviews.CandName, "its ok ");
                 })
                 .catch(error => {
                     console.error(error);
                 });
         },
-        getColor() {
+        getColor(interview) {
             return this.colors[Math.floor(Math.random() * this.colors.length)];
         },
+        // getColor() {
+        //     return this.colors[Math.floor(Math.random() * this.colors.length)];
+        // },
         formatDate(date) {
             if (!date) return '';
             return new Date(date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
@@ -1379,7 +1388,7 @@ export default {
             this.selectedJob = JobID;
             axios.get('fetch_jobs/' + this.selectedJob)
                 .then(responce => {
-                    // console.log('Response Data:', responce.data);
+                    console.log('Response Data:', responce.data);
                     this.id2 = responce.data[0].JobID;
                     this.ed_job_number = responce.data[0].JobNumber;
                     this.ed_post_title = responce.data[0].PostTitle;
@@ -1399,12 +1408,12 @@ export default {
 
     },
     mounted() {
-
+        // this.randomColor = this.getColor();
         this.fetchPercentages();
 
         const today = new Date().toISOString().substr(0, 10);
         this.interview_date = today;
-        this.getInterviews(); // page load pe fetch
+        // this.getInterviews(); // page load pe fetch
 
         axios.get('top_counters') //Count top list of dashboard
             .then(data => {
@@ -1439,6 +1448,7 @@ export default {
         axios.get('/get-job-stats')
             .then(response => {
                 this.jobStats = response.data;
+
             });
 
 

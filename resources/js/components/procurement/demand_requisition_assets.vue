@@ -9,7 +9,8 @@
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <router-link to="/accounts" style="text-decoration: none;">Accounts Dashboard</router-link>
+                                <router-link to="/accounts" style="text-decoration: none;">Accounts
+                                    Dashboard</router-link>
                             </li>
                             <li class="breadcrumb-item active">
                                 Demand Assets Requisitions Detail
@@ -18,63 +19,75 @@
                     </div>
                 </div>
                 <div class="content-body">
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-12">
-                            <div class="card">
-                                <div class="card-body d-flex align-items-center justify-content-between" title="Click to view details" style="cursor:pointer;" v-popover.left="{name:'foo', enent:'hover'}" @click="inv_reqCounter('all', 'Assets')">
-                                    <div>
-                                        <h3 class="fw-bolder mb-75">{{count_req.total}}</h3>
-                                        <span>Total Requisitions</span>
-                                    </div>
-                                    <div class="avatar bg-light-warning p-50">
-                                        <span class="avatar-content">
-                                            <i class="fa-solid fa-book"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-12">
-                            <div class="card">
-                                <div class="card-body d-flex align-items-center justify-content-between" title="Click to view details" style="cursor:pointer;" v-popover.left="{name:'foo'}" @click="inv_reqCounter('Pending', 'Assets')">
-                                    <div>
-                                        <h3 class="fw-bolder mb-75">{{count_req.pending}}</h3>
-                                        <span>Pending</span>
-                                    </div>
-                                    <div class="avatar bg-light-info p-50">
-                                        <span class="avatar-content">
-                                            <i class="fa-solid fa-file"></i>
-                                        </span>
+                    <div class="card top-radius bottom-radius px-3 py-4">
+
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-12">
+                                <div class="card top-radius bottom-radius border-0 m-0">
+                                    <div class="card-body d-flex align-items-center justify-content-between"
+                                        title="Click to view details" style="cursor:pointer;"
+                                        v-popover.left="{ name: 'foo', enent: 'hover' }"
+                                        @click="inv_reqCounter('all', 'Assets')">
+                                        <div>
+                                            <h3 class="fw-bolder mb-75">{{ count_req.total }}</h3>
+                                            <span>Total Requisitions</span>
+                                        </div>
+                                        <div class="avatar bg-light-warning p-50">
+                                            <span class="avatar-content">
+                                                <i class="fa-solid fa-book"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-12">
-                            <div class="card">
-                                <div class="card-body d-flex align-items-center justify-content-between" title="Click to view details" style="cursor:pointer;" v-popover.left="{name:'foo'}" @click="inv_reqCounter('Approved', 'Assets')">
-                                    <div>
-                                        <h3 class="fw-bolder mb-75">{{count_req.approved}}</h3>
-                                        <span>Approved</span>
-                                    </div>
-                                    <div class="avatar bg-light-primary p-50">
-                                        <span class="avatar-content">
-                                            <i class="fa-solid fa-file-arrow-down"></i>
-                                        </span>
+                            <div class="col-lg-3 col-sm-12">
+                                <div class="card top-radius bottom-radius border-0 m-0">
+                                    <div class="card-body d-flex align-items-center justify-content-between"
+                                        title="Click to view details" style="cursor:pointer;"
+                                        v-popover.left="{ name: 'foo' }" @click="inv_reqCounter('Pending', 'Assets')">
+                                        <div>
+                                            <h3 class="fw-bolder mb-75">{{ count_req.pending }}</h3>
+                                            <span>Pending</span>
+                                        </div>
+                                        <div class="avatar bg-light-info p-50">
+                                            <span class="avatar-content">
+                                                <i class="fa-solid fa-file"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-12">
-                            <div class="card">
-                                <div class="card-body d-flex align-items-center justify-content-between" title="Click to view details" style="cursor:pointer;" v-popover.left="{name:'foo'}" @click="inv_reqCounter('Issued', 'Assets')">
-                                    <div>
-                                        <h3 class="fw-bolder mb-75">{{count_req.issued}}</h3>
-                                        <span>Issued</span>
+                            <div class="col-lg-3 col-sm-12">
+                                <div class="card top-radius bottom-radius border-0 m-0">
+                                    <div class="card-body d-flex align-items-center justify-content-between"
+                                        title="Click to view details" style="cursor:pointer;"
+                                        v-popover.left="{ name: 'foo' }" @click="inv_reqCounter('Approved', 'Assets')">
+                                        <div>
+                                            <h3 class="fw-bolder mb-75">{{ count_req.approved }}</h3>
+                                            <span>Approved</span>
+                                        </div>
+                                        <div class="avatar bg-light-primary p-50">
+                                            <span class="avatar-content">
+                                                <i class="fa-solid fa-file-arrow-down"></i>
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="avatar bg-light-success p-50">
-                                        <span class="avatar-content">
-                                            <i class="fa-solid fa-file-arrow-up"></i>
-                                        </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-12">
+                                <div class="card top-radius bottom-radius border-0 m-0">
+                                    <div class="card-body d-flex align-items-center justify-content-between"
+                                        title="Click to view details" style="cursor:pointer;"
+                                        v-popover.left="{ name: 'foo' }" @click="inv_reqCounter('Issued', 'Assets')">
+                                        <div>
+                                            <h3 class="fw-bolder mb-75">{{ count_req.issued }}</h3>
+                                            <span>Issued</span>
+                                        </div>
+                                        <div class="avatar bg-light-success p-50">
+                                            <span class="avatar-content">
+                                                <i class="fa-solid fa-file-arrow-up"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -85,19 +98,21 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between mb-1" v-for="dept_tot_req1 in dept_tot_req">
                                     <div class="d-flex align-items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
                                             <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
                                         </svg>
-                                        <span class="fw-bold ms-75">{{dept_tot_req1.DepartmentName}}</span>
+                                        <span class="fw-bold ms-75">{{ dept_tot_req1.DepartmentName }}</span>
                                     </div>
-                                    <span>{{dept_tot_req1.TotalReqs}}</span>
+                                    <span>{{ dept_tot_req1.TotalReqs }}</span>
                                 </div>
                             </div>
                         </div>
                     </popover>
                     <ul class="nav nav-pills mb-2" style="padding-left:20px !important">
                         <li class="nav-item col-md-3">
-                            <router-link style="float:left" to="/purchase/requistion_create" class="btn btn-primary waves-effect">Create Demand Requisition</router-link>
+                            <router-link style="float:left" to="/purchase/requistion_create"
+                                class="btn btn-primary bg-primary waves-effect bg-primary">Create Demand Requisition</router-link>
                         </li>
                         <li class="nav-item col-md-3">
                             <router-link to="/purchase/demand_requisition" class="nav-link">
@@ -120,29 +135,34 @@
                     </ul>
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div clas="card" style="background-color:white !important">
+                        <div clas="card" style="background-color:white !important; border-radius: 12px !important;">
                             <div class="d-flex justify-content-around align-items-center header-actions mx-2 row mt-75">
                                 <div class="col-sm-12 col-lg-12 ps-xl-75 ps-0">
-                                    <div class="card-body">
+                                    <div class="card-body p-2">
                                         <div class="row" style="">
                                             <div class="col-md-12">
                                                 <div class="row g-1">
                                                     <div class="col-md-2">
-                                                        <label class="form-label">Department Name</label>
+                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Department Name</label>
                                                         <select v-model="dept_name1" class="form-select mb-md-0 mb-2">
                                                             <option value="All">All Departments </option>
-                                                            <option v-for="departments1 in departments" :value='departments1.department_name'>{{departments1.department_name}}</option>
+                                                            <option v-for="departments1 in departments"
+                                                                :value='departments1.department_name'>
+                                                                {{ departments1.department_name }}</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label class="form-label">Project Name</label>
+                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Project Name</label>
                                                         <select v-model="proj_name" class="form-select mb-md-0 mb-2">
                                                             <option value="All">All Projects </option>
-                                                            <option v-for="projects1 in projects" :value='projects1.ProjectName'>{{projects1.ProjectName}}</option>
+                                                            <option v-for="projects1 in projects"
+                                                                :value='projects1.ProjectName'>{{ projects1.ProjectName
+                                                                }}
+                                                            </option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <label class="form-label">Status</label>
+                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Status</label>
                                                         <select v-model="status" class="form-select mb-md-0 mb-2">
                                                             <option value="All">All</option>
                                                             <option value="Pending">Pending</option>
@@ -152,19 +172,26 @@
                                                             <option value="Rejected">Rejected</option>
                                                         </select>
                                                     </div>
-                                                    <div  class="col-md-2">
-                                        <label class="form-label">Date From</label>
-                                        <input type="date" v-model="startingdate" class="form-control" placeholder="" required="">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label class="form-label">Date To</label>
-                                        <input type="date" class="form-control" v-model="closingdate" placeholder="" required="">
-                                    </div>
-                                                    <div class="col-md-1">
-                                                        <button @click="filter_byStatus()" style="background: rgb(193, 193, 193); width: 80% !important; height: 33px !important; margin-bottom: 20px; margin-top: 25px; margin-left: 10px" class="btn btn-primary">Search</button>
+                                                    <div class="col-md-2">
+                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date From</label>
+                                                        <input type="date" v-model="startingdate" class="form-control"
+                                                            placeholder="" required="">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input autocomplete="off" type="text" name="keyword1" v-model="keyword1" class="form-control" style="margin-top: 25px;  margin-right: 20px;" placeholder="Search By Req id" />
+                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date To</label>
+                                                        <input type="date" class="form-control" v-model="closingdate"
+                                                            placeholder="" required="">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <button @click="filter_byStatus()"
+                                                            style="background: rgb(193, 193, 193); width: 80% !important; height: 33px !important; margin-bottom: 20px; margin-top: 25px; margin-left: 10px"
+                                                            class="btn btn-primary bg-primary">Search</button>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <input autocomplete="off" type="text" name="keyword1"
+                                                            v-model="keyword1" class="form-control"
+                                                            style="margin-top: 25px;  margin-right: 20px;"
+                                                            placeholder="Search By Req id" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,22 +216,47 @@
                                             <td colspan="6">
                                                 <div class="accordion accordion-border" id="accordionBorder">
                                                     <div class="accordion-item" style="border:none !important">
-                                                        <div class="accordion-header  d-flex" :id="'headingBorder'+adsdata1.RequisitionId">
-                                                            <div class="col-md-2  mb-3 position-relative mx-1 sorting_1"><a class="fw-bold"> {{adsdata1.RId}}</a> </div>
-                                                            <div class="col-md-2  mb-3 position-relative mx-1">{{adsdata1.Dated}} </div>
-                                                            <div class="col-md-3  mb-3 position-relative mx-1">
-                                                                <h6 class="user-name text-truncate mb-0">{{adsdata1.DepartmentName}}</h6><small class="text-truncate text-muted">{{adsdata1.ProjectName}}</small>
+                                                        <div class="accordion-header  d-flex"
+                                                            :id="'headingBorder' + adsdata1.RequisitionId">
+                                                            <div
+                                                                class="col-md-2  mb-3 position-relative mx-1 sorting_1">
+                                                                <a class="fw-bold"> {{ adsdata1.RId }}</a>
                                                             </div>
-                                                            <div class="col-md-1  mb-3 position-relative mx-1">{{adsdata1.RequisitionType}} </div>
-                                                            <div class="col-md-1  mb-3 position-relative mx-1" >
-                                                                <a v-if="adsdata1.Status=='Approved'">
-                                                                    <span v-if="adsdata1.q1==null && adsdata1.q2==null && adsdata1.q3==null && adsdata1.q4==null && adsdata1.q5==null && adsdata1.q6==null" @click="editRequisition(adsdata1.RequisitionId)" data-bs-toggle="modal" data-bs-target="#PREQ_status" class="badge badge-glow bg-primary">{{adsdata1.Status}}</span>
-                                                                    <span v-else class="badge badge-glow bg-primary">{{adsdata1.Status}}</span>
+                                                            <div class="col-md-2  mb-3 position-relative mx-1">
+                                                                {{ adsdata1.Dated }} </div>
+                                                            <div class="col-md-3  mb-3 position-relative mx-1">
+                                                                <h6 class="user-name text-truncate mb-0">
+                                                                    {{ adsdata1.DepartmentName }}</h6><small
+                                                                    class="text-truncate text-muted">{{
+                                                                    adsdata1.ProjectName }}</small>
+                                                            </div>
+                                                            <div class="col-md-1  mb-3 position-relative mx-1">
+                                                                {{ adsdata1.RequisitionType }} </div>
+                                                            <div class="col-md-1  mb-3 position-relative mx-1">
+                                                                <a v-if="adsdata1.Status == 'Approved'">
+                                                                    <span
+                                                                        v-if="adsdata1.q1 == null && adsdata1.q2 == null && adsdata1.q3 == null && adsdata1.q4 == null && adsdata1.q5 == null && adsdata1.q6 == null"
+                                                                        @click="editRequisition(adsdata1.RequisitionId)"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#PREQ_status"
+                                                                        class="badge badge-glow bg-primary">{{
+                                                                        adsdata1.Status }}</span>
+                                                                    <span v-else class="badge badge-glow bg-primary">{{
+                                                                        adsdata1.Status }}</span>
                                                                 </a>
-                                                                <span @click="editRequisition(adsdata1.RequisitionId)" data-bs-toggle="modal" data-bs-target="#PREQ_status" v-else-if="adsdata1.Status=='Pending'" class="badge badge-glow bg-info">{{adsdata1.Status}}</span>
-                                                                <span v-else-if="adsdata1.Status=='Rejected'" class="badge badge-glow bg-danger">{{adsdata1.Status}}</span>
-                                                                <span class="badge badge-glow bg-warning" v-else>{{adsdata1.Status}}</span>
-                                                                <span v-if="adsdata1.state==1" class="badge badge-glow bg-success">Fully Issued</span>
+                                                                <span @click="editRequisition(adsdata1.RequisitionId)"
+                                                                    data-bs-toggle="modal" data-bs-target="#PREQ_status"
+                                                                    v-else-if="adsdata1.Status == 'Pending'"
+                                                                    class="badge badge-glow bg-info">{{ adsdata1.Status
+                                                                    }}</span>
+                                                                <span v-else-if="adsdata1.Status == 'Rejected'"
+                                                                    class="badge badge-glow bg-danger">{{
+                                                                    adsdata1.Status }}</span>
+                                                                <span class="badge badge-glow bg-warning" v-else>{{
+                                                                    adsdata1.Status }}</span>
+                                                                <span v-if="adsdata1.state == 1"
+                                                                    class="badge badge-glow bg-success">Fully
+                                                                    Issued</span>
                                                             </div>
                                                             <!-- <div class="col-md-1  mb-3 position-relative mx-1" v-else>
                                                                 <span v-if="adsdata1.Status=='Approved'" class="badge badge-glow bg-primary">{{adsdata1.Status}}</span>
@@ -213,24 +265,41 @@
                                                                 <span class="badge badge-glow bg-warning" v-else>{{adsdata1.Status}}</span>
                                                                 <span v-if="adsdata1.state==1" class="badge badge-glow bg-success">Fully Issued</span>
                                                             </div> -->
-                                                            <div class="col-md-3  mb-3 position-relative mx-1" style="width: 8%;">
+                                                            <div class="col-md-3  mb-3 position-relative mx-1"
+                                                                style="width: 8%;">
                                                                 <div class="d-flex align-items-center col-actions">
-                                                                    <a class="me-1" href="#" data-bs-toggle="modal" @click="editRequisition(adsdata1.RequisitionId)" data-bs-target="#viewPREQ">
+                                                                    <a class="me-1" href="#" data-bs-toggle="modal"
+                                                                        @click="editRequisition(adsdata1.RequisitionId)"
+                                                                        data-bs-target="#viewPREQ">
                                                                         <i class="fa-solid fa-eye"></i>
                                                                     </a>
-                                                                    <a target="_blank" v-bind:href="`Accounts/Requisition_Letter/${adsdata1.RequisitionId}/${adsdata1.RId}`" class="btn btn-sm">
+                                                                    <a target="_blank"
+                                                                        v-bind:href="`Accounts/Requisition_Letter/${adsdata1.RequisitionId}/${adsdata1.RId}`"
+                                                                        class="btn btn-sm">
                                                                         <i class="fa-solid fa-print"></i>
                                                                     </a>
-                                                                    <a v-if="adsdata1.Status=='Pending'" @click="editRequisition(adsdata1.RequisitionId)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editPREQ">
+                                                                    <a v-if="adsdata1.Status == 'Pending'"
+                                                                        @click="editRequisition(adsdata1.RequisitionId)"
+                                                                        class="dropdown-item" data-bs-toggle="modal"
+                                                                        data-bs-target="#editPREQ">
                                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                            <a class=" collapsed mx-5" @click="editReq(adsdata1.RequisitionId)" style="border: none;margin-top:5px" type="button" data-bs-toggle="collapse" :data-bs-target="'#accordionBorder'+adsdata1.RequisitionId" aria-expanded="false" :aria-controls="'accordionBorder'+adsdata1.RequisitionId">
+                                                            <a class=" collapsed mx-5"
+                                                                @click="editReq(adsdata1.RequisitionId)"
+                                                                style="border: none;margin-top:5px" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                :data-bs-target="'#accordionBorder' + adsdata1.RequisitionId"
+                                                                aria-expanded="false"
+                                                                :aria-controls="'accordionBorder' + adsdata1.RequisitionId">
                                                                 <i class="fa-solid fa-circle-plus"></i>
                                                             </a>
                                                         </div>
-                                                        <div :id="'accordionBorder'+adsdata1.RequisitionId" class="accordion-collapse collapse" :aria-labelledby="'headingBorder'+adsdata1.RequisitionId" :data-bs-parent="'#accordionBorder'+adsdata1.RequisitionId">
+                                                        <div :id="'accordionBorder' + adsdata1.RequisitionId"
+                                                            class="accordion-collapse collapse"
+                                                            :aria-labelledby="'headingBorder' + adsdata1.RequisitionId"
+                                                            :data-bs-parent="'#accordionBorder' + adsdata1.RequisitionId">
                                                             <div class="accordion-body">
                                                                 <table class="table">
                                                                     <thead>
@@ -246,24 +315,30 @@
                                                                     <tbody>
                                                                         <tr v-for="get_reqdata11 in get_reqdata1">
                                                                             <td class="py-1">
-                                                                                <p class="card-text fw-bold mb-25">{{get_reqdata11.ItemName}}</p>
+                                                                                <p class="card-text fw-bold mb-25">
+                                                                                    {{ get_reqdata11.ItemName }}</p>
                                                                                 <p class="card-text text-nowrap">
                                                                                 </p>
                                                                             </td>
                                                                             <td class="py-1">
-                                                                                <span class="fw-bold">{{get_reqdata11.Detail}}</span>
+                                                                                <span class="fw-bold">{{
+                                                                                    get_reqdata11.Detail }}</span>
                                                                             </td>
                                                                             <td class="py-1">
-                                                                                <span class="fw-bold">{{get_reqdata11.Quantity}}</span>
+                                                                                <span class="fw-bold">{{
+                                                                                    get_reqdata11.Quantity }}</span>
                                                                             </td>
                                                                             <td class="py-1">
-                                                                                <span class="fw-bold">{{get_reqdata11.unit}}</span>
+                                                                                <span class="fw-bold">{{
+                                                                                    get_reqdata11.unit }}</span>
                                                                             </td>
                                                                             <td class="py-1">
-                                                                                <span class="fw-bold">{{get_reqdata11.ItemCode}}</span>
+                                                                                <span class="fw-bold">{{
+                                                                                    get_reqdata11.ItemCode }}</span>
                                                                             </td>
                                                                             <td class="py-1">
-                                                                                <span class="fw-bold">{{get_reqdata11.LinkDept}}</span>
+                                                                                <span class="fw-bold">{{
+                                                                                    get_reqdata11.LinkDept }}</span>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -279,10 +354,12 @@
                                 </table>
                             </div>
                             <div style="text-align:center;padding-top:20px" class="d-flex">
-                                <pagination :data="adsdata" @pagination-change-page="getResult" style="margin-top: 25px;"></pagination>
+                                <pagination :data="adsdata" @pagination-change-page="getResult"
+                                    style="margin-top: 25px;"></pagination>
                                 <div>
                                     <label class="form-label" style="margin-left: 10px;">Page Size</label>
-                                    <select v-model="pageSelect" style="margin-left: 10px;" class="form-select mb-md-0 mb-2" placeholder="Select">
+                                    <select v-model="pageSelect" style="margin-left: 10px;"
+                                        class="form-select mb-md-0 mb-2" placeholder="Select">
                                         <option value="100">100</option>
                                         <option value="250">250</option>
                                         <option value="500">500</option>
@@ -307,34 +384,42 @@
                         <div class="card invoice-preview-card" v-for="requisitions1 in requisitions">
                             <div class="card-body invoice-padding pb-0">
                                 <!-- Header starts -->
-                                <div class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
+                                <div
+                                    class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
                                     <div v-for='companydetail1 in companydetail' style="margin-left:30px">
                                         <div style="padding-top:10px;margin-bottom: 0px;" class="logo-wrapper">
-                                            <h3 class="text-primary invoice-logo" style="margin-left: 0px;">{{companydetail1.company_name}}</h3>
+                                            <h3 class="text-primary invoice-logo" style="margin-left: 0px;">
+                                                {{ companydetail1.company_name }}</h3>
                                         </div>
-                                        <p class="card-text mb-25">Address: {{companydetail1.company_address}} , </p>
-                                        <p class="card-text mb-25">City: {{companydetail1.city}} - {{companydetail1.country}}</p>
-                                        <p class="card-text mb-0">Phone: {{companydetail1.phone_number}}</p>
+                                        <p class="card-text mb-25">Address: {{ companydetail1.company_address }} , </p>
+                                        <p class="card-text mb-25">City: {{ companydetail1.city }} -
+                                            {{ companydetail1.country }}</p>
+                                        <p class="card-text mb-0">Phone: {{ companydetail1.phone_number }}</p>
                                     </div>
                                     <div class="mt-md-0 mt-2" style="min-width:25%">
                                         <h5 class="invoice-title">
                                             RequisitionID:
-                                            <span class="invoice-number">{{requisitions1.RId}}</span>
+                                            <span class="invoice-number">{{ requisitions1.RId }}</span>
                                         </h5>
                                         <div class="invoice-date-wrapper row">
                                             <p class="invoice-date-title" style="width:30%">Date:</p>
-                                            <p style="width:70%" class="invoice-date">{{requisitions1.Dated}}</p>
+                                            <p style="width:70%" class="invoice-date">{{ requisitions1.Dated }}</p>
                                         </div>
                                         <div class="invoice-date-wrapper row">
                                             <p class="invoice-date-title" style="width:30%">Req Type:</p>
-                                            <p style="width:70%" class="invoice-date">{{requisitions1.RequisitionType}}</p>
+                                            <p style="width:70%" class="invoice-date">{{ requisitions1.RequisitionType
+                                                }}
+                                            </p>
                                         </div>
                                         <div class="invoice-date-wrapper row">
                                             <p class="invoice-date-title" style="width:35%">Status:</p>
                                             <p style="width:65%" class="invoice-date">
-                                                <span v-if="requisitions1.Status=='Approved'" class="badge badge-glow bg-primary">Approved</span>
-                                                <span v-if="requisitions1.Status=='Issued'" class="badge badge-glow bg-warning">Issued</span>
-                                                <span v-if="requisitions1.Status=='Pending'" class="badge badge-glow bg-info">Pending</span>
+                                                <span v-if="requisitions1.Status == 'Approved'"
+                                                    class="badge badge-glow bg-primary">Approved</span>
+                                                <span v-if="requisitions1.Status == 'Issued'"
+                                                    class="badge badge-glow bg-warning">Issued</span>
+                                                <span v-if="requisitions1.Status == 'Pending'"
+                                                    class="badge badge-glow bg-info">Pending</span>
                                             </p>
                                         </div>
                                     </div>
@@ -347,11 +432,11 @@
                                 <div class="row invoice-spacing">
                                     <div class="col-xl-8 p-0">
                                         <h6 class="mb-2">Department/Child Company:</h6>
-                                        <h6 class="mb-25">{{requisitions1.DepartmentName}}</h6>
+                                        <h6 class="mb-25">{{ requisitions1.DepartmentName }}</h6>
                                     </div>
                                     <div class="col-xl-4 p-0 mt-xl-0 mt-2">
                                         <h6 class="mb-2">Project Name:</h6>
-                                        <p class="card-text mb-25">{{requisitions1.ProjectName}}</p>
+                                        <p class="card-text mb-25">{{ requisitions1.ProjectName }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -371,22 +456,23 @@
                                     <tbody>
                                         <tr v-for="get_reqdata11 in get_reqdata1">
                                             <td class="py-1">
-                                                <p class="card-text fw-bold mb-25">{{get_reqdata11.ItemName}}</p>
+                                                <p class="card-text fw-bold mb-25">{{ get_reqdata11.ItemName }}</p>
                                                 <p class="card-text text-nowrap">
                                                 </p>
                                             </td>
                                             <td class="py-1">
-                                                <span class="fw-bold">{{get_reqdata11.Detail}}</span>
+                                                <span class="fw-bold">{{ get_reqdata11.Detail }}</span>
                                             </td>
 
                                             <td class="py-1">
-                                                <span class="fw-bold">{{get_reqdata11.Quantity}}</span>
+                                                <span class="fw-bold">{{ get_reqdata11.Quantity }}</span>
                                             </td>
                                             <td class="py-1">
-                                                <span class="fw-bold">{{get_reqdata11.unit}}</span>
+                                                <span class="fw-bold">{{ get_reqdata11.unit }}</span>
                                             </td>
                                             <td class="py-1">
-                                                <span class="fw-bold">{{currency}}. {{Number(get_reqdata11.EstCost)}}</span>
+                                                <span class="fw-bold">{{ currency }}.
+                                                    {{ Number(get_reqdata11.EstCost) }}</span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -399,7 +485,7 @@
                                             <span style="width:100%" class="fw-bold">Narration:</span>
                                         </p>
                                         <p class="card-text text-nowrap">
-                                            {{requisitions1.Narration}}
+                                            {{ requisitions1.Narration }}
                                         </p>
                                     </div>
                                     <div class="col-6 col-md-6 order-2">
@@ -412,7 +498,8 @@
                                             <option value="Approved">Approve</option>
                                             <option value="Rejected">Rejected</option>
                                         </select>
-                                        <span style="color: #DB4437; font-size:11px;" v-if="up_sts==''">{{e_up_sts}}</span>
+                                        <span style="color: #DB4437; font-size:11px;" v-if="up_sts == ''">{{ e_up_sts
+                                            }}</span>
                                     </div>
                                     <div class="col-md-6 d-flex justify-content-end order-md-2 order-1">
                                     </div>
@@ -421,8 +508,11 @@
                             <!-- Invoice Description ends -->
                             <hr class="invoice-spacing">
                             <div class="col-12 text-center mt-2 pt-50">
-                                <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
-                                <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
+                                <button :disabled="disabled1" @click="delay1()" type="submit"
+                                    class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal"
+                                    aria-label="Close">Update</button>
+                                <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
+                                    aria-label="Close">
                                     Cancel
                                 </button>
                             </div>
@@ -441,34 +531,41 @@
                         <div class="card invoice-preview-card" v-for="requisitions1 in requisitions">
                             <div class="card-body invoice-padding pb-0">
                                 <!-- Header starts -->
-                                <div class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
+                                <div
+                                    class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
                                     <div v-for='companydetail1 in companydetail' style="margin-left:30px">
                                         <div style="padding-top:10px;margin-bottom: 0px;" class="logo-wrapper">
-                                            <h3 class="text-primary invoice-logo" style="margin-left: 0px;">{{companydetail1.company_name}}</h3>
+                                            <h3 class="text-primary invoice-logo" style="margin-left: 0px;">
+                                                {{ companydetail1.company_name }}</h3>
                                         </div>
-                                        <p class="card-text mb-25">Address: {{companydetail1.company_address}} , </p>
-                                        <p class="card-text mb-25">City: {{companydetail1.city}} - {{companydetail1.country}}</p>
-                                        <p class="card-text mb-0">Phone: {{companydetail1.phone_number}}</p>
+                                        <p class="card-text mb-25">Address: {{ companydetail1.company_address }} , </p>
+                                        <p class="card-text mb-25">City: {{ companydetail1.city }} -
+                                            {{ companydetail1.country }}</p>
+                                        <p class="card-text mb-0">Phone: {{ companydetail1.phone_number }}</p>
                                     </div>
                                     <div class="mt-md-0 mt-2" style="min-width:25%">
                                         <h5 class="invoice-title">
                                             RequisitionID:
-                                            <span class="invoice-number">{{requisitions1.RId}}</span>
+                                            <span class="invoice-number">{{ requisitions1.RId }}</span>
                                         </h5>
                                         <div class="invoice-date-wrapper row">
                                             <p class="invoice-date-title" style="width:30%">Date:</p>
-                                            <p style="width:70%" class="invoice-date">{{requisitions1.Dated}}</p>
+                                            <p style="width:70%" class="invoice-date">{{ requisitions1.Dated }}</p>
                                         </div>
                                         <div class="invoice-date-wrapper row">
                                             <p class="invoice-date-title" style="">Requisition Type:</p>
-                                            <p style="width:70%" class="  badge badge-glow bg-info invoice-date">{{requisitions1.RequisitionType}}</p>
+                                            <p style="width:70%" class="  badge badge-glow bg-info invoice-date">
+                                                {{ requisitions1.RequisitionType }}</p>
                                         </div>
                                         <div class="invoice-date-wrapper row">
                                             <p class="invoice-date-title" style="width:35%">Status:</p>
                                             <p style="width:65%" class="invoice-date">
-                                                <span v-if="requisitions1.Status=='Approved'" class="badge badge-glow bg-primary">Approved</span>
-                                                <span v-if="requisitions1.Status=='Issued'" class="badge badge-glow bg-warning">Issued</span>
-                                                <span v-if="requisitions1.Status=='Pending'" class="badge badge-glow bg-info">Pending</span>
+                                                <span v-if="requisitions1.Status == 'Approved'"
+                                                    class="badge badge-glow bg-primary">Approved</span>
+                                                <span v-if="requisitions1.Status == 'Issued'"
+                                                    class="badge badge-glow bg-warning">Issued</span>
+                                                <span v-if="requisitions1.Status == 'Pending'"
+                                                    class="badge badge-glow bg-info">Pending</span>
                                             </p>
                                         </div>
                                     </div>
@@ -481,11 +578,11 @@
                                 <div class="row invoice-spacing">
                                     <div class="col-xl-8 p-0">
                                         <h6 class="mb-2">Department/Child Company:</h6>
-                                        <h6 class="mb-25">{{requisitions1.DepartmentName}}</h6>
+                                        <h6 class="mb-25">{{ requisitions1.DepartmentName }}</h6>
                                     </div>
                                     <div class="col-xl-4 p-0 mt-xl-0 mt-2">
                                         <h6 class="mb-2">Project Name:</h6>
-                                        <p class="card-text mb-25">{{requisitions1.ProjectName}}</p>
+                                        <p class="card-text mb-25">{{ requisitions1.ProjectName }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -505,21 +602,22 @@
                                     <tbody>
                                         <tr v-for="get_reqdata11 in get_reqdata1">
                                             <td class="py-1">
-                                                <p class="card-text fw-bold mb-25">{{get_reqdata11.ItemName}}</p>
+                                                <p class="card-text fw-bold mb-25">{{ get_reqdata11.ItemName }}</p>
                                                 <p class="card-text text-nowrap">
                                                 </p>
                                             </td>
                                             <td class="py-1">
-                                                <span class="fw-bold">{{get_reqdata11.Detail}}</span>
+                                                <span class="fw-bold">{{ get_reqdata11.Detail }}</span>
                                             </td>
                                             <td class="py-1">
-                                                <span class="fw-bold">{{get_reqdata11.Quantity}}</span>
+                                                <span class="fw-bold">{{ get_reqdata11.Quantity }}</span>
                                             </td>
                                             <td class="py-1">
-                                                <span class="fw-bold">{{get_reqdata11.unit}}</span>
+                                                <span class="fw-bold">{{ get_reqdata11.unit }}</span>
                                             </td>
                                             <td class="py-1">
-                                                <span class="fw-bold">{{currency}}. {{Number(get_reqdata11.EstCost)}}</span>
+                                                <span class="fw-bold">{{ currency }}.
+                                                    {{ Number(get_reqdata11.EstCost) }}</span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -532,7 +630,7 @@
                                             <span style="width:100%" class="fw-bold">Narration:</span>
                                         </p>
                                         <p class="card-text text-nowrap">
-                                            {{requisitions1.Narration}}
+                                            {{ requisitions1.Narration }}
                                         </p>
                                     </div>
                                     <div class="col-md-6 d-flex justify-content-end order-md-2 order-1">
@@ -556,42 +654,51 @@
                         <div class="card invoice-preview-card">
                             <!-- Header starts -->
                             <div class="card-body  pb-0">
-                                <div class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0" style="margin-bottom:0px">
+                                <div class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0"
+                                    style="margin-bottom:0px">
                                     <div v-for='companydetail1 in companydetail' style="margin-left:30px">
                                         <div style="padding-top:10px;margin-bottom: 0px;" class="logo-wrapper">
-                                            <h3 class="text-primary invoice-logo" style="margin-left: 0px;">{{companydetail1.company_name}}</h3>
+                                            <h3 class="text-primary invoice-logo" style="margin-left: 0px;">
+                                                {{ companydetail1.company_name }}</h3>
                                         </div>
-                                        <p class="card-text mb-25">Address: {{companydetail1.company_address}} , </p>
-                                        <p class="card-text mb-25">City: {{companydetail1.city}} - {{companydetail1.country}}</p>
-                                        <p class="card-text mb-0">Phone: {{companydetail1.phone_number}}</p>
+                                        <p class="card-text mb-25">Address: {{ companydetail1.company_address }} , </p>
+                                        <p class="card-text mb-25">City: {{ companydetail1.city }} -
+                                            {{ companydetail1.country }}</p>
+                                        <p class="card-text mb-0">Phone: {{ companydetail1.phone_number }}</p>
                                     </div>
                                     <div class="mt-md-0 mt-2 ">
                                         <div class="row">
                                             <p class="invoice-date-title" style="width:30%">Req ID:</p>
                                             <p style="width:70%" class="invoice-date">
-                                                <input type="text" readonly v-model="e_rid" class="form-control invoice-edit-input " />
-                                                <input type="text" hidden readonly v-model="id" class="form-control invoice-edit-input " />
+                                                <input type="text" readonly v-model="e_rid"
+                                                    class="form-control invoice-edit-input " />
+                                                <input type="text" hidden readonly v-model="id"
+                                                    class="form-control invoice-edit-input " />
                                             </p>
                                         </div>
                                         <div class="invoice-date-wrapper row">
                                             <p class="invoice-date-title" style="width:30%">Date:</p>
-                                            <p style="width:70%" class="invoice-date"> <input type="date" readonly v-model="date" class="form-control invoice-edit-input " /></p>
+                                            <p style="width:70%" class="invoice-date"> <input type="date" readonly
+                                                    v-model="date" class="form-control invoice-edit-input " /></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Header ends -->
                             <div class="divider">
-                                <div class="divider-text" style="font-size: 24px;font-weight: 900;">Edit Requistion</div>
+                                <div class="divider-text" style="font-size: 24px;font-weight: 900;">Edit Requistion
+                                </div>
                             </div>
                             <!-- Address and Contact starts -->
                             <div class="card-body invoice-padding pt-0">
                                 <div class="row row-bill-to invoice-spacing" style="margin-top:0px">
                                     <div class="col-xl-6 mb-lg-1 col-bill-to ps-0">
-                                        <h6 class="invoice-to-title" style="margin-bottom:5px">Department/Company Name:</h6>
+                                        <h6 class="invoice-to-title" style="margin-bottom:5px">Department/Company Name:
+                                        </h6>
                                         <div class="invoice-customer">
                                             <input type="text" v-model="dept_name" class="form-control" readonly />
-                                            <span style="color: #DB4437; font-size: 11px;" v-if="dept_name==''">{{e_dept_name}}</span>
+                                            <span style="color: #DB4437; font-size: 11px;" v-if="dept_name == ''">{{
+                                                e_dept_name }}</span>
                                         </div>
                                         <label class="form-label" for="basicSelect">Requisition Type</label>
                                         <input type="text" v-model="req_type" class="form-control" readonly />
@@ -609,7 +716,7 @@
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-3" style="text-align: right;padding-top: 20px;">
-                                        <button class="btn btn-primary" @click="sum_total()">Calculate Total</button>
+                                        <button class="btn btn-primary bg-primary" @click="sum_total()">Calculate Total</button>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
@@ -624,59 +731,88 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div v-for="get_reqdata11 in get_reqdata1" class="source-item" style="border: 1px solid rgb(235, 233, 241);border-radius: 0.357rem;margin-top: 20px;padding-left: 20px;padding-right: 20px;">
+                                <div v-for="get_reqdata11 in get_reqdata1" class="source-item"
+                                    style="border: 1px solid rgb(235, 233, 241);border-radius: 0.357rem;margin-top: 20px;padding-left: 20px;padding-right: 20px;">
                                     <div data-repeater-list="group-a">
                                         <div class="repeater-wrapper" data-repeater-item>
                                             <div class="row w-100 pe-lg-0 pe-1 py-2">
                                                 <div class="col-lg-6 col-12 mb-lg-0 mb-2 mt-lg-0 mt-2">
-                                                    <p class="card-text col-title mb-md-50 mb-0" style="margin-bottom:0px !important">Item</p>
-                                                    <select v-if="req_type=='Goods'|| req_type=='Assets'" class="form-select item-details" name="first[]">
-                                                        <option :value='get_reqdata11.itemId'>{{get_reqdata11.ItemName}}</option>
+                                                    <p class="card-text col-title mb-md-50 mb-0"
+                                                        style="margin-bottom:0px !important">Item</p>
+                                                    <select v-if="req_type == 'Goods' || req_type == 'Assets'"
+                                                        class="form-select item-details" name="first[]">
+                                                        <option :value='get_reqdata11.itemId'>{{ get_reqdata11.ItemName
+                                                            }}
+                                                        </option>
                                                     </select>
                                                     <input hidden v-else type="text" name="first[]" value="empty">
-                                                    <textarea class="form-control mt-2" rows="1" name="fiveth[]" placeholder="Item Detail">{{get_reqdata11.Detail}}</textarea>
-                                                    <input hidden :value='get_reqdata11.unit' type="text" name="second[]">
-                                                    <input hidden type="number" class="form-control" name="third[]" value="1" />
+                                                    <textarea class="form-control mt-2" rows="1" name="fiveth[]"
+                                                        placeholder="Item Detail">{{ get_reqdata11.Detail }}</textarea>
+                                                    <input hidden :value='get_reqdata11.unit' type="text"
+                                                        name="second[]">
+                                                    <input hidden type="number" class="form-control" name="third[]"
+                                                        value="1" />
                                                 </div>
                                                 <div class="col-lg-3 col-12 my-lg-0 my-2">
-                                                    <p class="card-text col-title mb-md-2 mb-0" style="margin-bottom:0px !important">Qty</p>
-                                                    <textarea @keypress="onlyNumber" name="fourth[]" style="min-height: 0px !important;padding: 5px !important;margin-top: 0px !important;" class="form-control mt-2" rows="1">{{get_reqdata11.Quantity}}</textarea>
+                                                    <p class="card-text col-title mb-md-2 mb-0"
+                                                        style="margin-bottom:0px !important">Qty</p>
+                                                    <textarea @keypress="onlyNumber" name="fourth[]"
+                                                        style="min-height: 0px !important;padding: 5px !important;margin-top: 0px !important;"
+                                                        class="form-control mt-2"
+                                                        rows="1">{{ get_reqdata11.Quantity }}</textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group xz_form  row animated slideInDown" v-for="count in counter" :id="count" style="margin-top:10px">
+                                <div class="form-group xz_form  row animated slideInDown" v-for="count in counter"
+                                    :id="count" style="margin-top:10px">
                                     <div data-repeater-list="" class="col-lg-12">
                                         <slot class="source-item">
                                             <div data-repeater-list="group-a">
                                                 <div class="repeater-wrapper" data-repeater-item>
                                                     <div class="row" style="margin-left: 2px;margin-right: 2px;">
-                                                        <div class="col-12 d-flex product-details-border position-relative pe-0" style="border: 1px solid #ebe9f1;border-radius: 0.357rem;">
+                                                        <div class="col-12 d-flex product-details-border position-relative pe-0"
+                                                            style="border: 1px solid #ebe9f1;border-radius: 0.357rem;">
                                                             <div class="row w-100 pe-lg-0 pe-1 py-2">
                                                                 <div class="col-lg-7 col-12 mb-lg-0 mb-2 mt-lg-0 mt-2">
-                                                                    <p class="card-text col-title mb-md-50 mb-0">Item</p>
-                                                                    <select v-if="req_type=='Goods'|| req_type=='Assets'" class="form-select item-details" name="first[]">
+                                                                    <p class="card-text col-title mb-md-50 mb-0">Item
+                                                                    </p>
+                                                                    <select
+                                                                        v-if="req_type == 'Goods' || req_type == 'Assets'"
+                                                                        class="form-select item-details" name="first[]">
                                                                         <option value=''>Select Item</option>
-                                                                        <option v-for='get_items1 in get_items' :value='get_items1.ID'>{{ get_items1.Name}}</option>
+                                                                        <option v-for='get_items1 in get_items'
+                                                                            :value='get_items1.ID'>{{ get_items1.Name }}
+                                                                        </option>
                                                                     </select>
 
-                                                                    <input hidden v-else type="text" name="first[]" value="empty">
-                                                                    <input hidden type="text" name="second[]" value="empty">
-                                                                    <input hidden type="number" class="form-control" name="third[]" value="1" />
-                                                                    <textarea class="form-control mt-2" rows="1" name="fiveth[]" placeholder="Item Detail"></textarea>
+                                                                    <input hidden v-else type="text" name="first[]"
+                                                                        value="empty">
+                                                                    <input hidden type="text" name="second[]"
+                                                                        value="empty">
+                                                                    <input hidden type="number" class="form-control"
+                                                                        name="third[]" value="1" />
+                                                                    <textarea class="form-control mt-2" rows="1"
+                                                                        name="fiveth[]"
+                                                                        placeholder="Item Detail"></textarea>
                                                                 </div>
                                                                 <div class="col-lg-3 col-12 my-lg-0 my-2">
                                                                     <p class="card-text col-title mb-md-2 mb-0">Qty</p>
-                                                                    <input type="number" class="form-control" name="fourth[]" value="1" placeholder="1" />
+                                                                    <input type="number" class="form-control"
+                                                                        name="fourth[]" value="1" placeholder="1" />
                                                                 </div>
 
 
                                                             </div>
-                                                            <div style="margin-left:10px" class="d-flex flex-column align-items-centerjustify-content-between border-start invoice-product-actions py-50 px-25">
+                                                            <div style="margin-left:10px"
+                                                                class="d-flex flex-column align-items-centerjustify-content-between border-start invoice-product-actions py-50 px-25">
                                                                 <div class="delete_btn" style="border-radius:14px;">
-                                                                    <div data-repeater-delete="" class="" style="margin-right: 6px;" v-on:click="delete_xz_form(count)">
-                                                                        <span style="padding-top: 14px;padding-left: 7px;">
+                                                                    <div data-repeater-delete="" class=""
+                                                                        style="margin-right: 6px;"
+                                                                        v-on:click="delete_xz_form(count)">
+                                                                        <span
+                                                                            style="padding-top: 14px;padding-left: 7px;">
                                                                             <i class="fa-solid fa-xmark"></i>
                                                                         </span>
                                                                     </div>
@@ -691,7 +827,8 @@
                                 </div>
                                 <div class="row mt-1">
                                     <div class="col-12 px-0" style="margin-left: 15px;">
-                                        <div data-repeater-create="" class="btn btn-primary btn-sm btn-add-new" v-on:click="add_xz_repeater();">
+                                        <div data-repeater-create="" class="btn btn-primary bg-primary btn-sm btn-add-new"
+                                            v-on:click="add_xz_repeater();">
                                             <i data-feather="plus" class="me-25"></i>
                                             <span class="align-middle">Add Item</span>
                                         </div>
@@ -706,14 +843,17 @@
                                     <div class="col-12">
                                         <div class="mb-2">
                                             <label for="note" class="form-label fw-bold">Narration:</label>
-                                            <textarea class="form-control" v-model="narration" rows="2" id="note"></textarea>
+                                            <textarea class="form-control" v-model="narration" rows="2"
+                                                id="note"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Invoice Note ends -->
                                 <div class="col-12 text-center mt-2 pt-50" style="margin-bottom:20px">
-                                    <button :disabled="disabled" @click="delay()" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
-                                    <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
+                                    <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1"
+                                        data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                    <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
+                                        aria-label="Close">
                                         Cancel
                                     </button>
                                 </div>
@@ -727,554 +867,576 @@
     </div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                dept_name1: 'All',
-                proj_name: 'All',
-                departments: {},
-                projects: {},
-                toggle: false,
-                currency: '',
-                count_req: {},
-                companydetail: {},
-                adsdata: {},
-                success: '',
-                counter: 0,
-                keyword1: '',
-                status: 'All',
-                date: '',
-                e_rid: '',
-                id: '',
-                dept_name: '',
-                project_name: '',
-                narration: "",
-                e_project_name: '',
-                e_dept_name: '',
-                disabled: false,
-                timeout: null,
-                dept_tot_req: {},
-                disabled1: false,
-                timeout1: null,
-                up_sts: '',
-                e_up_sts: '',
-                req_type: '',
-                pageSelect: '100',
-                requisitions: {},
-                get_unit: {},
-                get_dept: {},
-                get_project: {},
-                get_items: {},
-                total_value: '',
-                est_value: '',
-                get_reqdata1: {},
-                closingdate: '',
-                startingdate: '',
+export default {
+    data() {
+        return {
+            images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
+            dept_name1: 'All',
+            proj_name: 'All',
+            departments: {},
+            projects: {},
+            toggle: false,
+            currency: '',
+            count_req: {},
+            companydetail: {},
+            adsdata: {},
+            success: '',
+            counter: 0,
+            keyword1: '',
+            status: 'All',
+            date: '',
+            e_rid: '',
+            id: '',
+            dept_name: '',
+            project_name: '',
+            narration: "",
+            e_project_name: '',
+            e_dept_name: '',
+            disabled: false,
+            timeout: null,
+            dept_tot_req: {},
+            disabled1: false,
+            timeout1: null,
+            up_sts: '',
+            e_up_sts: '',
+            req_type: '',
+            pageSelect: '100',
+            requisitions: {},
+            get_unit: {},
+            get_dept: {},
+            get_project: {},
+            get_items: {},
+            total_value: '',
+            est_value: '',
+            get_reqdata1: {},
+            closingdate: '',
+            startingdate: '',
+        }
+    },
+    methods: {
+        onlyNumber($event) {
+            let keyCode = ($event.keyCode ? $event.keyCode : $event.which);
+            if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) { // 46 is dot
+                $event.preventDefault();
             }
         },
-        methods: {
-            onlyNumber($event) {
-                let keyCode = ($event.keyCode ? $event.keyCode : $event.which);
-                if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) { // 46 is dot
-                    $event.preventDefault();
-                }
-            },
-            editReq(id) {
-                axios.get('accounts/get_demandreq_data1/' + id)
-                    .then(response => {
-                        this.get_reqdata1 = response.data;
-                    })
-                this.adsdata.data.map((curEle) => {
-                    return document.getElementById("accordionBorder" + curEle.RequisitionId).classList.remove("show")
+        editReq(id) {
+            axios.get('accounts/get_demandreq_data1/' + id)
+                .then(response => {
+                    this.get_reqdata1 = response.data;
                 })
-            },
-            inv_reqCounter(status, type) {
-                axios.get('accounts/inv_reqCounter/' + status + '/' + type)
-                    .then(response => this.dept_tot_req = response.data)
-            },
-            editRequisition(id) {
-                axios.get('accounts/get_demandreq_data/' + id)
-                    .then(response => {
-                        this.requisitions = response.data;
-                        this.e_rid = response.data[0].RId
-                        this.id = response.data[0].RequisitionId
-                        this.date = response.data[0].Dated
-                        this.req_type = response.data[0].RequisitionType
-                        this.dept_name = response.data[0].DepartmentName
-                        this.narration = response.data[0].Narration
-                        this.up_sts = response.data[0].Status
-                        axios.get('accounts/get_projects/' + this.dept_name)
-                            .then(response => this.get_project = response.data)
-                        this.project_name = response.data[0].ProjectName
+            this.adsdata.data.map((curEle) => {
+                return document.getElementById("accordionBorder" + curEle.RequisitionId).classList.remove("show")
+            })
+        },
+        inv_reqCounter(status, type) {
+            axios.get('accounts/inv_reqCounter/' + status + '/' + type)
+                .then(response => this.dept_tot_req = response.data)
+        },
+        editRequisition(id) {
+            axios.get('accounts/get_demandreq_data/' + id)
+                .then(response => {
+                    this.requisitions = response.data;
+                    this.e_rid = response.data[0].RId
+                    this.id = response.data[0].RequisitionId
+                    this.date = response.data[0].Dated
+                    this.req_type = response.data[0].RequisitionType
+                    this.dept_name = response.data[0].DepartmentName
+                    this.narration = response.data[0].Narration
+                    this.up_sts = response.data[0].Status
+                    axios.get('accounts/get_projects/' + this.dept_name)
+                        .then(response => this.get_project = response.data)
+                    this.project_name = response.data[0].ProjectName
 
-                        if (response.data[0].RequisitionType == 'Goods') {
-                            axios.get('accounts/get_itemss')
-                                .then(response => this.get_items = response.data)
-                        }
-                        else {
-                            axios.get('accounts/get_services')
-                                .then(response => this.get_items = response.data)
-                        }
-                    })
-                axios.get('accounts/get_demandreq_data1/' + id)
-                    .then(response => {
-                        this.get_reqdata1 = response.data;
-                    })
-            },
-            sum_total() {
-                var fourth = document.getElementsByName('fourth[]');
-                var m = 0;
-                for (var g = 0; g < fourth.length; g++) {
-                    var c = fourth[g];
-                    m = Number(m) + Number(c.value);
-                }
-                this.total_value = m;
+                    if (response.data[0].RequisitionType == 'Goods') {
+                        axios.get('accounts/get_itemss')
+                            .then(response => this.get_items = response.data)
+                    }
+                    else {
+                        axios.get('accounts/get_services')
+                            .then(response => this.get_items = response.data)
+                    }
+                })
+            axios.get('accounts/get_demandreq_data1/' + id)
+                .then(response => {
+                    this.get_reqdata1 = response.data;
+                })
+        },
+        sum_total() {
+            var fourth = document.getElementsByName('fourth[]');
+            var m = 0;
+            for (var g = 0; g < fourth.length; g++) {
+                var c = fourth[g];
+                m = Number(m) + Number(c.value);
+            }
+            this.total_value = m;
 
-                var third = document.getElementsByName('third[]');
-                var n = 0;
-                for (var h = 0; h < third.length; h++) {
-                    var d = third[h];
-                    n = Number(n) + Number(d.value);
-                }
-                this.est_value = n;
+            var third = document.getElementsByName('third[]');
+            var n = 0;
+            for (var h = 0; h < third.length; h++) {
+                var d = third[h];
+                n = Number(n) + Number(d.value);
+            }
+            this.est_value = n;
 
-            },
-            delay() {
-                this.disabled = true
-                this.timeout = setTimeout(() => {
-                    this.disabled = false
-                }, 5000)
-                this.update_preq();
-            },
-            delay1() {
-                this.disabled1 = true
-                this.timeout1 = setTimeout(() => {
-                    this.disabled1 = false
-                }, 5000)
-                this.update_preq_status();
-            },
-            update_preq_status() {
-                if (this.up_sts == '') {
-                    this.e_up_sts = "Select status";
-                    this.$toastr.e("Please fill required fields!", "Caution!");
-                } else {
-                    this.e_up_sts = "";
-                    axios.post('./accounts_upd_demandreq_sts', {
-                        reqId: this.id,
-                        sts: this.up_sts,
-                    })
-                        .then(data => {
-                            if (data.data == "Status updated!") {
-                                this.$toastr.s("Status updated successfully!", "Congratulations");
-                                const updatedIndex = this.adsdata.data.findIndex(item => item.RequisitionId === this.id);
-            if (updatedIndex !== -1) {
+        },
+        delay() {
+            this.disabled = true
+            this.timeout = setTimeout(() => {
+                this.disabled = false
+            }, 5000)
+            this.update_preq();
+        },
+        delay1() {
+            this.disabled1 = true
+            this.timeout1 = setTimeout(() => {
+                this.disabled1 = false
+            }, 5000)
+            this.update_preq_status();
+        },
+        update_preq_status() {
+            if (this.up_sts == '') {
+                this.e_up_sts = "Select status";
+                this.$toastr.e("Please fill required fields!", "Caution!");
+            } else {
+                this.e_up_sts = "";
+                axios.post('./accounts_upd_demandreq_sts', {
+                    reqId: this.id,
+                    sts: this.up_sts,
+                })
+                    .then(data => {
+                        if (data.data == "Status updated!") {
+                            this.$toastr.s("Status updated successfully!", "Congratulations");
+                            const updatedIndex = this.adsdata.data.findIndex(item => item.RequisitionId === this.id);
+                            if (updatedIndex !== -1) {
 
-                this.adsdata.data[updatedIndex].Status =  this.up_sts;
+                                this.adsdata.data[updatedIndex].Status = this.up_sts;
 
-                this.e_rid = "";
+                                this.e_rid = "";
                                 this.up_sts = "";
 
-                // Update other properties as needed
-            }
-
-                            } else {
-                                this.$toastr.e("Status not changed", "Error!");
+                                // Update other properties as needed
                             }
-                        })
-                }
 
-            },
-            filter_byStatus(page = 1) {
-                if (this.startingdate == '') {
-                    this.startingdate1 = "00-00-0000";
-                }
-                else {
-                    this.startingdate1 = this.startingdate;
-                }
-                if (this.closingdate == '') {
-                    this.closingdate1 = "99-99-9999";
-                }
-                else {
-                    this.closingdate1 = this.closingdate;
-                }
-                if (this.pageSelect == 'All') {
-                    axios.get('accounts_fetch_demandreqBysts_assets/' + this.status + '/' + this.dept_name1 + '/' + this.proj_name+ '/'+ this.startingdate1 + '/' + this.closingdate1  + '/' + this.pageSelect)
-                        .then(response => {
-                            if (response.data == "Invalid department") {
-                                this.$toastr.e("You do not have access to search other departments' requisition(s)", "Caution!");
-                            }
-                            else {
-                                this.adsdata = response;
-                            }
-                        })
-                        .catch(error => { });
-                } else {
-                    axios.get('accounts_fetch_demandreqBysts_assets/' + this.status + '/' + this.dept_name1 + '/' + this.proj_name + '/'+ this.startingdate1 + '/' + this.closingdate1 + '/' + this.pageSelect + '?page=' + page)
-                        .then(response => {
-                            if (response.data == "Invalid department") {
-                                this.$toastr.e("You do not have access to search other departments' requisition(s)", "Caution!");
-                            }
-                            else {
-                                this.adsdata = response.data;
-                            }
-                        })
-                        .catch(error => { });
-                }
-
-            },
-            update_preq() {
-                if (this.date == '' || this.dept_name == '') {
-                    this.$toastr.e("Please Enter date and Department!", "Caution!");
-                } else {
-
-                    var item_name = document.getElementsByName('first[]');
-                    var unit = document.getElementsByName('second[]');
-                    var est_cost = document.getElementsByName('third[]');
-                    var qty = document.getElementsByName('fourth[]');
-
-                    var detail = document.getElementsByName('fiveth[]');
-
-                    var k = 'zero';
-                    var l = 'zero';
-                    var m = 0;
-                    var n = 0;
-
-                    var o = 'zero';
-
-                    for (var i = 0; i < item_name.length; i++) {
-                        var a = item_name[i];
-                        k = k + "|" + a.value;
-                    }
-                    for (var j = 0; j < unit.length; j++) {
-                        var b = unit[j];
-                        l = l + "|" + b.value;
-                    }
-                    for (var g = 0; g < est_cost.length; g++) {
-                        var c = est_cost[g];
-                        m = m + "|" + c.value;
-                    }
-
-                    for (var h = 0; h < qty.length; h++) {
-                        var d = qty[h];
-                        n = n + "|" + d.value;
-                    }
-
-                    for (var f = 0; f < detail.length; f++) {
-                        var fw = detail[f];
-                        o = o + "|" + fw.value;
-                    }
-
-                    axios.post('./accounts/update_demandrequisition', {
-                        item_name: k,
-                        unit: l,
-                        est_cost: m,
-                        qty: n,
-                        detail: o,
-                        e_rid: this.e_rid,
-                        id: this.id,
-                        date: this.date,
-                        dept_name: this.dept_name,
-                        project_name: this.project_name,
-                        narration: this.narration,
-                        req_type: this.req_type,
+                        } else {
+                            this.$toastr.e("Status not changed", "Error!");
+                        }
                     })
-                        .then(data => {
-                            if(data.data === 'Updated'){
-                                this.adsdata = data.data;
-                                this.getResult();
-                                this.$toastr.s("Demand requisition updated Successfully", "Congratulations!");
-                            }
-                            else{
-                                this.$toastr.e(data.data, "Error!");
-                            }
-                        })
-                }
-            },
-            add_xz_repeater() {
-                this.counter++;
-            },
-            delete_xz_form(id) {
+            }
 
-                const r = confirm("Are you sure?");
-                if (r == true) {
-                    let node = document.getElementById(id);
-                    node.remove();
-                }
-            },
-            getResult(page = 1) {
-                if (this.pageSelect == 'All') {
-                    axios.get('accounts/get_demandrequisition_assets', { params: { pages: this.pageSelect } })
-                        .then(response => this.adsdata = response)
-                        .catch(error => { });
-                } else {
-                    axios.get('accounts/get_demandrequisition_assets?page=' + page, { params: { pages: this.pageSelect } })
-                        .then(response => this.adsdata = response.data)
-                        .catch(error => { });
-                }
-
-            },
-            get_projectlist() {
-                axios.get('accounts/get_projects/' + this.dept_name)
-                    .then(response => this.get_project = response.data)
-            },
-            getResults(page = 1) {
-                if (this.pageSelect == 'All') {
-                    axios.get('accounts/searchbydemandreqid_assets/' + this.keyword1 + '/' + this.pageSelect)
-                        .then(response => {
-                            this.adsdata = response
-                        })
-                } else {
-                    axios.get('accounts/searchbydemandreqid_assets/' + this.keyword1 + '/' + this.pageSelect + '?page=' + page)
-                        .then(response => {
-                            this.adsdata = response.data
-                        })
-                        .catch(error => { console.log(error); });
-                }
-            },
         },
+        filter_byStatus(page = 1) {
+            if (this.startingdate == '') {
+                this.startingdate1 = "00-00-0000";
+            }
+            else {
+                this.startingdate1 = this.startingdate;
+            }
+            if (this.closingdate == '') {
+                this.closingdate1 = "99-99-9999";
+            }
+            else {
+                this.closingdate1 = this.closingdate;
+            }
+            if (this.pageSelect == 'All') {
+                axios.get('accounts_fetch_demandreqBysts_assets/' + this.status + '/' + this.dept_name1 + '/' + this.proj_name + '/' + this.startingdate1 + '/' + this.closingdate1 + '/' + this.pageSelect)
+                    .then(response => {
+                        if (response.data == "Invalid department") {
+                            this.$toastr.e("You do not have access to search other departments' requisition(s)", "Caution!");
+                        }
+                        else {
+                            this.adsdata = response;
+                        }
+                    })
+                    .catch(error => { });
+            } else {
+                axios.get('accounts_fetch_demandreqBysts_assets/' + this.status + '/' + this.dept_name1 + '/' + this.proj_name + '/' + this.startingdate1 + '/' + this.closingdate1 + '/' + this.pageSelect + '?page=' + page)
+                    .then(response => {
+                        if (response.data == "Invalid department") {
+                            this.$toastr.e("You do not have access to search other departments' requisition(s)", "Caution!");
+                        }
+                        else {
+                            this.adsdata = response.data;
+                        }
+                    })
+                    .catch(error => { });
+            }
 
-        watch: {
-            keyword1(after, before) {
-                this.getResults();
-            },
-            pageSelect() {
-                this.getResult();
+        },
+        update_preq() {
+            if (this.date == '' || this.dept_name == '') {
+                this.$toastr.e("Please Enter date and Department!", "Caution!");
+            } else {
+
+                var item_name = document.getElementsByName('first[]');
+                var unit = document.getElementsByName('second[]');
+                var est_cost = document.getElementsByName('third[]');
+                var qty = document.getElementsByName('fourth[]');
+
+                var detail = document.getElementsByName('fiveth[]');
+
+                var k = 'zero';
+                var l = 'zero';
+                var m = 0;
+                var n = 0;
+
+                var o = 'zero';
+
+                for (var i = 0; i < item_name.length; i++) {
+                    var a = item_name[i];
+                    k = k + "|" + a.value;
+                }
+                for (var j = 0; j < unit.length; j++) {
+                    var b = unit[j];
+                    l = l + "|" + b.value;
+                }
+                for (var g = 0; g < est_cost.length; g++) {
+                    var c = est_cost[g];
+                    m = m + "|" + c.value;
+                }
+
+                for (var h = 0; h < qty.length; h++) {
+                    var d = qty[h];
+                    n = n + "|" + d.value;
+                }
+
+                for (var f = 0; f < detail.length; f++) {
+                    var fw = detail[f];
+                    o = o + "|" + fw.value;
+                }
+
+                axios.post('./accounts/update_demandrequisition', {
+                    item_name: k,
+                    unit: l,
+                    est_cost: m,
+                    qty: n,
+                    detail: o,
+                    e_rid: this.e_rid,
+                    id: this.id,
+                    date: this.date,
+                    dept_name: this.dept_name,
+                    project_name: this.project_name,
+                    narration: this.narration,
+                    req_type: this.req_type,
+                })
+                    .then(data => {
+                        if (data.data === 'Updated') {
+                            this.adsdata = data.data;
+                            this.getResult();
+                            this.$toastr.s("Demand requisition updated Successfully", "Congratulations!");
+                        }
+                        else {
+                            this.$toastr.e(data.data, "Error!");
+                        }
+                    })
             }
         },
-        mounted() {
+        add_xz_repeater() {
+            this.counter++;
+        },
+        delete_xz_form(id) {
+
+            const r = confirm("Are you sure?");
+            if (r == true) {
+                let node = document.getElementById(id);
+                node.remove();
+            }
+        },
+        getResult(page = 1) {
+            if (this.pageSelect == 'All') {
+                axios.get('accounts/get_demandrequisition_assets', { params: { pages: this.pageSelect } })
+                    .then(response => this.adsdata = response)
+                    .catch(error => { });
+            } else {
+                axios.get('accounts/get_demandrequisition_assets?page=' + page, { params: { pages: this.pageSelect } })
+                    .then(response => this.adsdata = response.data)
+                    .catch(error => { });
+            }
+
+        },
+        get_projectlist() {
+            axios.get('accounts/get_projects/' + this.dept_name)
+                .then(response => this.get_project = response.data)
+        },
+        getResults(page = 1) {
+            if (this.pageSelect == 'All') {
+                axios.get('accounts/searchbydemandreqid_assets/' + this.keyword1 + '/' + this.pageSelect)
+                    .then(response => {
+                        this.adsdata = response
+                    })
+            } else {
+                axios.get('accounts/searchbydemandreqid_assets/' + this.keyword1 + '/' + this.pageSelect + '?page=' + page)
+                    .then(response => {
+                        this.adsdata = response.data
+                    })
+                    .catch(error => { console.log(error); });
+            }
+        },
+    },
+
+    watch: {
+        keyword1(after, before) {
+            this.getResults();
+        },
+        pageSelect() {
             this.getResult();
-
-            axios.get('get_currency').then((response) => {
-                this.currency = response.data[0].Currency;
-            })
-
-
-
-            axios.get('fetch_companyDetail')
-                .then(response => this.companydetail = response.data)
-
-            axios.get('accounts/get_dept')
-                .then(response => this.get_dept = response.data)
-
-            axios.get('accounts/get_units')
-                .then(response => this.get_unit = response.data)
-
-            axios.get('accounts/count_demandrequisitions_assets')
-                .then(response => this.count_req = response.data)
-
-            axios.get('./overall_department')
-                .then(response => this.departments = response.data)
-
-            axios.get('./accounts/get_coaProjects')
-                .then(response => this.projects = response.data)
         }
+    },
+    mounted() {
+        this.getResult();
+
+        axios.get('get_currency').then((response) => {
+            this.currency = response.data[0].Currency;
+        })
+
+
+
+        axios.get('fetch_companyDetail')
+            .then(response => this.companydetail = response.data)
+
+        axios.get('accounts/get_dept')
+            .then(response => this.get_dept = response.data)
+
+        axios.get('accounts/get_units')
+            .then(response => this.get_unit = response.data)
+
+        axios.get('accounts/count_demandrequisitions_assets')
+            .then(response => this.count_req = response.data)
+
+        axios.get('./overall_department')
+            .then(response => this.departments = response.data)
+
+        axios.get('./accounts/get_coaProjects')
+            .then(response => this.projects = response.data)
     }
+}
 
 </script>
 <style scoped>
-    @media print {
-        .noprint {
-            visibility: hidden;
-        }
-    }
+.border-0 {
+    border: 0;
+}
 
-    .invoice-preview .invoice-padding,
-    .invoice-edit .invoice-padding,
-    .invoice-add .invoice-padding {
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-    }
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
 
-    .invoice-preview .table th:first-child,
-    .invoice-preview .table td:first-child,
-    .invoice-edit .table th:first-child,
-    .invoice-edit .table td:first-child,
-    .invoice-add .table th:first-child,
-    .invoice-add .table td:first-child {
-        padding-left: 2.5rem;
-    }
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
 
-    .invoice-preview .logo-wrapper,
-    .invoice-edit .logo-wrapper,
-    .invoice-add .logo-wrapper {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1.9rem;
-    }
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
 
-        .invoice-preview .logo-wrapper .invoice-logo,
-        .invoice-edit .logo-wrapper .invoice-logo,
-        .invoice-add .logo-wrapper .invoice-logo {
-            font-size: 2.142rem;
-            font-weight: bold;
-            letter-spacing: -0.54px;
-            margin-left: 1rem;
-            margin-bottom: 0;
-        }
+@media print {
+    .noprint {
+        visibility: hidden;
+    }
+}
+
+.invoice-preview .invoice-padding,
+.invoice-edit .invoice-padding,
+.invoice-add .invoice-padding {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.invoice-preview .table th:first-child,
+.invoice-preview .table td:first-child,
+.invoice-edit .table th:first-child,
+.invoice-edit .table td:first-child,
+.invoice-add .table th:first-child,
+.invoice-add .table td:first-child {
+    padding-left: 2.5rem;
+}
+
+.invoice-preview .logo-wrapper,
+.invoice-edit .logo-wrapper,
+.invoice-add .logo-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.9rem;
+}
+
+.invoice-preview .logo-wrapper .invoice-logo,
+.invoice-edit .logo-wrapper .invoice-logo,
+.invoice-add .logo-wrapper .invoice-logo {
+    font-size: 2.142rem;
+    font-weight: bold;
+    letter-spacing: -0.54px;
+    margin-left: 1rem;
+    margin-bottom: 0;
+}
+
+.invoice-preview .invoice-title,
+.invoice-edit .invoice-title,
+.invoice-add .invoice-title {
+    font-size: 1.285rem;
+    margin-bottom: 1rem;
+}
+
+.invoice-preview .invoice-title .invoice-number,
+.invoice-edit .invoice-title .invoice-number,
+.invoice-add .invoice-title .invoice-number {
+    font-weight: 600;
+}
+
+.invoice-preview .invoice-date-wrapper,
+.invoice-edit .invoice-date-wrapper,
+.invoice-add .invoice-date-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.invoice-preview .invoice-date-wrapper:not(:last-of-type),
+.invoice-edit .invoice-date-wrapper:not(:last-of-type),
+.invoice-add .invoice-date-wrapper:not(:last-of-type) {
+    margin-bottom: 0.5rem;
+}
+
+.invoice-preview .invoice-date-wrapper .invoice-date-title,
+.invoice-edit .invoice-date-wrapper .invoice-date-title,
+.invoice-add .invoice-date-wrapper .invoice-date-title {
+    width: 7rem;
+    margin-bottom: 0;
+}
+
+.invoice-preview .invoice-date-wrapper .invoice-date,
+.invoice-edit .invoice-date-wrapper .invoice-date,
+.invoice-add .invoice-date-wrapper .invoice-date {
+    margin-left: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.invoice-preview .invoice-spacing,
+.invoice-edit .invoice-spacing,
+.invoice-add .invoice-spacing {
+    margin: 1.45rem 0;
+}
+
+.invoice-preview .invoice-number-date .title,
+.invoice-edit .invoice-number-date .title,
+.invoice-add .invoice-number-date .title {
+    width: 115px;
+}
+
+.invoice-preview .invoice-total-wrapper,
+.invoice-edit .invoice-total-wrapper,
+.invoice-add .invoice-total-wrapper {
+    width: 100%;
+    max-width: 12rem;
+}
+
+.invoice-preview .invoice-total-wrapper .invoice-total-item,
+.invoice-edit .invoice-total-wrapper .invoice-total-item,
+.invoice-add .invoice-total-wrapper .invoice-total-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.invoice-preview .invoice-total-wrapper .invoice-total-item .invoice-total-title,
+.invoice-edit .invoice-total-wrapper .invoice-total-item .invoice-total-title,
+.invoice-add .invoice-total-wrapper .invoice-total-item .invoice-total-title {
+    margin-bottom: 0.35rem;
+}
+
+.invoice-preview .invoice-total-wrapper .invoice-total-item .invoice-total-amount,
+.invoice-edit .invoice-total-wrapper .invoice-total-item .invoice-total-amount,
+.invoice-add .invoice-total-wrapper .invoice-total-item .invoice-total-amount {
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
 
     .invoice-preview .invoice-title,
     .invoice-edit .invoice-title,
     .invoice-add .invoice-title {
-        font-size: 1.285rem;
-        margin-bottom: 1rem;
+        text-align: right;
+        margin-bottom: 3rem;
     }
+}
 
-        .invoice-preview .invoice-title .invoice-number,
-        .invoice-edit .invoice-title .invoice-number,
-        .invoice-add .invoice-title .invoice-number {
-            font-weight: 600;
-        }
+.invoice-edit .invoice-preview-card .invoice-title,
+.invoice-add .invoice-preview-card .invoice-title {
+    text-align: left;
+    margin-right: 3.5rem;
+    margin-bottom: 0;
+}
 
-    .invoice-preview .invoice-date-wrapper,
-    .invoice-edit .invoice-date-wrapper,
-    .invoice-add .invoice-date-wrapper {
-        display: flex;
-        align-items: center;
-    }
+.invoice-edit .invoice-preview-card .invoice-edit-input,
+.invoice-edit .invoice-preview-card .invoice-edit-input-group,
+.invoice-add .invoice-preview-card .invoice-edit-input,
+.invoice-add .invoice-preview-card .invoice-edit-input-group {
+    max-width: 11.21rem;
+}
 
-        .invoice-preview .invoice-date-wrapper:not(:last-of-type),
-        .invoice-edit .invoice-date-wrapper:not(:last-of-type),
-        .invoice-add .invoice-date-wrapper:not(:last-of-type) {
-            margin-bottom: 0.5rem;
-        }
+.invoice-edit .invoice-preview-card .invoice-product-details,
+.invoice-add .invoice-preview-card .invoice-product-details {
+    background-color: #fcfcfc;
+    padding: 3.75rem 3.45rem 2.3rem 3.45rem;
+}
 
-        .invoice-preview .invoice-date-wrapper .invoice-date-title,
-        .invoice-edit .invoice-date-wrapper .invoice-date-title,
-        .invoice-add .invoice-date-wrapper .invoice-date-title {
-            width: 7rem;
-            margin-bottom: 0;
-        }
+.invoice-edit .invoice-preview-card .invoice-product-details .product-details-border,
+.invoice-add .invoice-preview-card .invoice-product-details .product-details-border {
+    border: 1px solid #ebe9f1;
+    border-radius: 0.357rem;
+}
 
-        .invoice-preview .invoice-date-wrapper .invoice-date,
-        .invoice-edit .invoice-date-wrapper .invoice-date,
-        .invoice-add .invoice-date-wrapper .invoice-date {
-            margin-left: 0.5rem;
-            font-weight: 600;
-            margin-bottom: 0;
-        }
+.invoice-edit .invoice-preview-card .invoice-to-title,
+.invoice-add .invoice-preview-card .invoice-to-title {
+    margin-bottom: 1.9rem;
+}
 
-    .invoice-preview .invoice-spacing,
-    .invoice-edit .invoice-spacing,
-    .invoice-add .invoice-spacing {
-        margin: 1.45rem 0;
-    }
+.invoice-edit .invoice-preview-card .col-title,
+.invoice-add .invoice-preview-card .col-title {
+    position: absolute;
+    top: -1.75rem;
+}
 
-    .invoice-preview .invoice-number-date .title,
-    .invoice-edit .invoice-number-date .title,
-    .invoice-add .invoice-number-date .title {
-        width: 115px;
-    }
+.invoice-edit .invoice-preview-card .item-options-menu,
+.invoice-add .invoice-preview-card .item-options-menu {
+    min-width: 20rem;
+}
 
-    .invoice-preview .invoice-total-wrapper,
-    .invoice-edit .invoice-total-wrapper,
-    .invoice-add .invoice-total-wrapper {
-        width: 100%;
-        max-width: 12rem;
-    }
+.invoice-edit .invoice-preview-card .repeater-wrapper:not(:last-child),
+.invoice-add .invoice-preview-card .repeater-wrapper:not(:last-child) {
+    margin-bottom: 3rem;
+}
 
-        .invoice-preview .invoice-total-wrapper .invoice-total-item,
-        .invoice-edit .invoice-total-wrapper .invoice-total-item,
-        .invoice-add .invoice-total-wrapper .invoice-total-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+.invoice-edit .invoice-preview-card .invoice-calculations .total-amt-title,
+.invoice-add .invoice-preview-card .invoice-calculations .total-amt-title {
+    width: 100px;
+}
 
-            .invoice-preview .invoice-total-wrapper .invoice-total-item .invoice-total-title,
-            .invoice-edit .invoice-total-wrapper .invoice-total-item .invoice-total-title,
-            .invoice-add .invoice-total-wrapper .invoice-total-item .invoice-total-title {
-                margin-bottom: 0.35rem;
-            }
-
-            .invoice-preview .invoice-total-wrapper .invoice-total-item .invoice-total-amount,
-            .invoice-edit .invoice-total-wrapper .invoice-total-item .invoice-total-amount,
-            .invoice-add .invoice-total-wrapper .invoice-total-item .invoice-total-amount {
-                margin-bottom: 0.35rem;
-                font-weight: 600;
-            }
-
-    @media (min-width: 768px) {
-
-        .invoice-preview .invoice-title,
-        .invoice-edit .invoice-title,
-        .invoice-add .invoice-title {
-            text-align: right;
-            margin-bottom: 3rem;
-        }
-    }
+@media (max-width: 769px) {
 
     .invoice-edit .invoice-preview-card .invoice-title,
     .invoice-add .invoice-preview-card .invoice-title {
-        text-align: left;
-        margin-right: 3.5rem;
-        margin-bottom: 0;
+        margin-right: 0;
+        width: 115px;
     }
 
     .invoice-edit .invoice-preview-card .invoice-edit-input,
-    .invoice-edit .invoice-preview-card .invoice-edit-input-group,
-    .invoice-add .invoice-preview-card .invoice-edit-input,
-    .invoice-add .invoice-preview-card .invoice-edit-input-group {
-        max-width: 11.21rem;
+    .invoice-add .invoice-preview-card .invoice-edit-input {
+        max-width: 100%;
     }
+}
 
-    .invoice-edit .invoice-preview-card .invoice-product-details,
-    .invoice-add .invoice-preview-card .invoice-product-details {
-        background-color: #fcfcfc;
-        padding: 3.75rem 3.45rem 2.3rem 3.45rem;
+@media (max-width: 992px) {
+
+    .invoice-edit .col-title,
+    .invoice-add .col-title {
+        position: unset !important;
+        top: -1.5rem !important;
     }
-
-        .invoice-edit .invoice-preview-card .invoice-product-details .product-details-border,
-        .invoice-add .invoice-preview-card .invoice-product-details .product-details-border {
-            border: 1px solid #ebe9f1;
-            border-radius: 0.357rem;
-        }
-
-    .invoice-edit .invoice-preview-card .invoice-to-title,
-    .invoice-add .invoice-preview-card .invoice-to-title {
-        margin-bottom: 1.9rem;
-    }
-
-    .invoice-edit .invoice-preview-card .col-title,
-    .invoice-add .invoice-preview-card .col-title {
-        position: absolute;
-        top: -1.75rem;
-    }
-
-    .invoice-edit .invoice-preview-card .item-options-menu,
-    .invoice-add .invoice-preview-card .item-options-menu {
-        min-width: 20rem;
-    }
-
-    .invoice-edit .invoice-preview-card .repeater-wrapper:not(:last-child),
-    .invoice-add .invoice-preview-card .repeater-wrapper:not(:last-child) {
-        margin-bottom: 3rem;
-    }
-
-    .invoice-edit .invoice-preview-card .invoice-calculations .total-amt-title,
-    .invoice-add .invoice-preview-card .invoice-calculations .total-amt-title {
-        width: 100px;
-    }
-
-    @media (max-width: 769px) {
-
-        .invoice-edit .invoice-preview-card .invoice-title,
-        .invoice-add .invoice-preview-card .invoice-title {
-            margin-right: 0;
-            width: 115px;
-        }
-
-        .invoice-edit .invoice-preview-card .invoice-edit-input,
-        .invoice-add .invoice-preview-card .invoice-edit-input {
-            max-width: 100%;
-        }
-    }
-
-    @media (max-width: 992px) {
-
-        .invoice-edit .col-title,
-        .invoice-add .col-title {
-            position: unset !important;
-            top: -1.5rem !important;
-        }
-    }
+}
 </style>

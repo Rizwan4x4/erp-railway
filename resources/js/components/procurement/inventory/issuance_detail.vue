@@ -20,33 +20,33 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div class="card">
+                        <div class="card top-radius bottom-radius border-0">
                             <div class="card-body border-bottom">
                                 <div class="row">
                                     <div class="col-md-3 user_role">
-                                        <label class="form-label">Department</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Department</label>
                                         <select v-model="department" class="form-select mb-md-0 mb-2">
                                             <option value="All">Select Department</option>
                                             <option v-for='departments1 in departments' :value='departments1.COmpanyName'>{{ departments1.COmpanyName }}</option>
                                         </select>
                                     </div>
                                     <div class="col-md-2 user_plan">
-                                        <label class="form-label" for="UserPlan">Project</label>
+                                        <label class="form-label" for="UserPlan"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Project</label>
                                         <select v-model="project" id="UserPlan" class="form-select mb-md-0 mb-2">
                                             <option value="All">All Projects</option>
                                             <option v-for='projects1 in projects' :value='projects1.ProjectName'>{{ projects1.ProjectName }}</option>
                                         </select>
                                     </div>
                                     <div class="col-md-2 col-12 mb-2 position-relative">
-                                        <label class="form-label">Date From</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date From</label>
                                         <input type="date" v-model="startingdate" class="form-control" placeholder="" required="">
                                     </div>
                                     <div class="col-md-2 col-12 mb-3 position-relative">
-                                        <label class="form-label">Date To</label>
+                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date To</label>
                                         <input type="date" class="form-control" v-model="closingdate" placeholder="" required="">
                                     </div>
                                     <div class="col-md-2 user_status" style="padding-top:26px">
-                                        <button @click="filter_issuance()" style="background:#c1c1c1;width:100%;height: 35px !important;margin-bottom:20px;width: 60% !important;" class="btn btn-common">Search</button>
+                                        <button @click="filter_issuance()" style="background:#c1c1c1;width:100%;height: 35px !important;margin-bottom:20px;width: 60% !important;" class="btn btn-primary bg-primary">Search</button>
                                     </div>
                                 </div>
                             </div>
@@ -63,11 +63,11 @@
                                         <div class="dt-buttons d-inline-flex mt-50">
                                             <router-link
                                             v-if="hasPermission('Inventory Issuance create-issuance') "
-                                            to="/Inventory/create_issuance" class="dt-button add-new btn btn-primary" tabindex="0" type="button"><span>New Issuance</span></router-link>
+                                            to="/Inventory/create_issuance" class="dt-button add-new btn btn-primary bg-primary" tabindex="0" type="button"><span>New Issuance</span></router-link>
                                         </div>
 										 <div class="dt-buttons d-inline-flex mt-50" style="margin-left:20px !important">
                                             <router-link
-                                            v-if="hasPermission('Inventory Issuance create-issuance-site') " to="/Inventory/create_site_issuance" class="dt-button add-new btn btn-primary" tabindex="0" type="button"><span>Issuance Site-to-Site</span></router-link>
+                                            v-if="hasPermission('Inventory Issuance create-issuance-site') " to="/Inventory/create_site_issuance" class="dt-button add-new btn btn-primary bg-primary" tabindex="0" type="button"><span>Issuance Site-to-Site</span></router-link>
                                         </div>
                                     </div>
                                 </div>
@@ -200,6 +200,10 @@
     export default {
         data() {
             return {
+                images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
                 pageNo:1,
                 limit:10,
                 adsdata: {},
@@ -275,3 +279,22 @@
     }
 
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

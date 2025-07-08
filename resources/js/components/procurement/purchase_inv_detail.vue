@@ -20,9 +20,10 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
+                        <div class="card top-radius bottom-radius px-3 py-4">
                         <div class="row">
                             <div class="col-lg-3 col-sm-12">
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0 m-0">
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
                                             <h3 class="fw-bolder mb-75">{{count_users.total?.toLocaleString()}}</h3>
@@ -37,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-12">
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0 m-0">
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
                                             <h3 class="fw-bolder mb-75">{{count_users.partially?.toLocaleString()}}</h3>
@@ -52,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-12">
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0 m-0">
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
                                             <h3 class="fw-bolder mb-75">{{count_users.fully?.toLocaleString()}}</h3>
@@ -67,7 +68,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-12">
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0 m-0">
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
                                             <h3 class="fw-bolder mb-75">{{count_users.verified?.toLocaleString()}}</h3>
@@ -82,20 +83,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        </div>
+                        <div class="card top-radius bottom-radius border-0">
                             <div class="card-body border-bottom">
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-2 col-12 mb-2">
-                                            <label class="form-label">Date From</label>
+                                            <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date From</label>
                                             <input type="date" v-model="startingdate" class="form-control">
                                         </div>
                                         <div class="col-md-2 col-12 mb-3">
-                                            <label class="form-label">Date To</label>
+                                            <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date To</label>
                                             <input type="date" class="form-control" v-model="closingdate">
                                         </div>
                                         <div class="col-md-1 col-12 mb-3">
-                                            <button @click="filtered_GRN()" style="margin-top: 25px;" class="btn btn-secondary">Search</button>
+                                            <button @click="filtered_GRN()" style="margin-top: 25px;" class="btn btn-primary bg-primary">Search</button>
                                         </div>
                                         <div class="col-md-1 col-12 mb-3">
                                             <button @click="startingdate='', closingdate='', filtered_GRN()" style="margin-top: 25px" class="btn btn-outline-secondary waves-effect">Clear</button>
@@ -104,7 +106,7 @@
                                             <input type="text" style="margin-top: 25px; width:100%;" v-model="keyword1" class="form-control" placeholder=" Vendor Name / Invoice ID / Po ID" />
                                         </div>
                                         <div  v-if="hasPermission('Services Invoice Create')" class="col-md-3 col-12 mb-3" style="text-align:right;">
-                                            <router-link to="/purchase_invoice/create_invoice" style="margin-top: 25px" class="btn btn-primary" type="button">+ New Services Invoice</router-link>
+                                            <router-link to="/purchase_invoice/create_invoice" style="margin-top: 25px" class="btn btn-primary bg-primary" type="button">+ New Services Invoice</router-link>
                                         </div>
                                     </div>
                                 </div>
@@ -287,7 +289,7 @@
                             <!-- Invoice Description ends -->
                             <hr class="invoice-spacing">
                             <div class="col-12 text-center mt-2 pt-50">
-                                <button :disabled="disabled" @click="delay()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                <button :disabled="disabled" @click="delay()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                     Close
                                 </button>
@@ -603,7 +605,7 @@
                                         <span style="color: #DB4437; font-size:11px;" v-if="up_sts==''">{{e_up_sts}}</span>
                                     </div>
                                     <div class="col-6 col-md-6">
-                                        <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                        <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                         <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                             Cancel
                                         </button>
@@ -621,6 +623,10 @@
     export default {
         data() {
             return {
+                 images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
                 pageNo: 1,
                 limit: 10,
                 adsdata: {},

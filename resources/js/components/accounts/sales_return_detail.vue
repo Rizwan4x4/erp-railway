@@ -24,7 +24,7 @@
                             <div style="margin-bottom:20px;padding-top:20px" class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                                 <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
                                     <div class="dt-buttons d-inline-flex mt-50">
-                                        <router-link style="float:left" to="/sales-return/create" class="btn btn-primary waves-effect">Create Return</router-link>
+                                        <router-link style="float:left" to="/sales-return/create" class="btn btn-primary bg-primary waves-effect">Create Return</router-link>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
@@ -270,7 +270,7 @@
                                 </div>
                                 <div class="row mt-1">
                                     <div class="col-12 px-0">
-                                        <div data-repeater-create="" class="btn btn-primary btn-sm btn-add-new" v-on:click="add_xz_repeater()">
+                                        <div data-repeater-create="" class="btn btn-primary bg-primary btn-sm btn-add-new" v-on:click="add_xz_repeater()">
                                             <i data-feather="plus" class="me-25"></i>
                                             <span class="align-middle">Add Item</span>
                                         </div>
@@ -325,7 +325,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 text-center mt-2 pt-50">
-                                    <button :disabled="disabled" @click="delay()" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                    <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                     <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                         Cancel
                                     </button>

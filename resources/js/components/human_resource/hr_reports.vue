@@ -196,10 +196,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="cdist_report()">
+                        <button class="btn btn-primary bg-primary" @click="cdist_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
                             class="btn btn-gradient-info">Excel
                         </button>
 
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="cdist_report1()">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="cdist_report1()">
                             close
                         </button>
                     </div>
@@ -309,10 +309,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="view_report9()">
+                        <button class="btn btn-primary bg-primary" @click="view_report9()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -501,7 +501,7 @@
                         <button type="button" @click="html_table_to_excel('xlsx', 'Cash_Distribution_Report')"
                             class="btn btn-gradient-info">Excel
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="view_report91()">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="view_report91()">
                             close
                         </button>
                     </div>
@@ -546,10 +546,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="hiring_rep()">
+                        <button class="btn btn-primary bg-primary" @click="hiring_rep()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -638,7 +638,7 @@
                         <button type="button" @click="generateEmployeeHiringReport()" class="btn btn-gradient-info">
                             Pdf
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="hiring_rep1()">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="hiring_rep1()">
                             close
                         </button>
                     </div>
@@ -699,10 +699,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="la_report()">
+                        <button class="btn btn-primary bg-primary" @click="la_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -826,7 +826,7 @@
                         </button>
                         <button type="button" @click="generateLoanAdvanceReport()" class="btn btn-gradient-info">Pdf
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="la_report1()">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="la_report1()">
                             close
                         </button>
                     </div>
@@ -871,10 +871,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="arrears_report()">
+                        <button class="btn btn-primary bg-primary" @click="arrears_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -992,7 +992,7 @@
                         </button>
                         <button type="button" @click="generateArrearsReport()" class="btn btn-gradient-info">Pdf
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
                             @click="arrears_report1()">close
                         </button>
                     </div>
@@ -1068,10 +1068,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="view_report()">
+                        <button class="btn btn-primary bg-primary" @click="view_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -1349,7 +1349,7 @@
                         <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Detail')"
                             class="btn btn-gradient-info">Download in Excel
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="view_report1()">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="view_report1()">
                             close
                         </button>
                     </div>
@@ -1420,10 +1420,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="employee_hire_report()">
+                        <button class="btn btn-primary bg-primary" @click="employee_hire_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -1751,10 +1751,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="employee_appraisal_report()">
+                        <button class="btn btn-primary bg-primary" @click="employee_appraisal_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -1865,10 +1865,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="absent_summary()">
+                        <button class="btn btn-primary bg-primary" @click="absent_summary()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2012,10 +2012,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="custom_attendance()">
+                        <button class="btn btn-primary bg-primary" @click="custom_attendance()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2263,10 +2263,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="daily_attendance()">
+                        <button class="btn btn-primary bg-primary" @click="daily_attendance()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2430,10 +2430,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="attendance_payroll()">
+                        <button class="btn btn-primary bg-primary" @click="attendance_payroll()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2612,10 +2612,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="attendance_summary()">
+                        <button class="btn btn-primary bg-primary" @click="attendance_summary()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2774,10 +2774,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="leave_detail_()">
+                        <button class="btn btn-primary bg-primary" @click="leave_detail_()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2960,10 +2960,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="leave_summary()">
+                        <button class="btn btn-primary bg-primary" @click="leave_summary()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -3109,10 +3109,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="ind_attendance_re()">
+                        <button class="btn btn-primary bg-primary" @click="ind_attendance_re()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -3324,11 +3324,11 @@
 
                     </div>
                     <div class="modal-footer">
-                        <a target="_blank" v-bind:href="`salary_report/`" class="btn btn-primary">
+                        <a target="_blank" v-bind:href="`salary_report/`" class="btn btn-primary bg-primary">
                             View Report
                         </a>
 
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
                         </button>
                     </div>
                 </div>

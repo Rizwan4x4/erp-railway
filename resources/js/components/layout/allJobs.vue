@@ -17,7 +17,7 @@
                                 <input v-model="location" style="height:55px;" type="text" id="UserRole" class="form-control mb-md-0 mb-2" placeholder="Location" />
                             </div>
                             <div class="d-grid col-lg-12 col-md-12 mb-1 mb-lg-0">
-                                <button @click="view_jobs()" style="border-radius:2px; margin-top:1%; height:90%;" type="button" class="btn btn-primary waves-effect waves-float waves-light">Search jobs</button>
+                                <button @click="view_jobs()" style="border-radius:2px; margin-top:1%; height:90%;" type="button" class="btn btn-primary bg-primary waves-effect waves-float waves-light">Search jobs</button>
                             </div>
                             <div class="demo-inline-spacing">
                                 <div class="form-check form-check-primary">
@@ -77,7 +77,7 @@
                                                         <td>{{job_detail1.EndDate}}</td>
                                                         <td>{{job_detail1.JobNumber}}</td>
                                                         <td style="width:10%">
-                                                            <button @click="fetch_job(job_detail1.JobID)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcandidate">
+                                                            <button @click="fetch_job(job_detail1.JobID)" type="button" class="btn btn-primary bg-primary" data-bs-toggle="modal" data-bs-target="#addcandidate">
                                                                 Apply
                                                             </button>
                                                         </td>
@@ -217,7 +217,7 @@
                                     <input type="number" v-model="a_c_exp_salary" class="form-control" placeholder="Expected Salary" />
                                 </div>
                                 <div class="col-12 text-center mt-2 pt-50">
-                                    <button :disabled="disabled" @click="delay()" class="btn btn-primary me-1">Add</button>
+                                    <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1">Add</button>
                                     <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                         Cancle
                                     </button>

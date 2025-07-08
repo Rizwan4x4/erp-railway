@@ -61,7 +61,7 @@
 .vertical-layout.vertical-menu-modern.menu-expanded .main-menu {
     left: 28px;
     top: 18px;
-    width: auto;
+    width: calc(100% - 80%);
     height: 95%;
     transform: none;
 }

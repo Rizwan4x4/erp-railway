@@ -70,7 +70,7 @@
                                             </div>
                                             <div class="col-md-1">
                                                 <div style="height:27px;"></div>
-                                                <button @click="get_users()" class="dt-button add-new btn btn-primary" tabindex="0" type="button">Search</button>
+                                                <button @click="get_users()" class="dt-button add-new btn btn-primary bg-primary" tabindex="0" type="button">Search</button>
                                             </div>
                                         </div>
                                     </div>

@@ -91,7 +91,7 @@
                 <input type="text" v-model="search_name" class="form-control" placeholder="Search By Emp. Name or Code">
             </div>
             <div class="col-md-3 col-12 mb-2">
-                <button @click="search_member()" class="dt-button add-new btn btn-primary" tabindex="0" type="button">
+                <button @click="search_member()" class="dt-button add-new btn btn-primary bg-primary" tabindex="0" type="button">
                     <span>Search</span>
                 </button>
             </div>

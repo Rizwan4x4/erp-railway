@@ -124,7 +124,7 @@
     </div>
     <div class="drag-target"></div>
     <div class="footer footer-static footer-light">
-        <p class="clearfix mb-0" style="margin-left:30px;margin-right:30px;padding-bottom: 30px"><span
+        <p class="clearfix mb-0" style="margin-left:55px;margin-right:30px;padding-bottom: 30px"><span
                 class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2022<a class="ms-25"
                     href="#" target="_blank">SA Systems</a><span class="d-none d-sm-inline-block">, All rights
                     Reserved</span></span></p>

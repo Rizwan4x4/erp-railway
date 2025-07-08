@@ -50,7 +50,7 @@
                                         <input type="text" v-model="keyword1" class="form-control p-2" placeholder="Search By Name or Employee code">
                                     </div>
                                     <div class="col-md-3 col-12 mb-2 position-relative">
-                                        <button v-if="hasPermission('Payroll Apply Dues')" data-bs-toggle="modal" data-bs-target="#hireinterview" class="btn btn-primary bg-primary bg-primary p-2">Apply Dues</button>
+                                        <button v-if="hasPermission('Payroll Apply Dues')" data-bs-toggle="modal" data-bs-target="#hireinterview" class="btn btn-primary bg-primary p-2">Apply Dues</button>
 
                                         <button v-else class="btn btn-danger">Apply Dues</button>  </div>
                                 </div>
@@ -123,7 +123,7 @@
                                         <h1 class="fw-bolder">Confirmation</h1>
                                         <h5>Are you want to approve the dues of selected employee?</h5>
                                         <div class="text-center" style="text-align:center">
-                                            <button type="button" :disabled="disabled2" @click="delay2()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
+                                            <button type="button" :disabled="disabled2" @click="delay2()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">No</button>
                                         </div>
                                     </div>
@@ -175,7 +175,7 @@
                                             <input v-model="emp_description" type="text" id="modalAddCardName" class="form-control" placeholder="Enter description" />
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button data-bs-dismiss="modal" aria-label="Close" type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary me-1 mt-1">Apply Dues</button>
+                                            <button data-bs-dismiss="modal" aria-label="Close" type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary bg-primary me-1 mt-1">Apply Dues</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>
@@ -230,7 +230,7 @@
                                 <input v-model="edit_description" type="text" id="modalAddCardName" class="form-control" />
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" data-bs-dismiss="modal" aria-label="Close" :disabled="disabled" @click="delay()" class="btn btn-primary me-1 mt-1">Update</button>
+                                <button type="submit" data-bs-dismiss="modal" aria-label="Close" :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1 mt-1">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                     Cancel
                                 </button>

@@ -98,10 +98,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="bsheet_report()">
+                        <button class="btn btn-primary bg-primary" @click="bsheet_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -425,7 +425,7 @@
                             <i v-if="pdfL1" class="spinner-border spinner-border-sm"></i>
 
                             Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="bsheet_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="bsheet_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -459,10 +459,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="CashF_report()">
+                        <button class="btn btn-primary bg-primary" @click="CashF_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -540,7 +540,7 @@
                                                     customer security deposits- interset free
                                                 </td>
                                             </tr>
-                                            <tr>
+
                                             <tr>
                                                 <td style=" border-style: none !important;">
                                                     Adnaces,deposits,prepayments and other receivables
@@ -840,7 +840,7 @@
                         <button type="button" @click="generateCashflowstatementReport()" class="btn btn-gradient-info">
                             Pdf
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal">close</button>
                     </div>
                 </div>
             </div>
@@ -872,10 +872,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="chartofAccounts_Summary()">
+                        <button class="btn btn-primary bg-primary" @click="chartofAccounts_Summary()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">
                             Close
                         </button>
                     </div>
@@ -1010,10 +1010,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="deliverydetails_report()">
+                        <button class="btn btn-primary bg-primary" @click="deliverydetails_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -1116,7 +1116,7 @@
                         <button type="button" @click="generateDeliverydetailReport()" class="btn btn-gradient-info">
                             <i v-if="pdfL3" class="spinner-border spinner-border-sm"></i>
                             Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="deliverydetails_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="deliverydetails_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -1169,10 +1169,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="bankledger ? BankledgerFun() : ledger_report()">
+                        <button class="btn btn-primary bg-primary" @click="bankledger ? BankledgerFun() : ledger_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -1406,7 +1406,7 @@
                         <a target="_blank" v-bind:href="`ledger_get_general/${l_start_date}/${l_end_date}/${l_vendor_name}`" class="btn btn-gradient-info">
                             Pdf
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="ledger_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="ledger_report1()">close</button>
                     </div>
 
                 </div>
@@ -1460,7 +1460,7 @@
                     <!--                                <span>Excel</span>-->
                     <!--                            </div>-->
                     <!--                        </button>-->
-                    <!--                        <buuton class="btn btn-primary" @click="downloadExcel">-->
+                    <!--                        <buuton class="btn btn-primary bg-primary" @click="downloadExcel">-->
                     <!--                            download excel-->
                     <!--                        </buuton>-->
 
@@ -1468,7 +1468,7 @@
                     <!--                            class="btn btn-gradient-info">-->
                     <!--                            Pdf-->
                     <!--                        </a>-->
-                    <!--                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"-->
+                    <!--                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"-->
                     <!--                            @click="ledger_report1()">close</button>-->
                     <!--                    </div>-->
                 </div>
@@ -1505,10 +1505,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="ploss_report()">
+                        <button class="btn btn-primary bg-primary" @click="ploss_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -1778,7 +1778,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'profit_loss_id')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateProfitLossReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="ploss_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="ploss_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -1806,13 +1806,13 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <!-- <a target="_blank" v-bind:href="`Accounts/tax_letter1/${tax}`" class="btn btn-primary">
+                        <!-- <a target="_blank" v-bind:href="`Accounts/tax_letter1/${tax}`" class="btn btn-primary bg-primary">
                                 View Report
                             </a> -->
-                        <button class="btn btn-primary" @click="taxdetails_report()">
+                        <button class="btn btn-primary bg-primary" @click="taxdetails_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -1881,7 +1881,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'tax_detail')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateTaxdetailReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="taxdetails_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="taxdetails_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -1915,10 +1915,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" @click="trail_report()">
+                    <button class="btn btn-primary bg-primary" @click="trail_report()">
                         View Report
                     </button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                 </div>
             </div>
         </div>
@@ -2020,7 +2020,7 @@
                     <a target="_blank" v-bind:href="`accounts/trial_balance_report/${t_start_date}/${t_end_date}`" class="btn btn-gradient-info">
                         Pdf
                     </a>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="trail_report1()">close</button>
+                    <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="trail_report1()">close</button>
                 </div>
             </div>
         </div>
@@ -2065,10 +2065,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="vob_report()">
+                        <button class="btn btn-primary bg-primary" @click="vob_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -2260,7 +2260,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'Datewise_Ledger_Detail')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateOverallBalanceReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="vob_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="vob_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -2957,7 +2957,7 @@ ploss_report1() {
                     this.options1.push($this.agnstpayment[i].ID + '_' + $this.agnstpayment[i].AccountName);
                 }
             })
-       
+
 
             axios.get('get_currency').then((response) => {
             this.currency = response.data[0].Currency;

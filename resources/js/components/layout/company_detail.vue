@@ -66,7 +66,7 @@
                                             </li>
                                         </ul>
                                         <div class="d-flex justify-content-center pt-2">
-                                            <router-link :to="{ name: 'company_edit', params: { id: compan1.company_id }}"  class="btn btn-primary me-1" >
+                                            <router-link :to="{ name: 'company_edit', params: { id: compan1.company_id }}"  class="btn btn-primary bg-primary me-1" >
                                                 Edit
                                             </router-link>
 

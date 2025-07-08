@@ -20,10 +20,10 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div class="card">
-                            <div class="col-sm-12 col-lg-12" style="margin:5px;">
+                        <div class="card top-radius bottom-radius border-0">
+                            <div class="col-sm-12 col-lg-12 p-2" style="margin:5px;">
                                 <div class="dt-buttons d-inline-flex mt-50">
-                                    <router-link style="float:left" to="/Accounts/units_cash" class="btn btn-primary waves-effect waves-float waves-light">Cash Supervision</router-link>
+                                    <router-link style="float:left" to="/Accounts/units_cash" class="btn btn-primary bg-primary waves-effect waves-float waves-light">Cash Supervision</router-link>
                                 </div>
                                 <div class="dt-buttons d-inline-flex mt-50">
                                     <router-link style="float:left" to="/Accounts/units_chq" class="btn btn-secondary waves-effect waves-float waves-light">Cheque Supervision</router-link>
@@ -40,17 +40,17 @@
                                     <router-link style="float:left" to="/Accounts/pending_adjust" class="btn btn-warning waves-effect waves-float waves-light">Suspend Entries</router-link>
                                 </div>
                                 <div class="dt-buttons d-inline-flex mt-50" style="float: right;margin-right: 10px">
-                                    <router-link style="float:left" to="/Accounts/Sam_Voucher" class="btn btn-primary waves-effect waves-float waves-light">SAM Vouchers</router-link>
+                                    <router-link style="float:left" to="/Accounts/Sam_Voucher" class="btn btn-primary bg-primary waves-effect waves-float waves-light">SAM Vouchers</router-link>
                                 </div>
                             </div>
 
                             <div class="row" style="margin-left:5px;">
                                 <div class="col-md-2 col-12">
-                                    <label class="form-label">Date from <span style="color: #DB4437; font-size: 11px;">*</span></label>
+                                    <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date from <span style="color: #DB4437; font-size: 11px;">*</span></label>
                                     <input type="date" v-model="datefrom" class="form-control">
                                 </div>
                                 <div class="col-md-2 col-12">
-                                    <label class="form-label">Date to <span style="color: #DB4437; font-size: 11px;">*</span></label>
+                                    <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date to <span style="color: #DB4437; font-size: 11px;">*</span></label>
                                     <input type="date" class="form-control" v-model="dateto">
                                 </div>
                                 <div class="col-md-1 col-12 mb-3 position-relative">
@@ -84,7 +84,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-12 col-md-3">
-                                    <button style="float:left" :disabled="disabled1" @click="proceed_report()" class="btn btn-primary waves-effect waves-float waves-light">Proceed</button>
+                                    <button style="float:left" :disabled="disabled1" @click="proceed_report()" class="btn btn-primary bg-primary waves-effect waves-float waves-light">Proceed</button>
                                 </div>
                             </div>
                             <div class="table-responsive" style="overflow-x: initial !important; margin-top:10px;">
@@ -133,6 +133,10 @@
     export default {
         data() {
             return {
+                 images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
                 adsdata: {},
                 companydetail: {},
                 paymentVchrs: {},

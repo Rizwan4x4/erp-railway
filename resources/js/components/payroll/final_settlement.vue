@@ -150,7 +150,7 @@
                                     </div>
                                     <div class="col-md-1">
                                         <div style="height:27px;"></div>
-                                        <button @click="getbyfilter()" class="dt-button add-new btn btn-primary"
+                                        <button @click="getbyfilter()" class="dt-button add-new btn btn-primary bg-primary"
                                             tabindex="0" type="button">Search</button>
                                     </div>
                                 </div>
@@ -603,7 +603,7 @@
                                 <div class="col-12 text-center mt-2 pt-50">
                                     <button v-if="man != 'view' && man != 'pay' && man != ''" type="button"
                                         :disabled="disabled1" @click="delay1()"
-                                        class="btn btn-primary waves-effect waves-float waves-light"
+                                        class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                         data-bs-dismiss="modal" aria-label="Close">Update</button>
                                     <button v-if="man == 'pay' && man != '' && us_man == 'Paid'" type="button"
                                         :disabled="disabled1" @click="delay()"
@@ -706,7 +706,7 @@
                                     </div>
                                     <div class="col-12 text-center">
                                         <button :disabled="disabled2" @click="delay2()" type="submit"
-                                            class="btn btn-primary me-1 mt-2" data-bs-dismiss="modal"
+                                            class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal"
                                             aria-label="Close">Apply</button>
                                         <button type="reset" class="btn btn-outline-secondary mt-2"
                                             data-bs-dismiss="modal" aria-label="Close">
@@ -733,7 +733,7 @@
                                     <h5>Do you want to delete the Final Settlement?</h5>
                                     <div class="text-center">
                                         <button type="button" @click="delete_settlement(usid)"
-                                            class="btn btn-primary waves-effect waves-float waves-light"
+                                            class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                             data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                         <button type="submit" class="btn btn-outline-primary waves-effect"
                                             data-bs-dismiss="modal" aria-label="Close">No</button>

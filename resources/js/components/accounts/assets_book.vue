@@ -19,8 +19,8 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div clas="card" style="background-color:white !important">
-                            <div style="margin-bottom:20px;padding-top:20px" class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
+                        <div class="card top-radius bottom-radius border-0" style="background-color:white !important">
+                            <div class="d-flex justify-content-between align-items-center header-actions row p-3">
                                 <div class="col-sm-5 col-lg-5 ps-xl-75 ps-0">
 
                                 </div>
@@ -135,3 +135,22 @@ export default {
 }
 
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

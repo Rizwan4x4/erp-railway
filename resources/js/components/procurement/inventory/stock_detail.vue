@@ -9,11 +9,8 @@
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <router-link
-                                    to="/accounts"
-                                    style="text-decoration: none"
-                                    >Accounts Dashboard</router-link
-                                >
+                                <router-link to="/accounts" style="text-decoration: none">Accounts
+                                    Dashboard</router-link>
                             </li>
                             <li class="breadcrumb-item active">Stock Detail</li>
                         </ol>
@@ -22,249 +19,151 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div class="row">
-                            <div class="col-xl-2 col-md-4 col-sm-6">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div
-                                            class="avatar bg-light-info p-50 mb-1"
-                                        >
-                                            <div class="avatar-content">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="14"
-                                                    height="14"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="feather feather-eye font-medium-5"
-                                                >
-                                                    <path
-                                                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
-                                                    ></path>
-                                                    <circle
-                                                        cx="12"
-                                                        cy="12"
-                                                        r="3"
-                                                    ></circle>
-                                                </svg>
+                        <div class="card top-radius bottom-radius px-3 py-4">
+                            <div class="row">
+                                <div class="col-xl-2 col-md-4 col-sm-6">
+                                    <div class="card text-center top-radius bottom-radius border-0 m-0">
+                                        <div class="card-body">
+                                            <div class="avatar bg-light-info p-50 mb-1">
+                                                <div class="avatar-content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-eye font-medium-5">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                        <circle cx="12" cy="12" r="3"></circle>
+                                                    </svg>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <h2 class="fw-bolder">
-                                            {{ counter.total_products }}
-                                        </h2>
-                                        <p class="card-text">Total Products</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-md-4 col-sm-6">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div
-                                            class="avatar bg-light-warning p-50 mb-1"
-                                        >
-                                            <div class="avatar-content">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="14"
-                                                    height="14"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="feather feather-message-square font-medium-5"
-                                                >
-                                                    <path
-                                                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-                                                    ></path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <h2 class="fw-bolder">
-                                            {{ counter.available_products }}
-                                        </h2>
-                                        <p class="card-text">
-                                            Available Products
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-md-4 col-sm-6">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div
-                                            class="avatar bg-light-danger p-50 mb-1"
-                                        >
-                                            <div class="avatar-content">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="14"
-                                                    height="14"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="feather feather-shopping-bag font-medium-5"
-                                                >
-                                                    <path
-                                                        d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
-                                                    ></path>
-                                                    <line
-                                                        x1="3"
-                                                        y1="6"
-                                                        x2="21"
-                                                        y2="6"
-                                                    ></line>
-                                                    <path
-                                                        d="M16 10a4 4 0 0 1-8 0"
-                                                    ></path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <h2 class="fw-bolder">
-                                            {{ counter.not_available }}
-                                        </h2>
-                                        <p class="card-text">Not Available</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-md-4 col-sm-6">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div
-                                            class="avatar bg-light-primary p-50 mb-1"
-                                        >
-                                            <div class="avatar-content">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="14"
-                                                    height="14"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="feather feather-heart font-medium-5"
-                                                >
-                                                    <path
-                                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                                                    ></path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <h2 class="fw-bolder">
-                                            {{ counter.available_stock }}
-                                        </h2>
-                                        <p class="card-text">Available Stock</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-md-4 col-sm-6">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div
-                                            class="avatar bg-light-success p-50 mb-1"
-                                        >
-                                            <div class="avatar-content">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="14"
-                                                    height="14"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="feather feather-award font-medium-5"
-                                                >
-                                                    <circle
-                                                        cx="12"
-                                                        cy="8"
-                                                        r="7"
-                                                    ></circle>
-                                                    <polyline
-                                                        points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
-                                                    ></polyline>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div v-if="stockloader">
-                                            <div
-                                                class="spinner-border spinner-border-lg mt-2"
-                                                role="status"
-                                            ></div>
-                                        </div>
-                                        <div v-else>
                                             <h2 class="fw-bolder">
-                                                {{ counters.stock_value }}
+                                                {{ counter.total_products }}
                                             </h2>
+                                            <p class="card-text">Total Products</p>
                                         </div>
-                                        <p class="card-text">Stock Value</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-2 col-md-4 col-sm-6">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <div
-                                            class="avatar bg-light-danger p-50 mb-1"
-                                        >
-                                            <div class="avatar-content">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="14"
-                                                    height="14"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="feather feather-truck font-medium-5"
-                                                >
-                                                    <rect
-                                                        x="1"
-                                                        y="3"
-                                                        width="15"
-                                                        height="13"
-                                                    ></rect>
-                                                    <polygon
-                                                        points="16 8 20 8 23 11 23 16 16 16 16 8"
-                                                    ></polygon>
-                                                    <circle
-                                                        cx="5.5"
-                                                        cy="18.5"
-                                                        r="2.5"
-                                                    ></circle>
-                                                    <circle
-                                                        cx="18.5"
-                                                        cy="18.5"
-                                                        r="2.5"
-                                                    ></circle>
-                                                </svg>
+                                <div class="col-xl-2 col-md-4 col-sm-6">
+                                    <div class="card text-center top-radius bottom-radius border-0 m-0">
+                                        <div class="card-body">
+                                            <div class="avatar bg-light-warning p-50 mb-1">
+                                                <div class="avatar-content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-message-square font-medium-5">
+                                                        <path
+                                                            d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+                                                        </path>
+                                                    </svg>
+                                                </div>
                                             </div>
+                                            <h2 class="fw-bolder">
+                                                {{ counter.available_products }}
+                                            </h2>
+                                            <p class="card-text">
+                                                Available
+                                            </p>
                                         </div>
-                                        <h2 class="fw-bolder">
-                                            {{ counter.expired_items }}
-                                        </h2>
-                                        <p class="card-text">Expired Items</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-4 col-sm-6">
+                                    <div class="card text-center top-radius bottom-radius border-0 m-0">
+                                        <div class="card-body">
+                                            <div class="avatar bg-light-danger p-50 mb-1">
+                                                <div class="avatar-content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-shopping-bag font-medium-5">
+                                                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z">
+                                                        </path>
+                                                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                                                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <h2 class="fw-bolder">
+                                                {{ counter.not_available }}
+                                            </h2>
+                                            <p class="card-text">Not Available</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-4 col-sm-6">
+                                    <div class="card text-center top-radius bottom-radius border-0 m-0">
+                                        <div class="card-body">
+                                            <div class="avatar bg-light-primary p-50 mb-1">
+                                                <div class="avatar-content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-heart font-medium-5">
+                                                        <path
+                                                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <h2 class="fw-bolder">
+                                                {{ counter.available_stock }}
+                                            </h2>
+                                            <p class="card-text">Available Stock</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-4 col-sm-6">
+                                    <div class="card text-center top-radius bottom-radius border-0 m-0">
+                                        <div class="card-body">
+                                            <div class="avatar bg-light-success p-50 mb-1">
+                                                <div class="avatar-content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-award font-medium-5">
+                                                        <circle cx="12" cy="8" r="7"></circle>
+                                                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88">
+                                                        </polyline>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div v-if="stockloader">
+                                                <div class="spinner-border spinner-border-lg mt-2" role="status"></div>
+                                            </div>
+                                            <div v-else>
+                                                <h2 class="fw-bolder">
+                                                    {{ counters.stock_value }}
+                                                </h2>
+                                            </div>
+                                            <p class="card-text">Stock Value</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-4 col-sm-6">
+                                    <div class="card text-center top-radius bottom-radius border-0">
+                                        <div class="card-body">
+                                            <div class="avatar bg-light-danger p-50 mb-1">
+                                                <div class="avatar-content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-truck font-medium-5">
+                                                        <rect x="1" y="3" width="15" height="13"></rect>
+                                                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <h2 class="fw-bolder">
+                                                {{ counter.expired_items }}
+                                            </h2>
+                                            <p class="card-text">Expired Items</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div
-                            class="card"
-                            style="background-color: white !important"
-                        >
+                        <div class="card top-radius bottom-radius border-0" style="background-color: white !important">
                             <div class="card-body border-bottom">
                                 <h4 class="card-title">Search & Filter</h4>
                                 <div class="row">
@@ -277,20 +176,12 @@
                                     <!--                                        </div>-->
                                     <!--                                    </div>-->
                                     <div class="col-md-3 user_status">
-                                        <div
-                                            class="dt-buttons d-inline-flex mt-50"
-                                        >
-                                            <router-link
-                                              v-if="hasPermission('Inventory StockDetail stock-adjustment') "
+                                        <div class="dt-buttons d-inline-flex mt-50">
+                                            <router-link v-if="hasPermission('Inventory StockDetail stock-adjustment')"
                                                 to="/inventory/adjustment"
-                                                class="btn btn-primary waves-effect"
-                                                >Inventory
-                                                Adjustment</router-link
-                                            >
-                                            <button
-                                                v-else
-                                                class="btn btn-danger waves-effect"
-                                            >
+                                                class="btn btn-primary bg-primary waves-effect">Inventory
+                                                Adjustment</router-link>
+                                            <button v-else class="btn btn-danger waves-effect">
                                                 Inventory Adjustment
                                             </button>
                                         </div>
@@ -332,56 +223,32 @@
 
                             <!--                            <div style="text-align:center;padding-top:20px">-->
                             <!--                            </div>-->
-                            <div
-                                class="d-flex justify-content-center"
-                                v-if="loader"
-                            >
-                                <div
-                                    class="spinner-border spinner-border-lg mt-2"
-                                    role="status"
-                                    style="width: 10rem; height: 10rem"
-                                ></div>
+                            <div class="d-flex justify-content-center" v-if="loader">
+                                <div class="spinner-border spinner-border-lg mt-2" role="status"
+                                    style="width: 10rem; height: 10rem"></div>
                             </div>
 
                             <div v-else>
                                 <div class="fixed-height-table">
-                                    <vue-good-table
-                                        :columns="columns"
-                                        :rows="adsdata"
-                                        :search-options="{
-                                            enabled: true,
-                                        }"
-                                        :stickyHeader="true"
-                                        :pagination-options="{
-                                            enabled: true,
-                                            perPageDropdown: [
-                                                10, 20, 50, 100, 500, 1000,
-                                            ],
-                                        }"
-                                    >
-                                        <template
-                                            slot="table-row"
-                                            slot-scope="props"
-                                        >
-                                            <span
-                                                v-if="
-                                                    props.column.field ==
-                                                    'action'
-                                                "
-                                            >
-                                                <a
-                                                    @click="
-                                                        getitemdata(
-                                                            props.row.ItemID
-                                                        )
-                                                    "
-                                                    class="me-25"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#viewstock"
-                                                >
-                                                    <i
-                                                        class="fa-solid fa-eye"
-                                                    ></i>
+                                    <vue-good-table :columns="columns" :rows="adsdata" :search-options="{
+                                        enabled: true,
+                                    }" :stickyHeader="true" :pagination-options="{
+                                enabled: true,
+                                perPageDropdown: [
+                                    10, 20, 50, 100, 500, 1000,
+                                ],
+                            }">
+                                        <template slot="table-row" slot-scope="props">
+                                            <span v-if="
+                                                props.column.field ==
+                                                'action'
+                                            ">
+                                                <a @click="
+                                                    getitemdata(
+                                                        props.row.ItemID
+                                                    )
+                                                    " class="me-25" data-bs-toggle="modal" data-bs-target="#viewstock">
+                                                    <i class="fa-solid fa-eye"></i>
                                                 </a>
                                             </span>
                                         </template>
@@ -392,30 +259,18 @@
                     </section>
                     <!-- users list ends -->
                 </div>
-                <div
-                    class="modal fade"
-                    id="viewstock"
-                    tabindex="-1"
-                    aria-hidden="true"
-                >
-                    <div
-                        class="modal-dialog modal-lg modal-dialog-centered modal-edit-user"
-                    >
+                <div class="modal fade" id="viewstock" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-edit-user">
                         <div class="modal-content">
                             <div class="modal-header bg-transparent">
-                                <button
-                                    type="button"
-                                    class="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                                ></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="col-xl-12 col-md-12 col-12">
                                 <div class="card invoice-preview-card">
                                     <div class="card-body invoice-padding pb-0">
                                         <div
-                                            class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0"
-                                        >
+                                            class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
                                             <div class="col-md-6">
                                                 <h3 style="text-align: center">
                                                     Product
@@ -425,25 +280,20 @@
                                                 </h3>
                                             </div>
                                             <div class="col-md-6">
-                                                <h3
-                                                    style="
+                                                <h3 style="
                                                         text-align: center;
                                                         padding-top: 30px;
-                                                    "
-                                                >
+                                                    ">
                                                     {{ Number(getitemtotal) }}
                                                 </h3>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="divider">
-                                        <div
-                                            class="divider-text"
-                                            style="
+                                        <div class="divider-text" style="
                                                 font-size: 24px;
                                                 font-weight: 900;
-                                            "
-                                        >
+                                            ">
                                             Stock Overall Detail
                                         </div>
                                     </div>
@@ -473,38 +323,34 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr
-                                                    v-for="getitemwise1 in getitemwise"
-                                                >
+                                                <tr v-for="getitemwise1 in getitemwise">
                                                     <td class="py-1">
                                                         <span class="fw-bold">{{
                                                             getitemwise1.Dated
-                                                        }}</span>
+                                                            }}</span>
                                                     </td>
                                                     <td class="py-1">
                                                         <span class="fw-bold">{{
                                                             getitemwise1.Name
-                                                        }}</span>
+                                                            }}</span>
                                                     </td>
                                                     <td class="py-1">
                                                         <span class="fw-bold">{{
                                                             getitemwise1.CategoryName
-                                                        }}</span>
+                                                            }}</span>
                                                     </td>
                                                     <td class="py-1">
                                                         <span class="fw-bold">{{
                                                             getitemwise1.Quantity
-                                                        }}</span>
+                                                            }}</span>
                                                     </td>
                                                     <td class="py-1">
                                                         <span class="fw-bold">{{
                                                             getitemwise1.Unit
-                                                        }}</span>
+                                                            }}</span>
                                                     </td>
                                                     <td class="py-1">
-                                                        <p
-                                                            class="card-text fw-bold mb-25"
-                                                        >
+                                                        <p class="card-text fw-bold mb-25">
                                                             {{
                                                                 getitemwise1.Reference
                                                             }}
@@ -600,7 +446,7 @@ export default {
             axios
                 .get("accounts/getindstock/" + this.itemid)
                 .then((response) => (this.getitemwise = response.data))
-                .catch((error) => {});
+                .catch((error) => { });
             axios
                 .get("accounts/getindtotalstock/" + this.itemid)
                 .then(
@@ -649,6 +495,8 @@ export default {
             .then((response) => {
                 this.stockloader = false;
                 this.counters = response.data;
+                console.log(this.counters,"ye stock loader ha");
+
             })
             .catch((error) => {
                 this.stockloader = false;
@@ -662,6 +510,8 @@ export default {
             .get("account_stock_available")
             .then((res) => {
                 this.counter = res.data.data;
+                // console.log(this.counter," account_stock avail");
+
             })
             .catch((err) => {
                 console.log(err);
@@ -674,13 +524,32 @@ export default {
     height: 560px;
     overflow-y: auto;
 }
+
 .vgt-table thead {
     position: sticky;
     top: 0;
     background-color: #F8F8F8;
 }
-.vgt-global-search__input{
+
+.vgt-global-search__input {
     flex-grow: 0;
 }
-</style>
 
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

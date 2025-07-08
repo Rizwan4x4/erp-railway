@@ -56,7 +56,7 @@
                                         <input type="text" v-model="keyword1" class="form-control" placeholder="Search By Name or Employee code">
                                     </div>
                                     <div class="col-md-3 col-12 mb-2 position-relative">
-                                        <button data-bs-toggle="modal" data-bs-target="#applyarrears" class="btn btn-primary">Apply Arrears</button>
+                                        <button data-bs-toggle="modal" data-bs-target="#applyarrears" class="btn btn-primary bg-primary">Apply Arrears</button>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -134,7 +134,7 @@
                                         <h1 class="fw-bolder">Confirmation</h1>
                                         <h5>Do you want to delete the arrears?</h5>
                                         <div class="text-center">
-                                            <button :disabled="disabled3" type="button" @click="delay3()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
+                                            <button :disabled="disabled3" type="button" @click="delay3()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">No</button>
                                         </div>
                                     </div>
@@ -153,7 +153,7 @@
                                         <h1 class="fw-bolder">Confirmation</h1>
                                         <h5>Are you want to approve the arrears of selected employee?</h5>
                                         <div class="text-center" style="text-align:center">
-                                            <button type="button" :disabled="disabled" @click="delay2()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
+                                            <button type="button" :disabled="disabled" @click="delay2()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">No</button>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@
                                             <input v-model="emp_description" type="text" id="modalAddCardName" class="form-control" />
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button type="submit" :disabled="disabled" @click="delay()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Apply Now</button>
+                                            <button type="submit" :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Apply Now</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>
@@ -243,7 +243,7 @@
                                 <input v-model="edit_description" type="text" id="modalAddCardName" class="form-control" />
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                <button type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                     Cancel
                                 </button>

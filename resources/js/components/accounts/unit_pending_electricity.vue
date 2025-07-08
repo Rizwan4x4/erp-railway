@@ -19,14 +19,14 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div clas="card" style="background-color:white !important">
+                        <div class="card top-radius bottom-radius border-0">
                             <div style="margin-bottom:20px;padding-top:20px" class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                                 <div class="col-sm-5 col-lg-5 ps-xl-75 ps-0 d-flex">
-                                        <div class="col-md-6 col-12 mb-3 position-relative ">
-                                            <h5 style="margin-top:30px;">Net Booking Amount: {{Math.floor(get_sum).toLocaleString()}}</h5>
+                                        <div class="col-md-7 col-12 mb-3 position-relative ">
+                                            <h5>Net Booking Amount: {{Math.floor(get_sum).toLocaleString()}}</h5>
                                         </div>
                                         <div class="col-md-5 col-12 mb-3 position-relative mx-4">
-                                            <h5 style="margin-top:30px;">Selected: {{Math.floor(get_sum_total).toLocaleString()}}</h5>
+                                            <h5>Selected: {{Math.floor(get_sum_total).toLocaleString()}}</h5>
                                         </div>
 
                                 </div>
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="invoice_status ms-sm-2" >
 
-                                            <button :disabled="disabled1" style="float:left" @click="delay1()"  class="btn btn-primary waves-effect">Proceed</button>
+                                            <button :disabled="disabled1" style="float:left" @click="delay1()"  class="btn btn-primary bg-primary waves-effect">Proceed</button>
                                             </div>
 
                                     </div>

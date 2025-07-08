@@ -26,7 +26,7 @@
                                 <!-- Sidebar -->
                                 <div class="sidebar-wrapper col-md-2" style="background-color:white; border-right:1px solid lightgray">
                                     <div class=" row card-body d-flex justify-content-center">
-                                        <button class="col-md-12 btn btn-primary btn-toggle-sidebar w-100" data-bs-toggle="modal" data-bs-target="#add-event">
+                                        <button class="col-md-12 btn btn-primary bg-primary btn-toggle-sidebar w-100" data-bs-toggle="modal" data-bs-target="#add-event">
                                             <span class="align-middle">Add task</span>
                                         </button>
                                     </div>
@@ -115,7 +115,7 @@
                                             <textarea v-model="description" name="event-description-editor" id="event-description-editor" class="form-control"></textarea>
                                         </div>
                                         <div class="mb-1 d-flex">
-                                            <button :disabled="disabled" @click="delay()" type="submit" class="btn btn-primary add-event-btn me-1"data-bs-dismiss="modal" aria-label="Close">Add</button>
+                                            <button :disabled="disabled" @click="delay()" type="submit" class="btn btn-primary bg-primary add-event-btn me-1"data-bs-dismiss="modal" aria-label="Close">Add</button>
                                             <button type="button" class="btn btn-outline-secondary btn-cancel" data-bs-dismiss="modal">Cancel</button>
                                         </div>
                                     </form>

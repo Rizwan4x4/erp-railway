@@ -10,9 +10,10 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
+                        <div class="card top-radius bottom-radius px-3 py-4">
                         <div class="row">
                             <div class="col-lg-4 col-sm-12">
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0 m-0">
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
                                             <h3 class="fw-bolder mb-75">{{count_users.all_users}}</h3>
@@ -27,7 +28,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12">
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0 m-0">
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
                                             <h3 class="fw-bolder mb-75">{{count_users.active_users}}</h3>
@@ -42,7 +43,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12">
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0 m-0">
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
                                             <h3 class="fw-bolder mb-75">{{count_users.inactive_users}}</h3>
@@ -57,26 +58,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card" style="background-color:white !important">
+                        </div>
+                        <div class="card top-radius bottom-radius border-0">
                             <div class="card-body border-bottom p-3">
                                 <h4 class="card-title">Search &amp; Filter</h4>
                                 <div class="row mb-3">
                                     <div class="col-md-4 user_role">
-                                        <label class="form-label" for="UserRole">Designation</label>
+                                        <label class="form-label" for="UserRole"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Designation</label>
                                         <select id="UserRole" @change='getdesignationwise()' v-model="designation" class="form-select mb-md-0 mb-2">
                                             <option value="">All Designations </option>
                                             <option v-for='designation1 in designations' :value='designation1.designation_name'>{{ designation1.designation_name }}</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 user_plan">
-                                        <label class="form-label" for="UserPlan">Location</label>
+                                        <label class="form-label" for="UserPlan"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Location</label>
                                         <select v-model="location" @change='getlocationwise()' id="UserPlan" class="form-select mb-md-0 mb-2">
                                             <option value="">All Locations </option>
                                             <option v-for='locations1 in locations' :value='locations1.location_name'>{{ locations1.location_name }}</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 user_status">
-                                        <label class="form-label" for="FilterTransaction">Status</label>
+                                        <label class="form-label" for="FilterTransaction"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Status</label>
                                         <select id="FilterTransaction" v-model="status" @change='getstatuswise()' class="form-select text-capitalize mb-md-0 mb-2xx">
                                             <option value="">Both Status </option>
                                             <option value="Active">Active</option>
@@ -96,7 +98,7 @@
                                             </div>
                                         </div>
                                         <div class="dt-buttons d-inline-flex mt-50">
-                                            <router-link to="/settings/create_user" class="dt-button add-new btn btn-primary" tabindex="0" type="button"><span>Add New User</span></router-link>
+                                            <router-link to="/settings/create_user" class="dt-button add-new btn btn-primary bg-primary" tabindex="0" type="button"><span>Add New User</span></router-link>
                                         </div>
                                     </div>
                                 </div>
@@ -423,7 +425,7 @@
 
 
                 <template slot="modal-footer">
-        <button @click="assignrole" class="btn btn-primary">Assign Role</button>
+        <button @click="assignrole" class="btn btn-primary bg-primary">Assign Role</button>
     </template>
 
         </b-modal>
@@ -439,6 +441,10 @@ import Multiselect from 'vue-multiselect'
     },
         data() {
             return {
+                 images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
                 limit: 10,
                 adsdata: {},
                 roles:[],

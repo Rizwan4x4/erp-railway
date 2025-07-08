@@ -17,9 +17,9 @@
                             </ol>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row ">
                         <div class="col-12">
-                            <div class="alert alert-primary" style="padding-top:0px;padding-bottom:0px" role="alert">
+                            <div class="alert alert-primary border-0 top-radius bottom-radius p-3" style="padding-top:0px;padding-bottom:0px" role="alert">
                                 <div class="alert-body" style="min-height: 55px;margin-bottom: 10px;">
                                     <ul class="nav nav-pills mb-2" style="float:left">
                                         <li v-if="hasPermission('Payroll Other Allowances')"  class="nav-item">
@@ -47,8 +47,8 @@
                     </div>
                     <div class="row" id="basic-table">
                         <div class="col-12">
-                            <div class="card">
-                                <div class="row" style="margin-top: 20px">
+                            <div class="card border-0 top-radius bottom-radius ">
+                                <div class="row p-3" style="margin-top: 20px">
                                     <!-- Petrol, Diesel, and HOBC input fields together -->
                                     <div class="col-md-6 col-12 mb-2">
                                         <div class="row">
@@ -75,18 +75,18 @@
                                     <!-- Update Rate button and Add Employee button together -->
                                     <div class="col-md-auto col-10 mb-2">
                                         <button  v-if="hasPermission('Payroll Update Fuel Rates')"  data-bs-toggle="modal" data-bs-target="#updaterate"
-                                                class="btn btn-primary" title="Update Fuel Average Rate">Update fuel
+                                                class="btn btn-primary bg-primary" title="Update Fuel Average Rate">Update fuel
                                             Rates
                                         </button>
                                         <button  v-else
-                                                class="btn btn-primary" title="Update Fuel Average Rate">Update fuel
+                                                class="btn btn-primary bg-primary" title="Update Fuel Average Rate">Update fuel
                                             Rates
                                         </button>
                                         <button v-if="hasPermission('Payroll Add Fuel Allowance')"  data-bs-toggle="modal" data-bs-target="#applyEmpFuelAllowance"
-                                                class="btn btn-primary">Add Employee Allowance
+                                                class="btn btn-primary bg-primary">Add Employee Allowance
                                         </button>
                                         <button v-else
-                                                class="btn btn-primary">Add Employee Allowance
+                                                class="btn btn-primary bg-primary">Add Employee Allowance
                                         </button>
                                     </div>
                                 </div>
@@ -192,7 +192,7 @@
                                         <h5>Do you want to delete the Fuel Allowance?</h5>
                                         <div class="text-center">
                                             <button :disabled="disabled3" type="button" @click="delay3()"
-                                                    class="btn btn-primary waves-effect waves-float waves-light"
+                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                                     data-bs-dismiss="modal" aria-label="Close">Yes
                                             </button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect"
@@ -217,7 +217,7 @@
                                         <h5>Do you want to update the Fuel Rate?</h5>
                                         <div class="text-center">
                                             <button :disabled="disabled3" type="button"
-                                                    class="btn btn-primary waves-effect waves-float waves-light"
+                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                                     data-bs-dismiss="modal" aria-label="Close">Yes
                                             </button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect"
@@ -266,7 +266,7 @@
 
                                         <div class="col-12 text-center">
                                             <button type="submit" :disabled="disabled1" @click="delay1()"
-                                                    class="btn btn-primary me-1 mt-1">Update
+                                                    class="btn btn-primary bg-primary me-1 mt-1">Update
                                             </button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1"
                                                     data-bs-dismiss="modal" aria-label="Close">
@@ -368,7 +368,7 @@
 
                                         <div class="col-12 text-center">
                                             <button type="submit" :disabled="disabled6" @click="delay4()"
-                                                    class="btn btn-primary me-1 mt-1">Update
+                                                    class="btn btn-primary bg-primary me-1 mt-1">Update
                                             </button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1"
                                                     data-bs-dismiss="modal" aria-label="Close">
@@ -427,7 +427,7 @@
 
                                         <div class="col-12 text-center">
                                             <button type="submit" :disabled="disabled" @click="delay()"
-                                                    class="btn btn-primary me-1 mt-1">Add Employee
+                                                    class="btn btn-primary bg-primary me-1 mt-1">Add Employee
                                             </button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1"
                                                     data-bs-dismiss="modal" aria-label="Close">

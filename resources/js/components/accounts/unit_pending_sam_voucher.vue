@@ -37,7 +37,7 @@
                                         <h5>Selected Amount: {{Math.floor(get_sum_total).toLocaleString()}}</h5>
                                     </div>
                                     <div class="col-md-1 col-12">
-                                        <button :disabled="disabled1" @click="proced_booking()" class="btn btn-primary waves-effect">Proceed</button>
+                                        <button :disabled="disabled1" @click="proced_booking()" class="btn btn-primary bg-primary waves-effect">Proceed</button>
                                     </div>
                                     <div class="col-md-1 col-12">
                                     </div>

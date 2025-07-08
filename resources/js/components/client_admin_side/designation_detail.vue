@@ -12,8 +12,8 @@
                         <div class="row">
                             <!-- User Sidebar -->
                             <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0">
-                                <div class="card">
-                                    <div class="card-header">
+                                <div class="card top-radius bottom-radius border-0">
+                                    <div class="card-header top-radius">
                                         <h4 class="card-title">Add New Designation</h4>
                                     </div>
                                     <div class="card-body">
@@ -32,7 +32,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <button v-if="hasPermission('Add new Designantion')"  type="button" @click="submit_designation()" class="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
+                                                    <button v-if="hasPermission('Add new Designantion')"  type="button" @click="submit_designation()" class="btn btn-primary bg-primary me-1 waves-effect waves-float waves-light bg-primary">Submit</button>
                                                     <button  v-if="hasPermission('Reset Designantion')"  type="reset" class="btn btn-outline-secondary waves-effect">Reset</button>
                                                 </div>
                                             </div>
@@ -44,7 +44,7 @@
 
                             <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0">
                                 <!-- User Card -->
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0">
                                     <div class="card-body">
                                         <div style="margin-bottom:20px;" class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
 
@@ -141,7 +141,7 @@
                                             <input type="text" v-model="ed_designation_name" class="form-control" placeholder="Designation name">
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button type="submit" @click="update_designations()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                            <button type="submit" @click="update_designations()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>
@@ -273,3 +273,22 @@
         }
     }
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

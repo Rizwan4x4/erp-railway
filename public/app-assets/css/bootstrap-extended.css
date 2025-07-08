@@ -1046,7 +1046,7 @@ select:-webkit-autofill {
 
 @media (max-width: 1201px) {
   .header-navbar.fixed-top, .header-navbar.floating-nav {
-    left: 0;
+    left: -24px;
     }
   .horizontal-layout .header-navbar .navbar-container {
     padding-left: 0.8rem;
@@ -1061,8 +1061,8 @@ select:-webkit-autofill {
   box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
   transition: all 0.3s ease-in-out, background 0s, color 0s, border-color 0s; }
 
-.card .card {
-  box-shadow: none !important; }
+/* .card .card {
+  box-shadow: none !important; } */
 
 .card .card-title {
   font-weight: 500;

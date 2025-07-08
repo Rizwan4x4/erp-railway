@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
             <div class="header-navbar-shadow-tem-change"></div>
@@ -16,9 +16,127 @@
                 <div class="content-body">
 
                     <div class="row match-height">
-                        <div class="col-lg-8 col-12">
-                            <div class="card card-statistics">
-                                <div class="card-header">
+                        <div class="col-lg-12 col-md-6 col-12">
+                            <div class="row match-height">
+                                <!-- Bar Chart - Orders -->
+                                <div class="col-lg-6 col-md-12 col-6">
+                                    <div class="card top-radius bottom-radius border-0">
+                                        <div class="card-header "
+                                            style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
+                                            <h4 class="card-title" style="width:100%">Top Rated Vendor</h4>
+                                        </div>
+                                        <div class="card-body row g-3">
+                                            <div class="col-md-4 col-12">
+                                                <div
+                                                    class="top-radius bottom-radius bg-light p-2 d-flex flex-column align-items-center">
+                                                    <img src="public/app-assets/first.jpg" class="mb-2"
+                                                        style="width:50px;">
+                                                    <h6 class="text-center w-100">{{ this.TopRatedVendor[0].VendorName
+                                                        }}</h6>
+                                                    <p class="text-center mb-0">Orders ({{
+                                                        this.TopRatedVendor[0].TotalOrder }})</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-12">
+                                                <div
+                                                    class="top-radius bottom-radius bg-light p-2 d-flex flex-column align-items-center">
+                                                    <img src="public/app-assets/third.jpg" class="mb-2"
+                                                        style="width:50px;">
+                                                    <h6 class="text-center w-100">{{ this.TopRatedVendor[1].VendorName
+                                                        }}</h6>
+                                                    <p class="text-center mb-0">Orders ({{
+                                                        this.TopRatedVendor[1].TotalOrder }})</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-12">
+                                                <div
+                                                    class="top-radius bottom-radius bg-light p-2 d-flex flex-column align-items-center">
+                                                    <img src="public/app-assets/second.jpg" class="mb-2"
+                                                        style="width:50px;">
+                                                    <h6 class="text-center w-100">{{ this.TopRatedVendor[2].VendorName
+                                                        }}</h6>
+                                                    <p class="text-center mb-0">Orders ({{
+                                                        this.TopRatedVendor[2].TotalOrder }})</p>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-md-4 col-12 top-radius bottom-radius bg-light p-2" >
+                                                <img src="public/app-assets/first.jpg" >
+                                                <h6 class="text-center" style="width:100%">
+                                                    {{ this.TopRatedVendor[0].VendorName }}</h6>
+                                                <p class="text-center">Orders
+                                                    ({{ this.TopRatedVendor[0].TotalOrder }})</p>
+                                            </div>
+                                            <div class="col-md-4 col-12">
+                                                <img src="public/app-assets/third.jpg" style="width:50px">
+                                                <h6 class="" style="width:100%">
+                                                    {{ this.TopRatedVendor[1].VendorName }}</h6>
+                                                <p style="margin-bottom: 0px !important">Orders
+                                                    ({{ this.TopRatedVendor[1].TotalOrder }})</p>
+                                            </div>
+                                            <div class="col-md-4 col-12">
+                                                <img src="public/app-assets/second.jpg" >
+                                                <h6 class="" style="width:100%">
+                                                    {{ this.TopRatedVendor[2].VendorName }}</h6>
+                                                <p style="margin-bottom: 0px !important">Orders
+                                                    ({{ this.TopRatedVendor[2].TotalOrder }})</p>
+                                            </div> -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--/ Bar Chart - Orders -->
+                                <!-- Bar Chart - Orders -->
+                                <div class="col-lg-6 col-md-12 col-6">
+                                    <div class="card top-radius bottom-radius border-0">
+                                        <div class="card-header"
+                                            style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
+                                            <h4 class="card-title">Your Top Customers</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-3">
+                                                <div class="col-md-4 col-12">
+                                                    <div
+                                                        class="bg-light p-2 d-flex flex-column align-items-center top-radius bottom-radius ">
+                                                        <img src="public/app-assets/first.jpg" style="width:75px;"
+                                                            class="mb-2">
+                                                        <h6 class="w-100 text-center">Customer 1</h6>
+                                                        <p class="mb-0 text-center">Orders</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div
+                                                        class="bg-light p-2 d-flex flex-column align-items-center top-radius bottom-radius">
+                                                        <img src="public/app-assets/third.jpg" style="width:50px;"
+                                                            class="mb-2">
+                                                        <h6 class="w-100 text-center">Customer 2</h6>
+                                                        <p class="mb-0 text-center">Orders</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4 col-12">
+                                                    <div
+                                                        class="bg-light p-2 d-flex flex-column align-items-center top-radius bottom-radius">
+                                                        <img src="public/app-assets/second.jpg" style="width:50px;"
+                                                            class="mb-2">
+                                                        <h6 class="w-100 text-center">Customer 3</h6>
+                                                        <p class="mb-0 text-center">Orders</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--/ Bar Chart - Orders -->
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-12">
+                            <div class="card card-statistics top-radius bottom-radius border-0">
+                                <div class="card-header"
+                                    style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
                                     <h4 class="card-title">Month-wise Purchase</h4>
                                 </div>
                                 <div class="card-body statistics-body">
@@ -27,107 +145,42 @@
                             </div>
                         </div>
 
-
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="row match-height">
-                                <!-- Bar Chart - Orders -->
-                                <div class="col-lg-12 col-md-12 col-6">
-                                    <div class="card">
-                                        <div class="card-header"
-                                             style="text-align:center;padding-bottom: 0px !important;">
-                                            <h4 class="card-title" style="width:100%">Top Rated Vendor(s)</h4>
-                                        </div>
-                                        <div class="card-body row" style="width:100%">
-                                            <div style="width:100%;text-align:center">
-                                                <img src="public/app-assets/first.jpg" style="width:75px">
-                                                <h6 class="" style="width:100%">
-                                                    {{ this.TopRatedVendor[0].VendorName }}</h6>
-                                                <p style="margin-bottom: 0px !important">Orders
-                                                    ({{ this.TopRatedVendor[0].TotalOrder }})</p>
-                                            </div>
-                                            <div class="col-md-6 col-12" style="text-align:center">
-                                                <img src="public/app-assets/third.jpg" style="width:50px">
-                                                <h6 class="" style="width:100%">
-                                                    {{ this.TopRatedVendor[1].VendorName }}</h6>
-                                                <p style="margin-bottom: 0px !important">Orders
-                                                    ({{ this.TopRatedVendor[1].TotalOrder }})</p>
-                                            </div>
-                                            <div class="col-md-6 col-12" style="text-align:center">
-                                                <img src="public/app-assets/second.jpg" style="width:50px">
-                                                <h6 class="" style="width:100%">
-                                                    {{ this.TopRatedVendor[2].VendorName }}</h6>
-                                                <p style="margin-bottom: 0px !important">Orders
-                                                    ({{ this.TopRatedVendor[2].TotalOrder }})</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/ Bar Chart - Orders -->
-                                <!-- Bar Chart - Orders -->
-                                <div  class="col-lg-12 col-md-12 col-6">
-                                    <div class="card">
-                                        <div class="card-header"
-                                             style="text-align:center;padding-bottom: 0px !important;">
-                                            <h4 class="card-title" style="width:100%">Your Top Customers(s)</h4>
-                                        </div>
-                                        <div class="card-body row" style="width:100%">
-                                            <div style="width:100%;text-align:center">
-                                                <img src="public/app-assets/first.jpg" style="width:75px">
-                                                <h6 class="" style="width:100%"></h6>
-                                                <p style="margin-bottom: 0px !important">Orders
-                                                    </p>
-                                            </div>
-                                            <div class="col-md-6 col-12" style="text-align:center">
-                                                <img src="public/app-assets/third.jpg" style="width:50px">
-                                                <h6 class="" style="width:100%">
-                                                    </h6>
-                                                <p style="margin-bottom: 0px !important">Orders</p>
-                                            </div>
-                                            <div class="col-md-6 col-12" style="text-align:center">
-                                                <img src="public/app-assets/second.jpg" style="width:50px">
-                                                <h6 class="" style="width:100%"></h6>
-                                                <p style="margin-bottom: 0px !important">Orders</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/ Bar Chart - Orders -->
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="row match-height">
-                                <div class="col-lg-12 col-md-12 col-6">
-                                    <div class="card-header">
+                                <div class="col-lg-12 col-md-12 col-6 ">
+                                    <div class="card-header"
+                                        style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
                                         <h4 class="card-title">Demand Requisitions</h4>
                                     </div>
-                                    <div class="card">
-                                        <apexchart type="bar" height="350" :options="chartOptions5"
-                                                   :series="series5"></apexchart>
+                                    <div class="card bottom-radius border-0">
+                                        <apexchart type="bar" height="350" :options="chartOptions5" :series="series5">
+                                        </apexchart>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-6">
-                                    <div class="card-header">
+                                <!-- <div class="col-lg-12 col-md-12 col-6">
+                                    <div class="card-header" style="">
                                         <h4 class="card-title">Assets Catagores</h4>
                                     </div>
                                     <div class="card">
 
-                                        <apexchart width="400" type="pie" :options="options4"
-                                                   :series="series4"></apexchart>
+                                        <apexchart width="350" type="pie" :options="options4" :series="series4">
+                                        </apexchart>
 
                                     </div>
-                                </div>
+                                </div> -->
 
 
                             </div>
                         </div>
                         <div class="col-lg-8 col-12">
-                            <div class="card card-statistics">
-                                <div class="card-header">
+                            <div class="card card-statistics top-radius bottom-radius border-0">
+                                <div class="card-header"
+                                    style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
                                     <h4 class="card-title">Purchase Inventory Catagores</h4>
+                                    <hr>
                                 </div>
 
-                                <div class="card-body statistics-body">
+                                <div class="card-body statistics-body" style="padding: 0px !important;">
                                     <!-- <div class="row card-revenue-budget">
 
                                  <div class="col-md-4 col-12" style="position: end;">
@@ -164,38 +217,69 @@
                                     <br/> -->
                                     <div class="col-md-12 col-12" style="position: relative;">
                                         <!-- </div> -->
-                                        <apexchart width="780" type="donut" :options="options3"
-                                                   :series="series3"></apexchart>
+                                        <apexchart width="600" height="300" type="donut" :options="options3"
+                                            :series="series3">
+                                        </apexchart>
 
                                     </div>
                                 </div>
 
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-6">
+                            <div class="card-header"
+                                style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
+                                <h4 class="card-title">Assets Catagores</h4>
+                            </div>
+                            <div class="card  bottom-radius border-0" id="verticalLegendChart">
+
+                                <apexchart width="350" type="pie" :options="options4" :series="series4">
+                                </apexchart>
 
                             </div>
                         </div>
                         <div class="col-lg-8 col-12">
-                            <div class="card card-statistics">
-                                <div class="card-header">
-                                    <h4 class="card-title">Department Wise Purchase Value</h4>
-                                </div>
-
-                                <div class="card-body statistics-body">
-
-                                    <div class="col-md-12 col-12" style="position: relative;">
-                                        <div v-if="loader" class="text-center">
-                                            <div class="spinner-border spinner-border-sm" role="status"></div>
-                                            <span class="loading-text">Loading...</span>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-6">
+                                    <div class="card card-statistics top-radius bottom-radius border-0">
+                                        <div class="card-header"
+                                            style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
+                                            <h4 class="card-title">Department Wise Purchase Value</h4>
                                         </div>
-                                        <apexchart v-if="!loader" width="780" type="donut" :options="options5"
-                                                   :series="series6"></apexchart>
+                                        <div class="card-body statistics-body">
+                                            <div class="col-md-12 col-12" style="position: relative;">
+                                                <div v-if="loader" class="text-center">
+                                                    <div class="spinner-border spinner-border-sm" role="status"></div>
+                                                    <span class="loading-text">Loading...</span>
+                                                </div>
+                                                <apexchart v-if="!loader" width="580" type="donut" :options="options5"
+                                                    :series="series6"></apexchart>
 
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-
+                                <div class="col-lg-12 col-md-12 col-12">
+                                    <div class="row match-height">
+                                        <div class="col-lg-12 col-md-12 col-6">
+                                            <div class="card-header" style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
+                                                <h4 class="card-title">Purchase Requisitions Vs GRN Generated</h4>
+                                            </div>
+                                            <div class="card  bottom-radius border-0">
+                                                <div v-if="loader2" class="text-center">
+                                                    <div class="spinner-border spinner-border-sm" role="status"></div>
+                                                    <span class="loading-text">Loading...</span>
+                                                </div>
+                                                <apexchart v-if="!loader2" type="bar" height="350"
+                                                    :options="chartOptions6" :series="series7"></apexchart>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-12">
+                        <!-- <div class="col-lg-4 col-md-6 col-12">
                             <div class="row match-height">
                                 <div class="col-lg-12 col-md-12 col-6">
                                     <div class="card-header">
@@ -207,23 +291,23 @@
                                             <span class="loading-text">Loading...</span>
                                         </div>
                                         <apexchart v-if="!loader2" type="bar" height="350" :options="chartOptions6"
-                                                   :series="series7"></apexchart>
+                                            :series="series7"></apexchart>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row match-height">
                             <!-- Medal Card -->
                             <div class="col-xl-4 col-md-6 col-12">
 
-                                <div class="card card-developer-meetup">
+                                <div class="card card-developer-meetup top-radius bottom-radius border-0">
                                     <div class="card-body" style="">
                                         <div class="card-header d-flex justify-content-between">
                                             <h4 class="card-title">Inventory Detail</h4>
                                         </div>
                                         <div id="chart">
                                             <apexchart type="radialBar" height="350" :options="chartOptions2"
-                                                       :series="series2"></apexchart>
+                                                :series="series2"></apexchart>
                                         </div>
                                         <div class="d-flex justify-content-between mb-1">
                                             <div class="d-flex align-items-center">
@@ -238,7 +322,8 @@
                                                 <i class="fa-regular fa-circle text-primary"></i>
                                                 <span class="fw-bold ms-75">Available Products</span>
                                             </div>
-                                            <span>{{ (Math.floor(this.radio.available_products)).toLocaleString() }}</span>
+                                            <span>{{ (Math.floor(this.radio.available_products)).toLocaleString()
+                                            }}</span>
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <div class="d-flex align-items-center">
@@ -262,9 +347,9 @@
                             <div class="col-xl-8 col-md-6 col-12 ">
                                 <div class="row card-revenue-budget">
                                     <div class="col-md-4 col-12" style="position: relative;">
-                                        <div class=" budget-wrapper card">
-                                            <div class="card-header d-flex justify-content-between"
-                                                 style="padding-top:0px !important">
+                                        <div class=" budget-wrapper card top-radius bottom-radius border-0">
+                                            <div class="card-header d-flex justify-content-between p-0 mb-1"
+                                                >
                                                 <h4 class="card-title">Demand Requisitions</h4>
                                             </div>
                                             <h2 class="mb-25">{{ req_d.pending }}</h2>
@@ -272,28 +357,27 @@
                                                 <span class="fw-bolder me-25">Pending</span>
                                             </div>
                                             <hr>
-                                            <h2 class="mb-25" style="font-size: 14px;"><br/></h2>
+                                            <h2 class="mb-25" style="font-size: 14px;"><br /></h2>
                                             <div class="d-flex justify-content-center">
-                                                <span class="fw-bolder me-25"><br/></span>
+                                                <span class="fw-bolder me-25"><br /></span>
                                             </div>
                                             <br>
                                             <router-link to="/purchase/requistion_detail"
-
-                                                         class="btn btn-primary waves-effect waves-float waves-light">
-                                                View Requisitions
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light">
+                                                View report
                                             </router-link>
                                             <!-- <a v-else class="btn btn-primary waves-effect waves-float waves-light">View
                                                 Requisitions</a> -->
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12 " style="position: relative;">
-                                        <div class=" budget-wrapper card">
-                                            <div class="card-header d-flex justify-content-between"
-                                                 style="padding-top:0px !important">
-                                                <h4 class="card-title" style="padding-left:20% !important">Stock
+                                        <div class=" budget-wrapper card top-radius bottom-radius border-0">
+                                            <div class="card-header d-flex justify-content-between p-0 mb-1"
+                                                >
+                                                <h4 class="card-title">Stock
                                                     Summary</h4>
                                             </div>
-                                            <h2 class="mb-25">{{ radio.available_stock }}</h2>
+                                            <h2 class="mb-25">{{ radio.available_stock }}0</h2>
                                             <div class="d-flex justify-content-center">
                                                 <span class="fw-bolder me-25">Available Stock</span>
                                             </div>
@@ -301,11 +385,11 @@
                                             <h2 class="mb-25" style="font-size: 14px;">Rs.
                                                 {{ this.radio.stock_value }}</h2>
                                             <div class="d-flex justify-content-center">
-                                                <span class="fw-bolder me-25">Estimated Value</span>
+                                                <span class="fw-bolder me-25">Amount</span>
                                             </div>
                                             <br>
-                                            <router-link  to="/Inventory/Detail"
-                                                         class="btn btn-primary waves-effect waves-float waves-light">
+                                            <router-link to="/Inventory/Detail"
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light">
                                                 View Report
                                             </router-link>
                                             <!-- <a v-else class="btn btn-primary waves-effect waves-float waves-light">View
@@ -313,9 +397,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12" style="position: relative;">
-                                        <div class=" budget-wrapper card">
-                                            <div class="card-header d-flex justify-content-between"
-                                                 style="padding-top:0px !important">
+                                        <div class=" budget-wrapper card top-radius bottom-radius border-0">
+                                            <div class="card-header d-flex justify-content-between p-0 mb-1"
+                                                style="padding-top:0px !important">
                                                 <h4 class="card-title">Purchase Invoices</h4>
                                             </div>
                                             <h2 class="mb-25">{{ (po.inv_count).toLocaleString() }}</h2>
@@ -329,13 +413,12 @@
                                                 <span class="fw-bolder me-25">Amount</span>
                                             </div>
                                             <br>
-                                            <router-link
-                                                         to="purchase_invoice/detail"
-                                                         class="btn btn-primary waves-effect waves-float waves-light">
+                                            <router-link to="purchase_invoice/detail"
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light">
                                                 View Detail
                                             </router-link>
-                                            <a class="btn btn-primary waves-effect waves-float waves-light">View
-                                                Detail</a>
+                                            <!-- <a class="btn btn-primary waves-effect waves-float waves-light">View
+                                                Detail</a> -->
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12" style="position: relative;">
@@ -352,8 +435,8 @@
                                                         {{ (Math.floor(topCI[2].TotalConsumed)).toLocaleString() }}</p>
                                                     <div class="progress progress-bar-primary" style="height: 6px">
                                                         <div class="progress-bar" role="progressbar" aria-valuenow="50"
-                                                             aria-valuemin="50" aria-valuemax="100"
-                                                             style="width: 90%"></div>
+                                                            aria-valuemin="50" aria-valuemax="100" style="width: 90%">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 mb-2" style="padding-left:5%;padding-right:5%;">
@@ -361,8 +444,8 @@
                                                         {{ (Math.floor(topCI[1].TotalConsumed)).toLocaleString() }}</p>
                                                     <div class="progress progress-bar-primary" style="height: 6px">
                                                         <div class="progress-bar" role="progressbar" aria-valuenow="50"
-                                                             aria-valuemin="50" aria-valuemax="100"
-                                                             style="width: 50%"></div>
+                                                            aria-valuemin="50" aria-valuemax="100" style="width: 50%">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 mb-2" style="padding-left:5%;padding-right:5%;">
@@ -370,8 +453,8 @@
                                                         {{ (Math.floor(topCI[0].TotalConsumed)).toLocaleString() }}</p>
                                                     <div class="progress progress-bar-primary" style="height: 6px">
                                                         <div class="progress-bar" role="progressbar" aria-valuenow="50"
-                                                             aria-valuemin="50" aria-valuemax="100"
-                                                             style="width: 30%"></div>
+                                                            aria-valuemin="50" aria-valuemax="100" style="width: 30%">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -390,8 +473,8 @@
                                                         {{ (Math.floor(highSI[0].Qty)).toLocaleString() }}</p>
                                                     <div class="progress progress-bar-primary" style="height: 6px">
                                                         <div class="progress-bar" role="progressbar" aria-valuenow="50"
-                                                             aria-valuemin="50" aria-valuemax="100"
-                                                             style="width: 80%"></div>
+                                                            aria-valuemin="50" aria-valuemax="100" style="width: 80%">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 mb-2" style="padding-left:5%;padding-right:5%;">
@@ -399,8 +482,8 @@
                                                         {{ (Math.floor(highSI[1].Qty)).toLocaleString() }}</p>
                                                     <div class="progress progress-bar-primary" style="height: 6px">
                                                         <div class="progress-bar" role="progressbar" aria-valuenow="50"
-                                                             aria-valuemin="50" aria-valuemax="100"
-                                                             style="width: 60%"></div>
+                                                            aria-valuemin="50" aria-valuemax="100" style="width: 60%">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 mb-2" style="padding-left:5%;padding-right:5%;">
@@ -408,8 +491,8 @@
                                                         {{ (Math.floor(highSI[2].Qty)).toLocaleString() }}</p>
                                                     <div class="progress progress-bar-primary" style="height: 6px">
                                                         <div class="progress-bar" role="progressbar" aria-valuenow="50"
-                                                             aria-valuemin="50" aria-valuemax="100"
-                                                             style="width: 30%"></div>
+                                                            aria-valuemin="50" aria-valuemax="100" style="width: 30%">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -461,8 +544,8 @@
                                     <div class="col-md-6 col-12" style="position: relative;">
                                         <div class="card">
                                             <div class="card-header" style="text-align:center">
-                                                <h2 class="card-text font-small-10"><br/></h2>
-                                                <h4 class="card-title" style="width:100%"><br/></h4>
+                                                <h2 class="card-text font-small-10"><br /></h2>
+                                                <h4 class="card-title" style="width:100%"><br /></h4>
                                             </div>
 
                                         </div>
@@ -481,7 +564,7 @@
                                             <span class="loading-text">Loading...</span>
                                         </div>
                                         <apexchart v-if="!loader1" type="bar" height="350" :options="chartOptions7"
-                                                   :series="series8"></apexchart>
+                                            :series="series8"></apexchart>
                                     </div>
                                 </div>
 
@@ -498,8 +581,8 @@
                                         </div>
                                         <div class="card-body">
                                             <div>
-                                                <datatable :data="adsdata" :columns="columns1"
-                                                           :on-click="click"></datatable>
+                                                <datatable :data="adsdata" :columns="columns1" :on-click="click">
+                                                </datatable>
                                             </div>
                                             <div class="card-body pb-50" style="position: relative;">
                                             </div>
@@ -593,7 +676,7 @@
 
                         <!-- Apply for leave modal  -->
                         <div class="modal fade" id="addNewCard" tabindex="-1" aria-labelledby="addNewCardTitle"
-                             aria-hidden="true">
+                            aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header bg-transparent">
@@ -601,12 +684,12 @@
                                             <h1 class="mb-1">ASSETS DETAILS</h1>
                                         </div>
                                         <button type="button" @click="out()" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                            aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body px-sm-5 mx-50 pb-5">
                                         <!-- form -->
                                         <form id="addNewCardValidation" class="row gy-1 gx-2 mt-75"
-                                              onsubmit="return false">
+                                            onsubmit="return false">
                                             <div class="col-12">
                                                 <datatable :data="adsdata2" :columns="columns2"></datatable>
 
@@ -626,7 +709,7 @@
     </div>
 </template>
 <script>
-import {thisTypeAnnotation} from '@babel/types';
+import { thisTypeAnnotation } from '@babel/types';
 import moment from 'moment';
 import VueApexCharts from 'vue-apexcharts';
 
@@ -704,7 +787,7 @@ export default {
                     }
                 }
             },
-            series: [ {
+            series: [{
                 name: 'Purchase',
                 data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             },
@@ -752,7 +835,7 @@ export default {
             pvalue: {},
 
             expense: '',
-            Top3Customers: [{CustomerName: '', TotalOrder: ''}, {CustomerName: '', TotalOrder: ''}, {
+            Top3Customers: [{ CustomerName: '', TotalOrder: '' }, { CustomerName: '', TotalOrder: '' }, {
                 CustomerName: '',
                 TotalOrder: ''
             }],
@@ -806,6 +889,11 @@ export default {
                 chart: {
                     width: 380,
                     type: 'pie',
+                },
+                legend: {
+                    position: 'bottom',
+                    horizontalAlign: 'center',
+
                 },
                 responsive: [{
                     breakpoint: 280,
@@ -867,7 +955,7 @@ export default {
                 plotOptions: {
                     bar: {
                         borderRadius: 4,
-                        horizontal: true,
+                        // horizontal: true,
                     }
                 },
                 dataLabels: {
@@ -886,7 +974,7 @@ export default {
                 labels: ['avg no of days'],
                 plotOptions: {
                     bar: {
-                        borderRadius: 4,
+                        borderRadius: 8,
                         horizontal: true,
                     }
                 },
@@ -906,42 +994,42 @@ export default {
 
             // Columns that should be displayed on The Table
             columns1: [
-                {name: "Name", th: "Name"},
-                {name: "CategoryName", th: "Catagores"},
-                {name: "TotalAssets", th: "Total"},
-                {name: "AvailableAsset", th: "Available"},
+                { name: "Name", th: "Name" },
+                { name: "CategoryName", th: "Catagores" },
+                { name: "TotalAssets", th: "Total" },
+                { name: "AvailableAsset", th: "Available" },
 
             ],
             columns4: [
-                {name: "DepartmentName", th: "Dept.Name"},
-                {name: "2022", th: "2022"},
-                {name: "2022_Percentage", th: "%age"},
-                {name: "2023", th: "2023"},
-                {name: "2023_Percentage", th: "%age"},
+                { name: "DepartmentName", th: "Dept.Name" },
+                { name: "2022", th: "2022" },
+                { name: "2022_Percentage", th: "%age" },
+                { name: "2023", th: "2023" },
+                { name: "2023_Percentage", th: "%age" },
             ],
             columns5: [
-                {name: "vendorName", th: "Vendor.Name"},
-                {name: "2022", th: "2022"},
-                {name: "2022_Percentage", th: "%age"},
-                {name: "2023", th: "2023"},
-                {name: "2023_Percentage", th: "%age"},
+                { name: "vendorName", th: "Vendor.Name" },
+                { name: "2022", th: "2022" },
+                { name: "2022_Percentage", th: "%age" },
+                { name: "2023", th: "2023" },
+                { name: "2023_Percentage", th: "%age" },
             ],
             columns7: [
-                {name: "ItemName", th: "Vendor.Name"},
-                {name: "2022", th: "2022"},
-                {name: "2022_Percentage", th: "%age"},
-                {name: "2023", th: "2023"},
-                {name: "2023_Percentage", th: "%age"},
+                { name: "ItemName", th: "Vendor.Name" },
+                { name: "2022", th: "2022" },
+                { name: "2022_Percentage", th: "%age" },
+                { name: "2023", th: "2023" },
+                { name: "2023_Percentage", th: "%age" },
             ],
             columns8: [
-                {name: "vendor_name", th: "Vendor.Name"},
-                {name: "average_days", th: "Average Days"},
+                { name: "vendor_name", th: "Vendor.Name" },
+                { name: "average_days", th: "Average Days" },
             ],
             columns2: [
-                {name: "AssetsUniqueID", th: "ID"},
-                {name: "Name", th: "Name"},
-                {name: "CategoryName", th: "Catagores"},
-                {name: "Qty", th: "Qty"},
+                { name: "AssetsUniqueID", th: "ID" },
+                { name: "Name", th: "Name" },
+                { name: "CategoryName", th: "Catagores" },
+                { name: "Qty", th: "Qty" },
 
 
             ],
@@ -1066,17 +1154,17 @@ export default {
             })
 
 
-                axios.get('Accounts/count_purchase_d/')
-                    .then(data => {
-                        this.ddf = data.data;
-                        this.series = [
-                            {
-                                name: 'Purchase',
-                                data: this.ddf
-                            },
-                        ]
+        axios.get('Accounts/count_purchase_d/')
+            .then(data => {
+                this.ddf = data.data;
+                this.series = [
+                    {
+                        name: 'Purchase',
+                        data: this.ddf
+                    },
+                ]
 
-                    })
+            })
 
 
         axios.get('accounts/Assets_D')
@@ -1137,3 +1225,10 @@ export default {
 }
 
 </script>
+<style scoped>
+#verticalLegendChart .apexcharts-legend {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+}
+</style>

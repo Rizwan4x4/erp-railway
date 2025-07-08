@@ -110,7 +110,7 @@
                                         </div>
                                         <div class="row mt-1">
                                             <div class="col-12 px-0">
-                                                <div data-repeater-create="" class="btn btn-primary btn-sm btn-add-new" v-on:click="add_xz_repeater();">
+                                                <div data-repeater-create="" class="btn btn-primary bg-primary btn-sm btn-add-new" v-on:click="add_xz_repeater();">
                                                     <i data-feather="plus" class="me-25"></i>
                                                     <span class="align-middle">Add Service</span>
                                                 </div>
@@ -150,7 +150,7 @@
                             <div class="col-xl-3 col-md-4 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <button :disabled="disabled" @click="delay()" class="btn btn-primary w-100 mb-75">Post Bill</button>
+                                        <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary w-100 mb-75">Post Bill</button>
                                         <a href="#" class="btn btn-outline-primary w-100 mb-75"> Post & Print</a>
                                     </div>
                                 </div>

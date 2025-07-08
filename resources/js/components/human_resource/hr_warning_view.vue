@@ -85,7 +85,7 @@
                             <div class="col-xl-3 col-md-4 col-12 invoice-actions mt-md-0 mt-2">
                                 <div class="card">
                                     <div class="card-body">
-                                        <button @click="generateempdetailReport()" class="btn btn-primary w-100 btn-download-invoice mb-75"><i class="fa-solid fa-download"></i> Pdf Download</button>
+                                        <button @click="generateempdetailReport()" class="btn btn-primary bg-primary w-100 btn-download-invoice mb-75"><i class="fa-solid fa-download"></i> Pdf Download</button>
                                         <button @click="goback()" class="btn btn-secondary w-100 btn-download-invoice mb-75"><i class="fa-solid fa-arrow-rotate-left"></i> Go back</button>
                                     </div>
                                 </div>

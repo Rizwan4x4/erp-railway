@@ -171,7 +171,7 @@
                                                    v-on:keyup.enter="enterChat()"/>
 
                                         </div>
-                                        <button type="button" class="btn btn-primary send" @click="enterChat()">
+                                        <button type="button" class="btn btn-primary bg-primary send" @click="enterChat()">
                                             <i class="fa-solid fa-paper-plane d-lg-none"></i>
                                             <span class="d-none d-lg-block">Send</span>
                                         </button>

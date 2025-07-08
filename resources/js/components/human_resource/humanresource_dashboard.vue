@@ -25,8 +25,7 @@
                                     <div v-for="emp in birthdaysToday" :key="emp.EmployeeID"
                                         class="col-xl-12 col-lg-10 col-md-12 mb-2">
                                         <div class="card bg-image p-4 border-0">
-                                            <div
-                                                class="d-flex  align-items-center  justify-content-between">
+                                            <div class="d-flex  align-items-center  justify-content-between">
 
                                                 <!-- Left Side: Profile Info -->
                                                 <div
@@ -60,9 +59,25 @@
                                 </div>
 
                                 <!-- If no birthday -->
-                                <div v-else class="text-center text-muted py-4">
-                                    <h5>🎉 Today no birthday</h5>
+                                <div v-else class="col-xl-12 col-lg-10 col-md-12 mb-2">
+                                    <div class="card bg-image p-4 border-0">
+                                        <div class="d-flex align-items-center justify-content-around">
+
+
+
+
+                                            <!-- Center: Birthday Message -->
+                                            <div class="col-md-4 text-center px-4 py-3">
+                                                <h6 class="mb-0 text-center">🎉 No Birthday Today</h6>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
                                 </div>
+
+
 
                             </div>
                         </div>
@@ -80,7 +95,7 @@
                                     <h3 class="mb-75 mt-2 pt-50">
                                     </h3>
                                     <router-link to="/hr/employee_dashboard"
-                                                 class="btn btn-primary waves-effect waves-float waves-light">View
+                                                 class="btn btn-primary bg-primary waves-effect waves-float waves-light">View
                                         Profile
                                     </router-link>
                                     <img src="public/app-assets/images/illustration/badge.svg"
@@ -206,7 +221,7 @@
                                                     <span class="fw-bold ms-75">Total Employees</span>
                                                 </div>
                                                 <span>{{ (Math.floor(this.count_users.data.all_users)).toLocaleString()
-                                                    }}</span>
+                                                }}</span>
                                             </div>
 
                                             <div class="d-flex justify-content-between mb-1">
@@ -216,7 +231,7 @@
                                                 </div>
                                                 <span>{{
                                                     (Math.floor(this.count_users.data.active_users)).toLocaleString()
-                                                }}</span>
+                                                    }}</span>
                                             </div>
                                             <div class="d-flex justify-content-between mb-1">
                                                 <div class="d-flex align-items-center">
@@ -225,7 +240,7 @@
                                                 </div>
                                                 <span>{{
                                                     (Math.floor(this.count_users.data.contractual_users)).toLocaleString()
-                                                }}</span>
+                                                    }}</span>
                                             </div>
 
                                             <div class="d-flex justify-content-between mb-1">
@@ -1171,7 +1186,7 @@
                                                     </td>
                                                     <td class="text-center border-end-solid" style="width: 28%;">{{
                                                         exp_emp1.Department
-                                                    }}
+                                                        }}
                                                     </td>
                                                     <td class="border-end-solid" style="text-align:right; width: 22%;">
                                                         {{ exp_emp1.ProbationEnd

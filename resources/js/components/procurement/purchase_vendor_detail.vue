@@ -20,7 +20,7 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div clas="card" style="background-color:white !important">
+                        <div class="card top-radius bottom-radius border-0" style="background-color:white !important">
                             <div style="margin-bottom:20px;padding-top:20px" class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                                 <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
                                     <h4 class="card-title">Search & Filter</h4>
@@ -169,7 +169,7 @@
                                 <span style="color: #db4437; font-size: 11px" v-if="v_address == ''">{{ e_v_address }}</span>
                             </div>
                             <div class="col-12" style="text-align:center">
-                                <button :disabled="disabled" @click="delay()" type="button" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Save Vendor</button>
+                                <button :disabled="disabled" @click="delay()" type="button" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">Save Vendor</button>
                             </div>
                         </form>
                     </div>
@@ -235,7 +235,7 @@
                                 <span style="color: #db4437; font-size: 11px" v-if="edv_address == ''">{{ e_edv_address }}</span>
                             </div>
                             <div class="col-12" style="text-align:center">
-                                <button :disabled="disabled1" @click="delay1()" type="button" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Update Vendor</button>
+                                <button :disabled="disabled1" @click="delay1()" type="button" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Update Vendor</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-2" data-bs-dismiss="modal" aria-label="Close">
                                     Cancle
                                 </button>
@@ -560,3 +560,22 @@
     }
 
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

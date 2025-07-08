@@ -148,7 +148,7 @@
                                         </div>
                                         <div class="col-12 text-center">
                                             <br>
-                                            <button type="submit" class="btn btn-primary me-1 mt-1" :disabled="disabled1" @click="delay1()" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                            <button type="submit" class="btn btn-primary bg-primary me-1 mt-1" :disabled="disabled1" @click="delay1()" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>
@@ -206,7 +206,7 @@
                                         </div>
                                         <div class="col-12 text-center">
                                             <br>
-                                            <button type="submit" class="btn btn-primary me-1 mt-1" :disabled="disabled" @click="delay()" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                            <button type="submit" class="btn btn-primary bg-primary me-1 mt-1" :disabled="disabled" @click="delay()" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>

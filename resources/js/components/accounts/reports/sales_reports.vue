@@ -91,10 +91,10 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" @click="ageing_payables()">
+                            <button class="btn btn-primary bg-primary" @click="ageing_payables()">
                                 View Report
                             </button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                            <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@
                         <button type="button" @click="html_table_to_excel('xlsx', 'ageing__receivables_Report')" class="btn btn-gradient-info">Excel</button>
 
                             <button type="button" @click="generateAgeingReport()" class="btn btn-gradient-info">Pdf</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="ageing_payables1()">close</button>
+                            <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="ageing_payables1()">close</button>
                         </div>
                     </div>
                 </div>
@@ -241,10 +241,10 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" @click="cash_report()">
+                            <button class="btn btn-primary bg-primary" @click="cash_report()">
                                 View Report
                             </button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                            <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                         </div>
                     </div>
                 </div>
@@ -386,7 +386,7 @@
                         <div class="modal-footer">
                             <button type="button" @click="html_table_to_excels('xlsx','cash_id')" class="btn btn-gradient-info">Excel</button>
                             <button type="button" @click="generateCashReport()" class="btn btn-gradient-info">Pdf</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="cash_report1()">close</button>
+                            <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="cash_report1()">close</button>
                         </div>
                     </div>
                 </div>
@@ -421,10 +421,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="chq_super_report()">
+                        <button class="btn btn-primary bg-primary" @click="chq_super_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -551,7 +551,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'Chq_superwise_id')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateChqSuperwiseReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="chq_super_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="chq_super_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -585,10 +585,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="debit_credit_report()">
+                        <button class="btn btn-primary bg-primary" @click="debit_credit_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -727,7 +727,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'cash_id')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateDebitCreditReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="debit_credit_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="debit_credit_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -762,10 +762,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="online_cash_report()">
+                        <button class="btn btn-primary bg-primary" @click="online_cash_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -895,7 +895,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'online_cash_id')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateOnlineCashReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="online_cash_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="online_cash_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -929,10 +929,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="unitbook_report()">
+                        <button class="btn btn-primary bg-primary" @click="unitbook_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -1060,7 +1060,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'units_booking_report')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateUnitsBookingReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="unitbook_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="unitbook_report1()">close</button>
                     </div>
                 </div>
             </div>

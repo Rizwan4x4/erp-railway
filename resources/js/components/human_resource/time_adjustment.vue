@@ -527,7 +527,7 @@
                                                 type="button"
                                                 :disabled="disabled1"
                                                 @click="delay1()"
-                                                class="btn btn-primary waves-effect waves-float waves-light"
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                             >
                                                 Update
                                             </button>
@@ -536,7 +536,7 @@
                                                 type="button"
                                                 :disabled="disabled1"
                                                 @click="delay1()"
-                                                class="btn btn-primary waves-effect waves-float waves-light"
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                                 data-bs-dismiss="modal"
                                                 aria-label="Close"
                                             >

@@ -143,7 +143,7 @@
                                         </div>
                                         <div class="dt-buttons d-inline-flex mt-50">
                                             <router-link v-if="hasPermission('HRMS warning_detail create_warning')"
-                                                to="/hr/create_warning" class="dt-button add-new btn btn-primary bg-primary p-2"
+                                                to="/hr/create_warning" class="dt-button add-new btn btn-primary bg-primary bg-primary p-2"
                                                 tabindex="0" type="button"><span>Issue Warning
                                                     Letter</span></router-link>
                                             <router-link v-else class="dt-button add-new btn btn-danger" tabindex="0"

@@ -500,7 +500,7 @@
                                     <h5>Do you want to delete the loan?</h5>
                                     <div class="text-center">
                                         <button type="button" @click="delete_loan(d_loanid)"
-                                            class="btn btn-primary waves-effect waves-float waves-light"
+                                            class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                             data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                         <button type="submit" class="btn btn-outline-primary waves-effect"
                                             data-bs-dismiss="modal" aria-label="Close">No</button>
@@ -611,7 +611,7 @@
                                             Apply<span v-if="type == 'Loan'"> Loan</span><span
                                                 v-else-if="type == 'Advance'"> Advance</span></button>
                                         <button v-else :disabled="disabled" @click="delay()" type="submit"
-                                            class="btn btn-primary" data-bs-dismiss="modal"
+                                            class="btn btn-primary bg-primary" data-bs-dismiss="modal"
                                             aria-label="Close">Apply</button>
                                         <button type="reset" class="btn btn-outline-secondary mt-2"
                                             data-bs-dismiss="modal" aria-label="Close">
@@ -713,7 +713,7 @@
                                         </div>
                                         <div class="col-12 text-center">
                                             <button type="submit" @click="WaiveoffInstallment()"
-                                                class="btn btn-primary me-1 mt-2" data-bs-dismiss="modal"
+                                                class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal"
                                                 aria-label="Close">Yes</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-2"
                                                 data-bs-dismiss="modal" aria-label="Close">
@@ -753,7 +753,7 @@
                                         </div>
                                         <div class="col-12 text-center">
                                             <button type="submit" @click="SkipInstallment()"
-                                                class="btn btn-primary me-1 mt-2" data-bs-dismiss="modal"
+                                                class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal"
                                                 aria-label="Close">Yes</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-2"
                                                 data-bs-dismiss="modal" aria-label="Close">No</button>
@@ -824,9 +824,9 @@
                                     <div class="col-12 text-center mt-2 pt-50">
                                         <button v-if="us_man_status == ''" type="button" :disabled="disabled1"
                                             @click="delay1()"
-                                            class="btn btn-primary waves-effect waves-float waves-light">Update</button>
+                                            class="btn btn-primary bg-primary waves-effect waves-float waves-light">Update</button>
                                         <button v-else type="button" :disabled="disabled1" @click="delay1()"
-                                            class="btn btn-primary waves-effect waves-float waves-light"
+                                            class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                             data-bs-dismiss="modal" aria-label="Close">Update</button>
                                         <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
                                             aria-label="Close">
@@ -923,7 +923,7 @@
                                             type="button" :disabled="disabled3" @click="delay3()"
                                             class="btn btn-danger waves-effect waves-float waves-light">Update</button>
                                         <button v-else type="button" :disabled="disabled3" @click="delay3()"
-                                            class="btn btn-primary waves-effect waves-float waves-light"
+                                            class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                             data-bs-dismiss="modal" aria-label="Close">Update</button>
                                         <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
                                             aria-label="Close">
@@ -1049,10 +1049,10 @@
                                         </div>
                                         <div class="col-12 text-center">
                                             <button v-if="rcvBy == ''" type="submit" :disabled="disabled2"
-                                                @click="delay2()" class="btn btn-primary me-1 mt-2">Pay Loan
+                                                @click="delay2()" class="btn btn-primary bg-primary me-1 mt-2">Pay Loan
                                                 Amount</button>
                                             <button v-else type="submit" :disabled="disabled2" @click="delay2()"
-                                                class="btn btn-primary me-1 mt-2" data-bs-dismiss="modal"
+                                                class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal"
                                                 aria-label="Close">Pay Loan Amount</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-2"
                                                 data-bs-dismiss="modal" aria-label="Close">
@@ -1167,7 +1167,7 @@
                                             </div>
                                             <div class="text-center">
                                                 <button v-if="return_amount != '0'" type="submit"
-                                                    @click="return_loan(pay_loanID)" class="btn btn-primary">Return
+                                                    @click="return_loan(pay_loanID)" class="btn btn-primary bg-primary">Return
                                                     loan</button>
                                                 <button v-else type="submit" @click="return_loan(pay_loanID)"
                                                     class="btn btn-danger">Return loan</button>

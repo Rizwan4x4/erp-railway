@@ -24,20 +24,20 @@
                         <div class="row">
                             <!-- User Sidebar -->
                             <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
-                                <div class="card">
-                                    <div class="card-header">
+                                <div class="card top-radius bottom-radius border-0 p-3">
+                                    <div class="card-header px-0 py-3">
                                         <h4 class="card-title">Add New Department</h4>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body p-0">
                                         <form class="form form-vertical">
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <label class="form-label">Department Name <span style="color: #DB4437; font-size: 11px;">*</span></label>
-                                                    <input type="text" class="form-control" v-model='department_name' placeholder="Must be Unique">
+                                                    <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Department Name <span style="color: #DB4437; font-size: 11px;">*</span></label>
+                                                    <input type="text" class="form-control p-2" v-model='department_name' placeholder="Must be Unique">
                                                     <span style="color: #DB4437; font-size: 11px;" v-if="department_name==''">{{e_department_name}}</span>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="form-label" v-if="company_name!='New company'">Select Company Name <span style="color: #DB4437; font-size: 11px;">*</span></label>
+                                                    <label class="form-label" v-if="company_name!='New company'"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Select Company Name <span style="color: #DB4437; font-size: 11px;">*</span></label>
                                                     <label class="form-label" v-else>New Company Name <span style="color: #DB4437; font-size: 11px;">*</span></label>
                                                     <multiselect v-if="company_name!='New company'" :show-labels="false" style="margin-right: 10px; font-size: 15px;" placeholder="Child Company" v-model="company_name" :options="options">
                                                     </multiselect>
@@ -45,7 +45,7 @@
                                                     <span style="color: #DB4437; font-size: 11px;" v-if="(company_name!='New company' && (company_name=='' || company_name==null)) || (company_name=='New company' && new_company_name=='')">{{e_company_name}}</span>
                                                 </div>
                                                 <div class="col-md-3" style="margin-top:28px;">
-                                                    <button v-if="hasPermission('Add new department')"  type="button" @click="submit_department()" class="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
+                                                    <button v-if="hasPermission('Add new department')"  type="button" @click="submit_department()" class="btn btn-primary bg-primary me-1 waves-effect waves-float waves-light bg-primary">Submit</button>
                                                     <button  v-if="hasPermission('Reset department')" type="reset" @click="reset()" class="btn btn-outline-secondary waves-effect">Reset</button>
                                                 </div>
                                             </div>
@@ -57,8 +57,8 @@
 
                             <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
                                 <!-- User Card -->
-                                <div class="card">
-                                    <div class="card-body">
+                                <div class="card top-radius bottom-radius border-0 p-3">
+                                    <div class="card-body px-0 py-3">
                                         <div class="row" style="margin-bottom:10px;">
                                             <div class="col-md-4">
                                                 <input type="text" name="keyword1" v-model="keyword1" class="form-control" placeholder="Search By Department name" />
@@ -142,7 +142,7 @@
                                             </multiselect>
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button type="submit" @click="update_department()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                            <button type="submit" @click="update_department()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>
@@ -165,6 +165,10 @@
     export default {
         data() {
             return {
+                images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
                 new_company_name: '',
                 company_name1: '',
                 keyword2: '',

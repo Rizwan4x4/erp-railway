@@ -260,7 +260,7 @@
                                 {{ e_oldPass }}</p>
                         </div>
                         <button :disabled="disabled" @click="delay()" v-if="this.old_success == '0'"
-                            class="btn btn-primary w-100" tabindex="4">Confirm
+                            class="btn btn-primary bg-primary w-100" tabindex="4">Confirm
                         </button>
                     </div>
 
@@ -301,7 +301,7 @@
                                 {{ e_newPass2 }}</p>
                         </div>
                         <b-button :disabled="disabled1" @click="delay1()" v-if="this.old_success == '1'"
-                            class="btn btn-primary w-100" tabindex="4" data-bs-dismiss="b-modal"
+                            class="btn btn-primary bg-primary w-100" tabindex="4" data-bs-dismiss="b-modal"
                             style="background-color: #6258cc !important ">Change
                         </b-button>
                     </div>
@@ -457,11 +457,11 @@
                                                 <a v-if="percent.address + percent.city + percent.cnic + percent.company_email + percent.department + percent.designation + percent.dob + percent.edu_status + percent.email + percent.emp_code + percent.exp_status + percent.father + percent.gender + percent.job_des + percent.marital + percent.mobile + percent.photo + percent.reporting > 89"
                                                     target="_blank"
                                                     v-bind:href="`../sa_sass1.1/cv_builder/${emp_detail1.EmployeeID}/${emp_detail1.EmployeeCode}/${emp_detail1.RegisterID}`"
-                                                    class="btn btn-primary btn-sm edit-address waves-effect waves-float waves-light">
+                                                    class="btn btn-primary bg-primary btn-sm edit-address waves-effect waves-float waves-light">
                                                     CV Builder
                                                 </a>
                                                 <a v-else target="_blank" href="#"
-                                                    class="btn btn-primary btn-sm edit-address waves-effect waves-float waves-light">
+                                                    class="btn btn-primary bg-primary btn-sm edit-address waves-effect waves-float waves-light">
                                                     CV Builder
                                                 </a>
                                             </div>

@@ -42,7 +42,7 @@
                                                     <label>
                                                         <input autocomplete="off" type="text" name="keyword1" v-model="keyword1" class="form-control" style="" placeholder="Search By Vendor Name" />
                                                     </label>
-                                                    <router-link to="/sales/invoice" class="dt-button add-new btn btn-primary" tabindex="0" type="button"><span>New Sale Invoice</span></router-link>
+                                                    <router-link to="/sales/invoice" class="dt-button add-new btn btn-primary bg-primary" tabindex="0" type="button"><span>New Sale Invoice</span></router-link>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,7 +146,7 @@
                                         <h6 class="mb-2">Department</h6>
                                         <p class="card-text mb-25">{{get_grndata11.DepartmentName}}</p>
                                         <p class="card-text mb-25">{{get_grndata11.ProjectName}}</p>
-                                        <p class="card-text mb-25">class="badge badge-glow bg-warning">{{get_grndata11.Status}}</span></p>
+                                        <p class="card-text mb-25"><span class="badge badge-glow bg-warning">{{get_grndata11.Status}}</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@
                             <!-- Invoice Description ends -->
                             <hr class="invoice-spacing">
                             <div class="col-12 text-center mt-2 pt-50">
-                                <button :disabled="disabled" @click="delay()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                <button :disabled="disabled" @click="delay()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                     Close
                                 </button>

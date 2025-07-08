@@ -443,7 +443,7 @@
                     <div class="col-12 text-center">
                         <button
                             v-if="check_in != '' && check_in != null"
-                            class="btn btn-primary"
+                            class="btn btn-primary bg-primary"
                             @click="update_att()"
                             data-bs-dismiss="modal"
                             aria-label="Close"

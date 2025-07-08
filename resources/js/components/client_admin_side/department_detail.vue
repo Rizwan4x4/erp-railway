@@ -12,7 +12,7 @@
                         <div class="row">
                             <!-- User Sidebar -->
                             <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0">
                                     <div class="card-header">
                                         <h4 class="card-title">Add New Department</h4>
                                     </div>
@@ -32,7 +32,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-5" style="margin-top:28px;">
-                                                    <button type="button" @click="submit_department()" class="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
+                                                    <button type="button" @click="submit_department()" class="btn btn-primary bg-primary me-1 waves-effect waves-float waves-light">Submit</button>
                                                     <button type="reset" class="btn btn-outline-secondary waves-effect">Reset</button>
                                                 </div>
                                             </div>
@@ -44,7 +44,7 @@
 
                             <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
                                 <!-- User Card -->
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0">
                                     <div class="card-body">
                                         <div style="margin-bottom:10px;">
                                             <div class="col-md-7">
@@ -125,7 +125,7 @@
                                             <input type="text" v-model="ed_department_name" class="form-control" placeholder="Department name">
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button type="submit" @click="update_department()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                            <button type="submit" @click="update_department()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>

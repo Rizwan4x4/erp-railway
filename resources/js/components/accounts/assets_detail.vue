@@ -9,7 +9,8 @@
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <router-link to="/accounts" style="text-decoration: none;">Accounts Dashboard</router-link>
+                                <router-link to="/accounts" style="text-decoration: none;">Accounts
+                                    Dashboard</router-link>
                             </li>
                             <li class="breadcrumb-item active">
                                 Assets Detail
@@ -20,60 +21,63 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div class="row">
-                            <div class="col-lg-4 col-sm-12">
-                                <div class="card">
-                                    <div class="card-body d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <h3 class="fw-bolder mb-75">{{ count_users.total }}</h3>
-                                            <span>Total Assets</span>
-                                        </div>
-                                        <div class="avatar bg-light-primary p-50">
-                                            <span class="avatar-content">
-                                                <i class="fa-solid fa-users"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-12">
-                                <div class="card">
-                                    <div class="card-body d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <h3 class="fw-bolder mb-75">{{ count_users.fully }}</h3>
-                                            <span>Assigned Assets</span>
-                                        </div>
-                                        <div class="avatar bg-light-success p-50">
-                                            <span class="avatar-content">
-                                                <i class="fa-solid fa-user-shield"></i>
-                                            </span>
+                        <div class="card top-radius bottom-radius px-3 py-4">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-12">
+                                    <div class="card top-radius bottom-radius border-0 m-0">
+                                        <div class="card-body d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <h3 class="fw-bolder mb-75">{{ count_users.total }}</h3>
+                                                <span>Total Assets</span>
+                                            </div>
+                                            <div class="avatar bg-light-primary p-50">
+                                                <span class="avatar-content">
+                                                    <i class="fa-solid fa-users"></i>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-12">
-                                <div class="card">
-                                    <div class="card-body d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <h3 class="fw-bolder mb-75">{{ count_users.partially }}</h3>
-                                            <span>Available Assets</span>
-                                        </div>
-                                        <div class="avatar bg-light-warning p-50">
-                                            <span class="avatar-content">
-                                                <i class="fa-solid fa-user-large-slash"></i>
-                                            </span>
+                                <div class="col-lg-4 col-sm-12">
+                                    <div class="card top-radius bottom-radius border-0 m-0">
+                                        <div class="card-body d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <h3 class="fw-bolder mb-75">{{ count_users.fully }}</h3>
+                                                <span>Assigned Assets</span>
+                                            </div>
+                                            <div class="avatar bg-light-success p-50">
+                                                <span class="avatar-content">
+                                                    <i class="fa-solid fa-user-shield"></i>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="col-lg-4 col-sm-12">
+                                    <div class="card top-radius bottom-radius border-0 m-0">
+                                        <div class="card-body d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <h3 class="fw-bolder mb-75">{{ count_users.partially }}</h3>
+                                                <span>Available Assets</span>
+                                            </div>
+                                            <div class="avatar bg-light-warning p-50">
+                                                <span class="avatar-content">
+                                                    <i class="fa-solid fa-user-large-slash"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+                            </div>
                         </div>
-                        <div class="card" style="background-color:white !important">
+                        <div class="card top-radius bottom-radius border-0">
                             <div class="card-body border-bottom">
                                 <h4 class="card-title">Search & Filter</h4>
                                 <div class="row">
                                     <div class="col-md-3 user_role">
-                                        <label class="form-label" for="UserRole">Category Name</label>
+                                        <label class="form-label" for="UserRole"><img class="px-1"
+                                                :src="images.solar_filter_linear" alt="icon">Category Name</label>
                                         <select id="UserRole" v-model="category" class="form-select mb-md-0 mb-2">
                                             <option value="all" selected>All Categories </option>
                                             <option :value="category" v-for="category in allCategory">{{ category }}
@@ -81,7 +85,8 @@
                                         </select>
                                     </div>
                                     <div class="col-md-3 user_status">
-                                        <label class="form-label" for="UserRole">By Name</label>
+                                        <label class="form-label" for="UserRole"><img class="px-1"
+                                                :src="images.solar_filter_linear" alt="icon">By Name</label>
                                         <div class="dataTables_filter" style="">
                                             <label>
                                                 <input autocomplete="off" type="text" name="keyword1" v-model="keyword1"
@@ -98,15 +103,18 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th style="text-align:center; vertical-align:middle !important;">Unique Id</th>
+                                            <th style="text-align:center; vertical-align:middle !important;">Unique Id
+                                            </th>
                                             <th style="vertical-align:middle !important;">Asset Name</th>
                                             <th style="vertical-align:middle !important;">Serial Number</th>
-                                            <th style="text-align:center; vertical-align:middle !important;">Category Name
+                                            <th style="text-align:center; vertical-align:middle !important;">Category
+                                                Name
                                             </th>
                                             <th style="text-align:center; vertical-align:middle !important;">
                                                 Availabe<br />Quantity</th>
 
-                                            <th style="text-align: center; vertical-align: middle !important;">Barcode</th>
+                                            <th style="text-align: center; vertical-align: middle !important;">Barcode
+                                            </th>
                                             <th style="text-align:center; vertical-align:middle !important;">Action</th>
                                         </tr>
                                     </thead>
@@ -118,7 +126,8 @@
                                             <td class=" control" tabindex="0">{{ adsdata1.SrNumber }}</td>
                                             <td class=" control" tabindex="0" style="text-align:center;">
                                                 {{ adsdata1.CategoryName }}</td>
-                                            <td class=" control" tabindex="0" style="text-align:center;">{{ adsdata1.Qty }}
+                                            <td class=" control" tabindex="0" style="text-align:center;">{{ adsdata1.Qty
+                                                }}
                                             </td>
 
                                             <td>
@@ -129,17 +138,19 @@
                                             </td>
                                             <td class=" control" tabindex="0" style="text-align:center;">
                                                 <div class="d-flex align-items-center col-actions">
-                                                    <a v-if="hasPermission('Inventory Assets view-asset') " @click="getitemdata(adsdata1.AssetsUniqueID)" class="me-25"
+                                                    <a v-if="hasPermission('Inventory Assets view-asset')"
+                                                        @click="getitemdata(adsdata1.AssetsUniqueID)" class="me-25"
                                                         data-bs-toggle="modal" data-bs-target="#viewstock">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>
-                                                    <div class="btn-group" v-if="hasPermission('Inventory Assets actions') ">
-                                                        <a   data-bs-toggle="dropdown"
+                                                    <div class="btn-group"
+                                                        v-if="hasPermission('Inventory Assets actions')">
+                                                        <a data-bs-toggle="dropdown"
                                                             class="btn btn-sm dropdown-toggle hide-arrow"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                                stroke-width="2" stroke-linecap="round"
-                                                                stroke-linejoin="round"
+                                                                xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
                                                                 class="feather feather-more-vertical font-small-4">
                                                                 <circle cx="12" cy="12" r="1"></circle>
                                                                 <circle cx="12" cy="5" r="1"></circle>
@@ -204,20 +215,22 @@
                     <div class="modal-dialog modal-lg modal-dialog-centered modal-edit-user">
                         <div class="modal-content">
                             <div class="modal-header bg-transparent">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="col-xl-12 col-md-12 col-12">
                                 <div class="card invoice-preview-card">
                                     <div class="card-body invoice-padding pb-0">
-                                        <barcode :value="'www.google.com.com/' + this.asset_asset_code" :displayValue="false"
-                                            :width="1" :height="40">
+                                        <barcode :value="'www.google.com.com/' + this.asset_asset_code"
+                                            :displayValue="false" :width="1" :height="40">
                                             No barcode available
                                         </barcode>
 
 
                                     </div>
                                     <div class="divider">
-                                        <div class="divider-text" style="font-size: 24px;font-weight: 900;">Assets Overall
+                                        <div class="divider-text" style="font-size: 24px;font-weight: 900;">Assets
+                                            Overall
                                             Detail</div>
                                     </div>
                                     <!-- Address and Contact ends -->
@@ -253,7 +266,8 @@
                                                         <span class="fw-bold">{{ getitemwise1.Unit }}</span>
                                                     </td>
                                                     <td class="py-1">
-                                                        <p class="card-text fw-bold mb-25">{{ getitemwise1.Reference }}</p>
+                                                        <p class="card-text fw-bold mb-25">{{ getitemwise1.Reference }}
+                                                        </p>
 
                                                     </td>
                                                 </tr>
@@ -282,12 +296,14 @@
                                                     </td>
 
                                                     <td class="py-1">
-                                                        <span class="fw-bold">Status: {{ depreciation_list1.Status }}</span>
+                                                        <span class="fw-bold">Status: {{ depreciation_list1.Status
+                                                            }}</span>
                                                     </td>
 
 
                                                 </tr>
-                                                <tr v-if="retirement_list != []" v-for="retirement_list1 in retirement_list">
+                                                <tr v-if="retirement_list != []"
+                                                    v-for="retirement_list1 in retirement_list">
                                                     <td class="py-1">
                                                         <span class="fw-bold">Retirement Date:
                                                             {{ retirement_list1.RetirementDate.substr(0, 10) }}</span>
@@ -301,7 +317,8 @@
                                                             {{ retirement_list1.NetValueBalance }}</span>
                                                     </td>
                                                     <td class="py-1">
-                                                        <span class="fw-bold">Status: {{ retirement_list1.Status }}</span>
+                                                        <span class="fw-bold">Status: {{ retirement_list1.Status
+                                                            }}</span>
                                                     </td>
 
                                                     <td class="py-1">
@@ -334,71 +351,83 @@
                         <div class="text-center mb-2">
                             <center>
                                 <div class="col-md-12">
-          <table style="width: 100%;">
-    <thead>
-        <tr>
-            <th colspan="4" style="text-align: center;">
-                <h2>Assign Asset To Employee</h2>
-            </th>
-        </tr>
-        <tr>
-            <th style="width: 18%;">Asset ID: </th>
-            <td style="width: 25%;">{{ asset_id }}</td>
-            <th style="width: 25%;">Asset Name: </th>
-            <td style="width: 32%;">{{ asset_name }}</td>
-        </tr>
-        <tr>
-            <th>Asset Category: </th>
-            <td>{{ asset_category }}</td>
-            <th>Purchase Cost: </th>
-            <td>{{ Number(asset_cost) }}</td>
-        </tr>
-        <tr style="height: 30px;"></tr>
-        <tr >
-            <th colspan="4">
-                <div style="display: flex; align-items: center;">
-                    <label class="form-label" style="margin-right: 10px;">Assign To Employee</label>
-                    <multiselect :show-labels="false" style="font-size: 12px;" placeholder="Select Employee"
-                                 value="id" label="label" v-model="emp_emp_id" :options="options4">
-                    </multiselect>
-                    <label class="form-label" style="margin-left: 20px; margin-right: 10px;">Assign To Department</label>
-                    <multiselect :show-labels="false" style="font-size: 12px;" id="FilterTransaction"
-                                 placeholder="All Departments" v-model="emp_Dept" :options="options2">
-                    </multiselect>
-                    <span style="color: #DB4437; font-size: 11px;" v-if="emp_Dept==''">{{e_emp_Dept}}</span>
-                </div>
-            </th>
-        </tr>
-        <tr style="height: 10px;"></tr>
-        <tr>
-            <th colspan="4">
-                <div style="display: flex; align-items: center;">
-                    <label class="form-label" style="margin-right: 10px;">Project</label>
-                    <multiselect :show-labels="false" style="font-size: 15px;" id="UserPlan"
-                                 placeholder="All Locations" v-model="project" :options="options3">
-                    </multiselect>
-                    <label class="form-label" style="margin-left: 20px; margin-right: 10px;">Location</label>
-                    <multiselect :show-labels="false" style="font-size: 15px;" id="UserPlan"
-                                 placeholder="All Locations" v-model="location" :options="options1">
-                    </multiselect>
-                </div>
-            </th>
-        </tr>
-        <tr>
-            <th colspan="4">
-            <div class="col-xl-12 mb-lg-1 col-bill-to ps-0">
-                <label for="note" class="form-label fw-bold">Narration:</label>
-                                                            <textarea v-model="remarks" class="form-control" rows="2" id="note"></textarea>
-                                                    </div></th>
-        </tr>
-    </thead>
-</table>
+                                    <table style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="4" style="text-align: center;">
+                                                    <h2>Assign Asset To Employee</h2>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width: 18%;">Asset ID: </th>
+                                                <td style="width: 25%;">{{ asset_id }}</td>
+                                                <th style="width: 25%;">Asset Name: </th>
+                                                <td style="width: 32%;">{{ asset_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Asset Category: </th>
+                                                <td>{{ asset_category }}</td>
+                                                <th>Purchase Cost: </th>
+                                                <td>{{ Number(asset_cost) }}</td>
+                                            </tr>
+                                            <tr style="height: 30px;"></tr>
+                                            <tr>
+                                                <th colspan="4">
+                                                    <div style="display: flex; align-items: center;">
+                                                        <label class="form-label" style="margin-right: 10px;">Assign To
+                                                            Employee</label>
+                                                        <multiselect :show-labels="false" style="font-size: 12px;"
+                                                            placeholder="Select Employee" value="id" label="label"
+                                                            v-model="emp_emp_id" :options="options4">
+                                                        </multiselect>
+                                                        <label class="form-label"
+                                                            style="margin-left: 20px; margin-right: 10px;">Assign To
+                                                            Department</label>
+                                                        <multiselect :show-labels="false" style="font-size: 12px;"
+                                                            id="FilterTransaction" placeholder="All Departments"
+                                                            v-model="emp_Dept" :options="options2">
+                                                        </multiselect>
+                                                        <span style="color: #DB4437; font-size: 11px;"
+                                                            v-if="emp_Dept == ''">{{ e_emp_Dept }}</span>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr style="height: 10px;"></tr>
+                                            <tr>
+                                                <th colspan="4">
+                                                    <div style="display: flex; align-items: center;">
+                                                        <label class="form-label"
+                                                            style="margin-right: 10px;">Project</label>
+                                                        <multiselect :show-labels="false" style="font-size: 15px;"
+                                                            id="UserPlan" placeholder="All Locations" v-model="project"
+                                                            :options="options3">
+                                                        </multiselect>
+                                                        <label class="form-label"
+                                                            style="margin-left: 20px; margin-right: 10px;">Location</label>
+                                                        <multiselect :show-labels="false" style="font-size: 15px;"
+                                                            id="UserPlan" placeholder="All Locations" v-model="location"
+                                                            :options="options1">
+                                                        </multiselect>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="4">
+                                                    <div class="col-xl-12 mb-lg-1 col-bill-to ps-0">
+                                                        <label for="note" class="form-label fw-bold">Narration:</label>
+                                                        <textarea v-model="remarks" class="form-control" rows="2"
+                                                            id="note"></textarea>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
 
 
                                 </div>
                                 <div class="col-12 text-center">
                                     <button type="submit" :disabled="disabled2" @click="delay2()"
-                                        class="btn btn-primary me-1 mt-2" data-bs-dismiss="modal" >Assign
+                                        class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal">Assign
                                         Asset</button>
                                     <button type="reset" class="btn btn-outline-secondary mt-2" data-bs-dismiss="modal"
                                         aria-label="Close">
@@ -455,10 +484,11 @@
                                                     <div class="col-md-10">
                                                         <strong>Salvage Value: </strong><span
                                                             style="color: #DB4437; font-size: 11px;">*</span>
-                                                        <input type="number" class="form-control" v-model="salvage_value"
-                                                            placeholder="Salvage Value" />
+                                                        <input type="number" class="form-control"
+                                                            v-model="salvage_value" placeholder="Salvage Value" />
                                                         <span style="color: #DB4437; font-size: 11px;"
-                                                            v-if="this.salvage_value == ''">{{ this.e_salvage_value }}</span>
+                                                            v-if="this.salvage_value == ''">{{ this.e_salvage_value
+                                                            }}</span>
                                                     </div>
                                                 </td>
 
@@ -483,7 +513,8 @@
                                     <button v-if="sr_number == ''" type="submit" :disabled="disabled1" @click="delay1()"
                                         class="btn btn-danger me-1 mt-2">Update Asset</button>
                                     <button v-else type="submit" :disabled="disabled1" @click="delay1()"
-                                        class="btn btn-primary me-1 mt-2" data-bs-dismiss="modal" aria-label="Close">Update
+                                        class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal"
+                                        aria-label="Close">Update
                                         Asset</button>
                                     <button type="reset" class="btn btn-outline-secondary mt-2" data-bs-dismiss="modal"
                                         aria-label="Close">
@@ -525,36 +556,45 @@
 
 
                                             <tr>
-                                                <tr >
-                                   <th colspan="4">
-                   <div style="display: flex; align-items: center;">
-                    <label class="form-label" style="margin-right: 10px;">Return from  Employee</label>
-                    <multiselect :show-labels="false" style="font-size: 12px;" placeholder="Select Employee"
-                                 value="id" label="label" v-model="emp_emp_id" :options="options4">
-                    </multiselect>
-                    <label class="form-label" style="margin-left: 20px; margin-right: 10px;">Return From Department</label>
-                    <multiselect :show-labels="false" style="font-size: 12px;" id="FilterTransaction"
-                                 placeholder="All Departments" v-model="emp_Dept" :options="options2">
-                    </multiselect>
-                    <span style="color: #DB4437; font-size: 11px;" v-if="emp_Dept==''">{{e_emp_Dept}}</span>
-                   </div>
-            </th>
-        </tr>
+                                            <tr>
+                                                <th colspan="4">
+                                                    <div style="display: flex; align-items: center;">
+                                                        <label class="form-label" style="margin-right: 10px;">Return
+                                                            from Employee</label>
+                                                        <multiselect :show-labels="false" style="font-size: 12px;"
+                                                            placeholder="Select Employee" value="id" label="label"
+                                                            v-model="emp_emp_id" :options="options4">
+                                                        </multiselect>
+                                                        <label class="form-label"
+                                                            style="margin-left: 20px; margin-right: 10px;">Return From
+                                                            Department</label>
+                                                        <multiselect :show-labels="false" style="font-size: 12px;"
+                                                            id="FilterTransaction" placeholder="All Departments"
+                                                            v-model="emp_Dept" :options="options2">
+                                                        </multiselect>
+                                                        <span style="color: #DB4437; font-size: 11px;"
+                                                            v-if="emp_Dept == ''">{{ e_emp_Dept }}</span>
+                                                    </div>
+                                                </th>
+                                            </tr>
 
                                             </tr>
                                             <tr>
-                  <th colspan="4">
-                                    <div class="col-xl-12 mb-lg-1 col-bill-to ps-0">
-                                    <label for="note" class="form-label fw-bold">Narration:</label>
-                                    <textarea v-model="remarks" class="form-control" rows="2" id="note"></textarea>
-                                                    </div></th>
-        </tr>
+                                                <th colspan="4">
+                                                    <div class="col-xl-12 mb-lg-1 col-bill-to ps-0">
+                                                        <label for="note" class="form-label fw-bold">Narration:</label>
+                                                        <textarea v-model="remarks" class="form-control" rows="2"
+                                                            id="note"></textarea>
+                                                    </div>
+                                                </th>
+                                            </tr>
                                         </thead>
                                     </table>
                                 </div>
                                 <div class="col-12 text-center">
                                     <button type="submit" :disabled="disabled3" @click="delay3()"
-                                        class="btn btn-primary me-1 mt-2" data-bs-dismiss="modal" aria-label="Close">Return
+                                        class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal"
+                                        aria-label="Close">Return
                                         Asset</button>
                                     <button type="reset" class="btn btn-outline-secondary mt-2" data-bs-dismiss="modal"
                                         aria-label="Close">
@@ -578,14 +618,18 @@ export default {
 
     data() {
         return {
-            emp_emp_id:'',
+            images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
+            emp_emp_id: '',
             sr_number: '',
             e_sr_number: '',
             salvage_value: '',
             e_salvage_value: '',
             est_life: '',
             e_est_life: '',
-            remarks:'',
+            remarks: '',
             companydetail: {},
             counters: {},
             adsdata: {},
@@ -600,14 +644,14 @@ export default {
             getitemwise: {},
             itemid: '',
             getitemtotal: '',
-            project:'',
-options2:[],
-options1: [],
-emp_Dept:'',
-e_emp_Dept:'',
-location:'',
+            project: '',
+            options2: [],
+            options1: [],
+            emp_Dept: '',
+            e_emp_Dept: '',
+            location: '',
             options4: [],
-            options3:[],
+            options3: [],
             rcvBy: '',
             rcvBy_error: '',
             asset_id: '',
@@ -626,23 +670,23 @@ location:'',
             filterData: null,
         }
     },
-    components: { VueBarcode,Multiselect },
+    components: { VueBarcode, Multiselect },
     methods: {
-        async  fetchLocations() {
-    try {
-        this.locations = await this.$apihelpers.overall_location()
-                    this.options1 = [];
+        async fetchLocations() {
+            try {
+                this.locations = await this.$apihelpers.overall_location()
+                this.options1 = [];
 
-                   var $this = this;
-                   for (var i = 0; i < $this.locations.length; i++) {
-                   this.options1.push($this.locations[i].location_name);
-                    }
-      // Process the data or perform additional actions here
-    } catch (error) {
-      console.error(error);
-      // Additional error handling if needed
-    }
-  },
+                var $this = this;
+                for (var i = 0; i < $this.locations.length; i++) {
+                    this.options1.push($this.locations[i].location_name);
+                }
+                // Process the data or perform additional actions here
+            } catch (error) {
+                console.error(error);
+                // Additional error handling if needed
+            }
+        },
         getObjectsByCategory(categoryName) {
             return this.adsdata.filter(obj => obj.CategoryName === categoryName);
         },
@@ -671,7 +715,7 @@ location:'',
             this.return()
         },
         assign() {
-            if (this.emp_Dept == '' || this.asset_id == '' || this.emp_Dept == null ) {
+            if (this.emp_Dept == '' || this.asset_id == '' || this.emp_Dept == null) {
                 this.e_emp_Dept = "Select Dept";
                 this.$toastr.e("Please Select Departmant", "Error!");
 
@@ -680,12 +724,12 @@ location:'',
                 this.e_emp_Dept = "";
                 axios.post('./Accounts/assign_asset', {
                     asset_id: this.asset_id,
-                   emp_Dept: this.emp_Dept,
-                   empCode:this.emp_emp_id.label,
-                   location:this.location,
-                   project:this.project,
+                    emp_Dept: this.emp_Dept,
+                    empCode: this.emp_emp_id.label,
+                    location: this.location,
+                    project: this.project,
                     unit: this.unit,
-                    remarks:this.remarks
+                    remarks: this.remarks
                 })
                     .then(data => {
                         if (data.data == "submitted!") {
@@ -693,10 +737,10 @@ location:'',
                             this.asset_id = "";
                             this.emp_Dept = "";
                             this.empCode = "";
-                            this.location="";
-                            this.project="";
+                            this.location = "";
+                            this.project = "";
                             this.unit = "";
-                            this.emp_emp_id ="";
+                            this.emp_emp_id = "";
                             this.getResult();
 
                         }
@@ -748,10 +792,10 @@ location:'',
                 this.e_emp_Dept = "";
                 axios.post('./Accounts/return_asset', {
                     asset_id: this.asset_id,
-                   emp_Dept: this.emp_Dept,
-                   emp_Code: this.emp_emp_id.label,
+                    emp_Dept: this.emp_Dept,
+                    emp_Code: this.emp_emp_id.label,
                     unit: this.unit,
-                    remarks:this.remarks
+                    remarks: this.remarks
 
                 })
                     .then(data => {
@@ -759,9 +803,9 @@ location:'',
                             this.$toastr.s("Return Asset successfully!", "Congratulations");
                             this.asset_id = "";
                             this.emp_Dept = "";
-                            this.emp_Code="";
+                            this.emp_Code = "";
                             this.unit = "";
-                            this.emp_emp_id= "";
+                            this.emp_emp_id = "";
                             this.getResult();
 
                         }
@@ -834,27 +878,28 @@ location:'',
 
     mounted() {
         axios.get('./accounts/get_coaProjects')
-                .then(response => {this.projects = response.data
-                    this.options3 = [];
-                    var $this = this;
-                    for (var i = 0; i < $this.projects.length; i++) {
-                        this.options3.push($this.projects[i].ProjectName);
-                    }
+            .then(response => {
+                this.projects = response.data
+                this.options3 = [];
+                var $this = this;
+                for (var i = 0; i < $this.projects.length; i++) {
+                    this.options3.push($this.projects[i].ProjectName);
+                }
 
-                })
+            })
 
         this.fetchLocations();
         axios.get('overall_department')
-                .then(response => {
-                    this.departments = response.data
-                    this.options2 = [];
+            .then(response => {
+                this.departments = response.data
+                this.options2 = [];
 
-                    var $this = this;
-                    for (var i = 0; i < $this.departments.length; i++) {
-                        this.options2.push($this.departments[i].department_name);
-                    }
-                })
-                .catch(error => { });
+                var $this = this;
+                for (var i = 0; i < $this.departments.length; i++) {
+                    this.options2.push($this.departments[i].department_name);
+                }
+            })
+            .catch(error => { });
         axios.get('registered_empcode')
             .then(data => {
                 this.find_emp = data.data;
@@ -879,3 +924,22 @@ location:'',
 }
 
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

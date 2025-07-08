@@ -134,7 +134,7 @@
                         <div class="col-xl-3 col-md-4 col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <button class="btn btn-primary w-100 mb-75">Post Voucher</button>
+                                    <button class="btn btn-primary bg-primary w-100 mb-75">Post Voucher</button>
                                     <a href="#" class="btn btn-outline-primary w-100 mb-75">Preview</a>
 
                                 </div>

@@ -211,7 +211,7 @@
                             <div class="col-xl-3 col-md-4 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <button :disabled="disabled" @click="delay()" class="btn btn-primary w-100 mb-75">Post GRN</button>
+                                        <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary w-100 mb-75">Post GRN</button>
                                         <input type="file" id="image_file" :v-model="image_file" name="image_file" @change="onFileChange" accept="image/*" class="btn btn-outline-primary w-100 mb-75">
                                         <span style="color: #DB4437; font-size: 11px;" v-if="image==''">{{image_e}}</span>
                                         <div class="d-flex">

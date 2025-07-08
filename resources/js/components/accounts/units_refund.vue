@@ -20,18 +20,18 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div clas="card" style="background-color:white !important">
+                        <div class="card top-radius bottom-radius border-0">
                             <div class="col-md-12 row" style="margin:10px;">
                                 <div class="col-md-3 col-12">
-                                    <label class="form-label">Date From</label>
+                                    <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date From</label>
                                     <input type="date" v-model="datefrom" class="form-control">
                                 </div>
                                 <div class="col-md-3 col-12">
-                                    <label class="form-label">Date To</label>
+                                    <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date To</label>
                                     <input type="date" class="form-control" v-model="dateto">
                                 </div>
                                 <div class="col-md-1 col-12">
-                                    <button @click="filtered_GRN()" style="margin-top: 25px;" class="btn btn-secondary">Search</button>
+                                    <button @click="filtered_GRN()" style="margin-top: 25px;" class="btn btn-primary bg-primary">Search</button>
                                 </div>
                                 <div class="col-md-3 col-12">
                                     <input style="margin-top: 25px;" type="text" v-model="keyword1" class="form-control" placeholder="Owner name / Unit number / Receipt No" />
@@ -188,7 +188,7 @@
                             </div>
                             <br>
                             <div class="text-center" style="text-align:center">
-                                <button type="button" :disabled="disabled3" @click="delay3()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                <button type="button" :disabled="disabled3" @click="delay3()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                 <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                             </div>
                         </div>
@@ -245,7 +245,7 @@
                             </div>
                             <br>
                             <div class="text-center" style="text-align:center">
-                                <button type="button" :disabled="disabled4" @click="delay4()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                <button type="button" :disabled="disabled4" @click="delay4()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                 <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                             </div>
                         </div>
@@ -303,7 +303,7 @@
                             </div>
                             <br>
                             <div class="text-center" style="text-align:center">
-                                <button type="button" :disabled="disabled9" @click="delay9()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                <button type="button" :disabled="disabled9" @click="delay9()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                 <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                             </div>
                         </div>
@@ -441,7 +441,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 d-flex justify-content-end order-md-2 order-1" style="padding-right: 50px;margin-bottom: 10px;margin-top:10px">
-                                    <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                    <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                     <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                         Cancle
                                     </button>
@@ -557,7 +557,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 d-flex justify-content-end order-md-2 order-1" style="padding-right: 50px;margin-bottom: 10px;margin-top:10px">
-                                    <button :disabled="disabled2" @click="delay2()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                    <button :disabled="disabled2" @click="delay2()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                     <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                         Cancle
                                     </button>
@@ -688,7 +688,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 d-flex justify-content-end order-md-2 order-1" style="padding-right: 50px;margin-bottom: 10px;margin-top:10px">
-                                    <button :disabled="disabled2" @click="delay8()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                    <button :disabled="disabled2" @click="delay8()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                     <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                         Cancle
                                     </button>
@@ -709,6 +709,10 @@
     export default {
         data() {
             return {
+                 images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
                 limit: 10,
                 pageN: 1,
 

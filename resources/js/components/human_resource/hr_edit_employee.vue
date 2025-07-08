@@ -52,7 +52,7 @@
                                                 <!-- upload and reset button -->
                                                 <div class="d-flex align-items-end mt-75 ms-1">
                                                     <div>
-                                                        <label for="account-upload" class="btn btn-sm btn-primary mb-75 me-75 waves-effect waves-float waves-light">Upload</label>
+                                                        <label for="account-upload" class="btn btn-sm btn-primary bg-primary mb-75 me-75 waves-effect waves-float waves-light">Upload</label>
                                                         <input type="file" id="account-upload" hidden="" accept="image/*">
                                                         <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 waves-effect">Reset</button>
                                                         <p class="mb-0">Allowed file types: png, jpg, jpeg.</p>
@@ -165,7 +165,7 @@
                                                     <input type="text" class="form-control" v-model="address" placeholder="Your Address">
                                                 </div>
                                                 <div class="col-12" style="text-align:center">
-                                                    <button type="submit" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Save Employee Profile</button>
+                                                    <button type="submit" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">Save Employee Profile</button>
                                                 </div>
                                             </div>
                                             <!--/ form -->
@@ -180,7 +180,7 @@
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <h4 class="card-title">Add Education Detail</h4>
-                                                        <div data-repeater-create="" class="btn btn-primary" v-on:click="add_xz_repeater()">
+                                                        <div data-repeater-create="" class="btn btn-primary bg-primary" v-on:click="add_xz_repeater()">
                                                             <span>
                                                                 <i class="fa fas-plus"></i>
                                                                 <span>Add</span>
@@ -267,7 +267,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Add Experience Detail</h4>
-                    <div data-repeater-create="" class="btn btn-primary" v-on:click="add_xz_repeater1()">
+                    <div data-repeater-create="" class="btn btn-primary bg-primary" v-on:click="add_xz_repeater1()">
                         <span>
                             <i class="fa fas-plus"></i>
                             <span>Add</span>
@@ -498,7 +498,7 @@
 
 
     <div class="col-12" style="text-align:center">
-        <button type="submit" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Save Employee Profile</button>
+        <button type="submit" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">Save Employee Profile</button>
     </div>
 
 </div>

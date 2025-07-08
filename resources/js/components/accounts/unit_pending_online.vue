@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="invoice_status ms-sm-2" >
 
-                                            <button style="float:left" @click="delay1()"  class="btn btn-primary waves-effect">Proceed</button>
+                                            <button style="float:left" @click="delay1()"  class="btn btn-primary bg-primary waves-effect">Proceed</button>
                                             </div>
 
                                     </div>

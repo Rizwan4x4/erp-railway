@@ -13,7 +13,7 @@
                              <h2 class="mb-1">You Dont Have Permission For This Route 🕵🏻&zwj;♀️</h2>
                             <p class="mb-2">Oops! 😖 Dont have permission.</p>
                             <div style="width:100%">
-                            <router-link class="btn btn-primary mb-2 btn-sm-block waves-effect waves-float waves-light" to="/">Back to home</router-link>
+                            <router-link class="btn btn-primary bg-primary mb-2 btn-sm-block waves-effect waves-float waves-light" to="/">Back to home</router-link>
                             </div>
                         </div>
                     </div>

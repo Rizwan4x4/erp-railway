@@ -300,7 +300,7 @@
                                     </div>
                                     <span>4 are active</span>
                                     <div class="d-grid w-100 mt-2">
-                                        <button class="btn btn-primary" data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
+                                        <button class="btn btn-primary bg-primary" data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
                                             Total Users
                                         </button>
                                     </div>
@@ -326,7 +326,7 @@
                                     </div>
                                     <span>4 are active</span>
                                     <div class="d-grid w-100 mt-2">
-                                        <button class="btn btn-primary" data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
+                                        <button class="btn btn-primary bg-primary" data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
                                             Total Modules
                                         </button>
                                     </div>
@@ -352,7 +352,7 @@
                                     </div>
                                     <span>10 are active</span>
                                     <div class="d-grid w-100 mt-2">
-                                        <button class="btn btn-primary" data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
+                                        <button class="btn btn-primary bg-primary" data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
                                             Total Companies
                                         </button>
                                     </div>

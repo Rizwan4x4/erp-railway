@@ -9,7 +9,8 @@
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <router-link to="/accounts" style="text-decoration: none;">Accounts Dashboard</router-link>
+                                <router-link to="/accounts" style="text-decoration: none;">Accounts
+                                    Dashboard</router-link>
                             </li>
                             <li class="breadcrumb-item active">Journal Voucher Detail
                             </li>
@@ -19,20 +20,23 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div clas="card" style="background-color:white !important">
+                        <div class="card top-radius bottom-radius border-0" style="background-color:white !important">
                             <div style="margin-bottom:20px;padding-top:20px"
                                 class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
-                                <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
+                                <div class="col-sm-6 col-lg-4 ps-xl-75 ps-0">
                                     <div class="dt-buttons d-inline-flex mt-50">
-                                        <router-link v-if="hasPermission('Accounting journal_voucher create-jv')" style="float:left" to="/accounting/create_journal_voucher"
-                                            class="btn btn-primary waves-effect">Create Journal Voucher</router-link>
+                                        <router-link v-if="hasPermission('Accounting journal_voucher create-jv')"
+                                            style="float:left" to="/accounting/create_journal_voucher"
+                                            class="btn btn-primary bg-primary waves-effect">Create Journal Voucher</router-link>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
+                                <div class="col-sm-6 col-lg-8 ps-xl-75 ps-0">
                                     <div
-                                        class="dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
-                                        <input type="text" name="keyword1" v-model="keyword1"
-                                            class="form-control" placeholder="Search By JV ID/Amount" />
+                                        class="dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap me-1">
+                                        <div class="me-1" style="margin-top:5px">
+                                            <input type="text" name="keyword1" v-model="keyword1" class="form-control"
+                                                placeholder="Search By JV ID/Amount" />
+                                        </div>
 
                                         <div class="me-1">
                                             <div class="dataTables_filter" style="margin-top:5px">
@@ -85,11 +89,12 @@
                                                 {{ Number(adsdata1.TransactionAmount) }}/-
                                             </td>
 
-                                            <td >
+                                            <td>
                                                 <span v-if="adsdata1.Status == 'Approved'"
                                                     class="badge badge-glow bg-primary">{{ adsdata1.Status }}</span>
-                                                <span @click="editJV(adsdata1.JournalVoucherID)" data-bs-target="#viewJV2"
-                                                    data-bs-toggle="modal" v-else-if="adsdata1.Status == 'Pending'"
+                                                <span @click="editJV(adsdata1.JournalVoucherID)"
+                                                    data-bs-target="#viewJV2" data-bs-toggle="modal"
+                                                    v-else-if="adsdata1.Status == 'Pending'"
                                                     class="badge badge-glow bg-info">{{ adsdata1.Status }}</span>
                                             </td>
                                             <!-- <td v-else>
@@ -101,17 +106,19 @@
                                             <td>
                                                 <div class="d-flex align-items-center col-actions">
 
-                                                    <a  class="me-25" data-bs-toggle="modal"
-                                                        @click="editJV(adsdata1.JournalVoucherID)" data-bs-target="#viewJV">
+                                                    <a class="me-25" data-bs-toggle="modal"
+                                                        @click="editJV(adsdata1.JournalVoucherID)"
+                                                        data-bs-target="#viewJV">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>
-                                                    <div class="dropdown"><a v-if="hasPermission('Accounting journal_voucher edit-jv')"
+                                                    <div class="dropdown"><a
+                                                            v-if="hasPermission('Accounting journal_voucher edit-jv')"
                                                             class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                                             data-bs-toggle="dropdown"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                                stroke-width="2" stroke-linecap="round"
-                                                                stroke-linejoin="round"
+                                                                xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
                                                                 class="feather feather-more-vertical font-medium-2 text-body">
                                                                 <circle cx="12" cy="12" r="1"></circle>
                                                                 <circle cx="12" cy="5" r="1"></circle>
@@ -177,7 +184,8 @@
                         <div class="card invoice-preview-card" v-for="jurnalVchrs1 in jurnalVchrs">
                             <div class="card-body invoice-padding pb-0">
                                 <!-- Header starts -->
-                                <div class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
+                                <div
+                                    class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
                                     <div v-for='companydetail1 in companydetail' style="margin-left:30px">
                                         <div style="padding-top:10px;margin-bottom: 0px;" class="logo-wrapper">
                                             <h3 class="text-primary invoice-logo" style="margin-left: 0px;">
@@ -217,7 +225,8 @@
                                 <!-- Header ends -->
                             </div>
                             <div class="divider">
-                                <div class="divider-text" style="font-size: 24px;font-weight: 900;">Journal Voucher</div>
+                                <div class="divider-text" style="font-size: 24px;font-weight: 900;">Journal Voucher
+                                </div>
                             </div>
                             <!-- Address and Contact starts -->
                             <div class="col-md-12">
@@ -228,7 +237,7 @@
                                             <th>Account Name</th>
                                             <th>Narration</th>
                                             <th>Credit Amount</th>
-                                            <th >Debit Amount</th>
+                                            <th>Debit Amount</th>
 
                                         </tr>
                                     </thead>
@@ -267,120 +276,122 @@
             </div>
         </div>
         <div class="modal fade" id="viewJV2" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-edit-user">
-            <div class="modal-content">
-                <div class="modal-header bg-transparent">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="col-xl-12 col-md-12 col-12">
-                    <div class="card invoice-preview-card" v-for="jurnalVchrs1 in jurnalVchrs">
-                        <div class="card-body invoice-padding pb-0">
-                            <!-- Header starts -->
-                            <div class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
-                                <div v-for='companydetail1 in companydetail' style="margin-left:30px">
-                                    <div style="padding-top:10px;margin-bottom: 0px;" class="logo-wrapper">
-                                        <h3 class="text-primary invoice-logo" style="margin-left: 0px;">
-                                            {{ companydetail1.company_name }}</h3>
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-edit-user">
+                <div class="modal-content">
+                    <div class="modal-header bg-transparent">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="col-xl-12 col-md-12 col-12">
+                        <div class="card invoice-preview-card" v-for="jurnalVchrs1 in jurnalVchrs">
+                            <div class="card-body invoice-padding pb-0">
+                                <!-- Header starts -->
+                                <div
+                                    class="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
+                                    <div v-for='companydetail1 in companydetail' style="margin-left:30px">
+                                        <div style="padding-top:10px;margin-bottom: 0px;" class="logo-wrapper">
+                                            <h3 class="text-primary invoice-logo" style="margin-left: 0px;">
+                                                {{ companydetail1.company_name }}</h3>
+                                        </div>
+                                        <p class="card-text mb-25">Address: {{ companydetail1.company_address }} , </p>
+                                        <p class="card-text mb-25">City: {{ companydetail1.city }} -
+                                            {{ companydetail1.country }}</p>
+                                        <p class="card-text mb-0">Phone: {{ companydetail1.phone_number }}</p>
                                     </div>
-                                    <p class="card-text mb-25">Address: {{ companydetail1.company_address }} , </p>
-                                    <p class="card-text mb-25">City: {{ companydetail1.city }} -
-                                        {{ companydetail1.country }}</p>
-                                    <p class="card-text mb-0">Phone: {{ companydetail1.phone_number }}</p>
-                                </div>
-                                <div class="mt-md-0 mt-2" style="min-width:30%">
-                                    <h5 class="invoice-title">
-                                        JV ID:
-                                        <span class="invoice-number">{{ jurnalVchrs1.JVID }}</span>
-                                    </h5>
-                                    <div class="invoice-date-wrapper row">
-                                        <p class="invoice-date-title" style="width:30%">Date:</p>
-                                        <p style="width:70%" class="invoice-date">{{ jurnalVchrs1.JVDate }}</p>
-                                    </div>
-                                    <div class="invoice-date-wrapper row">
-                                        <p class="invoice-date-title" style="width:45%">Amount:</p>
-                                        <p style="width:50%" class="invoice-date">
-                                            {{ Number(jurnalVchrs1.TransactionAmount) }}/-</p>
-                                    </div>
-                                    <div class="invoice-date-wrapper row">
-                                        <p class="invoice-date-title" style="width:35%">Status:</p>
-                                        <p style="width:65%" class="invoice-date">
-                                            <span v-if="jurnalVchrs1.Status == 'Approved'"
-                                                class="badge badge-glow bg-primary">Approved</span>
+                                    <div class="mt-md-0 mt-2" style="min-width:30%">
+                                        <h5 class="invoice-title">
+                                            JV ID:
+                                            <span class="invoice-number">{{ jurnalVchrs1.JVID }}</span>
+                                        </h5>
+                                        <div class="invoice-date-wrapper row">
+                                            <p class="invoice-date-title" style="width:30%">Date:</p>
+                                            <p style="width:70%" class="invoice-date">{{ jurnalVchrs1.JVDate }}</p>
+                                        </div>
+                                        <div class="invoice-date-wrapper row">
+                                            <p class="invoice-date-title" style="width:45%">Amount:</p>
+                                            <p style="width:50%" class="invoice-date">
+                                                {{ Number(jurnalVchrs1.TransactionAmount) }}/-</p>
+                                        </div>
+                                        <div class="invoice-date-wrapper row">
+                                            <p class="invoice-date-title" style="width:35%">Status:</p>
+                                            <p style="width:65%" class="invoice-date">
+                                                <span v-if="jurnalVchrs1.Status == 'Approved'"
+                                                    class="badge badge-glow bg-primary">Approved</span>
 
-                                            <span v-if="jurnalVchrs1.Status == 'Pending'"
-                                                class="badge badge-glow bg-info">Pending</span>
-                                        </p>
+                                                <span v-if="jurnalVchrs1.Status == 'Pending'"
+                                                    class="badge badge-glow bg-info">Pending</span>
+                                            </p>
+                                        </div>
                                     </div>
+                                </div>
+                                <!-- Header ends -->
+                            </div>
+                            <div class="divider">
+                                <div class="divider-text" style="font-size: 24px;font-weight: 900;">Journal Vouchers
                                 </div>
                             </div>
-                            <!-- Header ends -->
-                        </div>
-                        <div class="divider">
-                            <div class="divider-text" style="font-size: 24px;font-weight: 900;">Journal Vouchers</div>
-                        </div>
-                        <!-- Address and Contact starts -->
-                        <div class="col-md-12">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Account ID</th>
-                                        <th>Account Name</th>
-                                        <th >Narration</th>
-                                        <th >Credit Amount</th>
-                                        <th >Debit Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="jvDetails1 in jvDetails">
-                                        <td>{{ jvDetails1.AccountID}}</td>
-                                        <td>{{ jvDetails1.AccountName}}</td>
-                                        <td>{{ jvDetails1.Narration}}</td>
-                                        <td >{{ Number(jvDetails1.credit_amount) }}</td>
-                                        <td>{{ Number(jvDetails1.debit_amount) }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Address and Contact ends -->
-                        <div class="card-body invoice-padding pb-0">
-                            <div class="row invoice-sales-total-wrapper">
-                                <div class="col-md-12 order-md-1 order-2 mt-md-0 mt-3">
-                                    <p class="card-text mb-0">
-                                        <span class="fw-bold">Narration:</span>
-                                    </p>
-                                    <p>
-                                        {{ jurnalVchrs1.Narration }}
-                                    </p>
-                                </div>
-                        </div>
-                        <div class="col-6 col-md-6 order-2">
+                            <!-- Address and Contact starts -->
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Account ID</th>
+                                            <th>Account Name</th>
+                                            <th>Narration</th>
+                                            <th>Credit Amount</th>
+                                            <th>Debit Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="jvDetails1 in jvDetails">
+                                            <td>{{ jvDetails1.AccountID }}</td>
+                                            <td>{{ jvDetails1.AccountName }}</td>
+                                            <td>{{ jvDetails1.Narration }}</td>
+                                            <td>{{ Number(jvDetails1.credit_amount) }}</td>
+                                            <td>{{ Number(jvDetails1.debit_amount) }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Address and Contact ends -->
+                            <div class="card-body invoice-padding pb-0">
+                                <div class="row invoice-sales-total-wrapper">
+                                    <div class="col-md-12 order-md-1 order-2 mt-md-0 mt-3">
                                         <p class="card-text mb-0">
-                                            <span style="width:100%" class="fw-bold">Update Status:</span>
+                                            <span class="fw-bold">Narration:</span>
                                         </p>
-                                        <input hidden type="text" v-model="jv_id" />
-                                        <select v-model="up_sts" class="form-select mb-md-0 mb-2">
-                                            <option value=""> Select Status </option>
-
-                                            <option value="Approved">Approved</option>
-
-                                        </select>
-                                        <span style="color: #DB4437; font-size:11px;"
-                                            v-if="up_sts == ''">{{ e_up_sts }}</span>
+                                        <p>
+                                            {{ jurnalVchrs1.Narration }}
+                                        </p>
                                     </div>
+                                </div>
+                                <div class="col-6 col-md-6 order-2">
+                                    <p class="card-text mb-0">
+                                        <span style="width:100%" class="fw-bold">Update Status:</span>
+                                    </p>
+                                    <input hidden type="text" v-model="jv_id" />
+                                    <select v-model="up_sts" class="form-select mb-md-0 mb-2">
+                                        <option value=""> Select Status </option>
+
+                                        <option value="Approved">Approved</option>
+
+                                    </select>
+                                    <span style="color: #DB4437; font-size:11px;" v-if="up_sts == ''">{{ e_up_sts
+                                        }}</span>
+                                </div>
 
                             </div>
                             <div class="row">
-                            <div class="col-md-12 d-flex justify-content-end order-md-2 order-1"
-                                style="padding-right: 50px;margin-bottom: 10px;margin-top:10px">
-                                <button :disabled="disabled1" @click="delay1()" type="submit"
-                                    class="btn btn-primary me-1" data-bs-dismiss="modal"
-                                    aria-label="Close">Update</button>
-                                <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
-                                    aria-label="Close">
-                                    Cancle
-                                </button>
+                                <div class="col-md-12 d-flex justify-content-end order-md-2 order-1"
+                                    style="padding-right: 50px;margin-bottom: 10px;margin-top:10px">
+                                    <button :disabled="disabled1" @click="delay1()" type="submit"
+                                        class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal"
+                                        aria-label="Close">Update</button>
+                                    <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                        Cancle
+                                    </button>
+                                </div>
                             </div>
-                        </div>
                         </div>
 
                         <!-- Invoice Description ends -->
@@ -461,13 +472,13 @@ export default {
         },
 
         getResult(page = 1) {
-         this.pageNo=1
+            this.pageNo = 1
             axios.get('accounts/jv_detail/?page=' + page)
                 .then(response => this.adsdata = response.data.data)
                 .catch(error => { });
         },
         filter_byStatus(page = 1) {
-            this.pageNo=3
+            this.pageNo = 3
             axios.get('accounts/jv_searchbyfilter/' + this.status1 + "/?page=" + page)
                 .then(response => {
                     this.adsdata = response.data.data;
@@ -475,16 +486,16 @@ export default {
                 })
         },
         search_byDate(page = 1) {
-            this.pageNo=2
+            this.pageNo = 2
             axios.get('accounts/jv_searchdate/' + this.datefrom + '/' + this.dateto + "/?page=" + page)
                 .then(response => {
                     this.adsdata = response.data.data;
                     this.pageNo = 2
                 })
         },
-        getResults(page=1) {
-            this.pageNo=4
-            axios.get('search_journals/?page='+page, { params: { keyword1: this.keyword1 } })
+        getResults(page = 1) {
+            this.pageNo = 4
+            axios.get('search_journals/?page=' + page, { params: { keyword1: this.keyword1 } })
                 .then(response => {
                     this.adsdata = response.data.data;
 
@@ -506,3 +517,22 @@ export default {
 }
 
 </script>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

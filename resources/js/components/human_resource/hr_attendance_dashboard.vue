@@ -58,7 +58,7 @@
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#editpayroll"
                                                     :disabled="disabled"
-                                                    class="btn btn-primary waves-effect"
+                                                    class="btn btn-primary bg-primary waves-effect"
                                                 >
                                                     Sync. Attendance
                                                 </button>

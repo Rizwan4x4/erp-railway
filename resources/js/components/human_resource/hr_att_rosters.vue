@@ -330,7 +330,7 @@
                                                 <div class="col-12">
                                                     <button v-if="hasPermission('HRMS Attendance Shifts add new')"
                                                         type="button" @click="submit_roster()"
-                                                        class="btn btn-primary me-1 waves-effect waves-float waves-light">
+                                                        class="btn btn-primary bg-primary me-1 waves-effect waves-float waves-light">
                                                         Submit
                                                     </button>
                                                     <button v-else type="button"
@@ -715,10 +715,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="update_roster()">
+                        <button class="btn btn-primary bg-primary" @click="update_roster()">
                             Update
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">
                             Close
                         </button>
                     </div>

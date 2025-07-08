@@ -161,7 +161,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <button :disabled="disabled" @click="delay()"
-                                            class="btn btn-primary w-100 btn-download-invoice mb-75">Save
+                                            class="btn btn-primary bg-primary w-100 btn-download-invoice mb-75">Save
                                         </button>
                                         <button :disabled="disabled" @click="delay1()"
                                             class="btn btn-outline-success  w-100 mb-75">Save & Print

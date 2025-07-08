@@ -265,7 +265,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <button :disabled="disabled" @click="create_po()"
-                                                class="btn btn-primary w-100 mb-75">Create PO
+                                                class="btn btn-primary bg-primary w-100 mb-75">Create PO
                                         </button>
                                     </div>
                                 </div>

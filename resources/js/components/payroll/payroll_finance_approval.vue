@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <div class="app-content content ">
             <div class="content-overlay"></div>
             <div class="header-navbar-shadow-tem-change"></div>
@@ -17,41 +17,44 @@
                             </ol>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row ">
                         <div class="col-12">
-                            <div class="alert alert-primary" style="padding-top:0px;padding-bottom:0px" role="alert">
+                            <div class="alert alert-primary border-0 top-radius bottom-radius p-3"
+                                style="padding-top:0px;padding-bottom:0px" role="alert">
                                 <div class="alert-body">
                                     <ul class="nav nav-pills mb-2">
                                         <li class="nav-item">
                                             <router-link to="/payroll/salary_generation" class="nav-link">
                                                 <i class="fa-solid fa-cash-register"></i>
                                                 <span class="fw-bold">Generated Salaries<span class="red-dot"
-                                                                                              v-if="salary_state.gen === true"></span></span>
+                                                        v-if="salary_state.gen === true"></span></span>
                                             </router-link>
                                         </li>
                                         <li class="nav-item">
                                             <router-link to="/payroll/payroll_hr_approval" class="nav-link">
                                                 <i class="fa-solid fa-address-card"></i>
                                                 <span class="fw-bold">HR Approval<span class="red-dot"
-                                                                                       v-if="salary_state.hr === true"></span></span>
+                                                        v-if="salary_state.hr === true"></span></span>
                                             </router-link>
                                         </li>
                                         <li class="nav-item">
                                             <router-link to="/payroll/payroll_finance_approval" class="nav-link active">
                                                 <i class="fa-solid fa-coins"></i>
                                                 <span class="fw-bold">Finance Approval<span class="red-dot"
-                                                                                            v-if="salary_state.fin === true"></span></span>
+                                                        v-if="salary_state.fin === true"></span></span>
                                             </router-link>
                                         </li>
                                         <li class="nav-item">
                                             <router-link to="/payroll/distribution" class="nav-link">
-                                                <i class="fa-solid fa-money-bill-wave"></i><span class="fw-bold">Distribution<span
-                                                class="red-dot" v-if="salary_state.dis === true"></span></span>
+                                                <i class="fa-solid fa-money-bill-wave"></i><span
+                                                    class="fw-bold">Distribution<span class="red-dot"
+                                                        v-if="salary_state.dis === true"></span></span>
                                             </router-link>
                                         </li>
                                         <li class="nav-item">
                                             <router-link class="nav-link" to="/payroll/payroll_pending_salaries">
-                                                <i class="fa-solid fa-rotate-left"></i><span class="fw-bold">Pending Salaries</span>
+                                                <i class="fa-solid fa-rotate-left"></i><span class="fw-bold">Pending
+                                                    Salaries</span>
                                             </router-link>
                                         </li>
                                     </ul>
@@ -61,177 +64,218 @@
                     </div>
                     <div class="row" id="basic-table">
                         <div class="col-12">
-                            <div class="card">
-                                <div class="row" style="margin-top:20px">
-                                    <div class="col-md-3 col-12 mb-2 position-relative">
-                                        <h5 style="padding-left:10px;padding-top:10px">Session: {{ session_name }}</h5>
+                            <div class="card border-0 top-radius bottom-radius">
+                                <div class="row  p-3">
+                                    <div class=" col-12 mb-2 position-relative">
+                                        <h5>Session: {{ session_name }}</h5>
                                     </div>
-
-                                    <div class="col-md-auto col-12 mb-2 position-relative" v-if="hasPermission('Payroll Apply Inst and Fines')  && hasPermission('Payroll Apply Arrears and Allow') ">
-                                        <button v-if="toggle"  class="btn btn-primary" style="min-width: 120px;"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
-                                        <button @click="applydeductions()" class="btn btn-primary">Apply Inst.& Fine</button>
-                                        <button @click="applyarrears()" class="btn btn-primary">Apply Arrears & Allow.</button>
-                                    </div>
-                                    <div class="col-md-auto col-12 mb-2 position-relative" v-else>
-                                        <button class="btn btn-danger">Apply Deductions</button>
-                                        <button class="btn btn-danger">Apply Incentives</button>
-                                    </div>
-                                    <div class="col-md-3 col-12 mb-2 position-relative">
-                                        <input type="text" v-model="keyword1" class="form-control"
-                                               placeholder="Search By Name or Employee code">
-                                    </div>
-                                    <div class="col-md-auto col-12 mb-2 position-relative" v-if="hasPermission('Payroll Proceed for distribution') ">
-                                        <button v-if="toggle"  class="btn btn-primary" style="min-width: 120px;"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
-                                        <button v-else data-bs-toggle="modal" data-bs-target="#hireinterview" class="btn btn-primary">Proceed for distribution</button>
-                                    </div>
-                                    <div class="col-md-auto col-12 mb-2 position-relative" v-else>
-                                        <button class="btn btn-danger">Proceed for distribution</button>
+                                    <div class="d-flex justify-content-around align-items-center">
+                                        <div class="col-md-auto col-12 mb-2 position-relative"
+                                            v-if="hasPermission('Payroll Apply Inst and Fines') && hasPermission('Payroll Apply Arrears and Allow')">
+                                            <button v-if="toggle" class="btn btn-primary bg-primary" style="min-width: 120px;">
+                                                <div class="lds-ring">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                            </button>
+                                            <button @click="applydeductions()" class="btn btn-primary bg-primary">Apply
+                                                Inst.&
+                                                Fine</button>
+                                            <button @click="applyarrears()" class="btn btn-primary bg-primary">Apply
+                                                Arrears &
+                                                Allow</button>
+                                        </div>
+                                        <div class="col-md-auto col-12 mb-2 position-relative" v-else>
+                                            <button class="btn btn-danger">Apply Deductions</button>
+                                            <button class="btn btn-danger">Apply Incentives</button>
+                                        </div>
+                                        <div class="col-md-3 col-12 mb-2 position-relative">
+                                            <input type="text" v-model="keyword1" class="form-control"
+                                                placeholder="Search By Name or Employee code">
+                                        </div>
+                                        <div class="col-md-auto col-12 mb-2 position-relative"
+                                            v-if="hasPermission('Payroll Proceed for distribution')">
+                                            <button v-if="toggle" class="btn btn-primary bg-primary" style="min-width: 120px;">
+                                                <div class="lds-ring">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                            </button>
+                                            <button v-else data-bs-toggle="modal" data-bs-target="#hireinterview"
+                                                class="btn btn-primary bg-primary">Proceed for distribution</button>
+                                        </div>
+                                        <div class="col-md-auto col-12 mb-2 position-relative" v-else>
+                                            <button class="btn btn-danger">Proceed for distribution</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="table-responsive" style="overflow-x: initial !important;">
                                     <table class="table table-hover">
                                         <thead>
-                                        <tr>
-                                            <th class="sticky-th-center">Emp. Code<br/>Status</th>
-                                            <th class="sticky-th-left">Employee Detail</th>
-                                            <th class="sticky-th-center">Att. Detail</th>
-                                            <th class="sticky-th-center">Pending Dues</th>
-                                            <th class="sticky-th-center">Arrears &<br/>Allowance</th>
-                                            <th class="sticky-th-center">Payable Salary</th>
-                                            <th class="sticky-th-center">Action</th>
-                                        </tr>
+                                            <tr>
+                                                <th class="sticky-th-center">Emp. Code<br />Status</th>
+                                                <th class="sticky-th-left">Employee Detail</th>
+                                                <th class="sticky-th-center">Att. Detail</th>
+                                                <th class="sticky-th-center">Pending Dues</th>
+                                                <th class="sticky-th-center">Arrears &<br />Allowance</th>
+                                                <th class="sticky-th-center">Payable Salary</th>
+                                                <th class="sticky-th-center">Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr v-for="all_sals1 in all_sals.data"
-                                            :class="[all_sals1.FStatus=='H' ? 'table-danger' : '']">
-                                            <td class="td-center fw-bold">
-                                                {{ all_sals1.EmployeeCode }}<br/>
-                                                {{ all_sals1.SessionName }}<br/>
-                                                <span
-                                                    :class="[all_sals1.FStatus=='P' ? 'text-success fw-bold' : '', all_sals1.FStatus=='H' ? 'text-danger fw-bold' : '']">{{ all_sals1.FStatus }}</span>
-                                            </td>
-                                            <td class="td-left">
-                                                <div class="d-flex justify-content-left align-items-center">
-                                                    <div class="avatar-wrapper">
-                                                        <div class="avatar  me-1">
-                                                            <img v-if="all_sals1.Photo=='' || all_sals1.Photo==null"
-                                                                 src="public/images/profile_images/pro.png" alt="Avatar"
-                                                                 height="32" width="32">
-                                                            <img v-else
-                                                                 v-bind:src="`public/images/profile_images/${all_sals1.Photo}`"
-                                                                 alt="Avatar" height="32" width="32">
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <a class="user_name text-truncate text-body"><span
-                                                            class="fw-bolder">{{ all_sals1.Name }} </span></a><small
-                                                        class="emp_post text-muted">
-                                                        <span
-                                                            v-if="all_sals1.Department!=null">{{ all_sals1.Department }} - </span>
-                                                        <span v-else></span>
-                                                        <span
-                                                            v-if="all_sals1.Designation!=null">{{ all_sals1.Designation }}</span>
-                                                        <span v-else></span>
-                                                    </small>
-                                                    </div>
-                                                </div>
-                                                <div class="row" style="padding-left: 12%;">
-                                                    <div class="mt-display-flex">
-                                                        <div>
-                                                            <strong>
-                                                                Salary:
-                                                            </strong> {{ all_sals1.Salary }}/-
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Stipend:</strong>{{ Math.round(all_sals1.StipendAmount) }}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="td-center">
-                                                <div class="row" style="">
-                                                    <div class="mt-display-flex">
-                                                        <div>
-                                                            <span><strong>Overtime:</strong>  {{ Math.round(all_sals1.OAmount) }}</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Deduction:</strong>{{ Math.round(all_sals1.DAmount) }}</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Fine:</strong>  {{ all_sals1.Fine }}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="td-center">
-                                                <div class="row" style="">
-                                                    <div class="mt-display-flex">
-                                                        <div>
-                                                            <span><strong>Installment:</strong>  {{ all_sals1.InstallmentAmount }}</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Dues:</strong> {{ all_sals1.DuesAmount }}</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Advance:</strong>  {{ all_sals1.AdvanceAmount }}</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Tax:</strong>  {{ all_sals1.TaxAmount }}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="td-center">
-                                                <div class="row" style="">
-                                                    <div class="mt-display-flex">
-                                                        <div>
-                                                            <span><strong>Arrears:</strong> {{ all_sals1.ArrearsAmount }}</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Bonus:</strong> {{ all_sals1.BonusAmount }}</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Allowance:</strong> {{ all_sals1.AllowanceAmount }}</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Fuel Amount:</strong>{{ Math.round(all_sals1.FuelAmount) }}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="td-center">
-                                                <div class="row" style="">
-                                                    <div class="mt-display-flex">
-                                                        <div>
-                                                            <span> {{ all_sals1.PayableSalary }}/-</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Payment Type:</strong> {{ all_sals1.MethodType }}</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Cash Payable:</strong>{{ Math.round(all_sals1.CashPayable) }}</span>
-                                                        </div>
-                                                        <div>
-                                                            <span><strong>Bank Payable:</strong>{{ Math.round(all_sals1.BankPayable) }}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <tr v-for="all_sals1 in all_sals.data"
+                                                :class="[all_sals1.FStatus == 'H' ? 'table-danger' : '']">
+                                                <td class="td-center fw-bold">
+                                                    {{ all_sals1.EmployeeCode }}<br />
+                                                    {{ all_sals1.SessionName }}<br />
+                                                    <span
+                                                        :class="[all_sals1.FStatus == 'P' ? 'text-success fw-bold' : '', all_sals1.FStatus == 'H' ? 'text-danger fw-bold' : '']">{{
+                                                            all_sals1.FStatus }}</span>
                                                 </td>
-                                                <td v-if="hasPermission('Payroll Update Employee Salary') ">
-                                                    <a @click="fetch_emp_payroll(all_sals1.FinanceApprovalID)" data-bs-toggle="modal" data-bs-target="#update_hr_approval"><i style="color:#d42f2f" class="fa-solid fa-pencil"></i><span></span></a>
+                                                <td class="td-left">
+                                                    <div class="d-flex justify-content-left align-items-center">
+                                                        <div class="avatar-wrapper">
+                                                            <div class="avatar  me-1">
+                                                                <img v-if="all_sals1.Photo == '' || all_sals1.Photo == null"
+                                                                    src="public/images/profile_images/pro.png"
+                                                                    alt="Avatar" height="32" width="32">
+                                                                <img v-else
+                                                                    v-bind:src="`public/images/profile_images/${all_sals1.Photo}`"
+                                                                    alt="Avatar" height="32" width="32">
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex flex-column">
+                                                            <a class="user_name text-truncate text-body"><span
+                                                                    class="fw-bolder">{{ all_sals1.Name }}
+                                                                </span></a><small class="emp_post text-muted">
+                                                                <span v-if="all_sals1.Department != null">{{
+                                                                    all_sals1.Department }} - </span>
+                                                                <span v-else></span>
+                                                                <span v-if="all_sals1.Designation != null">{{
+                                                                    all_sals1.Designation }}</span>
+                                                                <span v-else></span>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="padding-left: 12%;">
+                                                        <div class="mt-display-flex">
+                                                            <div>
+                                                                <strong>
+                                                                    Salary:
+                                                                </strong> {{ all_sals1.Salary }}/-
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Stipend:</strong>{{
+                                                                    Math.round(all_sals1.StipendAmount) }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="td-center">
+                                                    <div class="row" style="">
+                                                        <div class="mt-display-flex">
+                                                            <div>
+                                                                <span><strong>Overtime:</strong> {{
+                                                                    Math.round(all_sals1.OAmount) }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Deduction:</strong>{{
+                                                                    Math.round(all_sals1.DAmount) }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Fine:</strong> {{ all_sals1.Fine }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="td-center">
+                                                    <div class="row" style="">
+                                                        <div class="mt-display-flex">
+                                                            <div>
+                                                                <span><strong>Installment:</strong> {{
+                                                                    all_sals1.InstallmentAmount }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Dues:</strong> {{ all_sals1.DuesAmount
+                                                                    }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Advance:</strong> {{
+                                                                    all_sals1.AdvanceAmount }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Tax:</strong> {{ all_sals1.TaxAmount
+                                                                    }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="td-center">
+                                                    <div class="row" style="">
+                                                        <div class="mt-display-flex">
+                                                            <div>
+                                                                <span><strong>Arrears:</strong> {{
+                                                                    all_sals1.ArrearsAmount }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Bonus:</strong> {{ all_sals1.BonusAmount
+                                                                    }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Allowance:</strong> {{
+                                                                    all_sals1.AllowanceAmount }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Fuel Amount:</strong>{{
+                                                                    Math.round(all_sals1.FuelAmount) }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="td-center">
+                                                    <div class="row" style="">
+                                                        <div class="mt-display-flex">
+                                                            <div>
+                                                                <span> {{ all_sals1.PayableSalary }}/-</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Payment Type:</strong> {{
+                                                                    all_sals1.MethodType }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Cash Payable:</strong>{{
+                                                                    Math.round(all_sals1.CashPayable) }}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span><strong>Bank Payable:</strong>{{
+                                                                    Math.round(all_sals1.BankPayable) }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td v-if="hasPermission('Payroll Update Employee Salary')">
+                                                    <a @click="fetch_emp_payroll(all_sals1.FinanceApprovalID)"
+                                                        data-bs-toggle="modal" data-bs-target="#update_hr_approval"><i
+                                                            style="color:#d42f2f"
+                                                            class="fa-solid fa-pencil"></i><span></span></a>
                                                 </td>
                                                 <td v-else>
-                                                    <a><i style="color:#d42f2f" class="fa-solid fa-pencil"></i><span></span></a>
+                                                    <a><i style="color:#d42f2f"
+                                                            class="fa-solid fa-pencil"></i><span></span></a>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div style="text-align:center; padding-top:20px">
-                                    <pagination v-if="pageNo==1" :limit="limit" :data="all_sals"
-                                                @pagination-change-page="getResult"></pagination>
-                                    <pagination v-if="pageNo==2" :limit="limit" :data="all_sals"
-                                                @pagination-change-page="getResults"></pagination>
+                                    <pagination v-if="pageNo == 1" :limit="limit" :data="all_sals"
+                                        @pagination-change-page="getResult"></pagination>
+                                    <pagination v-if="pageNo == 2" :limit="limit" :data="all_sals"
+                                        @pagination-change-page="getResults"></pagination>
                                 </div>
                             </div>
                         </div>
@@ -242,7 +286,7 @@
                             <div class="modal-content">
                                 <div class="modal-header bg-transparent">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body pb-5 px-sm-5 pt-50">
                                     <div class="text-center mb-2">
@@ -250,11 +294,11 @@
                                         <h5>Do you want to move employees salaries for Distribution?</h5>
                                         <div class="text-center" style="text-align:center">
                                             <button type="button" @click="proceedtodistributionapproval()"
-                                                    class="btn btn-primary waves-effect waves-float waves-light"
-                                                    data-bs-dismiss="modal" aria-label="Close">Yes
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light"
+                                                data-bs-dismiss="modal" aria-label="Close">Yes
                                             </button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect"
-                                                    data-bs-dismiss="modal" aria-label="Close">No
+                                                data-bs-dismiss="modal" aria-label="Close">No
                                             </button>
                                         </div>
                                     </div>
@@ -268,70 +312,73 @@
                                 <div class="modal-header bg-transparent">
                                     <h5>Update Employee Salary</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body pb-5 px-sm-5 pt-50">
                                     <form id="editUserForm" class="row gy-1 pt-75" onsubmit="return false">
                                         <div class="col-12 col-md-6">
                                             <label class="form-label" for="modalEditUserCode">Employee Code</label>
-                                            <input type="text" class="form-control" v-model="m_ApprovalID" hidden/>
-                                            <input type="text" readonly class="form-control" v-model="m_emp_code"/>
+                                            <input type="text" class="form-control" v-model="m_ApprovalID" hidden />
+                                            <input type="text" readonly class="form-control" v-model="m_emp_code" />
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <label class="form-label"> Name</label>
-                                            <input type="text" class="form-control" readonly v-model="m_name"/>
+                                            <input type="text" class="form-control" readonly v-model="m_name" />
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <label class="form-label">Total Payable Salary</label>
-                                            <input type="text" class="form-control" readonly v-model="m_salarypayable"/>
+                                            <input type="text" class="form-control" readonly
+                                                v-model="m_salarypayable" />
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="form-label">
                                                 Bank Payable <label
-                                                v-if="Number(m_bankpayable)+Number(m_cashpayable) == this.m_salarypayable"><i
-                                                class="fa-regular fa-circle-check text-success"></i></label><label
-                                                v-else><i class="fa-regular fa-circle-xmark text-danger"></i></label>
+                                                    v-if="Number(m_bankpayable) + Number(m_cashpayable) == this.m_salarypayable"><i
+                                                        class="fa-regular fa-circle-check text-success"></i></label><label
+                                                    v-else><i
+                                                        class="fa-regular fa-circle-xmark text-danger"></i></label>
                                             </label>
-                                            <input type="text" class="form-control" v-model="m_bankpayable"/>
+                                            <input type="text" class="form-control" v-model="m_bankpayable" />
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="form-label">
                                                 Cash Payable <label
-                                                v-if="Number(m_bankpayable)+Number(m_cashpayable) == this.m_salarypayable"><i
-                                                class="fa-regular fa-circle-check text-success"></i></label><label
-                                                v-else><i class="fa-regular fa-circle-xmark text-danger"></i></label>
+                                                    v-if="Number(m_bankpayable) + Number(m_cashpayable) == this.m_salarypayable"><i
+                                                        class="fa-regular fa-circle-check text-success"></i></label><label
+                                                    v-else><i
+                                                        class="fa-regular fa-circle-xmark text-danger"></i></label>
                                             </label>
-                                            <input type="text" class="form-control" v-model="m_cashpayable"/>
+                                            <input type="text" class="form-control" v-model="m_cashpayable" />
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <label class="form-label" for="modalEditOvertime">Salary Status</label>
                                             <div class="demo-inline-spacing">
                                                 <div class="form-check form-check-inline" style="margin-top:0px">
                                                     <input class="form-check-input" type="radio"
-                                                           v-model="m_salary_status" name="inlineRadioOptions"
-                                                           checked="checked" id="inlineRadio1" value="P">
+                                                        v-model="m_salary_status" name="inlineRadioOptions"
+                                                        checked="checked" id="inlineRadio1" value="P">
                                                     <label class="form-check-label" for="inlineRadio1">Proceed</label>
                                                 </div>
                                                 <div class="form-check form-check-inline" style="margin-top:0px">
                                                     <input class="form-check-input" type="radio"
-                                                           v-model="m_salary_status" name="inlineRadioOptions"
-                                                           id="inlineRadio2" value="H">
+                                                        v-model="m_salary_status" name="inlineRadioOptions"
+                                                        id="inlineRadio2" value="H">
                                                     <label class="form-check-label">Hold</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-12 text-center mt-2 pt-50">
                                             <button
-                                                v-if="Number(m_bankpayable)+Number(m_cashpayable) != Number(m_salarypayable)"
+                                                v-if="Number(m_bankpayable) + Number(m_cashpayable) != Number(m_salarypayable)"
                                                 type="submit" @click="update_emp_payroll()"
-                                                class="btn btn-primary me-1">Update
+                                                class="btn btn-primary bg-primary me-1">Update
                                             </button>
                                             <button v-else type="submit" @click="update_emp_payroll()"
-                                                    class="btn btn-primary me-1" data-bs-dismiss="modal"
-                                                    aria-label="Close">Update
+                                                class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal"
+                                                aria-label="Close">Update
                                             </button>
                                             <button type="reset" class="btn btn-outline-secondary"
-                                                    data-bs-dismiss="modal" aria-label="Close">
+                                                data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>
                                         </div>
@@ -429,7 +476,7 @@ export default {
                 .then(() => {
                     axios.get('./proceeddistapproval')
                         .then(response => {
-                            if(response.data == 'salaries moved'){
+                            if (response.data == 'salaries moved') {
                                 this.toggle = false;
                                 this.$toastr.s("Proceed Payroll to Distribution Successfully!", "Congratulations!");
                             }
@@ -474,7 +521,7 @@ export default {
             if (this.keyword1 == null || this.keyword1 == '') {
                 this.getResult()
             }
-            axios.get('./search_finance_approval' + '?page=' + page, {params: {keyword1: this.keyword1}})
+            axios.get('./search_finance_approval' + '?page=' + page, { params: { keyword1: this.keyword1 } })
                 .then(response => {
                     this.pageNo = 2
                     this.all_sals = response.data
@@ -490,7 +537,7 @@ export default {
                 .catch(error => { });
 
             axios.get('overall_designation')
-                .then(response => {this.designations = response.data})
+                .then(response => { this.designations = response.data })
 
             axios.get('session_pre_dis')
                 .then(response => this.session_name = response.data)
@@ -584,9 +631,27 @@ export default {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
 }
 
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
 </style>

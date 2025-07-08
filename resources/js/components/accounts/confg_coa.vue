@@ -8,13 +8,13 @@
                 <div class="content-header row">
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
+                            <!-- <li class="breadcrumb-item"> -->
                             <li class="breadcrumb-item">
-                                <li class="breadcrumb-item">
-                                    <router-link to="/accounts" style="text-decoration: none;">Accounts Dashboard
-                                    </router-link>
-                                </li>
-                                <li class="breadcrumb-item active">Chart of Accounts
-                                </li>
+                                <router-link to="/accounts" style="text-decoration: none;">Accounts Dashboard
+                                </router-link>
+                            </li>
+                            <li class="breadcrumb-item active">Chart of Accounts
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -25,58 +25,72 @@
                             <!--/ User Sidebar -->
                             <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
                                 <!-- User Card -->
-                                <div class="card">
-                                    <div class="card-header">
+                                <div class="card top-radius bottom-radius border-0">
+                                    <div class="card-header top-radius">
                                         <h4 class="card-title">Chart of Accounts Detail</h4>
-                                        <div style="text-align: right;width: 30% !important;">
-                                            <a v-if="hasPermission('Accounts Configurations  create-COA')" style="float:left" data-bs-toggle="modal" data-bs-target="#addNewCard"
-                                               class="btn btn-outline-primary waves-effect" type="button">Create New</a>
+                                        <div style="text-align: right;width: 32% !important;">
+                                            <a v-if="hasPermission('Accounts Configurations  create-COA')"
+                                                style="float:left" data-bs-toggle="modal" data-bs-target="#addNewCard"
+                                                class="btn btn-primary bg-primary waves-effect" type="button">Create
+                                                New</a>
                                             <div class="" style="float:right">
                                                 <div style=""><label>
-                                                    <input autocomplete="off" class="form-control" v-model="keyword1"
-                                                           style="" placeholder="Search By Name"/>
-                                                </label></div>
+                                                        <input autocomplete="off" class="form-control"
+                                                            v-model="keyword1" style="" placeholder="Search By Name" />
+                                                    </label></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <div style="margin-bottom:20px;"
-                                             class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
+                                            class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                                             <section id="accordion-with-border">
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div id="accordionWrapa50" role="tablist"
-                                                             aria-multiselectable="true">
-                                                            <div class="card">
-                                                                <div class="card-body">
+                                                            aria-multiselectable="true">
+                                                            <!-- <div class="card">
+                                                                <div class="card-body"> -->
                                                                     <div class="row">
                                                                         <div class="col-md-4"
-                                                                             style="border-right: 1px solid lightgray;padding-right: 0px">
+                                                                            style="border-right: 1px solid lightgray;padding-right: 0px">
                                                                             <div class=""
-                                                                                 style="background:#0d6efd !important;margin-bottom:10px;padding:4px;border-radius:0px !important;font-size:16px">
+                                                                                style="background:#0d6efd !important;margin-bottom:10px;padding:4px;border-radius:0px !important;font-size:16px">
                                                                                 <h6 style="color:white !important">
                                                                                     Types</h6>
                                                                             </div>
                                                                             <ul id="myUL">
                                                                                 <li><span class="caret"
-                                                                                          @click="fetch_overall_coa2()">{{ this.company_name }}</span>
+                                                                                        @click="fetch_overall_coa2()">{{
+                                                                                        this.company_name }}</span>
                                                                                     <ul class="nested">
-                                                                                        <li @click="fetch_types_menu('Assets');fetch_types('Assets');">
-                                                                                            <span class="caret">1 : Assets</span>
+                                                                                        <li
+                                                                                            @click="fetch_types_menu('Assets'); fetch_types('Assets');">
+                                                                                            <span class="caret">1 :
+                                                                                                Assets</span>
                                                                                             <ul class="nested">
                                                                                                 <li v-for="fetch_menu_journals1 in fetch_menu_journals"
                                                                                                     @click="fetch_journal_data_assets(fetch_menu_journals1.journalCode)">
-                                                                                                    <span class="caret">{{ fetch_menu_journals1.journalCode }} : {{ fetch_menu_journals1.JournalName }}</span>
+                                                                                                    <span
+                                                                                                        class="caret">{{
+                                                                                                        fetch_menu_journals1.journalCode
+                                                                                                        }} : {{
+                                                                                                        fetch_menu_journals1.JournalName
+                                                                                                        }}</span>
                                                                                                     <ul>
-                                                                                                        <li v-if="fetch_menu_journals1.journalCode==code"
+                                                                                                        <li v-if="fetch_menu_journals1.journalCode == code"
                                                                                                             class="caret"
                                                                                                             v-for="curr_assets_list1 in curr_assets_list"
                                                                                                             :key="curr_assets_list1"
                                                                                                             @click.stop="nested_curr_Assets(curr_assets_list1.ID)">
-                                                                                                            {{ curr_assets_list1.ID }}:
-                                                                                                            {{ curr_assets_list1.AccountName }}
+                                                                                                            {{
+                                                                                                            curr_assets_list1.ID
+                                                                                                            }}:
+                                                                                                            {{
+                                                                                                            curr_assets_list1.AccountName
+                                                                                                            }}
                                                                                                             <ul>
-                                                                                                                <li v-if="curr_assets_list1.ID==code1"
+                                                                                                                <li v-if="curr_assets_list1.ID == code1"
                                                                                                                     class="caret"
                                                                                                                     v-for="curr_assets_nestedlist1 in curr_assets_nestedlist"
                                                                                                                     :key="curr_assets_nestedlist1"
@@ -88,7 +102,7 @@
                                                                                                                         curr_assets_nestedlist1.AccountName
                                                                                                                     }}
                                                                                                                     <ul>
-                                                                                                                        <li v-if="curr_assets_nestedlist1.ID==code10"
+                                                                                                                        <li v-if="curr_assets_nestedlist1.ID == code10"
                                                                                                                             class="caret"
                                                                                                                             v-for="curr_assets_fullnestedlist1 in curr_assets_fullnestedlist"
                                                                                                                             :key="curr_assets_fullnestedlist1">
@@ -108,22 +122,33 @@
                                                                                                 </li>
                                                                                             </ul>
                                                                                         </li>
-                                                                                        <li @click="fetch_types_menu2('Liabilities');fetch_types('Liabilities');">
-                                                                                            <span class="caret">2 : Liabilities</span>
+                                                                                        <li
+                                                                                            @click="fetch_types_menu2('Liabilities'); fetch_types('Liabilities');">
+                                                                                            <span class="caret">2 :
+                                                                                                Liabilities</span>
                                                                                             <ul class="nested">
                                                                                                 <li v-for="fetch_menu_journals22 in fetch_menu_journals2"
                                                                                                     @click="fetch_journal_data_liab(fetch_menu_journals22.journalCode)">
-                                                                                                    <span class="caret">{{ fetch_menu_journals22.journalCode }} : {{ fetch_menu_journals22.JournalName }}</span>
+                                                                                                    <span
+                                                                                                        class="caret">{{
+                                                                                                        fetch_menu_journals22.journalCode
+                                                                                                        }} : {{
+                                                                                                        fetch_menu_journals22.JournalName
+                                                                                                        }}</span>
                                                                                                     <ul>
-                                                                                                        <li v-if="fetch_menu_journals22.journalCode==code2"
+                                                                                                        <li v-if="fetch_menu_journals22.journalCode == code2"
                                                                                                             class="caret"
                                                                                                             v-for="curr_liab_list1 in curr_liab_list"
                                                                                                             :key="curr_liab_list1"
                                                                                                             @click.stop="nested_curr_liab(curr_liab_list1.ID)">
-                                                                                                            {{ curr_liab_list1.ID }}:
-                                                                                                            {{ curr_liab_list1.AccountName }}
+                                                                                                            {{
+                                                                                                            curr_liab_list1.ID
+                                                                                                            }}:
+                                                                                                            {{
+                                                                                                            curr_liab_list1.AccountName
+                                                                                                            }}
                                                                                                             <ul>
-                                                                                                                <li v-if="curr_liab_list1.ID==code3"
+                                                                                                                <li v-if="curr_liab_list1.ID == code3"
                                                                                                                     class="caret"
                                                                                                                     v-for="curr_liab_nestedlist1 in curr_liab_nestedlist"
                                                                                                                     :key="curr_liab_nestedlist1"
@@ -135,7 +160,7 @@
                                                                                                                         curr_liab_nestedlist1.AccountName
                                                                                                                     }}
                                                                                                                     <ul>
-                                                                                                                        <li v-if="curr_liab_nestedlist1.ID==code11"
+                                                                                                                        <li v-if="curr_liab_nestedlist1.ID == code11"
                                                                                                                             class="caret"
                                                                                                                             v-for="curr_liab_fullnestedlist1 in curr_liab_fullnestedlist"
                                                                                                                             :key="curr_liab_fullnestedlist1">
@@ -155,22 +180,33 @@
                                                                                                 </li>
                                                                                             </ul>
                                                                                         </li>
-                                                                                        <li @click="fetch_types_menu3('Equity');fetch_types('Equity');">
-                                                                                            <span class="caret">3 : Equity</span>
+                                                                                        <li
+                                                                                            @click="fetch_types_menu3('Equity'); fetch_types('Equity');">
+                                                                                            <span class="caret">3 :
+                                                                                                Equity</span>
                                                                                             <ul class="nested">
                                                                                                 <li v-for="fetch_menu_journals33 in fetch_menu_journals3"
                                                                                                     @click="fetch_journal_data_equity(fetch_menu_journals33.journalCode)">
-                                                                                                    <span class="caret">{{ fetch_menu_journals33.journalCode }} : {{ fetch_menu_journals33.JournalName }}</span>
+                                                                                                    <span
+                                                                                                        class="caret">{{
+                                                                                                        fetch_menu_journals33.journalCode
+                                                                                                        }} : {{
+                                                                                                        fetch_menu_journals33.JournalName
+                                                                                                        }}</span>
                                                                                                     <ul>
-                                                                                                        <li v-if="fetch_menu_journals33.journalCode==code4"
+                                                                                                        <li v-if="fetch_menu_journals33.journalCode == code4"
                                                                                                             class="caret"
                                                                                                             v-for="curr_equity_list1 in curr_equity_list"
                                                                                                             :key="curr_equity_list1"
                                                                                                             @click.stop="nested_curr_equity(curr_equity_list1.ID)">
-                                                                                                            {{ curr_equity_list1.ID }}:
-                                                                                                            {{ curr_equity_list1.AccountName }}
+                                                                                                            {{
+                                                                                                            curr_equity_list1.ID
+                                                                                                            }}:
+                                                                                                            {{
+                                                                                                            curr_equity_list1.AccountName
+                                                                                                            }}
                                                                                                             <ul>
-                                                                                                                <li v-if="curr_equity_list1.ID==code5"
+                                                                                                                <li v-if="curr_equity_list1.ID == code5"
                                                                                                                     class="caret"
                                                                                                                     v-for="curr_equity_nestedlist1 in curr_equity_nestedlist"
                                                                                                                     :key="curr_equity_nestedlist1"
@@ -182,7 +218,7 @@
                                                                                                                         curr_equity_nestedlist1.AccountName
                                                                                                                     }}
                                                                                                                     <ul>
-                                                                                                                        <li v-if="curr_equity_nestedlist1.ID==code12"
+                                                                                                                        <li v-if="curr_equity_nestedlist1.ID == code12"
                                                                                                                             class="caret"
                                                                                                                             v-for="curr_equity_fullnestedlist1 in curr_equity_fullnestedlist"
                                                                                                                             :key="curr_equity_fullnestedlist1">
@@ -202,22 +238,33 @@
                                                                                                 </li>
                                                                                             </ul>
                                                                                         </li>
-                                                                                        <li @click="fetch_types_menu4('Income');fetch_types('Income');">
-                                                                                            <span class="caret">4 : Income</span>
+                                                                                        <li
+                                                                                            @click="fetch_types_menu4('Income'); fetch_types('Income');">
+                                                                                            <span class="caret">4 :
+                                                                                                Income</span>
                                                                                             <ul class="nested">
                                                                                                 <li v-for="fetch_menu_journals44 in fetch_menu_journals4"
                                                                                                     @click="fetch_journal_data_income(fetch_menu_journals44.journalCode)">
-                                                                                                    <span class="caret">{{ fetch_menu_journals44.journalCode }} : {{ fetch_menu_journals44.JournalName }}</span>
+                                                                                                    <span
+                                                                                                        class="caret">{{
+                                                                                                        fetch_menu_journals44.journalCode
+                                                                                                        }} : {{
+                                                                                                        fetch_menu_journals44.JournalName
+                                                                                                        }}</span>
                                                                                                     <ul>
-                                                                                                        <li v-if="fetch_menu_journals44.journalCode==code6"
+                                                                                                        <li v-if="fetch_menu_journals44.journalCode == code6"
                                                                                                             class="caret"
                                                                                                             v-for="curr_income_list1 in curr_income_list"
                                                                                                             :key="curr_income_list1"
                                                                                                             @click.stop="nested_curr_income(curr_income_list1.ID)">
-                                                                                                            {{ curr_income_list1.ID }}:
-                                                                                                            {{ curr_income_list1.AccountName }}
+                                                                                                            {{
+                                                                                                            curr_income_list1.ID
+                                                                                                            }}:
+                                                                                                            {{
+                                                                                                            curr_income_list1.AccountName
+                                                                                                            }}
                                                                                                             <ul>
-                                                                                                                <li v-if="curr_income_list1.ID==code7"
+                                                                                                                <li v-if="curr_income_list1.ID == code7"
                                                                                                                     class="caret"
                                                                                                                     v-for="curr_income_nestedlist1 in curr_income_nestedlist"
                                                                                                                     :key="curr_income_nestedlist1"
@@ -229,7 +276,7 @@
                                                                                                                         curr_income_nestedlist1.AccountName
                                                                                                                     }}
                                                                                                                     <ul>
-                                                                                                                        <li v-if="curr_income_nestedlist1.ID==code13"
+                                                                                                                        <li v-if="curr_income_nestedlist1.ID == code13"
                                                                                                                             class="caret"
                                                                                                                             v-for="curr_income_fullnestedlist1 in curr_income_fullnestedlist"
                                                                                                                             :key="curr_income_fullnestedlist1">
@@ -249,22 +296,33 @@
                                                                                                 </li>
                                                                                             </ul>
                                                                                         </li>
-                                                                                        <li @click="fetch_types_menu5('Expenses');fetch_types('Expenses');">
-                                                                                            <span class="caret">5 : Expenses</span>
+                                                                                        <li
+                                                                                            @click="fetch_types_menu5('Expenses'); fetch_types('Expenses');">
+                                                                                            <span class="caret">5 :
+                                                                                                Expenses</span>
                                                                                             <ul class="nested">
                                                                                                 <li v-for="fetch_menu_journals55 in fetch_menu_journals5"
                                                                                                     @click="fetch_journal_data_expenses(fetch_menu_journals55.journalCode)">
-                                                                                                    <span class="caret">{{ fetch_menu_journals55.journalCode }} : {{ fetch_menu_journals55.JournalName }}</span>
+                                                                                                    <span
+                                                                                                        class="caret">{{
+                                                                                                        fetch_menu_journals55.journalCode
+                                                                                                        }} : {{
+                                                                                                        fetch_menu_journals55.JournalName
+                                                                                                        }}</span>
                                                                                                     <ul>
-                                                                                                        <li v-if="fetch_menu_journals55.journalCode==code8"
+                                                                                                        <li v-if="fetch_menu_journals55.journalCode == code8"
                                                                                                             class="caret"
                                                                                                             v-for="curr_expenses_list1 in curr_expenses_list"
                                                                                                             :key="curr_expenses_list1"
                                                                                                             @click.stop="nested_curr_expenses(curr_expenses_list1.ID)">
-                                                                                                            {{ curr_expenses_list1.ID }}:
-                                                                                                            {{ curr_expenses_list1.AccountName }}
+                                                                                                            {{
+                                                                                                            curr_expenses_list1.ID
+                                                                                                            }}:
+                                                                                                            {{
+                                                                                                            curr_expenses_list1.AccountName
+                                                                                                            }}
                                                                                                             <ul>
-                                                                                                                <li v-if="curr_expenses_list1.ID==code9"
+                                                                                                                <li v-if="curr_expenses_list1.ID == code9"
                                                                                                                     class="caret"
                                                                                                                     v-for="curr_expenses_nestedlist1 in curr_expenses_nestedlist"
                                                                                                                     :key="curr_expenses_nestedlist1"
@@ -276,7 +334,7 @@
                                                                                                                         curr_expenses_nestedlist1.AccountName
                                                                                                                     }}
                                                                                                                     <ul>
-                                                                                                                        <li v-if="curr_expenses_nestedlist1.ID==code14"
+                                                                                                                        <li v-if="curr_expenses_nestedlist1.ID == code14"
                                                                                                                             class="caret"
                                                                                                                             v-for="curr_expenses_fullnestedlist1 in curr_expenses_fullnestedlist"
                                                                                                                             :key="curr_expenses_fullnestedlist1">
@@ -306,53 +364,64 @@
                                                                         </div>
                                                                         <div class="col-md-8" style="padding-left: 0px">
                                                                             <div class=""
-                                                                                 style="background:#0d6efd !important;padding:4px;border-radius:0px !important;font-size:16px">
+                                                                                style="background:#0d6efd !important;padding:4px;border-radius:0px !important;font-size:16px">
                                                                                 <h6 style="color:white !important">
                                                                                     Detail</h6>
                                                                             </div>
                                                                             <div class="table-responsive"
-                                                                                 style="overflow-x: initial !important;">
+                                                                                style="overflow-x: initial !important;">
                                                                                 <table class="table table-hover">
                                                                                     <thead>
-                                                                                    <tr>
-                                                                                        <th>Code</th>
-                                                                                        <th>Account Name</th>
-                                                                                        <th>Type</th>
-                                                                                        <th>Journal Head</th>
-                                                                                        <th>Head Code</th>
-                                                                                        <th>COA Type</th>
-                                                                                    </tr>
+                                                                                        <tr>
+                                                                                            <th>Code</th>
+                                                                                            <th>Account Name</th>
+                                                                                            <th>Type</th>
+                                                                                            <th>Journal Head</th>
+                                                                                            <th>Head Code</th>
+                                                                                            <th>COA Type</th>
+                                                                                        </tr>
                                                                                     </thead>
                                                                                     <tbody>
-                                                                                    <tr class="odd"
-                                                                                        v-for="fetch_overall_coa1 in fetch_overall_coa">
-                                                                                        <td>
-                                                                                            {{ fetch_overall_coa1.ID }}
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            {{ fetch_overall_coa1.AccountName }}
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            {{ fetch_overall_coa1.AccountType }}
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            {{ fetch_overall_coa1.AccountHead }}
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            {{ fetch_overall_coa1.AccountCode }}
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            {{ fetch_overall_coa1.CoaType }}
-                                                                                        </td>
-                                                                                    </tr>
+                                                                                        <tr class="odd"
+                                                                                            v-for="fetch_overall_coa1 in fetch_overall_coa">
+                                                                                            <td>
+                                                                                                {{ fetch_overall_coa1.ID
+                                                                                                }}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                {{
+                                                                                                fetch_overall_coa1.AccountName
+                                                                                                }}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                {{
+                                                                                                fetch_overall_coa1.AccountType
+                                                                                                }}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                {{
+                                                                                                fetch_overall_coa1.AccountHead
+                                                                                                }}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                {{
+                                                                                                fetch_overall_coa1.AccountCode
+                                                                                                }}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                {{
+                                                                                                fetch_overall_coa1.CoaType
+                                                                                                }}
+                                                                                            </td>
+                                                                                        </tr>
                                                                                     </tbody>
                                                                                 </table>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
+                                                            <!-- </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                             </section>
@@ -377,27 +446,27 @@
                         <form id="addNewCardValidation" class="row gy-1 gx-2 mt-75" onsubmit="return false">
                             <div class="col-md-12 col-12">
                                 <label class="form-label" for="modalAddCardName">Account Name <span
-                                    style="color:red">*</span></label>
-                                <input type="text" v-model="account_name" class="form-control" style=""/>
+                                        style="color:red">*</span></label>
+                                <input type="text" v-model="account_name" class="form-control" style="" />
                             </div>
                             <div class="col-md-12 col-12">
                                 <label class="form-label" for="modalAddCardName">Type <span
-                                    style="color:red">*</span></label>
+                                        style="color:red">*</span></label>
                                 <select @change="fetch_mainhead()" class="form-select" v-model="account_type">
                                     <option value="">Select Account Type</option>
                                     <option v-for='get_accounts_type1 in get_accounts_type'
-                                            :value='get_accounts_type1.HeadName'>{{ get_accounts_type1.HeadCode }} :
+                                        :value='get_accounts_type1.HeadName'>{{ get_accounts_type1.HeadCode }} :
                                         {{ get_accounts_type1.HeadName }}
                                     </option>
                                 </select>
                             </div>
                             <div class="col-md-12 col-12">
                                 <label class="form-label" for="modalAddCardName">Journal Head <span
-                                    style="color:red">*</span></label>
+                                        style="color:red">*</span></label>
                                 <select @change="check_node()" class="form-select" v-model="main_head">
                                     <option value="">Select Journal Head</option>
                                     <option v-for='get_coa_mainhead1 in get_coa_mainhead'
-                                            :value='get_coa_mainhead1.journalCode'>{{ get_coa_mainhead1.journalCode }} :
+                                        :value='get_coa_mainhead1.journalCode'>{{ get_coa_mainhead1.journalCode }} :
                                         {{ get_coa_mainhead1.JournalName }}
                                     </option>
                                 </select>
@@ -441,13 +510,13 @@
                                     <div class="demo-inline-spacing">
                                         <div class="form-check form-check-inline" style="margin-top:0px">
                                             <input class="form-check-input" type="radio" v-model="coa_type"
-                                                   name="inlineRadioOptions" id="inlineRadio1" value="Transaction"
-                                                   checked="">
+                                                name="inlineRadioOptions" id="inlineRadio1" value="Transaction"
+                                                checked="">
                                             <label class="form-check-label" for="inlineRadio1">Transaction</label>
                                         </div>
                                         <div class="form-check form-check-inline" style="margin-top:0px">
                                             <input class="form-check-input" type="radio" v-model="coa_type"
-                                                   name="inlineRadioOptions" id="inlineRadio2" value="Node">
+                                                name="inlineRadioOptions" id="inlineRadio2" value="Node">
                                             <label class="form-check-label" for="inlineRadio2">Node</label>
                                         </div>
                                     </div>
@@ -456,15 +525,15 @@
                             <div class="col-md-12 col-12">
                                 <label style="width:100%;">Allow Reconcilation</label>
                                 <div style="margin-bottom:10px;margin-top:10px;"
-                                     class="form-check form-check-info form-switch">
+                                    class="form-check form-check-info form-switch">
                                     <input style="width: 50px;" type="checkbox" v-model="allow_reconcilation"
-                                           class="form-check-input" id="customSwitch3">
+                                        class="form-check-input" id="customSwitch3">
                                 </div>
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" @click="delay()" class="btn btn-primary me-1 mt-1">Submit</button>
+                                <button type="submit" @click="delay()" class="btn btn-primary bg-primary me-1 mt-1">Submit</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal"
-                                        aria-label="Close">
+                                    aria-label="Close">
                                     Cancel
                                 </button>
                             </div>
@@ -993,10 +1062,10 @@ ul,
     margin: 0;
 }
 
-.tree {
-    /* background: #FBFBFB; */
-    /* border: 1px solid #D2D2D2; */
-}
+/* .tree {
+    background: #FBFBFB; */
+    /* border: 1px solid #D2D2D2;
+} */
 
 .tree li {
     /* border-bottom: 1px solid #D2D2D2; */
@@ -1013,7 +1082,7 @@ ul,
     display: none;
 }
 
-.section input:checked ~ ul {
+.section input:checked~ul {
     display: block;
 }
 
@@ -1040,7 +1109,7 @@ ul,
     transition: all 0.5s;
 }
 
-.section input:checked ~ label:after {
+.section input:checked~label:after {
     color: #23C37A;
     transform: rotate(45deg);
 }

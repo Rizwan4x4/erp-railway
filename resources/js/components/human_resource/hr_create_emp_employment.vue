@@ -311,7 +311,7 @@
                                     }}</label>
                                 <div class="col-12" style="text-align:center">
                                     <button :disabled="disabled" @click="delay()" type="button"
-                                        class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">
+                                        class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">
                                         Update Employee Profile
                                     </button>
                                     <div>

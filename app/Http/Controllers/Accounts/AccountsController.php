@@ -8,7 +8,8 @@ use App\Http\Requests\InsertRequisitionForm;
 use App\Traits\CommonTrait;
 use Carbon\Carbon;
 use Codedge\Fpdf\Fpdf\Fpdf;
-use DB;
+// use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
@@ -126,7 +127,6 @@ class AccountsController extends Controller
       @compid = N'" . company_id() . "'  ");
         $fetch_image = DB::connection('sqlsrv3')->table('CompanyLogo')->where('CompanyID', '=', company_id())->get();
         foreach ($fetch_image as $fetch_image1) {
-
         }
 
         $this->fpdf->AddPage("L", ['280', '297']);
@@ -158,7 +158,6 @@ class AccountsController extends Controller
             $this->fpdf->Cell(100, 5, number_format($lastEle_opb->balance), 0, 1, 'L', 0);
         } else {
             $this->fpdf->Cell(100, 5, '', 0, 1, 'L', 0);
-
         }
         $this->fpdf->SetFont('Times', '', 12);
 
@@ -443,8 +442,6 @@ class AccountsController extends Controller
             $getDate = DB::connection('sqlsrv3')->table('DepreciationAssets')->where('AssetId', '=', $asset_id[0])->select('StartingDate')->first();
             return request()->json(200, $getDate);
         }
-
-
     }
 
     public function get_net_value_salvage($name)
@@ -500,7 +497,6 @@ class AccountsController extends Controller
             if ($result) {
                 $d_id = DB::connection('sqlsrv3')->table('AssetDisposals')->select('AssetDisposals.ID')->where('AssetDisposals.AssetsUniqueID', '=', $asset_name1[0])->get();
                 foreach ($d_id as $d_id1) {
-
                 }
                 $Disposal_id = $d_id1->ID;
                 DB::connection('sqlsrv3')->update('update AssetBook set UpdatedBy=?,UpdatedOn=?,ChangeType=?, isDeleted = ?, AssetDisposalsID = ? WHERE AssetID = ? and ClosingDate >= ?', [username(), $created_on, "Retired", 1, $Disposal_id, $asset_name1[0], $fromDate]);
@@ -541,7 +537,6 @@ class AccountsController extends Controller
             if ($result1) {
                 $d_id = DB::connection('sqlsrv3')->table('AssetDisposals')->select('AssetDisposals.ID')->where('AssetDisposals.AssetsUniqueID', '=', $asset_name1[0])->get();
                 foreach ($d_id as $d_id1) {
-
                 }
                 $Disposal_id = $d_id1->ID;
                 DB::connection('sqlsrv3')->update('update Assets set  AssetDisposalsID=?, UpdatedBy=? ,UpdatedOn=?,IsRetired=? where AssetsUniqueID=?', [$Disposal_id, username(), $created_on, 1, $asset_name1[0]]);
@@ -549,8 +544,6 @@ class AccountsController extends Controller
                 return request()->json(200, $arr);
             }
         }
-
-
     }
 
     public function assets_retirement_detail()
@@ -587,8 +580,6 @@ class AccountsController extends Controller
                 $message = 'Selected Asset is not Retired';
                 return response()->json(['message' => $message], 200);
             }
-
-
         }
     }
 
@@ -599,7 +590,7 @@ class AccountsController extends Controller
         return request()->json(200, $find_company);
     }
 
-//already available route but that not use paginate
+    //already available route but that not use paginate
     public function dept_data1()
     {
 
@@ -670,7 +661,6 @@ class AccountsController extends Controller
             if ($find_last_head_code9) {
                 $find_last_head_code = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Expenses')->where('AccountHead', '=', 'Departments')->get();
                 foreach ($find_last_head_code as $find_last_head_code1) {
-
                 }
                 $account_code = $find_last_head_code1->ID + 1;
 
@@ -743,7 +733,6 @@ class AccountsController extends Controller
             if ($find_last_head_code9) {
                 $find_last_head_code = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountHead', '=', 'Long-term Investment')->get();
                 foreach ($find_last_head_code as $find_last_head_code1) {
-
                 }
                 $account_code = $find_last_head_code1->ID + 1;
 
@@ -769,10 +758,7 @@ class AccountsController extends Controller
         }
     }
 
-    public function submit_childcompanyproject(Request $request)
-    {
-
-    }
+    public function submit_childcompanyproject(Request $request) {}
 
     public function get_childcompany()
     {
@@ -810,7 +796,6 @@ class AccountsController extends Controller
                     if ($find_last_head_code9) {
                         $find_last_head_code = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountHead', '=', $child_company)->get();
                         foreach ($find_last_head_code as $find_last_head_code1) {
-
                         }
                         $account_code = $find_last_head_code1->ID + 1;
 
@@ -833,7 +818,6 @@ class AccountsController extends Controller
                     if ($find_last_head_code9) {
                         $find_last_head_code = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Expenses')->where('AccountHead', '=', $child_company)->get();
                         foreach ($find_last_head_code as $find_last_head_code1) {
-
                         }
                         $account_code = $find_last_head_code1->ID + 1;
 
@@ -924,7 +908,6 @@ class AccountsController extends Controller
         } else {
             $find_assets_code = DB::connection('sqlsrv3')->table("AccountsHead")->where('CompanyID', '=', company_id())->where('HeadName', '=', $type)->get();
             foreach ($find_assets_code as $find_assets_code1) {
-
             }
             $head_code = $find_assets_code1->HeadCode;
             if ($head_code != $journal_code[0]) {
@@ -990,7 +973,6 @@ class AccountsController extends Controller
             if ($find_last_head_code9) {
                 $find_last_head_code = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', $account_type)->where('AccountCode', '=', $main_head)->get();
                 foreach ($find_last_head_code as $find_last_head_code1) {
-
                 }
                 $account_code = $find_last_head_code1->ID + 1;
             } else {
@@ -1001,13 +983,11 @@ class AccountsController extends Controller
             if (strlen($main_head) == 3) {
                 $find_journal_headname = DB::connection('sqlsrv3')->table("HeadJournal")->where('CompanyID', '=', company_id())->where('journalCode', '=', $main_head)->get();
                 foreach ($find_journal_headname as $find_journal_headname1) {
-
                 }
                 $ledger_name = $find_journal_headname1->JournalName;
             } else if (strlen($main_head) > 3) {
                 $find_journal_headname = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('ID', '=', $main_head)->get();
                 foreach ($find_journal_headname as $find_journal_headname1) {
-
                 }
                 $ledger_name = $find_journal_headname1->AccountName;
             }
@@ -1018,7 +998,6 @@ class AccountsController extends Controller
                 $find_journal_headname = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->orderby('AccountType', 'Asc')->get();
                 return request()->json(200, $find_journal_headname);
             }
-
         }
     }
 
@@ -1177,7 +1156,6 @@ class AccountsController extends Controller
                 if ($find_last_head_code9) {
                     $find_last_head_code = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', $type)->where('AccountHead', '=', $top_head)->get();
                     foreach ($find_last_head_code as $find_last_head_code1) {
-
                     }
                     $account_code = $find_last_head_code1->ID + 1;
 
@@ -1365,7 +1343,6 @@ class AccountsController extends Controller
         if ($itemexist) {
             $itemexist8 = DB::connection('sqlsrv3')->table("ItemList")->where('CompanyID', '=', company_id())->get();
             foreach ($itemexist8 as $itemexist81) {
-
             }
             $old_pre = $itemexist81->ItemCode;
             $itemcode = explode("-", $old_pre);
@@ -1392,7 +1369,6 @@ class AccountsController extends Controller
 
                     $ven = DB::connection('sqlsrv3')->table('ItemList')->where('CompanyID', '=', company_id())->where('ItemType', '=', 'Goods')->where('Name', '=', $productName)->get();
                     foreach ($ven as $ven1) {
-
                     }
 
                     DB::connection('sqlsrv3')->insert('INSERT INTO Inventory(CompanyID,ItemID,Quantity,Unit,Type,FaceValue) values (?,?,?,?,?,?)', [company_id(), $ven1->ID, 0, $unit, 0, $purchase_cost]);
@@ -1430,7 +1406,6 @@ class AccountsController extends Controller
 
                     $ven = DB::connection('sqlsrv3')->table('ItemList')->where('CompanyID', '=', company_id())->where('ItemType', '=', 'Assets')->where('Name', '=', $productName)->get();
                     foreach ($ven as $ven1) {
-
                     }
 
 
@@ -1584,7 +1559,7 @@ class AccountsController extends Controller
             } else {
                 $reqID = insertRecord('Requisition', $final_rido, $rid, $request, $request->status, $rId = 'RId', $demandReqID);
                 $drItems = [];
-//                $request->status != 'Services' ? array_shift($items) : $items; // Remove the first element from the array
+                //                $request->status != 'Services' ? array_shift($items) : $items; // Remove the first element from the array
                 foreach ($items as $item) {
                     $drItems[] = [
                         'ReqID' => $reqID,
@@ -1633,7 +1608,6 @@ class AccountsController extends Controller
   @reqid = " . $id . "
   ");
         return request()->json(200, $result);
-
     }
 
     public function received_receipt($id, $name)
@@ -1644,7 +1618,6 @@ class AccountsController extends Controller
   @reqid = " . $id . "
   ");
         return request()->json(200, $result);
-
     }
 
     public function accounts_catagory_byname(Request $request)
@@ -1734,7 +1707,6 @@ class AccountsController extends Controller
 
         $req = DB::connection('sqlsrv3')->table('ItemList')->select('ItemList.*')->where('ID', '=', $ed_productid)->get();
         foreach ($req as $req1) {
-
         }
         DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EmployeeID, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?,?)", [company_id(), username(), UserFullName(), $Emp_id, 'Inventory Product Updated', 'Product With Product Code | ' . $req1->ItemCode . ' | Name | ' . $e_productName . ' | Type | ' . $e_product_type . ' | Unit | ' . $ed_unit . ' | Linked To Department | ' . $e_prod_dept . ' | Purchase Cost | ' . number_format($e_purchase_cost) . ' | Selling Cost | ' . number_format($e_sale_value) . ' has been Updated ', $update_date]);
 
@@ -1839,7 +1811,6 @@ class AccountsController extends Controller
                 if ($req_type == 'Goods' || $req_type == 'Assets') {
                     $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name', 'unit')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                     foreach ($find_itemname as $find_itemname1) {
-
                     }
 
                     $result5 = DB::connection('sqlsrv3')->insert('INSERT INTO RequisitionItem(ReqID,itemId,ItemName,Quantity,unit,EstCost,Detail) values (?,?,?,?,?,?,?)', [$id, $item_nam[$x], $find_itemname1->Name, $qt[$x], $find_itemname1->unit, $est_cos[$x], $detai[$x]]);
@@ -1876,7 +1847,6 @@ class AccountsController extends Controller
 
         $req = DB::connection('sqlsrv3')->table("Vendor")->select('Vendor.*')->where('ID', '=', $ed_venid)->where('CompanyID', '=', company_id())->get();
         foreach ($req as $req1) {
-
         }
         DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EmployeeID, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?,?)", [company_id(), username(), UserFullName(), $Emp_id, 'Vendor Status Updated', 'Vendor ' . $req1->CompanyName . ' | status updated to | ' . $status . ' ', $update_date]);
         $data = "Status updated!";
@@ -1965,7 +1935,6 @@ class AccountsController extends Controller
         DB::connection('sqlsrv3')->update('update Taxes set Status=? where TaxID=? AND CompanyID=?', [$status, $ed_venid, company_id()]);
         $req = DB::connection('sqlsrv3')->table("Taxes")->select('Taxes.*')->where('TaxID', '=', $ed_venid)->get();
         foreach ($req as $req1) {
-
         }
         if ($req1->Status == 0) {
 
@@ -1979,7 +1948,6 @@ class AccountsController extends Controller
             $data = "Status updated!";
             return request()->json(200, $data);
         }
-
     }
 
     public function filter_tax(Request $request)
@@ -2081,7 +2049,6 @@ class AccountsController extends Controller
         DB::connection('sqlsrv3')->update('update Delivery set Status=? where DID=? AND CompanyID=?', [$status, $ed_venid, company_id()]);
         $req = DB::connection('sqlsrv3')->table("Delivery")->select('Delivery.*')->where('DID', '=', $ed_venid)->get();
         foreach ($req as $req1) {
-
         }
         if ($req1->Status == 0) {
             DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EmployeeID, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?,?)", [company_id(), username(), UserFullName(), $Emp_id, 'Updated Delivery Status', 'Delivery Status for | ' . $req1->DeliveryName . ' | of Delivery Type | ' . $req1->DType . ' | Delivery Amount | ' . $req1->DAmount . ' | Delivery Computation | ' . $req1->DComputation . ' | has been Set To Disabled', $update_date]);
@@ -2107,7 +2074,6 @@ class AccountsController extends Controller
         if ($result) {
             $req = DB::connection('sqlsrv3')->table("Banks")->select('BankName')->where('BankID', '=', $ed_venid)->get();
             foreach ($req as $req1) {
-
             }
             DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EmployeeID, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?,?)", [company_id(), username(), UserFullName(), $Emp_id, 'Bank Status Updated', 'status of Bank Name | ' . $req1->BankName . ' | Updated to | ' . $status . ' | Bank ID | ' . $ed_venid . ' ', $update_date]);
             $data = "Status updated!";
@@ -2162,7 +2128,6 @@ class AccountsController extends Controller
 
         $arr = DB::connection('sqlsrv3')->table('Delivery')->where('CompanyID', '=', company_id())->where('DID', '=', $delivery_value)->get();
         foreach ($arr as $arr1) {
-
         }
         if ($arr1->DComputation == 'Fixed') {
             $delivery_amount = $arr1->DAmount;
@@ -2177,7 +2142,6 @@ class AccountsController extends Controller
 
         $arr = DB::connection('sqlsrv3')->table('Taxes')->where('CompanyID', '=', company_id())->where('TaxID', '=', $tax_value)->get();
         foreach ($arr as $arr1) {
-
         }
         if ($arr1->TaxComputation == 'Fixed') {
             $tax_amount = $arr1->TaxAmount;
@@ -2264,7 +2228,6 @@ class AccountsController extends Controller
                 if (intval($find_req_item_detail1->Quantity) < intval($qt[$x])) {
                     $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name', 'unit')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                     foreach ($find_itemname as $find_itemname1) {
-
                     }
                     $message = 'Quotation quantity of ' . $find_itemname1->Name . ' at index ' . $x . ' is greatar than requisition quantity!';
                     return request()->json(200, $message);
@@ -2298,7 +2261,6 @@ class AccountsController extends Controller
                         if ($req_type == 'Goods' || $req_type == 'Assets') {
                             $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name', 'unit')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                             foreach ($find_itemname as $find_itemname1) {
-
                             }
                             $result3 = DB::connection('sqlsrv3')->insert('INSERT INTO PQuotationItems(QuotationID,ItemId,ItemName,Quantity,Price,Unit,Total,Detail,State) values (?,?,?,?,?,?,?,?,?)', [$find_reqid1->QuotationID, $item_nam[$x], $find_itemname1->Name, $qt[$x], $est_cos[$x], $find_itemname1->unit, $total9, $detai[$x], 'false']);
                         } else {
@@ -2420,7 +2382,6 @@ class AccountsController extends Controller
                 if ($req_type == 'Goods' || $req_type == 'Assets') {
                     $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name', 'unit')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                     foreach ($find_itemname as $find_itemname1) {
-
                     }
                     $result = DB::connection('sqlsrv3')->insert('INSERT INTO PQuotationItems(QuotationID,ItemId,ItemName,Quantity,Price,Unit,Total,Detail,State) values (?,?,?,?,?,?,?,?,?)', [$quotationid, $item_nam[$x], $find_itemname1->Name, $qt[$x], $est_cos[$x], $find_itemname1->unit, $total9, $detai[$x], $check_purchas[$x]]);
                 } else {
@@ -2521,7 +2482,7 @@ class AccountsController extends Controller
         $status = $request->get('status');
         $is_partial = false;
 
-//        $update_date = long_date();
+        //        $update_date = long_date();
         $find_req_type1 = DB::connection('sqlsrv3')->table("Requisition")->select('RequisitionType')->where('CompanyID', '=', company_id())->where('RequisitionId', '=', $reqid)->first();
         $req_type = $find_req_type1->RequisitionType;
 
@@ -2596,7 +2557,7 @@ class AccountsController extends Controller
             'RequisitionType' => $req_type,
             'PaymentTerm' => $select_pmterm,
         ];
-//        dd($purchaseOrder);
+        //        dd($purchaseOrder);
         $result = DB::connection('sqlsrv3')->table('PurchaseOrder')->insertGetId($purchaseOrder);
         for ($x = 1; $x < count($item_name1); $x++) {
             $est_cos = explode("|", $unit_cost);
@@ -3245,7 +3206,6 @@ class AccountsController extends Controller
     {
         $pvid = insert_sequencevoucher('PV_F23-2009', 176212, 'Payment Voucher');
         return request()->json(200, $pvid);
-
     }
 
     public function submit_payment_voucher(Request $request)
@@ -3351,7 +3311,6 @@ class AccountsController extends Controller
                 ];
                 insert_payment_voucher_items($pv_items);
             }
-
         } // against journal voucher
         else if ($p_agnst == 'jv_') {
 
@@ -3359,7 +3318,7 @@ class AccountsController extends Controller
 
             for ($x = 1; $x < count($invoices1); $x++) {
                 $invoic = explode("|", $invoices);
-                $check_pvdetail = DB:: connection('sqlsrv3')->table('PaymentVoucherDetail')->select('Remaining')->where('AgainstJV', '=', $invoic[$x])->orderBy('Date', 'desc')->orderBy('DetailID', 'desc')->first();
+                $check_pvdetail = DB::connection('sqlsrv3')->table('PaymentVoucherDetail')->select('Remaining')->where('AgainstJV', '=', $invoic[$x])->orderBy('Date', 'desc')->orderBy('DetailID', 'desc')->first();
                 if ($check_pvdetail) {
                     if ($check_pvdetail->Remaining == 0) {
                         $find_config = 'The amount against invoice ' . $invoic[$x] . ' is fully paid';
@@ -3408,10 +3367,8 @@ class AccountsController extends Controller
                         'Remaining' => $remaining_amoun[$x] - $invoice_amoun[$x],
                         'AgainstJV' => $invoic[$x],
                     ];
-
                 }
                 insert_payment_voucher_items($pv_items);
-
             }
         } // against po
         else if ($p_agnst == 'po_') {
@@ -3419,7 +3376,7 @@ class AccountsController extends Controller
 
             for ($x = 1; $x < count($invoices1); $x++) {
                 $invoic = explode("|", $invoices);
-                $check_pvdetail = DB:: connection('sqlsrv3')->table('PaymentVoucherDetail')->select('Remaining')->where('AgainstPO', '=', $invoic[$x])->orderBy('Date', 'desc')->orderBy('DetailID', 'desc')->first();
+                $check_pvdetail = DB::connection('sqlsrv3')->table('PaymentVoucherDetail')->select('Remaining')->where('AgainstPO', '=', $invoic[$x])->orderBy('Date', 'desc')->orderBy('DetailID', 'desc')->first();
                 if ($check_pvdetail) {
                     if ($check_pvdetail->Remaining == 0) {
                         $find_config = 'The amount against invoice ' . $invoic[$x] . ' is fully paid';
@@ -3473,14 +3430,13 @@ class AccountsController extends Controller
                     ];
                 }
                 insert_payment_voucher_items($pv_items);
-
             }
             // against invoice
         } else if ($p_agnst == 'pi_') {
             $invoices1 = explode("|", $invoices);
             for ($x = 1; $x < count($invoices1); $x++) {
                 $invoic = explode("|", $invoices);
-                $check_pvdetail = DB:: connection('sqlsrv3')->table('PaymentVoucherDetail')->select('Remaining')->where('AgainstINV', '=', $invoic[$x])->orderBy('Date', 'desc')->orderBy('DetailID', 'desc')->first();
+                $check_pvdetail = DB::connection('sqlsrv3')->table('PaymentVoucherDetail')->select('Remaining')->where('AgainstINV', '=', $invoic[$x])->orderBy('Date', 'desc')->orderBy('DetailID', 'desc')->first();
                 if ($check_pvdetail) {
                     if ($check_pvdetail->Remaining == 0) {
                         $find_config = 'The amount against invoice ' . $invoic[$x] . ' is fully paid';
@@ -3524,7 +3480,6 @@ class AccountsController extends Controller
 
                     $find_invid = DB::connection('sqlsrv3')->table("ReceivingOrder")->select('POID', 'TotalAmount')->where('FormID', $invoic[$x])->where('CompanyID', '=', company_id())->get();
                     foreach ($find_invid as $find_invid1) {
-
                     }
 
                     $find_po_exists = DB::connection('sqlsrv3')->table("PurchaseOrder")->where('PurchaseOrderID', $find_invid1->POID)->where('CompanyID', '=', company_id())->exists();
@@ -3532,7 +3487,6 @@ class AccountsController extends Controller
                     if ($find_po_exists) {
                         $find_po_sum = DB::connection('sqlsrv3')->table("PurchaseOrder")->select('PoCode')->where('PurchaseOrderID', $find_invid1->POID)->where('CompanyID', '=', company_id())->get();
                         foreach ($find_po_sum as $find_po_sum1) {
-
                         }
                         $po__id = $find_po_sum1->PoCode;
                     }
@@ -3549,7 +3503,6 @@ class AccountsController extends Controller
                     $result1 = DB::connection('sqlsrv3')->update('update PaymentVoucherDetail set AgainstINV=? where CompanyID=? and AgainstPO=? and AgainstINV=?', [$invoic[$x], company_id(), $po__id, '']);
                 }
                 insert_payment_voucher_items($pv_items);
-
             }
         }
 
@@ -3675,7 +3628,6 @@ class AccountsController extends Controller
         if ($check) {
             $service11 = DB::connection('sqlsrv3')->table('Requisition')->where('CompanyID', '=', company_id())->where('RequisitionType', '=', 'Services')->where('DemandRID', '=', $req_id)->select('RequisitionId')->get();
             foreach ($service11 as $service22) {
-
             }
             $check1 = DB::connection('sqlsrv3')->table("PurchaseOrder")->where("CompanyID", '=', company_id())->where("AgainstReq", '=', $service22->RequisitionId)->exists();
             if ($check1) {
@@ -3683,7 +3635,6 @@ class AccountsController extends Controller
                 if ($result) {
                     $service = DB::connection('sqlsrv3')->table('DemandRequisition')->where('CompanyID', '=', company_id())->where('RequisitionId', '=', $req_id)->get();
                     foreach ($service as $service1) {
-
                     }
 
                     $result1 = DB::connection('sqlsrv3')->update('update Requisition set Status2=?,ApprovedBy=?,ApprovedOn=? where CompanyID=? and DemandRID=?', [$req_sts, username(), $update_date, company_id(), $req_id]);
@@ -3698,10 +3649,7 @@ class AccountsController extends Controller
                     }
                 }
             }
-
         }
-
-
     }
 
 
@@ -3755,7 +3703,6 @@ class AccountsController extends Controller
                 if ($find_vendor1->Receipt_Type != 'Extra Amount Refund' && isLive()) {
                     DB::connection('sqlsrv4')->insert('INSERT INTO Voucher(VoucherNo,Name,Father_Name,Contact,Amount,PaymentType,Project,File_Plot_Id,Module,Type,Description,DateTime,Bank,Ch_Pay_Draft_No,Ch_Pay_Draft_Date) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [$final_PoCode0, $name, $find_detail1->Father_Name, $find_detail1->Contact, $amount0, 'Cheque', $find_detail1->Project, $find_detail1->File_Plot_No, $find_detail1->Module, 'Receipt_Refund', 'Amount Refund Against the ' . $find_detail1->ReceiptNo . ' of Plot No ' . $find_detail1->File_Plot_No . ' and owner name is ' . $name . ' from New System', $update_date, $find_vendor1->ClearanceAccountID, $find_vendor1->ClearanceAccountName, $Clearance_Date]);
                 }
-
             } else if ($find_vendor1->RefType == 'Cancellation Refund') {
                 $find_detail1 = DB::connection('sqlsrv3')->table("TempCancellation_Receipts")->where('ID', '=', $find_vendor1->RefID)->orderBy('ID', 'DESC')->first();
 
@@ -3792,13 +3739,10 @@ class AccountsController extends Controller
                     if ($get_arr1->TaxAmount != 0) {
                         $ledger_entry3 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID,PVAfterVerify) values (?,?,?,?,?,?)', [$find_tran_id1->ID, $get_arr1->TaxID, 'C', $get_arr1->TaxAmount, company_id(), $get_arr1->PaymentVoucherID]);
                     }
-
                 } else {
                     $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_vendor1->VendorId, 'D', $find_vendor1->ChqAmount, company_id()]);
                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_vendor1->ClearanceAccountID, 'C', $find_vendor1->ChqAmount, company_id()]);
                 }
-
-
             }
 
             $result = DB::connection('sqlsrv3')->update("UPDATE TempBank SET Status=?,ClearanceDate=?,Clearanceby=? WHERE ID=?", [$stat, $Clearance_Date, username(), $id]);
@@ -3807,7 +3751,6 @@ class AccountsController extends Controller
                 $find_config = 'Clearance';
                 return request()->json(200, $find_config);
             }
-
         } else {
             if ($stat == 'Dishonered') {
                 $find_vendor1 = DB::connection('sqlsrv3')->table("TempBank")->where('ID', '=', $id)->orderBy('ID', 'DESC')->first();
@@ -3826,9 +3769,7 @@ class AccountsController extends Controller
 
 
                         $result = DB::connection('sqlsrv3')->update('update LandInformation set TotalPaid=?,Remaining=? where  ID=?', [$paid_total, $remaining_total, $find_pre_detail1->ID]);
-
                     }
-
                 } else if (!empty($find_vendor1->RefType == 'Cancellation Refund' || $find_vendor1->RefType == 'Recovery Refund' || $find_vendor1->RefType == 'Repurchased Refund')) {
                     $find_pre_check = DB::connection("sqlsrv3")->table("TempCancellation_Receipts")->where("ID", '=', $find_vendor1->RefID)->exists();
                     $find_pre_check1 = DB::connection("sqlsrv3")->table("TempCancellation_Receipts")->where("ID", '=', $find_vendor1->RefID)->where('PVID', '=', $find_vendor1->PVID)->exists();
@@ -3839,7 +3780,6 @@ class AccountsController extends Controller
                         $paid_amount = $find_pre_detail1->PaidAmount - $find_vendor1->ChqAmount;
 
                         $result = DB::connection('sqlsrv3')->update('update TempCancellation_Receipts set RemainingAmount=?, PaidAmount=?, AccountID=?, PVID=? where  ID=?', [$remaining_total, $paid_amount, NULL, NULL, $find_pre_detail1->ID]);
-
                     } else if ($find_pre_check) {
                         $find_pre_detail1 = DB::connection("sqlsrv3")->table("TempCancellation_Receipts")->where("ID", '=', $find_vendor1->RefID)->orderBy('ID', 'DESC')->first();
 
@@ -3847,9 +3787,7 @@ class AccountsController extends Controller
 
 
                         $result = DB::connection('sqlsrv3')->update('update TempCancellation_Receipts set RemainingAmount=? where  ID=?', [$remaining_total, $find_pre_detail1->ID]);
-
                     }
-
                 }
 
                 // for Payment Voucher Dishonored Cheque
@@ -3876,7 +3814,6 @@ class AccountsController extends Controller
                     }
                     //  call Payment Voucher Detail Helper
                     insert_payment_voucher_items($cheque_pv);
-
                 }
 
                 $result = DB::connection('sqlsrv3')->update("UPDATE TempBank SET Status=?,ClearanceDate=?,Clearanceby=? WHERE ID=?", [$stat, $Clearance_Date, username(), $id]);
@@ -3913,22 +3850,18 @@ class AccountsController extends Controller
             if ($find_last_head_code9) {
                 $find_last_head_code = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', $type)->where('AccountHead', '=', $top_head)->get();
                 foreach ($find_last_head_code as $find_last_head_code1) {
-
                 }
                 $account_code = $find_last_head_code1->ID + 1;
 
 
                 $find_head_name = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', $type)->where('AccountName', '=', $top_head)->get();
                 foreach ($find_head_name as $find_head_name1) {
-
                 }
             } else {
                 $find_head_name = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', $type)->where('AccountName', '=', $top_head)->get();
                 foreach ($find_head_name as $find_head_name1) {
-
                 }
                 $account_code = $find_head_name1->ID . '001';
-
             }
 
 
@@ -3936,8 +3869,6 @@ class AccountsController extends Controller
             $data = "Seller Added Successfully";
             return request()->json(200, $data);
         }
-
-
     }
 
     public
@@ -4026,7 +3957,6 @@ class AccountsController extends Controller
         if ($result) {
             $find_id = DB::connection('sqlsrv3')->table('LandInformation')->where('SellerName', '=', $seller_name)->get();
             foreach ($find_id as $find_id1) {
-
             }
 
             $installment_amounttemp1 = explode("|", $installment_amounttemp);
@@ -4035,7 +3965,6 @@ class AccountsController extends Controller
                 $installment_amount = explode("|", $installment_amounttemp);
 
                 DB::connection('sqlsrv3')->insert('INSERT INTO LandInstallmentDetail(LandID,InstallmentDate, InstallmentAmount, CreatedBy, CreatedOn,istatus) values (?,?,?,?,?,?)', [$find_id1->ID, $installment_date[$x], $installment_amount[$x], username(), $update_date, 'Pending']);
-
             }
 
             $kanal1 = explode("|", $kanal);
@@ -4048,13 +3977,10 @@ class AccountsController extends Controller
 
 
                 DB::connection('sqlsrv3')->insert('INSERT INTO LandAreaDetail(LandID,Kanal, Marla,SQFT,Acre,CreatedBy,CreatedOn) values (?,?,?,?,?,?,?)', [$find_id1->ID, $kana[$y], $marl[$y], $sqf[$y], $khewa[$y], username(), $update_date]);
-
             }
 
             $arr = 'submitted';
             return request()->json(200, $arr);
-
-
         }
     }
 
@@ -4136,7 +4062,6 @@ class AccountsController extends Controller
 
         $find_prefix = DB::connection('sqlsrv3')->table("LandInformation")->select('DealNo')->where('DealNo', '!=', null)->get();
         foreach ($find_prefix as $find_prefix1) {
-
         }
 
         $dealno = explode("_", $find_prefix1->DealNo);
@@ -4152,22 +4077,18 @@ class AccountsController extends Controller
             if ($find_last_head_code9) {
                 $find_last_head_code = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', $type)->where('AccountHead', '=', $top_head)->get();
                 foreach ($find_last_head_code as $find_last_head_code1) {
-
                 }
                 $account_code = $find_last_head_code1->ID + 1;
 
 
                 $find_head_name = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', $type)->where('AccountName', '=', $top_head)->get();
                 foreach ($find_head_name as $find_head_name1) {
-
                 }
             } else {
                 $find_head_name = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', $type)->where('AccountName', '=', $top_head)->get();
                 foreach ($find_head_name as $find_head_name1) {
-
                 }
                 $account_code = $find_head_name1->ID . '001';
-
             }
 
             $result = DB::connection('sqlsrv3')->insert('INSERT INTO Accounts(ID,CompanyID,AccountName,AccountType,AccountCode,AccountHead,CoaType) values (?,?,?,?,?,?,?)', [$account_code, company_id(), $req_prefix, $type, $find_head_name1->ID, $find_head_name1->AccountName, 'Transaction']);
@@ -4175,7 +4096,6 @@ class AccountsController extends Controller
 
             $find_deal_information = DB::connection('sqlsrv3')->table("LandInformation")->where('ID', '=', $get_id)->get();
             foreach ($find_deal_information as $find_deal_information1) {
-
             }
 
 
@@ -4188,7 +4108,6 @@ class AccountsController extends Controller
                 if ($doc) {
                     $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $find_deal_information1->DealNo)->get();
                     foreach ($find_doc_id as $find_doc_id1) {
-
                     }
 
 
@@ -4196,33 +4115,24 @@ class AccountsController extends Controller
 
                     $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                     foreach ($find_tran_id as $find_tran_id1) {
-
                     }
                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $find_deal_information1->DealNo)->get();
                     foreach ($find_acc_code as $find_acc_code1) {
-
                     }
 
                     $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Liabilities')->where('AccountName', '=', $find_deal_information1->SellerName)->get();
                     foreach ($find_acc_code9 as $find_acc_code91) {
-
                     }
 
 
                     $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->ID, 'D', $find_deal_installment1->InstallmentAmount, company_id()]);
 
                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code91->ID, 'C', $find_deal_installment1->InstallmentAmount, company_id()]);
-
-
                 }
-
-
             }
 
             return request()->json(200, 'Status updated!');
-
         }
-
     }
 
     public
@@ -4245,7 +4155,6 @@ class AccountsController extends Controller
 
         $find_prefix = DB::connection('sqlsrv3')->table("AccountsConfiguration")->select('PaymentVoucher')->where('CompanyID', '=', company_id())->get();
         foreach ($find_prefix as $find_prefix1) {
-
         }
         $date_pref = $this->shiftformat();
         $req_prefix = $find_prefix1->PaymentVoucher . '_' . $date_pref;
@@ -4254,11 +4163,9 @@ class AccountsController extends Controller
         if ($find_rid9) {
             $find_rid = DB::connection('sqlsrv3')->table("SequenceVoucher")->select('PVID')->where('CompanyID', '=', company_id())->get();
             foreach ($find_rid as $find_rid1) {
-
             }
             $pre_id = explode("-", $find_rid1->PVID);
             $rid = $pre_id[1] + 1;
-
         } else {
             $rid = 1;
         }
@@ -4274,7 +4181,6 @@ class AccountsController extends Controller
 
         $find_pre_detail = DB::connection("sqlsrv3")->table("LandInformation")->where("ID", '=', $id)->get();
         foreach ($find_pre_detail as $find_pre_detail1) {
-
         }
         $paid_total = $find_pre_detail1->TotalPaid + $paid_amount;
         $remaining_total = $find_pre_detail1->Remaining - $paid_amount;
@@ -4293,7 +4199,6 @@ class AccountsController extends Controller
                     if ($cand[$x]->InstallmentAmount <= $B) {
                         $check = DB::connection('sqlsrv3')->table('LandInstallmentDetail')->where('ID', '=', $cand[$x]->ID)->update(['istatus' => 'paid']);
                         $B = $B - $cand[$x]->InstallmentAmount;
-
                     } else if ($cand[$x]->InstallmentAmount > $B) {
                         $check = DB::connection('sqlsrv3')->table('LandInstallmentDetail')->where('ID', '=', $cand[$x]->ID)
                             ->update(['istatus' => 'partial']);
@@ -4318,38 +4223,31 @@ class AccountsController extends Controller
                 if ($doc1) {
                     $find_doc_id2 = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('DocumentNo', '=', $final_PoCode)->get();
                     foreach ($find_doc_id2 as $find_doc_id21) {
-
                     }
                     $transaction1 = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id21->ID, $doc_date, 'Paid Land payment to ' . $dept, company_id()]);
 
                     $find_tran_id2 = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id21->ID)->get();
                     foreach ($find_tran_id2 as $find_tran_id21) {
-
                     }
 
                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountHead', '=', 'Sellers')->where('AccountName', '=', $dept)->get();
                     foreach ($find_acc_code as $find_acc_code1) {
-
                     }
 
                     $ledger_entry3 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id21->ID, $find_acc_code1->ID, 'D', $paid_amount, company_id()]);
                     $cash_hand = '101001001001';
                     $ledger_entry4 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id21->ID, $cash_hand, 'C', $paid_amount, company_id()]);
-
                 }
-
             } else {
                 $status2 = 'Chq Paid';
                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountHead', '=', 'Sellers')->where('AccountName', '=', $dept)->get();
                 foreach ($find_acc_code as $find_acc_code1) {
-
                 }
                 $method1 = explode("_", $method);
                 DB::connection('sqlsrv3')->insert('INSERT INTO TempBank(PVID,VendorId,VendorName,ChqNo,ChqDate,ChqAmount,ClearanceAccountID,ClearanceAccountName,Status,RefID,RefType) values (?,?,?,?,?,?,?,?,?,?,?)', [$final_PoCode, $find_acc_code1->ID, $dept, $chq_number, $chq_date, $paid_amount, $method1[0], $method1[1], $status2, $id, 'Land Payment']);
             }
             $arr = 'Updated';
             return request()->json(200, $arr);
-
         }
     }
 
@@ -4526,7 +4424,6 @@ class AccountsController extends Controller
                     $pricetest = $orderedQty1[$x] * $unit_cost1[$x];
                     $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name', 'ID')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                     foreach ($find_itemname as $find_itemname1) {
-
                     }
                     DB::connection('sqlsrv3')->insert('INSERT INTO PurchaseOrderItems(CompanyID, POID, ItemId, ItemName, QuoteQuantity, Quantity, Unit, Price, SubTotal,Detail) values (?,?,?,?,?,?,?,?,?,?)', [company_id(), $e_id, $find_itemname1->ID, $find_itemname1->Name, $quoteqty1[$x], $orderedQty1[$x], $pro_unit1[$x], $unit_cost1[$x], $pricetest, $detai[$x]]);
                 }
@@ -4626,7 +4523,6 @@ class AccountsController extends Controller
         $doc_date = short_date();
         $find_prefix = DB::connection('sqlsrv3')->table("AccountsConfiguration")->select('CustomerInvoice')->where('CompanyID', '=', company_id())->get();
         foreach ($find_prefix as $find_prefix1) {
-
         }
         $date_pref = $this->shiftformat();
         $req_prefix = $find_prefix1->CustomerInvoice . '_' . $date_pref;
@@ -4634,7 +4530,6 @@ class AccountsController extends Controller
         if ($find_rid9) {
             $find_rid = DB::connection('sqlsrv3')->table("ReceivingOrderReturn")->select('RtnID')->where('CompanyID', '=', company_id())->get();
             foreach ($find_rid as $find_rid1) {
-
             }
             $pre_id = explode("-", $find_rid1->RtnID);
             $rid = $pre_id[2] + 1;
@@ -4658,13 +4553,11 @@ class AccountsController extends Controller
                 if ($type == 'Goods' || $type == 'Assets') {
                     $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                     foreach ($find_itemname as $find_itemname1) {
-
                     }
                     $result = DB::connection('sqlsrv3')->insert('INSERT INTO ReceivingReturnItems(CompanyID,RRID,ItemId,ItemName,PoQuantity,Unit,ReturnQuantity,Price,SubTotal) values (?,?,?,?,?,?,?,?,?)', [company_id(), $find_reqid1->ReturnOrderID, $item_nam[$x], $find_itemname1->Name, $ordrqt[$x], $uni[$x], $qt[$x], $cos[$x], $total1]);
                 } else {
                     $find_itemname = DB::connection('sqlsrv3')->table("Accounts")->select('AccountName')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                     foreach ($find_itemname as $find_itemname1) {
-
                     }
                     $result3 = DB::connection('sqlsrv3')->insert('INSERT INTO ReceivingReturnItems(CompanyID,RRID,ItemId,ItemName,PoQuantity,Unit,ReturnQuantity,Price,SubTotal) values (?,?,?,?,?,?,?,?,?)', [company_id(), $find_reqid1->ReturnOrderID, $item_nam[$x], $find_itemname1->AccountName, $ordrqt[$x], $uni[$x], $qt[$x], $cos[$x], $total1]);
                 }
@@ -4691,16 +4584,13 @@ class AccountsController extends Controller
             if ($doc) {
                 $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $final_PoCode)->get();
                 foreach ($find_doc_id as $find_doc_id1) {
-
                 }
                 $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $doc_date, 'Inventory to ' . $vendor, company_id()]);
                 $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                 foreach ($find_tran_id as $find_tran_id1) {
-
                 }
                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountHead', '=', 'Trade Creditors')->where('AccountName', '=', $vendor)->get();
                 foreach ($find_acc_code as $find_acc_code1) {
-
                 }
                 $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->ID, 'D', $total, company_id()]);
                 for ($y = 1; $y < count($item_name1); $y++) {
@@ -4717,14 +4607,12 @@ class AccountsController extends Controller
                     if ($type == 'Goods') {
                         $find_acc_code = DB::connection('sqlsrv3')->table("ItemLinkCoa")->select('CoaID')->where('CompanyID', '=', company_id())->where('ItemId', '=', $item_nam[$y])->get();
                         foreach ($find_acc_code as $find_acc_code1) {
-
                         }
                         $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->CoaID, 'C', $amountt, company_id()]);
                     }
                     if ($type == 'Assets') {
                         $find_acc_code = DB::connection('sqlsrv3')->table("AssetsLinkCoa")->select('CoaID')->where('CompanyID', '=', company_id())->where('AssetId', '=', $item_nam[$y])->get();
                         foreach ($find_acc_code as $find_acc_code1) {
-
                         }
                         $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->CoaID, 'C', $amountt, company_id()]);
                     }
@@ -4933,7 +4821,6 @@ class AccountsController extends Controller
             if ($find_last_head_code9) {
                 $find_last_head_code = DB::connection('sqlsrv3')->table("Accounts")->where('CompanyID', '=', company_id())->where('AccountType', '=', $type)->where('AccountHead', '=', $top_head)->get();
                 foreach ($find_last_head_code as $find_last_head_code1) {
-
                 }
                 $account_code = $find_last_head_code1->ID + 1;
 
@@ -5056,58 +4943,128 @@ class AccountsController extends Controller
             'stock_value' => number_format($stock_value),
             'expired_items' => $expired_items,
         );
+        dd($myJSON);
         return request()->json(200, $myJSON);
     }
 
-    public
-    function count_stock1()
-    {
-        $today = long_date();
-        $inventory = DB::connection('sqlsrv3')->table('Inventory')
-            ->select('ItemID')
-            ->where('CompanyID', '=', company_id())
-            ->where('Type', '=', 1)
-            ->groupBy('ItemID')
-            ->selectRaw('SUM(Quantity * CostUnit) / nullif(SUM(Quantity), 0) as avg_price, SUM(Quantity) as total_quantity')
-            ->get();
-// Get all products with their Type and Quantity for the given ItemIDs
-        $products = DB::connection('sqlsrv3')->table('Inventory')
+    public function count_stock1()
+{
+    $today = long_date();
+
+    // Get avg price & total quantity per ItemID
+    $inventory = DB::connection('sqlsrv3')->table('Inventory')
+        ->select('ItemID')
+        ->where('CompanyID', '=', company_id())
+        ->where('Type', '=', 1)
+        ->groupBy('ItemID')
+        ->selectRaw('SUM(Quantity * CostUnit) / nullif(SUM(Quantity), 0) as avg_price, SUM(Quantity) as total_quantity')
+        ->get();
+
+    $itemIDs = $inventory->pluck('ItemID')->toArray();
+
+    // If no items, return zero
+    if (empty($itemIDs)) {
+        return response()->json(['stock_value' => 0], 200);
+    }
+
+    // Get products in chunks (to avoid 2100 param limit)
+    $products = collect();
+    $chunks = array_chunk($itemIDs, 2000);
+
+    foreach ($chunks as $chunk) {
+        $result = DB::connection('sqlsrv3')->table('Inventory')
             ->select('ItemID', 'Type', 'Quantity')
-            ->whereIn('ItemID', $inventory->pluck('ItemID')->toArray())
+            ->whereIn('ItemID', $chunk)
             ->where('CompanyID', '=', company_id())
-            ->get()
-            ->groupBy('ItemID');  // Group products by ItemID for easy access
-// Calculate the stock value based on the aggregated data
-        $stock_value = 0;
-        foreach ($inventory as $item) {
-            if ($item->total_quantity == 0) {
-                continue; // Skip items with zero total quantity
-            }
-            $value_in = 0;
-            if (isset($products[$item->ItemID])) {
-                foreach ($products[$item->ItemID] as $product) {
-                    if ($product->Type % 2 != 0) {
-                        $value_in += $product->Quantity * $item->avg_price;
-                    } else {
-                        $value_in -= $product->Quantity * $item->avg_price;
-                    }
+            ->get();
+
+        $products = $products->merge($result);
+    }
+
+    // Group products by ItemID for easy access
+    $products = $products->groupBy('ItemID');
+
+    // Calculate stock value
+    $stock_value = 0;
+
+    foreach ($inventory as $item) {
+        if ($item->total_quantity == 0) {
+            continue;
+        }
+
+        $value_in = 0;
+
+        if (isset($products[$item->ItemID])) {
+            foreach ($products[$item->ItemID] as $product) {
+                if ($product->Type % 2 != 0) {
+                    $value_in += $product->Quantity * $item->avg_price;
+                } else {
+                    $value_in -= $product->Quantity * $item->avg_price;
                 }
             }
-            $stock_value += $value_in;
         }
-        $stock_value = $stock_value;
-        $myJSON = array(
-            'stock_value' => number_format($stock_value),
-        );
-        return request()->json(200, $myJSON);
+
+        $stock_value += $value_in;
     }
+
+    // Return stock value formatted
+    $myJSON = [
+        'stock_value' => number_format($stock_value)
+    ];
+
+    return response()->json($myJSON, 200);
+}
+
+
+    // public function count_stock1()
+    // {
+    //     $today = long_date();
+    //     $inventory = DB::connection('sqlsrv3')->table('Inventory')
+    //         ->select('ItemID')
+    //         ->where('CompanyID', '=', company_id())
+    //         ->where('Type', '=', 1)
+    //         ->groupBy('ItemID')
+    //         ->selectRaw('SUM(Quantity * CostUnit) / nullif(SUM(Quantity), 0) as avg_price, SUM(Quantity) as total_quantity')
+    //         ->get();
+    //     // Get all products with their Type and Quantity for the given ItemIDs
+    //     $products = DB::connection('sqlsrv3')->table('Inventory')
+    //         ->select('ItemID', 'Type', 'Quantity')
+    //         ->whereIn('ItemID', $inventory->pluck('ItemID')->toArray())
+    //         ->where('CompanyID', '=', company_id())
+    //         ->get()
+    //         ->groupBy('ItemID');  // Group products by ItemID for easy access
+    //     // Calculate the stock value based on the aggregated data
+    //     $stock_value = 0;
+    //     foreach ($inventory as $item) {
+    //         if ($item->total_quantity == 0) {
+    //             continue; // Skip items with zero total quantity
+    //         }
+    //         $value_in = 0;
+    //         if (isset($products[$item->ItemID])) {
+    //             foreach ($products[$item->ItemID] as $product) {
+    //                 if ($product->Type % 2 != 0) {
+    //                     $value_in += $product->Quantity * $item->avg_price;
+    //                 } else {
+    //                     $value_in -= $product->Quantity * $item->avg_price;
+    //                 }
+    //             }
+    //         }
+    //         $stock_value += $value_in;
+    //     }
+    //     $stock_value = $stock_value;
+    //     dd($stock_value);
+    //     $myJSON = array(
+    //         'stock_value' => number_format($stock_value),
+    //     );
+    //     return request()->json(200, $myJSON);
+    // }
 
 
     public
     function count_available()
     {
 
-//        $company_id = '632462982ad6e';
+        //        $company_id = '632462982ad6e';
         $today = long_date();
 
         $stock = DB::connection('sqlsrv3')
@@ -5124,7 +5081,7 @@ class AccountsController extends Controller
 
         $company_id = Session::get('company_id');
 
-//      --------Stock value--------//
+        //      --------Stock value--------//
         $company_id = Session::get('company_id');
         $available_products = DB::connection('sqlsrv3')
             ->table('Inventory as inv1')
@@ -5149,7 +5106,6 @@ class AccountsController extends Controller
             'not_available' => $not_available,
             'expired_items' => $expired_items,
         ]);
-
     }
 
     public
@@ -5222,13 +5178,11 @@ class AccountsController extends Controller
                 //Get item name
                 $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name', 'ID')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                 foreach ($find_itemname as $find_itemname1) {
-
                 }
 
                 //Get SIID
                 $SI_ID = DB::connection('sqlsrv3')->table("SalesInvoice")->select('SalesInvoiceID')->where('CompanyID', '=', company_id())->where('saleID', '=', $sale_id)->get();
                 foreach ($SI_ID as $SI_ID1) {
-
                 }
                 //Submit items
                 $result = DB::connection('sqlsrv3')->insert('INSERT INTO SalesInvoiceItems(CompanyID, SIID, ItemId, ItemName, SaleQuantity, Unit, Price, SubTotal) values (?,?,?,?,?,?,?,?)', [company_id(), $SI_ID1->SalesInvoiceID, $find_itemname1->ID, $find_itemname1->Name, $quantit[$x], $uni[$x], $unit_cos[$x], $Price]);
@@ -5238,28 +5192,23 @@ class AccountsController extends Controller
             if ($doc) {
                 $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $sale_id)->get();
                 foreach ($find_doc_id as $find_doc_id1) {
-
                 }
                 $find_vendor = DB::connection('sqlsrv3')->table("Customer")->select('CustomerName')->where('CompanyID', '=', company_id())->where('CustomerID', '=', $customer)->get();
                 foreach ($find_vendor as $find_vendor1) {
-
                 }
                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountHead', '=', 'Customers')->where('AccountName', '=', $find_vendor1->CustomerName)->get();
                 foreach ($find_acc_code as $find_acc_code1) {
-
                 }
 
                 $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $doc_date, 'Inventory to ' . $find_vendor1->CustomerName, company_id()]);
 
                 $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                 foreach ($find_tran_id as $find_tran_id1) {
-
                 }
                 $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->ID, 'D', $total, company_id()]);
 
                 $find_acc_id9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('AccountType', '=', 'Income')->where('CompanyID', '=', company_id())->where('AccountName', '=', 'Sale Invoices')->get();
                 foreach ($find_acc_id9 as $find_acc_id91) {
-
                 }
 
                 $ledger_entry9 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_id91->ID, 'C', $total, company_id()]);
@@ -5267,7 +5216,6 @@ class AccountsController extends Controller
                 $find_saacc_id = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Expenses')->where('AccountName', '=', 'Cost of Sale')->get();
 
                 foreach ($find_saacc_id as $find_saacc_id1) {
-
                 }
                 $ledger_entry5 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_saacc_id1->ID, 'D', $total, company_id()]);
 
@@ -5291,7 +5239,6 @@ class AccountsController extends Controller
                     }
                     $find_acc_id = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('AccountType', '=', 'Assets')->where('CompanyID', '=', company_id())->where('AccountName', '=', $find_itemname1->Name)->get();
                     foreach ($find_acc_id as $find_acc_id1) {
-
                     }
                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_id1->ID, 'C', $amountt, company_id()]);
                 }
@@ -5299,18 +5246,14 @@ class AccountsController extends Controller
 
                 $find_de_name = DB::connection('sqlsrv3')->table("Delivery")->select('DeliveryName')->where('CompanyID', '=', company_id())->where('DID', '=', $select_delivery)->get();
                 foreach ($find_de_name as $find_de_name1) {
-
                 }
                 $ledger_delivery3 = DB::connection('sqlsrv3')->insert('INSERT INTO DeliveryDetail(CompanyID,DeliveryName,DeliveryType,DeliveryAmount,ReferenceAccount,CreatedBy,CreatedOn) values (?,?,?,?,?,?,?)', [company_id(), $find_de_name1->DeliveryName, 'Sales', $delivery_amount, $sale_id, username(), $update_date]);
 
                 $find_tax_name = DB::connection('sqlsrv3')->table("Taxes")->select('TaxName')->where('CompanyID', '=', company_id())->where('TaxID', '=', $select_tax)->get();
                 foreach ($find_tax_name as $find_tax_name1) {
-
                 }
 
                 $ledger_tax4 = DB::connection('sqlsrv3')->insert('INSERT INTO TaxDetail(CompanyID,TaxName,TaxType,TaxAmount,ReferenceAccount,CreatedBy,CreatedOn) values (?,?,?,?,?,?,?)', [company_id(), $find_tax_name1->TaxName, 'Sales', $tax_amount, $sale_id, username(), $update_date]);
-
-
             }
 
 
@@ -5452,7 +5395,6 @@ class AccountsController extends Controller
 
             $checker1 = DB::connection('sqlsrv3')->table("IssuanceItem")->where('IssuanceId', '=', $find_config1->IssuanceId)->get();
             return request()->json(200, $checker1);
-
         }
     }
 
@@ -5474,7 +5416,6 @@ class AccountsController extends Controller
     @id = 201001
      ");
         foreach ($result as $result1) {
-
         }
         $overdue_po = $result1->TotalAmount;
 
@@ -5484,7 +5425,6 @@ class AccountsController extends Controller
     @compid = N'" . company_id() . "',
     @id = 101001001");
         foreach ($result2 as $result21) {
-
         }
         $overdue_sale = $result21->TotalAmount;
 
@@ -5495,7 +5435,6 @@ class AccountsController extends Controller
     @id = 201001
     ");
         foreach ($result3 as $result31) {
-
         }
         $acc_payable = $result31->TotalCredit;
 
@@ -5506,7 +5445,6 @@ class AccountsController extends Controller
     @id = 101002
     ");
         foreach ($result4 as $result41) {
-
         }
         $acc_receivable = $result41->Totaldebit;
 
@@ -5517,7 +5455,6 @@ class AccountsController extends Controller
     @compid = N'" . company_id() . "',
     @id = 5 ");
         foreach ($result5 as $result51) {
-
         }
         $acc_expense = $result51->Totaldebit;
 
@@ -5527,7 +5464,6 @@ class AccountsController extends Controller
     @compid = N'" . company_id() . "',
         @id = 4 ");
         foreach ($result6 as $result61) {
-
         }
         $acc_income = $result61->TotalCredit;
 
@@ -5641,45 +5577,42 @@ class AccountsController extends Controller
         );
         return request()->json(200, $myJSON);
     }
-    public function units_ageing_blocks(){
+    public function units_ageing_blocks()
+    {
         $save_ledger = DB::connection('sqlsrv4')->table('RealEstate_Blocks')->get();
         return request()->json(200, $save_ledger);
-
     }
-    public function get_units_ageing_payables_receivables_report($module,$block,$year,$month){
-        $new_block=null;
+    public function get_units_ageing_payables_receivables_report($module, $block, $year, $month)
+    {
+        $new_block = null;
 
 
 
-        if($block !==null && $module =="Commercial"){
-            $save_ledger = DB::connection('sqlsrv4')->table('RealEstate_Projects')->where("Project_Name","=",$block)->select('Id')->first();
-            if($save_ledger){
-            $new_block=$save_ledger->Id;
-            }else{
-                $new_block=$block;
-               }
+        if ($block !== null && $module == "Commercial") {
+            $save_ledger = DB::connection('sqlsrv4')->table('RealEstate_Projects')->where("Project_Name", "=", $block)->select('Id')->first();
+            if ($save_ledger) {
+                $new_block = $save_ledger->Id;
+            } else {
+                $new_block = $block;
+            }
+        } else if ($block !== null && ($module == "FileManagement" || $module == "PlotManagement")) {
+
+            $save_ledger = DB::connection('sqlsrv4')->table('RealEstate_Blocks')->where("Block_Name", "=", $block)->select('Id')->first();
+
+            if ($save_ledger) {
+                $new_block = $save_ledger->Id;
+            } else {
+                $new_block = $block;
+            }
+        } else {
+            $new_block = $block;
         }
-        else if($block !==null && ($module =="FileManagement" || $module =="PlotManagement")){
-
-            $save_ledger = DB::connection('sqlsrv4')->table('RealEstate_Blocks')->where("Block_Name","=",$block)->select('Id')->first();
-
-            if($save_ledger){
-            $new_block=$save_ledger->Id;
-           }else{
-            $new_block=$block;
-           }
-
-        }else{
-            $new_block=$block;
-        }
-        $result1=DB::connection('sqlsrv4')->select("SET NOCOUNT ON ;EXEC  [dbo].[Sp_Get_Aging_Reports_FilePLotsCommercial]
-          @module = N'".$module."',
-          @block = ".$new_block.",
-          @yr = ".$year.",
-          @mon = ".$month." ");
+        $result1 = DB::connection('sqlsrv4')->select("SET NOCOUNT ON ;EXEC  [dbo].[Sp_Get_Aging_Reports_FilePLotsCommercial]
+          @module = N'" . $module . "',
+          @block = " . $new_block . ",
+          @yr = " . $year . ",
+          @mon = " . $month . " ");
         return request()->json(200, $result1);
-
-
     }
     public
     function count_purchase_d()
@@ -6032,7 +5965,6 @@ class AccountsController extends Controller
         $session = ac_c_session();
         $find_prefix = DB::connection('sqlsrv3')->table("AccountsConfiguration")->select('CustomerInvoice')->where('CompanyID', '=', company_id())->get();
         foreach ($find_prefix as $find_prefix1) {
-
         }
         $date_pref = $this->shiftformat();
         $req_prefix = $find_prefix1->CustomerInvoice . '_' . $date_pref;
@@ -6040,7 +5972,6 @@ class AccountsController extends Controller
         if ($find_rid9) {
             $find_rid = DB::connection('sqlsrv3')->table("SalesReturn")->select('SRtnID')->where('CompanyID', '=', company_id())->get();
             foreach ($find_rid as $find_rid1) {
-
             }
             $pre_id = explode("-", $find_rid1->SRtnID);
             $rid = $pre_id[2] + 1;
@@ -6052,7 +5983,6 @@ class AccountsController extends Controller
         if ($result) {
             $find_srID = DB::connection('sqlsrv3')->table("SalesReturn")->where('CompanyID', '=', company_id())->get();
             foreach ($find_srID as $find_srID1) {
-
             }
             $item_name1 = explode("|", $item_name);
 
@@ -6065,7 +5995,6 @@ class AccountsController extends Controller
                 $subtot = $rtnqt[$x] * $cos[$x];
                 $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name', 'ID')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                 foreach ($find_itemname as $find_itemname1) {
-
                 }
                 DB::connection('sqlsrv3')->insert("INSERT INTO SalesReturnItems(CompanyID, SRID, ItemId, ItemName, PoQuantity, Unit, ReturnQuantity, Price, SubTotal) values (?,?,?,?,?,?,?,?,?)", [company_id(), $find_srID1->SaleReturnID, $find_itemname1->ID, $find_itemname1->Name, $saleqt[$x], $uni[$x], $rtnqt[$x], $cos[$x], $subtot]);
             }
@@ -6087,13 +6016,11 @@ class AccountsController extends Controller
             if ($doc) {
                 $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $final_SiCode)->get();
                 foreach ($find_doc_id as $find_doc_id1) {
-
                 }
 
 
                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountHead', '=', 'Customers')->where('AccountName', '=', $customer)->get();
                 foreach ($find_acc_code as $find_acc_code1) {
-
                 }
 
 
@@ -6101,14 +6028,12 @@ class AccountsController extends Controller
 
                 $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                 foreach ($find_tran_id as $find_tran_id1) {
-
                 }
 
                 $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->ID, 'C', $totalamount, company_id()]);
 
                 $find_acc_id9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('AccountType', '=', 'Income')->where('CompanyID', '=', company_id())->where('AccountName', '=', 'Sale Invoices')->get();
                 foreach ($find_acc_id9 as $find_acc_id91) {
-
                 }
 
                 $ledger_entry9 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_id91->ID, 'D', $totalamount, company_id()]);
@@ -6116,7 +6041,6 @@ class AccountsController extends Controller
                 $find_saacc_id = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Expenses')->where('AccountName', '=', 'Cost of Sale')->get();
 
                 foreach ($find_saacc_id as $find_saacc_id1) {
-
                 }
                 $ledger_entry5 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_saacc_id1->ID, 'C', $totalamount, company_id()]);
 
@@ -6140,7 +6064,6 @@ class AccountsController extends Controller
                     }
                     $find_acc_id = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('AccountType', '=', 'Assets')->where('CompanyID', '=', company_id())->where('AccountName', '=', $find_itemname1->Name)->get();
                     foreach ($find_acc_id as $find_acc_id1) {
-
                     }
                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_id1->ID, 'D', $amountt, company_id()]);
                 }
@@ -6212,7 +6135,6 @@ class AccountsController extends Controller
         }
         $find_prefix = DB::connection('sqlsrv3')->table("AccountsConfiguration")->select('Quotation')->where('CompanyID', '=', company_id())->get();
         foreach ($find_prefix as $find_prefix1) {
-
         }
         $date_pref = $this->shiftformat();
         $quo_prefix = $find_prefix1->Quotation . '_' . $date_pref;
@@ -6243,7 +6165,6 @@ class AccountsController extends Controller
 
                 $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name', 'unit')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                 foreach ($find_itemname as $find_itemname1) {
-
                 }
                 $result3 = DB::connection('sqlsrv3')->insert('INSERT INTO SQuotationItems(QuotationID, ItemId, ItemName, Quantity, Price, Unit, Total) values (?,?,?,?,?,?,?)', [$find_quotid1->QuotationID, $item_nam[$x], $find_itemname1->Name, $qt[$x], $est_cos[$x], $find_itemname1->unit, $total9]);
             }
@@ -6387,7 +6308,7 @@ class AccountsController extends Controller
                     }
                     $result = array_merge(...$result);
 
-//                 cache the LedgerReport data
+                    //                 cache the LedgerReport data
                     Cache::forget('LedgerReport');
                     Cache::put('LedgerReport', $result);
 
@@ -6403,7 +6324,7 @@ class AccountsController extends Controller
                        @compa = N'" . company_id() . "',
                        @Id = '" . $pre_id[0] . "' ");
 
-//                 cache the LedgerReport data
+                    //                 cache the LedgerReport data
                     Cache::forget('LedgerReport');
                     Cache::put('LedgerReport', $result);
 
@@ -6416,13 +6337,10 @@ class AccountsController extends Controller
 
                 // Return paginated data as JSON response
                 return $this->sendSuccess('Ledger report generated successfully .', paginateLedger($collection, $currentPage, $perPage));
-
             }
         } catch (\Exception $exception) {
             return $this->sendError($exception->getMessage());
         }
-
-
     }
 
     public
@@ -6470,7 +6388,6 @@ class AccountsController extends Controller
             $export = new GeneralReportExport($data, $headings, $additionalFields);
 
             return Excel::download($export, 'Datewise_Ledger_Detail.xlsx');
-
         } catch (\Exception $exception) {
             return $this->sendError($exception->getMessage());
         }
@@ -6485,7 +6402,6 @@ class AccountsController extends Controller
         } catch (\Exception $exception) {
             return $this->sendError($exception->getMessage());
         }
-
     }
 
 
@@ -6546,8 +6462,6 @@ class AccountsController extends Controller
 
             return request()->json(200, $result);
         }
-
-
     }
 
     public
@@ -6695,7 +6609,6 @@ class AccountsController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() == 23000) {
                 return response()->json(['message' => 'IssuanceReturn Already Exists.'], 422);
-
             } else {
                 throw $e;
             }
@@ -6732,7 +6645,6 @@ class AccountsController extends Controller
                         $facevalue = 0;
                     }
                     DB::connection('sqlsrv3')->insert('INSERT INTO Inventory(CompanyID,ItemID,Quantity,Unit,Type,CreatedBy,CreatedOn,Reference,Dated,FaceValue) values (?,?,?,?,?,?,?,?,?,?)', [company_id(), $item_nam[$x], $qt[$x], $uni[$x], 7, username(), $created_on, 'Added stock through ' . $final_IssID, $date, $facevalue]);
-
                 }
             }
             $find_dept_name1 = DB::connection('sqlsrv3')->table("Issuances")->where('CompanyID', '=', company_id())->where('IssuanceId', '=', $issuance)->orderBy('IssuanceId', 'desc')->first();
@@ -6865,21 +6777,63 @@ class AccountsController extends Controller
             $words = array();
             $num = str_replace(array(',', ' '), '', trim($num));
             $list1 = array(
-                '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven',
-                'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',
-                'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
+                '',
+                'one',
+                'two',
+                'three',
+                'four',
+                'five',
+                'six',
+                'seven',
+                'eight',
+                'nine',
+                'ten',
+                'eleven',
+                'twelve',
+                'thirteen',
+                'fourteen',
+                'fifteen',
+                'sixteen',
+                'seventeen',
+                'eighteen',
+                'nineteen'
             );
             $list2 = array(
-                '', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty',
-                'seventy', 'eighty', 'ninety', 'hundred'
+                '',
+                'ten',
+                'twenty',
+                'thirty',
+                'forty',
+                'fifty',
+                'sixty',
+                'seventy',
+                'eighty',
+                'ninety',
+                'hundred'
             );
             $list3 = array(
-                '', 'thousand', 'million', 'billion', 'trillion',
-                'quadrillion', 'quintillion', 'sextillion', 'septillion',
-                'octillion', 'nonillion', 'decillion', 'undecillion',
-                'duodecillion', 'tredecillion', 'quattuordecillion',
-                'quindecillion', 'sexdecillion', 'septendecillion',
-                'octodecillion', 'novemdecillion', 'vigintillion'
+                '',
+                'thousand',
+                'million',
+                'billion',
+                'trillion',
+                'quadrillion',
+                'quintillion',
+                'sextillion',
+                'septillion',
+                'octillion',
+                'nonillion',
+                'decillion',
+                'undecillion',
+                'duodecillion',
+                'tredecillion',
+                'quattuordecillion',
+                'quindecillion',
+                'sexdecillion',
+                'septendecillion',
+                'octodecillion',
+                'novemdecillion',
+                'vigintillion'
             );
             $num_length = strlen($num);
             $levels = (int)(($num_length + 2) / 3);
@@ -6960,8 +6914,6 @@ class AccountsController extends Controller
             $find_config = "submitted";
             return request()->json(200, $find_config);
         }
-
-
     }
 
     public
@@ -7209,7 +7161,6 @@ class AccountsController extends Controller
             for ($x = 0; $x < count($selected); $x++) {
                 DB::connection('sqlsrv3')->insert("INSERT INTO DepartmentProject(CompanyID,DepartmentName,ProjectID,CreatedBy,CreatedOn) values (?,?,?,?,?)", [company_id(), $selected[$x], $project_id, username(), $founded]);
                 DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EmployeeID, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?,?)", [company_id(), username(), UserFullName(), $Emp_id, 'Linked Project to new Department or Account', 'Linked Project | ' . $project_name1 . ' | having Project Id | ' . $project_id . ' | to Department | ' . $selected[$x] . ' against Account | ' . $account_idname . '', $founded]);
-
             }
 
 
@@ -7387,7 +7338,6 @@ class AccountsController extends Controller
 
             $find_detail = DB::connection('sqlsrv3')->table("PaymentVoucher")->where('CompanyID', '=', company_id())->where('PaymentVoucherID', '=', $pv_id)->get();
             foreach ($find_detail as $find_detail1) {
-
             }
             $final_PoCode = $find_detail1->PVID;
             $vendor_name = $find_detail1->PaymentAgainst;
@@ -7406,7 +7356,6 @@ class AccountsController extends Controller
             if ($doc) {
                 $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $final_PoCode)->get();
                 foreach ($find_doc_id as $find_doc_id1) {
-
                 }
 
 
@@ -7414,7 +7363,6 @@ class AccountsController extends Controller
 
                 $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                 foreach ($find_tran_id as $find_tran_id1) {
-
                 }
                 $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $pay_against0, 'D', $amount, company_id()]);
 
@@ -7447,7 +7395,6 @@ class AccountsController extends Controller
         $result = DB::connection('sqlsrv3')->insert('INSERT INTO PaymentTerm(CompanyID, PaymentTermName, Status, CreatedBy, CreatedOn) values (?,?,?,?,?)', [company_id(), $payment_name, $payment_status, username(), $update_date]);
         $req = DB::connection('sqlsrv3')->table("PaymentTerm")->select('PaymentTermId')->where('PaymentTermName', '=', $payment_name)->get();
         foreach ($req as $req1) {
-
         }
         DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EmployeeID, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?,?)", [company_id(), username(), UserFullName(), $Emp_id, 'New Payment Term Created', 'New Payment Term | ' . $payment_name . ' | Payment Term ID | ' . $req1->PaymentTermId . ' | Status | ' . $payment_status . ' | has been added succesfully', $update_date]);
         $arr = "Submitted";
@@ -7478,7 +7425,6 @@ class AccountsController extends Controller
 
                 $find_acc_code = DB::connection('sqlsrv3')->table("ItemLinkCoa")->select('CoaID')->where('ItemId', '=', $items1->itemId)->get();
                 foreach ($find_acc_code as $find_acc_code1) {
-
                 }
 
                 $find_inventory_amount = DB::connection('sqlsrv3')->select("SET NOCOUNT ON ; EXEC   [dbo].[Get_Item_AverageCostValue_ItemWise]
@@ -7486,10 +7432,8 @@ class AccountsController extends Controller
    @itemid = " . $items1->itemId . " ");
                 if ($find_inventory_amount) {
                     foreach ($find_inventory_amount as $find_inventory_amount1) {
-
                     }
                     $t_iss_amount = $find_inventory_amount1->AVG * $items1->IssuanceQuantity;
-
                 }
 
                 DB::connection('sqlsrv3')->update('update  Ledger_Entries set Amount=? where AccountID=? and EntryType=? and TransactionID=?', [$t_iss_amount, $find_acc_code1->CoaID, 'C', $find_tran_id1->ID]);
@@ -7497,11 +7441,9 @@ class AccountsController extends Controller
 
                 $find_acc_code9 = DB::connection('sqlsrv3')->table("ProjectLinkCoa")->select('CoaID')->where('ProjectName', '=', $project)->get();
                 foreach ($find_acc_code9 as $find_acc_code91) {
-
                 }
 
                 DB::connection('sqlsrv3')->update('update  Ledger_Entries set Amount=? where AccountID=? and EntryType=? and TransactionID=?', [$t_iss_amount, $find_acc_code91->CoaID, 'D', $find_tran_id1->ID]);
-
             }
         }
         return request()->json(200, 'success');
@@ -7536,7 +7478,6 @@ class AccountsController extends Controller
         } else {
             $find_dept = DB::connection('sqlsrv2')->table("Emp_Register")->select('Department')->where('CompanyID', '=', company_id())->where('EmployeeCode', '=', $emp_code)->get();
             foreach ($find_dept as $find_dept1) {
-
             }
 
             $update_date = long_date();
@@ -7691,12 +7632,10 @@ class AccountsController extends Controller
 
             $find_poid = DB::connection('sqlsrv3')->table("JournalVoucher")->select('JournalVoucherID')->where('JVID', $id)->where('CompanyID', '=', company_id())->get();
             foreach ($find_poid as $find_poid1) {
-
             }
 
             $find_balance = DB::connection('sqlsrv3')->table("JournalVoucherDetail")->where('JournalVoucherID', $find_poid1->JournalVoucherID)->where('AccountID', $vendor_name[0])->where('credit_amount', '!=', 0)->get();
             foreach ($find_balance as $find_balance1) {
-
             }
             $total = $find_balance1->credit_amount;
             $firstEntryexists = DB::connection('sqlsrv3')
@@ -7729,11 +7668,9 @@ class AccountsController extends Controller
             if (!$find_ve_exists) {
                 $message = "notexists";
                 return request()->json(200, $message);
-            }
-            {
+            } {
                 $find_poid = DB::connection('sqlsrv3')->table("PurchaseOrder")->select('PurchaseOrderID')->where('PoCode', $id)->where('CompanyID', '=', company_id())->get();
                 foreach ($find_poid as $find_poid1) {
-
                 }
                 $find_inv_exists = DB::connection('sqlsrv3')->table("ReceivingOrder")->where('POID', '=', $find_poid1->PurchaseOrderID)->where('CompanyID', '=', company_id())->exists();
                 if ($find_inv_exists) {
@@ -7748,7 +7685,6 @@ class AccountsController extends Controller
                 } else {
                     $find_balance = DB::connection('sqlsrv3')->table("PurchaseOrder")->where('PoCode', '=', $id)->where('CompanyID', '=', company_id())->get();
                     foreach ($find_balance as $find_balance1) {
-
                     }
                     $total = $find_balance1->TotalAmount;
                     $firstEntryexists = DB::connection('sqlsrv3')
@@ -7780,7 +7716,6 @@ class AccountsController extends Controller
         } elseif ($ide[0] == 'INV') {
             $find_v = DB::connection('sqlsrv3')->table("ReceivingOrder")->where('FormID', $id)->where('CompanyID', '=', company_id())->get();
             foreach ($find_v as $find_v1) {
-
             }
             $find_ve_exists = DB::connection('sqlsrv3')->table("PurchaseOrder")->where('PurchaseOrderID', $find_v1->POID)->where('CompanyID', '=', company_id())->where('vendorName', $vendor_name[1])->exists();
             if (!$find_ve_exists) {
@@ -7789,20 +7724,16 @@ class AccountsController extends Controller
             } else {
                 $find_balance = DB::connection('sqlsrv3')->table("ReceivingOrder")->where('FormID', $id)->where('CompanyID', '=', company_id())->get();
                 foreach ($find_balance as $find_balance1) {
-
                 }
                 $find_po_c = DB::connection('sqlsrv3')->table("PurchaseOrder")->where('PurchaseOrderID', $find_balance1->POID)->where('CompanyID', '=', company_id())->get();
                 foreach ($find_po_c as $find_po_c1) {
-
                 }
 
                 $find_inv_remaining = DB::connection('sqlsrv3')->select("select sum(Amount) as Amount From PaymentVoucherDetail where CompanyID = '" . company_id() . "' and AgainstPO = '" . $find_po_c1->PoCode . "' and ( AgainstINV='" . $id . "' OR AgainstINV='') and PID is not Null");
                 foreach ($find_inv_remaining as $find_inv_remaining1) {
-
                 }
                 $find_inv_remainingcheck = DB::connection('sqlsrv3')->select("select sum(Amount) as Amount From PaymentVoucherDetail where CompanyID = '" . company_id() . "' and AgainstPO = '" . $find_po_c1->PoCode . "' and ( AgainstINV='" . $id . "' OR AgainstINV='') and PID is Null");
                 foreach ($find_inv_remainingcheck as $find_inv_remainingcheck1) {
-
                 }
                 if (is_null($find_inv_remaining1->Amount) && $find_inv_remainingcheck1->Amount > 0) {
                     $remaining = $find_balance1->TotalAmount - $find_inv_remainingcheck1->Amount;
@@ -7851,8 +7782,6 @@ class AccountsController extends Controller
             'Amount' => $find_payment_detail - $find_payment_detail1,
             'Remaining' => $find_payment_detail - $find_payment_detail1
         ], 200);
-
-
     }
 
     public
@@ -7916,7 +7845,6 @@ class AccountsController extends Controller
         if ($find_rid9) {
             $find_rid = DB::connection('sqlsrv3')->table("PettyCash")->select('PettyID')->where('CompanyID', '=', company_id())->get();
             foreach ($find_rid as $find_rid1) {
-
             }
             $pre_id = explode("-", $find_rid1->PettyID);
             $rid = $pre_id[1] + 1;
@@ -8114,7 +8042,6 @@ class AccountsController extends Controller
         if ($result) {
             $req = DB::connection('sqlsrv3')->table("PettyCash")->select('PettyCash.*')->where('ID', '=', $id)->get();
             foreach ($req as $req1) {
-
             }
             DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EmployeeID, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?,?)", [company_id(), username(), UserFullName(), $Emp_id, 'Petty Cash Status Updated', 'Petty Cash For | ' . $req1->PettyID . ' | Status Updated to | ' . $status . ' ', $update_date]);
 
@@ -8165,13 +8092,11 @@ class AccountsController extends Controller
             if ($doc) {
                 $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $final_PoCode0)->get();
                 foreach ($find_doc_id as $find_doc_id1) {
-
                 }
 
                 $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $doc_date, $dept . ' Used PettyCash Expense Against Petty#' . $final_PoCode0, company_id()]);
                 $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                 foreach ($find_tran_id as $find_tran_id1) {
-
                 }
                 $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $COAID, 'D', $amount0, company_id()]);
 
@@ -8211,13 +8136,11 @@ class AccountsController extends Controller
             if ($doc1) {
                 $find_doc_id2 = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', 'ADV PC')->get();
                 foreach ($find_doc_id2 as $find_doc_id21) {
-
                 }
                 $transaction1 = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id21->ID, $doc_date, 'Paid Pettycash to ' . $dept, company_id()]);
 
                 $find_tran_id2 = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id21->ID)->get();
                 foreach ($find_tran_id2 as $find_tran_id21) {
-
                 }
                 $ledger_entry3 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id21->ID, $AccountID, 'D', $paid_amount, company_id()]);
                 $cash_hand = '101001001001';
@@ -8249,7 +8172,6 @@ class AccountsController extends Controller
     {
         $find_access = DB::connection('sqlsrv3')->table("PettyCashAccess")->where("ID", "=", $id)->get();
         foreach ($find_access as $find_access1) {
-
         }
         $limit = $find_access1->Limit;
         $dept = $find_access1->Department;
@@ -8273,7 +8195,6 @@ class AccountsController extends Controller
     @compid = N'" . company_id() . "'  ");
 
             foreach ($result as $result1) {
-
             }
 
             $am = $result1->am;
@@ -8304,7 +8225,6 @@ class AccountsController extends Controller
     @id = '" . $pre_id[0] . "'
     ");
         foreach ($result3 as $result31) {
-
         }
         $acc_credit = $result31->TotalCredit;
         $acc_debit = $result31->Totaldebit;
@@ -8562,45 +8482,37 @@ class AccountsController extends Controller
                                 if ($doc) {
                                     $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $save_ledger1->file_plot_number)->get();
                                     foreach ($find_doc_id as $find_doc_id1) {
-
                                     }
                                     $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $save_ledger1->Dated, $save_ledger1->Type . ' ' . $save_ledger1->UnitModule . ' Against File Plot No:' . $save_ledger1->file_plot_number . '/Owner Name: ' . $save_ledger1->OwnerName, company_id()]);
                                     $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                                     foreach ($find_tran_id as $find_tran_id1) {
-
                                     }
                                     if ($save_ledger1->Block_Name == 'SA Premium Homes' || $save_ledger1->Block_Name == 'Premium Homes' || $save_ledger1->Block_Name == 'Ayaan Center' || $save_ledger1->Block_Name == 'Faisal Height') {
                                         $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block_Name . ' Receivables')->get();
                                         foreach ($find_acc_code as $find_acc_code1) {
-
                                         }
                                     } else if ($save_ledger1->Block_Name == 'Main G.T Road') {
                                         $blo = 'Main GT road';
                                         $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $blo . ' Block ' . $save_ledger1->Type . ' Receivables')->get();
                                         foreach ($find_acc_code as $find_acc_code1) {
-
                                         }
                                     } else {
                                         $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block_Name . ' Block ' . $save_ledger1->Type . ' Receivables')->get();
                                         foreach ($find_acc_code as $find_acc_code1) {
-
                                         }
                                     }
                                     if ($save_ledger1->Block_Name == 'SA Premium Homes' || $save_ledger1->Block_Name == 'Premium Homes' || $save_ledger1->Block_Name == 'Ayaan Center' || $save_ledger1->Block_Name == 'Faisal Height') {
                                         $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block_Name . ' Sales')->get();
                                         foreach ($find_acc_code9 as $find_acc_code91) {
-
                                         }
                                     } else if ($save_ledger1->Block_Name == 'Main G.T Road') {
                                         $blo = 'Main GT road';
                                         $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $blo . ' Block ' . $save_ledger1->Type . ' Sales')->get();
                                         foreach ($find_acc_code9 as $find_acc_code91) {
-
                                         }
                                     } else {
                                         $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block_Name . ' Block ' . $save_ledger1->Type . ' Sales')->get();
                                         foreach ($find_acc_code9 as $find_acc_code91) {
-
                                         }
                                     }
                                     $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->ID, 'D', $save_ledger1->BookingAmount, $save_ledger1->BID, company_id()]);
@@ -8673,7 +8585,6 @@ class AccountsController extends Controller
         if ($result) {
             $find_chq = DB::connection('sqlsrv3')->table("UnitsChqDetail")->where('ChqID', '=', $chqId)->get();
             foreach ($find_chq as $find_chq1) {
-
             }
             $rid = $find_chq1->RId;
             $rid_id = explode("_", $rid);
@@ -8750,39 +8661,32 @@ class AccountsController extends Controller
                     if ($doc) {
                         $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $save_ledger1->ReceiptNo)->get();
                         foreach ($find_doc_id as $find_doc_id1) {
-
                         }
                         $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $save_ledger1->DateTime, $save_ledger1->Type . ' Against File Plot ID:' . $save_ledger1->File_Plot_Number . 'with Chq detail:' . $save_ledger1->Ch_Pay_Draft_No . '/' . $save_ledger1->Ch_Pay_Draft_Date . 'Received From :' . $save_ledger1->Name, company_id()]);
                         $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                         foreach ($find_tran_id as $find_tran_id1) {
-
                         }
                         if ($save_ledger1->Text == 'SAM') {
                             $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', 'SAM')->get();
                             foreach ($find_acc_code as $find_acc_code1) {
-
                             }
                         } elseif ($save_ledger1->Type == 'Installment' || $save_ledger1->Type == 'Booking') {
                             if ($save_ledger1->Plot_Type == 'Apartment') {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Project . ' Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             } elseif ($save_ledger1->Plot_Type == 'Shop') {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Project . ' Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             } else if ($save_ledger1->Block == 'Main G.T Road') {
                                 $blo = 'Main GT road';
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $blo . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             } else {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             }
@@ -8790,35 +8694,30 @@ class AccountsController extends Controller
                             //dynamic types
                             $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                             foreach ($find_acc_code as $find_acc_code1) {
-
                             }
                             //end dynamic types
                         } elseif ($save_ledger1->Type == 'Electricity_Charges') {
                             //dynamic types
                             $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                             foreach ($find_acc_code as $find_acc_code1) {
-
                             }
                             //end dynamic types
                         } elseif ($save_ledger1->Type == 'Transfer') {
                             //dynamic types
                             $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block transfer fee')->get();
                             foreach ($find_acc_code as $find_acc_code1) {
-
                             }
                             //end dynamic types
                         } elseif ($save_ledger1->Type == 'Subsidiary_Recovery' || $save_ledger1->Type == 'Receivable_Receipt') {
                             //dynamic types
                             $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Module . '-Recovery')->get();
                             foreach ($find_acc_code as $find_acc_code1) {
-
                             }
                             //end dynamic types
                         } elseif ($save_ledger1->Type == 'New_Connection_Charges') {
                             //dynamic types
                             $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block new connection charges')->get();
                             foreach ($find_acc_code as $find_acc_code1) {
-
                             }
                             //end dynamic types
                         } else {
@@ -8826,7 +8725,6 @@ class AccountsController extends Controller
                             $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', $save_ledger1->Type)->get();
 
                             foreach ($find_acc_code as $find_acc_code1) {
-
                             }
                         }
                         if ($find_acc_code1->ID == null) {
@@ -8837,7 +8735,6 @@ class AccountsController extends Controller
                             $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID2,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->ID, 'C', $save_ledger1->Amount, $save_ledger1->ID, company_id()]);
                             $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID2,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, $save_ledger1->DepositedID, 'D', $save_ledger1->Amount, $save_ledger1->ID, company_id()]);
                         }
-
                     } //doc
                 }
                 ///end accounts
@@ -8847,7 +8744,6 @@ class AccountsController extends Controller
 
             $find_chq = DB::connection('sqlsrv3')->table("UnitsChqDetail")->where('ChqID', '=', $id)->get();
             foreach ($find_chq as $find_chq1) {
-
             }
             $rid = $find_chq1->RId;
             $rid_id = explode("_", $rid);
@@ -8899,35 +8795,29 @@ class AccountsController extends Controller
                         if ($doc) {
                             $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $save_ledger1->ReceiptNo)->get();
                             foreach ($find_doc_id as $find_doc_id1) {
-
                             }
 
                             DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $save_ledger1->DateTime, $save_ledger1->Type . ' Against File Plot ID:' . $save_ledger1->File_Plot_Number . 'Received From :' . $save_ledger1->Name, company_id()]);
                             $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                             foreach ($find_tran_id as $find_tran_id1) {
-
                             }
                             if ($save_ledger1->Text == 'SAM') {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', 'SAM')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             } elseif ($save_ledger1->Type == 'Installment' || $save_ledger1->Type == 'Booking') {
                                 if ($save_ledger1->Plot_Type == 'Apartment') {
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Project . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                 } else if ($save_ledger1->Block == 'Main G.T Road') {
                                     $blo = 'Main GT road';
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $blo . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                 } else {
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                     //end dynamic types
                                 }
@@ -8935,48 +8825,41 @@ class AccountsController extends Controller
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Electricity_Charges') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Transfer') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block transfer fee')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Subsidiary_Recovery' || $save_ledger1->Type == 'Receivable_Receipt') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Module . '-Recovery')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'New_Connection_Charges') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block new connection charges')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } else {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', $save_ledger1->Type)->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             }
 
 
                             $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', 'Cash in Hand')->get();
                             foreach ($find_acc_code9 as $find_acc_code91) {
-
                             }
 
                             if ($find_acc_code1->ID == null || $find_acc_code91->ID == null) {
@@ -8989,7 +8872,6 @@ class AccountsController extends Controller
 
                                 DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID2,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code91->ID, 'D', $save_ledger1->Amount, $save_ledger1->ID, company_id()]);
                             }
-
                         }
                     }
                     ///end accounts
@@ -8997,7 +8879,6 @@ class AccountsController extends Controller
 
                     $find_chq = DB::connection('sqlsrv3')->table("UnitsCashDetail")->where('CashID', '=', $id2[$x])->get();
                     foreach ($find_chq as $find_chq1) {
-
                     }
 
                     $rid = $find_chq1->RId;
@@ -9010,9 +8891,7 @@ class AccountsController extends Controller
                 } //for
 
                 insertLog('Unit cash Proceeded', 'Unit Cash for Receipt ID | ' . $rid . ' | Receipt No | ' . $find_chq1->ReceiptNo . ' | amount | ' . $find_chq1->Amount . ' | with Status | ' . $find_chq1->Status . ' | against Name | ' . $find_chq1->Name . ' | Father Name | ' . $find_chq1->Father_Name . ' | File Plot Number | ' . $find_chq1->File_Plot_Number . ' |  has been Proceeded ');
-
             }
-
         }
 
 
@@ -9030,7 +8909,6 @@ class AccountsController extends Controller
         foreach ($result as $result1) {
             $arr = DB::connection('sqlsrv3')->table('PaymentVoucherDetail')->join('PaymentVoucher', 'PaymentVoucher.PaymentVoucherID', '=', 'PaymentVoucherDetail.PID')->join("PurchaseOrder", 'PurchaseOrder.PoCode', '=', 'PaymentVoucherDetail.AgainstPO')->where('PaymentVoucherDetail.CompanyID', '=', company_id())->where('PaymentVoucherDetail.AgainstPO', '=', $result1->PoCode)->where('PaymentVoucherDetail.AgainstINV', '=', '')->select('PaymentVoucherDetail.PVNO', 'PurchaseOrder.PoCode', 'PurchaseOrder.vendorName', 'PurchaseOrder.TotalAmount', 'PurchaseOrder.Status2', 'PaymentVoucherDetail.Date', 'PaymentVoucherDetail.Amount', 'PaymentVoucher.PaymentAgainst', 'PaymentVoucher.SalesPerson')->get();
             array_push($array, $arr);
-
         }
         $array1 = Arr::flatten($array);
         return request()->json(200, $array1);
@@ -9302,7 +9180,7 @@ class AccountsController extends Controller
     }
 
 
-//units controller
+    //units controller
     public
     function get_counter_sum_online_adjust($dated, $bank_type)
     {
@@ -9362,28 +9240,24 @@ class AccountsController extends Controller
                                 if ($doc) {
                                     $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', 'Electricity ' . $save_ledger1->Block)->get();
                                     foreach ($find_doc_id as $find_doc_id1) {
-
                                     }
 
                                     $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $save_ledger1->Dated, 'Booking Electricity Charges Against' . $save_ledger1->Block . '/' . $save_ledger1->Plot_Type, company_id()]);
 
                                     $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                                     foreach ($find_tran_id as $find_tran_id1) {
-
                                     }
                                     if ($save_ledger1->Block == 'Main G.T Road') {
                                         $blo = 'Main GT road';
 
                                         $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $blo . ' Block electricity charges Receivables')->get();
                                         foreach ($find_acc_code as $find_acc_code1) {
-
                                         }
                                     } else {
 
                                         $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block electricity charges Receivables')->get();
                                         // Shoaib Block Commerical Services Receivables
                                         foreach ($find_acc_code as $find_acc_code1) {
-
                                         }
                                     }
                                     $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID5,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->ID, 'D', $save_ledger1->Total, $save_ledger1->EID, company_id()]);
@@ -9392,12 +9266,10 @@ class AccountsController extends Controller
                                         $blo = 'Main GT road';
                                         $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $blo . ' block electricity charges income')->get();
                                         foreach ($find_acc_code9 as $find_acc_code91) {
-
                                         }
                                     } else {
                                         $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block electricity charges income')->get();
                                         foreach ($find_acc_code9 as $find_acc_code91) {
-
                                         }
                                     }
                                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID5,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code91->ID, 'C', $save_ledger1->Total, $save_ledger1->EID, company_id()]);
@@ -9454,15 +9326,13 @@ class AccountsController extends Controller
             $chec = explode("|", $check);
             if ($chec[$x] == 'true') {
                 $save_ledger = DB::connection('sqlsrv3')->table('Dealer_Voucher')->where('Id', '=', $id2[$x])->get();
-                foreach ($save_ledger as $save_ledger1) {
-                    ;
+                foreach ($save_ledger as $save_ledger1) {;
                     $voucher_date = explode(" ", $save_ledger1->DateTime);
                     if ($save_ledger1->PaymentType == 'Cheque') {
                         $checKing = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountName', '=', $save_ledger1->Bank)->exists();
                         if ($checKing) {
                             $find_acc = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountName', '=', $save_ledger1->Bank)->get();
                             foreach ($find_acc as $find_acc1) {
-
                             }
                         } else {
                             $message = "Account Head does not exist Against this Bank";
@@ -9476,18 +9346,15 @@ class AccountsController extends Controller
                         if ($doc) {
                             $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $save_ledger1->VoucherNo)->get();
                             foreach ($find_doc_id as $find_doc_id1) {
-
                             }
 
                             $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $voucher_date[0], $save_ledger1->Type . ' ' . ' Against File Plot Id:' . $save_ledger1->File_Plot_Id . '/ Name: ' . $save_ledger1->Name, company_id()]);
 
                             $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                             foreach ($find_tran_id as $find_tran_id1) {
-
                             }
                             $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Liabilities')->where('AccountName', '=', $save_ledger1->Name)->get();
                             foreach ($find_acc_code as $find_acc_code1) {
-
                             }
                             $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->ID, 'D', $save_ledger1->Amount, company_id()]);
 
@@ -9496,15 +9363,11 @@ class AccountsController extends Controller
                             } else if ($save_ledger1->PaymentType == 'Cheque') {
                                 $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc1->ID, 'C', $save_ledger1->Amount, company_id()]);
                             }
-
                         }
-
                     } else {
                         $message = "Account Head does not exist Against this Name";
                         return request()->json(401, $message);
                     }
-
-
                 } //for
                 DB::connection('sqlsrv3')->update('update Dealer_Voucher set Status=? where Id=?', ['Proceed', $save_ledger1->Id]);
             }
@@ -9561,14 +9424,12 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                         if ($doc) {
                             $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', 'Services ' . $save_ledger1->Block)->get();
                             foreach ($find_doc_id as $find_doc_id1) {
-
                             }
 
                             $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $save_ledger1->Dated, 'Booking Services Charges Against' . $save_ledger1->Block . '/' . $save_ledger1->Plot_Type, company_id()]);
 
                             $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                             foreach ($find_tran_id as $find_tran_id1) {
-
                             }
                             if ($save_ledger1->Block == 'Main G.T Road') {
                                 $blo = 'Main GT road';
@@ -9576,13 +9437,11 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $blo . ' Block service charges Receivables')->get();
                                 // Shoaib Block Commerical Services Receivables
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             } else {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                                 // Shoaib Block Commerical Services Receivables
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             }
 
@@ -9592,12 +9451,10 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                                 $blo = 'Main GT road';
                                 $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $blo . ' block service charges income')->get();
                                 foreach ($find_acc_code9 as $find_acc_code91) {
-
                                 }
                             } else {
                                 $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block service charges income')->get();
                                 foreach ($find_acc_code9 as $find_acc_code91) {
-
                                 }
                             }
                             $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID3,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code91->ID, 'C', $save_ledger1->Total, $save_ledger1->SRID, company_id()]);
@@ -9611,7 +9468,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             } else {
                 $t = "false";
             }
-
         }
         if ($t == 'false') {
             $message = "Select Data";
@@ -9621,7 +9477,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
             return request()->json(401, $message);
         }
-
     }
 
     public
@@ -9665,14 +9520,12 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                                 if ($doc) {
                                     $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', 'Services ' . $save_ledger1->Block)->get();
                                     foreach ($find_doc_id as $find_doc_id1) {
-
                                     }
 
                                     $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $save_ledger1->Dated, 'Booking Services Charges Against' . $save_ledger1->Block . '/' . $save_ledger1->Plot_Type, company_id()]);
 
                                     $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                                     foreach ($find_tran_id as $find_tran_id1) {
-
                                     }
                                     if ($save_ledger1->Block == 'Main G.T Road') {
                                         $blo = 'Main GT road';
@@ -9680,13 +9533,11 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                                         $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $blo . ' Block service charges Receivables')->get();
                                         // Shoaib Block Commerical Services Receivables
                                         foreach ($find_acc_code as $find_acc_code1) {
-
                                         }
                                     } else {
                                         $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                                         // Shoaib Block Commerical Services Receivables
                                         foreach ($find_acc_code as $find_acc_code1) {
-
                                         }
                                     }
 
@@ -9696,12 +9547,10 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                                         $blo = 'Main GT road';
                                         $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $blo . ' block service charges income')->get();
                                         foreach ($find_acc_code9 as $find_acc_code91) {
-
                                         }
                                     } else {
                                         $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block service charges income')->get();
                                         foreach ($find_acc_code9 as $find_acc_code91) {
-
                                         }
                                     }
                                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID3,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code91->ID, 'C', $save_ledger1->Total, $save_ledger1->SRID, company_id()]);
@@ -9717,7 +9566,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             } else {
                 $t = "false";
             }
-
         }
         if ($t == 'false') {
             $message = "Select Data";
@@ -9816,7 +9664,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     if ($record_d) {
                         DB::connection('sqlsrv3')->table('TempReceiptTable')->where('RId', '=', 'R2_' . $record00->Id)->where('status', null)->delete();
                     }
-
                 }
                 $record22 = DB::connection('sqlsrv4')->select("select * from SAM_Receipts where Cancel is null and DATEADD(dd, 0, DATEDIFF(dd, 0, [DateTime])) between '" . $start_date . "' and '" . $end_date . "'");
                 foreach ($record22 as $record221) {
@@ -9871,11 +9718,8 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                                 'File_Plot_Number' => $record441->File_Plot_Number,
                                 'DateTime' => $date44[0],
                             ]);
-
                         }
-
                     }
-
                 }
                 //SAM payment voucher
                 $record55 = DB::connection('sqlsrv4')->select("select * from PropertyDeal_Voucher where DATEADD(dd, 0, DATEDIFF(dd, 0, [DateTime])) between '" . $start_date . "' and '" . $end_date . "'");
@@ -9997,24 +9841,20 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                         if ($doc) {
                             $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $save_ledger1->ReceiptNo)->get();
                             foreach ($find_doc_id as $find_doc_id1) {
-
                             }
 
                             $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $save_ledger1->DateTime, $save_ledger1->Type . ' Against File Plot ID:' . $save_ledger1->File_Plot_Number . 'Received From :' . $save_ledger1->Name, company_id()]);
                             $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                             foreach ($find_tran_id as $find_tran_id1) {
-
                             }
 
                             $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', $save_ledger1->Text)->get();
                             foreach ($find_acc_code as $find_acc_code1) {
-
                             }
 
                             if ($save_ledger1->PaymentType == 'Cash') {
                                 $find_acc_code9 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', 'Cash in Hand')->get();
                                 foreach ($find_acc_code9 as $find_acc_code91) {
-
                                 }
                             }
 
@@ -10075,7 +9915,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                             'OwnerName' => $record1->OwnerName,
                             'Dated' => $date2[0],
                         ]);
-
                     }
                 }
                 //plotmanagement
@@ -10104,7 +9943,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                             'OwnerName' => $record51->OwnerName,
                             'Dated' => $date52[0],
                         ]);
-
                     }
                 }
 
@@ -10134,14 +9972,12 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                             'OwnerName' => $record71->OwnerName,
                             'Dated' => $dat72[0],
                         ]);
-
                     }
                 }
 
 
                 $arr = "Transfered Successfully";
                 return request()->json(200, $arr);
-
             } else {
                 $arr = "Could not find the MIS DB. Please check your Network Connection.";
                 return request()->json(200, $arr);
@@ -10152,7 +9988,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         }
     }
 
-//yasir
+    //yasir
     public
     function count_requisitions_services()
     {
@@ -10657,7 +10493,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         if ($result) {
             $req = DB::connection('sqlsrv3')->table("UnitsChqDetail")->select('UnitsChqDetail.*')->where('ChqID', '=', $chqId)->get();
             foreach ($req as $req1) {
-
             }
             $rid = $req1->RId;
             $rid_id = explode("_", $rid);
@@ -10669,7 +10504,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 } else {
                     DB::connection('sqlsrv4')->update("UPDATE Cheque_DemandDraft_PayOrder SET Status=?,Dishonored_Reason=? WHERE ReceiptId=?", ['Dishonored', $d_reason, $rid_id[1]]);
                 }
-
             }
             DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EmployeeID, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?,?)", [company_id(), username(), UserFullName(), $Emp_id, 'Updated Account Deposit Status if Discarted', 'the Status of | Receipt ID | ' . $req1->RId . ' | against Receipt No | ' . $req1->ReceiptNo . ' | Payment Type | ' . $req1->PaymentType . ' | Name | ' . $req1->Name . ' | Amount | ' . number_format($req1->Amount) . ' | Bank | ' . $req1->Bank . ' | has updated to Status | ' . $req1->Status . ' | having Discart Reason | ' . $req1->DiscartReason . ' ', $update_date]);
             $arr = 'Submitted';
@@ -10677,7 +10511,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         }
     }
 
-//electricity
+    //electricity
     public
     function Booking_electricity_Mis_to_sa_app($start_date)
     {
@@ -10789,7 +10623,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         return request()->json(200, $find_config);
     }
 
-//print Bill
+    //print Bill
 
     public
     function pending_debt_detail($dated)
@@ -10843,36 +10677,30 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                         if ($doc) {
                             $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $save_ledger1->ReceiptNo)->get();
                             foreach ($find_doc_id as $find_doc_id1) {
-
                             }
 
                             $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $save_ledger1->DateTime, $save_ledger1->Type . ' Against File Plot ID:' . $save_ledger1->File_Plot_Number . 'Received From :' . $save_ledger1->Name, company_id()]);
 
                             $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                             foreach ($find_tran_id as $find_tran_id1) {
-
                             }
                             if ($save_ledger1->Text == 'SAM') {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', 'SAM')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             } elseif ($save_ledger1->Type == 'Installment' || $save_ledger1->Type == 'Booking') {
                                 if ($save_ledger1->Plot_Type == 'Apartment') {
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Project . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                 } else if ($save_ledger1->Block == 'Main G.T Road') {
                                     $blo = 'Main GT road';
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $blo . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                 } else {
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                     //end dynamic types
                                 }
@@ -10880,41 +10708,35 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Electricity_Charges') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Transfer') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block transfer fee')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Subsidiary_Recovery' || $save_ledger1->Type == 'Receivable_Receipt') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Module . '-Recovery')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'New_Connection_Charges') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block new connection charges')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } else {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', $save_ledger1->Type)->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             }
                             if ($find_acc_code1->ID == null) {
@@ -10927,14 +10749,12 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
                                 $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID2,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, 101001002005004, 'D', $save_ledger1->Amount, $save_ledger1->ID, company_id()]);
                             }
-
                         }
                     }
                     ///end accounts
                     DB::connection('sqlsrv3')->update('update UnitsDebitCreditDetail set Status=?,UpdatedBy=?,ProceedDate=? where DbtID=?', ['Proceed', username(), $update_date, $id2[$x]]);
                     $find_chq = DB::connection('sqlsrv3')->table("UnitsDebitCreditDetail")->where('DbtID', '=', $id2[$x])->get();
                     foreach ($find_chq as $find_chq1) {
-
                     }
                     $rid = $find_chq1->RId;
                     $rid_id = explode("_", $rid);
@@ -10943,8 +10763,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     }
                 } //for
                 DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EmployeeID, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?,?)", [company_id(), username(), UserFullName(), $Emp_id, 'Unit credit/Debit Status Updated', 'Status of ' . $rid . ' | Name | ' . $find_chq1->Name . ' | Father Name | ' . $find_chq1->Father_Name . ' | amount | ' . number_format($find_chq1->Amount) . '  has been Updated to Approved ', $update_date]);
-
-
             }
         }
 
@@ -11016,35 +10834,29 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                         if ($doc) {
                             $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $save_ledger1->ReceiptNo)->get();
                             foreach ($find_doc_id as $find_doc_id1) {
-
                             }
 
                             $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $save_ledger1->DateTime, $save_ledger1->Type . ' Against File Plot ID:' . $save_ledger1->File_Plot_Number . 'Received From :' . $save_ledger1->Name, company_id()]);
                             $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                             foreach ($find_tran_id as $find_tran_id1) {
-
                             }
                             if ($save_ledger1->Text == 'SAM') {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', 'SAM')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             } elseif ($save_ledger1->Type == 'Installment' || $save_ledger1->Type == 'Booking') {
                                 if ($save_ledger1->Plot_Type == 'Apartment') {
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Project . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                 } else if ($save_ledger1->Block == 'Main G.T Road') {
                                     $blo = 'Main GT road';
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $blo . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                 } else {
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                     //end dynamic types
                                 }
@@ -11052,41 +10864,35 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Electricity_Charges') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Transfer') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block transfer fee')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Subsidiary_Recovery' || $save_ledger1->Type == 'Receivable_Receipt') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Module . '-Recovery')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'New_Connection_Charges') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block new connection charges')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } else {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', $save_ledger1->Type)->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             }
 
@@ -11100,14 +10906,12 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
                                 $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID2,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, $deposit[0], 'D', $save_ledger1->Amount, $save_ledger1->ID, company_id()]);
                             }
-
                         }
                     }
                     ///end accounts
                     DB::connection('sqlsrv3')->update('update UnitsOnlineCash set Status=?,UpdatedBy=?,ProceedDate=?,DepositedID=? where OnlineID=?', ['Proceed', username(), $update_date, $deposit[0], $id2[$x]]);
                     $find_chq = DB::connection('sqlsrv3')->table("UnitsOnlineCash")->where('OnlineID', '=', $id2[$x])->get();
                     foreach ($find_chq as $find_chq1) {
-
                     }
                     $rid = $find_chq1->RId;
                     $rid_id = explode("_", $rid);
@@ -11117,7 +10921,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 } //for
 
                 DB::insert("INSERT INTO Activity_Log(CompanyId, UserEmail, EmployeeName, EmployeeID, EventStatus, Description, ActivityTime) values (?,?,?,?,?,?,?)", [company_id(), username(), UserFullName(), $Emp_id, 'Unit Online Cash Submitted', 'Status of ' . $rid . ' | Name | ' . $find_chq1->Name . ' | Father Name | ' . $find_chq1->Father_Name . ' | amount | ' . number_format($find_chq1->Amount) . '| has been Updated ', $update_date]);
-
             }
         }
 
@@ -11205,7 +11008,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             if ($result) {
                 $find_vendor = DB::connection('sqlsrv3')->table("TempBankSales")->where('ID', '=', $id)->get();
                 foreach ($find_vendor as $find_vendor1) {
-
                 }
                 if ($find_vendor1->ChqAmount < 0) {
                     $find_config = 'Amount Cannot be Negative';
@@ -11215,24 +11017,20 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 if ($doc) {
                     $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $find_vendor1->RVID)->get();
                     foreach ($find_doc_id as $find_doc_id1) {
-
                     }
                     $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $doc_date, 'Received From ' . $find_vendor1->VendorName . '/Through #' . $find_vendor1->RVID . '/with Chq number#' . $find_vendor1->ChqNo . '/with Chq date#' . $find_vendor1->ChqDate, company_id()]);
 
                     $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                     foreach ($find_tran_id as $find_tran_id1) {
-
                     }
                     $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_vendor1->VendorId, 'C', $find_vendor1->ChqAmount, company_id()]);
 
                     $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_vendor1->ClearanceAccountID, 'D', $find_vendor1->ChqAmount, company_id()]);
                 }
-
             }
         }
         $find_config = 'Updated';
         return request()->json(200, $find_config);
-
     }
 
     public
@@ -11270,7 +11068,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         }
         $find_prefix = DB::connection('sqlsrv3')->table("AccountsConfiguration")->select('ReceivedVoucher')->where('CompanyID', '=', company_id())->get();
         foreach ($find_prefix as $find_prefix1) {
-
         }
         $date_pref = $this->shiftformat();
         $req_prefix = $find_prefix1->ReceivedVoucher . '_' . $date_pref;
@@ -11279,11 +11076,9 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         if ($find_rid9) {
             $find_rid = DB::connection('sqlsrv3')->table("ReceivedVoucher")->select('RVID')->where('CompanyID', '=', company_id())->get();
             foreach ($find_rid as $find_rid1) {
-
             }
             $pre_id = explode("-", $find_rid1->RVID);
             $rid = $pre_id[1] + 1;
-
         } else {
             $rid = 1;
         }
@@ -11327,8 +11122,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                         throw $e;
                     }
                 }
-
-
             } else {
                 $result = DB::connection('sqlsrv3')->insert('INSERT INTO ReceivedVoucher(CompanyID,RVID,VoucherDate,AccountID,PaymentAgainst,InvoiceNumber,Amount,MethodType,MethodAccountID,Naration,SalesPerson,CreatedBy,CreatedOn,Session,ChqDate,ChqNumber,Status,InstrumentBank,Method) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [company_id(), $final_PoCode, $date, $pay_against[0], $pay_against[1], $against_invoice, $amount, $method_typ[1], $method_typ[0], $narration, $salesperson, username(), $update_date, $session, $chq_date, $chq_number, 'Not Verified', $Bank_name, $method]);
             }
@@ -11336,17 +11129,15 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             if ($result) {
                 $find_pv = DB::connection('sqlsrv3')->table("ReceivedVoucher")->where('CompanyID', '=', company_id())->where('RVID', '=', $final_PoCode)->get();
                 foreach ($find_pv as $find_pv1) {
-
                 }
 
                 DB::connection('sqlsrv3')->insert('INSERT INTO ReceivedVoucherDetail(CompanyID,RID,Date,AgainstPO,AgainstINV,Amount,RVNO,Remaining) values (?,?,?,?,?,?,?,?)', [company_id(), $find_pv1->ReceivedVoucherID, $find_pv1->VoucherDate, $against_invoice, '', $amount, $find_pv1->RVID, '']);
-
             }
         } else if ($p_agnst == 'po_') {
             $invoices1 = explode("|", $invoices);
             for ($x = 1; $x < count($invoices1); $x++) {
                 $invoic = explode("|", $invoices);
-                $check_pvdetail = DB:: connection('sqlsrv3')->table('ReceivedVoucherDetail')->select('Remaining')->where('AgainstPO', '=', $invoic[$x])->orderBy('Date', 'desc')->orderBy('DetailID', 'desc')->first();
+                $check_pvdetail = DB::connection('sqlsrv3')->table('ReceivedVoucherDetail')->select('Remaining')->where('AgainstPO', '=', $invoic[$x])->orderBy('Date', 'desc')->orderBy('DetailID', 'desc')->first();
                 // if ($check_pvdetail) {
                 //     if ($check_pvdetail->Remaining == 0) {
                 //         $find_config = 'The amount against invoice ' . $invoic[$x] . ' is fully Received';
@@ -11360,7 +11151,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             } catch (\Illuminate\Database\QueryException $e) {
                 if ($e->getCode() == 23000) {
                     return response()->json(['message' => 'Receipt Voucher Already Exists.'], 422);
-
                 } else {
                     throw $e;
                 }
@@ -11371,7 +11161,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 if ($result) {
                     $find_pv = DB::connection('sqlsrv3')->table("ReceivedVoucher")->where('CompanyID', '=', company_id())->where('RVID', '=', $final_PoCode)->get();
                     foreach ($find_pv as $find_pv1) {
-
                     }
 
                     $invoices1 = explode("|", $invoices);
@@ -11388,24 +11177,18 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                                 $find_pvitems1 = DB::connection('sqlsrv3')->table("PaymentVoucherDetail")->where('CompanyID', '=', company_id())->orderBy('DetailID', 'DESC')->where('AgainstPO', '=', $invoic[$x])->first();
 
                                 DB::connection('sqlsrv3')->insert('INSERT INTO PaymentVoucherDetail(CompanyID,Remaining,Amount,AgainstPO,AgainstINV,Date,PVNO) values (?,?,?,?,?,?,?)', [company_id(), $find_pvitems1->Remaining + $invoice_amoun[$x], $invoice_amoun[$x], $invoic[$x], $find_pvitems1->AgainstINV, $date, $final_PoCode]);
-
-
                             }
                             DB::connection('sqlsrv3')->insert('INSERT INTO ReceivedVoucherDetail(CompanyID,RID,Date,AgainstPO,AgainstINV,Amount,RVNO,Remaining) values (?,?,?,?,?,?,?,?)', [company_id(), $find_pv1->ReceivedVoucherID, $find_pv1->VoucherDate, $invoic[$x], '', $invoice_amoun[$x], $find_pv1->RVID, '']);
-
-
                         } else {
                             $find_config = 'Payment Voucher does not exist';
                             return request()->json(200, $find_config);
                         }
-
                     }
                 }
             }
         }
         $find_pv = DB::connection('sqlsrv3')->table("ReceivedVoucher")->select('ReceivedVoucherID')->where('CompanyID', '=', company_id())->where('RVID', '=', $final_PoCode)->get();
         foreach ($find_pv as $find_pv1) {
-
         }
 
         $update_date = long_date();
@@ -11416,7 +11199,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
             $find_detail = DB::connection('sqlsrv3')->table("ReceivedVoucher")->where('CompanyID', '=', company_id())->where('ReceivedVoucherID', '=', $find_pv1->ReceivedVoucherID)->get();
             foreach ($find_detail as $find_detail1) {
-
             }
             $final_PoCode0 = $find_detail1->RVID;
             $vendor_name0 = $find_detail1->PaymentAgainst;
@@ -11436,13 +11218,11 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 if ($doc) {
                     $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $final_PoCode0)->get();
                     foreach ($find_doc_id as $find_doc_id1) {
-
                     }
                     $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $doc_date, 'Payment To ' . $vendor_name0 . ' Through ' . $method_type0 . ' Chq Date:' . $chq_date0 . '/' . $chq_number0 . '/' . $narration0 . '/ Against ' . $against_invoice0, company_id()]);
 
                     $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                     foreach ($find_tran_id as $find_tran_id1) {
-
                     }
                     $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $pay_against0, 'C', $amount0, company_id()]);
 
@@ -11452,10 +11232,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 $status2 = 'Chq Paid';
 
                 DB::connection('sqlsrv3')->insert('INSERT INTO TempBankSales(RVID,VendorId,VendorName,ChqNo,ChqDate,ChqAmount,ClearanceAccountID,ClearanceAccountName,Status,InstrumentBank,Method) values (?,?,?,?,?,?,?,?,?,?,?)', [$final_PoCode, $pay_against[0], $pay_against[1], $chq_number, $chq_date, $amount, $method_typ[0], $method_typ[1], $status2, $Bank_name, $method]);
-
             }
-
-
         }
         $find_config = 'submitted';
         return request()->json(200, $find_config);
@@ -11516,29 +11293,24 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                         if ($doc) {
                             $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $save_ledger1->ReceiptNo)->get();
                             foreach ($find_doc_id as $find_doc_id1) {
-
                             }
 
                             $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $save_ledger1->DateTime, $save_ledger1->Type . ' Against File Plot ID:' . $save_ledger1->File_Plot_Number . 'Received From :' . $save_ledger1->Name, company_id()]);
                             $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                             foreach ($find_tran_id as $find_tran_id1) {
-
                             }
                             if ($save_ledger1->Text == 'SAM') {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', 'SAM')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             } elseif ($save_ledger1->Type == 'Installment' || $save_ledger1->Type == 'Booking') {
                                 if ($save_ledger1->Plot_Type == 'Apartment') {
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Project . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                 } else {
                                     $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->get();
                                     foreach ($find_acc_code as $find_acc_code1) {
-
                                     }
                                     //end dynamic types
                                 }
@@ -11546,48 +11318,41 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Electricity_Charges') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block service charges Receivables')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'New_Connection_Charges') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block new connection charges')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Transfer') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block transfer fee')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'Subsidiary_Recovery' || $save_ledger1->Type == 'Receivable_Receipt') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Module . '-Recovery')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } elseif ($save_ledger1->Type == 'New_Connection_Charges') {
                                 //dynamic types
                                 $find_acc_code = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' block new connection charges')->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                                 //end dynamic types
                             } else {
                                 $find_acc_code = DB::connection('sqlsrv3')->table("TypesLinkCoa")->select('CoaID as ID')->where('TypeName', '=', $save_ledger1->Type)->get();
                                 foreach ($find_acc_code as $find_acc_code1) {
-
                                 }
                             }
 
@@ -11602,7 +11367,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
                     $find_chq = DB::connection('sqlsrv3')->table("UnitsAdjustOnlineCash")->where('AdjustID', '=', $id2[$x])->get();
                     foreach ($find_chq as $find_chq1) {
-
                     }
                     $rid = $find_chq1->RId;
                     $rid_id = explode("_", $rid);
@@ -11644,7 +11408,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 ->select('TempCancellation_Receipts.*', 'UnitDiscounts.Discount_Amount')->get();
             return request()->json(200, $find_config);
         }
-
     }
 
     public
@@ -11677,11 +11440,9 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
                     if ($save_ledger1->Plot_Type == 'Apartment') {
                         $find_acc_code1 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Project . ' Receivables')->orderBy('ID', 'DESC')->first();
-
                     } else if ($save_ledger1->Block == 'Main G.T Road') {
                         $blo = 'Main GT road';
                         $find_acc_code1 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $blo . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->orderBy('ID', 'DESC')->first();
-
                     } else {
                         $find_acc_code1 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->orderBy('ID', 'DESC')->first();
 
@@ -11692,8 +11453,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID7,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, '201001006', 'C', $save_ledger1->Amount, $save_ledger1->ID, company_id()]);
                     DB::connection('sqlsrv3')->update('update TempCancellation_Receipts set RemainingAmount=? where ID=?', [round($save_ledger1->Amount), $id]);
-
-
                 }
             }
             $result1 = DB::connection('sqlsrv3')->update('update TempCancellation_Receipts set Status=?,UpdatedBy=? where ID=?', [$status, username(), $id]);
@@ -11730,15 +11489,12 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $doc_date, 'Units Cancellation of Plot No:' . $save_ledger1->File_Plot_Number . 'Block No:' . $save_ledger1->Block . '-' . $save_ledger1->Plot_Type . ' file cancel due to not payment with ' . $save_ledger1->Deduction . '% deduction', company_id()]);
                     $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                     foreach ($find_tran_id as $find_tran_id1) {
-
                     }
 
                     if ($save_ledger1->Block == 'SA Premium Homes' || $save_ledger1->Block == 'Premium Homes' || $save_ledger1->Block == 'Ayaan Center' || $save_ledger1->Block == 'Faisal Height') {
                         $find_acc_code91 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' Sales')->orderBy('ID', 'DESC')->first();
-
                     } else {
                         $find_acc_code91 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Income')->where('AccountName', '=', $save_ledger1->Block . ' Block ' . $save_ledger1->Plot_Type . ' Sales')->orderBy('ID', 'DESC')->first();
-
                     }
                     if ($save_ledger1->Block == 'SA Premium Homes' || $save_ledger1->Block == 'Premium Homes' || $save_ledger1->Block == 'Ayaan Center' || $save_ledger1->Block == 'Faisal Height') {
                         $find_acc_code1 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Receivables')->orderBy('ID', 'DESC')->first();
@@ -11760,13 +11516,10 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     $ledger_entry4 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID7,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, '402007', 'C', $other_recovery_amount, $save_ledger1->ID, company_id()]);
 
                     DB::connection('sqlsrv3')->update('update TempCancellation_Receipts set RemainingAmount=? where ID=?', [round($instrument_amount), $id]);
-
-
                 }
             }
 
             $result1 = DB::connection('sqlsrv3')->update('update TempCancellation_Receipts set Status=?,UpdatedBy=? where ID=?', [$status, username(), $id]);
-
         }
 
 
@@ -11845,7 +11598,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
         ';
                             $k = $k . '' . $b[$j];
-
                         }
                     } else {
                         $t = '<td style="border:1px solid darkgray"></td>';
@@ -11859,7 +11611,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             }
         }
         return request()->json(200, $k);
-
     }
 
     public
@@ -12029,7 +11780,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         $status = 'Depreciation';
         $session_get = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->select('EndDate')->get();
         foreach ($session_get as $session_get1) {
-
         }
         $session_enddate = substr($session_get1->EndDate, 0, 7);
         $checkdate1 = Carbon::parse($starting_date);
@@ -12095,8 +11845,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                         DB::connection('sqlsrv3')->insert('INSERT INTO AssetBook(AssetsName,Age,AssetID,StartingDate,PurchaseDate,ClosingDate,AssetDepreciationID,OpeningValue,ClosingValue,AssetCategoryID,ChangeType,DepreciationDate,CreatedBy,CreatedOn) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [$asset_name, $est_life, $assetid, $start_mydate, $purchase_date, substr($closed_mydate, 0, 10), $deprec_asset1->ID, $cost_unit, $closing_value, $category_id, $status, $updated_date, username(), $update_dateddd]);
                     }
                 }
-
-
             } else {
 
                 $total_val = ($cost_unit / 100) * $percentage;
@@ -12116,11 +11864,8 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                         $closed_mydate = (Carbon::parse($starting_date)->addMonths($z)->format('Y-m-d'));
 
                         DB::connection('sqlsrv3')->insert('INSERT INTO AssetBook(AssetsName,Age,AssetID,StartingDate,PurchaseDate,ClosingDate,OpeningValue,ClosingValue,AssetCategoryID,ChangeType,DepreciationDate,CreatedBy,CreatedOn,AssetDepreciationID) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [$asset_name, $est_life, $assetid, $start_mydate, $purchase_date, substr($closed_mydate, 0, 10), $cost_unit, $closing_value, $category_id, $status, $updated_date, username(), $update_dateddd, $deprec_asset1->ID]);
-
                     }
                 }
-
-
             }
 
             $arr = 'Submitted';
@@ -12237,7 +11982,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 $arr = DB::connection('sqlsrv3')->table('UnitsCashDetail')->where('DateTime', '>=', $from)->where('DateTime', '<=', $to)->where('Status', '=', null)->where('Type', '=', $type)->where('Text', '!=', 'SAM')->orderby('Id', 'desc')->get();
                 return request()->json(200, $arr);
             }
-
         } else {
             if ($category == 'Both') {
                 $arr = DB::connection('sqlsrv3')->table('UnitsCashDetail')->where('Userid', '=', $all)->where('DateTime', '>=', $from)->where('DateTime', '<=', $to)->where('Type', '=', $type)->where('Status', '=', null)->orderby('Id', 'desc')->get();
@@ -12281,7 +12025,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 );
                 return request()->json(200, $myJSON);
             }
-
         } else {
             if ($category == 'Both') {
                 $cash_amount = DB::connection('sqlsrv3')->table('UnitsCashDetail')->where('Userid', '=', $user)->where('DateTime', '>=', $from)->where('Type', '=', $type)->where('DateTime', '<=', $to)->where('Status', '=', null)->where('PaymentType', '=', 'Cash')->sum('Amount');
@@ -12304,14 +12047,11 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     'cash' => $cash_amount,
                 );
                 return request()->json(200, $myJSON);
-
             }
-
         }
-
     }
 
-//udate petttycash
+    //udate petttycash
     public
     function get_petty_access1($id)
     {
@@ -12319,7 +12059,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         $find_access = DB::connection('sqlsrv3')->table("PettyCash")->where('CompanyID', '=', company_id())->where("ID", "=", $id)->get();
 
         return request()->json(200, $find_access);
-
     }
 
     public
@@ -12353,7 +12092,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             $find_acc_head1 = DB::connection("sqlsrv3")->table("PettyCashAccess")->where("Department", '=', $dept)->first();
             $dept = $find_acc_head1->Department;
             $AccountID = $find_acc_head1->AccountID;
-//            $limit = $limit1;
+            //            $limit = $limit1;
 
             $cashinhand_balance = DB::connection('sqlsrv3')->select("SET NOCOUNT ON ;EXEC  [dbo].[dashboard]
 @Datefrom = N'2000-01-01',
@@ -12372,18 +12111,15 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             if ($doc1) {
                 $find_doc_id2 = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $final_PoCode)->get();
                 foreach ($find_doc_id2 as $find_doc_id21) {
-
                 }
                 DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id21->ID, short_date(), 'Paid Pettycash to ' . $dept, company_id()]);
 
                 $find_tran_id2 = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id21->ID)->get();
                 foreach ($find_tran_id2 as $find_tran_id21) {
-
                 }
                 DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id21->ID, $AccountID, 'D', $paid_amount, company_id()]);
                 $cash_hand = '101001001001';
                 DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id21->ID, $cash_hand, 'C', $paid_amount, company_id()]);
-
             }
             $arr = 'Updated';
             return request()->json(200, $arr);
@@ -12403,7 +12139,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
             $checker1 = DB::connection('sqlsrv3')->table('IssuanceReturnItem')->where('IssuanceReturnId', '=', $find_config1->IssuenceReturnID)->get();
             return request()->json(200, $checker1);
-
         }
     }
 
@@ -12440,7 +12175,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             $this->fpdf->SetTextColor(41, 46, 46);
             $fetch_image = DB::connection('sqlsrv3')->table('CompanyLogo')->where('CompanyID', '=', company_id())->get();
             foreach ($fetch_image as $fetch_image1) {
-
             }
             $date = explode(" ", $users57->UpdatedOn);
             $this->fpdf->Image('public/images/logo/' . $fetch_image1->LeftLogo, 140, 15, 35, 17);
@@ -12523,7 +12257,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
       @itemid = N'" . $item_name1[$x] . "' ");
             if ($find_inventory_amount) {
                 foreach ($find_inventory_amount as $find_inventory_amount1) {
-
                 }
                 $t_iss_amount = $find_inventory_amount1->AVG * $qt[$x];
             } else {
@@ -12538,7 +12271,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         if ($find_rid9) {
             $find_rid = DB::connection('sqlsrv3')->table("Issuances")->select('IssuanceCode')->where('CompanyID', '=', company_id())->get();
             foreach ($find_rid as $find_rid1) {
-
             }
             $pre_id = explode("-", $find_rid1->IssuanceCode);
             $rid = $pre_id[1] + 1;
@@ -12565,7 +12297,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 if ($qt[$x] != 0 || $qt[$x] != 0.00) {
                     $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                     foreach ($find_itemname as $find_itemname1) {
-
                     }
                     $check_invent = DB::connection('sqlsrv3')->table('Inventory')->where('ItemID', '=', $item_nam[$x])->exists();
                     $facevalue = '';
@@ -12582,7 +12313,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             }
             $find_dept_name = DB::connection('sqlsrv3')->table("Issuances")->where('CompanyID', '=', company_id())->where('IssuanceId', '=', $find_reqid1->IssuanceId)->get();
             foreach ($find_dept_name as $find_dept_name1) {
-
             }
             $dept_name9 = $find_dept_name1->FDepartmentName;
             $project9 = $find_dept_name1->FProjectName;
@@ -12590,12 +12320,10 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             if ($doc) {
                 $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $final_PoCode)->get();
                 foreach ($find_doc_id as $find_doc_id1) {
-
                 }
                 $transaction = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id1->ID, $update_dated, $dept_name9 . '/' . $project9 . 'To Inventory', company_id()]);
                 $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
                 foreach ($find_tran_id as $find_tran_id1) {
-
                 }
                 $item_name1 = explode("|", $item_name);
                 for ($y = 1; $y < count($item_name1); $y++) {
@@ -12608,7 +12336,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         @itemid = N'" . $item_name1[$y] . "' ");
                     if ($find_inventory_amount) {
                         foreach ($find_inventory_amount as $find_inventory_amount1) {
-
                         }
                         $t_iss_amount = $find_inventory_amount1->AVG * $qt[$y];
                     } else {
@@ -12617,12 +12344,10 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     if ($qt[$y] != 0 || $qt[$y] != 0.00) {
                         $find_acc_code = DB::connection('sqlsrv3')->table("ItemLinkCoa")->select('CoaID')->where('CompanyID', '=', company_id())->where('ItemId', '=', $item_nam[$y])->get();
                         foreach ($find_acc_code as $find_acc_code1) {
-
                         }
                         $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code1->CoaID, 'D', $t_iss_amount, company_id()]);
                         $find_acc_code9 = DB::connection('sqlsrv3')->table("ProjectLinkCoa")->select('CoaID')->where('CompanyID', '=', company_id())->where('ProjectName', '=', $project9)->get();
                         foreach ($find_acc_code9 as $find_acc_code91) {
-
                         }
                         $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code91->CoaID, 'C', $t_iss_amount, company_id()]);
                     }
@@ -12632,12 +12357,10 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             if ($doc2) {
                 $find_doc_id2 = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $final_PoCode)->get();
                 foreach ($find_doc_id2 as $find_doc_id21) {
-
                 }
                 $transaction2 = DB::connection('sqlsrv3')->insert('INSERT INTO Transactions(DocumentID,TransactionDate,Description,CompanyID) values (?,?,?,?)', [$find_doc_id21->ID, $update_dated, 'Inventory To ' . $dept_name . '/' . $project, company_id()]);
                 $find_tran_id2 = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id21->ID)->get();
                 foreach ($find_tran_id2 as $find_tran_id21) {
-
                 }
                 $item_name1 = explode("|", $item_name);
                 for ($y = 1; $y < count($item_name1); $y++) {
@@ -12650,7 +12373,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         @itemid = N'" . $item_name1[$y] . "' ");
                     if ($find_inventory_amount) {
                         foreach ($find_inventory_amount as $find_inventory_amount1) {
-
                         }
                         $t_iss_amount = $find_inventory_amount1->AVG * $qt[$y];
                     } else {
@@ -12659,11 +12381,9 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     if ($qt[$y] != 0 || $qt[$y] != 0.00) {
                         $find_acc_code2 = DB::connection('sqlsrv3')->table("ItemLinkCoa")->select('CoaID')->where('CompanyID', '=', company_id())->where('ItemId', '=', $item_nam[$y])->get();
                         foreach ($find_acc_code2 as $find_acc_code21) {
-
                         }
                         $find_acc_code9 = DB::connection('sqlsrv3')->table("ProjectLinkCoa")->select('CoaID')->where('CompanyID', '=', company_id())->where('ProjectName', '=', $project)->get();
                         foreach ($find_acc_code9 as $find_acc_code91) {
-
                         }
                         $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id21->ID, $find_acc_code21->CoaID, 'C', $t_iss_amount, company_id()]);
                         $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id21->ID, $find_acc_code91->CoaID, 'D', $t_iss_amount, company_id()]);
@@ -12691,7 +12411,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         return response()->json($dept_Access);
     }
 
-//New Purchase Process
+    //New Purchase Process
     public
     function searchbydemandreqid_services($id, $page)
     {
@@ -12717,7 +12437,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
         $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $session = $find_session1->SessionName;
         if ($dept == 'Procurement' || $dept == 'Software Development') {
@@ -12728,13 +12447,11 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 $find_config = DB::connection('sqlsrv3')->table("DemandRequisition")->where('CompanyID', '=', company_id())->where('Session', $session)->orderby('RequisitionId', 'desc')->where("RequisitionType", "=", "Services")->paginate($totalResult);
                 return request()->json(200, $find_config);
             }
-
         } else {
             $find_useraccess = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->exists();
             if ($find_useraccess) {
                 $find_user = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->get();
                 foreach ($find_user as $find_user1) {
-
                 }
                 $d1 = $find_user1->d1;
                 $d2 = $find_user1->d2;
@@ -12788,10 +12505,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     return request()->json(200, $find_config);
                 }
             }
-
-
         }
-
     }
 
     public
@@ -12811,7 +12525,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         }
         $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $session = $find_session1->SessionName;
         if ($dept == 'Procurement' || $dept == 'Software Development') {
@@ -12826,13 +12539,11 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     ->where('DepartmentName', 'like', '%' . $depts . '%')->where('ProjectName', 'like', '%' . $proj . '%')->where('CompanyID', '=', company_id())->where('Status', 'like', '%' . $sts . '%')->where('DemandRequisition.Dated', '>=', $startdate)->where('DemandRequisition.Dated', '<=', $closedate)->where("RequisitionType", "=", "Services")->paginate($page);
                 return request()->json(200, $req);
             }
-
         } else {
             $find_useraccess = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->exists();
             if ($find_useraccess) {
                 $find_user = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->get();
                 foreach ($find_user as $find_user1) {
-
                 }
                 $d1 = $find_user1->d1;
                 $d2 = $find_user1->d2;
@@ -12853,12 +12564,10 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                             ->where('DepartmentName', 'like', $depts . '%')->where('ProjectName', 'like', '%' . $proj . '%')->where('Status', 'like', '%' . $sts . '%')->where('DemandRequisition.Dated', '>=', $startdate)->where('DemandRequisition.Dated', '<=', $closedate)->orderby('RequisitionId', 'desc')->where("RequisitionType", "=", "Services")->paginate($page);
                         return request()->json(200, $find_config);
                     }
-
                 } else {
                     $req = "Invalid department";
                     return request()->json(200, $req);
                 }
-
             } else {
                 if ($depts == $dept) {
                     if ($page == 'All') {
@@ -12874,13 +12583,8 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     $req = "Invalid department";
                     return request()->json(200, $req);
                 }
-
             }
-
-
         }
-
-
     }
 
     public
@@ -12893,7 +12597,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
         $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $session = $find_session1->SessionName;
         if ($dept == 'Procurement' || $dept == 'Software Development') {
@@ -12904,13 +12607,11 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 $find_config = DB::connection('sqlsrv3')->table("DemandRequisition")->where('CompanyID', '=', company_id())->where('Session', $session)->orderby('RequisitionId', 'desc')->where("RequisitionType", "=", "Goods")->paginate($totalResult);
                 return request()->json(200, $find_config);
             }
-
         } else {
             $find_useraccess = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->exists();
             if ($find_useraccess) {
                 $find_user = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->get();
                 foreach ($find_user as $find_user1) {
-
                 }
                 $d1 = $find_user1->d1;
                 $d2 = $find_user1->d2;
@@ -12964,8 +12665,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     return request()->json(200, $find_config);
                 }
             }
-
-
         }
     }
 
@@ -12994,7 +12693,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             if ($find_useraccess) {
                 $find_user = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->get();
                 foreach ($find_user as $find_user1) {
-
                 }
                 $d1 = $find_user1->d1;
                 $d2 = $find_user1->d2;
@@ -13078,7 +12776,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     'issued' => $issued,
                 );
                 return request()->json(200, $myJSON);
-
             } else {
                 $total = DB::connection('sqlsrv3')->table('DemandRequisition')->where('CompanyID', '=', company_id())->where('Session', '=', $session)->where("RequisitionType", "=", "Goods")->where('DepartmentName', '=', $dept)->count();
 
@@ -13096,11 +12793,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 );
                 return request()->json(200, $myJSON);
             }
-
-
         }
-
-
     }
 
 
@@ -13110,7 +12803,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
         $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $session = $find_session1->SessionName;
         $total = DB::connection('sqlsrv3')->table('DemandRequisition')->where('CompanyID', '=', company_id())->where('Session', '=', $session)->count();
@@ -13153,7 +12845,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             if ($find_useraccess) {
                 $find_user = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->get();
                 foreach ($find_user as $find_user1) {
-
                 }
                 $d1 = $find_user1->d1;
                 $d2 = $find_user1->d2;
@@ -13237,7 +12928,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     'issued' => $issued,
                 );
                 return request()->json(200, $myJSON);
-
             } else {
                 $total = DB::connection('sqlsrv3')->table('DemandRequisition')->where('CompanyID', '=', company_id())->where('Session', '=', $session)->where("RequisitionType", "=", "Assets")->where('DepartmentName', '=', $dept)->count();
 
@@ -13255,11 +12945,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 );
                 return request()->json(200, $myJSON);
             }
-
-
         }
-
-
     }
 
     public
@@ -13293,7 +12979,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         }
         $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $session = $find_session1->SessionName;
         if ($dept == 'Procurement' || $dept == 'Software Development') {
@@ -13309,13 +12994,11 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     ->where('DepartmentName', 'like', '%' . $depts . '%')->where('ProjectName', 'like', '%' . $proj . '%')->where('CompanyID', '=', company_id())->where('Status', 'like', '%' . $sts . '%')->where('DemandRequisition.Dated', '>=', $startdate)->where('DemandRequisition.Dated', '<=', $closedate)->where("RequisitionType", "=", "Assets")->paginate($page);
                 return request()->json(200, $req);
             }
-
         } else {
             $find_useraccess = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->exists();
             if ($find_useraccess) {
                 $find_user = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->get();
                 foreach ($find_user as $find_user1) {
-
                 }
                 $d1 = $find_user1->d1;
                 $d2 = $find_user1->d2;
@@ -13336,12 +13019,10 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                             ->where('DepartmentName', 'like', $depts . '%')->where('ProjectName', 'like', '%' . $proj . '%')->where('Status', 'like', '%' . $sts . '%')->where('DemandRequisition.Dated', '>=', $startdate)->where('DemandRequisition.Dated', '<=', $closedate)->orderby('RequisitionId', 'desc')->where("RequisitionType", "=", "Assets")->paginate($page);
                         return request()->json(200, $find_config);
                     }
-
                 } else {
                     $req = "Invalid department";
                     return request()->json(200, $req);
                 }
-
             } else {
                 if ($depts == $dept) {
                     if ($page == 'All') {
@@ -13357,13 +13038,8 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     $req = "Invalid department";
                     return request()->json(200, $req);
                 }
-
             }
-
-
         }
-
-
     }
 
     public
@@ -13392,7 +13068,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             if ($find_useraccess) {
                 $find_user = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->get();
                 foreach ($find_user as $find_user1) {
-
                 }
                 $d1 = $find_user1->d1;
                 $d2 = $find_user1->d2;
@@ -13476,7 +13151,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     'issued' => $issued,
                 );
                 return request()->json(200, $myJSON);
-
             } else {
                 $total = DB::connection('sqlsrv3')->table('DemandRequisition')->where('CompanyID', '=', company_id())->where('Session', '=', $session)->where("RequisitionType", "=", "Services")->where('DepartmentName', '=', $dept)->count();
 
@@ -13494,10 +13168,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 );
                 return request()->json(200, $myJSON);
             }
-
-
         }
-
     }
 
     public
@@ -13524,7 +13195,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
         $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $session = $find_session1->SessionName;
         if ($dept == 'Procurement' || $dept == 'Software Development') {
@@ -13535,13 +13205,11 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 $find_config = DB::connection('sqlsrv3')->table("DemandRequisition")->where('CompanyID', '=', company_id())->where('Session', $session)->orderby('RequisitionId', 'desc')->where("RequisitionType", "=", "Assets")->paginate($totalResult);
                 return request()->json(200, $find_config);
             }
-
         } else {
             $find_useraccess = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->exists();
             if ($find_useraccess) {
                 $find_user = DB::connection('sqlsrv3')->table('DeptAccess')->where('CompanyID', '=', company_id())->where('Email', '=', username())->get();
                 foreach ($find_user as $find_user1) {
-
                 }
                 $d1 = $find_user1->d1;
                 $d2 = $find_user1->d2;
@@ -13595,8 +13263,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     return request()->json(200, $find_config);
                 }
             }
-
-
         }
     }
 
@@ -13643,14 +13309,14 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
             ->where('CompanyID', company_id())
             ->where('DemandRID', $id)
             ->select('RequisitionId')->first();
-//return $reqId;
+        //return $reqId;
         $result = DB::connection('sqlsrv3')
             ->table('DemandRequisition')
             ->where('CompanyID', company_id())
             ->where('RequisitionId', $id)
             ->update($demandData);
 
-//        $result = DB::connection('sqlsrv3')->update('update  DemandRequisition set Dated=?, DepartmentName=?, ProjectName=?, Narration=?,UpdatedBy=?,UpdatedOn=? where CompanyID=? and RequisitionId=?', [$date, $dept_name, $project_name, $narration, username(), long_date(), company_id(), $id]);
+        //        $result = DB::connection('sqlsrv3')->update('update  DemandRequisition set Dated=?, DepartmentName=?, ProjectName=?, Narration=?,UpdatedBy=?,UpdatedOn=? where CompanyID=? and RequisitionId=?', [$date, $dept_name, $project_name, $narration, username(), long_date(), company_id(), $id]);
         if ($result) {
             for ($x = 1; $x < count($item_name1); $x++) {
                 if ($req_type == 'Goods' || $req_type == 'Assets') {
@@ -13758,9 +13424,9 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
     function insert_issuance(Request $request)
     {
         $Emp_id = employee_id();
-//        $update_date = long_date();
+        //        $update_date = long_date();
         $session = ac_c_session();
-//        $username = username();
+        //        $username = username();
         $item_name = $request->get('item_name');
         $unit = $request->get('unit');
         $est_cost = $request->get('est_cost');
@@ -13781,7 +13447,7 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         $item_name1 = explode("|", $item_name);
         for ($x = 1; $x < count($item_name1); $x++) {
             $qt = explode("|", $qty);
-//            $item_nam = explode("|", $item_name);
+            //            $item_nam = explode("|", $item_name);
             $UnitCost = explode("|", $UnitPrice);
             if ($qt[$x] < 0) {
                 $message = 'Requition quantity cannot be negative';
@@ -13834,7 +13500,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 $result99 = DB::connection('sqlsrv3')->select("SET NOCOUNT ON ;EXEC  [dbo].[RemainingItem_companywise] @id = N'" . $item_nam101[$a] . "',@compID = N'" . company_id() . "' ");
                 if ($result99) {
                     foreach ($result99 as $result101) {
-
                     }
                     $tot_stock = intval($result101->Remaining);
 
@@ -13848,15 +13513,13 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     return request()->json(200, $message);
                 }
             }
-
         }
         try {
-//            dd($req_id);
+            //            dd($req_id);
             $result = DB::connection('sqlsrv3')->insert('INSERT INTO Issuances(CompanyID,IssuanceCode,IssuanceDate,RequisitionId,DepartmentName,ProjectName,Status,Narration,CreatedBy,CreatedOn,Session,TotalAmount) values (?,?,?,?,?,?,?,?,?,?,?,?)', [company_id(), $final_PoCode, $date, $req_id, $dept_name, $project, $status1, $narration, username(), $update_date, $session, $Tamount]);
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() == 23000) {
                 return response()->json(['message' => 'Issuance Already Exists.'], 422);
-
             } else {
                 throw $e;
             }
@@ -13921,7 +13584,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                         $find_acc_code91 = DB::connection('sqlsrv3')->table("ProjectLinkCoa")->select('CoaID')->where('CompanyID', '=', company_id())->where('ProjectName', '=', $project)->orderBy('ID', 'DESC')->first();
 
                         $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code91->CoaID, 'D', $t_iss_amount, company_id()]);
-
                     }
                 }
             }
@@ -14022,7 +13684,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 $arr = DB::connection('sqlsrv3')->table('Inventory')->where('ItemID', '=', $cand1->itemId)->avg('CostUnit');
                 $cand1->CostUnit = $arr;
             }
-
         }
 
         return request()->json(200, $cand);
@@ -14036,18 +13697,18 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         return request()->json(200, $cand);
     }
 
-//    public
-//    function get_issuance_detail()
-//    {
-//
-//        $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
-//        foreach ($find_session as $find_session1) {
-//
-//        }
-//        $session = $find_session1->SessionName;
-//        $find_config = DB::connection('sqlsrv3')->table("Issuances")->join('DemandRequisition', 'Issuances.RequisitionId', '=', 'DemandRequisition.RequisitionId')->where('Issuances.CompanyID', '=', company_id())->where('Issuances.Session', '=', $session)->orderby('Issuances.IssuanceId', 'desc')->select('Issuances.*', 'DemandRequisition.RId')->paginate(20);
-//        return request()->json(200, $find_config);
-//    }
+    //    public
+    //    function get_issuance_detail()
+    //    {
+    //
+    //        $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
+    //        foreach ($find_session as $find_session1) {
+    //
+    //        }
+    //        $session = $find_session1->SessionName;
+    //        $find_config = DB::connection('sqlsrv3')->table("Issuances")->join('DemandRequisition', 'Issuances.RequisitionId', '=', 'DemandRequisition.RequisitionId')->where('Issuances.CompanyID', '=', company_id())->where('Issuances.Session', '=', $session)->orderby('Issuances.IssuanceId', 'desc')->select('Issuances.*', 'DemandRequisition.RId')->paginate(20);
+    //        return request()->json(200, $find_config);
+    //    }
 
     public
     function get_requisition_items($id)
@@ -14065,7 +13726,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
     {
         $arr = DB::connection('sqlsrv3')->table("Requisition")->where("RId", '=', $id)->select("RequisitionType", 'RequisitionId')->get();
         foreach ($arr as $arr1) {
-
         }
 
 
@@ -14106,7 +13766,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         $status2 = $request->get('status');
         for ($y = 0; $y < count($sec_pr); $y++) {
             $data1 = DB::connection('sqlsrv3')->update('update  Requisition set Status=? where RId=? and RequisitionType !=?', ['merged', $sec_pr[$y], 'Services']);
-
         }
         $item_name1 = explode("|", $item_name);
         for ($x = 1; $x < count($item_name1); $x++) {
@@ -14117,7 +13776,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                     if ($item_nam[$y] == $item_nam[$x]) {
                         $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name', 'unit')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                         foreach ($find_itemname as $find_itemname1) {
-
                         }
                         $find_config = 'At index ' . $y . ' item ' . $find_itemname1->Name . ' could not be add more then once';
                         return request()->json(200, $find_config);
@@ -14135,7 +13793,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         }
         $find_prefix = DB::connection('sqlsrv3')->table("AccountsConfiguration")->select('Requisition')->where('CompanyID', '=', company_id())->get();
         foreach ($find_prefix as $find_prefix1) {
-
         }
         $date_pref = $this->shiftformat();
         $req_prefix = $find_prefix1->Requisition . '_MR' . '_' . $date_pref;
@@ -14143,7 +13800,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         if ($find_rid9) {
             $find_rid = DB::connection('sqlsrv3')->table("Requisition")->select('RId')->where('CompanyID', '=', company_id())->get();
             foreach ($find_rid as $find_rid1) {
-
             }
             $pre_id = explode("-", $find_rid1->RId);
             $rid = $pre_id[1] + 1;
@@ -14156,7 +13812,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
         $update_date = long_date();
         $find_rid2 = DB::connection('sqlsrv3')->table("Requisition")->select('RequisitionType', 'DemandRID')->where('RequisitionType', '!=', 'Services')->where('CompanyID', '=', company_id())->where('RId', '=', $primary_pr)->get();
         foreach ($find_rid2 as $find_rid21) {
-
         }
         $result = DB::connection('sqlsrv3')->insert('INSERT INTO Requisition(CompanyID,RId,Dated,DepartmentName,ProjectName,Status,Narration,CreatedBy,CreatedOn,Session,RequisitionType,DemandRID) values (?,?,?,?,?,?,?,?,?,?,?,?)', [company_id(), $final_rid, $date, $dept_name, $project_name, $status2, $narration, username(), $update_date, $session, $find_rid21->RequisitionType, $find_rid21->DemandRID]);
         if ($result) {
@@ -14176,7 +13831,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 if ($find_rid21->RequisitionType == 'Goods' || $find_rid21->RequisitionType == 'Assets') {
                     $find_itemname = DB::connection('sqlsrv3')->table("ItemList")->select('Name', 'unit')->where('CompanyID', '=', company_id())->where('ID', '=', $item_nam[$x])->get();
                     foreach ($find_itemname as $find_itemname1) {
-
                     }
                     $result = DB::connection('sqlsrv3')->insert('INSERT INTO RequisitionItem(ReqID,itemId,ItemName,Quantity,unit,EstCost,Detail) values (?,?,?,?,?,?,?)', [$find_reqid1->RequisitionId, $item_nam[$x], $find_itemname1->Name, $qt[$x], $find_itemname1->unit, $est_cos[$x], $detai[$x]]);
                 } elseif ($find_rid21->RequisitionType == 'Services') {
@@ -14204,7 +13858,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
                 $cand = DB::connection('sqlsrv3')->table('RequisitionItem')->where('ReqID', '=', $arr1->RequisitionId)->get();
                 array_push($mularr, $cand);
             }
-
         }
         $Array = Arr::flatten($mularr);
         return request()->json(200, $Array);
@@ -14224,7 +13877,6 @@ FROM  [192.168.11.161].[SA_MIS].[dbo].[Voucher] v
 
             $result10 = DB::connection('sqlsrv3')->select("SET NOCOUNT ON ;EXEC  [dbo].[RemainingItem_companywise] @id = " . $ItemId . ",@compID = N'" . company_id() . "' ");
             foreach ($result10 as $result101) {
-
             }
 
             array_push($ItemDetail, (object)$result101);
@@ -14249,7 +13901,6 @@ group by ItemName  ");
 
         $arr = DB::connection('sqlsrv3')->table('DemandRequisition')->where('CompanyID', '=', company_id())->select('RequisitionId', 'RId')->orderby('RequisitionId', 'desc')->get();
         return request()->json(200, $arr);
-
     }
 
     public
@@ -14267,7 +13918,6 @@ group by ItemName  ");
 
         $fetch_image = DB::connection('sqlsrv3')->table('CompanyLogo')->where('CompanyID', '=', company_id())->get();
         foreach ($fetch_image as $fetch_image1) {
-
         }
         $this->fpdf->Image('public/images/logo/' . $fetch_image1->LeftLogo, 10, 7, 35, 17);
         $this->fpdf->Text(80, 17, 'Demand Requisition Tracking Report');
@@ -14276,8 +13926,6 @@ group by ItemName  ");
         $Pur_Req = [];
         $purReq = DB::connection('sqlsrv3')->table('Requisition')->where('Requisition.RequisitionId', '=', $rid)->select('RequisitionId')->get();
         foreach ($purReq as $purReq1) {
-
-
         }
 
         //  return $Pur_Req1;
@@ -14378,7 +14026,7 @@ group by ItemName  ");
                 }
             }
         }
-//Purchase Requisition Report**********************//
+        //Purchase Requisition Report**********************//
         $array5 = [];
         $checkPR = DB::connection('sqlsrv3')->table('Requisition')->where('Requisition.CompanyID', '=', company_id())->where('Requisition.DemandRID', '=', $rid)->select('Requisition.DemandRID')->get();
         array_push($array5, $checkPR);
@@ -14503,7 +14151,6 @@ group by ItemName  ");
                 $this->fpdf->Cell(14, 6, 'Unit', 1, 0, 'C', 0);
                 $this->fpdf->Cell(13, 6, 'Price', 1, 0, 'C', 0);
                 $this->fpdf->Cell(19, 6, 'Total', 1, 0, 'C', 0);
-
             }
 
             if ($Po_Id1 != []) {
@@ -14534,7 +14181,7 @@ group by ItemName  ");
             }
 
 
-//GRN Report****************
+            //GRN Report****************
 
             $Grn_id = [];
             foreach ($Po_Id1 as $Po_Id12) {
@@ -14587,7 +14234,7 @@ group by ItemName  ");
                 }
             }
 
-//Purchase Invoice(Receiving Order Table)
+            //Purchase Invoice(Receiving Order Table)
 
             $Pinv_Id = [];
             foreach ($Grn_id1 as $Grn_id12) {
@@ -14643,7 +14290,7 @@ group by ItemName  ");
             }
 
 
-//payment voucher
+            //payment voucher
             $pv_Id = [];
             foreach ($Pinv_Id1 as $Pinv_Id12) {
                 $checkInv = DB::connection('sqlsrv3')->table('PaymentVoucherDetail')->join('PaymentVoucher', 'PaymentVoucher.PaymentVoucherID', '=', 'PaymentVoucherDetail.PID')->where('PaymentVoucherDetail.AgainstINV', '=', $Pinv_Id12->FormID)->get();
@@ -14685,10 +14332,7 @@ group by ItemName  ");
                         $this->fpdf->Cell(25, 6, $find_config6->inv_id, 0, 30, 0, 0, 'L', 0);
 
                         $this->fpdf->ln(5);
-
-
                     }
-
                 }
             }
 
@@ -14697,7 +14341,6 @@ group by ItemName  ");
             $this->fpdf->Output();
             exit;
         }
-
     }
 
     public
@@ -14796,7 +14439,6 @@ group by ItemName  ");
                     $status2 = 'Chq Paid';
 
                     DB::connection('sqlsrv3')->insert('INSERT INTO TempBank(PVID,VendorId,VendorName,ChqNo,ChqDate,ChqAmount,ClearanceAccountID,ClearanceAccountName,Status,RefID,RefType) values (?,?,?,?,?,?,?,?,?,?,?)', [$final_PoCode, '201001007', 'Sale return - payables', $chq_number, $chq_date, $amount0, $method_type[0], $method_type[1], $status2, $pv_id, 'Cancellation Refund']);
-
                 }
             }
         }
@@ -14892,8 +14534,6 @@ group by ItemName  ");
                     $status2 = 'Chq Paid';
 
                     DB::connection('sqlsrv3')->insert('INSERT INTO TempBank(PVID,VendorId,VendorName,ChqNo,ChqDate,ChqAmount,ClearanceAccountID,ClearanceAccountName,Status,RefID,RefType) values (?,?,?,?,?,?,?,?,?,?,?)', [$final_PoCode, '201001006', 'Excess recovered refund - payables', $chq_number, $chq_date, $amount0, $method_type[0], $method_type[1], $status2, $pv_id, 'Recovery Refund']);
-
-
                 }
             }
         }
@@ -14948,11 +14588,9 @@ group by ItemName  ");
 
                     if ($save_ledger1->Plot_Type == 'Apartment') {
                         $find_acc_code1 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Project . ' Receivables')->orderBy('ID', 'DESC')->first();
-
                     } else if ($save_ledger1->Block == 'Main G.T Road') {
                         $blo = 'Main GT road';
                         $find_acc_code1 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $blo . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->orderBy('ID', 'DESC')->first();
-
                     } else {
                         $find_acc_code1 = DB::connection('sqlsrv3')->table("Accounts")->select('ID')->where('CompanyID', '=', company_id())->where('AccountType', '=', 'Assets')->where('AccountName', '=', $save_ledger1->Block . ' Block ' . $save_ledger1->Plot_Type . ' Receivables')->orderBy('ID', 'DESC')->first();
 
@@ -14971,7 +14609,6 @@ group by ItemName  ");
                         $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID7,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, '201001008', 'C', $save_ledger1->Repurchased_Amt, $save_ledger1->ID, company_id()]);
 
                         DB::connection('sqlsrv3')->update('update TempCancellation_Receipts set RemainingAmount=? where ID=?', [round($save_ledger1->Repurchased_Amt), $id]);
-
                     } else {
                         $discount = '';
                         if ($save_ledger1->Discount_Amount == NULL) {
@@ -14986,13 +14623,10 @@ group by ItemName  ");
                         $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,VendorID7,CompanyID) values (?,?,?,?,?,?)', [$find_tran_id1->ID, '201001008', 'C', $pay_amount, $save_ledger1->ID, company_id()]);
 
                         DB::connection('sqlsrv3')->update('update TempCancellation_Receipts set RemainingAmount=? where ID=?', [round($pay_amount), $id]);
-
                     }
-
                 }
             }
             $result1 = DB::connection('sqlsrv3')->update('update TempCancellation_Receipts set Status=?,UpdatedBy=? where ID=?', [$status, username(), $id]);
-
         }
 
         $result = 'Status updated!';
@@ -15077,8 +14711,6 @@ group by ItemName  ");
 
 
                     DB::connection('sqlsrv3')->insert('INSERT INTO TempBank(PVID,VendorId,VendorName,ChqNo,ChqDate,ChqAmount,ClearanceAccountID,ClearanceAccountName,Status,RefID,RefType) values (?,?,?,?,?,?,?,?,?,?,?)', [$final_PoCode, '201001008', 'Repurchased Payable', $chq_number, $chq_date, $amount0, $method_type[0], $method_type[1], $status2, $pv_id, 'Repurchased Refund']);
-
-
                 }
             }
         }
@@ -15145,7 +14777,6 @@ group by ItemName  ");
 
             $find_poo = DB::connection('sqlsrv3')->table("PurchaseOrder")->select('PoCode')->where('CompanyID', '=', company_id())->where('PurchaseOrderID', '=', $find_debit_pvpo1->POID)->get();
             foreach ($find_poo as $find_poo1) {
-
             }
 
             $remaini = $find_debit_pvpo1->TotalAmount;
@@ -15158,7 +14789,6 @@ group by ItemName  ");
 
         $find_prefix = DB::connection('sqlsrv3')->table("AccountsConfiguration")->select('DebitNote')->where('CompanyID', '=', company_id())->get();
         foreach ($find_prefix as $find_prefix1) {
-
         }
         $date_pref = $this->shiftformat();
         $req_prefix = $find_prefix1->DebitNote . '_' . $date_pref;
@@ -15167,7 +14797,6 @@ group by ItemName  ");
         if ($find_rid9) {
             $find_rid = DB::connection('sqlsrv3')->table("DebitNotes")->select('DebitNotesID')->where('CompanyID', '=', company_id())->get();
             foreach ($find_rid as $find_rid1) {
-
             }
             $pre_id = explode("-", $find_rid1->DebitNotesID);
             $rid = $pre_id[1] + 1;
@@ -15201,7 +14830,6 @@ group by ItemName  ");
                     }
                 } else {
                     $result3 = DB::connection('sqlsrv3')->insert('INSERT INTO DebitNotesItems(CompanyID,DNID,Detail,SubTotal,DebitAmount) values (?,?,?,?,?)', [company_id(), $find_reqid1->ID, $item_name11[$x], $sub_total1[$x], $debit_amount1[$x]]);
-
                 }
             }
 
@@ -15225,22 +14853,19 @@ group by ItemName  ");
                 DB::connection('sqlsrv3')->update('update PurchaseOrder set DebitState=? where CompanyID=? and PurchaseOrderID=?', [0, company_id(), $find_pvpo1->POID]);
                 $find_poo = DB::connection('sqlsrv3')->table("PurchaseOrder")->select('PoCode')->where('CompanyID', '=', company_id())->where('PurchaseOrderID', '=', $find_pvpo1->POID)->get();
                 foreach ($find_poo as $find_poo1) {
-
                 }
 
                 $remaining_amount = $find_pvpo1->TotalAmount - $amount;
                 $result4 = DB::connection('sqlsrv3')->insert('INSERT INTO PaymentVoucherDetail(CompanyID,Date,AgainstPO,AgainstINV,Amount,PVNO,Remaining) values (?,?,?,?,?,?,?)', [company_id(), $date, $find_poo1->PoCode, $against_invoice, $amount, $final_PoCode, $remaining_amount]);
             }
-
         }
 
 
-//account
+        //account
         $doc = DB::connection('sqlsrv3')->insert('INSERT INTO Documents(DocumentDate,DocumentNo,Description,DocumentType,InsertedAt,InsertedBy,CompanyID) values (?,?,?,?,?,?,?)', [$doc_date, $final_PoCode, 'Debit Note:' . $final_PoCode . ' with Remarks:' . $narration, 'Debit Note', $update_date, username(), company_id()]);
         if ($doc) {
             $find_doc_id = DB::connection('sqlsrv3')->table("Documents")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentNo', '=', $final_PoCode)->get();
             foreach ($find_doc_id as $find_doc_id1) {
-
             }
 
 
@@ -15248,7 +14873,6 @@ group by ItemName  ");
 
             $find_tran_id = DB::connection('sqlsrv3')->table("Transactions")->select('ID')->where('CompanyID', '=', company_id())->where('DocumentID', '=', $find_doc_id1->ID)->get();
             foreach ($find_tran_id as $find_tran_id1) {
-
             }
 
             $ledger_entry = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $vendor1[0], 'D', $amount, company_id()]);
@@ -15260,7 +14884,6 @@ group by ItemName  ");
 
             $find_poo = DB::connection('sqlsrv3')->table("PurchaseOrder")->select('RequisitionType', 'AgainstReq')->where('CompanyID', '=', company_id())->where('PurchaseOrderID', '=', $find_pvpo1->POID)->get();
             foreach ($find_poo as $find_poo1) {
-
             }
             $req_type = $find_poo1->RequisitionType;
             $AgainstReq = $find_poo1->AgainstReq;
@@ -15272,30 +14895,24 @@ group by ItemName  ");
                 if ($req_type == 'Goods') {
                     $find_acc_code9 = DB::connection('sqlsrv3')->table("ItemLinkCoa")->select('CoaID')->where('CompanyID', '=', company_id())->where('ItemId', '=', $item_nam[$y])->get();
                     foreach ($find_acc_code9 as $find_acc_code91) {
-
                     }
 
                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code91->CoaID, 'C', $debit_amount1[$y], company_id()]);
                 } elseif ($req_type == 'Assets') {
                     $find_acc_code9 = DB::connection('sqlsrv3')->table("AssetsLinkCoa")->select('CoaID')->where('CompanyID', '=', company_id())->where('AssetId', '=', $item_nam[$y])->get();
                     foreach ($find_acc_code9 as $find_acc_code91) {
-
                     }
                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code91->CoaID, 'C', $debit_amount1[$y], company_id()]);
-
                 } else {
                     $find_pro_name = DB::connection('sqlsrv3')->table("Requisition")->select('ProjectName')->where('CompanyID', '=', company_id())->where('RequisitionId', '=', $AgainstReq)->get();
                     foreach ($find_pro_name as $find_pro_name1) {
-
                     }
                     $find_acc_code9 = DB::connection('sqlsrv3')->table("ProjectLinkCoa")->select('CoaID')->where('CompanyID', '=', company_id())->where('ProjectName', '=', $find_pro_name1->ProjectName)->get();
                     foreach ($find_acc_code9 as $find_acc_code91) {
-
                     }
 
                     $ledger_entry2 = DB::connection('sqlsrv3')->insert('INSERT INTO Ledger_Entries(TransactionID,AccountID,EntryType,Amount,CompanyID) values (?,?,?,?,?)', [$find_tran_id1->ID, $find_acc_code91->CoaID, 'C', $debit_amount1[$y], company_id()]);
                 }
-
             }
         }
 
@@ -15365,7 +14982,6 @@ group by ItemName  ");
             ->get();
 
         return response()->json($data, 200);
-
     }
 
     public
@@ -15374,7 +14990,6 @@ group by ItemName  ");
 
         $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
         foreach ($find_session as $find_session1) {
-
         }
         $session = $find_session1->SessionName;
         $totalRequisitions = DB::connection('sqlsrv3')->table('Requisition')->where('CompanyID', '=', company_id())->where('Session', '=', $session)->count();
@@ -15387,7 +15002,6 @@ group by ItemName  ");
             'percentage' => $formattedPercentageGrn,
         );
         return request()->json(200, $myJSON);
-
     }
 
     public
@@ -15495,5 +15109,4 @@ group by ItemName  ");
             ->get();
         return response()->json($data, 200);
     }
-
 }

@@ -84,7 +84,8 @@ Route::get('fetch_interviews/{id}', [RecruitementController::class, 'edit_interv
 
 // Route::get('/mnth_hired', 'App\Http\Controllers\RecruitementController@mnth_hired')->middleware('permission:Recuriment Dashboard overall-view');  //Get hired candidates of last 30 days
 Route::get('/mnth_hired',[RecruitementController::class,'mnth_hired'])->middleware('permission:Recuriment Dashboard overall-view');
-Route::get('/cnd_hired', 'App\Http\Controllers\RecruitementController@cnd_hired')->middleware('permission:Recuriment Dashboard overall-view');   //Count hired candidates
+// Route::get('/cnd_hired', 'App\Http\Controllers\RecruitementController@cnd_hired')->middleware('permission:Recuriment Dashboard overall-view');   //Count hired candidates
+Route::get('/cnd_hired', [RecruitementController::class,'cnd_hired'])->middleware('permission:Recuriment Dashboard overall-view');   //Count hired candidates
 // Route::get('/rel_cand_count', 'App\Http\Controllers\RecruitementController@rel_cand_count')->middleware('permission:Recuriment Dashboard overall-view'); //Count relevent job candidates
 
 Route::get('/rel_cand_count',[RecruitementController::class,'rel_cand_count'])->middleware('permission:Recuriment Dashboard overall-view');

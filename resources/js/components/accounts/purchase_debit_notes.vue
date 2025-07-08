@@ -141,7 +141,7 @@
           <div class="col-xl-3 col-md-4 col-12">
               <div class="card">
                   <div class="card-body">
-                      <button class="btn btn-primary w-100 mb-75" :disabled="disabled" @click="delay()">Create Debit Note</button>
+                      <button class="btn btn-primary bg-primary w-100 mb-75" :disabled="disabled" @click="delay()">Create Debit Note</button>
 
 
                   </div>

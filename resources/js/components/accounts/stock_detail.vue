@@ -120,7 +120,7 @@
                                     </div>
                                     <div class="col-md-3 user_status" style="padding-top: 20px;">
                                         <div class="dt-buttons d-inline-flex mt-50">
-                                            <router-link to="../inventory/adjustment" class="dt-button add-new btn btn-primary" tabindex="0" type="button"><span>Stock Adjustment</span></router-link>
+                                            <router-link to="../inventory/adjustment" class="dt-button add-new btn btn-primary bg-primary" tabindex="0" type="button"><span>Stock Adjustment</span></router-link>
                                         </div>
                                     </div>
                                 </div>

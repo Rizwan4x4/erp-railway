@@ -22,18 +22,18 @@
                                 </li>
                             </ol>
                         </div>
-                        <div clas="card" style="background-color:white !important">
+                        <div class="card top-radius bottom-radius border-0">
                             <div class="card-body border-bottom">
                                 <h4 class="card-title">Search & Filter</h4>
                                 <div class="row">
                                     <div class="col-md-3 ">
-                                        <label class="form-label" for="fromDate">From Date</label>
+                                        <label class="form-label" for="fromDate"><img class="px-1" :src="images.solar_filter_linear" alt="icon">From Date</label>
                                     </div>
                                     <div class="col-md-3 ">
-                                        <label class="form-label" for="toDate">To Date</label>
+                                        <label class="form-label" for="toDate"><img class="px-1" :src="images.solar_filter_linear" alt="icon">To Date</label>
                                     </div>
                                     <div class="col-md-3 user_status">
-                                        <label class="form-label" for="FilterTransaction">Users</label>
+                                        <label class="form-label" for="FilterTransaction"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Users</label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -47,7 +47,7 @@
                                         <multiselect style="margin-right: 10px;" :options="options" value="id" label="label" v-model="users" placeholder="Select Employee"></multiselect>
                                     </div>
                                     <div class="col-md-1" style="text-align:center">
-                                        <button type="button" @click="getResult()" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Search</button>
+                                        <button type="button" @click="getResult()" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">Search</button>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="dt-buttons d-inline-flex mt-50">
@@ -167,6 +167,10 @@
     export default {
         data() {
             return {
+                 images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
                 adsdata: {},
                 fromDate: new Date().toJSON().slice(0, 10),
                 toDate: new Date().toJSON().slice(0, 10),

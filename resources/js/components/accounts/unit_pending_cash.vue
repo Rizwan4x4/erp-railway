@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="col-md-1">
                                         <label class="form-label"> </label>
-                                        <button :disabled="disabled1" style="float:left" @click="delay1()" class="btn btn-primary waves-effect">Proceed</button>
+                                        <button :disabled="disabled1" style="float:left" @click="delay1()" class="btn btn-primary bg-primary waves-effect">Proceed</button>
                                     </div>
                                 </div>
                             </div>

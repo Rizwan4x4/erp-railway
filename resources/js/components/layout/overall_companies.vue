@@ -12,7 +12,7 @@
 <div class="card">
 <div class="card-header">
 <h4 class="card-title">Registered Companies</h4>
-<router-link to="/create_company" class="btn btn-primary waves-effect waves-float waves-light">Add New Company</router-link>
+<router-link to="/create_company" class="btn btn-primary bg-primary waves-effect waves-float waves-light">Add New Company</router-link>
 </div>
 <div class="table-responsive" style="overflow-x: initial !important">
 <table class="table">
@@ -161,7 +161,7 @@ me-50
                     <td>
                         <div class="form-check" style="margin-lef: ">
 
-                            <b-form-checkbox v-model="store_permission" value="true" style="30px" @change="allowstore($event,'store')">
+                            <b-form-checkbox v-model="store_permission" value="true" @change="allowstore($event,'store')">
                                 Allow</b-form-checkbox>
                         </div>
                     </td>
@@ -176,7 +176,7 @@ me-50
                     <td>
                         <div class="form-check" style="margin-lef: ">
 
-                            <b-form-checkbox v-model="accounts_permission" value="true" style="30px" @change="allowaccounts($event,'accounts')">
+                            <b-form-checkbox v-model="accounts_permission" value="true"  @change="allowaccounts($event,'accounts')">
                                 Allow</b-form-checkbox>
                         </div>
                     </td>
@@ -191,7 +191,7 @@ me-50
                     <td>
                         <div class="form-check" style="margin-lef: ">
 
-                            <b-form-checkbox v-model="payroll_permission" value="true" style="30px" @change="allowpayroll($event,'payroll')">
+                            <b-form-checkbox v-model="payroll_permission" value="true" @change="allowpayroll($event,'payroll')">
                                 Allow</b-form-checkbox>
                         </div>
                     </td>
@@ -205,7 +205,7 @@ me-50
                     </td>
                     <td>
                         <div class="form-check" style="margin-lef: ">
-                            <b-form-checkbox v-model="hr_permisson" value="true" style="30px" @change="allowcheck($event,'hr')">
+                            <b-form-checkbox v-model="hr_permisson" value="true" @change="allowcheck($event,'hr')">
                                 Allow</b-form-checkbox>
                         </div>
                     </td>

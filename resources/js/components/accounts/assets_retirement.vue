@@ -19,12 +19,12 @@
                 <div class="content-body">
                     <!-- users list start -->
                     <section class="app-user-list">
-                        <div clas="card" style="background-color:white !important">
+                        <div class="card top-radius bottom-radius border-0">
 
-                            <div style="margin-bottom:20px;padding-top:20px" class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
-                                <div class="col-sm-5 col-lg-5 ps-xl-75 ps-0">
-                                    <div class="dt-buttons d-inline-flex mt-50">
-                                            <a style="float: left" data-bs-toggle="modal" data-bs-target="#addNewCard" class="btn btn-primary waves-effect">Create New Asset Retirement</a>
+                            <div class="d-flex justify-content-between align-items-center header-actions m-3 row">
+                                <div class="col-sm-5 col-lg-5 ps-xl-75 ">
+                                    <div class="dt-buttons d-inline-flex">
+                                            <a style="float: left" data-bs-toggle="modal" data-bs-target="#addNewCard" class="btn btn-primary bg-primary waves-effect">Create New Asset Retirement</a>
                                         </div>
 
                                 </div>
@@ -32,7 +32,7 @@
                                     <div class="dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
 
 
-                                             <div class="col-md-3 col-12  position-relative" style="padding-top: 20px;">
+                                             <div class="col-md-3 col-12  position-relative">
                                                  <div class="me-1">
                                             <div class="dataTables_filter" style="margin-top:5px">
                                                 <label>
@@ -154,7 +154,7 @@
                                 </div>
 
                             <div class="col-12" style="text-align: center">
-                                <button :disabled="disabled1" @click="delay1()" type="button" class=" btn btn-primary mt-1 me-1 waves-effect waves-float waves-light ">
+                                <button :disabled="disabled1" @click="delay1()" type="button" class=" btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light ">
                                     Save Retirement
                                 </button>
                                 <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">Close</button>
@@ -384,3 +384,22 @@ else if(this.Retirement_type == "Sell"){
 
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

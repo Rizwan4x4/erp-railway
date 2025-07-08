@@ -65,15 +65,15 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a target="_blank" @click="generateGRNDetailReportUrl()" class="btn btn-primary">
+                        <a target="_blank" @click="generateGRNDetailReportUrl()" class="btn btn-primary bg-primary">
                             View Report
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
 
-</div>                          
+</div>
   <!--End GRN Detail Report -->
 <!-- Start Issuance Detail Report -->
   <div class="modal fade" id="IssuanceReportToggle" aria-labelledby="IssuanceReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
@@ -138,10 +138,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a target="_blank" @click="generateIssuancesReportUrl()" class="btn btn-primary">
+                        <a target="_blank" @click="generateIssuancesReportUrl()" class="btn btn-primary bg-primary">
                             View Report
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -212,10 +212,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a target="_blank" @click=" generateIssuancesReturnReportUrl()" class="btn btn-primary">
+                        <a target="_blank" @click=" generateIssuancesReturnReportUrl()" class="btn btn-primary bg-primary">
                             View Report
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -266,10 +266,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="Receiving_Data_report()">
+                        <button class="btn btn-primary bg-primary" @click="Receiving_Data_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" @click="Receiving_Data_report1()">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close" @click="Receiving_Data_report1()">Close</button>
                     </div>
                 </div>
             </div>
@@ -282,7 +282,7 @@
                     <vue-html2pdf :show-layout="false"     @hasDownloaded="pdfRL=false"     @beforeDownload="pdfRL=true" :float-layout="true" :enable-download="true" :preview-modal="false" :paginate-elements-by-height="5000" filename="Receiving_Data__Report" :pdf-quality="2" :manual-pagination="false" pdf-format="a4" pdf-orientation="landscape" pdf-content-width="1000px"  @hasStartedGeneration="hasStartedGeneration()" @hasGenerated="hasGenerated($event)" ref="ReceivingDatavbpdf">
                         <div slot="pdf-content">
                             <div class="modal-body">
-                         
+
                                 <div class="table-responsive" style="overflow-x: initial !important;">
                                     <table class="table table-hover">
                                         <thead>
@@ -302,7 +302,7 @@
                                                 <th class="reports-th-center" scope="col">Vendor Name</th>
                                             </tr>
                                         </thead>
-                      
+
                                         <tbody>
                                             <tr v-for="trail_d1 in Recv_Data_dorb_d">
                                                 <td class="td-center">{{ trail_d1.ItemCode }}</td>
@@ -321,7 +321,7 @@
 
                                             </tr>
                                         </tbody>
-                          
+
                                     </table>
 
                                 </div>
@@ -395,14 +395,14 @@
                             <i v-if="pdfRL" class="spinner-border spinner-border-sm"></i>
                             Pdf
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="Receiving_Data_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="Receiving_Data_report1()">close</button>
                     </div>
                 </div>
             </div>
         </div>
         <!--end Receiving Data Report -->
 
-        
+
         <!-- Issuance Data Report -->
         <div class="modal fade" id="IssuanceDataToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
             <div v-if="Issuance1_Data_report == ''" class="modal-dialog modal-dialog-centered">
@@ -445,10 +445,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="Issuance_Data_report()">
+                        <button class="btn btn-primary bg-primary" @click="Issuance_Data_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" @click="Issuance_Data_report1()">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close" @click="Issuance_Data_report1()">Close</button>
                     </div>
                 </div>
             </div>
@@ -466,7 +466,7 @@
                                         {{ this.Issuance_Data_end_date }}</h6>
 
                                 </div>
-                                
+
                                 <div class="table-responsive" style="overflow-x: initial !important;">
                                     <table class="table">
                                         <thead>
@@ -578,7 +578,7 @@
                             <i v-if="pdfL1" class="spinner-border spinner-border-sm"></i>
 
                             Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="Issuance_Data_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="Issuance_Data_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -609,16 +609,16 @@ export default{
   },
   components: {
         Multiselect,VueHtml2pdf
-      
+
     },
     name: "reported",
 
       data() {
         return {
          optionsissu: [],
-           optionsproj: [],    
-            iss_dept: 'All',       
-            iss_dept1: 'All',       
+           optionsproj: [],
+            iss_dept: 'All',
+            iss_dept1: 'All',
             items_details_items: {},
             iss_start_date: '00-00-0000',
             iss_end_date: '99-99-9999',
@@ -630,9 +630,9 @@ export default{
             iss_return_rid: 'All',
             grn_vendor_name: 'All',
             grn_start_date: '00-00-0000',
-            grn_end_date: '99-99-9999',    
-            items_details_return_items: {},      
-            optionsRissu: [], 
+            grn_end_date: '99-99-9999',
+            items_details_return_items: {},
+            optionsRissu: [],
             options1: [],
             Recv_Data_report: '',
             Recv_Data_start_date: '',
@@ -662,7 +662,7 @@ export default{
     },
     watch: {
         start_date(after, before) {
-            this.newdata(); 
+            this.newdata();
         },
 
     },
@@ -673,37 +673,37 @@ export default{
     const validation = this.$helpers.validateDateRange(this.grn_start_date, this.grn_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-    
+
             }
     else {
-       
+
         window.open(`Accounts/GRN_letter1/${this.grn_vendor_name}/${this.grn_start_date}/${this.grn_end_date}`);
-    } 
+    }
   },
-  
+
   generateIssuancesReturnReportUrl() {
     const validation = this.$helpers.validateDateRange(this.iss_start_date, this.iss_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-    
+
             }
     else {
-       
+
         window.open(  `Accounts/Issuance_return_report1/${this.iss_dept1}/${this.iss_return_rid}/${this.iss_proj1}/${this.iss_return_items}/${this.iss_start_date}/${this.iss_end_date}`
 );
-    } 
+    }
   },
   generateIssuancesReportUrl() {
     const validation = this.$helpers.validateDateRange(this.iss_start_date, this.iss_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-    
+
             }
     else {
-       
+
         window.open(  `Accounts/Issuance_report1/${this.iss_dept}/${this.iss_rid}/${this.iss_proj}/${this.iss_items}/${this.iss_start_date}/${this.iss_end_date}`
 );
-    } 
+    }
   },
 
         getItems1() {
@@ -719,11 +719,11 @@ export default{
 
                 })
         },
-        
+
         Receiving_Data_report1() {
             this.Recv_Data_report = '',
             this.Recv_Data_start_date=this.start_date;
-            this.Recv_Data_end_date=this.end_date;  
+            this.Recv_Data_end_date=this.end_date;
                 this.e_Recv_Data_start_date = '',
                 this.e_Recv_Data_end_date = ''
             this.Recv_Data_dept = 'All',
@@ -734,7 +734,7 @@ export default{
 
         Receiving_dept_projects() {
 
-           
+
             if (this.Recv_Data_dept == 'All') {
                 this.dept_projects = this.optionsproj;
             } else {
@@ -768,7 +768,7 @@ export default{
     }
     axios.get('accounts/Receiving_Data_report/' + this.Recv_Data_start_date + '/' + this.Recv_Data_end_date + '/' + this.Recv_Data_dept + '/' + this.Recv_Data_project)
         .then(response => {
-        
+
             let Recv_Data = response.data.sort((a, b) => {
                 let left = a.AccountID
                 let right = b.AccountID
@@ -805,7 +805,7 @@ html_table_to_excel(type, tableID) {
             this.LRE=false;
         },
         generateReceivingDataReport() {
-            this.pdfRL=true;        
+            this.pdfRL=true;
                 setTimeout(()=>{
                     this.$refs.ReceivingDatavbpdf.generatePdf();
                 })
@@ -839,14 +839,14 @@ html_table_to_excel(type, tableID) {
             const validation = this.$helpers.validateDateRange(this.Issuance_Data_start_date, this.Issuance_Data_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-     
+
                 if (this.Issuance_Data_start_date == '') {
                     this.e_Issuance_Data_start_date = "Please Select Start Date";
                 }
                 if (this.Issuance_Data_end_date == '') {
                     this.e_Issuance_Data_end_date = "Please Select End Date";
                 }
-            } else {              
+            } else {
                 this.Loader1=true;
                 this.Issuance1_Data_report = 1;
                 if (this.Issuance_Data_dept == null) {
@@ -854,7 +854,7 @@ html_table_to_excel(type, tableID) {
                 }
                 axios.get('accounts/Issuance_Data_report/' + this.Issuance_Data_start_date + '/' + this.Issuance_Data_end_date + '/' + this.Issuance_Data_dept + '/' + this.Issuance_Data_project)
                     .then(response => {
-                 
+
                         let Issuance_Data = response.data.sort((a, b) => {
                             let left = a.AccountID
                             let right = b.AccountID
@@ -865,26 +865,26 @@ html_table_to_excel(type, tableID) {
                     })
             }
         },
-        
+
         generateIssuanceDataReport() {
-           
-            this.pdfL1=true;        
+
+            this.pdfL1=true;
                 setTimeout(()=>{
                     this.$refs.vbpdf.generatePdf();
                 })
         },
-        
+
         newdata(){
             this.grn_start_date=this.start_date;
             this.grn_end_date=this.end_date;
             this.iss_start_date=this.start_date;
             this.iss_end_date=this.end_date;
             this.Recv_Data_start_date=this.start_date;
-            this.Recv_Data_end_date=this.end_date;  
+            this.Recv_Data_end_date=this.end_date;
             this.Issuance_Data_start_date=this.start_date;
             this.Issuance_Data_end_date=this.end_date;
-            
-            
+
+
         }
 
 },
@@ -921,7 +921,7 @@ html_table_to_excel(type, tableID) {
             for (var i = 0; i < $this.proj_details.length; i++) {
                 this.optionsproj.push($this.proj_details[i].ProjectName);
             }
-   
+
             this.Issuance_dept_projects();
             this.Receiving_dept_projects();
 
@@ -938,10 +938,10 @@ html_table_to_excel(type, tableID) {
         })
 
     }
-    
+
 
 }
-</script> 
+</script>
 
 <style scoped>
 .ng-star-inserted>a {

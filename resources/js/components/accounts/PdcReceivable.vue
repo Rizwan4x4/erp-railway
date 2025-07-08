@@ -221,7 +221,7 @@
                                         <hr class="invoice-spacing">
                                         <div class="col-12 text-center mt-2 pt-50">
                                             <button :disabled="disabled1" @click="delay1()" type="submit"
-                                                class="btn btn-primary me-1" data-bs-dismiss="modal"
+                                                class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal"
                                                 aria-label="Close">Submit</button>
                                             <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
                                                 aria-label="Close">

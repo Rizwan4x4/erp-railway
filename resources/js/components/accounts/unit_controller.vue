@@ -24,7 +24,7 @@
     <!--/ User Sidebar -->
     <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
     <!-- User Card -->
-    <div class="card">
+    <div class="card top-radius bottom-radius border-0">
     <div class="card-header">
         <h4 class="card-title">Units Controller</h4>
 
@@ -35,7 +35,9 @@
                 <div class="row">
                     <!-- User Sidebar -->
                     <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0" v-if="hasPermission('Units-Management units-data fetch-data')">
-                        <div class="card">
+                        <div class="card border-0">
+                            <div class="top-radius bottom-radius border-0 shadow">
+
                             <div class="card-header">
                                 <h2 style="font-size:24px" class="card-title">Transfer Booking Data</h2>
                             </div>
@@ -49,13 +51,13 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td class="text-nowrap">
-                                                                    <label class="form-label">Start Date:</label>
+                                                                    <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Start Date:</label>
                                                                     <span style="color: #DB4437; font-size: 11px;">*</span>
                                                                     <input type="date" v-model="booking_start" class="form-control" />
                                                                     <span style="color: #DB4437; font-size: 11px;" v-if="booking_start==''">{{e_booking_start}}</span>
-                                                                </td>x
+                                                                </td>
                                                                 <td class="text-nowrap">
-                                                                    <label class="form-label">End Date:</label>
+                                                                    <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">End Date:</label>
                                                                     <span style="color: #DB4437; font-size: 11px;">*</span>
                                                                     <input type="date" v-model="booking_end" class="form-control" />
                                                                     <span style="color: #DB4437; font-size: 11px;" v-if="booking_end==''">{{e_booking_end}}</span>
@@ -67,16 +69,18 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <button type="button" :disabled="disabled" @click="delay()" class="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
+                                            <button type="button" :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1 waves-effect waves-float waves-light">Submit</button>
 
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        </div>
                     </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0" v-if="hasPermission('Units-Management units-data fetch-data')">
-                                <div class="card">
+                                <div class="card border-0">
+                                    <div class="top-radius bottom-radius border-0 shadow">
                                     <div class="card-header">
                                         <h2 style="font-size:24px" class="card-title">Transfer Receipt Data</h2>
                                     </div>
@@ -90,13 +94,13 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td class="text-nowrap">
-                                                                            <label class="form-label">Start Date:</label>
+                                                                            <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Start Date:</label>
                                                                             <span style="color: #DB4437; font-size: 11px;">*</span>
                                                                             <input type="date" v-model="receipt_start" class="form-control" />
                                                                             <span style="color: #DB4437; font-size: 11px;" v-if="receipt_start==''">{{e_receipt_start}}</span>
                                                                         </td>
                                                                         <td class="text-nowrap">
-                                                                            <label class="form-label">End Date:</label>
+                                                                            <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">End Date:</label>
                                                                             <span style="color: #DB4437; font-size: 11px;">*</span>
                                                                             <input type="date" v-model="receipt_end" class="form-control" />
                                                                             <span style="color: #DB4437; font-size: 11px;" v-if="receipt_end==''">{{e_receipt_end}}</span>
@@ -108,17 +112,19 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <button type="button" :disabled="disabled1" @click="delay1()" class="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
+                                                    <button type="button" :disabled="disabled1" @click="delay1()" class="btn btn-primary bg-primary me-1 waves-effect waves-float waves-light">Submit</button>
                                                     <button type="reset" class="btn btn-outline-secondary waves-effect">Reset</button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
+                                </div>
                         </div>
 
        <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0" v-if="hasPermission('Units-Management units-data fetch-data')">
-                        <div class="card">
+                        <div class="card border-0">
+                            <div class="top-radius bottom-radius border-0 shadow">
                             <div class="card-header">
                                 <h2 style="font-size:24px" class="card-title">Services Charges Booking</h2>
                             </div>
@@ -132,7 +138,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td class="text-nowrap">
-                                                                    <label class="form-label">Start Date:</label>
+                                                                    <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Start Date:</label>
                                                                     <span style="color: #DB4437; font-size: 11px;">*</span>
                                                                     <input type="month" v-model="booking_services" class="form-control" />
                                                                     <span style="color: #DB4437; font-size: 11px;" v-if="booking_start==''">{{e_booking_services}}</span>
@@ -145,17 +151,19 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <button type="button" :disabled="disabled8" @click="delay8()" class="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
+                                            <button type="button" :disabled="disabled8" @click="delay8()" class="btn btn-primary bg-primary me-1 waves-effect waves-float waves-light">Submit</button>
 
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        </div>
                     </div>
 
      <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0" v-if="hasPermission('Units-Management units-data fetch-data')">
-                        <div class="card">
+                        <div class="card border-0">
+                            <div class="top-radius bottom-radius border-0 shadow">
                             <div class="card-header">
                                 <h2 style="font-size:24px" class="card-title">Electricity Booking</h2>
                             </div>
@@ -169,7 +177,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td class="text-nowrap">
-                                                                    <label class="form-label">Start Date:</label>
+                                                                    <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Start Date:</label>
                                                                     <span style="color: #DB4437; font-size: 11px;">*</span>
                                                                     <input type="month" v-model="booking_electricity" class="form-control" />
                                                                     <span style="color: #DB4437; font-size: 11px;" v-if="booking_electricity==''">{{e_booking_electricity}}</span>
@@ -182,11 +190,12 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <button type="button" :disabled="disabled7" @click="delay7()" class="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
+                                            <button type="button" :disabled="disabled7" @click="delay7()" class="btn btn-primary bg-primary me-1 waves-effect waves-float waves-light">Submit</button>
 
                                         </div>
                                     </div>
                                 </form>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -279,7 +288,7 @@
 
 
                                             <div class="col-12 text-center">
-                                                <button type="submit" :disabled="disabled4" @click="delay4()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                                <button type="submit" :disabled="disabled4" @click="delay4()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                                     Close
                                                 </button>
@@ -289,17 +298,18 @@
                                 </div>
                             </div>
              </div>
-    </div>
+
     </template>
     <script>
     import Multiselect from 'vue-multiselect'
     export default {
     data() {
     return {
+         images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
     types: {},
-
-
-
     booking_end: '',
     booking_start: '',
     e_booking_start: '',

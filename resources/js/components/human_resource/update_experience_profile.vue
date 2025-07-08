@@ -30,7 +30,7 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h4 class="card-title">Edit Experience Detail</h4>
-                                                <div data-repeater-create="" class="btn btn-primary" v-on:click="add_xz_repeater();">
+                                                <div data-repeater-create="" class="btn btn-primary bg-primary" v-on:click="add_xz_repeater();">
                                                     <span>
                                                         <i class="fa fas-plus"></i>
                                                         <span>Add</span>
@@ -168,8 +168,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12" style="text-align:center">
-                                                    <button :disabled="disabled" @click="delay()" type="button" class="btn btn-primary">Skip This Step</button>
-                                                    <button :disabled="disabled1" @click="delay1()" type="button" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Save Experience Detail</button>
+                                                    <button :disabled="disabled" @click="delay()" type="button" class="btn btn-primary bg-primary">Skip This Step</button>
+                                                    <button :disabled="disabled1" @click="delay1()" type="button" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">Save Experience Detail</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -178,7 +178,7 @@
                                 </div>
 
                             </p>
-                            </p>
+
                         </div>
                     </div>
                 </div>

@@ -169,7 +169,7 @@
                                     </multiselect>
                                 </div>
                                 <!-- <div class="col-md-2">
-                                    <button class="btn btn-primary"
+                                    <button class="btn btn-primary bg-primary"
                                         style="height: 40px !important; margin-top: 26px; width:100%"
                                         @click="getbyfilter()">Search
                                     </button>
@@ -253,7 +253,7 @@
 
                                         <div class="col-md-6 d-flex justify-content-end p-0">
                                             <div class="me-2">
-                                                <router-link class="dt-button add-new btn btn-primary bg-primary"
+                                                <router-link class="dt-button add-new btn btn-primary bg-primary "
                                                     tabindex="0" to="/hr/create_employee" type="button">
                                                     <span>+ Add New Employee</span>
                                                 </router-link>
@@ -311,7 +311,7 @@
                                         <td class="td-center" style="vertical-align: middle !important;">
                                             <!-- main links -->
                                             <div class="dropdown ">
-                                                <button class="btn btn-primary dropdown-toggle custom-dropdown"
+                                                <button class="btn btn-primary bg-primary dropdown-toggle custom-dropdown"
                                                     type="button" data-bs-toggle="dropdown">
                                                     Edit Profile
                                                 </button>

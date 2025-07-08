@@ -271,7 +271,7 @@
                                                                         <div class="row mt-1">
                                                                             <div class="col-12 ">
                                                                                 <div data-repeater-create=""
-                                                                                    class="btn btn-primary btn-sm btn-add-new"
+                                                                                    class="btn btn-primary bg-primary btn-sm btn-add-new"
                                                                                     v-on:click="add_xz_repeater();">
                                                                                     <!-- <i data-feather="plus"
                                                                                         class="me-25"></i> -->
@@ -397,7 +397,7 @@
 
                                                                                 <div class="col-md-6"
                                                                                     style="padding-top: 20px;padding-left:20px">
-                                                                                    <button class="btn btn-primary"
+                                                                                    <button class="btn btn-primary bg-primary"
                                                                                         @click="sum_total()">Calculate
                                                                                         Total</button>
                                                                                 </div>
@@ -480,7 +480,7 @@
                                                                                 style="margin-left: 20px;margin-right:20px">
                                                                                 <div class="col-12 px-0">
                                                                                     <div data-repeater-create=""
-                                                                                        class="btn btn-primary btn-sm btn-add-new"
+                                                                                        class="btn btn-primary bg-primary btn-sm btn-add-new"
                                                                                         v-on:click="add_xz_repeater2();">
                                                                                         <!-- <i data-feather="plus"
                                                                                             class="me-25"></i> -->
@@ -496,7 +496,7 @@
                                                                     <div class="col-12" style="text-align:center">
                                                                         <button :disabled="disabled" @click="delay()"
                                                                             type="button"
-                                                                            class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Save
+                                                                            class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">Save
                                                                             Land Information</button>
                                                                     </div>
 

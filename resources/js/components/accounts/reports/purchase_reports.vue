@@ -73,7 +73,7 @@
                                     </span>
                                 </a>
                             </div>
-                          
+
 
 <!--Start Demand Requistion Report -->
  <div class="modal fade" id="DemandRequisitionReportToggle" aria-labelledby="DemandRequisitionReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
@@ -84,7 +84,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    
+
                         <div class="row gy-1 gx-2 mt-75" onsubmit="return false">
                             <div class="row">
                                 <div class="col-md-6">
@@ -137,16 +137,16 @@
                         </div>
                     </div>
                     <!-- <div class="modal-footer">
-                        <a target="_blank" v-bind:href="`Accounts/DemandRequisition_Letter1/${req_dept1}/${demand_rid}/${req_proj}/${req_demand_items}/${demand_start_date1}/${demand_end_date}`" class="btn btn-primary">
+                        <a target="_blank" v-bind:href="`Accounts/DemandRequisition_Letter1/${req_dept1}/${demand_rid}/${req_proj}/${req_demand_items}/${demand_start_date1}/${demand_end_date}`" class="btn btn-primary bg-primary">
                             View Report
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>  -->
                     <div class="modal-footer">
-  <a  target="_blank" @click=generateDemandReportUrl() class="btn btn-primary">
+  <a  target="_blank" @click=generateDemandReportUrl() class="btn btn-primary bg-primary">
     View Report
   </a>
-  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+  <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
 </div>
 
                 </div>
@@ -154,7 +154,7 @@
 
         </div>
  <!--End Demand Requistion Report -->
-       
+
 <!--Start Demand Requisition Tracking Report -->
 <div class="modal fade" id="RequisitionTrackingReportToggle" aria-labelledby="RequisitionTrackingReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -181,10 +181,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a target="_blank" class="btn btn-primary" @click="demand_report()">
+                        <a target="_blank" class="btn btn-primary bg-primary" @click="demand_report()">
                             View Report
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -251,15 +251,15 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a target="_blank" @click="generatePRReportUrl()" class="btn btn-primary">
+                        <a target="_blank" @click="generatePRReportUrl()" class="btn btn-primary bg-primary">
                             View Report
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
 
-        </div> 
+        </div>
  <!--End Requistion Report -->
 <!--Start Requisition Detail Report  -->
  <div class="modal fade" id="RequisitionComparativeDetailReport" aria-labelledby="RequisitionComparativeDetailReport" tabindex="-1" style="display: none" aria-hidden="true">
@@ -287,11 +287,11 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="req_detail_summary()">
+                        <button class="btn btn-primary bg-primary" @click="req_detail_summary()">
                             View Report
                         </button>
 
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">
                             Close
                         </button>
                     </div>
@@ -450,7 +450,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'req_det_id')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateReqDetReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="req_detail_summary1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="req_detail_summary1()">close</button>
                     </div>
                 </div>
             </div>
@@ -511,10 +511,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a target="_blank" @click="generateCompartiveQutationReportUrl()" class="btn btn-primary">
+                        <a target="_blank" @click="generateCompartiveQutationReportUrl()" class="btn btn-primary bg-primary">
                             View Report
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -594,10 +594,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a target="_blank" @click="  generatePurchaseOrderReportUrl()" class="btn btn-primary">
+                        <a target="_blank" @click="  generatePurchaseOrderReportUrl()" class="btn btn-primary bg-primary">
                             View Report
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -631,11 +631,11 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="po_grn_summary()">
+                        <button class="btn btn-primary bg-primary" @click="po_grn_summary()">
                             View Report
                         </button>
 
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">
                             Close
                         </button>
                     </div>
@@ -802,7 +802,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'po_grn_id')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generatePOGRNDetReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="po_grn_summary1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="po_grn_summary1()">close</button>
                     </div>
                 </div>
             </div>
@@ -851,10 +851,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="OpenPos_Data_report()">
+                        <button class="btn btn-primary bg-primary" @click="OpenPos_Data_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" @click="OpenPos_Data_report1()">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close" @click="OpenPos_Data_report1()">Close</button>
                     </div>
                 </div>
             </div>
@@ -987,7 +987,7 @@
                         <button type="button" @click="generateOpenPosReport()" class="btn btn-gradient-info">
                             <i v-if="pdfL1" class="spinner-border spinner-border-sm"></i>
                             Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="OpenPos_Data_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="OpenPos_Data_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -1008,7 +1008,7 @@
                     <div style="margin-top: 20px;margin-bottom: 20px;">
 
                     </div>
-                 
+
                     <div  class="table-responsive" style="overflow-x: initial !important;">
                         <table class="table">
                             <thead>
@@ -1024,7 +1024,7 @@
                                     <th scope="col">Paid Amount</th>
                                 </tr>
                             </thead>
-                           
+
                             <tbody >
                                 <tr  v-for="advancepo_list in advancepo_list">
                                     <td>{{ advancepo_list.PoCode }}</td>
@@ -1037,10 +1037,10 @@
                                     <td>{{ Number(advancepo_list.TotalAmount).toLocaleString() }}</td>
                                     <td>{{ Number(advancepo_list.Amount).toLocaleString() }}</td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
-                        
+
                     </div>
                 </div>
             </div>
@@ -1063,7 +1063,7 @@
                                     <th scope="col">Paid Amount</th>
                                 </tr>
                             </thead>
-                            
+
                             <div v-if="po_advance_toggle" class="row">
                                 <div class="col-12 d-flex justify-content-center position-absolute">
                                     <div class="d-flex align-items-center">
@@ -1092,7 +1092,7 @@
         <div class="modal-footer">
             <button type="button" @click="html_table_to_excel('xlsx', 'advance_po')" class="btn btn-gradient-info">Excel</button>
             <button type="button" @click="generateAdvancePaidReport()" class="btn btn-gradient-info">Pdf</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">close</button>
+            <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">close</button>
         </div>
     </div>
 </div>
@@ -1132,10 +1132,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a target="_blank" @click="generatePurchaseInvoiceReportUrl()" class="btn btn-primary">
+                        <a target="_blank" @click="generatePurchaseInvoiceReportUrl()" class="btn btn-primary bg-primary">
                             View Report
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -1176,10 +1176,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a target="_blank" @click="  generatePurchaseReturnReportUrl()" class="btn btn-primary">
+                        <a target="_blank" @click="  generatePurchaseReturnReportUrl()" class="btn btn-primary bg-primary">
                             View Report
                         </a>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -1215,10 +1215,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="ven_bal_report()">
+                        <button class="btn btn-primary bg-primary" @click="ven_bal_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -1283,7 +1283,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'ven_Sreport')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateVendorBalanceSReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="ven_bal_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="ven_bal_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -1332,10 +1332,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="Unpaid_Pur_Invo_Data_report()">
+                        <button class="btn btn-primary bg-primary" @click="Unpaid_Pur_Invo_Data_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" @click="Unpaid_Pur_Invo_Data_report1()">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close" @click="Unpaid_Pur_Invo_Data_report1()">Close</button>
                     </div>
                 </div>
             </div>
@@ -1457,7 +1457,7 @@
                         <button type="button" @click="generateUnpaid_Pur_InvoReport()" class="btn btn-gradient-info">
                             <i v-if="pdfL2" class="spinner-border spinner-border-sm"></i>
                             Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="Unpaid_Pur_Invo_Data_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="Unpaid_Pur_Invo_Data_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -1496,13 +1496,13 @@ export default{
   },
   components: {
         Multiselect,VueHtml2pdf
-      
+
     },
     name: "reported",
 
       data() {
         return {
-        
+
             po_list: {},
             req_start_date: '00-00-0000',
             req_end_date: '99-99-9999',
@@ -1593,85 +1593,85 @@ export default{
             pdfL2:false,
             Loader1:false,
             Loader2:false,
-           
+
 
         }
     },
     watch: {
         start_date(after, before) {
-            this.newdata(); 
+            this.newdata();
         },
 
     },
     methods: {
-  
+
 
   generateDemandReportUrl() {
     const validation = this.$helpers.validateDateRange(this.demand_start_date1, this.demand_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-    
+
             }
     else {
         window.open(`Accounts/DemandRequisition_Letter1/${this.req_dept1}/${this.demand_rid}/${this.req_proj}/${this.req_demand_items}/${this.demand_start_date1}/${this.demand_end_date}`);
-    } 
+    }
   },
   generatePRReportUrl() {
     const validation = this.$helpers.validateDateRange(this.req_start_date, this.req_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-    
+
             }
     else {
-       
+
         window.open(`Accounts/Requisition_Letter1/${this.req_dept2}/${this.req_rid}/${this.req_proj1}/${this.req_items}/${this.req_start_date}/${this.req_end_date}`);
-    } 
+    }
   },
   generateCompartiveQutationReportUrl() {
     const validation = this.$helpers.validateDateRange(this.qc_start_date, this.qc_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-    
+
             }
     else {
-       
+
         window.open(`Accounts/QuotationComparative_report1/${this.qc_rid}/${this.qc_items}/${this.qc_vendor}/${this.qc_start_date}/${this.qc_end_date}`);
-    } 
+    }
   },
   generatePurchaseOrderReportUrl() {
     const validation = this.$helpers.validateDateRange(this.po_start_date, this.po_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-    
+
             }
     else {
-       
+
         window.open(`Accounts/PO_letter1/${this.po_type}/${this.po_vendor_name}/${this.po_proj}/${this.req_dept3}/${this.po_create_by}/${this.po_grn_check}/${this.po_start_date}/${this.po_end_date}`);
-    } 
+    }
   },
   generatePurchaseInvoiceReportUrl() {
     const validation = this.$helpers.validateDateRange(this.pi_start_date, this.pi_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-    
+
             }
     else {
-       
+
         window.open(`Accounts/Pi_letter1/${this.pi_vendor_name}/${this.pi_start_date}/${this.pi_end_date}`);
-    } 
+    }
   },
   generatePurchaseReturnReportUrl() {
     const validation = this.$helpers.validateDateRange(this.pr_start_date, this.pr_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-    
+
             }
     else {
-       
+
         window.open( `Accounts/PR_letter1/${this.pr_vendor_name}/${this.pr_start_date}/${this.pr_end_date}`);
-    } 
+    }
   },
- 
+
         getItemsdemand() {
             axios.get('getitems_demandrequisition/' + this.demand_rid)
                 .then(response => {
@@ -1753,7 +1753,7 @@ export default{
         generateReqDetReport() {
             this.$refs.reqdpdf.generatePdf();
         },
-        
+
         getItems2() {
             axios.get('getitems_quotation/' + this.qc_rid)
                 .then(response => {
@@ -1789,7 +1789,7 @@ export default{
         generatePOGRNDetReport() {
             this.$refs.pogrnpdf.generatePdf();
         },
-        
+
         OpenPos_Data_report1() {
                 this.OpenPos_Data_start_date =this.start_date,
                 this.OpenPos_Data_end_date =this.end_date,
@@ -1856,13 +1856,13 @@ export default{
             this.$refs.vbpdf.generatePdf();
         },
      generateOpenPosReport() {
-        this.pdfL1=true;        
+        this.pdfL1=true;
                 setTimeout(()=>{
                     this.$refs.OpenPos.generatePdf();
                 })
         },
      generateUnpaid_Pur_InvoReport() {
-        this.pdfL2=true;        
+        this.pdfL2=true;
                 setTimeout(()=>{
                     this.$refs.Unpaid_Purchase_Invoices.generatePdf();
                 })
@@ -1882,10 +1882,10 @@ export default{
             this.$refs.advancepopdf.generatePdf();
         },
         ven_bal_report() {
-          
+
             const validation = this.$helpers.validateDateRange(this.ven_start_date, this.ven_end_date);
             if (!validation.isValid) {
-      this.$toastr.e(validation.error, "Caution!");     
+      this.$toastr.e(validation.error, "Caution!");
                 if (this.ven_start_date == '') {
                     this.e_ven_start_date = "Please Select Start Date";
                 }
@@ -1896,7 +1896,7 @@ export default{
                 this.vendor_balance_report = 1
                 axios.get('accounts/vendor_balance_report/' + this.ven_start_date + '/' + this.ven_end_date)
                     .then(response => {
-              
+
                         let trialData = response.data.sort((a, b) => {
                             let left = a.AccountID
                             let right = b.AccountID
@@ -1944,8 +1944,8 @@ export default{
         Unpaid_Pur_Invo_Data_report() {
             const validation = this.$helpers.validateDateRange(this.Unpaid_Pur_Invo_Data_start_date, this.Unpaid_Pur_Invo_Data_end_date);
             if (!validation.isValid) {
-      this.$toastr.e(validation.error, "Caution!");  
-         
+      this.$toastr.e(validation.error, "Caution!");
+
                 if (this.Unpaid_Pur_Invo_Data_start_date == '') {
                     this.e_Unpaid_Pur_Invo_Data_start_date = "Please Select Start Date";
                 }
@@ -1986,13 +1986,13 @@ export default{
     this.pi_start_date=this.start_date;
      this.pi_end_date=  this.end_date    ;
     this.pr_start_date=this.start_date;
-     this.pr_end_date=  this.end_date    ;  
+     this.pr_end_date=  this.end_date    ;
     this.ven_start_date=this.start_date;
      this.ven_end_date=  this.end_date    ;
     this.Unpaid_Pur_Invo_Data_start_date=this.start_date;
      this.Unpaid_Pur_Invo_Data_end_date=  this.end_date    ;
 
-     
+
     }
 },
     mounted() {
@@ -2000,7 +2000,7 @@ export default{
 
 
     axios.get("accounts/get_requisition1").then((response) => {
-       
+
        this.quot_list = response.data;
        this.options_r_iss = [];
 
@@ -2025,7 +2025,7 @@ export default{
             })
             axios.get("vendor_report_detail").then((response) => {
             this.po_list = response.data;
-    
+
             this.options1 = [];
 
             var $this = this;
@@ -2037,7 +2037,7 @@ export default{
         })
 
         axios.get("accounts/get_purchaseorder_createdlist").then((response) => {
-          
+
           this.po_grn_createlist = response.data;
           this.optionspocreated = [];
           var $this = this;
@@ -2047,7 +2047,7 @@ export default{
       })
 
       axios.get("accounts/get_purchaseorder_id").then((response) => {
-       
+
        this.po_grn_list = response.data;
        this.options_po_grn = [];
        this.popaid_option = [];
@@ -2073,7 +2073,7 @@ export default{
             this.currency = response.data[0].Currency;
         })
     }
-    
+
 
 }
 </script>
@@ -2122,5 +2122,5 @@ export default{
     100% {
         transform: rotate(360deg);
     }
-    } 
+    }
 </style><style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

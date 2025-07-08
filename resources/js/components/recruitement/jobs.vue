@@ -41,7 +41,7 @@
                             <!-- <div class="col-sm-7"> -->
                             <div class=" text-sm-end text-center ps-sm-0">
                                 <button v-if="hasPermission('Recruitment Post job')" type="button"
-                                    class="btn btn-primary bg-primary py-2 px-4" data-bs-toggle="modal" data-bs-target="#postjob">
+                                    class="btn btn-primary bg-primary bg-primary py-2 px-4" data-bs-toggle="modal" data-bs-target="#postjob">
                                     Post a job
                                 </button>
                                 <button v-else type="button" class="btn btn-danger">
@@ -271,7 +271,7 @@
                                     </div>
                                     <div class="col-12 text-center">
                                         <button :disabled="disabled" @click="delay()" type="submit"
-                                            class="btn btn-primary me-1 mt-2" data-bs-dismiss="modal"
+                                            class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal"
                                             aria-label="Close">Post job</button>
                                         <button type="reset" class="btn btn-outline-secondary mt-2"
                                             data-bs-dismiss="modal" aria-label="Close">
@@ -399,7 +399,7 @@
                                     </div>
                                     <div class="col-12 text-center">
                                         <button type="submit" :disabled="disabled1" @click="delay1()"
-                                            class="btn btn-primary me-1 mt-2">Update job</button>
+                                            class="btn btn-primary bg-primary me-1 mt-2">Update job</button>
                                         <button type="reset" class="btn btn-outline-secondary mt-2"
                                             data-bs-dismiss="modal" aria-label="Close">
                                             Cancle

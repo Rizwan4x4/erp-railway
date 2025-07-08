@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="content-body">
-                <div class="card">
+                <div class="card top-radius bottom-radius border-0">
                     <div class="row" style="margin-left: 10px; margin-top: 15px;">
                         <div class="col-md-4" v-if=" (this.$helpers.hasPermission('Inventory Account-Reports accounting') || this.$helpers.hasPermission('Inventory Account-Reports overall'))">
                             <accounts_reports :start_date="start_date" :end_date="end_date" />
@@ -260,3 +260,22 @@ export default {
 }
 </style>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style scoped>
+.border-0 {
+    border: 0;
+}
+
+.top-radius {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.bottom-radius {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.bg-custom {
+    background-color: #F9F9F9 !important;
+}
+</style>

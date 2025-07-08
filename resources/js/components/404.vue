@@ -15,7 +15,7 @@
                              <h2 class="mb-1">Page Not Found 🕵🏻&zwj;♀️</h2>
                             <p class="mb-2">Oops! 😖 The requested URL was not found on this server.</p>
                             <div style="width:100%">
-                            <router-link class="btn btn-primary mb-2 btn-sm-block waves-effect waves-float waves-light" to="/">Back to home</router-link>
+                            <router-link class="btn btn-primary bg-primary mb-2 btn-sm-block waves-effect waves-float waves-light" to="/">Back to home</router-link>
                             </div>
                         </div>
                     </div>

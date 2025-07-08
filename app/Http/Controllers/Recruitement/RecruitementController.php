@@ -603,7 +603,6 @@ class RecruitementController extends Controller
             ->select(DB::raw('DATEPART(WEEK, DayDate) as week_no'), DB::raw('COUNT(*) as total'))
             ->where('CompanyID', $company_id)
             ->where('hire_sts', '0')
-
             ->whereMonth('DayDate', '=', $currentMonth)
             ->whereYear('DayDate', '=', $currentYear)
             ->groupBy(DB::raw('DATEPART(WEEK, DayDate)'))
@@ -701,6 +700,7 @@ class RecruitementController extends Controller
         $company_id = session()->get('company_id');
         $selectedDate = $request->query('date');
 
+
         $query = DB::connection('sqlsrv2')->table('interview_detail')
             ->join('Candidate_Detail', 'interview_detail.CandID', '=', 'Candidate_Detail.CandID')
             ->join('Post_Job', 'Candidate_Detail.JobID', '=', 'Post_Job.JobID')
@@ -717,6 +717,7 @@ class RecruitementController extends Controller
         }
 
         $interviews = $query->get();
+
 
         return response()->json($interviews);
 

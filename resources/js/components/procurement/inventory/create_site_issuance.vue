@@ -121,7 +121,7 @@
                                             <div class="col-md-4"></div>
                                             <div class="col-md-3" style="text-align: right;
         padding-top: 20px;">
-                                                <button class="btn btn-primary" @click="sum_total()">Calculate
+                                                <button class="btn btn-primary bg-primary" @click="sum_total()">Calculate
                                                     Total</button>
                                             </div>
                                             <div class="col-md-3">
@@ -223,7 +223,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <button :disabled="disabled" @click="delay()"
-                                            class="btn btn-primary w-100 mb-75">Post Issuance</button>
+                                            class="btn btn-primary bg-primary w-100 mb-75">Post Issuance</button>
 
                                     </div>
                                 </div>

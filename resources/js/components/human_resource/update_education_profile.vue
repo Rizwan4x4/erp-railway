@@ -31,7 +31,7 @@
                                             <div class="card-header">
                                                 <h4 class="card-title">Add Education Detail</h4>
 
-                                                <div data-repeater-create="" class="btn btn-primary"
+                                                <div data-repeater-create="" class="btn btn-primary bg-primary"
                                                      v-on:click="add_xz_repeater();">
                         <span>
                             <i class="fa fas-plus"></i>
@@ -180,10 +180,10 @@
                                                 </div>
                                                 <div class="col-12" style="text-align:center">
                                                     <button @click="skip_education()" type="button"
-                                                            class="btn btn-primary">Skip This Step
+                                                            class="btn btn-primary bg-primary">Skip This Step
                                                     </button>
                                                     <button @click="test_array2()" type="button"
-                                                            class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">
+                                                            class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">
                                                         Save Education Detail
                                                     </button>
                                                 </div>

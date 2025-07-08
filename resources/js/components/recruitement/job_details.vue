@@ -167,7 +167,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style >
 .border-0 {
     border: 0 !important;
 }
@@ -180,5 +180,9 @@ export default {
 .bottom-radius {
     border-bottom-left-radius: 12px !important;
     border-bottom-right-radius: 12px !important;
+}
+.btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    color: #fff;
+    background-color: #0d6efd !important;
 }
 </style>

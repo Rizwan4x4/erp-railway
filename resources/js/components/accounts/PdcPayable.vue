@@ -208,7 +208,7 @@
                             <!-- Invoice Description ends -->
                             <hr class="invoice-spacing">
                             <div class="col-12 text-center mt-2 pt-50">
-                                <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary me-1"  data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary bg-primary me-1"  data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                 <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                     Cancle
                                 </button>
@@ -249,7 +249,7 @@
 
 
                             <div class="col-12 text-center">
-                                <button type="submit" :disabled="disabled9" @click="delay9()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                <button type="submit" :disabled="disabled9" @click="delay9()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                     Cancel
                                 </button>

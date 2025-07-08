@@ -206,7 +206,7 @@
                                                     <h5 class="fw-bolder mb-0">My Profile</h5>
                                                 </div>
                                                 <router-link to="/hr/emp_detail"
-                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light ms-auto">
+                                                    class="btn btn-primary bg-primary bg-primary waves-effect waves-float waves-light ms-auto">
                                                     View Profile
                                                 </router-link>
                                             </div>
@@ -225,7 +225,7 @@
                                                     <p class="mb-0">Manual Mark</p>
                                                 </div>
                                                 <a data-bs-toggle="modal" data-bs-target="#markAttendance"
-                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light ms-auto">
+                                                    class="btn btn-primary bg-primary bg-primary waves-effect waves-float waves-light ms-auto">
                                                     Mark Now
                                                 </a>
                                                 <!-- <a v-else @click="not_Att_access()" style="width:100%;"
@@ -247,7 +247,7 @@
                                                     <p class="mb-0">Adjustment</p>
                                                 </div>
                                                 <a data-bs-toggle="modal" data-bs-target="#timeAdj"
-                                                    class="btn btn-primary bg-primary waves-effect waves-float waves-light ms-auto">
+                                                    class="btn btn-primary bg-primary bg-primary waves-effect waves-float waves-light ms-auto">
                                                     Apply Now
                                                 </a>
                                             </div>
@@ -259,7 +259,7 @@
                                         <div class="card-header top-radius">
                                             <h4 class=" fw-bolder">Leave data</h4>
                                             <button
-                                                class="btn btn-primary bg-primary btn-sm d-flex align-items-center justify-content-center px-4 py-2 rounded-3 shadow position-relative"
+                                                class="btn btn-primary bg-primary bg-primary btn-sm d-flex align-items-center justify-content-center px-4 py-2 rounded-3 shadow position-relative"
                                                 data-bs-toggle="modal" data-bs-target="#addNewCard">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-cloud-upload me-1"
@@ -347,7 +347,7 @@
                                                                     class="col-12 col-md-6 pr-3 d-flex flex-column align-items-center justify-content-center text-end rounded">
                                                                     <span class="text-truncate text-danger">Used - {{
                                                                         leaves_dtl.ttl_sick - leaves_dtl.rem_sick
-                                                                    }}
+                                                                        }}
                                                                     </span>
                                                                     <small>Available - {{
                                                                         leaves_dtl.ttl_sick }}</small>
@@ -387,7 +387,7 @@
                                                                     class="col-12 col-md-6 pr-3 d-flex flex-column align-items-center justify-content-center text-end rounded">
                                                                     <span class="text-truncate text-warning">Used - {{
                                                                         leaves_dtl.ttl_casual - leaves_dtl.rem_casual
-                                                                    }}
+                                                                        }}
                                                                     </span>
                                                                     <small>Available - {{
                                                                         leaves_dtl.ttl_casual }}</small>
@@ -446,7 +446,7 @@
                                             <h6>Apply</h6>
                                             <h3 class="fw-bolder mb-1" style="padding-bottom: 15px;">Leave</h3>
                                             <a data-bs-toggle="modal" style="width:100%;" data-bs-target="#addNewCard"
-                                                class="btn btn-primary waves-effect waves-float waves-light">Apply
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light">Apply
                                                 Now</a>
                                         </div>
                                     </div>
@@ -468,7 +468,7 @@
                                                 Attendance</h3>
                                             <a data-bs-toggle="modal" data-bs-target="#markAttendance"
                                                 style="width:100%;"
-                                                class="btn btn-primary waves-effect waves-float waves-light">Mark
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light">Mark
                                                 Now</a>
 
                                         </div>
@@ -480,7 +480,7 @@
                                 <!--                                            <h6>Apply</h6>-->
                                 <!--                                            <h3 class="fw-bolder mb-1" style="padding-bottom: 15px;">Loan</h3>-->
                                 <!--                                            <a data-bs-toggle="modal" style="width:100%;" data-bs-target="#addNewLoan"-->
-                                <!--                                               class="btn btn-primary waves-effect waves-float waves-light">Apply-->
+                                <!--                                               class="btn btn-primary bg-primary waves-effect waves-float waves-light">Apply-->
                                 <!--                                                Now</a>-->
                                 <!--                                        </div>-->
                                 <!--                                    </div>-->
@@ -496,7 +496,7 @@
                                             <h6>Time</h6>
                                             <h3 class="fw-bolder mb-1" style="padding-bottom: 15px;">Adjustment</h3>
                                             <a data-bs-toggle="modal" style="width:100%;" data-bs-target="#timeAdj"
-                                                class="btn btn-primary waves-effect waves-float waves-light">Apply
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light">Apply
                                                 Now</a>
                                         </div>
                                     </div>
@@ -650,7 +650,7 @@
                                             <div data-v-step="7">
                                                 <div class="card-body pb-50 text-center">
                                                     <a data-bs-toggle="modal" data-bs-target="#timeAdj"
-                                                        class="p-2 btn btn-sm btn-primary bg-primary waves-effect waves-float waves-light d-flex align-items-center justify-content-center w-100">
+                                                        class="p-2 btn btn-sm btn-primary bg-primary bg-primary waves-effect waves-float waves-light d-flex align-items-center justify-content-center w-100">
                                                         <img class="px-2" src="/images/vector.png" alt="Absent">
                                                         Adjustment
                                                     </a>
@@ -660,7 +660,7 @@
                                             <div data-v-step="7">
                                                 <div class="card-body pb-50 text-center">
                                                     <a data-bs-toggle="modal" data-bs-target="#markAttendance"
-                                                        class="p-2 btn btn-sm btn-primary bg-primary waves-effect waves-float waves-light d-flex align-items-center justify-content-center w-100">
+                                                        class="p-2 btn btn-sm btn-primary bg-primary bg-primary waves-effect waves-float waves-light d-flex align-items-center justify-content-center w-100">
                                                         <img class="px-2" src="/images/mark_attendance.png"
                                                             alt="Absent">
                                                         Mark Attendance
@@ -673,7 +673,7 @@
                                     <!-- <div class="col-lg-6 card-header border-bottom top-radius">
                                         <div class="">
                                         <button
-                                                class="btn btn-primary d-flex align-items-center justify-content-center px-4 py-2 rounded-3 shadow position-relative"
+                                                class="btn btn-primary bg-primary d-flex align-items-center justify-content-center px-4 py-2 rounded-3 shadow position-relative"
                                                 style="width: 150px;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-cloud-upload" viewBox="0 0 16 16">
@@ -685,7 +685,7 @@
                                                 <span class="flex-grow-1 text-center">Apply</span>
                                             </button>
                                             <button
-                                                class="btn btn-primary d-flex align-items-center justify-content-center px-4 py-2 rounded-3 shadow position-relative"
+                                                class="btn btn-primary bg-primary d-flex align-items-center justify-content-center px-4 py-2 rounded-3 shadow position-relative"
                                                 style="width: 150px;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-cloud-upload" viewBox="0 0 16 16">
@@ -719,7 +719,7 @@
                                                     <td class="td-right">
                                                         <label style="margin-left: -20px;">{{
                                                             dayname(attendance1.ATTDate)
-                                                            }}, {{ attendance1.ATTDate }} </label>
+                                                        }}, {{ attendance1.ATTDate }} </label>
                                                     </td>
                                                     <td class="text-center"
                                                         v-if="attendance1?.AttStatus == 'P' || attendance1.AttStatus == 'L'">
@@ -1401,7 +1401,7 @@
                                         </div>
                                         <span>4 are active</span>
                                         <div class="d-grid w-100 mt-2">
-                                            <button class="btn btn-primary" data-bs-target="#upgradePlanModal"
+                                            <button class="btn btn-primary bg-primary bg-primary" data-bs-target="#upgradePlanModal"
                                                 data-bs-toggle="modal">
                                                 Total Users
                                             </button>
@@ -1429,7 +1429,7 @@
                                         </div>
                                         <span>4 are active</span>
                                         <div class="d-grid w-100 mt-2">
-                                            <button class="btn btn-primary" data-bs-target="#upgradePlanModal"
+                                            <button class="btn btn-primary bg-primary bg-primary" data-bs-target="#upgradePlanModal"
                                                 data-bs-toggle="modal">
                                                 Total Modules
                                             </button>
@@ -1457,7 +1457,7 @@
                                         </div>
                                         <span>10 are active</span>
                                         <div class="d-grid w-100 mt-2">
-                                            <button class="btn btn-primary" data-bs-target="#upgradePlanModal"
+                                            <button class="btn btn-primary bg-primary" data-bs-target="#upgradePlanModal"
                                                 data-bs-toggle="modal">
                                                 Total Companies
                                             </button>
@@ -1968,7 +1968,7 @@
                                         </option>
                                     </select>
                                     <span style="color: #DB4437; font-size: 11px;" v-if="type == ''">{{ type_error
-                                    }}</span>
+                                        }}</span>
                                 </div>
                                 <div class="col-12 col-sm-12 mb-1">
                                     <label class="form-label" for="basicSelect">Number of days</label>
@@ -1993,7 +1993,7 @@
                                     <span style="color: #DB4437; font-size: 11px;">*</span>
                                     <input type="date" v-model="d_from" id="modalAddCardName" class="form-control" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="d_from == ''">{{ d_from_error
-                                    }}</span>
+                                        }}</span>
                                 </div>
                                 <div class="col-md-02" v-if="this.days == 'Multiple Days'">
                                     <label class="form-label" for="modalAddCardName">Date To<span
@@ -2006,7 +2006,7 @@
                                     <input type="text" v-model="reason" id="modalAddCardName" class="form-control"
                                         placeholder="Reason of leave" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="reason == ''">{{ reason_error
-                                    }}</span>
+                                        }}</span>
                                 </div>
                                 <div class="col-12 text-center" style="margin-top:6%">
                                     <button
@@ -2015,7 +2015,7 @@
                                         class="btn btn-danger me-1 mt-1">Apply
                                     </button>
                                     <button v-else type="submit" :disabled="disabled" @click="delay()"
-                                        class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal"
+                                        class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal"
                                         aria-label="Close">Apply
                                     </button>
                                     <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal"
@@ -2068,14 +2068,14 @@
                                     <multiselect style="margin-right: 10px;" @input="count_max_limit()" v-model="type1"
                                         :show-labels="false" placeholder="Select" :options="options4"></multiselect>
                                     <span style="color: #DB4437; font-size: 11px;" v-if="type1 == ''">{{ type_error1
-                                    }}</span>
+                                        }}</span>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label class="form-label">Amount<span
                                             style="color: #DB4437; font-size: 11px;">*</span></label>
                                     <input type="number" class="form-control" v-model="amount" placeholder="Amount" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="amount == ''">{{ amount_error
-                                    }}</span>
+                                        }}</span>
                                     <span style="color: #DB4437; font-size: 11px;" v-if="amount > max_advance">Ammount
                                         is too much</span>
                                 </div>
@@ -2115,7 +2115,7 @@
                                     <input type="text" class="form-control" v-model="reason"
                                         placeholder="Type reason here" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="reason == ''">{{ reason_error
-                                    }}</span>
+                                        }}</span>
                                 </div>
                                 <div class="col-12 text-center">
                                     <button
@@ -2124,7 +2124,7 @@
                                         Apply
                                     </button>
                                     <button v-else :disabled="disabled" @click="delay1()" type="submit"
-                                        class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Apply
+                                        class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Apply
                                     </button>
                                     <button type="reset" class="btn btn-outline-secondary mt-2" data-bs-dismiss="modal"
                                         aria-label="Close">
@@ -2160,7 +2160,7 @@
                                         style="color: #DB4437; font-size: 11px;">*</span>
                                     <input type="time" class="form-control" v-model="check_in" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="check_in == ''">{{ e_check_in
-                                    }}</span>
+                                        }}</span>
                                 </div>
                                 <div hidden class="col-12 col-md-3">
                                     <label class="form-label">Check out time</label>
@@ -2172,7 +2172,7 @@
                                 </div>
                                 <div class="col-12 text-center">
                                     <button :disabled="disabled1" @click="delay2()" type="submit"
-                                        class="btn btn-primary me-1 mt-2" data-bs-dismiss="modal"
+                                        class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal"
                                         aria-label="Close">Mark
                                         Attendance
                                     </button>
@@ -2249,7 +2249,7 @@
                                 <label class="form-label">Adjust Hours:</label>
                                 <input type="number" class="form-control" v-model="Hours" placeholder="Enter hours" />
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Hours == ''">{{ Hours_error
-                                }}</span>
+                                    }}</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Hours > 23">Houres cannot more
                                     then 23</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Hours < 0">Houres cannot less
@@ -2261,7 +2261,7 @@
                                     placeholder="Enter minuts" />
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Minutes == ''">{{
                                     Minutes_error
-                                    }}</span>
+                                }}</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Minutes > 59">Minutes cannot
                                     more then 59</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Minutes < 0">Minutes cannot
@@ -2273,16 +2273,16 @@
                                 <input type="text" class="form-control" v-model="Reason"
                                     placeholder="Enter reason here" />
                                 <span style="color: #DB4437; font-size: 11px;" v-if="Reason == ''">{{ Reason_error
-                                }}</span>
+                                    }}</span>
                             </div>
                             <div class="col-12 text-center">
                                 <button :disabled="disabled3" @click="delay3()" type="submit"
-                                    class="btn btn-primary me-1 mt-2"
+                                    class="btn btn-primary bg-primary me-1 mt-2"
                                     v-if="att_date == '' || AdjustFor == '' || Hours == '' || Minutes == '' || parseInt(Hours) > 24 || parseInt(Minutes) > 59 || parseInt(Hours) < 0 || parseInt(Minutes) < 0 || Reason == ''"
                                     aria-label="Close">Apply
                                 </button>
                                 <button :disabled="disabled3" @click="delay3()" type="submit"
-                                    class="btn btn-primary me-1 mt-2" v-else data-bs-dismiss="modal"
+                                    class="btn btn-primary bg-primary me-1 mt-2" v-else data-bs-dismiss="modal"
                                     aria-label="Close">Apply
                                 </button>
                                 <button type="reset" class="btn btn-outline-secondary mt-2" data-bs-dismiss="modal"
@@ -2565,7 +2565,13 @@ export default {
             casual_total: '',
             casual_rem: '',
             other_total: '',
-            other_used:'',
+            other_used: '',
+            arrival_time: '',
+            departure_time: '',
+            series1: [],
+            series2: [],
+            series3: [],
+            series4: [],
             // series1: [
             //     {
             //     },

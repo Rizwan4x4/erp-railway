@@ -57,7 +57,7 @@
                                     </span>
                                 </a>
                             </div>
-   
+
  <!--Start Stock Assets Detail Report  -->
  <div class="modal fade" id="InventoryAssetsDetail" aria-labelledby="InventoryAssetsDetail" tabindex="-1" style="display: none" aria-hidden="true">
             <div v-if="inventory_assets == ''" class="modal-dialog modal-dialog-centered">
@@ -83,10 +83,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="assets_detail_report()">
+                        <button class="btn btn-primary bg-primary" @click="assets_detail_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">
                             Close
                         </button>
                     </div>
@@ -182,7 +182,7 @@
                     </div>
                 </div>
             </div>
- </div>                           
+ </div>
  <!--End Stock Assets Detail Report  -->
 <!--Start Consolidated Stock Detail Repor -->
 <div class="modal fade" id="ConsolidatedstockDeatilsToggle" aria-labelledby="ConsolidatedstockDeatilsToggle" tabindex="-1" style="display: none" aria-hidden="true">
@@ -209,10 +209,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="consolidatestockDetails_Summary()">
+                        <button class="btn btn-primary bg-primary" @click="consolidatestockDetails_Summary()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">
                             Close
                         </button>
                     </div>
@@ -366,10 +366,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="consumption_report()">
+                        <button class="btn btn-primary bg-primary" @click="consumption_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -448,7 +448,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'consumption_id')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateConsumptionAnalysisReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="consumption_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="consumption_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -478,10 +478,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="averagerate_report()">
+                        <button class="btn btn-primary bg-primary" @click="averagerate_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -550,7 +550,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'averagerate_id')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateAverageRateReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="averagerate_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="averagerate_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -582,10 +582,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="itemList_Summary()">
+                        <button class="btn btn-primary bg-primary" @click="itemList_Summary()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">
                             Close
                         </button>
                     </div>
@@ -729,10 +729,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="ageing_report()">
+                        <button class="btn btn-primary bg-primary" @click="ageing_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -810,7 +810,7 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'Stock_ageing_id')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateStockAgeingReport()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="ageing_report1()">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="ageing_report1()">close</button>
                     </div>
                 </div>
             </div>
@@ -842,10 +842,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="stockDetails_Summary()">
+                        <button class="btn btn-primary bg-primary" @click="stockDetails_Summary()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">
                             Close
                         </button>
                     </div>
@@ -1004,10 +1004,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" @click="receipt_report()">
+                        <button class="btn btn-primary bg-primary" @click="receipt_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">
                             Close
                         </button>
                     </div>
@@ -1309,13 +1309,13 @@
                     <div class="modal-footer">
                         <button type="button" @click="html_table_to_excel('xlsx', 'asset_list')" class="btn btn-gradient-info">Excel</button>
                         <button type="button" @click="generateAssetAssignList()" class="btn btn-gradient-info">Pdf</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">close</button>
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">close</button>
                     </div>
                 </div>
             </div>
         </div>
 <!-- Start Asset Assignment Report -->
-  
+
 
 </div>
 </template>
@@ -1340,7 +1340,7 @@ export default{
   },
   components: {
         Multiselect,VueHtml2pdf
-      
+
     },
     name: "reported",
 
@@ -1401,7 +1401,7 @@ export default{
     },
     watch: {
         start_date(after, before) {
-            this.newdata(); 
+            this.newdata();
         },
 
     },
@@ -1446,7 +1446,7 @@ export default{
             this.inventory_assets = ''
             this.inenvoty_unique_assetid = 'All'
         },
-        
+
         generateInventoryAssetsDetailsReport() {
             this.$refs.inventoryassetpdf.generatePdf();
         },
@@ -1473,12 +1473,12 @@ this.category_filter = 'All'
 generateConsolidateStockDetailsReport() {
             this.$refs.consolidatepdf.generatePdf();
         },
- 
+
         consumption_report() {
             const validation = this.$helpers.validateDateRange(this.consumption_start_date, this.consumption_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-      
+
                 if (this.consumption_start_date == '') {
                     this.e_consumption_start_date = "Please Select Start Date";
                 }
@@ -1511,12 +1511,12 @@ generateConsolidateStockDetailsReport() {
 
                 })
         },
-        
+
         averagerate_report1() {
             this.average_rate_report = '',
                 this.average_item = 'All'
         },
-           
+
         generateAverageRateReport() {
             this.$refs.averagepdf.generatePdf();
         },
@@ -1543,7 +1543,7 @@ generateConsolidateStockDetailsReport() {
             const validation = this.$helpers.validateDateRange(this.ageing_start_date, this.ageing_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-      
+
                 if (this.ageing_start_date == '') {
                     this.e_ageing_start_date = "Please Select Start Date";
                 }
@@ -1589,7 +1589,7 @@ generateConsolidateStockDetailsReport() {
             const validation = this.$helpers.validateDateRange(this.receipt_start_date, this.receipt_end_date);
             if (!validation.isValid) {
       this.$toastr.e(validation.error, "Caution!");
-       
+
                 if (this.receipt_start_date == '') {
                     this.e_receipt_start_date = "Please Select Start Date";
                 }
@@ -1693,7 +1693,7 @@ generateInventoryReceiptReport() {
             for (var i = 0; i < $this.proj_details.length; i++) {
                 this.optionsproj.push($this.proj_details[i].ProjectName);
             }
-          
+
         })
 
 
@@ -1701,10 +1701,10 @@ generateInventoryReceiptReport() {
             this.currency = response.data[0].Currency;
         })
     }
-    
+
 
 }
-</script> 
+</script>
 <style scoped>
 .ng-star-inserted>a {
     cursor: pointer;

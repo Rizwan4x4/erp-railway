@@ -245,7 +245,7 @@
                                 </form>
                                 <div class="col-12" style="text-align:center">
                                     <button :disabled="disabled" @click="submit_employee()" type="button"
-                                        class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Add
+                                        class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">Add
                                         employee
                                     </button>
                                 </div>

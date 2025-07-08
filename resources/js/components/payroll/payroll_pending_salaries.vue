@@ -19,8 +19,8 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="alert alert-primary" style="padding-top:0px;padding-bottom:0px" role="alert">
-                                <div class="alert-body" style="min-height: 55px;margin-bottom: 10px;">
+                            <div class="alert alert-primary border-0 top-radius bottom-radius p-3" style="padding-top:0px;padding-bottom:0px" role="alert">
+                                <div class="alert-body" style="min-height: 55px;">
                                     <ul class="nav nav-pills mb-2">
                                         <li class="nav-item">
                                             <router-link to="/payroll/salary_generation" class="nav-link">
@@ -57,8 +57,8 @@
                     </div>
                     <div class="row" id="basic-table">
                         <div class="col-sm-12 col-lg-12 ps-xl-75 ps-0">
-                            <div class="card">
-                                <div class="row" style="margin-top:2px">
+                            <div class="card border-0 top-radius bottom-radius">
+                                <div class="row p-3">
                                     <div class="col-md-4 col-12 mb-2">
                                         <h5 style="padding-left:10px;padding-top:10px">Current Session: {{session_name}}</h5>
                                     </div>
@@ -69,10 +69,10 @@
                                     <div class="col-md-1 col-12 mb-2" style="margin-top:8px">
                                         <button @click="getResults()" class="btn btn-secondary">Search</button>
                                     </div>
-                                    <div class="col-md-1 col-12 mb-2">
-                                    </div>
-                                    <div class="col-md-2 col-12 mb-2" style="margin-top:8px;">
-                                        <a v-if="hasPermission('Payroll Download Salary Slip') " data-bs-target="#payloan2" data-bs-toggle="modal" class="btn btn-primary"><i class="fa-solid fa-download"></i> Download Slip<span></span></a>
+                                    <!-- <div class="col-md-1 col-12 mb-2">
+                                    </div> -->
+                                    <div class="col-md-3 col-12 mb-2" style="margin-top:8px;">
+                                        <a v-if="hasPermission('Payroll Download Salary Slip') " data-bs-target="#payloan2" data-bs-toggle="modal" class="btn btn-primary bg-primary"><i class="fa-solid fa-download"></i> Download Slip<span></span></a>
                                     </div>
                                 </div>
                                 <div class="table-responsive" style="overflow-x: initial !important;">
@@ -186,7 +186,7 @@
                                     <div class="text-center mb-2">
                                             <div class="col-12 text-center">
                                                 <a v-if="emp_sal_code=='' || emp_sal_code==null" class="btn btn-danger me-1 mt-2">Download Slip</a>
-                                                <a v-else class="btn btn-primary me-1 mt-2" target="_blank" v-bind:href="`../${url_s1[3]}/generate_slip1/${emp_sal_empid}/${emp_sal_distid}/${emp_sal_code.id}/${session_name1}`">Download Slip</a>
+                                                <a v-else class="btn btn-primary bg-primary me-1 mt-2" target="_blank" v-bind:href="`../${url_s1[3]}/generate_slip1/${emp_sal_empid}/${emp_sal_distid}/${emp_sal_code.id}/${session_name1}`">Download Slip</a>
                                             </div>
                                     </div>
                                 </div>
@@ -434,7 +434,7 @@
                                             <input v-model="bank_amount" type="number" class="form-control" />
                                         </div>
                                         <div class="col-12 text-center">
-                                            <button v-if="(Number(cash_amount) > 0 || Number(bank_amount) > 0) && ((Number(cash_amount) + Number(bank_amount)) <= Number(emp_payable))" type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Pay Salary</button>
+                                            <button v-if="(Number(cash_amount) > 0 || Number(bank_amount) > 0) && ((Number(cash_amount) + Number(bank_amount)) <= Number(emp_payable))" type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Pay Salary</button>
                                             <button v-else type="submit" :disabled="disabled1" class="btn btn-danger me-1 mt-1">Pay Salary</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                                         </div>

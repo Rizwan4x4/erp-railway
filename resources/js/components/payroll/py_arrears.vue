@@ -117,7 +117,7 @@
                                         <h1 class="fw-bolder">Confirmation</h1>
                                         <h5>Do you want to delete the arrears?</h5>
                                         <div class="text-center">
-                                            <button :disabled="disabled3" type="button" @click="delay3()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
+                                            <button :disabled="disabled3" type="button" @click="delay3()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">No</button>
                                         </div>
                                     </div>
@@ -136,7 +136,7 @@
                                         <h1 class="fw-bolder">Confirmation</h1>
                                         <h5>Are you want to approve the arrears of selected employee?</h5>
                                         <div class="text-center" style="text-align:center">
-                                            <button type="button" :disabled="disabled" @click="delay2()" class="btn btn-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
+                                            <button type="button" :disabled="disabled" @click="delay2()" class="btn btn-primary bg-primary waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">No</button>
                                         </div>
                                     </div>
@@ -180,7 +180,7 @@
                                         </div>
                                         <div class="col-12 text-center">
                                             <button v-if="emp_emp_id == '' || emp_amount=='' || emp_date==''" type="submit" :disabled="disabled" @click="delay()" class="btn btn-danger">Apply Now</button>
-                                            <button v-else type="submit" :disabled="disabled" @click="delay()" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Apply Now</button>
+                                            <button v-else type="submit" :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Apply Now</button>
                                             <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>
@@ -227,7 +227,7 @@
                                 <input v-model="edit_description" type="text" class="form-control" />
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                <button type="submit" :disabled="disabled1" @click="delay1()" class="btn btn-primary bg-primary me-1 mt-1" data-bs-dismiss="modal" aria-label="Close">Update</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
                                     Cancel
                                 </button>

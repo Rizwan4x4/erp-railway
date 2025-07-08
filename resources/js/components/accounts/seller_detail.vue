@@ -117,7 +117,7 @@
                                 <span style="color: #db4437; font-size: 11px" v-if="c_mobile == ''">{{ e_c_mobile }}</span>
                             </div>
                             <div class="col-12" style="text-align:center">
-                                <button :disabled="disabled" @click="delay()" type="button" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Save Seller</button>
+                                <button :disabled="disabled" @click="delay()" type="button" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light">Save Seller</button>
                             </div>
                         </form>
                     </div>

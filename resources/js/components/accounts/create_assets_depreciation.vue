@@ -23,7 +23,7 @@
                             <div style="margin-bottom:20px;padding-top:20px" class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                                 <div class="col-sm-5 col-lg-5 ps-xl-75 ps-0">
                                     <div class="dt-buttons d-inline-flex mt-50" style="min-width: 50px !important;">
-                                        <router-link style="float:left" to="/Accounts/assets_book" class="btn btn-primary waves-effect">Assets Book</router-link>
+                                        <router-link style="float:left" to="/Accounts/assets_book" class="btn btn-primary bg-primary waves-effect">Assets Book</router-link>
                                     </div>
                                 </div>
                                 <div class="col-sm-7 col-lg-7 ps-xl-75 ps-0">
@@ -38,7 +38,7 @@
                                         </div>
                                         <!-- <div class="invoice_status ms-sm-2" >
 
-                                            <button style="float:left" @click="delay1()"  class="btn btn-primary waves-effect">Proceed</button>
+                                            <button style="float:left" @click="delay1()"  class="btn btn-primary bg-primary waves-effect">Proceed</button>
                                             </div> -->
 
                                     </div>
@@ -148,7 +148,7 @@
 
                             </div>
                             <div class="col-12" style="text-align: center">
-                                <button :disabled="disabled" @click="delay1()" type="button" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Proceed Depreciation</button>
+                                <button :disabled="disabled" @click="delay1()" type="button" class="btn btn-primary bg-primary mt-1 me-1 waves-effect waves-float waves-light" data-bs-dismiss="modal" aria-label="Close">Proceed Depreciation</button>
                                 <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">Close</button>
                             </div>
                         </form>

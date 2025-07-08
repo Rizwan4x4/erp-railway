@@ -146,7 +146,7 @@
                                                 </div>
                                                 <div v-if="p_agnst!='mis'" class="row mt-1">
                                                     <div class="col-12 px-0">
-                                                        <div data-repeater-create="" class="btn btn-primary btn-sm btn-add-new" v-on:click="add_xz_repeater();">
+                                                        <div data-repeater-create="" class="btn btn-primary bg-primary btn-sm btn-add-new" v-on:click="add_xz_repeater();">
                                                             <i data-feather="plus" class="me-25"></i>
                                                             <span class="align-middle">Add Item</span>
                                                         </div>
@@ -203,7 +203,7 @@
                             <div class="col-xl-3 col-md-4 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <button class="btn btn-primary w-100 mb-75" :disabled="disabled" @click="delay()">Post Voucher</button>
+                                        <button class="btn btn-primary bg-primary w-100 mb-75" :disabled="disabled" @click="delay()">Post Voucher</button>
                                     </div>
                                 </div>
                                 <table v-if="ledger_d_detail.length>0">

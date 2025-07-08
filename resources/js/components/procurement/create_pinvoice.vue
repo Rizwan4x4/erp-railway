@@ -229,7 +229,7 @@ get_po_detail11.ItemName
                             <div class="col-xl-3 col-md-4 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <button :disabled="disabled" @click="delay()" class="btn btn-primary w-100 mb-75">Post Invoice</button>
+                                        <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary w-100 mb-75">Post Invoice</button>
                                     </div>
                                 </div>
 

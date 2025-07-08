@@ -70,7 +70,7 @@
                                         <button v-if="hasPermission('HRMS Attendance Employees-Overtime Approve overtime')"
                                             @click="delay()"
                                             style="margin-top: 30px"
-                                            class="btn btn-primary"
+                                            class="btn btn-primary bg-primary"
                                         >
                                             Approve Overtime
                                         </button>

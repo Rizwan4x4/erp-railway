@@ -267,7 +267,7 @@
                                         <!-- Invoice Description ends -->
                                         <hr class="invoice-spacing">
                                         <div class="col-12 text-center mt-2 pt-50">
-                                            <button :disabled="disabled2" @click="delay2()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                            <button :disabled="disabled2" @click="delay2()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                             <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                                                 Cancle
                                             </button>
@@ -404,7 +404,7 @@
                                         <!-- Invoice Description ends -->
                                         <hr class="invoice-spacing">
                                         <div class="col-12 text-center mt-2 pt-50">
-                                            <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary me-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+                                            <button :disabled="disabled1" @click="delay1()" type="submit" class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal" aria-label="Close">Submit</button>
                                             <button type="reset" class="btn btn-outline-secondary">
                                                 Cancle
                                             </button>
@@ -513,7 +513,7 @@
                                         </div>
                                         <br>
                                         <div class="text-center" style="text-align:center" v-for="clearanceId1 in clearanceId">
-                                            <button type="button" class="btn btn-primary waves-effect waves-float waves-light" @click="clearanceUpdate(clearanceId1.ChqID, cl_date)" data-bs-dismiss="modal" aria-label="Close">Yes</button>
+                                            <button type="button" class="btn btn-primary bg-primary waves-effect waves-float waves-light" @click="clearanceUpdate(clearanceId1.ChqID, cl_date)" data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect" data-bs-dismiss="modal" aria-label="Close">No</button>
                                         </div>
                                     </div>

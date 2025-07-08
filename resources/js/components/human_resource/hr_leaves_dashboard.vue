@@ -28,7 +28,7 @@
                                 <div class="col-md-8">
                                     <div class="demo-inline-spacing" style="margin-left: 20px !important;">
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#emp_leave_model"
-                                            class="btn btn-primary waves-effect">Assign Leaves</button>
+                                            class="btn btn-primary bg-primary waves-effect">Assign Leaves</button>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -253,7 +253,7 @@
                             </div>
                             <div class="col-12 text-center">
                                 <button data-bs-dismiss="modal" aria-label="Close" type="submit" :disabled="disabled1"
-                                    @click="delay1()" class="btn btn-primary me-1 mt-1">Submit
+                                    @click="delay1()" class="btn btn-primary bg-primary me-1 mt-1">Submit
                                 </button>
                                 <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal"
                                     aria-label="Close">

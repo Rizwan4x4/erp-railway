@@ -93,7 +93,7 @@
                                 </div> -->
                                 <div class="col-md-1 user_plan">
                                     <div style="height:27px; margin-top:3px;"></div>
-                                    <button class="dt-button add-new btn btn-primary bg-primary py-2 px-4 "
+                                    <button class="dt-button add-new btn btn-primary bg-primary  py-2 px-4 "
                                         @click="search_interview()">Search</button>
                                 </div>
 
@@ -153,7 +153,7 @@
                                                 <div>
                                                     <h6 class="mb-1">{{ interviews1.CandName }}</h6>
                                                     <small class="text-muted">Exp: {{ interviews1.experience
-                                                    }}</small>
+                                                        }}</small>
                                                 </div>
                                             </div>
                                             <div
@@ -182,7 +182,7 @@
                                                 </div>
                                                 <small class="text-muted align-self-center">{{
                                                     formatRelativeTime(interviews1.updatedOn)
-                                                }}</small>
+                                                    }}</small>
                                             </div>
                                         </div>
 
@@ -426,10 +426,10 @@
                                                     <div>
                                                         <h6 class="mb-1">{{ interviews1.CandName }}</h6>
                                                         <button type="button"
-                                                            class="btn btn-primary btn-sm bg-primary waves-effect waves-float waves-light"
+                                                            class="btn btn-primary bg-primary btn-sm bg-primary waves-effect waves-float waves-light"
                                                             v-if="interviews1.hire_sts == 1" style="font-size: 9px;"
                                                             id="clientNotes" data-bs-toggle="modal"
-                                                                    data-bs-target="#hireinterview">
+                                                            data-bs-target="#hireinterview">
                                                             Offer letter
                                                         </button>
                                                         <div class="form-check form-switch fs-7"
@@ -448,7 +448,8 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <div class="position-absolute" style="right: -60px !important; top: -3px !important">
+                                                    <div class="position-absolute"
+                                                        style="right: -60px !important; top: -3px !important">
                                                         <div class="btn-group">
                                                             <a class="btn btn-sm dropdown-toggle hide-arrow"
                                                                 data-bs-toggle="dropdown">
@@ -531,7 +532,7 @@
                                                         show-clear></b-form-rating>
                                                 </div>
                                                 <small class="text-muted">{{ formatRelativeTime(interviews1.updatedOn)
-                                                    }}</small>
+                                                }}</small>
                                             </div>
                                         </div>
                                     </td>
@@ -690,7 +691,7 @@
                                 </td>
                                 <td style="vertical-align: middle; text-align: center;">
                                     <button type="button"
-                                        class="btn btn-primary bg-primary btn-sm waves-effect waves-float waves-light"
+                                        class="btn btn-primary bg-primary bg-primary btn-sm waves-effect waves-float waves-light"
                                         v-if="interviews1.hire_sts == 1">Offer letter</button>
                                     <div class="form-check form-switch" v-if="interviews1.hire_sts != 1">
                                         <span v-if="interviews1.hire_sts == 1">
@@ -833,7 +834,7 @@
                                                 placeholder="00-00-0000" />
                                             <span style="color: #DB4437; font-size:11px;" v-if="i_date == ''">{{
                                                 date_error
-                                            }}</span>
+                                                }}</span>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="form-label" for="modalEditUserEmail">From</label>
@@ -841,7 +842,7 @@
                                                 placeholder="11:00 am" />
                                             <span style="color: #DB4437; font-size:11px;" v-if="i_from == ''">{{
                                                 time_error
-                                            }}</span>
+                                                }}</span>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="form-label" for="modalEditUserEmail">To</label>
@@ -850,8 +851,8 @@
                                         </div>
                                         <div class="col-12 text-center mt-2 pt-50">
                                             <button type="submit" @click="add_interview()"
-                                                class="btn btn-primary me-1">Schedule</button>
-                                            <button type="reset" class="btn btn-outline-secondary"
+                                                class="btn btn-primary bg-primary me-1">Schedule</button>
+                                            <button type="button" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
                                                 Cancel
                                             </button>
@@ -870,6 +871,7 @@
                                 <div class="modal-header bg-transparent">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
+                                    -
                                 </div>
                                 <div class="modal-body pb-5 px-sm-5 pt-50">
                                     <div class="text-center mb-2">
@@ -909,8 +911,8 @@
                                         </div>
                                         <div class="col-12 text-center mt-2 pt-50">
                                             <button type="submit" @click="schedule_interview()"
-                                                class="btn btn-primary me-1">Confirm</button>
-                                            <button type="reset" class="btn btn-outline-secondary"
+                                                class="btn btn-primary bg-primary me-1">Confirm</button>
+                                            <button type="button" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
                                                 Cancle
                                             </button>
@@ -1152,7 +1154,7 @@
                                         </div>
                                         <div class="col-12 text-center mt-2 pt-50">
                                             <button type="submit" @click="schedule_interview()"
-                                                class="btn btn-primary me-1">Confirm</button>
+                                                class="btn btn-primary bg-primary me-1">Confirm</button>
                                             <button type="reset" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
                                                 Cancle
@@ -1242,7 +1244,7 @@
                                         </div>
                                         <div class="col-12 text-center mt-2 pt-50">
                                             <button :disabled="disabled" @click="delay()" type="submit"
-                                                class="btn btn-primary me-1">Update</button>
+                                                class="btn btn-primary bg-primary me-1">Update</button>
                                             <button type="reset" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
                                                 Cancle
@@ -1265,7 +1267,7 @@
                                 <div class="modal-body pb-5 px-sm-5 pt-50">
                                     <div class="text-center mb-2">
                                         <h1 class="mb-1">Change status of <strong>{{ this.ed_i_c_name
-                                        }}</strong>'s
+                                                }}</strong>'s
                                             interview</h1>
                                         <select class="form-select mb-md-0 mb-2" v-model="hire_sts">
                                             <option value="1" selected>Hired</option>
@@ -1274,7 +1276,7 @@
 
                                         <div class="text-center" style="text-align:center">
                                             <button type="button"
-                                                class="btn btn-primary waves-effect waves-float waves-light"
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                                 @click="interview_hr1()" data-bs-dismiss="modal"
                                                 aria-label="Close">Update</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect"
@@ -1312,7 +1314,7 @@
                                         </div>
                                         <div class="text-center" style="text-align:center">
                                             <button :disabled="disabled1" @click="delay1()" type="button"
-                                                class="btn btn-primary waves-effect waves-float waves-light"
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light"
                                                 data-bs-dismiss="modal" aria-label="Close">Yes</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect"
                                                 data-bs-dismiss="modal" aria-label="Close">No</button>
@@ -1440,7 +1442,6 @@ export default {
     methods: {
         openFirstScheduledModal(interviews1) {
             let status = interviews1.firstInterviewstatus;
-            console.log(status, " fbsdfvbdsuhvb");
 
             if (status === 'Not scheduled') {
                 this.fetch_interview_detail(interviews1.InterviewID, 'firstns');
@@ -1599,6 +1600,7 @@ export default {
                 .catch(error => this.error = error.response.data.errors)
         },
         fetch_interview_detail(id, ok) {
+            this.resetInterviewData();
             this.id2 = id;
             this.which = ok;
             //start
@@ -1616,7 +1618,6 @@ export default {
                     this.com1 = responce.data[0].firstInterviewComments;
                     this.com2 = responce.data[0].secondInterviewComments;
                     this.com3 = responce.data[0].finalInterviewComments;
-
                     this.hire_sts = responce.data[0].hire_sts;
                     this.ratings = responce.data[0].rating;
                     this.Status1 = responce.data[0].firstInterviewstatus;
@@ -1640,6 +1641,29 @@ export default {
                     }
                 })
                 .catch(error => { });
+        },
+        resetInterviewData() {
+            this.interviewData = {
+                InterviewID: null,
+                CandName: '',
+                PostTitle: '',
+                InterviewerName: '',
+                InterviewLocation: '',
+                StartTime: '',
+                EndTime: '',
+                DayDate: '',
+                hire_sts: '',
+                rating: '',
+                firstInterviewComments: '',
+                secondInterviewComments: '',
+                finalInterviewComments: '',
+                firstInterviewstatus: '',
+                secondInterviewstatus: '',
+                finalInterviewstatus: ''
+            };
+            this.assesment_name = '';
+            this.up_sts = '';
+            this.ed_i_comment = '';
         },
         interview_hr() {
             if (this.exp_salary == '') {
@@ -1738,10 +1762,11 @@ export default {
                                 this.ed_i_date = '';
                                 this.ed_i_from = '';
                                 this.ed_i_to = '';
+                                this.getInterviews();
                                 // this.fetchInterviews();
-                                axios.get('interview_detail2')
-                                    .then(data => this.interviews = data.data)
-                                    .catch(error => { })
+                                // axios.get('interview_detail2')
+                                //     .then(data => this.interviews = data.data)
+                                //     .catch(error => { })
                             }
                         })
                 }
@@ -1777,7 +1802,8 @@ export default {
                             this.ed_i_date = '';
                             this.ed_i_from = '';
                             this.ed_i_to = '';
-                            this.fetchInterviews();
+                            // this.fetchInterviews();
+                            this.getInterviews();
                             // axios.get('interview_detail2')
                             //     .then(data => this.interviews = data.data)
                             //     .catch(error => { })
@@ -1789,19 +1815,16 @@ export default {
         fetchInterviews() {
             axios.get('interview_detail2')
                 .then(response => {
-                    this.interviews = response.data;  // Vue reactivity se UI update ho jayega
-                    console.log("bdcihsdbvcuhdsbvhdbsjvhbsdjhvbdsjhvbdsjb");
-
+                    this.interviews = response.data;
                 })
                 .catch(error => {
                     console.error('Error fetching interviews:', error);
-                    // Aap yahan user ko error message bhi de sakte hain agar chahein
+                    this.$toastr.e("Failed to fetch interviews", "Error!");
                 });
         },
         getInterviews(page = 1) {
             axios.get(`interview_detail2?page=${page}`)
                 .then(response => {
-                    console.log(response.data, "interview data");
                     this.interviews = response.data.data;
                     this.pagination = {
                         current_page: response.data.current_page,
@@ -1810,7 +1833,6 @@ export default {
                     };
                 });
         }
-
     },
     mounted() {
         this.getInterviews();

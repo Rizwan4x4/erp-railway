@@ -108,7 +108,7 @@
                                         <div class="row">
                                             <div class="col-md-4"></div>
                                             <div class="col-md-3" style="text-align: right; vertical-align:bottom !important;">
-                                                <button class="btn btn-primary" @click="sum_total()" style="margin-top:21px;">Calculate Total</button>
+                                                <button class="btn btn-primary bg-primary" @click="sum_total()" style="margin-top:21px;">Calculate Total</button>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
@@ -200,7 +200,7 @@
                                         </div>
                                         <div class="row mt-1">
                                             <div class="col-12 px-0">
-                                                <div data-repeater-create="" class="btn btn-primary btn-sm btn-add-new" v-on:click="add_xz_repeater();">
+                                                <div data-repeater-create="" class="btn btn-primary bg-primary btn-sm btn-add-new" v-on:click="add_xz_repeater();">
                                                     <span class="align-middle">+ Add Item</span>
                                                 </div>
                                             </div>
@@ -231,14 +231,14 @@
                             <div class="col-xl-2 col-md-4 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <button :disabled="disabled" @click="delay()" class="btn btn-primary w-100 mb-75">
+                                        <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary w-100 mb-75">
                                             <span v-if="this.disabled === false">Post Demand</span>
                                             <span v-else>
                                                 <div class="spinner-border text-secondary" role="status">
                                               <span class="sr-only">Loading...</span>
                                             </div></span>
                                         </button>
-<!--                                        <button :disabled="disabled" @click="delay()" class="btn btn-primary w-100 mb-75">Post Demand</button>-->
+<!--                                        <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary w-100 mb-75">Post Demand</button>-->
                                     </div>
                                 </div>
                             </div>

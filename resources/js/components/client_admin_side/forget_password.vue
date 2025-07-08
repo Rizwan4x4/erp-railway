@@ -53,7 +53,7 @@
                                         <label class="form-label" for="forgot-password-email">Email</label>
                                         <input class="form-control" id="forgot-password-email" type="text" name="forgot-password-email" placeholder="john@example.com" aria-describedby="forgot-password-email" autofocus="" tabindex="1" />
                                     </div>
-                                    <button class="btn btn-primary w-100" tabindex="2">Send reset link</button>
+                                    <button class="btn btn-primary bg-primary w-100" tabindex="2">Send reset link</button>
                                 </form>
                                 <p class="text-center mt-2"><a href="auth-login-cover.html"><i data-feather="chevron-left"></i> Back to login</a></p>
                             </div>

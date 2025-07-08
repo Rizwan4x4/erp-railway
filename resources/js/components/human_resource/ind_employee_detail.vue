@@ -199,7 +199,7 @@
                                                             class="btn btn-outline-primary suspend-user me-1">Register
                                                         </button>
                                                         <button v-else-if="emp_detail1.Status == 'Registered'"
-                                                            class="btn btn-primary suspend-user me-1">Registered
+                                                            class="btn btn-primary bg-primary suspend-user me-1">Registered
                                                         </button>
 
                                                         <button :disabled="disabled"
@@ -248,12 +248,12 @@
                                                         v-if="percent.address + percent.city + percent.cnic + percent.company_email + percent.department + percent.designation + percent.dob + percent.edu_status + percent.email + percent.emp_code + percent.exp_status + percent.father + percent.gender + percent.job_des + percent.marital + percent.mobile + percent.photo + percent.reporting > 89"
                                                         target="_blank"
                                                         v-bind:href="`${url}/cv_builder/${emp_detail1.EmployeeID}/${emp_detail1.EmployeeCode}/${emp_detail1.RegisterID}`"
-                                                        class="btn btn-primary btn-sm edit-address waves-effect waves-float waves-light">
+                                                        class="btn btn-primary bg-primary btn-sm edit-address waves-effect waves-float waves-light">
                                                         Build CV
                                                     </a>
                                                     <a v-else target="_blank"
                                                         title="Please complete employee Profile upto 90%" href="#"
-                                                        class="btn btn-primary btn-sm edit-address waves-effect waves-float waves-light">
+                                                        class="btn btn-primary bg-primary btn-sm edit-address waves-effect waves-float waves-light">
                                                         CV Builder
                                                     </a>
                                                 </div>
@@ -724,7 +724,7 @@
                                                             class="btn btn-outline-primary suspend-user me-1">Register
                                                         </button>
                                                         <button v-else-if="emp_detail1.Status == 'Registered'"
-                                                            class="btn btn-primary suspend-user me-1">Registered
+                                                            class="btn btn-primary bg-primary suspend-user me-1">Registered
                                                         </button>
 
                                                         <button :disabled="disabled"
@@ -1085,7 +1085,7 @@
                                                             class="btn btn-outline-primary suspend-user me-1">Register
                                                         </button>
                                                         <button v-else-if="emp_detail1.Status == 'Registered'"
-                                                            class="btn btn-primary suspend-user me-1">Registered
+                                                            class="btn btn-primary bg-primary suspend-user me-1">Registered
                                                         </button>
 
                                                         <button :disabled="disabled"
@@ -1421,7 +1421,7 @@
                                                             class="btn btn-outline-primary suspend-user me-1">Register
                                                         </button>
                                                         <button v-else-if="emp_detail1.Status == 'Registered'"
-                                                            class="btn btn-primary suspend-user me-1">Registered
+                                                            class="btn btn-primary bg-primary suspend-user me-1">Registered
                                                         </button>
 
                                                         <button :disabled="disabled"

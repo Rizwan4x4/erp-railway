@@ -90,7 +90,7 @@
                                             </li>
                                         </ul>
                                         <div class="d-flex justify-content-center pt-2">
-                                            <a href="javascript:;" class="btn btn-primary me-1" data-bs-target="#editUser" data-bs-toggle="modal">
+                                            <a href="javascript:;" class="btn btn-primary bg-primary me-1" data-bs-target="#editUser" data-bs-toggle="modal">
                                               Warning
                                             </a>
                                             <a href="javascript:;" class="btn btn-outline-danger suspend-user">Suspend</a>
