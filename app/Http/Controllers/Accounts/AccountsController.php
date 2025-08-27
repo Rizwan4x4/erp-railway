@@ -4864,156 +4864,235 @@ class AccountsController extends Controller
         return request()->json(200, $cus);
     }
 
-    public
-    function count_stock()
-    {
+    // old...........
+    // public function count_stock()
+    // {
 
+    //     date_default_timezone_set("Asia/Karachi");
+    //     $today = long_date();
+    //     $total_products = DB::connection('sqlsrv3')->table('ItemList')->where('CompanyID', '=', company_id())->count();
+    //     $stock_in0 = DB::connection('sqlsrv3')->table('Inventory')->where('CompanyID', '=', company_id())->get();
+    //     $stock_in = 0;
+    //     $stock_out = 0;
+    //     foreach ($stock_in0 as $stock) {
+    //         $type = $stock->Type;
+    //         if ($type % 2 != 0) {
+    //             $stock_in = $stock_in + $stock->Quantity;
+    //         } else if ($type % 2 == 0) {
+    //             $stock_out = $stock_out + $stock->Quantity;
+    //         }
+    //     }
+    //     $available_stock = $stock_in - $stock_out;
+    //     $expired_items = DB::connection('sqlsrv3')->table('Inventory')->where('ItemExpiry', '<=', $today)->distinct('ItemID')->where('CompanyID', '=', company_id())->count();
+    //     //--------Stock value--------//
+    //     $value = DB::connection('sqlsrv3')->table('Inventory')->where('CompanyID', '=', company_id())->distinct('ItemID')->select('ItemID')->orderBy('ItemID', 'desc')->get();
+    //     $stock_value = 0;
+    //     foreach ($value as $value1) {
+    //         $id1 = $value1->ItemID;
+    //         $this_prod_cost = 0;
+    //         $this_prod_items = 0;
+    //         $this_avg_price = 0;
+    //         $this_in = 0;
+    //         $this_out = 0;
+    //         $value_in = 0;
+    //         $products = DB::connection('sqlsrv3')->table('Inventory')->where('ItemID', '=', $id1)->where('CompanyID', '=', company_id())->get();
+    //         foreach ($products as $products1) {
+    //             $type = $products1->Type;
+    //             if ($type == 1) {
+    //                 $this_prod_cost = $this_prod_cost + ($products1->CostUnit * $products1->Quantity);
+    //                 $this_prod_items = $this_prod_items + $products1->Quantity;
+    //                 if ($this_prod_cost > 0) {
+    //                     $this_avg_price = $this_prod_cost / $this_prod_items;
+    //                 }
+    //             }
+    //             if ($type % 2 != 0) {
+    //                 $this_in = $this_in + $products1->Quantity;
+    //             } else if ($type % 2 == 0) {
+    //                 $this_out = $this_out + $products1->Quantity;
+    //             }
+    //             $value_in = ($this_in - $this_out) * $this_avg_price;
+    //         }
+    //         $stock_value = $stock_value + $value_in;
+    //     }
+    //     $stock_value = $stock_value;
+    //     $all_products = DB::connection('sqlsrv3')->table('Inventory')->distinct('ItemID')->select('ItemID')->orderBy('ItemID', 'asc')->where('CompanyID', '=', company_id())->get();
+    //     $available_products = 0;
+    //     foreach ($all_products as $all_products1) {
+    //         $id = $all_products1->ItemID;
+    //         $product_in0 = DB::connection('sqlsrv3')->table('Inventory')->where('ItemID', '=', $id)->where('CompanyID', '=', company_id())->get();
+    //         $product_in = 0;
+    //         $product_out = 0;
+    //         foreach ($product_in0 as $product_in1) {
+    //             $type = $product_in1->Type;
+    //             if ($type % 2 != 0) {
+    //                 $product_in = $product_in + $product_in1->Quantity;
+    //             } else if ($type % 2 == 0) {
+    //                 $product_out = $product_out + $product_in1->Quantity;
+    //             }
+    //         }
+    //         if ($product_in > $product_out) {
+    //             $available_products++;
+    //         }
+    //     }
+    //     $not_available = $total_products - $available_products;
+    //     $myJSON = array(
+    //         'total_products' => $total_products,
+    //         'available_products' => $available_products,
+    //         'not_available' => $not_available,
+    //         'available_stock' => number_format($available_stock),
+    //         'stock_value' => number_format($stock_value),
+    //         'expired_items' => $expired_items,
+    //     );
+    //     // dd($myJSON);
+    //     return request()->json(200, $myJSON);
+    // }
+
+    public function count_stock()
+    {
         date_default_timezone_set("Asia/Karachi");
         $today = long_date();
-        $total_products = DB::connection('sqlsrv3')->table('ItemList')->where('CompanyID', '=', company_id())->count();
-        $stock_in0 = DB::connection('sqlsrv3')->table('Inventory')->where('CompanyID', '=', company_id())->get();
-        $stock_in = 0;
-        $stock_out = 0;
-        foreach ($stock_in0 as $stock) {
-            $type = $stock->Type;
-            if ($type % 2 != 0) {
-                $stock_in = $stock_in + $stock->Quantity;
-            } else if ($type % 2 == 0) {
-                $stock_out = $stock_out + $stock->Quantity;
+        $companyId = company_id();
+
+        // Total products
+        $total_products = DB::connection('sqlsrv3')->table('ItemList')
+            ->where('CompanyID', $companyId)
+            ->count();
+
+        // Inventory entries
+        $inventory = DB::connection('sqlsrv3')->table('Inventory')
+            ->where('CompanyID', $companyId)
+            ->get();
+
+        $stock_in = $stock_out = 0;
+        $items_by_id = [];
+
+        foreach ($inventory as $item) {
+            $type = $item->Type;
+            ($type % 2 !== 0) ? $stock_in += $item->Quantity : $stock_out += $item->Quantity;
+
+            $id = $item->ItemID;
+            if (!isset($items_by_id[$id])) {
+                $items_by_id[$id] = [];
             }
+            $items_by_id[$id][] = $item;
         }
+
         $available_stock = $stock_in - $stock_out;
-        $expired_items = DB::connection('sqlsrv3')->table('Inventory')->where('ItemExpiry', '<=', $today)->distinct('ItemID')->where('CompanyID', '=', company_id())->count();
-        //--------Stock value--------//
-        $value = DB::connection('sqlsrv3')->table('Inventory')->where('CompanyID', '=', company_id())->distinct('ItemID')->select('ItemID')->orderBy('ItemID', 'desc')->get();
+
+        // Expired items
+        $expired_items = DB::connection('sqlsrv3')->table('Inventory')
+            ->where('ItemExpiry', '<=', $today)
+            ->where('CompanyID', $companyId)
+            ->distinct('ItemID')
+            ->count('ItemID');
+
+        // Stock value calculation
         $stock_value = 0;
-        foreach ($value as $value1) {
-            $id1 = $value1->ItemID;
-            $this_prod_cost = 0;
-            $this_prod_items = 0;
-            $this_avg_price = 0;
-            $this_in = 0;
-            $this_out = 0;
-            $value_in = 0;
-            $products = DB::connection('sqlsrv3')->table('Inventory')->where('ItemID', '=', $id1)->where('CompanyID', '=', company_id())->get();
-            foreach ($products as $products1) {
-                $type = $products1->Type;
-                if ($type == 1) {
-                    $this_prod_cost = $this_prod_cost + ($products1->CostUnit * $products1->Quantity);
-                    $this_prod_items = $this_prod_items + $products1->Quantity;
-                    if ($this_prod_cost > 0) {
-                        $this_avg_price = $this_prod_cost / $this_prod_items;
-                    }
-                }
-                if ($type % 2 != 0) {
-                    $this_in = $this_in + $products1->Quantity;
-                } else if ($type % 2 == 0) {
-                    $this_out = $this_out + $products1->Quantity;
-                }
-                $value_in = ($this_in - $this_out) * $this_avg_price;
-            }
-            $stock_value = $stock_value + $value_in;
-        }
-        $stock_value = $stock_value;
-        $all_products = DB::connection('sqlsrv3')->table('Inventory')->distinct('ItemID')->select('ItemID')->orderBy('ItemID', 'asc')->where('CompanyID', '=', company_id())->get();
         $available_products = 0;
-        foreach ($all_products as $all_products1) {
-            $id = $all_products1->ItemID;
-            $product_in0 = DB::connection('sqlsrv3')->table('Inventory')->where('ItemID', '=', $id)->where('CompanyID', '=', company_id())->get();
-            $product_in = 0;
-            $product_out = 0;
-            foreach ($product_in0 as $product_in1) {
-                $type = $product_in1->Type;
-                if ($type % 2 != 0) {
-                    $product_in = $product_in + $product_in1->Quantity;
-                } else if ($type % 2 == 0) {
-                    $product_out = $product_out + $product_in1->Quantity;
+
+        foreach ($items_by_id as $itemId => $entries) {
+            $this_prod_cost = $this_prod_items = $this_avg_price = 0;
+            $this_in = $this_out = 0;
+
+            foreach ($entries as $entry) {
+                if ($entry->Type == 1) {
+                    $this_prod_cost += $entry->CostUnit * $entry->Quantity;
+                    $this_prod_items += $entry->Quantity;
                 }
+
+                ($entry->Type % 2 !== 0) ? $this_in += $entry->Quantity : $this_out += $entry->Quantity;
             }
-            if ($product_in > $product_out) {
+
+            $this_avg_price = ($this_prod_items > 0) ? $this_prod_cost / $this_prod_items : 0;
+            $quantity_left = $this_in - $this_out;
+            $value_in = $quantity_left * $this_avg_price;
+            $stock_value += $value_in;
+
+            if ($quantity_left > 0) {
                 $available_products++;
             }
         }
+
         $not_available = $total_products - $available_products;
-        $myJSON = array(
-            'total_products' => $total_products,
+
+        return response()->json([
+            'total_products'     => $total_products,
             'available_products' => $available_products,
-            'not_available' => $not_available,
-            'available_stock' => number_format($available_stock),
-            'stock_value' => number_format($stock_value),
-            'expired_items' => $expired_items,
-        );
-        dd($myJSON);
-        return request()->json(200, $myJSON);
+            'not_available'      => $not_available,
+            'available_stock'    => number_format($available_stock),
+            'stock_value'        => number_format($stock_value),
+            'expired_items'      => $expired_items,
+        ], 200);
     }
+
 
     public function count_stock1()
-{
-    $today = long_date();
+    {
+        $today = long_date();
 
-    // Get avg price & total quantity per ItemID
-    $inventory = DB::connection('sqlsrv3')->table('Inventory')
-        ->select('ItemID')
-        ->where('CompanyID', '=', company_id())
-        ->where('Type', '=', 1)
-        ->groupBy('ItemID')
-        ->selectRaw('SUM(Quantity * CostUnit) / nullif(SUM(Quantity), 0) as avg_price, SUM(Quantity) as total_quantity')
-        ->get();
-
-    $itemIDs = $inventory->pluck('ItemID')->toArray();
-
-    // If no items, return zero
-    if (empty($itemIDs)) {
-        return response()->json(['stock_value' => 0], 200);
-    }
-
-    // Get products in chunks (to avoid 2100 param limit)
-    $products = collect();
-    $chunks = array_chunk($itemIDs, 2000);
-
-    foreach ($chunks as $chunk) {
-        $result = DB::connection('sqlsrv3')->table('Inventory')
-            ->select('ItemID', 'Type', 'Quantity')
-            ->whereIn('ItemID', $chunk)
+        // Get avg price & total quantity per ItemID
+        $inventory = DB::connection('sqlsrv3')->table('Inventory')
+            ->select('ItemID')
             ->where('CompanyID', '=', company_id())
+            ->where('Type', '=', 1)
+            ->groupBy('ItemID')
+            ->selectRaw('SUM(Quantity * CostUnit) / nullif(SUM(Quantity), 0) as avg_price, SUM(Quantity) as total_quantity')
             ->get();
 
-        $products = $products->merge($result);
-    }
+        $itemIDs = $inventory->pluck('ItemID')->toArray();
 
-    // Group products by ItemID for easy access
-    $products = $products->groupBy('ItemID');
-
-    // Calculate stock value
-    $stock_value = 0;
-
-    foreach ($inventory as $item) {
-        if ($item->total_quantity == 0) {
-            continue;
+        // If no items, return zero
+        if (empty($itemIDs)) {
+            return response()->json(['stock_value' => 0], 200);
         }
 
-        $value_in = 0;
+        // Get products in chunks (to avoid 2100 param limit)
+        $products = collect();
+        $chunks = array_chunk($itemIDs, 2000);
 
-        if (isset($products[$item->ItemID])) {
-            foreach ($products[$item->ItemID] as $product) {
-                if ($product->Type % 2 != 0) {
-                    $value_in += $product->Quantity * $item->avg_price;
-                } else {
-                    $value_in -= $product->Quantity * $item->avg_price;
+        foreach ($chunks as $chunk) {
+            $result = DB::connection('sqlsrv3')->table('Inventory')
+                ->select('ItemID', 'Type', 'Quantity')
+                ->whereIn('ItemID', $chunk)
+                ->where('CompanyID', '=', company_id())
+                ->get();
+
+            $products = $products->merge($result);
+        }
+
+        // Group products by ItemID for easy access
+        $products = $products->groupBy('ItemID');
+
+        // Calculate stock value
+        $stock_value = 0;
+
+        foreach ($inventory as $item) {
+            if ($item->total_quantity == 0) {
+                continue;
+            }
+
+            $value_in = 0;
+
+            if (isset($products[$item->ItemID])) {
+                foreach ($products[$item->ItemID] as $product) {
+                    if ($product->Type % 2 != 0) {
+                        $value_in += $product->Quantity * $item->avg_price;
+                    } else {
+                        $value_in -= $product->Quantity * $item->avg_price;
+                    }
                 }
             }
+
+            $stock_value += $value_in;
         }
 
-        $stock_value += $value_in;
+        // Return stock value formatted
+        $myJSON = [
+            'stock_value' => number_format($stock_value)
+        ];
+
+        return response()->json($myJSON, 200);
     }
-
-    // Return stock value formatted
-    $myJSON = [
-        'stock_value' => number_format($stock_value)
-    ];
-
-    return response()->json($myJSON, 200);
-}
 
 
     // public function count_stock1()
@@ -7186,7 +7265,10 @@ class AccountsController extends Controller
     {
 
         $dept = emp_department();
-        $find_config = DB::connection('sqlsrv3')->select("select d.DepartmentName,p.ID, p.ProjectName from DepartmentProject d join ProjectLinkCoa p on d.ProjectID =p.ID where p.CoaID is not null and d.CompanyID = '" . company_id() . "' and d.DepartmentName = '" . $dept . "'");
+        // dd($dept);
+        $find_config = DB::connection('sqlsrv3')
+        ->select("select d.DepartmentName,p.ID, p.ProjectName from DepartmentProject d join ProjectLinkCoa p on d.ProjectID =p.ID where p.CoaID is not null and d.CompanyID = '" . company_id() . "' and d.DepartmentName = '" . $dept . "'");
+        // dd($find_config);
         return request()->json(200, $find_config);
     }
 
@@ -15047,55 +15129,150 @@ group by ItemName  ");
         return response()->json($data, 200);
     }
 
-    public
-    function procurement_cycle_supplier()
-    {
+    // public
+    // function procurement_cycle_supplier()
+    // {
 
-        $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
+    //     $find_session = DB::connection('sqlsrv3')->table('Session')->where('CompanyID', '=', company_id())->where('Status', '=', 1)->get();
 
-        foreach ($find_session as $find_session1) {
-        }
+    //     foreach ($find_session as $find_session1) {
+    //     }
 
-        $session = $find_session1->SessionName;
-        $po_data = DB::connection('sqlsrv3')->table('PurchaseOrder')->select('PurchaseOrderID', 'PoDate', 'vendorName')->where('Session', '=', $session)->get();
-        $result = [];
+    //     $session = $find_session1->SessionName;
+    //     $po_data = DB::connection('sqlsrv3')->table('PurchaseOrder')->select('PurchaseOrderID', 'PoDate', 'vendorName')->where('Session', '=', $session)->get();
+    //     $result = [];
 
-        foreach ($po_data as $po_data1) {
-            $grn_data = DB::connection('sqlsrv3')->table('GrnOrder')->select('Dated')->where('POID', '=', $po_data1->PurchaseOrderID)->get();
+    //     foreach ($po_data as $po_data1) {
+    //         $grn_data = DB::connection('sqlsrv3')->table('GrnOrder')->select('Dated')->where('POID', '=', $po_data1->PurchaseOrderID)->get();
 
-            foreach ($grn_data as $grn_data1) {
-                // Calculate the time difference between PO date and GRN date for each vendor
-                $po_date = strtotime($po_data1->PoDate);
-                $grn_date = strtotime($grn_data1->Dated);
-                $time_taken = $grn_date - $po_date;
+    //         foreach ($grn_data as $grn_data1) {
+    //             // Calculate the time difference between PO date and GRN date for each vendor
+    //             $po_date = strtotime($po_data1->PoDate);
+    //             $grn_date = strtotime($grn_data1->Dated);
+    //             $time_taken = $grn_date - $po_date;
 
-                // Convert the time difference to days
-                $days_taken = round($time_taken / (60 * 60 * 24));
+    //             // Convert the time difference to days
+    //             $days_taken = round($time_taken / (60 * 60 * 24));
 
-                // Add the vendor name and time taken to the result array
-                if (!isset($result[$po_data1->vendorName])) {
-                    $result[$po_data1->vendorName] = [
-                        'total_days' => $days_taken,
-                        'count' => 1
-                    ];
-                } else {
-                    $result[$po_data1->vendorName]['total_days'] += $days_taken;
-                    $result[$po_data1->vendorName]['count']++;
-                }
-            }
-        }
+    //             // Add the vendor name and time taken to the result array
+    //             if (!isset($result[$po_data1->vendorName])) {
+    //                 $result[$po_data1->vendorName] = [
+    //                     'total_days' => $days_taken,
+    //                     'count' => 1
+    //                 ];
+    //             } else {
+    //                 $result[$po_data1->vendorName]['total_days'] += $days_taken;
+    //                 $result[$po_data1->vendorName]['count']++;
+    //             }
+    //         }
+    //     }
 
-        // Calculate the average days taken for each vendor
-        foreach ($result as $vendor => $data) {
-            $average_days = round($data['total_days'] / $data['count']);
-            $result[$vendor]['average_days'] = $average_days;
-            unset($result[$vendor]['total_days']);
-            $result[$vendor]['vendor_name'] = $vendor;
-            unset($result[$vendor]['count']);
-        }
-        $result = array_values($result);
-        return response()->json($result);
+    //     // Calculate the average days taken for each vendor
+    //     foreach ($result as $vendor => $data) {
+    //         $average_days = round($data['total_days'] / $data['count']);
+    //         $result[$vendor]['average_days'] = $average_days;
+    //         unset($result[$vendor]['total_days']);
+    //         $result[$vendor]['vendor_name'] = $vendor;
+    //         unset($result[$vendor]['count']);
+    //     }
+    //     $result = array_values($result);
+    //     return response()->json($result);
+    // }
+
+    // public function procurement_cycle_supplier()
+    // {
+    //     $companyId = company_id();
+
+    //     // Get active session name
+    //     $session = DB::connection('sqlsrv3')->table('Session')
+    //         ->where('CompanyID', $companyId)
+    //         ->where('Status', 1)
+    //         ->value('SessionName');
+
+    //     if (!$session) {
+    //         return response()->json([]);
+    //     }
+
+    //     // Get all purchase orders with their GRNs
+    //     $po_data = DB::connection('sqlsrv3')->table('PurchaseOrder as PO')
+    //         ->join('GrnOrder as GRN', 'PO.PurchaseOrderID', '=', 'GRN.POID')
+    //         ->select('PO.vendorName', 'PO.PoDate', 'GRN.Dated')
+    //         ->where('PO.Session', $session)
+    //         ->get();
+
+    //     $result = [];
+
+    //     foreach ($po_data as $entry) {
+    //         $po_date = strtotime($entry->PoDate);
+    //         $grn_date = strtotime($entry->Dated);
+    //         $days_taken = round(($grn_date - $po_date) / (60 * 60 * 24));
+
+    //         $vendor = $entry->vendorName;
+
+    //         if (!isset($result[$vendor])) {
+    //             $result[$vendor] = [
+    //                 'total_days' => $days_taken,
+    //                 'count' => 1
+    //             ];
+    //         } else {
+    //             $result[$vendor]['total_days'] += $days_taken;
+    //             $result[$vendor]['count']++;
+    //         }
+    //     }
+
+    //     foreach ($result as $vendor => $data) {
+    //         $result[$vendor] = [
+    //             'vendor_name' => $vendor,
+    //             'average_days' => round($data['total_days'] / $data['count'])
+    //         ];
+    //     }
+
+    //     return response()->json(array_values($result));
+    // }
+
+public function procurement_cycle_supplier()
+{
+    $companyId = company_id();
+
+    // Get active session name
+    $session = DB::connection('sqlsrv3')->table('Session')
+        ->where('CompanyID', $companyId)
+        ->where('Status', 1)
+        ->value('SessionName');
+
+    if (!$session) {
+        return response()->json([]);
     }
+
+    // Fetch and calculate difference in days directly in query
+    $po_data = DB::connection('sqlsrv3')->table('PurchaseOrder as PO')
+        ->join('GrnOrder as GRN', 'PO.PurchaseOrderID', '=', 'GRN.POID')
+        ->select(
+            'PO.vendorName',
+            DB::raw("DATEDIFF(DAY, PO.PoDate, GRN.Dated) as days_taken")
+        )
+        ->where('PO.Session', $session)
+        ->get();
+
+    if ($po_data->isEmpty()) {
+        return response()->json([]);
+    }
+
+    // Group and calculate average per vendor
+    $result = $po_data->groupBy('vendorName')->map(function ($items, $vendor) {
+        $total_days = $items->sum('days_taken');
+        $count = $items->count();
+        return [
+            'vendor_name' => $vendor,
+            'average_days' => round($total_days / $count)
+        ];
+    })->values();
+
+    return response()->json($result);
+}
+
+
+
 
     public
     function get_Issuance_value_project()

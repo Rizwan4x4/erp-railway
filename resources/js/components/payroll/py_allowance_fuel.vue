@@ -64,13 +64,13 @@
 
                                                 <td style="border-right:1px solid lightgrey;text-align:center;">
                                                     <a v-if="all_sals1.Status=='Pending'" @click="fetch_arrear_id(all_sals1.AllowanceID)" data-bs-toggle="modal" data-bs-target="#hireinterview1">
-                                                        <span class="badge bg-gradient-warning" style="cursor: pointer;">Pending</span>
+                                                        <span class="badge px-3 py-2 bg-gradient-warning" style="cursor: pointer;">Pending</span>
                                                     </a>
                                                     <a v-else-if="all_sals1.Status=='Approved'">
-                                                        <span class="badge bg-gradient-success" style="cursor: pointer;">Approved</span>
+                                                        <span class="badge px-3 py-2 bg-gradient-success" style="cursor: pointer;">Approved</span>
                                                     </a>
                                                     <a v-else>
-                                                        <span class="badge bg-gradient-info" style="cursor: pointer;">Paid</span>
+                                                        <span class="badge px-3 py-2 bg-gradient-info" style="cursor: pointer;">Paid</span>
                                                     </a>
                                                 </td>
                                                 <td v-if="hasPermission('Fuel setting update actions')" @click="fetch_fuel_limit(all_sals1.AllowanceID)" data-bs-toggle="modal" data-bs-target="#updateloan">

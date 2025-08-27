@@ -412,6 +412,8 @@ export default {
             axios.get('./search_payroll' + '?page=' + page, { params: { keyword1: this.keyword1 } })
                 .then(response => {
                     this.all_sals = response.data;
+                    console.log(this.all_sals  ,"all_sals");
+
                 })
                 .catch(error => console.log(error));
         },

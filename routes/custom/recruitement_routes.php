@@ -18,6 +18,8 @@ Route::post('candidate_public','App\Http\Controllers\RecruitementController@cand
 // Route::post('jobs','App\Http\Controllers\RecruitementController@post_job')->middleware('permission:Recruitment Post job');
 // Route::get('/job_detail2', 'App\Http\Controllers\RecruitementController@job_detail')->middleware('permission:Recruitment Candidates view,Recruitment Post job,Recruitment Interview view,Recuriment Dashboard overall-view');
 Route::get('/job_detail2', [RecruitementController::class,'job_detail'])->middleware('permission:Recruitment Candidates view,Recruitment Post job,Recruitment Interview view,Recuriment Dashboard overall-view');
+Route::get('/job_detail21', [RecruitementController::class,'job_detail21']);
+// ->middleware('permission:Recruitment Candidates view,Recruitment Post job,Recruitment Interview view,Recuriment Dashboard overall-view');
 
 // Route::get('/rec_activities', 'App\Http\Controllers\RecruitementController@all_rec_act')->middleware('permission:Recuriment Dashboard overall-view');   //view recruitment activities
 Route::get('/rec_activities',[RecruitementController::class,'all_rec_act'])->middleware('permission:Recuriment Dashboard overall-view');
@@ -27,7 +29,7 @@ Route::get('/rec_activities',[RecruitementController::class,'all_rec_act'])->mid
 Route::get('fetch_jobs/{id}',[RecruitementController::class,'edit_job_fetch']);
 
 // Route::post('update_job', 'App\Http\Controllers\RecruitementController@update_job');
-Route::post('update_job',[RecruitementController::class,'update_job']);
+Route::match(['get','post'],'update_job',[RecruitementController::class,'update_job']);
 
 Route::get('ind_job_detail2/{id}', 'App\Http\Controllers\RecruitementController@ind_job_detail');  //Individule job
 Route::get('ind_job_detail2/{id}',[RecruitementController::class,'ind_job_detail']);
@@ -45,9 +47,11 @@ Route::post('searchcandidates',[RecruitementController::class,'searchcandidates'
 
 // Route::get('fetch_candidates/{id}', 'App\Http\Controllers\RecruitementController@edit_candidate_fetch');  //fetch candidate to update
 Route::get('fetch_candidates/{id}',[RecruitementController::class,'edit_candidate_fetch']);
+Route::match(['get','post'],'/send_candidate_mail',[RecruitementController::class,'sendCandidateMail']);
+
 
 // Route::post('update_candidate', 'App\Http\Controllers\RecruitementController@update_candidate');  //update candidate
-Route::post('update_candidate',[RecruitementController::class,'update_candidate']);
+Route::match(['get','post'],'update_candidate',[RecruitementController::class,'update_candidate']);
 
 // Route::post('update_status', 'App\Http\Controllers\RecruitementController@update_status');  //update status
 // Route::post('update_status',[RecruitementController::class,'update_status']);
@@ -70,7 +74,7 @@ Route::match(['get', 'post'],'/update_interview',[RecruitementController::class,
 // Route::post('update_interview', 'App\Http\Controllers\RecruitementController@update_interview');  //update
 
 // Route::post('int_hire', 'App\Http\Controllers\RecruitementController@hire_interview');  //hire interview
-Route::post('int_hire',[RecruitementController::class,'hire_interview']);
+Route::match(['get', 'post'],'int_hire',[RecruitementController::class,'hire_interview']);
 
 // Route::post('int_hire1', 'App\Http\Controllers\RecruitementController@hire_interview1');  //hire interview1
 Route::post('int_hire1',[RecruitementController::class,'hire_interview1']);
@@ -81,6 +85,7 @@ Route::get('fetch_can/{id}', 'App\Http\Controllers\RecruitementController@fetch_
 
 // Route::get('fetch_interviews/{id}', 'App\Http\Controllers\RecruitementController@edit_interview_fetch');//fetch interviews to update
 Route::get('fetch_interviews/{id}', [RecruitementController::class, 'edit_interview_fetch']);
+Route::get('fetch_interviews_cand/{id}', [RecruitementController::class, 'fetch_interviews_cand']);
 
 // Route::get('/mnth_hired', 'App\Http\Controllers\RecruitementController@mnth_hired')->middleware('permission:Recuriment Dashboard overall-view');  //Get hired candidates of last 30 days
 Route::get('/mnth_hired',[RecruitementController::class,'mnth_hired'])->middleware('permission:Recuriment Dashboard overall-view');

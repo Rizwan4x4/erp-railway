@@ -231,15 +231,15 @@
                                                         <th>Type Name</th>
                                                         <th>Coa ID</th>
                                                         <th>AccountName</th>
-                                                        <th></th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr v-for="types1 in types.data">
-                                                        <td>{{types1.TypeName}}</td>
-                                                        <td>{{types1.CoaID}}</td>
-                                                        <td>{{types1.CoaName}}</td>
-                                                        <td>
+                                                        <td style=" border-right: 1px solid lightgrey;">{{types1.TypeName}}</td>
+                                                        <td style=" border-right: 1px solid lightgrey;">{{types1.CoaID}}</td>
+                                                        <td style=" border-right: 1px solid lightgrey;">{{types1.CoaName}}</td>
+                                                        <td style=" border-right: 1px solid lightgrey;">
                                                             <a @click=fetch_typesid(types1.ID,types1.TypeName) data-bs-toggle="modal" data-bs-target="#leavetype9" class=""><i class="fa-solid fa-edit"></i></a>
                                                         </td>
                                                     </tr>

@@ -69,11 +69,11 @@
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata.data">
                                             <td class=" control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1">{{ adsdata1.DeprName }}</td>
-                                            <td v-if="adsdata1.Methods == 'straight_line'">Straight Line</td>
-                                            <td v-else>Reducing Balance</td>
-                                            <td>{{ adsdata1.CategoryName }}</td>
-                                            <td>{{ adsdata1.Percentage }}</td>
+                                            <td class="sorting_1" style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.DeprName }}</td>
+                                            <td v-if="adsdata1.Methods == 'straight_line'" style="text-align: center; border-right: 1px solid lightgrey;">Straight Line</td>
+                                            <td v-else style="text-align: center; border-right: 1px solid lightgrey;">Reducing Balance</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.CategoryName }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Percentage }}</td>
 
 
                                         </tr>

@@ -118,8 +118,8 @@
                                             :options="options2">
                                         </multiselect>
                                     </div>
-                                    <div class="col-md-3 user_status d-flex align-items-center mt-4">
-                                        <button @click="getbyfilter()" class="btn btn-secondary py-2 px-4">Search
+                                    <div class="col-md-3 user_status d-flex align-items-center btn_m_top">
+                                        <button @click="getbyfilter()" class="btn btn-secondary ">Search
                                         </button>
                                         <label style="color: #d93025"
                                             v-if="designation == '' && location == '' && department == ''">{{ e_search
@@ -166,8 +166,8 @@
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata.data">
-                                            <td class="td-center">{{ adsdata1.EmployeeCode }}</td>
-                                            <td class="td-left">
+                                            <td style="text-align:center;border-right:1px solid lightgrey" class="td-center">{{ adsdata1.EmployeeCode }}</td>
+                                            <td style="text-align:center;border-right:1px solid lightgrey" class="td-left">
                                                 <div class="d-flex justify-content-left align-items-center">
                                                     <div class="d-flex flex-column"><a
                                                             class="user_name text-truncate text-body"><span
@@ -176,17 +176,17 @@
                                                             {{ adsdata1.Designation }}</small></div>
                                                 </div>
                                             </td>
-                                            <td class="td-center">{{ adsdata1.PostingCity }}</td>
-                                            <td class="td-center">{{ adsdata1.DateIssued }}</td>
-                                            <td class="td-center">
+                                            <td style="text-align:center;border-right:1px solid lightgrey" class="td-center">{{ adsdata1.PostingCity }}</td>
+                                            <td style="text-align:center;border-right:1px solid lightgrey" class="td-center">{{ adsdata1.DateIssued }}</td>
+                                            <td style="text-align:center;border-right:1px solid lightgrey" class="td-center">
                                                 <span v-if="adsdata1.WarningType == 'First'"
-                                                    class="badge bg-light-primary">{{ adsdata1.WarningType }}</span>
+                                                    class="badge bg-primary px-3 py-2">{{ adsdata1.WarningType }}</span>
                                                 <span v-else-if="adsdata1.WarningType == 'Second'"
-                                                    class="badge bg-light-warning">{{ adsdata1.WarningType }}</span>
-                                                <span v-else class="badge bg-light-danger">{{ adsdata1.WarningType
+                                                    class="badge bg-warning px-3 py-2">{{ adsdata1.WarningType }}</span>
+                                                <span v-else class="badge bg-danger px-3 p-2">{{ adsdata1.WarningType
                                                     }}</span>
                                             </td>
-                                            <td class="td-center">
+                                            <td style="text-align:center;border-right:1px solid lightgrey" class="td-center">
                                                 <div class="btn-group">
                                                     <router-link v-if="hasPermission('HRMS warning_detail actions')"
                                                         :to="{ name: 'warning_view', params: { id: adsdata1.LetterID } }"

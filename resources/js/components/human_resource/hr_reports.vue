@@ -163,7 +163,7 @@
             </div>
         </div>
         <div class="modal fade" id="cashdistributionReport" aria-labelledby="cashdistributionReport" tabindex="-1"
-             aria-hidden="true">
+            aria-hidden="true">
             <div v-if="emp_cash_distribution == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -199,7 +199,8 @@
                         <button class="btn btn-primary bg-primary" @click="cdist_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -250,15 +251,15 @@
                             class="btn btn-gradient-info">Excel
                         </button>
 
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="cdist_report1()">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            @click="cdist_report1()">
                             close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modalToggle9" aria-labelledby="modalToggleLabel" tabindex="-1"
-            aria-hidden="true">
+        <div class="modal fade" id="modalToggle9" aria-labelledby="modalToggleLabel" tabindex="-1" aria-hidden="true">
             <div v-if="emp_cash == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -312,7 +313,8 @@
                         <button class="btn btn-primary bg-primary" @click="view_report9()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -359,7 +361,7 @@
                                         <td scope="col" class="td-center">
                                             <strong>{{
                                                 getemployeecash1.Company
-                                                }}</strong><br />{{ getemployeecash1.Department }}
+                                            }}</strong><br />{{ getemployeecash1.Department }}
                                         </td>
                                         <td scope="col" class="td-right">
                                             {{
@@ -501,7 +503,8 @@
                         <button type="button" @click="html_table_to_excel('xlsx', 'Cash_Distribution_Report')"
                             class="btn btn-gradient-info">Excel
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="view_report91()">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            @click="view_report91()">
                             close
                         </button>
                     </div>
@@ -509,8 +512,7 @@
             </div>
         </div>
         <!-- Modal 1-->
-        <div class="modal fade" id="hiringReport" aria-labelledby="hiringReport" tabindex="-1"
-            aria-hidden="true">
+        <div class="modal fade" id="hiringReport" aria-labelledby="hiringReport" tabindex="-1" aria-hidden="true">
             <div v-if="hiring_employee_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -549,7 +551,8 @@
                         <button class="btn btn-primary bg-primary" @click="hiring_rep()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -638,15 +641,15 @@
                         <button type="button" @click="generateEmployeeHiringReport()" class="btn btn-gradient-info">
                             Pdf
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="hiring_rep1()">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            @click="hiring_rep1()">
                             close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="loadvancereport" aria-labelledby="loadvancereport" tabindex="-1"
-             aria-hidden="true">
+        <div class="modal fade" id="loadvancereport" aria-labelledby="loadvancereport" tabindex="-1" aria-hidden="true">
             <div v-if="loan_advance_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -702,7 +705,8 @@
                         <button class="btn btn-primary bg-primary" @click="la_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -826,15 +830,15 @@
                         </button>
                         <button type="button" @click="generateLoanAdvanceReport()" class="btn btn-gradient-info">Pdf
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="la_report1()">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            @click="la_report1()">
                             close
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="arrearsreport" aria-labelledby="arrearsreport" tabindex="-1"
-            aria-hidden="true">
+        <div class="modal fade" id="arrearsreport" aria-labelledby="arrearsreport" tabindex="-1" aria-hidden="true">
             <div v-if="emp_arrears_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -874,7 +878,8 @@
                         <button class="btn btn-primary bg-primary" @click="arrears_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -999,8 +1004,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modalToggle" aria-labelledby="modalToggleLabel" tabindex="-1"
-            aria-hidden="true">
+        <div class="modal fade" id="modalToggle" aria-labelledby="modalToggleLabel" tabindex="-1" aria-hidden="true">
             <div v-if="emp_detail == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1071,7 +1075,8 @@
                         <button class="btn btn-primary bg-primary" @click="view_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -1115,7 +1120,7 @@
                                                     <div>
                                                         <span>{{ getemployee1.EmployeeCode }} - {{
                                                             getemployee1.Name
-                                                            }}</span>
+                                                        }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1158,7 +1163,7 @@
                                                     </div>
                                                     <div>
                                                         <!----><span class="ng-star-inserted">{{ getemployee1.Gender
-                                                            }}</span>
+                                                        }}</span>
                                                         <!---->
                                                         <!---->
                                                     </div>
@@ -1223,7 +1228,7 @@
                                                     </div>
                                                     <div>
                                                         <span>{{ getemployee1.Status }}-{{ getemployee1.JobStatus
-                                                            }}</span>
+                                                        }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1256,7 +1261,7 @@
                                                 <div class="mt-display-flex">
                                                     <div>
                                                         <strong>Method:</strong> <span>{{ getemployee1.MethodType
-                                                            }}</span>
+                                                        }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1265,7 +1270,7 @@
                                                     <div>
                                                         <strong>Salary:</strong><span>{{
                                                             (getemployee1.Salary).toLocaleString()
-                                                            }}</span>
+                                                        }}</span>
                                                     </div>
                                                     <div>
                                                         <strong>Stipend:</strong><span
@@ -1349,7 +1354,8 @@
                         <button type="button" @click="html_table_to_excel('xlsx', 'Employees_Detail')"
                             class="btn btn-gradient-info">Download in Excel
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" @click="view_report1()">
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            @click="view_report1()">
                             close
                         </button>
                     </div>
@@ -1423,7 +1429,8 @@
                         <button class="btn btn-primary bg-primary" @click="employee_hire_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -1449,7 +1456,7 @@
                                     </span></h4>
                                 <span class="role-edit-modal"> {{ this.hire_start_date }} - {{
                                     this.hire_end_date
-                                }}</span>
+                                    }}</span>
 
                             </div>
                             <div class="modal-body">
@@ -1520,7 +1527,7 @@
                                                                             <div>
                                                                                 <span>{{
                                                                                     gethireemplo1.EmployeeCode
-                                                                                    }} - {{ gethireemplo1.Name }}</span>
+                                                                                }} - {{ gethireemplo1.Name }}</span>
                                                                             </div>
                                                                             <div>
                                                                                 <span>Cnic:{{ gethireemplo1.CNIC }}
@@ -1629,7 +1636,7 @@
                                                                     <div>
                                                                         <span>{{
                                                                             gethireemplo1.EmployeeCode
-                                                                            }} - {{ gethireemplo1.Name }}</span>
+                                                                        }} - {{ gethireemplo1.Name }}</span>
                                                                     </div>
                                                                     <div>
                                                                         <span>Cnic:{{ gethireemplo1.CNIC }} </span>
@@ -1754,7 +1761,8 @@
                         <button class="btn btn-primary bg-primary" @click="employee_appraisal_report()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -1868,7 +1876,8 @@
                         <button class="btn btn-primary bg-primary" @click="absent_summary()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2015,7 +2024,8 @@
                         <button class="btn btn-primary bg-primary" @click="custom_attendance()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2266,7 +2276,8 @@
                         <button class="btn btn-primary bg-primary" @click="daily_attendance()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2433,7 +2444,8 @@
                         <button class="btn btn-primary bg-primary" @click="attendance_payroll()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2615,7 +2627,8 @@
                         <button class="btn btn-primary bg-primary" @click="attendance_summary()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2777,7 +2790,8 @@
                         <button class="btn btn-primary bg-primary" @click="leave_detail_()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -2963,7 +2977,8 @@
                         <button class="btn btn-primary bg-primary" @click="leave_summary()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -3102,7 +3117,7 @@
                                     </select>
                                     <span style="color: #DB4437; font-size: 11px;" v-if="ind_emp_id == ''">{{
                                         e_ind_emp_id
-                                    }}</span>
+                                        }}</span>
 
                                 </div>
                             </div>
@@ -3112,7 +3127,8 @@
                         <button class="btn btn-primary bg-primary" @click="ind_attendance_re()">
                             View Report
                         </button>
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -3328,7 +3344,8 @@
                             View Report
                         </a>
 
-                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                     </div>
                 </div>
@@ -4236,7 +4253,9 @@ export default {
 
         axios.get('overall_leaves')
             .then(response => {
-                this.leaves = response.data.data
+
+                this.leaves = response.data.data.original.leaveTypes;
+                console.log(this.leaveTypesArray, "Leave Types Array");
                 this.options6 = [];
 
                 var $this = this;

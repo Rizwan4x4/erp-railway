@@ -55,22 +55,22 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="adsdata1 in adsdata.data">
-                                            <td class="td-center" >{{adsdata1.ItemCode}}</td>
-                                            <td class="td-center">{{adsdata1.ItemType}}</td>
-                                            <td class="td-center">{{adsdata1.Name}}<br /><span v-if="adsdata1.LinkedDept!=null" style="font-size:8px;">({{adsdata1.LinkedDept}})</span></td>
-                                            <td class="td-center">{{adsdata1.CategoryName}}</td>
-                                            <td class="td-center">{{adsdata1.ItemType}}</td>
-                                            <td class="td-center">{{adsdata1.unit}}</td>
-                                            <td class="td-center">
+                                            <td class="td-center"  style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.ItemCode}}</td>
+                                            <td class="td-center" style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.ItemType}}</td>
+                                            <td class="td-center" style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Name}}<br /><span v-if="adsdata1.LinkedDept!=null" style="font-size:8px;">({{adsdata1.LinkedDept}})</span></td>
+                                            <td class="td-center" style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.CategoryName}}</td>
+                                            <td class="td-center" style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.ItemType}}</td>
+                                            <td class="td-center" style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.unit}}</td>
+                                            <td class="td-center" style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <barcode :value="'www./'+adsdata1.ID" :formet="pharmacode" :displayValue="false" :width="0.7" :height="30">
                                                     No barcode available
                                                 </barcode>
                                             </td>
-                                            <td class="td-center">
-                                                <span v-if="adsdata1.Status=='Active'" class="badge badge-glow bg-primary">Active</span>
-                                                <span v-else class="badge badge-glow bg-secondary">{{adsdata1.Status}}</span>
+                                            <td class="td-center" style="text-align: center; border-right: 1px solid lightgrey;">
+                                                <span v-if="adsdata1.Status=='Active'" class="badge p-2 bg-primary">Active</span>
+                                                <span v-else class="badge p-2 bg-secondary">{{adsdata1.Status}}</span>
                                             </td>
-                                            <td class="td-center" style="vertical-align: middle; text-align: center">
+                                            <td class="td-center" style="text-align: center; border-right: 1px solid lightgrey;vertical-align: middle;" >
                                                 <div class="btn-group">
                                                     <a  v-if="hasPermission('Inventory Products edit-product') " class="btn btn-sm dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                                         <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -142,10 +142,10 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="inventory1 in inventory.data">
-                                                    <td>{{inventory1.Name}}</td>
-                                                    <td>{{inventory1.CoaID}}</td>
-                                                    <td>{{inventory1.CoaName}}</td>
-                                                    <td>
+                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{inventory1.Name}}</td>
+                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{inventory1.CoaID}}</td>
+                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{inventory1.CoaName}}</td>
+                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                         <a @click=fetch_inventoryid(inventory1.ItemId,inventory1.Name) data-bs-toggle="modal" data-bs-target="#leavetype9" class=""><i class="fa-solid fa-edit"></i></a>
                                                     </td>
                                                 </tr>
@@ -192,10 +192,10 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="assets1 in assets.data">
-                                                    <td>{{assets1.Name}}</td>
-                                                    <td>{{assets1.CoaID}}</td>
-                                                    <td>{{assets1.CoaName}}</td>
-                                                    <td>
+                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{assets1.Name}}</td>
+                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{assets1.CoaID}}</td>
+                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{assets1.CoaName}}</td>
+                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                         <a @click=fetch_assetsid(assets1.AssetId,assets1.Name) data-bs-toggle="modal" data-bs-target="#leavetype5" class=""><i class="fa-solid fa-edit"></i></a>
                                                     </td>
                                                 </tr>

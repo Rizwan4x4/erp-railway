@@ -14,6 +14,25 @@
                             <li class="breadcrumb-item active">
                                 Employees Detail
                             </li>
+                            <li>
+                                <!-- <a href="/export-employees" class="btn btn-success" target="_blank">
+                                    <i class="fa fa-download me-1"></i> Export Employees
+                                </a>
+                                <a href="/exportRegisteredEmployees" class="btn btn-success" target="_blank">
+                                    <i class="fa fa-download me-1"></i> Export Registerd Employees
+                                </a> -->
+                                <!-- <div>
+                                    <form @submit.prevent="uploadFile">
+                                        <input type="file" @change="handleFile" accept=".xlsx, .csv" required />
+                                        <button type="submit">Upload & Import</button>
+                                    </form>
+
+                                    <div v-if="message" class="alert alert-success mt-2">
+                                        {{ message }}
+                                    </div>
+                                </div> -->
+
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -245,23 +264,48 @@
                                     class="dt-action-buttons justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
                                     <div class="row align-items-center">
 
-                                        <div class="col-md-6 p-0">
+                                        <div class="col-md-5 p-0">
                                             <input id="keyword2" v-model="keyword2" class="form-control" name="keyword2"
                                                 placeholder="Search By Employee Name / Code / CNIC / Mobile number"
                                                 type="text" />
                                         </div>
 
-                                        <div class="col-md-6 d-flex justify-content-end p-0">
+                                        <div class="col-md-7 d-flex justify-content-end p-0">
+                                            <div class="import-wrapper" style="max-width: 385px;">
+                                                <form @submit.prevent="uploadFile"
+                                                    class="d-flex align-items-center gap-2 w-100">
+                                                    <input type="file" @change="handleFile" accept=".xlsx, .csv"
+                                                        required class="form-control form-control" />
+                                                    <button class="btn btn-primary bg-primary me-2" style="width: 40%;" type="submit">Bulk
+                                                        Import</button>
+                                                </form>
+
+                                                <div v-if="message" class="alert alert-success mt-2">
+                                                    {{ message }}
+                                                </div>
+                                            </div>
+
+                                            <!-- <div>
+                                                <form @submit.prevent="uploadFile">
+                                                    <input type="file" @change="handleFile" accept=".xlsx, .csv"
+                                                        required />
+                                                    <button class="btn btn-primary bg-primary" type="submit"> bulk Import</button>
+                                                </form>
+
+                                                <div v-if="message" class="alert alert-success mt-2">
+                                                    {{ message }}
+                                                </div>
+                                            </div> -->
                                             <div class="me-2">
                                                 <router-link class="dt-button add-new btn btn-primary bg-primary "
                                                     tabindex="0" to="/hr/create_employee" type="button">
-                                                    <span>+ Add New Employee</span>
+                                                    <span>+ Add New</span>
                                                 </router-link>
                                             </div>
                                             <div>
                                                 <button class="btn btn-primary bg-primary w-100" style="width: 100%;"
                                                     @click="getbyfilter()">
-                                                    <img class="pe-3" :src="images.search_icon" alt="icon">Search
+                                                    Search
                                                 </button>
                                             </div>
                                         </div>
@@ -285,9 +329,13 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="(adsdata1, index) in adsdata.data" class="odd">
-                                        <td class="td-center">{{ index + 1 + (15 * (page - 1)) }}</td>
-                                        <td class="td-center">{{ adsdata1.EmployeeCode }}</td>
-                                        <td class="td-left">
+                                        <td class="td-center"
+                                            style="text-align:center;border-right:1px solid lightgrey">{{ index + 1 +
+                                                (15 * (page - 1)) }}</td>
+                                        <td class="td-center"
+                                            style="text-align:center;border-right:1px solid lightgrey">{{
+                                                adsdata1.EmployeeCode }}</td>
+                                        <td class="td-left" style="text-align:center;border-right:1px solid lightgrey">
                                             <div class="d-flex justify-content-left ps-3 align-items-center">
                                                 <div class="avatar-wrapper">
                                                     <!-- <div class="avatar  me-1">
@@ -308,10 +356,12 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="td-center" style="vertical-align: middle !important;">
+                                        <td class="td-center"
+                                            style="text-align:center;border-right:1px solid lightgrey;vertical-align: middle !important;">
                                             <!-- main links -->
                                             <div class="dropdown ">
-                                                <button class="btn btn-primary bg-primary dropdown-toggle custom-dropdown"
+                                                <button
+                                                    class="btn btn-primary bg-primary dropdown-toggle custom-dropdown"
                                                     type="button" data-bs-toggle="dropdown">
                                                     Edit Profile
                                                 </button>
@@ -446,11 +496,13 @@
                                                     class="badge rounded-pill badge-light-primary">Documents</span>
                                             </router-link> -->
                                         </td>
-                                        <td class="td-center">
+                                        <td class="td-center"
+                                            style="text-align:center;border-right:1px solid lightgrey">
                                             {{ adsdata1.JoiningDate }}<br />{{ Number(adsdata1.Salary).toLocaleString()
                                             }}
                                         </td>
-                                        <td style="vertical-align: middle !important; text-align: center;">
+                                        <td
+                                            style="text-align:center;border-right:1px solid lightgrey;vertical-align: middle !important; text-align: center;">
                                             <div v-if="hasPermission('HRMS employees_detail update-Employee-status')">
 
 
@@ -466,7 +518,8 @@
                                                 }}</span>
                                             </div>
                                         </td>
-                                        <td style="vertical-align: middle !important;">
+                                        <td
+                                            style="text-align:center;border-right:1px solid lightgrey;vertical-align: middle !important;">
                                             <router-link
                                                 v-if="hasPermission('HRMS employees_detail view employee profile')"
                                                 :to="{ name: 'employee_detail', params: { id: adsdata1.EmployeeID } }">
@@ -595,12 +648,10 @@ export default {
             location: 'All',
             designation: 'All',
             emp_status: 'All',
-
             min_price_s: '',
             max_price_s: '',
             cnic_s: '',
             emp_id_s: '',
-
             designations: {},
             locations: {},
             departments: {},
@@ -658,7 +709,29 @@ export default {
                 this.modalInstance.hide();
             }
         },
+        handleFile(event) {
+            this.file = event.target.files[0];
+        },
+        async uploadFile() {
+            const formData = new FormData();
+            formData.append('file', this.file);
 
+            try {
+                const response = await axios.post('/import-employees', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+                this.$toastr.s(response.data?.message || 'Employees imported successfully.', 'Success');
+                this.getResults1();
+
+            } catch (error) {
+                // alert('Upload failed');
+                console.error(error);
+                this.$toastr.e(error, 'error Occur while Uploading count employee');
+
+            }
+        },
         async fetchDepartment() {
             try {
                 this.departments = await this.$helpers.checkLocal('department_detail');

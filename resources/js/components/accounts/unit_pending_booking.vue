@@ -59,31 +59,31 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Owner Name</th>
-                                            <th>File PlotID</th>
-                                            <th>File Plot Number</th>
-                                            <th>Type</th>
-                                            <th>Block Name</th>
-                                            <th>Unit Module</th>
-                                            <th>Booking Amount</th>
-                                            <th><input type="checkbox" v-model="test" @change="toggling()"
+                                            <th class="text-center">Date</th>
+                                            <th class="text-center">Owner Name</th>
+                                            <th class="text-center">File PlotID</th>
+                                            <th class="text-center">File Plot Number</th>
+                                            <th class="text-center">Type</th>
+                                            <th class="text-center">Block Name</th>
+                                            <th class="text-center">Unit Module</th>
+                                            <th class="text-center">Booking Amount</th>
+                                            <th class="text-center"><input type="checkbox" v-model="test" @change="toggling()"
                                                     id="maincheck" /></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata">
                                             <td class=" control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1">{{ adsdata1.Dated }}</td>
-                                            <td>{{ adsdata1.OwnerName }}</td>
-                                            <td>{{ adsdata1.File_Plot_Id }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="sorting_1">{{ adsdata1.Dated }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.OwnerName }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.File_Plot_Id }}</td>
 
-                                            <td>{{ adsdata1.file_plot_number }}</td>
-                                            <td>{{ adsdata1.Type }}</td>
-                                            <td>{{ adsdata1.Block_Name }}</td>
-                                            <td>{{ adsdata1.UnitModule }}</td>
-                                            <td>Rs. {{ Number(adsdata1.BookingAmount).toLocaleString() }}/-</td>
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.file_plot_number }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Type }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Block_Name }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.UnitModule }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">Rs. {{ Number(adsdata1.BookingAmount).toLocaleString() }}/-</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="d-flex align-items-center col-actions">
                                                     <input readonly name="first[]" :value="adsdata1.BID" hidden
                                                         class="form-control invoice-edit-input " />

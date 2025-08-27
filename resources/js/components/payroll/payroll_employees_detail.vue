@@ -51,8 +51,8 @@
                                             :options="options1"></multiselect>
                                     </div>
                                     <div class="col-md-1">
-                                        <button @click="getbyfilter()" style="margin-top: 28px;"
-                                            class="btn btn-secondary bg-primary p-2">Search</button>
+                                        <button @click="getbyfilter()" style="margin-top: 31px;"
+                                            class="btn btn-primary bg-primary">Search</button>
                                     </div>
                                 </div>
                                 <br>
@@ -70,8 +70,8 @@
                                         </thead>
                                         <tbody>
                                             <tr v-for="adsdata1 in adsdata.data">
-                                                <td class="td-center">{{ adsdata1.EmployeeCode }}</td>
-                                                <td class="td-left">
+                                                <td class="td-center"  style="text-align:center;border-right:1px solid lightgrey">{{ adsdata1.EmployeeCode }}</td>
+                                                <td class="td-left"  style="text-align:center;border-right:1px solid lightgrey">
                                                     <div class="d-flex justify-content-left align-items-center">
                                                         <div class="avatar-wrapper">
                                                             <div class="avatar  me-1">
@@ -87,7 +87,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="td-center">
+                                                <td class="td-center"  style="text-align:center;border-right:1px solid lightgrey">
                                                     <div class="d-flex flex-column"><a
                                                             class="user_name text-truncate text-body"><span
                                                                 class="fw-bolder">
@@ -95,7 +95,7 @@
                                                             class="emp_post text-muted">{{ adsdata1.PostingCity }}</small>
                                                     </div>
                                                 </td>
-                                                <td class="td-center">
+                                                <td class="td-center"  style="text-align:center;border-right:1px solid lightgrey">
                                                     <div class="d-flex flex-column"><span
                                                             class="fw-bolder">{{ Math.floor(adsdata1.UpdatedSalary).toLocaleString() }}/-</span><small
                                                             class="emp_post text-muted">{{ Number(adsdata1.UpdatedPerDay).toLocaleString() }}
@@ -103,10 +103,10 @@
                                                             {{ Number(adsdata1.UpdatedPerHours).toLocaleString() }} Per
                                                             hour</small></div>
                                                 </td>
-                                                <td class="td-center">
+                                                <td class="td-center"  style="text-align:center;border-right:1px solid lightgrey">
                                                     {{ adsdata1.UpdatedDate }}
                                                 </td>
-                                                <td class="td-center">
+                                                <td class="td-center"  style="text-align:center;border-right:1px solid lightgrey">
                                                     <a v-if="hasPermission('Payroll Indvisual employee Salary Details')"
                                                         data-bs-toggle="modal" @click="fetchdata(adsdata1.EmployeeID)"
                                                         data-bs-target="#viewstatus"><i class="fa-solid fa-eye"></i></a>

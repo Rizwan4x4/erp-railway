@@ -50,29 +50,29 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Debit Note #</th>
-                                            <th>Invoice ID</th>
-                                            <th>Vendor ID</th>
-                                            <th>Vendor Name</th>
-                                            <th>Total Debit Amount</th>
-                                            <th>Status</th>
-                                            <th></th>
+                                            <th class="text-center">Date</th>
+                                            <th class="text-center">Debit Note #</th>
+                                            <th class="text-center">Invoice ID</th>
+                                            <th class="text-center">Vendor ID</th>
+                                            <th class="text-center">Vendor Name</th>
+                                            <th class="text-center">Total Debit Amount</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata.data">
                                             <td class=" control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1">{{ adsdata1.Dated }}</td>
-                                            <td>{{ adsdata1.DebitNotesID }}</td>
-                                            <td>{{ adsdata1.InvoiceID }}</td>
-                                            <td>{{ adsdata1.VendorID }}</td>
-                                            <td>{{ adsdata1.VendorName }}</td>
-                                            <td>{{ Number(adsdata1.TotalDebitAmount).toLocaleString() }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="sorting_1">{{ adsdata1.Dated }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.DebitNotesID }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.InvoiceID }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.VendorID }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.VendorName }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ Number(adsdata1.TotalDebitAmount).toLocaleString() }}</td>
 
-                                            <td><span class="badge badge-glow bg-primary"
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;"><span class="badge badge-glow bg-primary"
                                                     v-if="adsdata1.Status == 'Approved'">{{ adsdata1.Status }}</span></td>
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="d-flex align-items-center col-actions">
                                                     <a class="me-25" data-bs-toggle="modal" @click="editPV(adsdata1.ID)"
                                                         data-bs-target="#viewPV">

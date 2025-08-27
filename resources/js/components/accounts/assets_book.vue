@@ -58,18 +58,16 @@
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata.data">
                                             <td class=" control" tabindex="0" style="display: none;"></td>
-                                            <td >{{adsdata1.StartingDate}}</td>
-                                            <td >{{adsdata1.AssetId}}</td>
-                                            <td >{{adsdata1.Name}}</td>
-                                            <td >{{adsdata1.Methods}}</td>
-                                            <td >{{adsdata1.Percentage}}</td>
-
-
-                                            <td>{{Number(adsdata1.StartingValue)}}</td>
-                                            <td>{{Number(adsdata1.ClosingValue)}}</td>
-                                            <td>{{Number(adsdata1.DepreciatedValue)}}</td>
-                                            <td>{{adsdata1.ClosingDate}}</td>
-                                            <td>
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.StartingDate}}</td>
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.AssetId}}</td>
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Name}}</td>
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Methods}}</td>
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Percentage}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{Number(adsdata1.StartingValue)}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{Number(adsdata1.ClosingValue)}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{Number(adsdata1.DepreciatedValue)}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.ClosingDate}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <span v-if="adsdata1.Status=='active'" class="badge badge-glow bg-primary">{{adsdata1.Status}}</span>
                                                 <span v-else class="badge badge-glow bg-secondary">{{adsdata1.Status}}</span>
                                             </td>

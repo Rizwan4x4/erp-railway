@@ -54,7 +54,7 @@
                                     <input type="date" class="form-control" v-model="dateto">
                                 </div>
                                 <div class="col-md-1 col-12 mb-3 position-relative">
-                                    <button @click="filtered_GRN()" style="margin-top: 25px;" class="btn btn-secondary">Search</button>
+                                    <button @click="filtered_GRN()" style="margin-top: 31px;" class="btn btn-secondary">Search</button>
                                 </div>
                                 <div class="col-md-3 col-12 mb-3 position-relative" style="margin-top: 35px;">
                                     <h6>Today's Recovery: {{Number(get_sum.total).toLocaleString()}}</h6>
@@ -104,15 +104,15 @@
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="(adsdata1,index) in adsdata">
-                                            <td class="td-center" tabindex="0">{{sumStats1(index,1) }}</td>
-                                            <td class="td-center">{{adsdata1.DateTime}}</td>
-                                            <td class="td-center">{{adsdata1.ReceiptNo}}<br />{{adsdata1.PaymentType}}</td>
-                                            <td class="td-center">{{adsdata1.File_Plot_No}}</td>
-                                            <td class="td-left">{{adsdata1.Name}}</td>
-                                            <td class="td-center">{{adsdata1.Type}}</td>
-                                            <td class="td-center">{{adsdata1.Module}}</td>
-                                            <td class="td-center">{{adsdata1.Block}}<br />{{adsdata1.Plot_Type}}</td>
-                                            <td class="td-center">Rs. {{Number(adsdata1.Amount).toLocaleString()}}/-</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" tabindex="0">{{sumStats1(index,1) }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.DateTime}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.ReceiptNo}}<br />{{adsdata1.PaymentType}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.File_Plot_No}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Name}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Type}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Module}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Block}}<br />{{adsdata1.Plot_Type}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">Rs. {{Number(adsdata1.Amount).toLocaleString()}}/-</td>
 
                                         </tr>
                                     </tbody>

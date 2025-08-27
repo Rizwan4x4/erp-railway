@@ -91,7 +91,7 @@
                                             <button class="btn btn-danger">Apply Deductions</button>
                                             <button class="btn btn-danger">Apply Incentives</button>
                                         </div>
-                                        <div class="col-md-3 col-12 mb-2 position-relative">
+                                        <div class="col-md-4 col-12 mb-2 position-relative">
                                             <input type="text" v-model="keyword1" class="form-control"
                                                 placeholder="Search By Name or Employee code">
                                         </div>

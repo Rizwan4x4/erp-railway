@@ -97,16 +97,16 @@
                                             <input type="date" class="form-control" v-model="closingdate">
                                         </div>
                                         <div class="col-md-1 col-12 mb-3">
-                                            <button @click="filtered_GRN()" style="margin-top: 25px;" class="btn btn-primary bg-primary">Search</button>
+                                            <button @click="filtered_GRN()" style="margin-top: 31px;" class="btn btn-primary bg-primary">Search</button>
                                         </div>
                                         <div class="col-md-1 col-12 mb-3">
-                                            <button @click="startingdate='', closingdate='', filtered_GRN()" style="margin-top: 25px" class="btn btn-outline-secondary waves-effect">Clear</button>
+                                            <button @click="startingdate='', closingdate='', filtered_GRN()" style="margin-top: 31px" class="btn btn-outline-secondary waves-effect">Clear</button>
                                         </div>
                                         <div class="col-md-3 col-12 mb-3">
-                                            <input type="text" style="margin-top: 25px; width:100%;" v-model="keyword1" class="form-control" placeholder=" Vendor Name / Invoice ID / Po ID" />
+                                            <input type="text" style="margin-top: 31px; width:100%;" v-model="keyword1" class="form-control" placeholder=" Vendor Name / Invoice ID / Po ID" />
                                         </div>
                                         <div  v-if="hasPermission('Services Invoice Create')" class="col-md-3 col-12 mb-3" style="text-align:right;">
-                                            <router-link to="/purchase_invoice/create_invoice" style="margin-top: 25px" class="btn btn-primary bg-primary" type="button">+ New Services Invoice</router-link>
+                                            <router-link to="/purchase_invoice/create_invoice" style="margin-top: 31px" class="btn btn-primary bg-primary" type="button">+ New Services Invoice</router-link>
                                         </div>
                                     </div>
                                 </div>
@@ -128,34 +128,34 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="adsdata1 in adsdata.data" :class="[adsdata1.Status2=='Not Verified' ? 'table-warning' : '']">
-                                            <td class="td-center"><span class="fw-bold">{{adsdata1.FormID}}</span><br />{{adsdata1.Dated}}</td>
-                                            <td class="td-left">
-                                                <div class="d-flex justify-content-left align-items-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey"><span class="fw-bold">{{adsdata1.FormID}}</span><br />{{adsdata1.Dated}}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
+                                                <div class="d-flex justify-content-center align-items-center">
                                                     <div class="d-flex flex-column"><a class="user_name text-truncate text-body"><span class="fw-bolder">{{adsdata1.DepartmentName}}</span></a><small class="emp_post text-muted">{{adsdata1.ProjectName}}</small></div>
                                                 </div>
                                             </td>
-                                            <td class="td-center" style="max-width:200px;">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey;max-width:190px;" >
                                                 {{adsdata1.vendorName}}
                                             </td>
-                                            <td class="td-right">{{Number(adsdata1.SubTotal)?.toLocaleString()}}</td>
-                                            <td class="td-right">{{Number(adsdata1.Tax)?.toLocaleString()}}</td>
-                                            <td class="td-right">{{Number(adsdata1.ShippingCharges)?.toLocaleString()}}</td>
-                                            <td class="td-right">{{Number(adsdata1.TotalAmount)?.toLocaleString()}}</td>
-                                            <td  v-if="hasPermission('Services Invoice Statuses')" class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{Number(adsdata1.SubTotal)?.toLocaleString()}}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{Number(adsdata1.Tax)?.toLocaleString()}}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{Number(adsdata1.ShippingCharges)?.toLocaleString()}}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{Number(adsdata1.TotalAmount)?.toLocaleString()}}</td>
+                                            <td  style="text-align:center;border-right:1px solid lightgrey" v-if="hasPermission('Services Invoice Statuses')" class="td-center">
                                                 <span v-if="adsdata1.Status2=='Verified'" class="badge badge-glow bg-success">{{adsdata1.Status2}}</span>
                                                 <span v-else-if="adsdata1.Status2=='Not Verified'" @click="editgrn(adsdata1.ReceavingOrderID)" data-bs-toggle="modal" data-bs-target="#PREQ_status2" class="badge bg-light-success">{{adsdata1.Status2}}</span>
                                             </td>
-                                            <td v-else class="td-center">
+                                            <td v-else class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span v-if="adsdata1.Status2=='Verified'" class="badge bg-light-success">{{adsdata1.Status2}}</span>
                                                 <span v-else-if="adsdata1.Status2=='Not Verified'" class="badge bg-light-warning">{{adsdata1.Status2}}</span>
                                             </td>
-                                            <td   class="td-center">
+                                            <td   class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <a v-if="hasPermission('Services Invoice Edit')" class="me-25" @click="editgrn(adsdata1.ReceavingOrderID)" data-bs-toggle="modal" data-bs-target="#PREQ_view">
-                                                    <i class="fa-solid fa-eye"></i>
+                                                    <i class="fa-solid fa-eye" style="font-size: 16px !important;"></i>
                                                 </a>
-                                                <a v-if="hasPermission('Services Invoice Print')" target="_blank" v-bind:href="`Accounts/pi_Letter9/${adsdata1.ReceavingOrderID}/${adsdata1.FormID}`" class="btn btn-sm"><i class="fa-solid fa-print"></i></a>
+                                                <a v-if="hasPermission('Services Invoice Print')" target="_blank" v-bind:href="`Accounts/pi_Letter9/${adsdata1.ReceavingOrderID}/${adsdata1.FormID}`" class="btn btn-sm me-25"><i class="fa-solid fa-print"style="font-size: 16px !important;"></i></a>
                                                 <router-link v-if="adsdata1.Status2=='Not Verified'" style="float:left" :to="'/accounting/accounting_edit_si/'+adsdata1.ReceavingOrderID" >
-                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <i class="fa-solid fa-pen-to-square"style="font-size: 16px !important; margin-right: 7px;"></i>
                                                 </router-link>
                                             </td>
                                         </tr>

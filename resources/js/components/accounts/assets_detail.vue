@@ -105,7 +105,7 @@
                                         <tr>
                                             <th style="text-align:center; vertical-align:middle !important;">Unique Id
                                             </th>
-                                            <th style="vertical-align:middle !important;">Asset Name</th>
+                                            <th style="vertical-align:middle !important; text-align: center;">Asset Name</th>
                                             <th style="vertical-align:middle !important;">Serial Number</th>
                                             <th style="text-align:center; vertical-align:middle !important;">Category
                                                 Name
@@ -120,23 +120,23 @@
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in filterData">
-                                            <td class=" control" tabindex="0" style="text-align:center;">
+                                            <td class=" control" tabindex="0"  style="text-align: center; border-right: 1px solid lightgrey;">
                                                 {{ adsdata1.AssetsUniqueID }}</td>
-                                            <td class=" control" tabindex="0">{{ adsdata1.Name }}</td>
-                                            <td class=" control" tabindex="0">{{ adsdata1.SrNumber }}</td>
-                                            <td class=" control" tabindex="0" style="text-align:center;">
+                                            <td class=" control" tabindex="0" style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Name }}</td>
+                                            <td class=" control" tabindex="0" style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.SrNumber }}</td>
+                                            <td class=" control" tabindex="0" style="text-align: center; border-right: 1px solid lightgrey;" >
                                                 {{ adsdata1.CategoryName }}</td>
-                                            <td class=" control" tabindex="0" style="text-align:center;">{{ adsdata1.Qty
+                                            <td class=" control" tabindex="0"  style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Qty
                                                 }}
                                             </td>
 
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <barcode :value="'www./' + adsdata1.AssetsUniqueID" :formet="pharmacode"
                                                     :displayValue="false" :width="0.7" :height="30">
                                                     No barcode available
                                                 </barcode>
                                             </td>
-                                            <td class=" control" tabindex="0" style="text-align:center;">
+                                            <td class=" control" tabindex="0"  style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="d-flex align-items-center col-actions">
                                                     <a v-if="hasPermission('Inventory Assets view-asset')"
                                                         @click="getitemdata(adsdata1.AssetsUniqueID)" class="me-25"
@@ -250,22 +250,22 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="getitemwise1 in getitemwise">
-                                                    <td class="py-1">
+                                                    <td class="py-1" style="text-align: center; border-right: 1px solid lightgrey;">
                                                         <span class="fw-bold">{{ getitemwise1.Dated }}</span>
                                                     </td>
-                                                    <td class="py-1">
+                                                    <td class="py-1" style="text-align: center; border-right: 1px solid lightgrey;">
                                                         <span class="fw-bold">{{ getitemwise1.Name }}</span>
                                                     </td>
-                                                    <td class="py-1">
+                                                    <td class="py-1" style="text-align: center; border-right: 1px solid lightgrey;">
                                                         <span class="fw-bold">{{ getitemwise1.CategoryName }}</span>
                                                     </td>
-                                                    <td class="py-1">
+                                                    <td class="py-1" style="text-align: center; border-right: 1px solid lightgrey;">
                                                         <span class="fw-bold">{{ getitemwise1.Quantity }}</span>
                                                     </td>
-                                                    <td class="py-1">
+                                                    <td class="py-1" style="text-align: center; border-right: 1px solid lightgrey;">
                                                         <span class="fw-bold">{{ getitemwise1.Unit }}</span>
                                                     </td>
-                                                    <td class="py-1">
+                                                    <td class="py-1" style="text-align: center; border-right: 1px solid lightgrey;">
                                                         <p class="card-text fw-bold mb-25">{{ getitemwise1.Reference }}
                                                         </p>
 

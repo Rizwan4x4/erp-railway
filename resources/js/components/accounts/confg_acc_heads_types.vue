@@ -53,22 +53,22 @@
                                                                         <table class="table table-hover">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th>Head Code</th>
-                                                                                    <th>Name</th>
-                                                                                    <th>Description</th>
+                                                                                    <th class="text-center">Head Code</th>
+                                                                                    <th class="text-center">Name</th>
+                                                                                    <th class="text-center">Description</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr v-for="adsdata1 in adsdata.data">
-                                                                                    <td>{{ adsdata1.HeadCode }}</td>
-                                                                                    <td>{{ adsdata1.HeadName }}</td>
-                                                                                    <td>{{ adsdata1.Description }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.HeadCode }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.HeadName }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Description }}</td>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
                                                                     <div
-                                                                        style="text-align: center; padding-top: 20px; ">
+                                                                        style="text-align: center;">
                                                                         <pagination :data="adsdata"
                                                                             @pagination-change-page="getResult">
                                                                         </pagination>
@@ -92,8 +92,8 @@
                                         <h4 class="card-title">Journal Heads</h4>
                                         <div style="text-align: right; width: 70% !important">
                                             <a v-if="hasPermission('Accounts Configurations Accounts-heads create-journal-heads')"
-                                                style="float: left" data-bs-toggle="modal" data-bs-target="#addNewCard2"
-                                                class="btn bg-primary btn-primary bg-primary waves-effect">Create New</a>
+                                                 data-bs-toggle="modal" data-bs-target="#addNewCard2"
+                                                class="btn bg-primary btn-primary me-1 waves-effect">Create New</a>
                                             <div class="" style="float: right">
                                                 <div style="">
                                                     <label>
@@ -106,7 +106,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div style="margin-bottom: 20px"
+                                        <div
                                             class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75 ">
                                             <section id="accordion-with-border">
                                                 <div class="row">
@@ -120,26 +120,26 @@
                                                                         <table class="table table-hover">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th>Head Code</th>
-                                                                                    <th>Journal Name</th>
-                                                                                    <th>Accounts Type</th>
+                                                                                    <th class="text-center">Head Code</th>
+                                                                                    <th class="text-center">Journal Name</th>
+                                                                                    <th class="text-center">Accounts Type</th>
 
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr
                                                                                     v-for="journal_data1 in journal_data.data">
-                                                                                    <td>{{ journal_data1.journalCode }}
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ journal_data1.journalCode }}
                                                                                     </td>
-                                                                                    <td>{{ journal_data1.JournalName }}
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ journal_data1.JournalName }}
                                                                                     </td>
-                                                                                    <td>{{ journal_data1.HeadId }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ journal_data1.HeadId }}</td>
                                                                                 </tr>
 
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
-                                                                    <div style="text-align: center;padding-top: 20px;">
+                                                                    <div style="text-align: center;">
                                                                         <pagination :data="journal_data"
                                                                             @pagination-change-page="getResult2">
                                                                         </pagination>

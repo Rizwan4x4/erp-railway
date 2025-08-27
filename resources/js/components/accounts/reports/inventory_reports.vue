@@ -35,7 +35,7 @@
 
 
   <!--Start GRN Detail Report -->
-  <div class="modal fade" id="GRNReportToggle" aria-labelledby="GRNReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+  <div class="modal fade" id="GRNReportToggle" aria-labelledby="GRNReportToggle" tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -76,7 +76,7 @@
 </div>
   <!--End GRN Detail Report -->
 <!-- Start Issuance Detail Report -->
-  <div class="modal fade" id="IssuanceReportToggle" aria-labelledby="IssuanceReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+  <div class="modal fade" id="IssuanceReportToggle" aria-labelledby="IssuanceReportToggle" tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -150,7 +150,7 @@
 <!-- End Issuance Detail Report -->
 
 <!-- Start Issuance Return Detail Report -->
-<div class="modal fade" id="IssuanceReturnReportToggle" aria-labelledby="IssuanceReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="IssuanceReturnReportToggle" aria-labelledby="IssuanceReportToggle" tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -224,7 +224,7 @@
 <!-- End Issuance Return Detail Report -->
 
         <!-- Receiving Data Report -->
-        <div class="modal fade" id="ReceivingDataToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
+        <div class="modal fade" id="ReceivingDataToggle" aria-labelledby="modalToggleLabel" tabindex="-1"  aria-hidden="true">
             <div v-if="Recv_Data_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -404,7 +404,7 @@
 
 
         <!-- Issuance Data Report -->
-        <div class="modal fade" id="IssuanceDataToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
+        <div class="modal fade" id="IssuanceDataToggle" aria-labelledby="modalToggleLabel" tabindex="-1"  aria-hidden="true">
             <div v-if="Issuance1_Data_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">

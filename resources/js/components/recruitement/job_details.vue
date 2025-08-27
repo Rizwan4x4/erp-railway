@@ -59,7 +59,7 @@
                                 <strong>Number of Jobs:</strong>  {{ job_detail1.JobNumber }}
                             </div>
                             <div class="col-md-6 mb-2">
-                                <strong>Created At:</strong>  {{ job_detail1.CreatedOn }}
+                                <strong>Created By:</strong>  {{ job_detail1.CreatedBy }}
                             </div>
                         </div>
 
@@ -185,4 +185,47 @@ export default {
     color: #fff;
     background-color: #0d6efd !important;
 }
+.form-control{
+    line-height: 1.9 !important;
+}
+.form-select{
+    line-height: 1.9 !important;
+}
+.multiselect{
+    line-height: 0.8 !important;
+}
+.btn-primary{
+    line-height: 1.9 !important;
+}
+.btn-success{
+    line-height: 1.9 !important;
+}
+.btn-secondary{
+    line-height: 1.9 !important;
+}
+.btn-danger{
+    line-height: 1.9 !important;
+}
+.btn-warning{
+    line-height: 1.9 !important;
+}
+.btn-gradient-info{
+    line-height: 1.9 !important;
+}
+.btn-outline-secondary{
+    line-height: 1.9 !important;
+}
+.btn-outline-primary{
+    line-height: 1.9 !important;
+}
+.btn_m_top{
+    margin-top: 2.2rem !important;
+}
+.pagination {
+  display: flex !important;
+  justify-content: center !important;
+  margin: 1rem 0 !important;
+  width: 100% !important;
+}
+
 </style>

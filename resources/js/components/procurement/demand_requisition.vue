@@ -107,7 +107,7 @@
                             </div>
                         </div>
                     </popover>
-                    <ul class="nav nav-pills mb-2" style="padding-left:20px !important">
+                    <ul class="nav nav-pills mb-2" >
                         <li v-if="hasPermission('Demand Requisition Create')" class="nav-item col-md-3">
                             <router-link style="float:left" to="/purchase/requistion_create"
                                 class="btn btn-primary bg-primary waves-effect">Create Demand Requisition</router-link>
@@ -141,7 +141,9 @@
                                             <div class="col-md-12">
                                                 <div class="row g-1">
                                                     <div class="col-md-2">
-                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Department Name</label>
+                                                        <label class="form-label"><img class="px-1"
+                                                                :src="images.solar_filter_linear" alt="icon">Department
+                                                            Name</label>
                                                         <select v-model="dept_name1" class="form-select mb-md-0 mb-2">
                                                             <option value="All">All Departments </option>
                                                             <option v-for="departments1 in departments"
@@ -150,7 +152,9 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Project Name</label>
+                                                        <label class="form-label"><img class="px-1"
+                                                                :src="images.solar_filter_linear" alt="icon">Project
+                                                            Name</label>
                                                         <select v-model="proj_name" class="form-select mb-md-0 mb-2">
                                                             <option value="All">All Projects </option>
                                                             <option v-for="projects1 in projects"
@@ -160,7 +164,9 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Status</label>
+                                                        <label class="form-label"><img class="px-1"
+                                                                :src="images.solar_filter_linear"
+                                                                alt="icon">Status</label>
                                                         <select v-model="status" class="form-select mb-md-0 mb-2">
                                                             <option value="All">All</option>
                                                             <option value="Pending">Pending</option>
@@ -171,24 +177,28 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date From</label>
+                                                        <label class="form-label"><img class="px-1"
+                                                                :src="images.solar_filter_linear" alt="icon">Date
+                                                            From</label>
                                                         <input type="date" v-model="startingdate" class="form-control"
                                                             placeholder="" required="">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Date To</label>
+                                                        <label class="form-label"><img class="px-1"
+                                                                :src="images.solar_filter_linear" alt="icon">Date
+                                                            To</label>
                                                         <input type="date" class="form-control" v-model="closingdate"
                                                             placeholder="" required="">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <button @click="filter_byStatus()"
-                                                            style="background: rgb(193, 193, 193); width: 80% !important; height: 33px !important; margin-bottom: 20px; margin-top: 25px; margin-left: 10px"
+                                                            style="background: rgb(193, 193, 193); width: 80% !important; height: 38px !important; margin-top: 31px; margin-left: 10px"
                                                             class="btn btn-primary bg-primary">Search</button>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <input autocomplete="off" type="text" name="keyword1"
                                                             v-model="keyword1" class="form-control"
-                                                            style="margin-top: 25px;  margin-right: 20px;"
+                                                            style="margin-top:31px;  margin-right: 20px;"
                                                             placeholder="Search By Req id" />
                                                     </div>
                                                 </div>
@@ -322,21 +332,25 @@
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr v-for="get_reqdata11 in get_reqdata1">
-                                                                            <td class="py-1">
+                                                                            <td class="py-1"
+                                                                                style="text-align:center;border-right:1px solid lightgrey">
                                                                                 <p class="card-text fw-bold mb-25">
                                                                                     {{ get_reqdata11.ItemName }}</p>
                                                                                 <p class="card-text text-nowrap">
                                                                                 </p>
                                                                             </td>
-                                                                            <td class="py-1">
+                                                                            <td class="py-1"
+                                                                                style="text-align:center;border-right:1px solid lightgrey">
                                                                                 <span class="fw-bold">{{
                                                                                     get_reqdata11.Detail }}</span>
                                                                             </td>
-                                                                            <td class="py-1">
+                                                                            <td class="py-1"
+                                                                                style="text-align:center;border-right:1px solid lightgrey">
                                                                                 <span class="fw-bold">{{
                                                                                     get_reqdata11.Quantity }}</span>
                                                                             </td>
-                                                                            <td class="py-1">
+                                                                            <td class="py-1"
+                                                                                style="text-align:center;border-right:1px solid lightgrey">
                                                                                 <span class="fw-bold">{{
                                                                                     get_reqdata11.unit }}</span>
                                                                             </td>
@@ -344,7 +358,8 @@
                                                                                 <span class="fw-bold">{{
                                                                                     get_reqdata11.ItemCode }}</span>
                                                                             </td>
-                                                                            <td class="py-1">
+                                                                            <td class="py-1"
+                                                                                style="text-align:center;border-right:1px solid lightgrey">
                                                                                 <span class="fw-bold">{{
                                                                                     get_reqdata11.LinkDept }}</span>
                                                                             </td>
@@ -360,7 +375,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div style="text-align:center;padding-top:20px" class="d-flex justify-content-end me-4">
+                            <div style="text-align:center;padding-top:20px" class="d-flex justify-content-start me-4">
                                 <pagination :data="adsdata" @pagination-change-page="getResult"
                                     style="margin-top: 25px;" :limit="5"></pagination>
                                 <div>
@@ -414,7 +429,7 @@
                                         <div class="invoice-date-wrapper row">
                                             <p class="invoice-date-title" style="width:30%">Req Type:</p>
                                             <p style="width:70%" class="invoice-date">{{ requisitions1.RequisitionType
-                                            }}
+                                                }}
                                             </p>
                                         </div>
                                         <div class="invoice-date-wrapper row">
@@ -505,7 +520,7 @@
                                             <option value="Rejected">Rejected</option>
                                         </select>
                                         <span style="color: #DB4437; font-size:11px;" v-if="up_sts == ''">{{ e_up_sts
-                                        }}</span>
+                                            }}</span>
                                     </div>
                                     <div class="col-md-6 d-flex justify-content-end order-md-2 order-1">
                                     </div>
@@ -607,21 +622,21 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="get_reqdata11 in get_reqdata1">
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <p class="card-text fw-bold mb-25">{{ get_reqdata11.ItemName }}</p>
                                                 <p class="card-text text-nowrap">
                                                 </p>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{ get_reqdata11.Detail }}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{ get_reqdata11.Quantity }}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{ get_reqdata11.unit }}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{ currency }}.
                                                     {{ Number(get_reqdata11.EstCost) }}</span>
                                             </td>
@@ -722,7 +737,8 @@
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-3" style="text-align: right;padding-top: 20px;">
-                                        <button class="btn btn-primary bg-primary" @click="sum_total()">Calculate Total</button>
+                                        <button class="btn btn-primary bg-primary" @click="sum_total()">Calculate
+                                            Total</button>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
@@ -748,7 +764,7 @@
                                                     <select v-if="req_type == 'Goods' || req_type == 'Assets'"
                                                         class="form-select item-details" name="first[]">
                                                         <option :value='get_reqdata11.itemId'>{{ get_reqdata11.ItemName
-                                                        }}
+                                                            }}
                                                         </option>
                                                     </select>
                                                     <input hidden v-else type="text" name="first[]" value="empty">
@@ -833,7 +849,8 @@
                                 </div>
                                 <div class="row mt-1">
                                     <div class="col-12 px-0" style="margin-left: 15px;">
-                                        <div data-repeater-create="" class="btn btn-primary bg-primary btn-sm btn-add-new"
+                                        <div data-repeater-create=""
+                                            class="btn btn-primary bg-primary btn-sm btn-add-new"
                                             v-on:click="add_xz_repeater();">
                                             <i data-feather="plus" class="me-25"></i>
                                             <span class="align-middle">Add Item</span>
@@ -856,8 +873,9 @@
                                 </div>
                                 <!-- Invoice Note ends -->
                                 <div class="col-12 text-center mt-2 pt-50" style="margin-bottom:20px">
-                                    <button :disabled="disabled" @click="delay()" class="btn btn-primary bg-primary me-1"
-                                        data-bs-dismiss="modal" aria-label="Close">Update</button>
+                                    <button :disabled="disabled" @click="delay()"
+                                        class="btn btn-primary bg-primary me-1" data-bs-dismiss="modal"
+                                        aria-label="Close">Update</button>
                                     <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
                                         aria-label="Close">
                                         Cancel
@@ -876,7 +894,7 @@
 export default {
     data() {
         return {
-             images: {
+            images: {
                 solar_filter_linear: "/images/solar_filter_linear.png",
                 search_icon: "/images/search_icon.png",
             },

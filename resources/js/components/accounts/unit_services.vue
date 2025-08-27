@@ -61,10 +61,10 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Plot Type</th>
-                                            <th>Block Name</th>
-                                            <th>Booking Amount</th>
+                                            <th class="text-center">Date</th>
+                                            <th class="text-center">Plot Type</th>
+                                            <th class="text-center">Block Name</th>
+                                            <th class="text-center">Booking Amount</th>
 
                                             <!-- <th>Actions</th> -->
                                             <th><input type="checkbox" v-model="test" @change="toggling()"
@@ -74,13 +74,11 @@
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata">
                                             <td class=" control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1">{{ adsdata1.Dated }}</td>
-                                            <td>{{ adsdata1.Plot_Type }}</td>
-                                            <td>{{ adsdata1.Block }}</td>
-                                            <td>Rs. {{ Number(adsdata1.Total).toLocaleString() }}/-</td>
-
-
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="sorting_1">{{ adsdata1.Dated }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Plot_Type }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Block }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">Rs. {{ Number(adsdata1.Total).toLocaleString() }}/-</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="d-flex align-items-center col-actions">
                                                     <input readonly name="first[]" :value="adsdata1.SRID" hidden
                                                         class="form-control invoice-edit-input " />

@@ -109,7 +109,7 @@
                             </div>
                         </div>
                     </popover>
-                    <ul class="nav nav-pills mb-2 col-md-12" style="padding-left:20px !important">
+                    <ul class="nav nav-pills mb-2 col-md-12">
                         <li class="nav-item col-md-3">
                             <router-link style="float:left" to="/purchase/requistion_create"
                                 class="btn btn-primary bg-primary waves-effect bg-primary">Create Demand Requisition</router-link>
@@ -183,13 +183,13 @@
                                                     </div>
                                                     <div class="col-md-1">
                                                         <button @click="filter_byStatus()"
-                                                            style="background: rgb(193, 193, 193); width: 80% !important; height: 33px !important; margin-bottom: 20px; margin-top: 25px; margin-left: 10px"
+                                                            style="background: rgb(193, 193, 193); width: 80% !important; height: 38px !important; margin-bottom: 20px; margin-top: 31px; margin-left: 10px"
                                                             class="btn btn-primary bg-primary">Search</button>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <input autocomplete="off" type="text" name="keyword1"
-                                                            v-model="keyword1" class="form-control"
-                                                            style="margin-top: 25px;  margin-left: 20px;"
+                                                            v-model="keyword1" class="form-control px-2"
+                                                            style="margin-top: 31px;  margin-left: 20px;"
                                                             placeholder="Search By Reqid" />
                                                     </div>
                                                 </div>

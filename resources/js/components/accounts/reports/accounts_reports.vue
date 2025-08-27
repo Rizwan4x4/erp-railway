@@ -69,7 +69,7 @@
 
 
 <!-- Start Filter Balance Sheet -->
- <div class="modal fade" id="balancesheet1" aria-labelledby="balancesheet1" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="balancesheet1" aria-labelledby="balancesheet1" tabindex="-1"  aria-hidden="true">
             <div v-if="balancesheet_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -433,7 +433,7 @@
 <!-- End Filter Balance Sheet -->
 
  <!--Start CashFlowForTheYearEnded-->
- <div class="modal fade" id="CashFlowForTheYearEnded" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="CashFlowForTheYearEnded" tabindex="-1"  aria-hidden="true">
             <div v-if="CashFlow_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -848,7 +848,7 @@
  <!--End CashFlowForTheYearEnded-->
 
   <!-- Start Chart of Accounts -->
-  <div class="modal fade" id="ChartofAccountsToggle" aria-labelledby="ChartofAccountsToggle" tabindex="-1" style="display: none" aria-hidden="true">
+  <div class="modal fade" id="ChartofAccountsToggle" aria-labelledby="ChartofAccountsToggle" tabindex="-1"  aria-hidden="true">
             <div v-if="chart_Account_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -989,7 +989,7 @@
  </div>
  <!--End Chart of Accounts -->
  <!-- Start Delivery Detail Report -->
- <div class="modal fade" id="DeliveryReportToggle" aria-labelledby="DeliveryReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="DeliveryReportToggle" aria-labelledby="DeliveryReportToggle" tabindex="-1"  aria-hidden="true">
             <div v-if="delivery_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1124,7 +1124,7 @@
 <!-- End Delivery Detail Report -->
 
         <!--Start General Ledger Report -->
-        <div class="modal fade" id="ledreport" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
+        <div class="modal fade" id="ledreport" aria-labelledby="modalToggleLabel" tabindex="-1"  aria-hidden="true">
             <div v-if="ledger_detail == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1477,7 +1477,7 @@
         <!--End General Ledger Report -->
 
    <!-- Start Income Statement -->
- <div class="modal fade" id="profitorlossstatement" aria-labelledby="profitorlossstatement" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="profitorlossstatement" aria-labelledby="profitorlossstatement" tabindex="-1"  aria-hidden="true">
             <div v-if="profit_loss_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1786,7 +1786,7 @@
    <!--End Income Statement -->
 
  <!--Start Tax Detail Report -->
- <div class="modal fade" id="TaxReportToggle" aria-labelledby="TaxReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="TaxReportToggle" aria-labelledby="TaxReportToggle" tabindex="-1"  aria-hidden="true">
             <div v-if="tax_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1888,7 +1888,7 @@
  </div>
  <!--End Tax Detail Report -->
 <!--Start Trial Balance Reports -->
- <div class="modal fade" id="trailbalance" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="trailbalance" aria-labelledby="modalToggleLabel" tabindex="-1"  aria-hidden="true">
         <div v-if="trail_detail == ''" class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -2027,7 +2027,7 @@
     </div>
 <!--End Trial Balance Reports  -->
 <!-- Start Filter Vendor Overall Balance Reports -->
-<div class="modal fade" id="vendoroverallbalance" aria-labelledby="vendoroverallbalance" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="vendoroverallbalance" aria-labelledby="vendoroverallbalance" tabindex="-1"  aria-hidden="true">
             <div v-if="vendor_overall_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">

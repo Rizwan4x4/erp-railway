@@ -92,9 +92,13 @@
                                         show-clear></b-form-rating>
                                 </div> -->
                                 <div class="col-md-1 user_plan">
-                                    <div style="height:27px; margin-top:3px;"></div>
                                     <button class="dt-button add-new btn btn-primary bg-primary  py-2 px-4 "
                                         @click="search_interview()">Search</button>
+                                    <button type="reset" @click="reset()"
+                                        class="btn btn-outline-secondary waves-effect  py-2 mt-1"
+                                        style="padding-left: 1.8rem !important; padding-right: 1.8rem !important;">
+                                        Reset </button>
+
                                 </div>
 
                                 <div class="col-md-2 user_plan">
@@ -148,12 +152,12 @@
                                         <div class="card mb-2 top-radius bottom-radius border-0 shadow-sm cursor-pointer"
                                             @click="openFirstScheduledModal(interviews1)">
                                             <div class="card-body d-flex align-items-center p-2">
-                                                <img src="https://i.pravatar.cc/40" class="rounded-circle me-2"
-                                                    width="40" height="40" />
+                                                <img :src="interviews1.Photo ? '/uploads/candidate_photos/' + interviews1.Photo : '/app-assets/images/portrait/small/avatar-s-9.jpg'"
+                                                    class="rounded-circle me-2" width="40" height="40" />
                                                 <div>
                                                     <h6 class="mb-1">{{ interviews1.CandName }}</h6>
                                                     <small class="text-muted">Exp: {{ interviews1.experience
-                                                        }}</small>
+                                                    }}</small>
                                                 </div>
                                             </div>
                                             <div
@@ -182,7 +186,7 @@
                                                 </div>
                                                 <small class="text-muted align-self-center">{{
                                                     formatRelativeTime(interviews1.updatedOn)
-                                                    }}</small>
+                                                }}</small>
                                             </div>
                                         </div>
 
@@ -193,7 +197,7 @@
                                             <div class="card mb-2 top-radius bottom-radius border-0 shadow-sm cursor-pointer"
                                                 @click="openFirstInterviewModal(interviews1)">
                                                 <div class="card-body d-flex align-items-center p-2">
-                                                    <img src="https://i.pravatar.cc/40?img=2"
+                                                    <img :src="interviews1.Photo ? '/uploads/candidate_photos/' + interviews1.Photo : '/app-assets/images/portrait/small/avatar-s-9.jpg'"
                                                         class="rounded-circle me-2" width="40" height="40" />
                                                     <div>
                                                         <h6 class="mb-1">{{ interviews1.CandName }}</h6>
@@ -201,23 +205,15 @@
                                                             v-if="interviews1.firstInterviewstatus == 'Passed' && interviews1.hire_sts != '1'">Passed</span>
                                                         <span class="badge bg-gradient-secondary"
                                                             style="cursor: pointer;"
-                                                            v-if="interviews1.firstInterviewstatus == 'Skip' && interviews1.hire_sts != '1'"
-                                                            @click="fetch_interview_detail(interviews1.InterviewID, 'firstsdld')"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#updateinterviewstatus">Skipped</span>
+                                                            v-if="interviews1.firstInterviewstatus == 'Skip' && interviews1.hire_sts != '1'">Skipped</span>
                                                         <span class="badge bg-gradient-danger" style="cursor: pointer;"
                                                             v-if="interviews1.firstInterviewstatus == 'Failed'">Failed</span>
 
                                                         <span class="badge bg-gradient-success" style="cursor: pointer;"
-                                                            v-if="interviews1.firstInterviewstatus == 'Scheduled' && interviews1.hire_sts != '1'"
-                                                            @click="fetch_interview_detail(interviews1.InterviewID, 'firstsdld')"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#updateinterviewstatus">Scheduled</span>
+                                                            v-if="interviews1.firstInterviewstatus == 'Scheduled' && interviews1.hire_sts != '1'">Scheduled</span>
 
                                                         <span class="badge bg-gradient-warning"
                                                             v-if="interviews1.firstInterviewstatus == 'Not scheduled' && interviews1.hire_sts != '1'"
-                                                            @click="fetch_interview_detail(interviews1.InterviewID, 'firstns')"
-                                                            data-bs-toggle="modal" data-bs-target="#editinterview"
                                                             style="cursor: pointer;">Not
                                                             scheduled</span>
                                                         <span class="badge bg-dark" v-if="interviews1.hire_sts == '1'">
@@ -271,7 +267,7 @@
                                             <div class="card mb-2 top-radius bottom-radius border-0 shadow-sm cursor-pointer"
                                                 @click="openSecondInterviewModal(interviews1)">
                                                 <div class="card-body d-flex align-items-center p-2">
-                                                    <img src="https://i.pravatar.cc/40?img=3"
+                                                    <img :src="interviews1.Photo ? '/uploads/candidate_photos/' + interviews1.Photo : '/app-assets/images/portrait/small/avatar-s-9.jpg'"
                                                         class="rounded-circle me-2" width="40" height="40" />
                                                     <div>
                                                         <h6 class="mb-1">{{ interviews1.CandName }}</h6>
@@ -280,20 +276,14 @@
                                                         <span class="badge bg-gradient-secondary"
                                                             style="cursor: pointer;"
                                                             v-if="interviews1.secondInterviewstatus == 'Skip' && interviews1.hire_sts != '1'"
-                                                            @click="fetch_interview_detail(interviews1.InterviewID, 'secondsdld')"
-                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateinterviewstatus">Skipped</span>
                                                         <span class="badge bg-gradient-danger" style="cursor: pointer;"
                                                             v-if="interviews1.secondInterviewstatus == 'Failed'">Failed</span>
                                                         <span class="badge bg-gradient-success" style="cursor: pointer;"
                                                             v-if="interviews1.secondInterviewstatus == 'Scheduled' && interviews1.hire_sts != '1'"
-                                                            @click="fetch_interview_detail(interviews1.InterviewID, 'secondsdld')"
-                                                            data-bs-toggle="modal"
                                                             data-bs-target="#updateinterviewstatus">Scheduled</span>
                                                         <span class="badge bg-gradient-warning"
                                                             v-if="interviews1.secondInterviewstatus == 'Not scheduled' && interviews1.hire_sts != '1'"
-                                                            @click="fetch_interview_detail(interviews1.InterviewID, 'secondns')"
-                                                            data-bs-toggle="modal" data-bs-target="#editinterview"
                                                             style="cursor: pointer;">Not
                                                             scheduled</span>
                                                         <span class="badge bg-dark" v-if="interviews1.hire_sts == '1'">
@@ -347,7 +337,7 @@
                                             <div class="card mb-2 top-radius bottom-radius border-0 shadow-sm cursor-pointer"
                                                 @click="openFinalInterviewModal(interviews1)">
                                                 <div class="card-body d-flex align-items-center p-2">
-                                                    <img src="https://i.pravatar.cc/40?img=4"
+                                                    <img :src="interviews1.Photo ? '/uploads/candidate_photos/' + interviews1.Photo : '/app-assets/images/portrait/small/avatar-s-9.jpg'"
                                                         class="rounded-circle me-2" width="40" height="40" />
                                                     <div>
                                                         <h6 class="mb-1">{{ interviews1.CandName }}</h6>
@@ -356,21 +346,13 @@
                                                             v-if="interviews1.finalInterviewstatus == 'Passed' && interviews1.hire_sts != '1'">Passed</span>
                                                         <span class="badge bg-gradient-secondary"
                                                             style="cursor: pointer;"
-                                                            v-if="interviews1.finalInterviewstatus == 'Skip' && interviews1.hire_sts != '1'"
-                                                            @click="fetch_interview_detail(interviews1.InterviewID, 'finalsdld')"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#updateinterviewstatus">Skipped</span>
+                                                            v-if="interviews1.finalInterviewstatus == 'Skip' && interviews1.hire_sts != '1'">Skipped</span>
                                                         <span class="badge bg-gradient-danger" style="cursor: pointer;"
                                                             v-if="interviews1.finalInterviewstatus == 'Failed'">Failed</span>
                                                         <span class="badge bg-gradient-success" style="cursor: pointer;"
-                                                            v-if="interviews1.finalInterviewstatus == 'Scheduled' && interviews1.hire_sts != '1'"
-                                                            @click="fetch_interview_detail(interviews1.InterviewID, 'finalsdld')"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#updateinterviewstatus">Scheduled</span>
+                                                            v-if="interviews1.finalInterviewstatus == 'Scheduled' && interviews1.hire_sts != '1'">Scheduled</span>
                                                         <span class="badge bg-gradient-warning"
                                                             v-if="interviews1.finalInterviewstatus == 'Not scheduled' && interviews1.hire_sts != '1'"
-                                                            @click="fetch_interview_detail(interviews1.InterviewID, 'finalns')"
-                                                            data-bs-toggle="modal" data-bs-target="#editinterview"
                                                             style="cursor: pointer;">Not
                                                             scheduled</span>
                                                         <span class="badge bg-dark" v-if="interviews1.hire_sts == '1'">
@@ -420,20 +402,20 @@
                                     <td>
                                         <div class="card mb-2 top-radius bottom-radius border-0 shadow-sm">
                                             <div class="card-body d-flex align-items-center p-2">
-                                                <img src="https://i.pravatar.cc/40?img=5" class="rounded-circle me-2"
-                                                    width="40" height="40" />
+                                                <img :src="interviews1.Photo ? '/uploads/candidate_photos/' + interviews1.Photo : '/app-assets/images/portrait/small/avatar-s-9.jpg'"
+                                                    class="rounded-circle me-2" width="40" height="40" />
                                                 <div class="d-flex flex-row position-relative">
                                                     <div>
                                                         <h6 class="mb-1">{{ interviews1.CandName }}</h6>
-                                                        <button type="button"
+                                                        <button type="button" @click="selectedInterview = interviews1"
                                                             class="btn btn-primary bg-primary btn-sm bg-primary waves-effect waves-float waves-light"
-                                                            v-if="interviews1.hire_sts == 1" style="font-size: 9px;"
+                                                            v-if="interviews1.hire_sts == NULL" style="font-size: 9px;"
                                                             id="clientNotes" data-bs-toggle="modal"
                                                             data-bs-target="#hireinterview">
                                                             Offer letter
                                                         </button>
                                                         <div class="form-check form-switch fs-7"
-                                                            v-if="interviews1.hire_sts != 1">
+                                                            v-if="interviews1.hire_sts == 0">
                                                             <span v-if="interviews1.hire_sts == 1">
                                                                 <input type="checkbox" class="form-check-input" disabled
                                                                     style="width:35px" checked id="clientNotes">
@@ -443,7 +425,7 @@
                                                                     style="width:35px; height: 18px;"
                                                                     @click="fetch_interview_detail(interviews1.InterviewID, 'hire')"
                                                                     id="clientNotes" data-bs-toggle="modal"
-                                                                    data-bs-target="#hireinterview">
+                                                                    data-bs-target="#update_int_sts">
                                                                 <span class="ms-1">Hire</span>
                                                             </span>
                                                         </div>
@@ -532,7 +514,7 @@
                                                         show-clear></b-form-rating>
                                                 </div>
                                                 <small class="text-muted">{{ formatRelativeTime(interviews1.updatedOn)
-                                                }}</small>
+                                                    }}</small>
                                             </div>
                                         </div>
                                     </td>
@@ -566,7 +548,7 @@
 
 
 
-                    <table class="user-list-table table" ref="exportable_table" id="mytable">
+                    <!-- <table class="user-list-table table" ref="exportable_table" id="mytable">
                         <thead class="table-light">
                             <tr>
                                 <th class=" text-center sticky-th-center" style="width:150px;">Applicant Name</th>
@@ -772,7 +754,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                     <!-- Add interview User Modal -->
                     <div class="modal fade" id="addinterview" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered modal-edit-user">
@@ -834,7 +816,7 @@
                                                 placeholder="00-00-0000" />
                                             <span style="color: #DB4437; font-size:11px;" v-if="i_date == ''">{{
                                                 date_error
-                                                }}</span>
+                                            }}</span>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="form-label" for="modalEditUserEmail">From</label>
@@ -842,7 +824,7 @@
                                                 placeholder="11:00 am" />
                                             <span style="color: #DB4437; font-size:11px;" v-if="i_from == ''">{{
                                                 time_error
-                                                }}</span>
+                                            }}</span>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <label class="form-label" for="modalEditUserEmail">To</label>
@@ -914,7 +896,7 @@
                                                 class="btn btn-primary bg-primary me-1">Confirm</button>
                                             <button type="button" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
-                                                Cancle
+                                                cancel
                                             </button>
                                         </div>
                                     </form>
@@ -1157,7 +1139,7 @@
                                                 class="btn btn-primary bg-primary me-1">Confirm</button>
                                             <button type="reset" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
-                                                Cancle
+                                                cancel
                                             </button>
                                         </div>
                                     </form>
@@ -1247,7 +1229,7 @@
                                                 class="btn btn-primary bg-primary me-1">Update</button>
                                             <button type="reset" class="btn btn-outline-secondary"
                                                 data-bs-dismiss="modal" aria-label="Close">
-                                                Cancle
+                                                cancel
                                             </button>
                                         </div>
                                     </form>
@@ -1267,7 +1249,7 @@
                                 <div class="modal-body pb-5 px-sm-5 pt-50">
                                     <div class="text-center mb-2">
                                         <h1 class="mb-1">Change status of <strong>{{ this.ed_i_c_name
-                                                }}</strong>'s
+                                        }}</strong>'s
                                             interview</h1>
                                         <select class="form-select mb-md-0 mb-2" v-model="hire_sts">
                                             <option value="1" selected>Hired</option>
@@ -1280,7 +1262,7 @@
                                                 @click="interview_hr1()" data-bs-dismiss="modal"
                                                 aria-label="Close">Update</button>
                                             <button type="submit" class="btn btn-outline-primary waves-effect"
-                                                data-bs-dismiss="modal" aria-label="Close">Cancle</button>
+                                                data-bs-dismiss="modal" aria-label="Close">cancel</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1288,9 +1270,11 @@
                         </div>
                     </div>
                     <!--/ Update hired status Modal -->
+
+                    <!-- offer letter -->
                     <div class="modal fade" id="hireinterview" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered modal-edit-user">
-                            np
+
                             <div class="modal-content">
                                 <div class="modal-header bg-transparent">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -1311,6 +1295,19 @@
                                                 placeholder="Offer salary" />
                                             <span style="color: #DB4437; font-size:11px;" v-if="exp_salary == ''">{{
                                                 e_exp_salary }}</span>
+                                        </div>
+                                        <div class="col-md-12 mb-2" style="text-align:left;">
+                                            <label class="form-label">Start Date</label>
+                                            <input type="date" v-model="start_date" class="form-control" />
+                                            <span style="color: #DB4437; font-size:11px;" v-if="start_date == ''">{{
+                                                e_start_date }}</span>
+                                        </div>
+
+                                        <div class="col-md-12 mb-2" style="text-align:left;">
+                                            <label class="form-label">Response Deadline</label>
+                                            <input type="date" v-model="response_deadline" class="form-control" />
+                                            <span style="color: #DB4437; font-size:11px;"
+                                                v-if="response_deadline == ''">{{ e_response_deadline }}</span>
                                         </div>
                                         <div class="text-center" style="text-align:center">
                                             <button :disabled="disabled1" @click="delay1()" type="button"
@@ -1360,9 +1357,11 @@ export default {
             s_rate: '',
             ratings: '',
             interviews: {},
+            changePage: 1,
             pagination: {
                 current_page: 1,
-                last_page: 1
+                last_page: 1,
+                total: 0
             },
             page: '',
             CandName: '',
@@ -1430,6 +1429,15 @@ export default {
             Status1: '',
             Status2: '',
             Status3: '',
+            iId: '',
+            start_date: '',
+            response_deadline: '',
+            // reporting_person: '',
+            e_exp_salary: '',
+            e_start_date: '',
+            e_response_deadline: '',
+            // e_reporting_person: '',
+
 
             disabled: false,
             timeout: null,
@@ -1440,13 +1448,23 @@ export default {
         }
     },
     methods: {
+        reset() {
+            this.srch_name = '';
+            this.designation = '';
+            this.status1 = '';
+            this.status2 = '';
+            this.status3 = '';
+            // this.srch_error = '';
+
+            this.getInterviews(this.pagination.current_page);
+        },
         openFirstScheduledModal(interviews1) {
             let status = interviews1.firstInterviewstatus;
 
             if (status === 'Not scheduled') {
                 this.fetch_interview_detail(interviews1.InterviewID, 'firstns');
-                var modal = new bootstrap.Modal(document.getElementById('editinterview'));
-                modal.show();
+                this.modal = new bootstrap.Modal(document.getElementById('editinterview'));
+                this.modal.show();
             }
             else {
                 console.log("No modal for this status.okoko");
@@ -1459,13 +1477,13 @@ export default {
 
             if (status === 'Scheduled' || status === 'Skip') {
                 this.fetch_interview_detail(interviews1.InterviewID, 'firstsdld');
-                var modal = new bootstrap.Modal(document.getElementById('updateinterviewstatus'));
-                modal.show();
+                this.modal = new bootstrap.Modal(document.getElementById('updateinterviewstatus'));
+                this.modal.show();
             }
             else if (status1 === 'Not scheduled' && status === 'Passed') {
                 this.fetch_interview_detail(interviews1.InterviewID, 'secondns');
-                var modal = new bootstrap.Modal(document.getElementById('editinterview'));
-                modal.show();
+                this.modal = new bootstrap.Modal(document.getElementById('editinterview'));
+                this.modal.show();
             }
             else {
                 console.log("No modal for this status.");
@@ -1474,17 +1492,17 @@ export default {
 
         openSecondInterviewModal(interviews1) {
             let status = interviews1.secondInterviewstatus;
-            let status1 = interviews1.thirdInterviewstatus;
+            let status1 = interviews1.finalInterviewstatus;
 
             if (status === 'Scheduled' || status === 'Skip') {
                 this.fetch_interview_detail(interviews1.InterviewID, 'secondsdld');
-                var modal = new bootstrap.Modal(document.getElementById('updateinterviewstatus'));
-                modal.show();
+                this.modal = new bootstrap.Modal(document.getElementById('updateinterviewstatus'));
+                this.modal.show();
             }
-            else if (status1 === 'Not scheduled' || status === 'Passed') {
+            else if (status1 === 'Not scheduled' || status !== 'Passed') {
                 this.fetch_interview_detail(interviews1.InterviewID, 'finalns');
-                var modal = new bootstrap.Modal(document.getElementById('editinterview'));
-                modal.show();
+                this.modal = new bootstrap.Modal(document.getElementById('editinterview'));
+                this.modal.show();
             }
             else {
                 console.log("No modal for this status.");
@@ -1497,8 +1515,8 @@ export default {
 
             if (status === 'Scheduled' || status === 'Skip') {
                 this.fetch_interview_detail(interviews1.InterviewID, 'finalsdld');
-                var modal = new bootstrap.Modal(document.getElementById('updateinterviewstatus'));
-                modal.show();
+                this.modal = new bootstrap.Modal(document.getElementById('updateinterviewstatus'));
+                this.modal.show();
             }
             // else if (status1 === 'Not scheduled' || status === 'Passed') {
             //     this.fetch_interview_detail(interviews1.InterviewID, 'finalns');
@@ -1537,8 +1555,12 @@ export default {
         //     }
         // },
 
+        // formatRelativeTime(date) {
+        //     return moment(date).fromNow();
+        // },
         formatRelativeTime(date) {
-            return moment(date).fromNow();
+            const m = moment(date, 'YYYY-MM-DD hh:mm:ss A', true);
+            return m.isValid() ? m.format('DD MMM YYYY') : '-';
         },
         delay() {
             this.disabled = true
@@ -1665,37 +1687,107 @@ export default {
             this.up_sts = '';
             this.ed_i_comment = '';
         },
+        // interview_hr() {
+        //     if (this.exp_salary == '') {
+        //         if (this.exp_salary == '') {
+        //             this.e_exp_salary = "Enter salary of employee";
+        //         }
+        //         else {
+        //             this.e_exp_salary = "";
+        //         }
+        //         this.$toastr.e("Fill required field", "Caution!");
+        //     }
+        //     else {
+        //         this.e_exp_salary = "";
+        //         axios.post('./int_hire', {
+        //             myiId: this.iId,
+        //             hire_sts: this.hire_sts,
+        //             i_c_name: this.ed_i_c_name,
+        //             exp_salary: this.exp_salary,
+        //         })
+        //         this.exp_salary = "";
+        //         this.ed_i_c_name = "";
+        //         this.iId = "";
+        //         this.$toastr.s("Candidate hired successfully!", "Congratulations");
+        //         this.getInterviews(this.pagination.current_page);
+        //     }
+        // },
         interview_hr() {
-            if (this.exp_salary == '') {
-                if (this.exp_salary == '') {
+            if (this.exp_salary === '' || this.start_date === '' || this.response_deadline === '' || this.reporting_person === '') {
+                if (this.exp_salary === '') {
                     this.e_exp_salary = "Enter salary of employee";
-                }
-                else {
+                } else {
                     this.e_exp_salary = "";
                 }
-                this.$toastr.e("Fill required field", "Caution!");
+
+                if (this.start_date === '') {
+                    this.e_start_date = "Enter start date";
+                } else {
+                    this.e_start_date = "";
+                }
+
+                if (this.response_deadline === '') {
+                    this.e_response_deadline = "Enter response deadline";
+                } else {
+                    this.e_response_deadline = "";
+                }
+
+                // if (this.reporting_person === '') {
+                //     this.e_reporting_person = "Enter reporting person";
+                // } else {
+                //     this.e_reporting_person = "";
+                // }
+
+                this.$toastr.e("Fill all required fields", "Caution!");
+                return;
             }
-            else {
-                this.e_exp_salary = "";
-                axios.post('./int_hire', {
-                    myiId: this.iId,
-                    hire_sts: this.hire_sts,
-                    i_c_name: this.ed_i_c_name,
-                    exp_salary: this.exp_salary,
+
+            // Clear validation errors
+            this.e_exp_salary = "";
+            this.e_start_date = "";
+            this.e_response_deadline = "";
+            // this.e_reporting_person = "";
+
+            axios.post('./int_hire', {
+                // myiId: this.iId,
+                // hire_sts: this.hire_sts,
+                // i_c_name: this.ed_i_c_name,
+                i_Id: this.selectedInterview.InterviewID,
+                m_id: this.selectedInterview.CandID,
+                cand_name: this.selectedInterview.CandName,
+                cand_mail: this.selectedInterview.Email,
+                post: this.selectedInterview.JobID,
+                post_depart: this.selectedInterview.Department,
+                i_c_name: this.selectedInterview.CandName,
+                hire_sts: this.selectedInterview.hire_sts,
+                exp_salary: this.exp_salary,
+                start_date: this.start_date,
+                response_deadline: this.response_deadline,
+                // reporting_person: this.reporting_person
+            })
+                .then(res => {
+                    this.$toastr.s("Offer letter sent successfully!", "Congratulations");
+                    this.getInterviews(this.pagination.current_page);
+                    // Clear fields
+
+                    this.selectedInterview = {};
+
+                    this.i_Id = '';
+                    this.m_id = '';
+                    this.cand_name = '';
+                    this.cand_mail = '';
+                    this.post = '';
+                    this.post_depart = '';
+                    this.i_c_name = '';
+                    this.hire_sts = '';
+                    this.exp_salary = '';
+                    this.start_date = '';
+                    this.response_deadline = '';
                 })
-                this.exp_salary = "";
-                this.ed_i_c_name = "";
-                this.iId = "";
-                this.$toastr.s("Candidate hired successfully!", "Congratulations");
-                axios.get('interview_detail2')
-                    .then(data => {
-                        this.interviews = data.data;
-                    }
-                    )
-                    .catch(error => { })
-            }
-
-
+                .catch(err => {
+                    console.error(err);
+                    this.$toastr.e("Something went wrong!", "Error");
+                });
         },
         interview_hr1() {
             axios.post('./int_hire1', {
@@ -1705,9 +1797,7 @@ export default {
                 .then(data => {
                     if (data.data == "Status updated") {
                         this.$toastr.s("Status updated successfully!", "Congratulations");
-                        axios.get('interview_detail2')
-                            .then(data => this.interviews = data.data)
-                            .catch(error => { })
+                        this.getInterviews(this.pagination.current_page);
                     }
                     else {
                         this.$toastr.e("Status not changed", "Error!");
@@ -1752,6 +1842,9 @@ export default {
                         .then(data => {
                             if (data.data == "Interview updated successfully") {
                                 this.$toastr.s("Interview updated successfully!", "Congratulations");
+                                if (this.modal) {
+                                    this.modal.hide();
+                                }
                                 this.up_sts = '';
                                 this.check = '';
                                 this.ed_i_name = '';
@@ -1762,7 +1855,8 @@ export default {
                                 this.ed_i_date = '';
                                 this.ed_i_from = '';
                                 this.ed_i_to = '';
-                                this.getInterviews();
+                                this.getInterviews(this.pagination.current_page);
+
                                 // this.fetchInterviews();
                                 // axios.get('interview_detail2')
                                 //     .then(data => this.interviews = data.data)
@@ -1792,6 +1886,9 @@ export default {
                     .then(data => {
                         if (data.data == "Interview updated successfully") {
                             this.$toastr.s("Interview updated successfully!", "Congratulations");
+                            if (this.modal) {
+                                this.modal.hide();
+                            }
                             this.up_sts = '';
                             this.check = '';
                             this.ed_i_name = '';
@@ -1803,7 +1900,8 @@ export default {
                             this.ed_i_from = '';
                             this.ed_i_to = '';
                             // this.fetchInterviews();
-                            this.getInterviews();
+                            this.getInterviews(this.pagination.current_page);
+
                             // axios.get('interview_detail2')
                             //     .then(data => this.interviews = data.data)
                             //     .catch(error => { })
@@ -1823,16 +1921,25 @@ export default {
                 });
         },
         getInterviews(page = 1) {
+            this.currentPage = page;
             axios.get(`interview_detail2?page=${page}`)
                 .then(response => {
                     this.interviews = response.data.data;
+                    console.log(this.interviews,"all");
+
                     this.pagination = {
                         current_page: response.data.current_page,
                         last_page: response.data.last_page,
                         total: response.data.total
                     };
                 });
-        }
+        },
+        changePage(page) {
+
+            if (page >= 1 && page <= this.pagination.last_page) {
+                this.getInterviews(page);
+            }
+        },
     },
     mounted() {
         this.getInterviews();

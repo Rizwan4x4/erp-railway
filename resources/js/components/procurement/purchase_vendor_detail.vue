@@ -27,14 +27,14 @@
                                 </div>
                                 <div class="col-sm-6 col-lg-6 ps-xl-75 ps-0">
                                     <div class="dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
-                                        <div class="me-1">
-                                            <div class="dataTables_filter" style="margin-top:5px">
+                                        <div class="me-2">
+                                            <div class="dataTables_filter" >
                                                 <label>
                                                     <input autocomplete="off" type="text" name="keyword1" v-model="keyword1" @change="search_by_name()" class="form-control" style="" placeholder="Search By Name" />
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="dt-buttons d-inline-flex mt-50">
+                                        <div class="dt-buttons d-inline-flex">
                                             <a v-if="hasPermission('Accounting procurement-configuration create-vendors')" style="float:left" data-bs-toggle="modal" data-bs-target="#addNewVendor" class="btn btn-outline-primary waves-effect">Create New Vendor</a>
                                         </div>
                                     </div>
@@ -44,36 +44,36 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Name & Type</th>
-                                            <th>Mobile</th>
-                                            <th>Email</th>
-                                            <th>Website</th>
-                                            <th>Address</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th class="text-center">ID</th>
+                                            <th class="text-center">Name & Type</th>
+                                            <th class="text-center">Mobile</th>
+                                            <th class="text-center">Email</th>
+                                            <th class="text-center">Website</th>
+                                            <th class="text-center">Address</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr v-for="vendors1 in vendors.data">
-                                            <td>{{vendors1.ID}}</td>
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{vendors1.ID}}</td>
+                                            <td   style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="d-flex flex-column">
-                                                    <a class="user_name text-truncate text-body"><span class="fw-bolder">{{vendors1.CompanyName}} </span></a><small class="emp_post text-muted">
+                                                    <a class="user_name text-truncate text-body"><span class="fw-bolder">  {{ vendors1.CompanyName.length > 20 ? vendors1.CompanyName.slice(0, 20) + '...' : vendors1.CompanyName }}</span></a><small class="emp_post text-muted">
                                                         Type: <span v-if="vendors1.type!=null">{{vendors1.type}}</span>
                                                         <span v-else></span>
                                                     </small>
                                                 </div>
                                             </td>
-                                            <td>{{vendors1.Mobile}}</td>
-                                            <td>{{vendors1.Email}}</td>
-                                            <td>{{vendors1.weblink}}</td>
-                                            <td style="max-width:180px">{{vendors1.Address}}</td>
-                                            <td>
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;">{{vendors1.Mobile}}</td>
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;">{{vendors1.Email}}</td>
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;">{{vendors1.weblink}}</td>
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;max-width:180px" >{{vendors1.Address}}</td>
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <span v-if="vendors1.Status=='Active'" class="badge badge-glow bg-primary">Active</span>
                                                 <span v-else class="badge badge-glow bg-secondary">Disabled</span>
                                             </td>
-                                            <td style="vertical-align: middle; text-align: center;">
+                                            <td   style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="btn-group">
                                                     <a v-if="hasPermission('Accounting procurement-configuration actions')" class="btn btn-sm dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                                         <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -101,7 +101,7 @@
                                 </table>
                             </div>
                             <div style="text-align:center;padding-top:20px">
-                                <pagination :data="vendors" @pagination-change-page="getResult"></pagination>
+                                <pagination :data="vendors" :limit="5" @pagination-change-page="getResult"></pagination>
                             </div>
                         </div>
                     </section>

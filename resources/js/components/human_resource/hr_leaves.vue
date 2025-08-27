@@ -81,12 +81,12 @@
                                                 placeholder="All Locations" v-model="location" :options="options2">
                                             </multiselect>
                                         </div>
-                                        <div class="col-md-1 user_status d-flex align-items-center mt-4">
+                                        <div class="col-md-1 user_status d-flex align-items-center" style="margin-top: 32px;">
                                             <button @click="getbyfilter()"
-                                                class="btn btn-primary bg-primary  py-2 px-3">Search
+                                                class="btn btn-primary bg-primary  px-3">Search
                                             </button>
                                         </div>
-                                        <div class="col-md-1 user_status">
+                                        <div class="col-md-1 user_status" >
                                             <a v-b-toggle.my-collapse
                                                 style="margin-left:10px;background:transparent;font-weight:900">
                                                 <i class="fa-solid fa-up-right-and-down-left-from-center"
@@ -148,8 +148,8 @@
                                         </thead>
                                         <tbody>
                                             <tr v-for="leaves2 in leaves.data" style="vertical-align: middle;">
-                                                <td style="text-align: center;">{{ leaves2.EmployeeCode }}</td>
-                                                <td>
+                                                <td  style="text-align:center;border-right:1px solid lightgrey">{{ leaves2.EmployeeCode }}</td>
+                                                <td style="text-align:center;border-right:1px solid lightgrey">
                                                     <div @click="fetch_leave_upSts(leaves2.LeaveRQID, '')"
                                                         class="d-flex justify-content-left align-items-center"
                                                         style="cursor:pointer;" data-bs-toggle="modal"
@@ -168,73 +168,73 @@
                                                                 {{ leaves2.Designation }}</small></div>
                                                     </div>
                                                 </td>
-                                                <td style="text-align: center;">{{ leaves2.Leavetype }}</td>
-                                                <td style="text-align:center;">
+                                                <td style="text-align:center;border-right:1px solid lightgrey" >{{ leaves2.Leavetype }}</td>
+                                                <td style="text-align:center;border-right:1px solid lightgrey">
                                                     <span>{{ leaves2.StartDate }}</span>
                                                     <span v-if="leaves2.NoOfDays != '1'"><br />to<br />{{
                                                         leaves2.EndDate
                                                     }}</span>
                                                 </td>
-                                                <td style="text-align:center;">{{ leaves2.NoOfDays }}</td>
-                                                <td style="text-align: center;">
+                                                <td style="text-align:center;border-right:1px solid lightgrey">{{ leaves2.NoOfDays }}</td>
+                                                <td style="text-align:center;border-right:1px solid lightgrey">
                                                     <span
                                                         v-if="user_access.hr_read == 'true' && leaves2.ManagerApproval == 'Pending' && leaves2.PendingLeaveStatus == 'P'"
                                                         @click="fetch_leave_upSts(leaves2.LeaveRQID, 'Manager')"
-                                                        class="badge bg-gradient-warning" data-bs-toggle="modal"
+                                                        class="badge px-3 py-2 bg-gradient-warning" data-bs-toggle="modal"
                                                         data-bs-target="#updt_lv_sts"
                                                         style="cursor: pointer;">Pending</span>
                                                     <span v-else-if="leaves2.ManagerApproval == 'Pending'"
-                                                        class="badge bg-gradient-warning">Pending</span>
+                                                        class="badge px-3 py-2 bg-gradient-warning">Pending</span>
 
                                                     <span v-else-if="leaves2.ManagerApproval == 'Rejected'"
-                                                        class="badge bg-danger">Rejected</span>
+                                                        class="badge px-3 py-2 bg-danger">Rejected</span>
                                                     <span v-else-if="leaves2.ManagerApproval == 'Approved'"
-                                                        class="badge bg-success">Approved </span>
+                                                        class="badge px-3 py-2 bg-success">Approved </span>
                                                     <span v-else-if="leaves2.ManagerApproval == 'OL'"
-                                                        class="badge bg-primary">Limit exceeded</span>
+                                                        class="badge px-3 py-2 bg-primary">Limit exceeded</span>
                                                 </td>
-                                                <td style="text-align: center;">
+                                                <td style="text-align:center;border-right:1px solid lightgrey">
                                                     <span v-if="user_access.hr_overall == 'true'">
                                                         <span @click="fetch_leave_upSts(leaves2.LeaveRQID, 'HR')"
                                                             v-if="leaves2.HRApproval == 'Pending' && leaves2.PendingLeaveStatus == 'P'"
-                                                            class="badge bg-gradient-warning" data-bs-toggle="modal"
+                                                            class="badge px-3 py-2 bg-gradient-warning" data-bs-toggle="modal"
                                                             data-bs-target="#updt_lv_sts"
                                                             style="cursor: pointer;">Pending</span>
                                                         <span
                                                             v-else-if="leaves2.HRApproval == 'Pending' && leaves2.PendingLeaveStatus != 'P'"
-                                                            class="badge bg-gradient-warning">Pending</span>
+                                                            class="badge px-3 py-2 bg-gradient-warning">Pending</span>
                                                         <span v-else-if="leaves2.HRApproval == 'Rejected'"
-                                                            class="badge bg-danger">Rejected</span>
+                                                            class="badge px-3 py-2 bg-danger">Rejected</span>
                                                         <span v-else-if="leaves2.HRApproval == 'Approved'"
-                                                            class="badge bg-success">Approved </span>
+                                                            class="badge px-3 py-2 bg-success">Approved </span>
                                                         <span v-else-if="leaves2.HRApproval == 'OL'"
-                                                            class="badge bg-primary">Limit exceeded</span>
+                                                            class="badge px-3 py-2 bg-primary">Limit exceeded</span>
                                                     </span>
                                                     <span v-else>
                                                         <span
                                                             v-if="leaves2.HRApproval == 'Pending' && leaves2.PendingLeaveStatus == 'P'"
-                                                            class="badge bg-gradient-warning"
+                                                            class="badge px-3 py-2 bg-gradient-warning"
                                                             style="cursor: pointer;">Pending</span>
                                                         <span
                                                             v-else-if="leaves2.HRApproval == 'Pending' && leaves2.PendingLeaveStatus != 'P'"
-                                                            class="badge bg-gradient-warning">Pending</span>
+                                                            class="badge px-3 py-2 bg-gradient-warning">Pending</span>
                                                         <span v-else-if="leaves2.HRApproval == 'Rejected'"
-                                                            class="badge bg-danger">Rejected</span>
+                                                            class="badge px-3 py-2 bg-danger">Rejected</span>
                                                         <span v-else-if="leaves2.HRApproval == 'Approved'"
-                                                            class="badge bg-success">Approved </span>
+                                                            class="badge px-3 py-2 bg-success">Approved </span>
                                                         <span v-else-if="leaves2.HRApproval == 'OL'"
-                                                            class="badge bg-primary"> Limit exceeded</span>
+                                                            class="badge px-3 py-2 bg-primary"> Limit exceeded</span>
                                                     </span>
                                                 </td>
-                                                <td style="text-align: center;">
+                                                <td style="text-align:center;border-right:1px solid lightgrey">
                                                     <span v-if="leaves2.PendingLeaveStatus == 'P'"
-                                                        class="badge bg-gradient-warning">Pending</span>
+                                                        class="badge px-3 py-2 bg-gradient-warning">Pending</span>
                                                     <span v-else-if="leaves2.PendingLeaveStatus == 'R'"
-                                                        class="badge bg-danger">Rejected</span>
+                                                        class="badge px-3 py-2 bg-danger">Rejected</span>
                                                     <span v-else-if="leaves2.PendingLeaveStatus == 'A'"
-                                                        class="badge bg-success">Approved </span>
+                                                        class="badge px-3 py-2 bg-success">Approved </span>
                                                     <span v-else-if="leaves2.PendingLeaveStatus == 'OL'"
-                                                        class="badge bg-primary"> Limit exceeded</span>
+                                                        class="badge px-3 py-2 bg-primary"> Limit exceeded</span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -511,7 +511,6 @@ export default {
             limit: 10,
             leaveTypes: {},
             user_access: {},
-
             isLvEmpty: 'Empty',
             options: [],
             options1: [],

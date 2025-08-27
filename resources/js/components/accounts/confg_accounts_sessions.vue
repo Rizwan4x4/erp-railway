@@ -26,7 +26,7 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
                                 <!-- User Card -->
                                 <div class="card top-radius top-radius border-0">
-                                    <div class="card-header">
+                                    <div class="card-header pb-0">
                                         <h4 class="card-title">Accounts Session(s) Detail</h4>
                                         <div style="text-align: right;width: 32% !important;">
                                             <a v-if="hasPermission('Accounts Configurations  session create new')"
@@ -65,19 +65,19 @@
                                                                                     <th>Name</th>
                                                                                     <th>Start</th>
                                                                                     <th>End</th>
-                                                                                    <th></th>
-                                                                                    <th></th>
+                                                                                    <th>Status</th>
+                                                                                    <th>Action</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr class="odd"
                                                                                     v-for="adsdata1 in adsdata.data">
-                                                                                    <td>{{ adsdata1.SessionName }}</td>
-                                                                                    <td>{{ adsdata1.StartDate }}</td>
-                                                                                    <td>{{ adsdata1.EndDate }}</td>
-                                                                                    <td>
+                                                                                    <td style=" border-right: 1px solid lightgrey;">{{ adsdata1.SessionName }}</td>
+                                                                                    <td style=" border-right: 1px solid lightgrey;">{{ adsdata1.StartDate }}</td>
+                                                                                    <td style=" border-right: 1px solid lightgrey;">{{ adsdata1.EndDate }}</td>
+                                                                                    <td style=" border-right: 1px solid lightgrey;">
                                                                                         <span
-                                                                                            class="badge bg-gradient-success"
+                                                                                            class="badge bg-gradient-success px-3 py-2"
                                                                                             v-if="adsdata1.CurrentSession == 1">Running</span>
                                                                                         <span
                                                                                             v-if="hasPermission('Accounts Configurations  session close/open')">
@@ -86,12 +86,12 @@
                                                                                                 data-bs-toggle="modal"
                                                                                                 data-bs-target="#hireinterview">
                                                                                                 <span
-                                                                                                    class="badge bg-gradient-info"
+                                                                                                    class="badge bg-gradient-info px-3 py-2"
                                                                                                     style="cursor: pointer;">Open</span>
                                                                                             </a>
                                                                                             <a v-else>
                                                                                                 <span
-                                                                                                    class="badge bg-gradient-warning"
+                                                                                                    class="badge bg-gradient-warning px-3 py-2"
                                                                                                     style="cursor: pointer;">Closed</span>
                                                                                             </a>
                                                                                         </span>
@@ -99,17 +99,17 @@
                                                                                             <a
                                                                                                 v-if="adsdata1.Status == '1'">
                                                                                                 <span
-                                                                                                    class="badge bg-gradient-info"
+                                                                                                    class="badge bg-gradient-info px-3 py-2"
                                                                                                     style="cursor: pointer;">Open</span>
                                                                                             </a>
                                                                                             <a v-else>
                                                                                                 <span
-                                                                                                    class="badge bg-gradient-warning"
+                                                                                                    class="badge bg-gradient-warning px-3 py-2"
                                                                                                     style="cursor: pointer;">Closed</span>
                                                                                             </a>
                                                                                         </span>
                                                                                     </td>
-                                                                                    <td>
+                                                                                    <td style=" border-right: 1px solid lightgrey;">
                                                                                         <a v-if="hasPermission('Accounts Configurations  session delete')"
                                                                                             @click="delete_session(adsdata1.SessionID)"
                                                                                             class="me-25">

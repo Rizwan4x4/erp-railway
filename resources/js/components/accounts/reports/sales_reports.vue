@@ -33,7 +33,7 @@
 
 
 <!--Ageing Payable / Receivables Report -->
-<div class="modal fade" id="UnitsAgeingPayablesReport" aria-labelledby="UnitsAgeingPayablesReport" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="UnitsAgeingPayablesReport" aria-labelledby="UnitsAgeingPayablesReport" tabindex="-1"  aria-hidden="true">
                 <div v-if="units_ageing_payables==''" class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -214,7 +214,7 @@
                 </div>
             </div>
 <!--Start Filter Cash Supervise Report -->
-<div class="modal fade" id="CashPyhReport" aria-labelledby="CashPyhReport" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="CashPyhReport" aria-labelledby="CashPyhReport" tabindex="-1"  aria-hidden="true">
                 <div v-if="phy_cash_report==''" class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -394,7 +394,7 @@
 <!--End Filter Cash Supervise Report -->
 
 <!--Start Filter Cheque Supervise Report  -->
-    <div class="modal fade" id="ChqSuperwisedetail" aria-labelledby="ChqSuperwisedetail" tabindex="-1" style="display: none" aria-hidden="true">
+    <div class="modal fade" id="ChqSuperwisedetail" aria-labelledby="ChqSuperwisedetail" tabindex="-1"  aria-hidden="true">
             <div v-if="chq_superwise_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -558,7 +558,7 @@
     </div>
 <!--End Filter Cheque Supervise Report  -->
 <!--Start Filter Debit Credit Supervise Report -->
-<div class="modal fade" id="DebitCreditSuperwiseReport" aria-labelledby="DebitCreditSuperwiseReport" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="DebitCreditSuperwiseReport" aria-labelledby="DebitCreditSuperwiseReport" tabindex="-1"  aria-hidden="true">
             <div v-if="debit_creditsupr_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -735,7 +735,7 @@
 <!--End Filter Debit Credit Supervise Report -->
 
 <!-- Start Filter Online Cash Supervise Report -->
-<div class="modal fade" id="CashGetSuperwiseDetail" aria-labelledby="CashGetSuperwiseDetail" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="CashGetSuperwiseDetail" aria-labelledby="CashGetSuperwiseDetail" tabindex="-1"  aria-hidden="true">
             <div v-if="online_cash_report_get == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -902,7 +902,7 @@
         </div>
 <!-- End Filter Online Cash Supervise Report -->
 <!-- Start Filter Units Booking Report -->
-<div class="modal fade" id="UnitsBookingReport" aria-labelledby="UnitsBookingReport" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="UnitsBookingReport" aria-labelledby="UnitsBookingReport" tabindex="-1"  aria-hidden="true">
             <div v-if="units_booking_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">

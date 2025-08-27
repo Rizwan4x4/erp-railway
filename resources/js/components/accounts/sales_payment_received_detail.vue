@@ -23,12 +23,12 @@
                             <div
                                 class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                                 <div class="col-sm-5 col-lg-6 ps-xl-75 ps-0">
-                                    <div class="dt-buttons d-inline-flex mt-50">
+                                    <div class="dt-buttons d-inline-flex" style="margin-top: 16px;">
                                         <router-link v-if="hasPermission('Accounting Receipt-voucher create-rv')"
                                             style="float:left" to="/sales/create_received_voucher2"
                                             class="btn btn-primary bg-primary waves-effect"> + New Receipt Voucher</router-link>
                                     </div>
-                                    <div class="dt-buttons d-inline-flex mt-50">
+                                    <div class="dt-buttons d-inline-flex" style="margin-top:16px;">
                                         <router-link v-if="hasPermission('Accounting Receipt-voucher pdc')"
                                             style="float:left" to="/sales/PdcReceivable"
                                             class="btn btn-primary bg-primary waves-effect">Pdc Receivable Detail</router-link>
@@ -46,7 +46,7 @@
                                                 <input type="date" class="form-control" v-model="closingdate">
                                             </div>
                                             <div class="col-md-2 col-12 mb-3">
-                                                <button @click="filtered_GRN()" style="margin-top: 25px;"
+                                                <button @click="filtered_GRN()" style="margin-top: 31px;"
                                                     class="btn btn-primary bg-primary">Search</button>
                                             </div>
                                             <div class="col-md-4 col-12 mb-3">
@@ -66,24 +66,24 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>ID</th>
-                                            <th>AccountID</th>
-                                            <th>Received From</th>
-                                            <th>Payment Method</th>
-                                            <th>Against</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
+                                            <th class="text-center">Date</th>
+                                            <th class="text-center">ID</th>
+                                            <th class="text-center">AccountID</th>
+                                            <th class="text-center">Received From</th>
+                                            <th class="text-center">Payment Method</th>
+                                            <th class="text-center">Against</th>
+                                            <th class="text-center">Amount</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata.data">
                                             <td class=" control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1">{{ adsdata1.VoucherDate }}</td>
-                                            <td>{{ adsdata1.RVID }}</td>
-                                            <td>{{ adsdata1.AccountID }}</td>
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="sorting_1">{{ adsdata1.VoucherDate }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.RVID }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.AccountID }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="d-flex justify-content-left align-items-center">
                                                     <div class="d-flex flex-column">
                                                         <h6 class="user-name text-truncate mb-0">
@@ -91,17 +91,17 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>{{ adsdata1.MethodType }}</td>
-                                            <td>{{ adsdata1.InvoiceNumber }}</td>
-                                            <td>Rs. {{ Number(adsdata1.Amount) }}/-</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.MethodType }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.InvoiceNumber }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">Rs. {{ Number(adsdata1.Amount) }}/-</td>
 
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <span v-if="adsdata1.Status == 'Approved'"
                                                     class="badge badge-glow bg-primary">{{ adsdata1.Status }}</span>
                                                 <span v-else-if="adsdata1.Status == 'Not Verified'"
                                                     class="badge badge-glow bg-info">{{ adsdata1.Status }}</span>
                                             </td>
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="d-flex align-items-center col-actions">
                                                     <a class="me-25" data-bs-toggle="modal"
                                                         @click="editRV(adsdata1.ReceivedVoucherID)"

@@ -76,7 +76,7 @@
 
 
 <!--Start Demand Requistion Report -->
- <div class="modal fade" id="DemandRequisitionReportToggle" aria-labelledby="DemandRequisitionReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="DemandRequisitionReportToggle" aria-labelledby="DemandRequisitionReportToggle" tabindex="-1"  aria-hidden="true">
            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -156,11 +156,11 @@
  <!--End Demand Requistion Report -->
 
 <!--Start Demand Requisition Tracking Report -->
-<div class="modal fade" id="RequisitionTrackingReportToggle" aria-labelledby="RequisitionTrackingReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="RequisitionTrackingReportToggle" aria-labelledby="RequisitionTrackingReportToggle" tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Demand Requisition Tracking Reportss</h5>
+                        <h5 class="modal-title">Demand Requisition Tracking Reports</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -191,7 +191,7 @@
         </div>
  <!--End Demand Requisition Tracking Report -->
  <!--Start Requistion Report -->
- <div class="modal fade" id="RequisitionReportToggle" aria-labelledby="RequisitionReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="RequisitionReportToggle" aria-labelledby="RequisitionReportToggle" tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -262,7 +262,7 @@
         </div>
  <!--End Requistion Report -->
 <!--Start Requisition Detail Report  -->
- <div class="modal fade" id="RequisitionComparativeDetailReport" aria-labelledby="RequisitionComparativeDetailReport" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="RequisitionComparativeDetailReport" aria-labelledby="RequisitionComparativeDetailReport" tabindex="-1"  aria-hidden="true">
             <div v-if="requ_detail_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -457,7 +457,7 @@
         </div>
 <!--End Requisition Detail Report  -->
 <!--Start Quotation Comparative Report -->
-<div class="modal fade" id="QuotationComparativeToggle" aria-labelledby="QuotationComparativeToggle" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="QuotationComparativeToggle" aria-labelledby="QuotationComparativeToggle" tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -523,7 +523,7 @@
 <!--End Quotation Comparative Report -->
 
 <!-- Start Purchase Order Report -->
-<div class="modal fade" id="PurchaseOrderReportToggle" aria-labelledby="PurchaseOrderReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="PurchaseOrderReportToggle" aria-labelledby="PurchaseOrderReportToggle" tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -606,7 +606,7 @@
 <!-- End Purchase Order Report -->
 
 <!-- Start Purchase Order Detail Report -->
-<div class="modal fade" id="PurchaseGRNReportToggle" aria-labelledby="PurchaseGRNReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="PurchaseGRNReportToggle" aria-labelledby="PurchaseGRNReportToggle" tabindex="-1"  aria-hidden="true">
             <div v-if="po_grn_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -810,7 +810,7 @@
 <!-- Start Purchase Order Detail Report -->
 
  <!-- Open pos Report -->
- <div class="modal fade" id="OpenPosToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="OpenPosToggle" aria-labelledby="modalToggleLabel" tabindex="-1"  aria-hidden="true">
             <div v-if="OpenPos1_Data_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -994,7 +994,7 @@
  </div>
  <!--end Open pos Report -->
 <!-- Start Advance Paid Against PO -->
- <div class="modal fade" id="AdvancePaid" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="AdvancePaid" aria-labelledby="modalToggleLabel" tabindex="-1"  aria-hidden="true">
 
 <div class="modal-dialog modal-dialog-centered modal-lg" style="min-width:1300px">
     <div class="modal-content">
@@ -1100,7 +1100,7 @@
 <!-- End Advance Paid Against PO -->
 
 <!--Start Purchase Invoice Report -->
- <div class="modal fade" id="PurchaseInvoiceReportToggle" aria-labelledby="PurchaseInvoiceReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="PurchaseInvoiceReportToggle" aria-labelledby="PurchaseInvoiceReportToggle" tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1144,7 +1144,7 @@
 <!-- End Purchase Invoice Report -->
 
 <!-- Start Purchase Return Report -->
-<div class="modal fade" id="PurchaseReturnReportToggle" aria-labelledby="PurchaseReturnReportToggle" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="PurchaseReturnReportToggle" aria-labelledby="PurchaseReturnReportToggle" tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1188,7 +1188,7 @@
 <!-- End Purchase Return Report -->
 
 <!--Start Vendor Balance Report -->
-<div class="modal fade" id="VendorBalanceToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="VendorBalanceToggle" aria-labelledby="modalToggleLabel" tabindex="-1"  aria-hidden="true">
             <div v-if="vendor_balance_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1291,7 +1291,7 @@
 <!--End Vendor Balance Report -->
 
  <!-- Unpaid Purchase Invoices (GRN & Invoice Generated but Payment Pending) Report -->
- <div class="modal fade" id="Unpaid_Pur_InvoToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="Unpaid_Pur_InvoToggle" aria-labelledby="modalToggleLabel" tabindex="-1"  aria-hidden="true">
             <div v-if="Unpaid_Pur_Invo1_Data_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">

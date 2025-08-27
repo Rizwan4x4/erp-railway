@@ -59,12 +59,12 @@
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata.data">
-                                            <td class=" control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1">{{adsdata1.AssetsUniqueID}}</td>
-                                            <td>{{adsdata1.RetirementType}}</td>
-                                            <td>{{ adsdata1.RetirementDate.slice(0, 10) }}</td>
-                                            <td>{{Number(adsdata1.NetValueBalance).toFixed(2)}}</td>
-                                            <td>
+                                            <td  class=" control" tabindex="0" style="display: none;"></td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="sorting_1">{{adsdata1.AssetsUniqueID}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.RetirementType}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.RetirementDate.slice(0, 10) }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{Number(adsdata1.NetValueBalance).toFixed(2)}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
 
                                                 <span class="badge badge-glow bg-secondary">{{adsdata1.Status}}</span>
 

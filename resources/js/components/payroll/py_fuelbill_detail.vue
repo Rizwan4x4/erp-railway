@@ -24,7 +24,9 @@
                             <div style="margin-bottom:20px;"
                                 class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
 
-                                <div class="col-sm-12 col-lg-12 ps-xl-75 ps-0">
+
+                                <!-- <div class="col-sm-12 col-lg-12 ps-xl-75 ps-0">
+
                                     <h4>Total Fuel : {{ fuelAmount }} <span>Liters</span></h4>
                                     <div
                                         class="dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap">
@@ -44,7 +46,34 @@
                                                 type="button"><span>New Fuel Bill</span></router-link>
                                         </div>
                                     </div>
+                                </div> -->
+                                <div class="col-sm-12 col-lg-12 ps-xl-75 ps-0">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                        <h4 class="mb-0">Total Fuel : {{ fuelAmount }} <span>Liters</span></h4>
+
+                                        <div
+                                            class="dt-action-buttons d-flex align-items-center justify-content-center justify-content-lg-end flex-lg-nowrap flex-wrap mt-1 mt-lg-0">
+
+                                            <div class="me-2">
+                                                <div class="dataTables_filter" style="margin-top:5px">
+                                                    <label>
+                                                        <input autocomplete="off" type="text" class="form-control"
+                                                            placeholder="Search By Name" />
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div v-if="hasPermission('Fuel new bill')"
+                                                class="dt-buttons d-inline-flex mt-50">
+                                                <router-link to="/payroll/fuelbills/add"
+                                                    class="dt-button add-new btn btn-primary bg-primary" tabindex="0"
+                                                    type="button"><span>New Fuel Bill</span></router-link>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                             <div class="table-responsive" style="overflow-x: initial !important;">
                                 <table class="table">

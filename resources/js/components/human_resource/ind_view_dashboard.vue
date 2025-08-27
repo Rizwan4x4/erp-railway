@@ -347,7 +347,7 @@
                                                                     class="col-12 col-md-6 pr-3 d-flex flex-column align-items-center justify-content-center text-end rounded">
                                                                     <span class="text-truncate text-danger">Used - {{
                                                                         leaves_dtl.ttl_sick - leaves_dtl.rem_sick
-                                                                        }}
+                                                                    }}
                                                                     </span>
                                                                     <small>Available - {{
                                                                         leaves_dtl.ttl_sick }}</small>
@@ -387,7 +387,7 @@
                                                                     class="col-12 col-md-6 pr-3 d-flex flex-column align-items-center justify-content-center text-end rounded">
                                                                     <span class="text-truncate text-warning">Used - {{
                                                                         leaves_dtl.ttl_casual - leaves_dtl.rem_casual
-                                                                        }}
+                                                                    }}
                                                                     </span>
                                                                     <small>Available - {{
                                                                         leaves_dtl.ttl_casual }}</small>
@@ -719,7 +719,7 @@
                                                     <td class="td-right">
                                                         <label style="margin-left: -20px;">{{
                                                             dayname(attendance1.ATTDate)
-                                                        }}, {{ attendance1.ATTDate }} </label>
+                                                            }}, {{ attendance1.ATTDate }} </label>
                                                     </td>
                                                     <td class="text-center"
                                                         v-if="attendance1?.AttStatus == 'P' || attendance1.AttStatus == 'L'">
@@ -1401,8 +1401,8 @@
                                         </div>
                                         <span>4 are active</span>
                                         <div class="d-grid w-100 mt-2">
-                                            <button class="btn btn-primary bg-primary bg-primary" data-bs-target="#upgradePlanModal"
-                                                data-bs-toggle="modal">
+                                            <button class="btn btn-primary bg-primary bg-primary"
+                                                data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
                                                 Total Users
                                             </button>
                                         </div>
@@ -1429,8 +1429,8 @@
                                         </div>
                                         <span>4 are active</span>
                                         <div class="d-grid w-100 mt-2">
-                                            <button class="btn btn-primary bg-primary bg-primary" data-bs-target="#upgradePlanModal"
-                                                data-bs-toggle="modal">
+                                            <button class="btn btn-primary bg-primary bg-primary"
+                                                data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
                                                 Total Modules
                                             </button>
                                         </div>
@@ -1457,8 +1457,8 @@
                                         </div>
                                         <span>10 are active</span>
                                         <div class="d-grid w-100 mt-2">
-                                            <button class="btn btn-primary bg-primary" data-bs-target="#upgradePlanModal"
-                                                data-bs-toggle="modal">
+                                            <button class="btn btn-primary bg-primary"
+                                                data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
                                                 Total Companies
                                             </button>
                                         </div>
@@ -1968,7 +1968,7 @@
                                         </option>
                                     </select>
                                     <span style="color: #DB4437; font-size: 11px;" v-if="type == ''">{{ type_error
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div class="col-12 col-sm-12 mb-1">
                                     <label class="form-label" for="basicSelect">Number of days</label>
@@ -1993,7 +1993,7 @@
                                     <span style="color: #DB4437; font-size: 11px;">*</span>
                                     <input type="date" v-model="d_from" id="modalAddCardName" class="form-control" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="d_from == ''">{{ d_from_error
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div class="col-md-02" v-if="this.days == 'Multiple Days'">
                                     <label class="form-label" for="modalAddCardName">Date To<span
@@ -2006,7 +2006,7 @@
                                     <input type="text" v-model="reason" id="modalAddCardName" class="form-control"
                                         placeholder="Reason of leave" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="reason == ''">{{ reason_error
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div class="col-12 text-center" style="margin-top:6%">
                                     <button
@@ -2068,14 +2068,14 @@
                                     <multiselect style="margin-right: 10px;" @input="count_max_limit()" v-model="type1"
                                         :show-labels="false" placeholder="Select" :options="options4"></multiselect>
                                     <span style="color: #DB4437; font-size: 11px;" v-if="type1 == ''">{{ type_error1
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <label class="form-label">Amount<span
                                             style="color: #DB4437; font-size: 11px;">*</span></label>
                                     <input type="number" class="form-control" v-model="amount" placeholder="Amount" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="amount == ''">{{ amount_error
-                                        }}</span>
+                                    }}</span>
                                     <span style="color: #DB4437; font-size: 11px;" v-if="amount > max_advance">Ammount
                                         is too much</span>
                                 </div>
@@ -2115,7 +2115,7 @@
                                     <input type="text" class="form-control" v-model="reason"
                                         placeholder="Type reason here" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="reason == ''">{{ reason_error
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div class="col-12 text-center">
                                     <button
@@ -2124,7 +2124,8 @@
                                         Apply
                                     </button>
                                     <button v-else :disabled="disabled" @click="delay1()" type="submit"
-                                        class="btn btn-primary bg-primary" data-bs-dismiss="modal" aria-label="Close">Apply
+                                        class="btn btn-primary bg-primary" data-bs-dismiss="modal"
+                                        aria-label="Close">Apply
                                     </button>
                                     <button type="reset" class="btn btn-outline-secondary mt-2" data-bs-dismiss="modal"
                                         aria-label="Close">
@@ -2160,7 +2161,7 @@
                                         style="color: #DB4437; font-size: 11px;">*</span>
                                     <input type="time" class="form-control" v-model="check_in" />
                                     <span style="color: #DB4437; font-size: 11px;" v-if="check_in == ''">{{ e_check_in
-                                        }}</span>
+                                    }}</span>
                                 </div>
                                 <div hidden class="col-12 col-md-3">
                                     <label class="form-label">Check out time</label>
@@ -2249,7 +2250,7 @@
                                 <label class="form-label">Adjust Hours:</label>
                                 <input type="number" class="form-control" v-model="Hours" placeholder="Enter hours" />
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Hours == ''">{{ Hours_error
-                                    }}</span>
+                                }}</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Hours > 23">Houres cannot more
                                     then 23</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Hours < 0">Houres cannot less
@@ -2261,7 +2262,7 @@
                                     placeholder="Enter minuts" />
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Minutes == ''">{{
                                     Minutes_error
-                                }}</span>
+                                    }}</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Minutes > 59">Minutes cannot
                                     more then 59</span>
                                 <span style="color: #DB4437; font-size: 11px;" v-if="this.Minutes < 0">Minutes cannot
@@ -2273,7 +2274,7 @@
                                 <input type="text" class="form-control" v-model="Reason"
                                     placeholder="Enter reason here" />
                                 <span style="color: #DB4437; font-size: 11px;" v-if="Reason == ''">{{ Reason_error
-                                    }}</span>
+                                }}</span>
                             </div>
                             <div class="col-12 text-center">
                                 <button :disabled="disabled3" @click="delay3()" type="submit"
@@ -3104,7 +3105,12 @@ export default {
 
         axios.get('overall_leaves')
             .then(response => {
-                this.leavetypes = response.data.data;
+                console.log(response, "ooooooo");
+                this.leavetypes = response.data.original.leaveTypes;
+                this.leavedata = response.data.data.data.original.leavedata;
+                console.log(this.leavedata,);
+
+                console.log(this.leavetypes, "Leave Types:");
             })
             .catch(error => {
             });
@@ -3156,6 +3162,7 @@ export default {
 
                 // Series for Annual Leave
                 this.series1 = [Math.round((this.annual_rem / this.annual_total) * 100) || 0];
+                console.log(this.series1, "series1.................");
 
                 // Series for Sick Leave
                 this.series2 = [Math.round((this.sick_rem / this.sick_total) * 100) || 0];

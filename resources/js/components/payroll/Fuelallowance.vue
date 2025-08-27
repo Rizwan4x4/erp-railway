@@ -106,10 +106,10 @@
                                         </thead>
                                         <tbody>
                                         <tr v-for="(all_sals1, index) in all_sals.data">
-                                            <td class="td-center">{{ index + 1 + (15 * (page - 1)) }}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{ index + 1 + (15 * (page - 1)) }}</td>
 
-                                            <td class="td-center">{{ all_sals1.EmployeeCode }}</td>
-                                            <td class="td-left">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{ all_sals1.EmployeeCode }}</td>
+                                            <td class="td-left" style="text-align:center;border-right:1px solid lightgrey">
                                                 <div class="d-flex flex-column">
                                                     <a class="user_name text-truncate text-body"><span
                                                         class="fw-bolder">{{ all_sals1.Name }} </span></a><small
@@ -119,26 +119,26 @@
                                                 </small>
                                                 </div>
                                             </td>
-                                            <td class="td-center">{{ all_sals1.Salary }}</td>
-                                            <td class="td-center">{{ all_sals1.FuelType }}</td>
-                                            <td class="td-center">{{
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{ all_sals1.Salary }}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{ all_sals1.FuelType }}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{
                                                     Math.round(all_sals1.FuelQuantity.toLocaleString())
                                                 }}<span> Literes</span></td>
-                                            <td v-if="all_sals1.FuelType == 'Petrol'" class="td-center">{{
+                                            <td v-if="all_sals1.FuelType == 'Petrol'" class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{
                                                     Math.round(PetrolCurrentRate * all_sals1.FuelQuantity).toLocaleString()
                                                 }}
                                             </td>
 
-                                            <td v-if="all_sals1.FuelType == 'Diesel'" class="td-center">{{
+                                            <td v-if="all_sals1.FuelType == 'Diesel'" class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{
                                                     Math.round(DieselCurrentRate * all_sals1.FuelQuantity).toLocaleString()
                                                 }}
                                             </td>
 
-                                            <td v-if="all_sals1.FuelType == 'HOBC'" class="td-center">{{
+                                            <td v-if="all_sals1.FuelType == 'HOBC'" class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{
                                                     Math.round(HOBCCurrentRate * all_sals1.FuelQuantity).toLocaleString()
                                                 }}
                                             </td>
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <div  v-if="hasPermission('Payroll Fuel Allowance Action')" class="btn-group">
                                                     <a data-bs-toggle="dropdown" class="btn btn-sm dropdown-toggle">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

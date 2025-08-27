@@ -540,7 +540,156 @@ class HrController extends Controller
             DB::connection('sqlsrv2')->select("SET NOCOUNT ON; EXEC [dbo].[Insert_Into_Attdatas]; EXEC [dbo].[Add_PunchTime_Attdata]; EXEC [dbo].[AttendanceStatus]");
         }
     }
+    public function create_employee_byid($iId)
+    {
 
+        $get_cand_id = DB::connection('sqlsrv2')
+            ->table('interview_detail')
+            ->where('InterviewID', $iId)
+            ->value('CandID');
+        if (!$get_cand_id) {
+            return response()->json(['message' => 'Interview not found'], 404);
+        }
+        // dd($get_cand_id);
+        $candidate = DB::connection('sqlsrv2')
+            ->table('Candidate_Detail')
+            ->where('CandID', $get_cand_id)
+            ->first();
+
+        if (!$candidate) {
+            return response()->json(['message' => 'Candidate not found'], 404);
+        }
+
+        $full_name = $candidate->CandName;
+        $father_name = $candidate->FatherHusband;
+        $gender = $candidate->Gender;
+        $email = $candidate->Email;
+        $SelectedCountry = $candidate->Country;
+        $phone_number = $candidate->Mobile;
+        $dob = $candidate->DOB;
+        $address = $candidate->CandAddress;
+        $city = $candidate->City;
+        $name_image=$candidate->Photo;
+        $update_month = date("m");
+        $update_day = date("d");
+
+
+        // if ($request->hasFile('image_file')) {
+        //     $file = $request->file('image_file');
+        //     $name_image = time() . '_' . $file->getClientOriginalName();
+        //     $file->move(public_path('/images/profile_images/'), $name_image);
+        // } else {
+        //     $name_image = null;
+        // }
+        // dd($SelectedCountry);
+
+        // $lastEmployee = DB::connection('sqlsrv2')->table("Emp_Profile")->where('CompanyID', '=', company_id())->orderBy('EmployeeID', 'desc')->first();
+        // dd($lastEmployee);
+        // $lastEmpCode = explode("-", $lastEmployee->EmployeeCode);
+        // $employeeCode = company_prefix()->company_prefix . '-0' . $lastEmpCode[1] + 1;
+        $lastEmployee = DB::connection('sqlsrv2')->table("Emp_Profile")
+            ->where('CompanyID', '=', company_id())
+            ->orderBy('EmployeeID', 'desc')
+            ->first();
+
+        if ($lastEmployee) {
+            $lastEmpCode = explode("-", $lastEmployee->Employee_Code);
+            $employeeCode = company_prefix()->company_prefix . '-0' . ($lastEmpCode[1] + 1);
+        } else {
+            $employeeCode = company_prefix()->company_prefix . '-01';
+        }
+
+
+        $emp_id = DB::connection('sqlsrv2')->table('Emp_Profile')->insertGetId([
+            'Name' => $full_name,
+            'FatherHusband' => $father_name,
+            'Gender' => $gender,
+            // 'Religion' => $religion,
+            'Email' => $email,
+            'Mobile' => $phone_number,
+            // 'Phone' => $phone_number2,
+            // 'CNIC' => $cnic,
+            // 'CnicExpiry' => $cnic_expiry,
+            // 'MaritalStatus' => $m_status,
+            'DOB' => $dob,
+            // 'BloodGroup' => $blood_group,
+            'Address' => $address,
+            'Country' => $SelectedCountry,
+            'City' => $city,
+            'Photo' => $name_image,
+            'CreatedBy' => username(),
+            'CompanyID' => company_id(),
+            // 'Relation' => $relation,
+            'Employee_Code' => $employeeCode,
+        ]);
+        //
+        $hr_conf = DB::connection('sqlsrv2')->table("HrCompanyConfig")->where('CompanyID', '=', company_id())->first();
+        if ($hr_conf) {
+            $total_sick = $hr_conf->SickLeaves;
+            $given_sick = ceil(($total_sick / 12) * (12 - ($update_month + (floor($update_day / 15)) - 1)));
+
+            $total_casual = $hr_conf->CasualLeaves;
+            $given_casual = ceil(($total_casual / 12) * (12 - ($update_month + (floor($update_day / 15)) - 1)));
+
+            $values = [
+                [
+                    'EmployeeID' => $emp_id,
+                    'LeaveType' => 'Sick',
+                    'TotalLeave' => $given_sick,
+                    'RemainingLeave' => $given_sick,
+                    'CreatedBy' => username(),
+                    'CreatedOn' => long_date(),
+                    'CompanyID' => company_id()
+                ],
+                [
+                    'EmployeeID' => $emp_id,
+                    'LeaveType' => 'Casual',
+                    'TotalLeave' => $given_casual,
+                    'RemainingLeave' => $given_casual,
+                    'CreatedBy' => username(),
+                    'CreatedOn' => long_date(),
+                    'CompanyID' => company_id()
+                ],
+            ];
+            DB::connection('sqlsrv2')->table('EmpLeave')->insert($values);
+        }
+
+        DB::connection('sqlsrv2')->table('Emp_Register')->insert([
+            'EmployeeID' => $emp_id,
+            'EmployeeCode' => $employeeCode,
+            'CompanyID' => company_id(),
+            'MethodType' => 'Cash',
+        ]);
+        DB::connection('sqlsrv2')->table('Emp_Documents')->insert([
+            'EmployeeID' => $emp_id,
+            'CompanyID' => company_id(),
+            'Image1' => '',
+            'Image2' => '',
+            'Image3' => '',
+            'Image4' => '',
+            'Image5' => '',
+            'Image6' => ''
+        ]);
+
+        DB::connection('sqlsrv2')->table('PayrollEmployeesDetail')->insert([
+            'CompanyID' => company_id(),
+            'EmployeeID' => $emp_id,
+            'Statusd' => 'C'
+        ]);
+
+        DB::connection('sqlsrv2')->table('AttData')->insert([
+            'CompanyID' => company_id(),
+            'EmpID' => $emp_id,
+            'EmpCode' => $employeeCode,
+            'ATTDate' => short_date(),
+            'Overtime' => 0,
+            'GracePeriod' => 0,
+        ]);
+        insertLog('Insert New Employee', 'Add New Employee Profile of ' . $full_name);
+
+        $message = "Employee added";
+        return request()->json(200, $message);
+    }
 
     public function create_employee(Request $request)
     {
@@ -574,9 +723,22 @@ class HrController extends Controller
         }
         // dd($SelectedCountry);
 
-        $lastEmployee = DB::connection('sqlsrv2')->table("Emp_Register")->where('CompanyID', '=', company_id())->orderBy('EmployeeID', 'desc')->first();
-        $lastEmpCode = explode("-", $lastEmployee->EmployeeCode);
-        $employeeCode = company_prefix()->company_prefix . '-0' . $lastEmpCode[1] + 1;
+        // $lastEmployee = DB::connection('sqlsrv2')->table("Emp_Profile")->where('CompanyID', '=', company_id())->orderBy('EmployeeID', 'desc')->first();
+        // dd($lastEmployee);
+        // $lastEmpCode = explode("-", $lastEmployee->EmployeeCode);
+        // $employeeCode = company_prefix()->company_prefix . '-0' . $lastEmpCode[1] + 1;
+        $lastEmployee = DB::connection('sqlsrv2')->table("Emp_Profile")
+            ->where('CompanyID', '=', company_id())
+            ->orderBy('EmployeeID', 'desc')
+            ->first();
+
+        if ($lastEmployee) {
+            $lastEmpCode = explode("-", $lastEmployee->Employee_Code);
+            $employeeCode = company_prefix()->company_prefix . '-0' . ($lastEmpCode[1] + 1);
+        } else {
+            $employeeCode = company_prefix()->company_prefix . '-01';
+        }
+
 
         $emp_id = DB::connection('sqlsrv2')->table('Emp_Profile')->insertGetId([
             'Name' => $full_name,
@@ -2659,8 +2821,8 @@ class HrController extends Controller
             'HolidayDescription' => $h_description,
             'NoOfDays' => $days,
             'CreatedBy' => username(),
-            'CreatedOn' => long_date(),
-            'isRepeat' => $isRepeat,
+            'CreatedOn' => short_date(),
+            // 'isRepeat' => $isRepeat,
         ]);
 
         if ($result) {
@@ -2672,8 +2834,14 @@ class HrController extends Controller
     public function holiday_detail()
     {
 
-        $arr = DB::connection('sqlsrv2')->table("Holiday")->where('IsDeleted', '=', 0)->where('CompanyID', '=', company_id())->orderBy('HolidayID', 'desc')->paginate(5);
-        return request()->json(200, $arr);
+        $arr = DB::connection('sqlsrv2')
+            ->table("Holiday")
+            // ->where('IsDeleted', '=', 0)
+            ->where('CompanyID', '=', company_id())
+            ->orderBy('HolidayID', 'desc')
+            ->paginate(5);
+        // return request()->json(200, $arr);
+        return response()->json($arr, 200);
     }
 
     public function submit_l(Request $request)
@@ -3551,6 +3719,7 @@ class HrController extends Controller
 
     public function search_payroll(Request $request)
     {
+        // dd("okokok");
         return DB::connection('sqlsrv2')
             ->table('SessionReport')
             ->where('CompanyID', '=', company_id())
@@ -3558,7 +3727,7 @@ class HrController extends Controller
                 $query->where('Name', 'LIKE', '%' . $request->keyword1 . '%')
                     ->orWhere('EmployeeCode', 'LIKE', '%' . $request->keyword1 . '%');
             })
-            ->where('IsDeleted', 0)
+            // ->where('IsDeleted', 0)
             ->orderBy('Department', 'ASC')
             ->paginate(15);
     }
@@ -5651,6 +5820,7 @@ class HrController extends Controller
             'ttl_other' => $ttl_other,
             'other_used' => $other_used,
         );
+        // dd($leave_count);
         return request()->json(200, $leave_count);
     }
 
@@ -8211,8 +8381,9 @@ class HrController extends Controller
 
     public function organization_chart()
     {
-        $company_id = "632462982ad6e";
-        $team = DB::connection('sqlsrv2')->select("SET NOCOUNT ON ;EXEC [dbo].[Get_reporting_tree] @id = '1', @companyid = N'" . company_id() . "'");
+        // $company_id = "632462982ad6e";
+        $team = DB::connection('sqlsrv2')->select("SET NOCOUNT ON; EXEC [dbo].[Get_reporting_tree] @id1 = 1, @name = N'', @companyid = N'" . company_id() . "'");
+
         return request()->json(200, $team);
     }
 

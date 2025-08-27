@@ -12,6 +12,7 @@ Route::get('/verify_email',function(){return view('verify_email');});
 Route::get('/reset_password',function(){return view('reset_password');});
 
 Route::get('view_cities/','App\Http\Controllers\clientAdminController@view_cities')->middleware('permission:Work Location overall-view');
+Route::get('view_all_cities/','App\Http\Controllers\clientAdminController@view_all_cities')->middleware('permission:Work Location overall-view');
 Route::post('submit_c','App\Http\Controllers\clientAdminController@submit_c')->middleware('permission:Add new city');
 Route::get('fetch_locations/{id}', 'App\Http\Controllers\clientAdminController@fetch_locations');  //fetch location to update
 Route::get('fetch_department/{id}', 'App\Http\Controllers\clientAdminController@fetch_department');  //fetch departmrnt to update
@@ -25,6 +26,7 @@ Route::get('/delete_designation/{id}', 'App\Http\Controllers\clientAdminControll
 Route::get('/delete_location/{id}', 'App\Http\Controllers\clientAdminController@delete_location');
 Route::get('/getuser_detail/{id}', 'App\Http\Controllers\clientAdminController@getuser_detail' );
 Route::get('/location_detail', 'App\Http\Controllers\clientAdminController@location_detail')->middleware('permission:Work Location overall-view');
+Route::get('/all_locations', 'App\Http\Controllers\clientAdminController@all_locations')->middleware('permission:Work Location overall-view');
 Route::post('submit_location','App\Http\Controllers\clientAdminController@submit_location')->middleware('permission:Add new Location');
 Route::get('/deactivate_location/{id}','App\Http\Controllers\clientAdminController@deactivate_location');
 Route::get('/activate_location/{id}','App\Http\Controllers\clientAdminController@activate_location');

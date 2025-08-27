@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="col-md-2 user_status" style="padding-top:26px">
                                         <button @click="filter_issuance_rtn()"
-                                            style="background:#c1c1c1;width:100%;height: 35px !important;margin-bottom:20px;width: 60% !important;"
+                                            style="background:#c1c1c1;width:100%;height: 38px !important;margin-bottom:20px; margin-top: 5px; width: 60% !important;"
                                             class="btn btn-primary bg-primary">Search</button>
                                     </div>
                                 </div>
@@ -102,17 +102,17 @@
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata.data">
-                                            <td style="vertical-align: middle !important;">{{ adsdata1.IRtnID }}</td>
-                                            <td class="sorting_1">{{ adsdata1.Dated }} </td>
-                                            <td class="sorting_1">{{ adsdata1.DepartmentName }}</td>
-                                            <td style="">{{ adsdata1.ProjectName }}</td>
-                                            <td>{{ adsdata1.IssuanceCode }}</td>
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;vertical-align: middle !important;" >{{ adsdata1.IRtnID }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="sorting_1">{{ adsdata1.Dated }} </td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="sorting_1">{{ adsdata1.DepartmentName }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.ProjectName }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.IssuanceCode }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <span v-if="adsdata1.Status2 == 'Partially Returned'"
-                                                    class="badge badge-glow bg-primary">Partially Returned</span>
-                                                <span v-else class="badge badge-glow bg-success">Fully Returned</span>
+                                                    class="badge  bg-primary p-2">Partially Returned</span>
+                                                <span v-else class="badge  bg-success p-2">Fully Returned</span>
                                             </td>
-                                            <td style="vertical-align: middle !important;">
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;vertical-align: middle !important;">
                                                 <a v-if="hasPermission('Inventory Issuance-return view-issuance-return')"
                                                     class="me-25" @click="get_issuancebyid(adsdata1.IssuenceReturnID)"
                                                     data-bs-toggle="modal" data-bs-target="#viewGRN">

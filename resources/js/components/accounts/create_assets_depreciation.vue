@@ -64,17 +64,17 @@
                                         <tr class="odd" v-for="adsdata1 in adsdata">
                                             <td class=" control" tabindex="0" style="display: none;"></td>
 
-                                            <td>{{adsdata1.AssetsUniqueID}}</td>
-                                            <td>{{adsdata1.Dated}}</td>
-                                            <td>{{adsdata1.Name}}</td>
-                                            <td>{{adsdata1.CategoryName}}</td>
-                                            <td>{{adsdata1.EstLife}}</td>
-                                            <td>{{adsdata1.Unit}}</td>
-                                            <td>{{Number(adsdata1.CostUnit)}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.AssetsUniqueID}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Dated}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Name}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.CategoryName}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.EstLife}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Unit}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{Number(adsdata1.CostUnit)}}</td>
 
-                                            <td>{{adsdata1.SalvageValue}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.SalvageValue}}</td>
 
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="d-flex align-items-center col-actions">
 
                                                <a  @click="depreciationdetail(adsdata1.Reference,adsdata1.AssetsUniqueID,adsdata1.Category_id,(Number(adsdata1.CostUnit)));test(adsdata1.EstLife,adsdata1.SalvageValue,adsdata1.Dated,adsdata1.Name)" data-bs-toggle="modal" data-bs-target="#editproduct" class="dropdown-item">

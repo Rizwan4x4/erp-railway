@@ -39,16 +39,16 @@
                                                 <input style="width: 115%;" type="date" class="form-control"
                                                     v-model="dateto">
                                             </div>
-                                            <div class="col-md-1 col-12" style="padding-top: 27px;">
+                                            <div class="col-md-1 col-12" style="padding-top: 31px;">
                                                 <button @click="filtered_GRN()"
                                                     class="btn btn-primary bg-primary me-1">Search</button>
                                             </div>
-                                            <div class="col-md-3 col-12" style="padding-top: 27px;">
-                                                <input v-model="keyword1" class="form-control"
+                                            <div class="col-md-3 col-12" style="padding-top: 31px;">
+                                                <input v-model="keyword1" class="form-control" style="margin-left: 10px;"
                                                     placeholder="Search By Payee Name" />
                                             </div>
-                                            <div class="col-md-4 col-12" style="padding-top: 27px;">
-                                                <input v-model="keyword2" class="form-control"
+                                            <div class="col-md-4 col-12" style="padding-top: 31px;">
+                                                <input v-model="keyword2" class="form-control" style="margin-left: 10px;"
                                                     placeholder="PO, Invoice or JV No or PVID." />
                                             </div>
                                         </div>
@@ -84,10 +84,10 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="adsdata1 in adsdata.data">
-                                            <td class="td-center">{{ adsdata1.VoucherDate }}</td>
-                                            <td class="td-center">{{ adsdata1.PVID }}</td>
-                                            <td class="td-center">{{ adsdata1.AccountID }}</td>
-                                            <td class="td-center">
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="td-center">{{ adsdata1.VoucherDate }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="td-center">{{ adsdata1.PVID }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="td-center">{{ adsdata1.AccountID }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="td-center">
                                                 <div class="d-flex justify-content-left align-items-center">
                                                     <div class="d-flex flex-column">
                                                         <h6 style="max-width: 298px;"
@@ -96,10 +96,10 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="td-center">{{ adsdata1.MethodType }}</td>
-                                            <td class="td-center">{{ adsdata1.InvoiceNumber }}</td>
-                                            <td class="td-center">Rs. {{ Number(adsdata1.Amount) }}/-</td>
-                                            <td class="td-center">
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="td-center">{{ adsdata1.MethodType }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="td-center">{{ adsdata1.InvoiceNumber }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="td-center">Rs. {{ Number(adsdata1.Amount) }}/-</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="td-center">
                                                 <span v-if="adsdata1.Status == 'Approved'"
                                                     class="badge badge-glow bg-primary">{{ adsdata1.Status }}</span>
                                                 <span @click="editPV(adsdata1.PaymentVoucherID)" data-bs-toggle="modal"
@@ -110,7 +110,7 @@
                                                         <span v-if="adsdata1.Status=='Approved'" class="badge badge-glow bg-primary">{{adsdata1.Status}}</span>
                                                         <span v-else-if="adsdata1.Status=='Pending'" class="badge badge-glow bg-info">{{adsdata1.Status}}</span>
                                                     </td> -->
-                                            <td class="td-center">
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="td-center">
                                                 <div class="d-flex align-items-center col-actions">
                                                     <a class="me-25" data-bs-toggle="modal"
                                                         @click="editPV(adsdata1.PaymentVoucherID)"

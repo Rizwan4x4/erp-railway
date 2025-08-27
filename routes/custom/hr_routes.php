@@ -1,9 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HRMS\EmployeDetails\EmployeExportController;
 
 use Illuminate\Http\Request;
 
+Route::get('/export-employees', [EmployeExportController::class, 'exportEmployees'])->name('export.employees');
+Route::get('/exportRegisteredEmployees', [EmployeExportController::class, 'exportRegisteredEmployees'])->name('export.registered_employees');
+Route::match(['get', 'post'],'/import-employees', 'App\Http\Controllers\HRMS\EmployeDetails\ImportEmployeeController@import')->name('import.employees');
 Route::get('/CompanyWise_EmpAge', 'App\Http\Controllers\HRMS\HrController@CompanyWise_EmpAge');
 Route::get('/dept_att', 'App\Http\Controllers\HRMS\HrController@all_attendence');  //Get all dept att
 Route::get('/this_user_attendence', 'App\Http\Controllers\HRMS\AttendenceDetails\OverallAttendenceController@this_user_attendence');  //get this user attendence
@@ -78,6 +82,7 @@ Route::get('get_warningreason_byId/{id}', 'App\Http\Controllers\HRMS\HrControlle
 
 // ->middleware('permission:create tasks');
 Route::get('/getindemployee_detail/{id}', 'App\Http\Controllers\HRMS\EmployeDetails\IndEmployeDetailsController@getindemployee_detail');
+
 Route::get('/getemployee_education/{id}', 'App\Http\Controllers\HRMS\EmployeDetails\IndEmployeDetailsController@getemployee_education');
 Route::get('cash_distributionlist_detail', 'App\Http\Controllers\HRMS\HrController@cash_distributionlist_detail');
 Route::get('count_leaves_d', 'App\Http\Controllers\HRMS\HrController@count_leaves_d');
@@ -95,7 +100,7 @@ Route::get('fetch_loan_slip/{id}', 'App\Http\Controllers\HRMS\HrController@fetch
 Route::get('overall_leaves', 'App\Http\Controllers\HRMS\LeavesDetails\LeavesDashboardController@overall_leaves');
 
 
-Route::post('submit_holidays', 'App\Http\Controllers\HRMS\HrController@submit_holidays')->middleware('permission:HR Controller inchlude holiday');
+Route::match(['get','post'],'submit_holidays', 'App\Http\Controllers\HRMS\HrController@submit_holidays')->middleware('permission:HR Controller inchlude holiday');
 Route::get('holiday_detail/', 'App\Http\Controllers\HRMS\HrController@holiday_detail')->middleware('permission:HR Controller overall-view');
 Route::get('/get-leave-types', 'App\Http\Controllers\HRMS\HrController@getLeaveTypes'); //getting leaves type
 
@@ -152,6 +157,8 @@ Route::get('pull_attendance1', 'App\Http\Controllers\HRMS\HrController@pull_atte
 Route::get('/terminate_emp/{id}/{date}', 'App\Http\Controllers\HRMS\EmployeDetails\IndEmployeDetailsController@terminate_emp');
 Route::get('getemployment_att_detail/{id}', 'App\Http\Controllers\HRMS\HrController@getemployment_att_detail');
 Route::get('/att_ind_team', 'App\Http\Controllers\HRMS\HrController@att_ind_team');  //team members for attendance
+Route::post('/custom_attendance', 'App\Http\Controllers\HRMS\HrController@custom_attendance');
+
 
 
 
@@ -274,6 +281,7 @@ Route::middleware(['permission:HRMS HR-Reports  Employee-Attendance-Reports'])->
     Route::get('/getindatt_report/{id}', 'App\Http\Controllers\HRMS\HrReports\EmployeeAttendenceController@getindatt_report');
     Route::get('getattendance_summary', 'App\Http\Controllers\HRMS\HrReports\EmployeeAttendenceController@getattendance_summary');
     Route::get('/get_payroll_att_detail/', 'App\Http\Controllers\HRMS\HrReports\EmployeeAttendenceController@get_payroll_att_detail');
+    Route::get('/custom_attendance/', 'App\Http\Controllers\HRMS\HrReports\EmployeeAttendenceController@custom_attendance');
 });
 Route::middleware(['permission:HRMS HR-Reports  Employee-Leave-Reports'])->group(function () {
     Route::get('get_absent_detail/{opening}/{closing}/{location}/{dept}/{desig}/{emp_id}', 'App\Http\Controllers\HRMS\HrReports\EmployeeLeaveReportsController@get_absent_detail');

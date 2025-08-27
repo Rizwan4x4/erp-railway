@@ -119,7 +119,7 @@ Route::get('/search_payroll_tax/','App\Http\Controllers\HRMS\HrController@search
 Route::get('salary_report/','App\Http\Controllers\HRMS\HrController@salary_report');
 Route::get('/fetch_fuel_allowance','App\Http\Controllers\HRMS\HrController@fetch_fuel_allowance')->middleware('permission:Fuel Setting');
 Route::post('submit_fuel_allowance', 'App\Http\Controllers\HRMS\HrController@submit_fuel_allowance')->middleware('permission:Fuel assign fuel allowance');
-Route::post('insert_bills','App\Http\Controllers\HRMS\HrController@insert_fuelbill')->middleware('permission:Fuel new bill');
+Route::match(['get','post'],'insert_bills','App\Http\Controllers\HRMS\HrController@insert_fuelbill')->middleware('permission:Fuel new bill');
 
 Route::get('/TotalFuelAmount','App\Http\Controllers\HRMS\HrController@TotalFuelAmount')->middleware('permission:Fuel Setting,Fuel bills');
 Route::get('/employee_fuelDetail/{id}','App\Http\Controllers\HRMS\HrController@employee_fuelDetail')->middleware('permission:Fuel new bill');

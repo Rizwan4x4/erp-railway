@@ -31,10 +31,10 @@
                                     <input type="date" class="form-control" v-model="dateto">
                                 </div>
                                 <div class="col-md-1 col-12">
-                                    <button @click="filtered_GRN()" style="margin-top: 25px;" class="btn btn-primary bg-primary">Search</button>
+                                    <button @click="filtered_GRN()" style="margin-top: 31px;" class="btn btn-primary bg-primary">Search</button>
                                 </div>
                                 <div class="col-md-3 col-12">
-                                    <input style="margin-top: 25px;" type="text" v-model="keyword1" class="form-control" placeholder="Owner name / Unit number / Receipt No" />
+                                    <input style="margin-top: 31px;" type="text" v-model="keyword1" class="form-control" placeholder="Owner name / Unit number / Receipt No" />
                                 </div>
                             </div>
                             <div class="table-responsive" style="overflow-x: initial !important;">
@@ -55,40 +55,40 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="adsdata1 in adsdata.data">
-                                            <td class="td-center">{{adsdata1.DateTime.split(' ')[0]}}</td>
-                                            <td class="td-center">{{adsdata1.ReceiptNo}}<br />{{adsdata1.Receipt_Type}}</td>
-                                            <td class="td-left">
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" >{{adsdata1.DateTime.split(' ')[0]}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" >{{adsdata1.ReceiptNo}}<br />{{adsdata1.Receipt_Type}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" >
                                                 <div class="d-flex flex-column">
                                                     <a class="user_name text-truncate text-body"><span class="fw-bolder">{{adsdata1.Name}}</span></a> <small class="emp_post text-muted">{{adsdata1.Father_Name}}</small>
                                                 </div>
                                             </td>
-                                            <td class="td-center">{{adsdata1.Plot_Type}}<br />{{adsdata1.Block}}</td>
-                                            <td class="td-center">{{adsdata1.File_Plot_Number}}</td>
-                                            <td class="td-right">{{Math.round(adsdata1.Plot_Total_Amount).toLocaleString()}}/-</td>
-                                            <td class="td-right">{{Math.round(adsdata1.Amount).toLocaleString()}}/-</td>
-                                            <td class="td-right">{{Math.round(adsdata1.Deduction_Amt).toLocaleString()}}/-</td>
-                                            <td class="td-center" v-if="adsdata1.Receipt_Type=='Cancelled' && hasPermission('Units-Management units-data supervision')">
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{adsdata1.Plot_Type}}<br />{{adsdata1.Block}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" >{{adsdata1.File_Plot_Number}}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" >{{Math.round(adsdata1.Plot_Total_Amount).toLocaleString()}}/-</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" >{{Math.round(adsdata1.Amount).toLocaleString()}}/-</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" >{{Math.round(adsdata1.Deduction_Amt).toLocaleString()}}/-</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" v-if="adsdata1.Receipt_Type=='Cancelled' && hasPermission('Units-Management units-data supervision')">
                                                 <span v-if="adsdata1.Status=='Proceed'" class="badge badge-glow bg-primary">{{adsdata1.Status}}</span>
                                                 <span @click="editPV(adsdata1.ID)" data-bs-toggle="modal" data-bs-target="#viewPV2" v-else-if="adsdata1.Status=='Not Cleared'" class="badge badge-glow bg-info">{{adsdata1.Status}}</span><br />
                                                 <a v-if="adsdata1.Status=='Proceed' && adsdata1.Receipt_Type=='Cancelled' " target="_blank" v-bind:href="`Accounts/unit_refunds_letter/${adsdata1.ID}`" class="btn btn-sm">
                                                     <i class="fa-solid fa-print"></i>
                                                 </a>
                                             </td>
-                                            <td class="td-center" v-else-if="(adsdata1.Receipt_Type=='Amount Refund' || adsdata1.Receipt_Type=='Extra Amount Refund') && hasPermission('Units-Management units-data supervision')">
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;"  v-else-if="(adsdata1.Receipt_Type=='Amount Refund' || adsdata1.Receipt_Type=='Extra Amount Refund') && hasPermission('Units-Management units-data supervision')">
                                                 <span v-if="adsdata1.Status=='Proceed'" class="badge badge-glow bg-primary">{{adsdata1.Status}}</span>
                                                 <span @click="editPV(adsdata1.ID)" data-bs-toggle="modal" data-bs-target="#viewrefundPV2" v-else-if="adsdata1.Status=='Not Cleared'" class="badge badge-glow bg-info">{{adsdata1.Status}}</span><br />
                                                 <a target="_blank" v-if="adsdata1.Status=='Proceed' && adsdata1.Receipt_Type=='Amount Refund' || adsdata1.Receipt_Type=='Extra Amount Refund'" v-bind:href="`Accounts/unit_refunds_amount_letter/${adsdata1.ID}`" class="btn btn-sm">
                                                     <i class="fa-solid fa-print"></i>
                                                 </a><br />
                                             </td>
-                                            <td class="td-center" v-else>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;"  v-else>
                                                 <span v-if="adsdata1.Status=='Proceed' && hasPermission('Units-Management units-data supervision')" class="badge badge-glow bg-primary">{{adsdata1.Status}}</span>
                                                 <span @click="editPV(adsdata1.ID)" data-bs-toggle="modal" data-bs-target="#viewrefundPV3" v-else-if="adsdata1.Status=='Not Cleared' && hasPermission('Units-Management units-data supervision')" class="badge badge-glow bg-info">{{adsdata1.Status}}</span><br />
                                                 <a target="_blank" v-if="adsdata1.Status=='Proceed' && adsdata1.Receipt_Type=='Repurchased' && hasPermission('Units-Management units-data supervision') " v-bind:href="`Accounts/unit_repurchased_amount_letter/${adsdata1.ID}`" class="btn btn-sm">
                                                     <i class="fa-solid fa-print"></i>
                                                 </a><br />
                                             </td>
-                                            <td class="td-center" v-if="hasPermission('Units-Management units-data supervision')">
+                                            <td  style="text-align: center; border-right: 1px solid lightgrey;"v-if="hasPermission('Units-Management units-data supervision')">
                                                 <div class="d-flex align-items-center col-actions">
                                                     <div class="btn-group">
                                                         <a data-bs-toggle="dropdown" class="btn btn-sm dropdown-toggle hide-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical font-small-4"><circle cx="12" cy="12" r="1"></circle> <circle cx="12" cy="5" r="1"></circle> <circle cx="12" cy="19" r="1"></circle></svg></a>

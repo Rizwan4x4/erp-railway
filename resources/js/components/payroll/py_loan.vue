@@ -70,7 +70,7 @@
                                                                 class="form-control p-2" placeholder="Name" />
                                                         </div>
                                                         <div class="col-md-1">
-                                                            <div style="height:27px;"></div>
+                                                            <div style="height:32px;"></div>
                                                             <button @click="getbyfilter()"
                                                                 class="btn btn-primary bg-primary" tabindex="0"
                                                                 type="button"><span>Search</span></button>
@@ -194,10 +194,10 @@
                                                                 v-for="loans1 in loans.data" :key="loans1.LoanId"
                                                                 :id="'headingBorder' + loans1.LoanId">
                                                                 <td colspan="8"
-                                                                    style="vertical-align:middle !important">
+                                                                    style="text-align:center;border-right:1px solid lightgrey">
                                                                     <div>
                                                                         <div class="accordion-header d-flex">
-                                                                            <div class="col-md-1"
+                                                                            <div class="col-md-2"
                                                                                 style="text-align:center;">
                                                                                 <div
                                                                                     class="d-flex justify-content-left align-items-center">
@@ -215,8 +215,8 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-4"
-                                                                                style="text-align:left;">
+                                                                            <div class="col-md-3"
+                                                                                style="text-align:center;">
                                                                                 <div @click="fetch_emp_upSts(loans1.LoanId)"
                                                                                     class="d-flex justify-content-left align-items-center">
                                                                                     <div class="d-flex flex-column">

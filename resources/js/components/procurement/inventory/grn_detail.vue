@@ -117,7 +117,7 @@
                                             </div>
                                             <div class="col-md-2 col-12  position-relative">
                                                 <button @click="filtered_GRN()"
-                                                    style="background: rgb(193, 193, 193); width: 60% !important; height: 33px !important; margin-bottom: 20px; margin-top: 25px; margin-left: 10px"
+                                                    style="background: rgb(193, 193, 193); width: 60% !important; height: 38px !important; margin-bottom: 20px; margin-top: 31px; margin-left: 10px"
                                                     class="btn btn-primary bg-primary">Search</button>
                                             </div>
                                         </div>
@@ -157,7 +157,7 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="adsdata1 in adsdata.data">
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <div class="d-flex justify-content-left align-items-center">
                                                     <div class="d-flex flex-column">
                                                         <a class="user_name text-truncate text-body">
@@ -167,10 +167,10 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="td-left">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 {{ adsdata1.vendorName }}
                                             </td>
-                                            <td class="td-left">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <div class="d-flex justify-content-left align-items-center">
                                                     <div class="d-flex flex-column"><a
                                                             class="user_name text-truncate text-body"><span
@@ -179,13 +179,13 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span v-if="adsdata1.Status == 'Fully Completed'"
                                                     class="badge bg-light-info">Full</span>
                                                 <span class="badge bg-light-primary"
                                                     v-else-if="adsdata1.Status == 'Partially Completed'">Partial</span>
                                             </td>
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <a @click="editgrn(adsdata1.GrnOrderID)" data-bs-toggle="modal"
                                                     data-bs-target="#PREQ_status"
                                                     v-if="adsdata1.Status2 == 'Not Verified'">
@@ -195,7 +195,7 @@
                                                 <span v-else-if="adsdata1.Status2 == 'Verified'"
                                                     class="badge bg-success">{{ adsdata1.Status2 }}</span>
                                             </td>
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <div class="btn-group">
                                                     <a data-bs-toggle="dropdown"
                                                         class="btn btn-sm dropdown-toggle hide-arrow">

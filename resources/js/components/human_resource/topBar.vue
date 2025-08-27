@@ -2,9 +2,10 @@
     <div class="row">
         <div class="col-12">
             <div
-                class="alert alert-primary"
+                class="alert alert-primary top-radius bottom-radius border-0 "
                 style="padding-top: 0px; padding-bottom: 0px"
                 role="alert"
+
             >
                 <div class="alert-body">
                     <ul class="nav nav-pills mb-2" style="padding-left: 10px !important">
@@ -104,7 +105,7 @@ export default defineComponent({
         };
     },
     mounted() {
-   
+
 
     }
 });

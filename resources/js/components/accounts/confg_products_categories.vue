@@ -181,7 +181,7 @@ mt-75
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div style="margin-bottom: 20px" class="
+                                        <div  class="
 d-flex
 justify-content-between
 align-items-center
@@ -212,19 +212,19 @@ mt-75
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr v-for="adsdata1 in adsdata.data">
-                                                                            <td>{{ adsdata1.CategoryName }}</td>
-                                                                            <td>{{ adsdata1.ShortCode }}</td>
-                                                                            <td>{{ adsdata1.CategoryType }}</td>
-                                                                            <td>
+                                                                            <td style="text-align: center; border-right: 1px solid lightgrey; border-left: 1px solid lightgray;">{{ adsdata1.CategoryName }}</td>
+                                                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.ShortCode }}</td>
+                                                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.CategoryType }}</td>
+                                                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                                                 {{ adsdata1.Description }}
                                                                             </td>
-                                                                            <td>
+                                                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                                                 <span v-if="adsdata1.Status == 'true'"
                                                                                     class="badge badge-glow bg-primary">Active</span>
                                                                                 <span v-else
                                                                                     class="badge badge-glow bg-secondary">Disabled</span>
                                                                             </td>
-                                                                            <td>
+                                                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                                                 <div class="dropdown chart-dropdown">
                                                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                                                         width="14" height="14"

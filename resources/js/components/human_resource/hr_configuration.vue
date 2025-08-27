@@ -168,7 +168,7 @@
                                                                             <td>{{ adsdata1.StartDate }}</td>
                                                                             <td>{{ adsdata1.EndDate }}</td>
                                                                             <td>
-                                                                                <span class="badge bg-gradient-success"
+                                                                                <span class="badge px-3 py-2 bg-gradient-success"
                                                                                     v-if="adsdata1.CurrentSession == 1">Running</span>
                                                                                 <span
                                                                                     v-if="hasPermission('HR Controller Session Detail Status')">
@@ -179,26 +179,26 @@
                                                                                             data-bs-toggle="modal"
                                                                                             data-bs-target="#hireinterview"
                                                                                             v-if="adsdata1.EndDate <= date"
-                                                                                            class="badge bg-gradient-info"
+                                                                                            class="badge px-3 py-2 bg-gradient-info"
                                                                                             style="cursor: pointer;">Open</span>
                                                                                         <span v-else
-                                                                                            class="badge bg-gradient-info"
+                                                                                            class="badge px-3 py-2 bg-gradient-info"
                                                                                             style="cursor: pointer;">Open</span>
                                                                                     </a>
                                                                                     <a v-else>
                                                                                         <span
-                                                                                            class="badge bg-gradient-warning">Closed</span>
+                                                                                            class="badge px-3 py-2 bg-gradient-warning">Closed</span>
                                                                                     </a>
                                                                                 </span>
                                                                                 <span v-else>
                                                                                     <a
                                                                                         v-if="adsdata1.AttClosedPayrollStart == 'Open'">
                                                                                         <span
-                                                                                            class="badge bg-gradient-info">Open</span>
+                                                                                            class="badge px-3 py-2 bg-gradient-info">Open</span>
                                                                                     </a>
                                                                                     <a v-else>
                                                                                         <span
-                                                                                            class="badge bg-gradient-warning">Closed</span>
+                                                                                            class="badge px-3 py-2 bg-gradient-warning">Closed</span>
                                                                                     </a>
                                                                                 </span>
                                                                             </td>

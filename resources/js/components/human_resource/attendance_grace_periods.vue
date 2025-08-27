@@ -37,8 +37,8 @@
                             <div
                                 class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0"
                             >
-                                <div class="card">
-                                    <div class="card-header">
+                                <div class="card top-radius bottom-radius border-0">
+                                    <div class="card-header top-radius">
                                         <h2 class="card-title">
                                             Grace Period(s) Detail
                                         </h2>
@@ -68,7 +68,8 @@
                                                 <label
                                                     class="form-label"
                                                     for="UserRole"
-                                                >Designation</label
+                                                ><img class="px-1"
+                                            :src="images.solar_filter_linear" alt="icon">Designation</label
                                                 >
                                                 <multiselect
                                                     :show-labels="false"
@@ -87,7 +88,8 @@
                                                 <label
                                                     class="form-label"
                                                     for="UserPlan"
-                                                >Location</label
+                                                ><img class="px-1"
+                                            :src="images.solar_filter_linear" alt="icon">Location</label
                                                 >
                                                 <multiselect
                                                     :show-labels="false"
@@ -106,7 +108,8 @@
                                                 <label
                                                     class="form-label"
                                                     for="FilterTransaction"
-                                                >Department</label
+                                                ><img class="px-1"
+                                            :src="images.solar_filter_linear" alt="icon">Department</label
                                                 >
                                                 <multiselect
                                                     :show-labels="false"
@@ -127,12 +130,12 @@
                                                     style="
                                                         background: #c1c1c1;
                                                         width: 100%;
-                                                        height: 35px !important;
-                                                        margin-top: 25px;
-                                                        margin-bottom: 20px;
+                                                        height: 38px !important;
+                                                        margin-top: 31px;
+                                                        margin-bottom: 5px;
                                                         width: 60% !important;
                                                     "
-                                                    class="btn btn-common"
+                                                    class="btn btn-secondary"
                                                 >
                                                     Search
                                                 </button>
@@ -163,12 +166,12 @@
                                                     v-for="adsdata1 in adsdata.data"
                                                 >
                                                     <td></td>
-                                                    <td>
+                                                    <td  style="text-align:center;border-right:1px solid lightgrey;">
                                                         {{
                                                             adsdata1.EmployeeCode
                                                         }}
                                                     </td>
-                                                    <td>
+                                                    <td  style="text-align:center;border-right:1px solid lightgrey">
                                                         <div
                                                             class="d-flex justify-content-left align-items-center"
                                                         >
@@ -207,27 +210,27 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td>
+                                                    <td  style="text-align:center;border-right:1px solid lightgrey">
                                                         {{
                                                             adsdata1.Department
                                                         }}
                                                     </td>
-                                                    <td>
+                                                    <td  style="text-align:center;border-right:1px solid lightgrey">
                                                         {{
                                                             adsdata1.PostingCity
                                                         }}
                                                     </td>
-                                                    <td>
+                                                    <td  style="text-align:center;border-right:1px solid lightgrey">
                                                         {{
                                                             adsdata1.TotalGP
                                                         }}
                                                     </td>
-                                                    <td>
+                                                    <td  style="text-align:center;border-right:1px solid lightgrey">
                                                         {{
                                                             adsdata1.UsedGP
                                                         }}
                                                     </td>
-                                                    <td>
+                                                    <td  style="text-align:center;border-right:1px solid lightgrey">
                                                         <a
                                                             @click="
                                                                     savegrace_id(
@@ -536,6 +539,10 @@ export default {
     },
     data() {
         return {
+            images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
             active: "attendance_grace_periods",
             department: "",
             location: "",

@@ -28,8 +28,8 @@
                         <div class="row">
                             <!-- User Sidebar -->
                             <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0">
-                                <div class="card">
-                                    <div class="card-header">
+                                <div class="card top-radius bottom-radius border-0 p-3">
+                                    <div class="card-heade" style="border-top-left-radius: 9px; border-top-right-radius: 9px;">
                                         <h4 class="card-title">
                                             Add New Roster
                                         </h4>
@@ -350,7 +350,7 @@
 
                             <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0">
                                 <!-- User Card -->
-                                <div class="card">
+                                <div class="card top-radius bottom-radius border-0">
                                     <div class="card-body">
                                         <div style="margin-bottom: 20px"
                                             class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
@@ -377,7 +377,7 @@
                                                 <div class="col-sm-12">
                                                     <div id="accordionWrapa50" role="tablist"
                                                         aria-multiselectable="true">
-                                                        <div class="card">
+                                                        <div class="card top-radius bottom-radius border-0">
                                                             <div class="card-header">
                                                                 <h4 class="card-title">
                                                                     Roster

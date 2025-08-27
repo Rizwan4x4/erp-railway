@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Traits\CommonTrait;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -26,6 +26,14 @@ class clientAdminController extends Controller
         $company_id = Session::get('company_id');
         $arr = DB::table('tb_company_locations')->where('company_id', '=', $company_id)->paginate(5);
         return request()->json(200, $arr);
+    }
+    public function all_locations()
+    {
+        $locations = DB::table('tb_company_locations')
+            ->where('company_id', '=', company_id())
+            ->get();
+
+        return $locations;
     }
 
     public function getuser_detail($id)
@@ -323,7 +331,7 @@ class clientAdminController extends Controller
 
         // Assign the roles to the user
         $user->assignRole($roles);
-           
+
             $data = "User Created Successfully!";
             return request()->json(200, $data);
 
@@ -560,6 +568,15 @@ class clientAdminController extends Controller
         $arr = DB::connection('sqlsrv2')->table("cities")->orderBy('city_name', 'asc')->paginate(20);
         return request()->json(200, $arr);
     }
+    public function view_all_cities()
+{
+    $arr = DB::connection('sqlsrv2')->table("cities")
+        ->orderBy('city_name', 'asc')
+        ->get();
+
+    return response()->json($arr, 200);
+}
+
 
     public function delete_city($id)
     {

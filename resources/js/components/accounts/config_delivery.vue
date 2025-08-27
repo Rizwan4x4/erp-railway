@@ -74,24 +74,24 @@ row
                                                                             <tbody>
                                                                                 <tr class="odd"
                                                                                     v-for="adsdata1 in adsdata.data">
-                                                                                    <td><span
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;"><span
                                                                                             class="badge  rounded-pill badge-light-primary">{{ adsdata1.DeliveryName }}</span>
                                                                                     </td>
-                                                                                    <td>{{ adsdata1.DType }}</td>
-                                                                                    <td>{{ adsdata1.DComputation }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.DType }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.DComputation }}</td>
                                                                                     <td
-                                                                                        v-if="adsdata1.DComputation == 'Percentage'">
+                                                                                        v-if="adsdata1.DComputation == 'Percentage'" style="text-align: center; border-right: 1px solid lightgrey;">
                                                                                         {{ adsdata1.DAmount }}%</td>
-                                                                                    <td v-else> Rs.{{ adsdata1.DAmount }}
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;" v-else> Rs.{{ adsdata1.DAmount }}
                                                                                     </td>
-                                                                                    <td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                                                         <span
                                                                                             v-if="adsdata1.Status == 'true'"
                                                                                             class="badge badge-glow bg-primary">Active</span>
                                                                                         <span v-else
                                                                                             class="badge badge-glow bg-secondary">Disabled</span>
                                                                                     </td>
-                                                                                    <td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                                                         <div class="btn-group">
                                                                                             <a class="btn btn-sm dropdown-toggle hide-arrow"
                                                                                                 data-bs-toggle="dropdown">

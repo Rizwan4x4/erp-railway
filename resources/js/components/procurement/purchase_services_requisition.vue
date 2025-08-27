@@ -99,7 +99,7 @@
                     </popover>
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="dt-buttons d-inline-flex mt-50">
+                            <div class="dt-buttons d-inline-flex">
                                 <router-link style="float:left" to="/purchase/purchase_merge_requisition" class="btn btn-primary bg-primary waves-effect bg-primary"><i class="fa-regular fa-object-ungroup"></i> Merge Requisitions</router-link>
                             </div>
                         </div>
@@ -169,10 +169,10 @@
                                         <input type="date" class="form-control" v-model="closingdate" placeholder="" required="">
                                     </div>
                                                     <div class="col-md-1 ">
-                                                        <button @click="filter_byStatus()" class="btn btn-primary bg-primary" style="margin-left: 10px;background: rgb(193, 193, 193); width: 80% !important; height: 33px !important; margin-bottom: 20px; margin-top: 25px;" >Search</button>
+                                                        <button @click="filter_byStatus()" class="btn btn-primary bg-primary" style="background: rgb(193, 193, 193); width: 100% !important; height: 38px !important; margin-bottom: 20px; margin-top: 31px;" >Search</button>
                                                     </div>
                                                     <div class="col-md-2 ">
-                                                        <input type="text" v-model="keyword1" class="form-control" style="margin-top: 25px;" placeholder="Service Requisition ID" />
+                                                        <input type="text" v-model="keyword1" class="form-control" style="margin-top: 31px;" placeholder="Service Requisition ID" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -197,9 +197,9 @@
                                         <tr v-if="new RegExp(keyword1, 'i').test(adsdata1.RId) || new RegExp(keyword1, 'i').test(adsdata1.RId2)">
                                             <td class="td-center" colspan="6">
                                                 <div class="accordion accordion-border" id="accordionBorder">
-                                                    <div class="accordion-item">
+                                                    <div class="accordion-item" style="border: 0 !important;">
                                                         <div class="accordion-header  d-flex" :id="'headingBorder'+adsdata1.RequisitionId">
-                                                            <div class="col-md-2  mb-3 position-relative mx-1 sorting_1">
+                                                            <div class="col-md-2   position-relative custom-mx-1  sorting_1">
                                                                 <div class="d-flex flex-column">
                                                                     <a class="user_name text-truncate text-body"><span class="fw-bolder">{{adsdata1.RId}} </span></a>
                                                                     <small class="emp_post text-muted">
@@ -207,13 +207,13 @@
                                                                     </small>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-1  mb-3 position-relative mx-1">{{adsdata1.Dated}} </div>
-                                                            <div class="col-md-3  mb-3 position-relative mx-1">
+                                                            <div class="col-md-1   position-relative custom-mx-1 ">{{adsdata1.Dated}} </div>
+                                                            <div class="col-md-3   position-relative custom-mx-1 ">
                                                                 <h6 class="user-name text-truncate mb-0">{{adsdata1.DepartmentName}}</h6><small class="text-truncate text-muted">{{adsdata1.ProjectName}}</small>
                                                             </div>
-                                                            <div class="col-md-1  mb-3 position-relative mx-1">{{adsdata1.RequisitionType}} </div>
+                                                            <div class="col-md-1  position-relative custom-mx-1 ">{{adsdata1.RequisitionType}} </div>
 
-                                                            <div class="col-md-2  mb-3 position-relative mx-1">
+                                                            <div class="col-md-1  position-relative custom-mx-1 ">
                                                                 <span v-if="adsdata1.Status=='Pending'" class="badge badge-glow bg-info">{{adsdata1.Status}}</span>
                                                                 <span v-else-if="adsdata1.Status=='Rejected'" class="badge badge-glow bg-danger">{{adsdata1.Status}}</span>
                                                                 <span v-else class="badge badge-glow bg-success">{{adsdata1.Status}}</span>
@@ -223,12 +223,12 @@
                                                                 <span class="badge bg-danger" v-else-if="adsdata1.Status2!=Null && adsdata1.Status2!='' && adsdata1.Status!='Rejected'"> {{adsdata1.Status2}}</span>
 
                                                             </div>
-                                                            <div class="col-md-1  mb-1 position-relative" style="width: 10%; margin-left:5px;">
+                                                            <div class="col-md-1  mb-1 position-relative" style="width: 10%; margin-left:17px;">
                                                                 <div class="d-flex align-items-center col-actions">
                                                                     <a style="text-decoration:none;" class="me-1" href="#" data-bs-toggle="modal" @click="editRequisition(adsdata1.RequisitionId)" data-bs-target="#viewPREQ">
                                                                         <i class="fa-solid fa-eye"></i>
                                                                     </a>
-                                                                    <a class="dropdown-item button collapsed mx-1" @click="editReq(adsdata1.RequisitionId)" data-bs-toggle="collapse" :data-bs-target="'#accordionBorder'+adsdata1.RequisitionId" aria-expanded="false" :aria-controls="'accordionBorder'+adsdata1.RequisitionId">
+                                                                    <a class="dropdown-item button collapsed custom-mx-1  " @click="editReq(adsdata1.RequisitionId)" data-bs-toggle="collapse" :data-bs-target="'#accordionBorder'+adsdata1.RequisitionId" aria-expanded="false" :aria-controls="'accordionBorder'+adsdata1.RequisitionId">
                                                                         <i class="fa-solid fa-circle-plus"></i>
                                                                     </a>
                                                                     <a v-if="adsdata1.Status=='Pending'" @click="editRequisition(adsdata1.RequisitionId)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editPREQ">
@@ -251,11 +251,11 @@
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr v-for="(get_request, index) in get_reqdata1">
-                                                                            <td class="td-center">{{index+1}}</td>
-                                                                            <td class="td-left">{{get_request.Detail}}</td>
-                                                                            <td class="td-center">{{get_request.Quantity}}</td>
-                                                                            <td class="td-center">{{get_request.unit}}</td>
-                                                                            <td class="td-center">{{currency}}. {{Number(get_request.EstCost)}}</td>
+                                                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{index+1}}</td>
+                                                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{get_request.Detail}}</td>
+                                                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{get_request.Quantity}}</td>
+                                                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{get_request.unit}}</td>
+                                                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{currency}}. {{Number(get_request.EstCost)}}</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
@@ -472,21 +472,21 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="get_reqdata11 in get_reqdata1">
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <p class="card-text fw-bold mb-25">{{get_reqdata11.ItemName}}</p>
                                                 <p class="card-text text-nowrap">
                                                 </p>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{get_reqdata11.Detail}}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{get_reqdata11.Quantity}}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{get_reqdata11.unit}}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{currency}}. {{Number(get_reqdata11.EstCost)}}</span>
                                             </td>
                                         </tr>
@@ -1208,6 +1208,10 @@ export default {
 
 .bg-custom {
     background-color: #F9F9F9 !important;
+}
+.custom-mx-1 {
+    margin-left: 14px !important;
+    margin-right: 14px !important;
 }
 @media print {
     .noprint {

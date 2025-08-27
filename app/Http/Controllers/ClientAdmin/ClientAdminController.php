@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\ClientAdmin;
+
 use App\Contracts\Repository\ClientAdmin\ClientAdminRepositoryInterface;
 use App\Contracts\Services\HRMS\LeavesDetails\ClientAdminServiceInterface;
 use App\Http\Controllers\Controller;
@@ -21,8 +23,7 @@ class ClientAdminController extends Controller
     public function __construct(
         // LeavesDashboardServiceInterface $LeavesDashboardservice,
         ClientAdminRepositoryInterface $ClientAdminRepository,
-    )
-    {
+    ) {
         $this->ClientAdminRepository = $ClientAdminRepository;
         // $this->LeavesDashboardservice = $LeavesDashboardservice;
     }
@@ -42,6 +43,7 @@ class ClientAdminController extends Controller
         $arr = DB::table('tb_company_locations')->where('company_id', '=', company_id())->paginate(5);
         return request()->json(200, $arr);
     }
+
 
     public function getuser_detail($id)
     {
@@ -74,9 +76,7 @@ class ClientAdminController extends Controller
                 $arr = DB::table('tb_company_locations')->where('company_id', '=', company_id())->paginate(5);
                 return request()->json(200, $arr);
             }
-
         }
-
     }
 
     public function deactivate_location($id)
@@ -90,7 +90,6 @@ class ClientAdminController extends Controller
 
             return request()->json(200, $message);
         }
-
     }
 
     public function activate_location($id)
@@ -103,7 +102,6 @@ class ClientAdminController extends Controller
 
             return request()->json(200, $message);
         }
-
     }
 
     public function search_location(Request $request)
@@ -129,9 +127,7 @@ class ClientAdminController extends Controller
                 $arr = DB::table('tb_designation')->where('company_id', '=', company_id())->paginate(5);
                 return request()->json(200, $arr);
             }
-
         }
-
     }
 
     public function designation_detail()
@@ -152,7 +148,6 @@ class ClientAdminController extends Controller
 
             return request()->json(200, $message);
         }
-
     }
 
     public function activate_designation($id)
@@ -165,7 +160,6 @@ class ClientAdminController extends Controller
 
             return request()->json(200, $message);
         }
-
     }
 
     public function search_designation(Request $request)
@@ -206,9 +200,7 @@ class ClientAdminController extends Controller
                 $arr = DB::table('tb_department')->where('company_id', '=', company_id())->paginate(5);
                 return request()->json(200, $arr);
             }
-
         }
-
     }
 
     public function deactivate_department($id)
@@ -222,7 +214,6 @@ class ClientAdminController extends Controller
 
             return request()->json(200, $message);
         }
-
     }
 
     public function activate_department($id)
@@ -235,7 +226,6 @@ class ClientAdminController extends Controller
 
             return request()->json(200, $message);
         }
-
     }
     // public function overall_designation(){
     //
@@ -249,12 +239,12 @@ class ClientAdminController extends Controller
         return request()->json(200, $arr);
     }
 
-//    public function registered_empcode()
-//    {
-//
-//        $arr = DB::connection('sqlsrv2')->table('Emp_Register')->join('Emp_Profile', 'Emp_Register.EmployeeID', '=', 'Emp_Profile.EmployeeID')->select('Emp_Register.EmployeeCode', 'Emp_Register.EmployeeID', 'Emp_Profile.Name')->where('Emp_Register.Status', '=', 'Registered')->where('Emp_Register.CompanyId', '=', company_id())->orderBy('Emp_Profile.Name', 'asc')->get();
-//        return request()->json(200, $arr);
-//    }
+    //    public function registered_empcode()
+    //    {
+    //
+    //        $arr = DB::connection('sqlsrv2')->table('Emp_Register')->join('Emp_Profile', 'Emp_Register.EmployeeID', '=', 'Emp_Profile.EmployeeID')->select('Emp_Register.EmployeeCode', 'Emp_Register.EmployeeID', 'Emp_Profile.Name')->where('Emp_Register.Status', '=', 'Registered')->where('Emp_Register.CompanyId', '=', company_id())->orderBy('Emp_Profile.Name', 'asc')->get();
+    //        return request()->json(200, $arr);
+    //    }
 
     public function overall_users()
     {
@@ -306,17 +296,14 @@ class ClientAdminController extends Controller
 
             $find_pic = DB::connection('sqlsrv2')->table('Emp_Register')->where('CompanyID', '=', company_id())->where('EmployeeCode', '=', $emp_code)->get();
             foreach ($find_pic as $find_pic1) {
-
             }
             $find_pic5 = DB::connection('sqlsrv2')->table('Emp_Profile')->where('CompanyID', '=', company_id())->where('EmployeeID', '=', $find_pic1->EmployeeID)->get();
             foreach ($find_pic5 as $find_pic51) {
-
             }
 
             DB::insert('INSERT INTO tb_users(first_name,last_name,emp_code,user_password,ofc_location,user_address,created_by,created_time,email,user_role,company_id,u_status,department,photo) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [$first_name, $last_name, $emp_code, $password, $location, $address, username(), $update_date, $email, $designation, company_id(), 'Active', $department, $find_pic51->Photo]);
             $data = "User Created Successfully!";
             return request()->json(200, $data);
-
         }
     }
 
@@ -343,7 +330,6 @@ class ClientAdminController extends Controller
         $data = 'User Created Successfully!';
 
         return request()->json(200, $data);
-
     }
 
     public function search_users(Request $request)
@@ -365,7 +351,6 @@ class ClientAdminController extends Controller
             $message = DB::table('tb_users')->where('company_id', '=', company_id())->where('u_status', '=', $status)->paginate(15);
             return request()->json(200, $message);
         }
-
     }
 
     public function get_designationwise_users(Request $request)
@@ -379,7 +364,6 @@ class ClientAdminController extends Controller
             $message = DB::table('tb_users')->where('company_id', '=', company_id())->where('user_role', '=', $designation)->paginate(15);
             return request()->json(200, $message);
         }
-
     }
 
     public function get_locationwise_users(Request $request)
@@ -393,7 +377,6 @@ class ClientAdminController extends Controller
             $message = DB::table('tb_users')->where('company_id', '=', company_id())->where('ofc_location', '=', $location)->paginate(15);
             return request()->json(200, $message);
         }
-
     }
 
     public function deactivate_user($id)
@@ -407,7 +390,6 @@ class ClientAdminController extends Controller
 
             return request()->json(200, $message);
         }
-
     }
 
     public function activate_user($id)
@@ -420,7 +402,6 @@ class ClientAdminController extends Controller
 
             return request()->json(200, $message);
         }
-
     }
 
     public function submit_user_roles(Request $request)
@@ -458,7 +439,6 @@ class ClientAdminController extends Controller
 
             $check_user_detail_get = DB::table('tb_roles_permissions')->where('company_id', '=', company_id())->where('user_email', '=', $email)->get();
             foreach ($check_user_detail_get as $check_user_detail_get1) {
-
             }
             $role_id = $check_user_detail_get1->id;
             $result = DB::update('update tb_roles_permissions set hr_read =?, hr_write=?, hr_restricted=?, hr_attendance=?, hr_superadmin=?, hr_overall=?, payroll_read=?, payroll_write=?, payroll_restricted=?, payroll_superadmin=?, payroll_overall=?, accounts_read=?, accounts_write=?, accounts_overall=?, accounts_superadmin=?, store_read=?, store_write=?, store_overall=?, audit_superadmin=? where id = ?', [$hr_read, $hr_write, $hr_restricted, $hr_attendance, $hr_superadmin, $hr_overall, $payroll_read, $payroll_write, $payroll_restricted, $payroll_superadmin, $payroll_overall, $accounts_read, $accounts_write, $accounts_overall, $accounts_superadmin, $store_read, $store_write, $store_overall, $audit_superadmin, $role_id]);
@@ -468,8 +448,6 @@ class ClientAdminController extends Controller
 
         $message = 'Updated Status Successfully';
         return request()->json(200, $message);
-
-
     }
 
     public function fetch_user_roles($email)
@@ -699,7 +677,6 @@ class ClientAdminController extends Controller
 
         $arr = DB::table('tb_users')->where('company_id', '=', company_id())->where('email', '=', username())->get();
         foreach ($arr as $arr1) {
-
         }
         $emp_code = $arr1->emp_code;
 
@@ -737,11 +714,9 @@ class ClientAdminController extends Controller
 
         $emp_code = DB::connection('sqlsrv')->table("tb_users")->select('emp_code')->where('company_id', '=', company_id())->where('email', '=', username())->get();
         foreach ($emp_code as $emp_code1) {
-
         }
         $images = DB::connection('sqlsrv2')->table('Emp_Profile')->join('Emp_Register', 'Emp_Profile.EmployeeID', 'Emp_Register.EmployeeID')->where('Emp_Register.EmployeeCode', '=', $emp_code1->emp_code)->where('Emp_Profile.CompanyID', '=', company_id())->select('Emp_Profile.Photo')->get();
         foreach ($images as $images1) {
-
         }
         DB::update('update tb_users set tour_status=?, update_sender=? where company_id=?', ['3', $images1->Photo, company_id()]);
         $arr = "Update is sent to users!";

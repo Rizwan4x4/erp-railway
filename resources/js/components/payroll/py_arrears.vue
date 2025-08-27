@@ -54,8 +54,8 @@
                                         </thead>
                                         <tbody>
                                             <tr v-for="all_sals1 in all_sals.data" :class="[all_sals1.Status=='Pending' ? 'table-warning' : '']">
-                                                <td class="text-center">{{all_sals1.EmployeeCode}}</td>
-                                                <td>
+                                                <td class="text-center"style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.EmployeeCode}}</td>
+                                                <td class="text-center"style="text-align:center;border-right:1px solid lightgrey">
                                                     <div class="d-flex flex-column">
                                                         <a class="user_name text-truncate text-body"><span class="fw-bolder">{{all_sals1.Name}} </span></a><small class="emp_post text-muted">
                                                             <span v-if="all_sals1.Department!=null">{{all_sals1.Department}} - </span>
@@ -65,11 +65,11 @@
                                                         </small>
                                                     </div>
                                                 </td>
-                                                <td class="text-center fw-bolder">{{Math.floor(all_sals1.ArrearsAmount).toLocaleString()}}/-</td>
-                                                <td class="text-center">{{all_sals1.SessionName}}<br /><small class="emp_post text-muted">{{all_sals1.ArrearDate}}</small></td>
-                                                <td class="text-center">{{Math.floor(all_sals1.Salary).toLocaleString()}}/-</td>
-                                                <td class="text-center" style="max-width: 215px !important;">{{all_sals1.Descriptions}}</td>
-                                                <td class="text-center">
+                                                <td class="text-center fw-bolder"style="text-align:center;border-right:1px solid lightgrey">{{Math.floor(all_sals1.ArrearsAmount).toLocaleString()}}/-</td>
+                                                <td class="text-center"style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.SessionName}}<br /><small class="emp_post text-muted">{{all_sals1.ArrearDate}}</small></td>
+                                                <td class="text-center"style="text-align:center;border-right:1px solid lightgrey">{{Math.floor(all_sals1.Salary).toLocaleString()}}/-</td>
+                                                <td class="text-center"style="max-width: 215px !important;text-align:center;border-right:1px solid lightgrey" >{{all_sals1.Descriptions}}</td>
+                                                <td class="text-center"style="text-align:center;border-right:1px solid lightgrey">
                                                     <a v-if="all_sals1.Status=='Pending'" @click="fetch_arrear_id(all_sals1.ArrearsID)" data-bs-toggle="modal" data-bs-target="#hireinterview1">
                                                         <span class="badge bg-gradient-warning" style="cursor: pointer;">Pending</span>
                                                     </a>
@@ -80,7 +80,7 @@
                                                         <span class="badge bg-gradient-info" style="cursor: pointer;">Paid</span>
                                                     </a>
                                                 </td>
-                                                <td class="text-center">
+                                                <td class="text-center"style="text-align:center;border-right:1px solid lightgrey">
                                                     <div class="btn-group text-center">
                                                         <a v-if="hasPermission('Payroll Arrears Action')" data-bs-toggle="dropdown" class="btn btn-sm dropdown-toggle hide-arrow">
                                                             <i class="fa-solid fa-ellipsis-vertical"></i>

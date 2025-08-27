@@ -8,12 +8,24 @@
                 <div class="content-header row">
                 </div>
                 <div class="content-body">
+                    <div class="content-header row">
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <router-link to="/hr/dashboard" style="text-decoration: none;">Dashboard</router-link>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    Locations
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
                     <section class="app-user-view-account">
                         <div class="row">
                             <!-- User Sidebar -->
                             <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0">
                                 <div class="card top-radius bottom-radius border-0">
-                                    <div class="card-header">
+                                    <div class="card-header top-radius">
                                         <h4 class="card-title">Add New Location</h4>
                                     </div>
                                     <div class="card-body">
@@ -102,17 +114,17 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr v-for="adsdata1 in adsdata.data">
-                                                        <td>{{ adsdata1.location_name }}</td>
-                                                        <td>{{ adsdata1.location_address }}</td>
-                                                        <td>{{ adsdata1.head_office }}</td>
-                                                        <td>
+                                                        <td style="border-right: 1px solid lightgray;border-left: 1px solid lightgray;">{{ adsdata1.location_name }}</td>
+                                                        <td style="border-right: 1px solid lightgray;">{{ adsdata1.location_address }}</td>
+                                                        <td style="border-right: 1px solid lightgray;">{{ adsdata1.head_office }}</td>
+                                                        <td style="border-right: 1px solid lightgray;">
                                                             <span v-if="adsdata1.l_status == 'Active'"
                                                                 class="badge bg-light-success">{{ adsdata1.l_status
                                                                 }}</span>
                                                             <span v-else class="badge bg-light-danger">{{
                                                                 adsdata1.l_status }}</span>
                                                         </td>
-                                                        <td>
+                                                        <td style="border-right: 1px solid lightgray;">
                                                             <div class="btn-group">
                                                                 <a v-if="hasPermission('Location actions')"
                                                                     class="btn btn-sm dropdown-toggle hide-arrow"
@@ -240,9 +252,9 @@
                                                                             <tbody>
                                                                                 <tr v-for="cities1 in cities.data"
                                                                                     class="odd">
-                                                                                    <td>{{ cities1.city_name }}</td>
+                                                                                    <td style="border-right: 1px solid lightgray; border-left: 1px solid lightgray;">{{ cities1.city_name }}</td>
                                                                                     <td
-                                                                                        style="text-align:center; min-width:90px">
+                                                                                        style="border-right: 1px solid lightgray;">
                                                                                         <a v-if="hasPermission('Delete city')"
                                                                                             class="me-25"
                                                                                             @click="delete_city(cities1.id)">

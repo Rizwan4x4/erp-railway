@@ -41,7 +41,7 @@
                                                 <input type="date" class="form-control" v-model="closingdate">
                                             </div>
                                             <div class="col-md-2 col-12  position-relative">
-                                                <button @click="filtered_GRN()" style="background: rgb(193, 193, 193); width: 60% !important; height: 33px !important; margin-bottom: 20px; margin-top: 25px; margin-left: 10px" class="btn btn-primary bg-primary">Search</button>
+                                                <button @click="filtered_GRN()" style="background: rgb(193, 193, 193); width: 60% !important; height: 38px !important; margin-bottom: 20px; margin-top: 31px; margin-left: 10px" class="btn btn-primary bg-primary">Search</button>
                                             </div>
                                         </div>
                                     </div>
@@ -311,25 +311,25 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="get_grndata21 in get_grndata1">
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <p class="card-text fw-bold mb-25">{{get_grndata21.ItemName}}</p>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{get_grndata21.PoQuantity}}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{get_grndata21.Unit}}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{get_grndata21.RecvdQuantity}}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{get_grndata21.Price}}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{get_grndata21.SubTotal}}</span>
                                             </td>
-                                            <td class="py-1">
+                                            <td class="py-1" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span class="fw-bold">{{get_grndata21. ItemExpiry}}</span>
                                             </td>
                                         </tr>

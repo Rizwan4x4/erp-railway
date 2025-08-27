@@ -31,7 +31,7 @@
                                                     <div class="col-sm-12">
                                                         <div id="accordionWrapa50" role="tablist"
                                                             aria-multiselectable="true">
-                                                            <div class="card border-0 shadow-none" >
+                                                            <div class="card border-0 shadow-none mb-0"   >
                                                                 <div class="card-header">
                                                                     <h4 class="card-title">
                                                                         Accounts Configuration
@@ -254,7 +254,7 @@
                                                                 <div class="col-sm-12">
                                                                     <div id="accordionWrapa50" role="tablist"
                                                                         aria-multiselectable="true">
-                                                                        <div class="card border-0 shadow-none">
+                                                                        <div class="card border-0 shadow-none mb-0">
                                                                             <div class="card-header">
                                                                                 <h4 class="card-title">Child Companies
                                                                                 </h4>
@@ -274,28 +274,28 @@
                                                                                                 <th>Email Id</th>
                                                                                                 <th>Address</th>
                                                                                                 <th>Status</th>
-                                                                                                <th></th>
+                                                                                                <!-- <th></th> -->
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
                                                                                             <tr
                                                                                                 v-for="company_data1 in company_data.data">
-                                                                                                <td>{{ company_data1.COmpanyName }}
+                                                                                                <td style="text-align: center; border-right: 1px solid lightgrey; border-left: 1px solid lightgrey;">{{ company_data1.COmpanyName }}
                                                                                                 </td>
-                                                                                                <td>{{ company_data1.CompanyPhone }}
+                                                                                                <td style="text-align: center; border-right: 1px solid lightgrey;">{{ company_data1.CompanyPhone }}
                                                                                                 </td>
-                                                                                                <td>{{ company_data1.CompanyEmail }}
+                                                                                                <td style="text-align: center; border-right: 1px solid lightgrey;">{{ company_data1.CompanyEmail }}
                                                                                                 </td>
-                                                                                                <td>{{ company_data1.CompanyAddress }}
+                                                                                                <td style="text-align: center; border-right: 1px solid lightgrey;">{{ company_data1.CompanyAddress }}
                                                                                                 </td>
-                                                                                                <td>{{ company_data1.Status }}
+                                                                                                <td style="text-align: center; border-right: 1px solid lightgrey;">{{ company_data1.Status }}
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </tbody>
                                                                                     </table>
                                                                                 </div>
                                                                                 <div
-                                                                                    style="text-align:center;padding-top:20px">
+                                                                                    style="text-align:center;">
                                                                                     <pagination :data="company_data"
                                                                                         @pagination-change-page="getResult2">
                                                                                     </pagination>
@@ -320,7 +320,7 @@
                                                                 <div class="col-sm-12">
                                                                     <div id="accordionWrapa50" role="tablist"
                                                                         aria-multiselectable="true">
-                                                                        <div class="card border-0 shadow-none">
+                                                                        <div class="card border-0 shadow-none mb-0">
                                                                             <div class="card-header">
                                                                                 <h4 class="card-title">Departments</h4>
                                                                                 <a data-bs-toggle="modal"
@@ -336,22 +336,22 @@
                                                                                             <tr>
                                                                                                 <th>Department Name</th>
                                                                                                 <th>Status</th>
-                                                                                                <th></th>
+                                                                                                <!-- <th></th> -->
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
                                                                                             <tr
                                                                                                 v-for="dept_data1 in dept_data.data">
-                                                                                                <td>{{ dept_data1.COmpanyName }}
+                                                                                                <td style=" border-right: 1px solid lightgrey; border-left: 1px solid lightgray;">{{ dept_data1.COmpanyName }}
                                                                                                 </td>
-                                                                                                <td>{{ dept_data1.Status }}
+                                                                                                <td style="text-align: center; border-right: 1px solid lightgrey;">{{ dept_data1.Status }}
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </tbody>
                                                                                     </table>
                                                                                 </div>
                                                                                 <div
-                                                                                    style="text-align:center;padding-top:20px">
+                                                                                    style="text-align:center;">
                                                                                     <pagination :data="dept_data"
                                                                                         @pagination-change-page="getResult6">
                                                                                     </pagination>
@@ -374,7 +374,7 @@
                                                                 <div class="col-sm-12">
                                                                     <div id="accordionWrapa50" role="tablist"
                                                                         aria-multiselectable="true">
-                                                                        <div class="card border-0 shadow-none">
+                                                                        <div class="card border-0 shadow-none mb-0">
                                                                             <div class="card-header">
                                                                                 <h4 class="card-title">Units</h4>
                                                                                 <a data-bs-toggle="modal"
@@ -382,7 +382,7 @@
                                                                                     class="btn btn-outline-primary waves-effect">Create
                                                                                     New</a>
                                                                             </div>
-                                                                            <div class="card-body">
+                                                                            <div class="card-body pb-0">
                                                                                 <div class="table-responsive"
                                                                                     style="overflow-x: initial !important;">
                                                                                     <table class="table">
@@ -390,22 +390,22 @@
                                                                                             <tr>
                                                                                                 <th>Unit Name</th>
                                                                                                 <th>Status</th>
-                                                                                                <th></th>
+                                                                                                <!-- <th></th> -->
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
                                                                                             <tr
                                                                                                 v-for="unit_data1 in unit_data.data">
-                                                                                                <td>{{ unit_data1.UnitName }}
+                                                                                                <td style=" border-right: 1px solid lightgrey; border-left: 1px solid lightgray">{{ unit_data1.UnitName }}
                                                                                                 </td>
-                                                                                                <td>{{ unit_data1.Status }}
+                                                                                                <td style="border-right: 1px solid lightgrey;">{{ unit_data1.Status }}
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </tbody>
                                                                                     </table>
                                                                                 </div>
                                                                                 <div
-                                                                                    style="text-align:center;padding-top:20px">
+                                                                                    style="text-align:center;">
                                                                                     <pagination :data="unit_data"
                                                                                         @pagination-change-page="getResult7">
                                                                                     </pagination>
@@ -429,34 +429,34 @@
                                                                 <div class="col-sm-12">
                                                                     <div id="accordionWrapa50" role="tablist"
                                                                         aria-multiselectable="true">
-                                                                        <div class="card border-0 shadow-none">
+                                                                        <div class="card border-0 shadow-none mb-0">
                                                                             <div class="card-header">
                                                                                 <h4 class="card-title">Purchase Orders
                                                                                 </h4>
                                                                             </div>
-                                                                            <div class="card-body">
+                                                                            <div class="card-body pb-0">
                                                                                 <div class="table-responsive"
                                                                                     style="overflow-x: initial !important;">
                                                                                     <table class="table">
                                                                                         <thead>
                                                                                             <tr>
-                                                                                                <th>PO Code</th>
-                                                                                                <th>Dated</th>
-                                                                                                <th>Vendor</th>
-                                                                                                <th>Action</th>
+                                                                                                <th class="text-center">PO Code</th>
+                                                                                                <th class="text-center">Dated</th>
+                                                                                                <th class="text-center">Vendor</th>
+                                                                                                <th class="text-center">Action</th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
                                                                                             <tr
                                                                                                 v-for="p_orders1 in p_orders.data">
-                                                                                                <td>{{ p_orders1.PoCode }}
+                                                                                                <td style="text-align: center; border-right: 1px solid lightgrey; border-left: 1px solid lightgray;">{{ p_orders1.PoCode }}
                                                                                                 </td>
-                                                                                                <td>{{ p_orders1.PoDate }}
+                                                                                                <td style="text-align: center; border-right: 1px solid lightgrey;">{{ p_orders1.PoDate }}
                                                                                                 </td>
-                                                                                                <td>{{ p_orders1.PoDate }}
+                                                                                                <td style="text-align: center; border-right: 1px solid lightgrey;">{{ p_orders1.PoDate }}
                                                                                                 </td>
                                                                                                 <td
-                                                                                                    v-if="p_orders1.state == '0' && p_orders1.pinv_state == '0'">
+                                                                                                    v-if="p_orders1.state == '0' && p_orders1.pinv_state == '0'" style="text-align: center; border-right: 1px solid lightgrey;">
                                                                                                     <span
                                                                                                         @click="confirm_close_po(p_orders1)"
                                                                                                         data-bs-toggle="modal"
@@ -474,7 +474,7 @@
                                                                                     </table>
                                                                                 </div>
                                                                                 <div
-                                                                                    style="text-align:center;padding-top:20px">
+                                                                                    style="text-align:center;">
                                                                                     <pagination :data="p_orders"
                                                                                         @pagination-change-page="getResult8"
                                                                                         :limit="limit1"></pagination>
@@ -718,26 +718,26 @@
                                                     <a data-bs-toggle="modal" data-bs-target="#leavetype"
                                                         class="btn btn-outline-primary waves-effect">Add Project</a>
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body pb-0">
                                                     <div class="table-responsive"
-                                                        style="overflow-x: initial !important; min-height:271px">
+                                                        style="overflow-x: initial !important;">
                                                         <table class="table">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Id</th>
-                                                                    <th>Project Name</th>
-                                                                    <th>COA AccountID</th>
-                                                                    <th>Account Name</th>
-                                                                    <th></th>
+                                                                    <th class="text-center">Id</th>
+                                                                    <th class="text-center">Project Name</th>
+                                                                    <th class="text-center">COA AccountID</th>
+                                                                    <th class="text-center">Account Name</th>
+                                                                    <th class="text-center"></th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr v-for="project_data1 in project_data.data">
-                                                                    <td>{{ project_data1.ID }}</td>
-                                                                    <td>{{ project_data1.ProjectName }}</td>
-                                                                    <td>{{ project_data1.CoaID }}</td>
-                                                                    <td>{{ project_data1.CoaName }}</td>
-                                                                    <td><a @click=fetch_projectid(project_data1.ID)
+                                                                    <td style="text-align: center; border-right: 1px solid lightgrey; border-left: 1px solid lightgray;">{{ project_data1.ID }}</td>
+                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ project_data1.ProjectName }}</td>
+                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ project_data1.CoaID }}</td>
+                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ project_data1.CoaName }}</td>
+                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;"><a @click=fetch_projectid(project_data1.ID)
                                                                             data-bs-toggle="modal"
                                                                             data-bs-target="#leavetype2" class=""><i
                                                                                 class="fa-solid fa-edit"></i></a></td>
@@ -745,7 +745,7 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <div style="text-align:center;padding-top:20px">
+                                                    <div style="text-align:center;">
                                                         <pagination :limit="limit1" :data="project_data"
                                                             @pagination-change-page="getResult3"></pagination>
                                                     </div>

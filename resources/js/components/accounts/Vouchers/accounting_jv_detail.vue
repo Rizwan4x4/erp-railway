@@ -69,27 +69,27 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Issued Date</th>
-                                            <th>Narration</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
+                                            <th class="text-center">ID</th>
+                                            <th class="text-center">Issued Date</th>
+                                            <th class="text-center">Narration</th>
+                                            <th class="text-center">Amount</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata.data">
-                                            <td class=" control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1"><a class="fw-bold"> {{ adsdata1.JVID }}</a></td>
-                                            <td>{{ adsdata1.JVDate }}</td>
-                                            <td>
+                                            <td   class=" control" tabindex="0" style="display: none;"></td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="sorting_1"><a class="fw-bold"> {{ adsdata1.JVID }}</a></td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.JVDate }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 {{ adsdata1.Narration }}
                                             </td>
-                                            <td>Rs.
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">Rs.
                                                 {{ Number(adsdata1.TransactionAmount) }}/-
                                             </td>
 
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <span v-if="adsdata1.Status == 'Approved'"
                                                     class="badge badge-glow bg-primary">{{ adsdata1.Status }}</span>
                                                 <span @click="editJV(adsdata1.JournalVoucherID)"
@@ -103,7 +103,7 @@
                                                 <span v-else-if="adsdata1.Status == 'Pending'"
                                                     class="badge badge-glow bg-info">{{ adsdata1.Status }}</span>
                                             </td> -->
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="d-flex align-items-center col-actions">
 
                                                     <a class="me-25" data-bs-toggle="modal"
@@ -233,21 +233,21 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Account ID</th>
-                                            <th>Account Name</th>
-                                            <th>Narration</th>
-                                            <th>Credit Amount</th>
-                                            <th>Debit Amount</th>
+                                            <th class="text-center">Account ID</th>
+                                            <th class="text-center">Account Name</th>
+                                            <th class="text-center">Narration</th>
+                                            <th class="text-center">Credit Amount</th>
+                                            <th class="text-center">Debit Amount</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr v-for="jvDetails1 in jvDetails">
-                                            <td>{{ jvDetails1.AccountID }}</td>
-                                            <td>{{ jvDetails1.AccountName }}</td>
-                                            <td>{{ jvDetails1.Narration }}</td>
-                                            <td style="text-align:center">{{ Number(jvDetails1.credit_amount) }}</td>
-                                            <td style="text-align:center">{{ Number(jvDetails1.debit_amount) }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ jvDetails1.AccountID }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ jvDetails1.AccountName }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ jvDetails1.Narration }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ Number(jvDetails1.credit_amount) }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ Number(jvDetails1.debit_amount) }}</td>
 
                                         </tr>
                                     </tbody>

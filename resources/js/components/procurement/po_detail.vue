@@ -90,7 +90,7 @@
                             class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                             <div class="col-md-2">
                                 <div v-if="hasPermission('Purchase Orders Create')"
-                                    class="dt-buttons d-inline-flex mt-50">
+                                    class="dt-buttons d-inline-flex ">
                                     <router-link style="float:left" to="/purchase/create"
                                         class="btn btn-primary bg-primary waves-effect">+ Create PO</router-link>
                                 </div>
@@ -146,10 +146,10 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="adsdata1 in adsdata.data">
-                                        <td class="td-center"><a class="fw-bold"> {{ adsdata1.PoCode }}</a></td>
-                                        <td class="td-center">{{ adsdata1.PoDate }}</td>
-                                        <td class="td-center">{{ adsdata1.RequisitionType }}</td>
-                                        <td class="td-left">
+                                        <td class="td-center" style="text-align:center;border-right:1px solid lightgrey"><a class="fw-bold"> {{ adsdata1.PoCode }}</a></td>
+                                        <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{ adsdata1.PoDate }}</td>
+                                        <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{ adsdata1.RequisitionType }}</td>
+                                        <td class="td-left" style="text-align:center;border-right:1px solid lightgrey">
                                             <div class="d-flex justify-content-left align-items-center">
                                                 <div class="d-flex flex-column">
                                                     <h6 class="user-name text-truncate mb-0">{{ adsdata1.vendorName }}
@@ -157,25 +157,25 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="td-right">{{ Math.floor(adsdata1.SubTotal).toLocaleString() }}</td>
-                                        <td class="td-right">{{ Math.floor(adsdata1.Tax).toLocaleString() }}</td>
-                                        <td class="td-right">{{ Math.floor(adsdata1.ShippingCharges).toLocaleString() }}
+                                        <td class="td-right" style="text-align:center;border-right:1px solid lightgrey">{{ Math.floor(adsdata1.SubTotal).toLocaleString() }}</td>
+                                        <td class="td-right" style="text-align:center;border-right:1px solid lightgrey">{{ Math.floor(adsdata1.Tax).toLocaleString() }}</td>
+                                        <td class="td-right" style="text-align:center;border-right:1px solid lightgrey">{{ Math.floor(adsdata1.ShippingCharges).toLocaleString() }}
                                         </td>
-                                        <td class="td-right">{{ Math.floor(adsdata1.TotalAmount).toLocaleString() }}</td>
-                                        <td class="td-center">
+                                        <td class="td-right" style="text-align:center;border-right:1px solid lightgrey">{{ Math.floor(adsdata1.TotalAmount).toLocaleString() }}</td>
+                                        <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                             <span
                                                 v-if="adsdata1.Status2 === 'Not Delivered' || adsdata1.Status2 === 'Reverse'"
-                                                class="badge badge-light-danger"> {{ adsdata1.Status2 }} </span>
+                                                class="badge bg-danger p-2"> {{ adsdata1.Status2 }} </span>
                                             <span v-else-if="adsdata1.Status2 === 'Received'"
-                                                class="badge badge-light-warning"> {{ adsdata1.Status2 }} </span>
+                                                class="badge bg-warning p-2"> {{ adsdata1.Status2 }} </span>
                                             <span v-else-if="adsdata1.Status2 === 'Issued'"
-                                                class="badge badge-light-success"> {{ adsdata1.Status2 }} </span>
+                                                class="badge bg-success p-2"> {{ adsdata1.Status2 }} </span>
                                             <span v-else-if="adsdata1.Status2 === 'Not Completed'"
-                                                class="badge badge-light-danger"> {{ adsdata1.Status2 }} </span>
+                                                class="badge bg-danger p-2"> {{ adsdata1.Status2 }} </span>
                                             <span v-else-if="adsdata1.Status2 === 'Completed'"
-                                                class="badge badge-light-success"> {{ adsdata1.Status2 }} </span>
+                                                class="badge bg-success p-2"> {{ adsdata1.Status2 }} </span>
                                         </td>
-                                        <td class="td-center">
+                                        <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                             <div v-if="hasPermission('Purchase Orders Actions')"
                                                 class="d-flex align-items-center col-actions">
                                                 <a class="me-25" data-bs-toggle="modal"

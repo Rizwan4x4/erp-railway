@@ -46,7 +46,7 @@
                                         <input type="date" class="form-control" v-model="closingdate" placeholder="" required="">
                                     </div>
                                     <div class="col-md-2 user_status" style="padding-top:26px">
-                                        <button @click="filter_issuance()" style="background:#c1c1c1;width:100%;height: 35px !important;margin-bottom:20px;width: 60% !important;" class="btn btn-primary bg-primary">Search</button>
+                                        <button @click="filter_issuance()" style="background:#c1c1c1;width:100%;height: 38px !important;margin-bottom:20px; margin-top: 5px; width: 60% !important;" class="btn btn-primary bg-primary">Search</button>
                                     </div>
                                 </div>
                             </div>
@@ -87,16 +87,16 @@
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata.data">
-                                            <td class="td-center">{{adsdata1.IssuanceCode}}</td>
-                                            <td class="td-center">{{adsdata1.IssuanceDate}} </td>
-                                            <td class="td-center">{{adsdata1.DepartmentName}}</td>
-                                            <td class="td-center">{{adsdata1.ProjectName}}</td>
-                                            <td class="td-center">{{adsdata1.RId}}</td>
-                                            <td class="td-center">
-                                                <span v-if="adsdata1.Status=='Partially Delivered'" class="badge badge-glow bg-primary">Partially Delivered</span>
-                                                <span v-else class="badge badge-glow bg-success">Fully Delivered</span>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{adsdata1.IssuanceCode}}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{adsdata1.IssuanceDate}} </td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{adsdata1.DepartmentName}}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{adsdata1.ProjectName}}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{adsdata1.RId}}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
+                                                <span v-if="adsdata1.Status=='Partially Delivered'" class="badge  bg-primary p-2">Partially Delivered</span>
+                                                <span v-else class="badge    bg-success p-2">Fully Delivered</span>
                                             </td>
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <a  v-if="hasPermission('Inventory Issuance view-issuance') "  class="me-25" @click="get_issuancebyid(adsdata1.IssuanceId)" data-bs-toggle="modal" data-bs-target="#viewGRN">
                                                     <i class="fa-solid fa-eye"></i>
                                                 </a>

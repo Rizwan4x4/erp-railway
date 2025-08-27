@@ -896,10 +896,10 @@ export default {
                 this.radio = data.data;
             })
 
-        axios.get('stock_sum')
-            .then(data => {
-                this.avail_stock = data.data[0].Total;
-            })
+        // axios.get('stock_sum')
+        //     .then(data => {
+        //         this.avail_stock = data.data[0].Total;
+        //     })
         axios.get('Accounts/fetch_dashboard_customers')
             .then(response => {
                 if (response.data.length == 1) {

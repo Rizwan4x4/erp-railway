@@ -70,9 +70,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="all_sals1 in all_sals.data" :class="[all_sals1.Status=='Pending' ? 'table-warning' : '']">
-                                                <td class="td-center">{{all_sals1.EmployeeCode}}</td>
-                                                <td class="td-left">
+                                            <tr  v-for="all_sals1 in all_sals.data" :class="[all_sals1.Status=='Pending' ? 'table-warning' : '']">
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.EmployeeCode}}</td>
+                                                <td class="td-left" style="text-align:center;border-right:1px solid lightgrey">
                                                     <div class="d-flex flex-column">
                                                         <a class="user_name text-truncate text-body"><span class="fw-bolder">{{all_sals1.Name}} </span></a><small class="emp_post text-muted">
                                                             <span v-if="all_sals1.Department!=null">{{all_sals1.Department}} - </span>
@@ -82,12 +82,12 @@
                                                         </small>
                                                     </div>
                                                 </td>
-                                                <td class="td-center">{{all_sals1.DuesDate}}</td>
-                                                <td class="td-center">{{all_sals1.SessionName}}</td>
-                                                <td class="td-center">{{all_sals1.DuesType}}</td>
-                                                <td class="td-center">{{all_sals1.DuesAmount}}</td>
-                                                <td class="td-center">{{all_sals1.Descriptions}}</td>
-                                                <td class="td-center">
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.DuesDate}}</td>
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.SessionName}}</td>
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.DuesType}}</td>
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.DuesAmount}}</td>
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.Descriptions}}</td>
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                     <a v-if="hasPermission('Payroll Actions on Dues') && all_sals1.Status=='Pending'" @click="fetch_arrear_id(all_sals1.DuesID)" data-bs-toggle="modal" data-bs-target="#hireinterview1">
                                                         <span class="badge bg-gradient-warning" style="cursor: pointer;">Pending</span>
                                                     </a>
@@ -98,7 +98,7 @@
                                                         <span class="badge bg-gradient-info" style="cursor: pointer;">Paid</span>
                                                     </a>
                                                 </td>
-                                                <td class="td-center">
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                     <a v-if="hasPermission('Payroll Actions on Dues') && all_sals1.Status=='Pending'" @click="fetch_emp_payroll(all_sals1.DuesID)" data-bs-toggle="modal" data-bs-target="#editpayroll"><i style="color:#d42f2f" class="fa-solid fa-pencil"></i><span></span></a>
                                                     <a v-else><i style="color:#d42f2f" class="fa-solid fa-pencil"></i><span></span></a>
                                                 </td>

@@ -9,12 +9,8 @@
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <router-link
-                                    to="/hr/dashboard"
-                                    style="text-decoration: none"
-                                >Dashboard
-                                </router-link
-                                >
+                                <router-link to="/hr/dashboard" style="text-decoration: none">Dashboard
+                                </router-link>
                             </li>
                             <li class="breadcrumb-item active">
                                 Today's Attendance
@@ -23,322 +19,187 @@
                     </div>
                 </div>
                 <div class="content-body">
-                    <top-bar :active="active"/>
+                    <top-bar :active="active" />
                     <section class="app-user-view-account">
                         <div class="row">
-                            <div
-                                class="col-xl-9 col-lg-9 col-md-9 order-1 order-md-0"
-                            >
-                                <div class="card">
+                            <div class="col-xl-9 col-lg-9 col-md-9 order-1 order-md-0">
+                                <div class="card top-radius bottom-radius border-0 p-2">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div
-                                                class="col-md-7"
-                                                style="width: 45%"
-                                            >
+                                            <div class="col-md-5">
                                                 <h4>
-                                                    Today's Attendance
+                                                    Today Attend.
                                                     <small>({{ today }})</small>
                                                 </h4>
                                             </div>
-                                            <div class="col-md-5">
-                                                <input
-                                                    type="text"
-                                                    v-model="keyword2"
-                                                    class="form-control"
-                                                    placeholder="Search By Emp. Name/Code"
-                                                />
+                                            <div class="col-md-4">
+                                                <input type="text" v-model="keyword2" class="form-control"
+                                                    placeholder="Search By Emp. Name/Code" />
                                             </div>
-                                            <div
-                                                class="col-md-3"
-                                                style="width: 20%"
-                                            >
+                                            <div class="col-md-3">
                                                 <!--<button :disabled="disabled" @click="delay()" class="btn btn-outline-primary waves-effect">Pull Attendance</button>-->
-                                                <button v-if="hasPermission('HRMS Attendance Live-Attendance Sync. Attendance')"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#editpayroll"
+                                                <button
+                                                    v-if="hasPermission('HRMS Attendance Live-Attendance Sync. Attendance')"
+                                                    data-bs-toggle="modal" data-bs-target="#editpayroll"
                                                     :disabled="disabled"
-                                                    class="btn btn-primary bg-primary waves-effect"
-                                                >
+                                                    class="btn btn-primary bg-primary waves-effect">
                                                     Sync. Attendance
                                                 </button>
-                                                <button v-else
-
-                                                    class="btn btn-danger waves-effect"
-                                                >
+                                                <button v-else class="btn btn-danger waves-effect">
                                                     Sync. Attendance
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div
-                                            class="table-responsive"
-                                            style="
+                                        <div class="table-responsive" style="
                                                 overflow-x: initial !important;
-                                            "
-                                        >
+                                            ">
                                             <table class="table">
                                                 <thead>
-                                                <tr>
-                                                    <th>Emp.Code</th>
-                                                    <th>Employee Name</th>
-                                                    <th>Location</th>
-                                                    <th>Check In</th>
-                                                    <th>Check Out</th>
-                                                    <th>Status</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th>Emp.Code</th>
+                                                        <th>Employee Name</th>
+                                                        <th>Location</th>
+                                                        <th>Check In</th>
+                                                        <th>Check Out</th>
+                                                        <th>Status</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr
-                                                    class="odd"
-                                                    v-for="adsdata1 in adsdata.data"
-                                                >
-                                                    <td>
-                                                        {{
-                                                            adsdata1.EmployeeCode
-                                                        }}
-                                                    </td>
-                                                    <td class="sorting_1">
-                                                        <div
-                                                            class="d-flex justify-content-left align-items-center"
-                                                        >
-                                                            <div
-                                                                class="d-flex flex-column"
-                                                            >
-                                                                <a
-                                                                    class="user_name text-truncate text-body"
-                                                                ><span
-                                                                    class="fw-bolder"
-                                                                >{{
-                                                                        adsdata1.Name
-                                                                    }}</span
-                                                                ></a
-                                                                ><small
-                                                                class="emp_post text-muted"
-                                                            >{{
-                                                                    adsdata1.Department
-                                                                }}-{{
-                                                                    adsdata1.Designation
-                                                                }}</small
-                                                            >
+                                                    <tr class="odd" v-for="adsdata1 in adsdata.data">
+                                                        <td style="text-align:center;border-right:1px solid lightgrey">
+                                                            {{
+                                                                adsdata1.EmployeeCode
+                                                            }}
+                                                        </td style="text-align:center;border-right:1px solid lightgrey">
+                                                        <td class="sorting_1">
+                                                            <div class="d-flex justify-content-left align-items-center">
+                                                                <div class="d-flex flex-column">
+                                                                    <a class="user_name text-truncate text-body"><span
+                                                                            class="fw-bolder">{{
+                                                                                adsdata1.Name
+                                                                            }}</span></a><small
+                                                                        class="emp_post text-muted">{{
+                                                                            adsdata1.Department
+                                                                        }}-{{
+                                                                            adsdata1.Designation
+                                                                        }}</small>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        {{
-                                                            adsdata1.PostingCity
-                                                        }}
-                                                    </td>
-                                                    <td
-                                                        v-if="
-                                                                adsdata1.CheckIN !=
-                                                                null
-                                                            "
-                                                    >
-                                                        {{
-                                                            adsdata1.CheckIN.substring(
-                                                                0,
-                                                                5
-                                                            )
-                                                        }}
-                                                    </td>
-                                                    <td v-else></td>
-                                                    <td
-                                                        v-if="
-                                                                adsdata1.CheckOut !=
-                                                                null
-                                                            "
-                                                    >
-                                                        {{
-                                                            adsdata1.CheckOut.substring(
-                                                                0,
-                                                                5
-                                                            )
-                                                        }}
-                                                    </td>
-                                                    <td v-else></td>
-                                                    <td>
-                                                            <span
-                                                                v-if="
-                                                                    adsdata1.AttStatus ==
-                                                                    'P'
-                                                                "
-                                                                class="badge bg-light-success"
-                                                            >Present</span
-                                                            >
-                                                        <span
-                                                            v-else-if="
-                                                                    adsdata1.AttStatus ==
-                                                                    'L'
-                                                                "
-                                                            class="badge bg-light-warning"
-                                                        >Late</span
-                                                        >
-                                                        <span
-                                                            v-else-if="
-                                                                    adsdata1.AttStatus ==
-                                                                    'A'
-                                                                "
-                                                            class="badge bg-light-danger"
-                                                        >Absent</span
-                                                        >
-                                                        <span
-                                                            v-else-if="
-                                                                    adsdata1.AttStatus ==
-                                                                    'H'
-                                                                "
-                                                            class="badge bg-light-info"
-                                                        >Holiday</span
-                                                        >
-                                                        <!-- <span v-else-if="adsdata1.AttStatus == null" class="badge bg-light-secondary">Shift Awaiting</span> -->
-                                                        <span
-                                                            v-else-if="
-                                                                    isShiftStarted(
-                                                                        adsdata1
-                                                                    )
-                                                                "
-                                                            class="badge bg-light-primary"
-                                                        >Un-Marked</span
-                                                        >
-                                                        <span
-                                                            v-else
-                                                            class="badge bg-light-secondary"
-                                                        >Shift
-                                                                Awaiting</span
-                                                        >
-                                                    </td>
-                                                </tr>
+                                                        </td style="text-align:center;border-right:1px solid lightgrey">
+                                                        <td style="text-align:center;border-right:1px solid lightgrey">
+                                                            {{
+                                                                adsdata1.PostingCity
+                                                            }}
+                                                        </td>
+                                                        <td style="text-align:center;border-right:1px solid lightgrey" v-if="
+                                                            adsdata1.CheckIN !=
+                                                            null
+                                                        ">
+                                                            {{
+                                                                adsdata1.CheckIN.substring(
+                                                                    0,
+                                                                    5
+                                                                )
+                                                            }}
+                                                        </td>
+                                                        <td style="text-align:center;border-right:1px solid lightgrey" v-else></td>
+                                                        <td style="text-align:center;border-right:1px solid lightgrey" v-if="
+                                                            adsdata1.CheckOut !=
+                                                            null
+                                                        ">
+                                                            {{
+                                                                adsdata1.CheckOut.substring(
+                                                                    0,
+                                                                    5
+                                                                )
+                                                            }}
+                                                        </td>
+                                                        <td style="text-align:center;border-right:1px solid lightgrey" v-else></td>
+                                                        <td style="text-align:center;border-right:1px solid lightgrey">
+                                                            <span v-if="
+                                                                adsdata1.AttStatus ==
+                                                                'P'
+                                                            " class="badge bg-light-success">Present</span>
+                                                            <span v-else-if="
+                                                                adsdata1.AttStatus ==
+                                                                'L'
+                                                            " class="badge bg-light-warning">Late</span>
+                                                            <span v-else-if="
+                                                                adsdata1.AttStatus ==
+                                                                'A'
+                                                            " class="badge bg-light-danger">Absent</span>
+                                                            <span v-else-if="
+                                                                adsdata1.AttStatus ==
+                                                                'H'
+                                                            " class="badge bg-light-info">Holiday</span>
+                                                            <!-- <span v-else-if="adsdata1.AttStatus == null" class="badge bg-light-secondary">Shift Awaiting</span> -->
+                                                            <span v-else-if="
+                                                                isShiftStarted(
+                                                                    adsdata1
+                                                                )
+                                                            " class="badge bg-light-primary">Un-Marked</span>
+                                                            <span v-else class="badge bg-light-secondary">Shift
+                                                                Awaiting</span>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div
-                                            style="
+                                        <div style="
                                                 text-align: center;
                                                 padding-top: 20px;
-                                            "
-                                        >
-                                            <pagination
-                                                :limit="limit"
-                                                :data="adsdata"
-                                                @pagination-change-page="
-                                                    getResults2
-                                                "
-                                            ></pagination>
+                                            ">
+                                            <pagination :limit="limit" :data="adsdata" @pagination-change-page="
+                                                getResults2
+                                            "></pagination>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="col-xl-3 col-lg-3 col-md-3 order-1 order-md-0"
-                            >
-                                <div class="card">
+                            <div class="col-xl-3 col-lg-3 col-md-3 order-1 order-md-0">
+                                <div class="card top-radius bottom-radius border-0">
                                     <div class="card-header">
                                         <h4 class="card-title">
                                             Today's summary
                                         </h4>
                                     </div>
                                     <div class="card-body">
-                                        <label class="form-label"
-                                        >Shift Awaiting</label
-                                        >
-                                        <b-progress
-                                            animated
-                                            show-progress
-                                            :max="max"
-                                            class="mb-3"
-                                        >
-                                            <b-progress-bar
-                                                variant="secondary"
-                                                :value="shiftAwaiting"
-                                                :label="`${shiftAwaiting}`"
-                                            ></b-progress-bar>
+                                        <label class="form-label">Shift Awaiting</label>
+                                        <b-progress animated show-progress :max="max" class="mb-3">
+                                            <b-progress-bar variant="secondary" :value="shiftAwaiting"
+                                                :label="`${shiftAwaiting}`"></b-progress-bar>
                                         </b-progress>
-                                        <label class="form-label"
-                                        >Un-Marked</label
-                                        >
-                                        <b-progress
-                                            animated
-                                            show-progress
-                                            :max="max"
-                                            class="mb-3"
-                                        >
-                                            <b-progress-bar
-                                                variant="primary"
-                                                :value="UnMarked"
-                                                :label="`${UnMarked}`"
-                                            ></b-progress-bar>
+                                        <label class="form-label">Un-Marked</label>
+                                        <b-progress animated show-progress :max="max" class="mb-3">
+                                            <b-progress-bar variant="primary" :value="UnMarked"
+                                                :label="`${UnMarked}`"></b-progress-bar>
                                         </b-progress>
-                                        <label class="form-label"
-                                        >On Holiday</label
-                                        >
-                                        <b-progress
-                                            animated
-                                            show-progress
-                                            :max="max"
-                                            class="mb-3"
-                                        >
-                                            <b-progress-bar
-                                                variant="info"
-                                                :value="holiday"
-                                                :label="`${holiday}`"
-                                            ></b-progress-bar>
+                                        <label class="form-label">On Holiday</label>
+                                        <b-progress animated show-progress :max="max" class="mb-3">
+                                            <b-progress-bar variant="info" :value="holiday"
+                                                :label="`${holiday}`"></b-progress-bar>
                                         </b-progress>
-                                        <label class="form-label"
-                                        >Present</label
-                                        >
-                                        <b-progress
-                                            animated
-                                            show-progress
-                                            :max="max"
-                                            class="mb-3"
-                                        >
-                                            <b-progress-bar
-                                                variant="success"
-                                                :value="present + late"
-                                                :label="`${present + late}`"
-                                            ></b-progress-bar>
+                                        <label class="form-label">Present</label>
+                                        <b-progress animated show-progress :max="max" class="mb-3">
+                                            <b-progress-bar variant="success" :value="present + late"
+                                                :label="`${present + late}`"></b-progress-bar>
                                         </b-progress>
                                         <label class="form-label">Late</label>
-                                        <b-progress
-                                            animated
-                                            show-progress
-                                            :max="max"
-                                            class="mb-3"
-                                        >
-                                            <b-progress-bar
-                                                variant="warning"
-                                                :value="late"
-                                                :label="`${late}`"
-                                            ></b-progress-bar>
+                                        <b-progress animated show-progress :max="max" class="mb-3">
+                                            <b-progress-bar variant="warning" :value="late"
+                                                :label="`${late}`"></b-progress-bar>
                                         </b-progress>
-                                        <label class="form-label"
-                                        >On leave</label
-                                        >
-                                        <b-progress
-                                            animated
-                                            show-progress
-                                            :max="max"
-                                            class="mb-3"
-                                        >
-                                            <b-progress-bar
-                                                variant="primary"
-                                                :value="leave"
-                                                :label="`${leave}`"
-                                            ></b-progress-bar>
+                                        <label class="form-label">On leave</label>
+                                        <b-progress animated show-progress :max="max" class="mb-3">
+                                            <b-progress-bar variant="primary" :value="leave"
+                                                :label="`${leave}`"></b-progress-bar>
                                         </b-progress>
                                         <label class="form-label">Absent</label>
-                                        <b-progress
-                                            animated
-                                            show-progress
-                                            :max="max"
-                                            class="mb-3"
-                                        >
-                                            <b-progress-bar
-                                                variant="danger"
-                                                :value="absent"
-                                                :label="`${absent}`"
-                                            ></b-progress-bar>
+                                        <b-progress animated show-progress :max="max" class="mb-3">
+                                            <b-progress-bar variant="danger" :value="absent"
+                                                :label="`${absent}`"></b-progress-bar>
                                         </b-progress>
                                     </div>
                                 </div>
@@ -424,12 +285,12 @@ export default {
     },
     methods: {
         getResults2(page = 1) {
-            axios.get('./attendance_detail/?page=' + page, {params: {keyword2: this.keyword2}})
+            axios.get('./attendance_detail/?page=' + page, { params: { keyword2: this.keyword2 } })
                 .then(response => this.adsdata = response.data.data)
                 .catch(error => {
                     this.$toastr.e('error Occur while getting attendence details');
                 });
-                    },
+        },
         isShiftStarted(adsdata1) {
             const currentTime = new Date();
             let openingTime = null;
@@ -503,7 +364,7 @@ export default {
         axios
             .get("overall_leaves")
             .then((response) => (this.leaves = response.data.data))
-            .catch((error) => {});
+            .catch((error) => { });
     },
 };
 </script>

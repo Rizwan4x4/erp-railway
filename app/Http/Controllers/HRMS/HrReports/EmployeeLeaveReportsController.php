@@ -23,7 +23,7 @@ class EmployeeLeaveReportsController extends Controller
         $this->EmployeeLeaveReportsServiceInterface = $EmployeeLeaveReportsServiceInterface;
     }
 
-   
+
     public function get_absent_detail($start, $end, $loc, $dept, $desig, $emp_id){
 
 try{
@@ -34,8 +34,8 @@ $emp_id = ($emp_id == "All") ? "" : $emp_id;
 
         return $this->sendSuccess('get absent detsils success',$this->EmployeeLeaveReportsRepositoryInterface->get_absent_detail($start, $end, $loc, $dept, $desig, $emp_id));
     } catch (\Exception $e) {
-    
-           
+
+
         Log::error('Unhandled Exception: ' . $e->getMessage());
         return $this->sendError($e->getMessage(), $e->getCode());
     }
@@ -44,14 +44,14 @@ $emp_id = ($emp_id == "All") ? "" : $emp_id;
     { try{
         if ($designation == 'All' && $department == 'All' && $location == 'All' && $emp_id == 'All' && $leave_type == 'All') {
           return  $this->sendSuccess('employee leaves success',$this->EmployeeLeaveReportsRepositoryInterface->getLeaveEmployees('', '', '', '', $date_from, $date_end, ''));
-           
+
         } else {
            return $this->sendSuccess('employe leaves success',$this->EmployeeLeaveReportsRepositoryInterface->getLeaveEmployees($department, $location, $designation, $emp_id, $date_from, $date_end, $leave_type));
-         
+
         }
     } catch (\Exception $e) {
-    
-           
+
+
         Log::error('Unhandled Exception: ' . $e->getMessage());
         return $this->sendError($e->getMessage(), $e->getCode());
     }
@@ -60,19 +60,19 @@ $emp_id = ($emp_id == "All") ? "" : $emp_id;
     { try{
         if ($designation == 'All' && $department == 'All' && $location == 'All' && $emp_id == 'All') {
          return $this->sendSuccess('filter leaves  success',$this->EmployeeLeaveReportsRepositoryInterface->filterLeaves('', '', '', '', $leave_type));
-          
+
         } else {
          return $this->sendSuccess('filter leaves  success',$this->EmployeeLeaveReportsRepositoryInterface->filterLeaves($department, $location, $designation, $emp_id, $leave_type));
-         
+
         }
     } catch (\Exception $e) {
-    
-           
+
+
         Log::error('Unhandled Exception: ' . $e->getMessage());
         return $this->sendError($e->getMessage(), $e->getCode());
     }
     }
-  
 
- 
+
+
 }

@@ -66,44 +66,42 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Name</th>
-                                            <th>Voucher No</th>
-                                            <th>Payment Type</th>
-                                            <th>File PlotID</th>
-                                            <th>Project</th>
-                                            <th>Type</th>
-                                            <th>Closing Day</th>
-                                            <th>Status</th>
-                                            <th>Amount</th>
-                                            <th><input type="checkbox" v-model="test" @change="toggling()"
+                                            <th class="text-center">Date</th>
+                                            <th class="text-center">Name</th>
+                                            <th class="text-center">Voucher No</th>
+                                            <th class="text-center">Payment Type</th>
+                                            <th class="text-center">File PlotID</th>
+                                            <th class="text-center">Project</th>
+                                            <th class="text-center">Type</th>
+                                            <th class="text-center">Closing Day</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Amount</th>
+                                            <th class="text-center"><input type="checkbox" v-model="test" @change="toggling()"
                                                     id="maincheck" /></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="odd" v-for="adsdata1 in adsdata">
-                                            <td class="sorting_1" v-if="adsdata1.DateTime !== null">
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="sorting_1" v-if="adsdata1.DateTime !== null">
                                                 {{ (adsdata1.DateTime.split(" ")[0]) }}</td>
-                                            <td v-else></td>
-                                            <td>{{ adsdata1.Name }}</td>
-                                            <td>{{ adsdata1.VoucherNo }}</td>
-                                            <td>{{ adsdata1.PaymentType }}</td>
-                                            <td>{{ adsdata1.File_Plot_Id }}</td>
-                                            <td>{{ adsdata1.Project }}</td>
-                                            <td>{{ adsdata1.Type }}</td>
-                                            <td v-if="adsdata1.dayClose !== null">{{ adsdata1.dayClose.split(" ")[0] }}
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" v-else></td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Name }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.VoucherNo }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.PaymentType }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.File_Plot_Id }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Project }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Type }}</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" v-if="adsdata1.dayClose !== null">{{ adsdata1.dayClose.split(" ")[0] }}
                                             </td>
-                                            <td v-else></td>
-                                            <td class="text-center cursor-pointer">
-
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" v-else></td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;" class="text-center cursor-pointer">
                                                 <span v-if="adsdata1.Status == 'Proceed'"
                                                     class="badge badge-glow bg-success">{{ adsdata1.Status }}</span>
                                                 <span v-else-if="adsdata1.Status == null"
                                                     class="badge badge-glow bg-danger">Not Proceed</span>
                                             </td>
-                                            <td>Rs. {{ Number(adsdata1.Amount).toLocaleString() }}/-</td>
-
-                                            <td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">Rs. {{ Number(adsdata1.Amount).toLocaleString() }}/-</td>
+                                            <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                 <div class="d-flex align-items-center col-actions">
                                                     <input readonly name="first[]" :value="adsdata1.Id" hidden
                                                         class="form-control invoice-edit-input " />

@@ -9,6 +9,18 @@
                 </div>
                 <div class="content-body">
                     <section class="app-user-view-account">
+                        <div class="content-header row">
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <router-link to="/hr/dashboard" style="text-decoration: none;">Dashboard</router-link>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    Desigination
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
                         <div class="row">
                             <!-- User Sidebar -->
                             <div class="col-xl-6 col-lg-6 col-md-6 order-1 order-md-0">
@@ -31,7 +43,7 @@
                                                         <input type="text" id="first-name-vertical" class="form-control" v-model='designation_name' placeholder="Must be Unique">
                                                     </div>
                                                 </div>
-                                                <div class="col-12">
+                                                <div class="col-12 mt-2">
                                                     <button v-if="hasPermission('Add new Designantion')"  type="button" @click="submit_designation()" class="btn btn-primary bg-primary me-1 waves-effect waves-float waves-light bg-primary">Submit</button>
                                                     <button  v-if="hasPermission('Reset Designantion')"  type="reset" class="btn btn-outline-secondary waves-effect">Reset</button>
                                                 </div>
@@ -71,13 +83,13 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr v-for="adsdata1 in adsdata.data">
-                                                        <td>{{adsdata1.designation_name}}</td>
+                                                        <td style="border-right: 1px solid lightgray; border-left: 1px solid lightgray;">{{adsdata1.designation_name}}</td>
 
-                                                        <td>
-                                                            <span v-if="adsdata1.d_status=='Active'" class="badge bg-light-success">{{adsdata1.d_status}}</span>
-                                                            <span v-else class="badge bg-light-danger">{{adsdata1.d_status}}</span>
+                                                        <td style="border-right: 1px solid lightgray;">
+                                                            <span v-if="adsdata1.d_status=='Active'" class="badge px-3 py-2 bg-light-success">{{adsdata1.d_status}}</span>
+                                                            <span v-else class="badge px-3 py-2 bg-light-danger">{{adsdata1.d_status}}</span>
                                                         </td>
-                                                        <td>
+                                                        <td style="border-right: 1px solid lightgray;">
                                                             <div class="btn-group">
                                                                 <a v-if="hasPermission('Designantion actions')"  class="btn btn-sm dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical font-small-4">

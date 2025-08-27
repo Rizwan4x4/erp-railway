@@ -26,7 +26,7 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
                                 <!-- User Card -->
                                 <div class="card top-radius bottom-radius border-0">
-                                    <div class="card-header">
+                                    <div class="card-header top-radius">
                                         <h4 class="card-title">Payment Terms Detail</h4>
                                         <div style="text-align: right;width: 32% !important;">
                                             <a v-if="hasPermission('Accounts Configurations  create-payment-terms')"
@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div style="margin-bottom:20px;"
+                                        <div
                                             class="d-flex justify-content-between align-items-center header-actions mx-2 row mt-75">
                                             <section id="accordion-with-border">
                                                 <div class="row">
@@ -67,12 +67,11 @@
                                                                                 <tr class="odd"
                                                                                     v-for="adsdata1 in adsdata">
 
-                                                                                    <td>{{ adsdata1.PaymentTermId }}</td>
-                                                                                    <td>{{ adsdata1.PaymentTermName }}
+                                                                                    <td style=" border-right: 1px solid lightgrey; border-left: 1px solid lightgrey;">{{ adsdata1.PaymentTermId }}</td>
+                                                                                    <td style=" border-right: 1px solid lightgrey;">{{ adsdata1.PaymentTermName }}
                                                                                     </td>
-                                                                                    <td v-if="adsdata1.Status == '1'">
-                                                                                        Enable</td>
-                                                                                    <td v-else>Not current</td>
+                                                                                    <td style=" border-right: 1px solid lightgrey;" v-if="adsdata1.Status == '1'">Enable</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;" v-else>Not current</td>
 
                                                                                 </tr>
                                                                             </tbody>

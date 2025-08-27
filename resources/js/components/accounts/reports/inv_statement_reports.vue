@@ -59,7 +59,7 @@
                             </div>
 
  <!--Start Stock Assets Detail Report  -->
- <div class="modal fade" id="InventoryAssetsDetail" aria-labelledby="InventoryAssetsDetail" tabindex="-1" style="display: none" aria-hidden="true">
+ <div class="modal fade" id="InventoryAssetsDetail" aria-labelledby="InventoryAssetsDetail" tabindex="-1"  aria-hidden="true">
             <div v-if="inventory_assets == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -185,7 +185,7 @@
  </div>
  <!--End Stock Assets Detail Report  -->
 <!--Start Consolidated Stock Detail Repor -->
-<div class="modal fade" id="ConsolidatedstockDeatilsToggle" aria-labelledby="ConsolidatedstockDeatilsToggle" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="ConsolidatedstockDeatilsToggle" aria-labelledby="ConsolidatedstockDeatilsToggle" tabindex="-1"  aria-hidden="true">
             <div v-if="consolidate_stock_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -314,7 +314,7 @@
         </div>
 <!--EndConsolidated Stock Detail Repor -->
 <!--Start Filter Consumption Analysis Report -->
-<div class="modal fade" id="ConsumptionAnalysisReport" aria-labelledby="ConsumptionAnalysisReport" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="ConsumptionAnalysisReport" aria-labelledby="ConsumptionAnalysisReport" tabindex="-1"  aria-hidden="true">
             <div v-if="consumption_analysis == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -455,7 +455,7 @@
         </div>
 <!--End Filter Consumption Analysis Report -->
 <!-- Start Filter Average Rate Report -->
-<div class="modal fade" id="ItemAverageRateReport" aria-labelledby="ItemAverageRateReport" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="ItemAverageRateReport" aria-labelledby="ItemAverageRateReport" tabindex="-1"  aria-hidden="true">
             <div v-if="average_rate_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -558,7 +558,7 @@
 <!-- Start Filter Average Rate Report -->
 
 <!--Start Item List Report -->
-<div class="modal fade" id="ItemListToggle" aria-labelledby="ItemListToggle" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="ItemListToggle" aria-labelledby="ItemListToggle" tabindex="-1"  aria-hidden="true">
             <div v-if="item_list_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -693,7 +693,7 @@
 </div>
 <!--End Item List Report -->
 <!-- Start Filter Item Ageing Report -->
-<div class="modal fade" id="StockAgeingReport" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
+<div class="modal fade" id="StockAgeingReport" aria-labelledby="modalToggleLabel" tabindex="-1"  aria-hidden="true">
             <div v-if="stock_ageingreport == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -818,7 +818,7 @@
 <!-- Start Filter Item Ageing Report -->
 
     <!--Start Inventory Stock Detail Report -->
-    <div class="modal fade" id="stockDeatilsToggle" aria-labelledby="stockDeatilsToggle" tabindex="-1" style="display: none" aria-hidden="true">
+    <div class="modal fade" id="stockDeatilsToggle" aria-labelledby="stockDeatilsToggle" tabindex="-1"  aria-hidden="true">
             <div v-if="stock_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -956,7 +956,7 @@
         </div>
     <!--End Inventory Stock Detail Report -->
 <!--Start Inventory Receipt Report  -->
-    <div class="modal fade" id="InventoryReceiptReport" aria-labelledby="InventoryReceiptReport" tabindex="-1" style="display: none" aria-hidden="true">
+    <div class="modal fade" id="InventoryReceiptReport" aria-labelledby="InventoryReceiptReport" tabindex="-1"  aria-hidden="true">
             <div v-if="inventory_receipt_report == ''" class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">

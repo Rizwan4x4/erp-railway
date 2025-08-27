@@ -41,7 +41,8 @@
                             <!-- <div class="col-sm-7"> -->
                             <div class=" text-sm-end text-center ps-sm-0">
                                 <button v-if="hasPermission('Recruitment Post job')" type="button"
-                                    class="btn btn-primary bg-primary bg-primary py-2 px-4" data-bs-toggle="modal" data-bs-target="#postjob">
+                                    class="btn btn-primary bg-primary bg-primary py-2 px-4" data-bs-toggle="modal"
+                                    data-bs-target="#postjob">
                                     Post a job
                                 </button>
                                 <button v-else type="button" class="btn btn-danger">
@@ -103,7 +104,7 @@
                             <div class="card border-0  top-radius bottom-radius">
                                 <div class="card-body">
                                     <div class="job_card top-radius bottom-radius px-3 py-3"
-                                        :style="{ backgroundColor: getRandomColor() }">
+                                        :style="{ backgroundColor: jobs1.color }">
                                         <div class="d-flex justify-content-between align-items-start">
                                             <div>
                                                 <h5 class="fw-bold mb-0">{{ jobs1.PostTitle }}</h5>
@@ -134,7 +135,8 @@
 
                                         <!-- <p class="mt-2 text-muted" style="font-size: 13px;">{{ limitWords(
                                             jobs1.Skill, 15) }}</p> -->
-                                            <p class="mt-2 text-muted" style="font-size: 13px;" v-html="limitWords(jobs1.Skill, 15)"></p>
+                                        <p class="mt-2 text-muted" style="font-size: 13px;"
+                                            v-html="limitWords(jobs1.Skill, 10)"></p>
                                     </div>
 
 
@@ -181,11 +183,6 @@
                                         <label class="form-label">Department</label>
                                         <span style="color: #DB4437; font-size: 11px;">*</span>
 
-
-                                        <!-- <select v-model="job_dept" class="select2 form-select">
-                                            <option value="">Select</option>
-                                            <option v-for='departments3 in departments' :value='departments3.department_name'>{{departments3.department_name}}</option>
-                                        </select> -->
                                         <multiselect style="margin-right: 10px;" :show-labels="false" v-model="job_dept"
                                             :options="options1">
                                         </multiselect>
@@ -256,15 +253,22 @@
                                             placeholder="Duties & Responsibilities"></vue-editor>
                                     </div>
                                     <div style="height:80px;"></div>
-                                    <div class="col-12">
+                                    <div class="col-12 col-md-6">
                                         <label class="form-label">Office address</label>
                                         <span style="color: #DB4437; font-size: 11px;">*</span>
-                                        <input type="text" v-model="address" class="form-control"
-                                            placeholder="Street, Town, City" />
+                                        <!-- <input type="text" v-model="address" class="form-control"
+                                            placeholder="Street, Town, City" /> -->
+                                        <multiselect v-model="address" :options="options5" placeholder="Select location"
+                                            label="location_name" track-by="id">
+                                        </multiselect>
+                                        <!-- <multiselect v-model="ed_address"
+                                            :options="locations.map(loc => loc.location_name)"
+                                            placeholder="Select Office Address" class="form-control">
+                                        </multiselect> -->
                                         <span style="color: #DB4437; font-size: 11px;" v-if="address == ''">{{
                                             address_error }}</span>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 col-md-6">
                                         <label class="form-label">Upload image</label>
                                         <input type="file" accept="image/*" id="formfile" class="form-control" />
                                         <span style="color: #DB4437; font-size: 11px;"></span>
@@ -384,22 +388,33 @@
                                             placeholder="Duties & Responsibilities"></vue-editor>
                                     </div>
                                     <div style="height:80px;"></div>
-                                    <div class="col-12">
+                                    <div class="col-12 md-6">
                                         <label class="form-label">Office address</label>
                                         <span style="color: #DB4437; font-size: 11px;">*</span>
-                                        <input type="text" id="modalAddressAddress1" v-model="ed_address"
-                                            class="form-control" placeholder="Street, Town, City" />
+                                        <!-- <input type="text" id="modalAddressAddress1" v-model="ed_address"
+                                            class="form-control" placeholder="Street, Town, City" /> -->
+                                        <!-- <multiselect style="margin-right: 10px;"  :show-labels="false"
+                                            id="modalAddressAddress1" placeholder="Select Office Address"
+                                            v-model="ed_address" :options="options5">
+                                        </multiselect> -->
+
+                                        <multiselect style="margin-right: 10px;" :show-labels="false"
+                                            id="modalAddressAddress1" placeholder="Select Office Address"
+                                            v-model="ed_address" :options="options5" label="location_name"
+                                            track-by="id">
+                                        </multiselect>
                                         <span style="color: #DB4437; font-size: 11px;" v-if="ed_address == ''">{{
                                             ed_address_error }}</span>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 md-6">
                                         <label class="form-label">Image</label>
                                         <input type="file" id="formfile" class="form-control" />
                                         <span style="color: #DB4437; font-size: 11px;"></span>
                                     </div>
                                     <div class="col-12 text-center">
                                         <button type="submit" :disabled="disabled1" @click="delay1()"
-                                            class="btn btn-primary bg-primary me-1 mt-2">Update job</button>
+                                            class="btn btn-primary bg-primary me-1 mt-2" data-bs-dismiss="modal">Update
+                                            job</button>
                                         <button type="reset" class="btn btn-outline-secondary mt-2"
                                             data-bs-dismiss="modal" aria-label="Close">
                                             Cancle
@@ -417,6 +432,7 @@
 </template>
 <script>
 import axios from "axios";
+import { error } from "laravel-mix/src/Log";
 import Multiselect from 'vue-multiselect'
 import { VueEditor } from "vue2-editor";
 export default {
@@ -425,7 +441,10 @@ export default {
     },
     data() {
         return {
+            locations: [],
             colors: ['#ffece6', '#e6f7ff', '#e6ffe6', '#fff0f5'],
+            colorIndex: 0,
+            colorMap: {},
             content: '',
             id2: '',
             //Arrays
@@ -437,6 +456,7 @@ export default {
             options1: [],
             options2: ["None", "Fresher", "0-1 year", "1-3 years", "4-5 years", "5+ years"],
             options3: [],
+            options5: [],
             errors: [],
             dept: {},
             //Add job
@@ -497,7 +517,15 @@ export default {
             return words.slice(0, limit).join(' ') + '...';
         },
         getRandomColor() {
-            return this.colors[Math.floor(Math.random() * this.colors.length)];
+            // return this.colors[Math.floor(Math.random() * this.colors.length)];
+            return this.selectedColor;
+        },
+        getRandomColorFor(id) {
+            if (!this.colorMap[id]) {
+                const randomIndex = Math.floor(Math.random() * this.colors.length);
+                this.colorMap[id] = this.colors[randomIndex];
+            }
+            return this.colorMap[id];
         },
         delay1() {
             this.disabled1 = true
@@ -527,7 +555,18 @@ export default {
                     this.ed_job_dept = responce.data[0].Department;
                     this.ed_experiance = responce.data[0].Experience;
                     this.ed_target_date = responce.data[0].EndDate;
-                    this.ed_address = responce.data[0].Address;
+                    // this.ed_address = responce.data[0].Address;
+                    this.ed_address = this.options5.find(loc => loc.location_name === responce.data[0].Address);
+
+
+                    console.log(this.ed_address,"ed adress");
+
+
+                    // this.ed_address = this.locations.find(
+                    //     loc => loc.location_name.trim().toLowerCase() === res.Address.trim().toLowerCase()
+                    // ) || '';
+                    // this.ed_address = this.options5.find(loc => loc.id === existingPost.location_id);
+
                 })
                 .catch(error => { });
         },
@@ -607,7 +646,7 @@ export default {
                     educational_requirements: this.educational_requirements,
                     skill_set: this.skill_set,
                     duties: this.duties,
-                    address: this.address,
+                    address: this.address?.location_name || '',
                 })
                     .then(data => {
                         if (data.data == 'Job Created Successfully!') {
@@ -701,7 +740,9 @@ export default {
                     ed_date_opened: this.ed_date_opened,
                     ed_experiance: this.ed_experiance,
                     ed_target_date: this.ed_target_date,
-                    ed_address: this.ed_address,
+                    // ed_address: this.ed_address,
+                    // address: this.ed_address?.location_name || '',
+                    ed_address: this.ed_address?.location_name || '',
                     ed_educational_requirements: this.ed_educational_requirements,
                     ed_skill_set: this.ed_skill_set,
                     ed_duties: this.ed_duties,
@@ -729,6 +770,33 @@ export default {
     },
 
     mounted() {
+
+        this.selectedColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+
+        // axios.get('all_locations')
+        //     .then(data => {
+        //         this.locations = data.data;
+
+        //     })
+        //     .catch(error=>{});
+
+        axios.get('all_locations')
+            .then(data => {
+                this.locations = data.data;
+                // console.log(this.locations, "all in one ");
+                this.options5 = this.locations;
+
+                // this.options5 = [];
+                // this.locations.forEach(loc => {
+                //     this.options5.push(loc.location_name);
+                // });
+
+                // console.log(this.options5, "All Location Names");
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
         axios.get('department_detail2')
             .then(data => {
                 // console.log(data.data);
@@ -737,22 +805,41 @@ export default {
                 this.options1 = [];
                 // var $this = this;
                 this.departments.forEach(dep => {
-                    this.options1.push(dep.department_name); // <-- small 'd'
+                    this.options1.push(dep.department_name);
                 });
-                // console.log(this.options1, "All departs");
-                // for (var i = 0; i < $this.departments.length; i++) {
-                //     this.options1.push($this.departments[i].department);
-                // }
+                // console.log(this.options1, "All Location Names");
+
             })
             .catch(error => { });
+
+        // axios.get('job_detail2')
+        //     .then(data => {
+        //         console.log(data, "all jobs data");
+        //         this.jobs = data.data
+        //         this.jobs.forEach(job => {
+        //             if (!this.colorMap[job.id]) {
+        //                 const randomIndex = Math.floor(Math.random() * this.colors.length);
+        //                 this.colorMap[job.id] = this.colors[randomIndex];
+        //             }
+        //         });
+        //     })
+        //     .catch(error => { });
 
         axios.get('job_detail2')
             .then(data => {
-                console.log(data, "all jobs data");
-
-                this.jobs = data.data
+                this.jobs = data.data.map(job => {
+                    // Assign color only once
+                    const color = this.colors[this.colorIndex % this.colors.length];
+                    this.colorIndex++;
+                    return {
+                        ...job,
+                        color: color
+                    };
+                });
             })
-            .catch(error => { });
+            .catch(error => {
+                console.error(error);
+            });
 
     },
 

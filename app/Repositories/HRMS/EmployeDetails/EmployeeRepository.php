@@ -28,11 +28,12 @@ class EmployeeRepository implements EmployeeRepositoryInterface
                         ->orWhere('Emp_Profile.Mobile', 'LIKE', '%' . $keyword . '%')
                         ->orWhere('Emp_Profile.Name', 'LIKE', '%' . $keyword . '%');
                 });
+                // dd($mainQuery);
             if (Session::get('hr_write') == 'true') {
-                return $mainQuery->paginate(15);
+                return $mainQuery->paginate(10);
             } else {
                 $employeeIDs = array_column(reporting_team(), 'EmployeeID');
-                return $mainQuery->whereIn('Emp_Register.EmployeeID', $employeeIDs)->paginate(15);
+                return $mainQuery->whereIn('Emp_Register.EmployeeID', $employeeIDs)->paginate(10);
             }
         } catch (QueryException $e) {
             // Throw a custom exception with the original message

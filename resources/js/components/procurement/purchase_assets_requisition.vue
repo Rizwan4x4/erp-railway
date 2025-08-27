@@ -99,7 +99,7 @@
                     </popover>
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="dt-buttons d-inline-flex mt-50">
+                            <div class="dt-buttons d-inline-flex">
                                 <router-link style="float:left" to="/purchase/purchase_merge_requisition" class="btn btn-primary bg-primary waves-effect bg-primary"><i class="fa-regular fa-object-ungroup"></i> Merge Requisitions</router-link>
                             </div>
                         </div>
@@ -168,10 +168,10 @@
                                         <input type="date" class="form-control" v-model="closingdate" placeholder="" required="">
                                     </div>
                                     <div class="col-md-1">
-                                                        <button @click="filter_byStatus()" style="margin-left: 10px;background: rgb(193, 193, 193); width: 80% !important; height: 33px !important; margin-bottom: 20px; margin-top: 25px;" class="btn btn-primary bg-primary bg-primary">Search</button>
+                                                        <button @click="filter_byStatus()" style="background: rgb(193, 193, 193); width: 100% !important; height: 38px !important; margin-bottom: 20px; margin-top: 31px;" class="btn btn-primary bg-primary bg-primary">Search</button>
                                                     </div>
                                                     <div class="col-md-2 ">
-                                                        <input type="text" v-model="keyword1" class="form-control" style="margin-top: 25px;" placeholder="Assets Req ID" />
+                                                        <input type="text" v-model="keyword1" class="form-control" style="margin-top: 31px;" placeholder="Assets Req ID" />
                                                     </div>
                                                 </div>
                                             </div>

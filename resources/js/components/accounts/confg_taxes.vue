@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div style="margin-bottom: 20px" class="
+                                        <div class="
 d-flex
 justify-content-between
 align-items-center
@@ -76,24 +76,24 @@ mt-75
                                                                             <tbody>
                                                                                 <tr class="odd"
                                                                                     v-for="adsdata1 in adsdata.data">
-                                                                                    <td><span
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey; border-left: 1px solid lightgrey;"><span
                                                                                             class="badge  rounded-pill badge-light-primary">{{ adsdata1.TaxName }}</span>
                                                                                     </td>
-                                                                                    <td>{{ adsdata1.TaxType }}</td>
-                                                                                    <td>{{ adsdata1.TaxComputation }}</td>
-                                                                                    <td
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.TaxType }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.TaxComputation }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;"
                                                                                         v-if="adsdata1.TaxComputation == 'Percentage'">
                                                                                         {{ adsdata1.TaxAmount }}%</td>
-                                                                                    <td v-else>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;" v-else>
                                                                                         Rs.{{ adsdata1.TaxAmount }}</td>
-                                                                                    <td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                                                         <span
                                                                                             v-if="adsdata1.Status == 'true'"
                                                                                             class="badge badge-glow bg-primary">Active</span>
                                                                                         <span v-else
                                                                                             class="badge badge-glow bg-secondary">Disabled</span>
                                                                                     </td>
-                                                                                    <td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">
                                                                                         <div class="btn-group">
                                                                                             <a class="btn btn-sm dropdown-toggle hide-arrow"
                                                                                                 data-bs-toggle="dropdown">

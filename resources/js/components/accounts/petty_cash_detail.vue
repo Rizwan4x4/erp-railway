@@ -36,15 +36,15 @@
                                         <input type="text" placeholder="ID or Department name" class="form-control" v-model="keyword">
                                     </div>
                                     <div class="col-md-1 col-12 mb-3">
-                                        <button @click="filtered_GRN()" style="margin-top: 25px" class="btn btn-primary bg-primary">Search</button>
+                                        <button @click="filtered_GRN()" style="margin-top: 31px" class="btn btn-primary bg-primary">Search</button>
                                     </div>
                                     <div class="col-md-1 col-12 mb-3">
-                                        <button @click="startingdate='', closingdate='', filtered_GRN()" style="margin-top: 25px" class="btn btn-outline-secondary waves-effect">Clear</button>
+                                        <button @click="startingdate='', closingdate='', filtered_GRN()" style="margin-top: 31px" class="btn btn-outline-secondary waves-effect">Clear</button>
                                     </div>
                                     <!-- <div class="col-md-1 col-12 mb-3">
                                     </div> -->
                                     <div class="col-md-3 col-12 mb-3">
-                                        <router-link v-if="hasPermission('Accounting petty-cash create-pettycash')" to="/create_petty_cash" class="btn btn-primary bg-primary" style="margin-top: 25px"><span>+ New Petty Cash</span></router-link>
+                                        <router-link v-if="hasPermission('Accounting petty-cash create-pettycash')" to="/create_petty_cash" class="btn btn-primary bg-primary" style="margin-top: 31px"><span>+ New Petty Cash</span></router-link>
                                     </div>
                                 </div>
                             </div>

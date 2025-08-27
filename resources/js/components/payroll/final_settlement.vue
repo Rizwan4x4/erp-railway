@@ -149,7 +149,7 @@
                                             placeholder="Employee Name" />
                                     </div>
                                     <div class="col-md-1">
-                                        <div style="height:27px;"></div>
+                                        <div style="height:32px;"></div>
                                         <button @click="getbyfilter()" class="dt-button add-new btn btn-primary bg-primary"
                                             tabindex="0" type="button">Search</button>
                                     </div>
@@ -171,8 +171,8 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="settlements1 in settlements.data">
-                                            <td class="td-center">{{ settlements1.EmployeeCode }}</td>
-                                            <td class="td-left">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{ settlements1.EmployeeCode }}</td>
+                                            <td class="td-left" style="text-align:center;border-right:1px solid lightgrey">
                                                 <div class="d-flex justify-content-left align-items-center">
                                                     <div class="avatar-wrapper">
                                                         <div class="avatar  me-1">
@@ -194,10 +194,10 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="td-center">{{ settlements1.ResignOn }}</td>
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{ settlements1.ResignOn }}</td>
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 {{ Math.floor(settlements1.PayableSalary).toLocaleString() }}</td>
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span v-if="settlements1.Status == 'Pending'"
                                                     class="badge bg-gradient-warning">Pending</span>
                                                 <span v-if="settlements1.Status == 'Approved'"
@@ -208,7 +208,7 @@
                                                     class="badge bg-gradient-danger">Rejected</span>
                                             </td>
                                             <!--HR status-->
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span v-if="settlements1.HrStatus == 'Approved'"
                                                     class="badge bg-gradient-success">Approved</span>
                                                 <span @click="fetch_upSts('hr', settlements1.ID)" data-bs-toggle="modal"
@@ -221,7 +221,7 @@
                                                     class="badge bg-gradient-danger">Rejected</span>
                                             </td>
                                             <!--Finance status-->
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <span v-if="settlements1.FStatus == 'Approved'"
                                                     class="badge bg-gradient-success">Approved</span>
                                                 <span @click="fetch_upSts('finance', settlements1.ID)"
@@ -233,7 +233,7 @@
                                                 <span v-if="settlements1.FStatus == 'Rejected'"
                                                     class="badge bg-gradient-danger">Rejected</span>
                                             </td>
-                                            <td class="td-center">
+                                            <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                 <div class="btn-group">
                                                     <a data-bs-toggle="dropdown" class="btn btn-sm dropdown-toggle"><svg
                                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"

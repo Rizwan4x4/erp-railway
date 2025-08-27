@@ -33,7 +33,7 @@
                                             <div class="row">
                                                 <div class="col-md-5">
                                                     <label class="form-label"><img class="px-1" :src="images.solar_filter_linear" alt="icon">Department Name <span style="color: #DB4437; font-size: 11px;">*</span></label>
-                                                    <input type="text" class="form-control p-2" v-model='department_name' placeholder="Must be Unique">
+                                                    <input type="text" class="form-control " v-model='department_name' placeholder="Must be Unique">
                                                     <span style="color: #DB4437; font-size: 11px;" v-if="department_name==''">{{e_department_name}}</span>
                                                 </div>
                                                 <div class="col-md-4">
@@ -44,7 +44,7 @@
                                                     <input v-if="company_name=='New company'" value="" type="text" class="form-control" v-model='new_company_name' placeholder="Must be Unique">
                                                     <span style="color: #DB4437; font-size: 11px;" v-if="(company_name!='New company' && (company_name=='' || company_name==null)) || (company_name=='New company' && new_company_name=='')">{{e_company_name}}</span>
                                                 </div>
-                                                <div class="col-md-3" style="margin-top:28px;">
+                                                <div class="col-md-3" style="margin-top:32px;">
                                                     <button v-if="hasPermission('Add new department')"  type="button" @click="submit_department()" class="btn btn-primary bg-primary me-1 waves-effect waves-float waves-light bg-primary">Submit</button>
                                                     <button  v-if="hasPermission('Reset department')" type="reset" @click="reset()" class="btn btn-outline-secondary waves-effect">Reset</button>
                                                 </div>
@@ -75,21 +75,21 @@
                                             <table class="table table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th class="sticky-th-left">Department Name</th>
-                                                        <th class="sticky-th-left">Company Name</th>
+                                                        <th class="sticky-th-center">Department Name</th>
+                                                        <th class="sticky-th-center">Company Name</th>
                                                         <th class="sticky-th-center">Dept. Status</th>
                                                         <th class="sticky-th-center">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr v-for="adsdata1 in adsdata.data">
-                                                        <td>{{adsdata1.Department}}</td>
-                                                        <td>{{adsdata1.Company}}</td>
-                                                        <td class="td-center">
-                                                            <span v-if="adsdata1.Status=='Active'" class="badge bg-light-success">{{adsdata1.Status}}</span>
-                                                            <span v-else class="badge bg-light-danger">{{adsdata1.Status}}</span>
+                                                        <td style="text-align:center;border-right:1px solid lightgrey;border-left:1px solid lightgrey">{{adsdata1.Department}}</td>
+                                                        <td style="text-align:center;border-right:1px solid lightgrey">{{adsdata1.Company}}</td>
+                                                        <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
+                                                            <span v-if="adsdata1.Status=='Active'" class="badge px-3 py-2 bg-success">{{adsdata1.Status}}</span>
+                                                            <span v-else class="badge px-3 py-2 bg-danger">{{adsdata1.Status}}</span>
                                                         </td>
-                                                        <td class="td-center">
+                                                        <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                             <div class="btn-group">
                                                                 <a v-if="hasPermission('department actions')" class="btn btn-sm dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                                                     <i class="fa-solid fa-ellipsis-vertical"></i>

@@ -64,8 +64,8 @@
                                                                             <tbody>
                                                                                 <tr class="odd"
                                                                                     v-for="adsdata1 in adsdata.data">
-                                                                                    <td>{{ adsdata1.Email }}</td>
-                                                                                    <td>
+                                                                                    <td style="border-right: 1px solid lightgrey;">{{ adsdata1.Email }}</td>
+                                                                                    <td style="border-right: 1px solid lightgrey;">
                                                                                         <span v-if="adsdata1.d1 != '0'"
                                                                                             class="badge badge-glow bg-success">{{ adsdata1.d1 }}</span>
                                                                                         <span v-if="adsdata1.d2 != '0'"

@@ -57,7 +57,7 @@ return [
         'engine' => null,
     ],
 
-   
+
         // 'mysql' => [
         //     'driver' => 'mysql',
         //     'url' => env('DATABASE_URL'),
@@ -136,7 +136,7 @@ return [
             'encrypt' => 'yes',
              'trust_server_certificate' => true,
         ],
-    
+
    'sqlsrv4' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),

@@ -32,7 +32,7 @@
                                                     <img src="public/app-assets/first.jpg" class="mb-2"
                                                         style="width:50px;">
                                                     <h6 class="text-center w-100">{{ this.TopRatedVendor[0].VendorName
-                                                        }}</h6>
+                                                    }}</h6>
                                                     <p class="text-center mb-0">Orders ({{
                                                         this.TopRatedVendor[0].TotalOrder }})</p>
                                                 </div>
@@ -44,7 +44,7 @@
                                                     <img src="public/app-assets/third.jpg" class="mb-2"
                                                         style="width:50px;">
                                                     <h6 class="text-center w-100">{{ this.TopRatedVendor[1].VendorName
-                                                        }}</h6>
+                                                    }}</h6>
                                                     <p class="text-center mb-0">Orders ({{
                                                         this.TopRatedVendor[1].TotalOrder }})</p>
                                                 </div>
@@ -56,7 +56,7 @@
                                                     <img src="public/app-assets/second.jpg" class="mb-2"
                                                         style="width:50px;">
                                                     <h6 class="text-center w-100">{{ this.TopRatedVendor[2].VendorName
-                                                        }}</h6>
+                                                    }}</h6>
                                                     <p class="text-center mb-0">Orders ({{
                                                         this.TopRatedVendor[2].TotalOrder }})</p>
                                                 </div>
@@ -140,7 +140,7 @@
                                     <h4 class="card-title">Month-wise Purchase</h4>
                                 </div>
                                 <div class="card-body statistics-body">
-                                    <apexchart type="bar" :options="options" :series="series"></apexchart>
+                                    <apexchart type="bar" height="250" :options="options" :series="series"></apexchart>
                                 </div>
                             </div>
                         </div>
@@ -228,14 +228,33 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-6">
-                            <div class="card-header"
-                                style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
-                                <h4 class="card-title">Assets Catagores</h4>
-                            </div>
-                            <div class="card  bottom-radius border-0" id="verticalLegendChart">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-6">
+                                    <div class="card-header"
+                                        style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
+                                        <h4 class="card-title">Assets Catagories</h4>
+                                    </div>
+                                    <div class="card  bottom-radius border-0" id="verticalLegendChart">
 
-                                <apexchart width="350" type="pie" :options="options4" :series="series4">
-                                </apexchart>
+                                        <apexchart width="330" height="400" type="pie" :options="options4"
+                                            :series="series4">
+                                        </apexchart>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-6">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Average Procurement Cycle In Days</h4>
+                                    </div>
+                                    <div class="card bottom-radius border-0">
+                                        <div v-if="loader1" class="text-center">
+                                            <div class="spinner-border spinner-border-sm" role="status"></div>
+                                            <span class="loading-text">Loading...</span>
+                                        </div>
+                                        <apexchart v-if="!loader1" type="bar" height="350" :options="chartOptions7"
+                                            :series="series8"></apexchart>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -263,7 +282,8 @@
                                 <div class="col-lg-12 col-md-12 col-12">
                                     <div class="row match-height">
                                         <div class="col-lg-12 col-md-12 col-6">
-                                            <div class="card-header" style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
+                                            <div class="card-header"
+                                                style="border-top-left-radius: 10px !important; border-top-right-radius: 10px !important;">
                                                 <h4 class="card-title">Purchase Requisitions Vs GRN Generated</h4>
                                             </div>
                                             <div class="card  bottom-radius border-0">
@@ -271,12 +291,55 @@
                                                     <div class="spinner-border spinner-border-sm" role="status"></div>
                                                     <span class="loading-text">Loading...</span>
                                                 </div>
-                                                <apexchart v-if="!loader2" type="bar" height="350"
+                                                <apexchart v-if="!loader2" type="bar" height="330"
                                                     :options="chartOptions6" :series="series7"></apexchart>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                            </div>
+                            <div class="row card-revenue-budget">
+                                <div class="col-lg-4 col-md-4 col-6">
+                                    <div class="card top-radius border-0 bottom-radius">
+                                        <div class="card-header"
+                                            style="text-align:center ; border-radius: 12px !important;">
+                                            <h2 class="card-text font-small-10" style="margin: auto;">
+                                                {{ (Math.floor(Assets1[0].TotalAssets)).toLocaleString() }}</h2>
+                                            <h4 class="card-title mt-1" style="width:100%">T.Assets</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-6">
+                                    <div class="card top-radius border-0 bottom-radius">
+                                        <div class="card-header"
+                                            style="text-align:center; border-radius: 12px !important;">
+                                            <h2 class="card-text font-small-10" style="margin: auto;">
+                                                {{ (Math.floor(Assets1[0].AvailableAsset)).toLocaleString() }}</h2>
+                                            <h4 class="card-title mt-1" style="width:100%">Available</h4>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-6">
+                                    <div class="card top-radius border-0 bottom-radius">
+                                        <div class="card-header"
+                                            style="text-align:center ; border-radius: 12px !important;">
+                                            <h2 class="card-text font-small-10" style="margin: auto;">
+                                                {{ (Math.floor(Assets1[0].AssignedAssets)).toLocaleString() }}</h2>
+                                            <h4 class="card-title mt-1" style="width:100%">Assigned</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-lg-3 col-md-3 col-6">
+                                    <div class="card">
+                                        <div class="card-header" style="text-align:center">
+                                            <h2 class="card-text font-small-10"><br /></h2>
+                                            <h4 class="card-title" style="width:100%"><br /></h4>
+                                        </div>
+
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                         <!-- <div class="col-lg-4 col-md-6 col-12">
@@ -323,12 +386,12 @@
                                                 <span class="fw-bold ms-75">Available Products</span>
                                             </div>
                                             <span>{{ (Math.floor(this.radio.available_products)).toLocaleString()
-                                            }}</span>
+                                                }}</span>
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <div class="d-flex align-items-center">
                                                 <i class="fa-regular fa-circle text-danger"></i>
-                                                <span class="fw-bold ms-75">Low Stock Products1</span>
+                                                <span class="fw-bold ms-75">Low Stock Products</span>
                                             </div>
                                             <span>{{ (Math.floor(this.radio.not_available)).toLocaleString() }}</span>
                                         </div>
@@ -348,11 +411,10 @@
                                 <div class="row card-revenue-budget">
                                     <div class="col-md-4 col-12" style="position: relative;">
                                         <div class=" budget-wrapper card top-radius bottom-radius border-0">
-                                            <div class="card-header d-flex justify-content-between p-0 mb-1"
-                                                >
+                                            <div class="card-header d-flex justify-content-between p-0 mb-1">
                                                 <h4 class="card-title">Demand Requisitions</h4>
                                             </div>
-                                            <h2 class="mb-25">{{ req_d.pending }}</h2>
+                                            <h3 class="mb-25 fw-bold">{{ req_d.pending }}</h3>
                                             <div class="d-flex justify-content-center">
                                                 <span class="fw-bolder me-25">Pending</span>
                                             </div>
@@ -372,12 +434,11 @@
                                     </div>
                                     <div class="col-md-4 col-12 " style="position: relative;">
                                         <div class=" budget-wrapper card top-radius bottom-radius border-0">
-                                            <div class="card-header d-flex justify-content-between p-0 mb-1"
-                                                >
+                                            <div class="card-header d-flex justify-content-between p-0 mb-1">
                                                 <h4 class="card-title">Stock
                                                     Summary</h4>
                                             </div>
-                                            <h2 class="mb-25">{{ radio.available_stock }}0</h2>
+                                            <h3 class="mb-25 fw-bold">{{ radio.available_stock }}0</h3>
                                             <div class="d-flex justify-content-center">
                                                 <span class="fw-bolder me-25">Available Stock</span>
                                             </div>
@@ -402,7 +463,7 @@
                                                 style="padding-top:0px !important">
                                                 <h4 class="card-title">Purchase Invoices</h4>
                                             </div>
-                                            <h2 class="mb-25">{{ (po.inv_count).toLocaleString() }}</h2>
+                                            <h3 class="mb-25 fw-bold">{{ (po.inv_count).toLocaleString() }}</h3>
                                             <div class="d-flex justify-content-center">
                                                 <span class="fw-bolder me-25">This Session</span>
                                             </div>
@@ -422,7 +483,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12" style="position: relative;">
-                                        <div class="card">
+                                        <div class="card top-radius bottom-radius border-0">
                                             <div class="card-header" style="text-align:center">
                                                 <h4 class="card-title" style="width:100%">Top Consumed Products</h4>
                                                 <p class="card-text font-small-3">Top Three Consumed Product Throughtout
@@ -461,11 +522,12 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12" style="position: relative;">
-                                        <div class="card">
+                                        <div class="card top-radius bottom-radius border-0">
                                             <div class="card-header" style="text-align:center">
                                                 <h4 class="card-title" style="width:100%">High Stock Products</h4>
                                                 <p class="card-text font-small-3" style="width:100%">Top Three High
-                                                    Stock Product </p>
+                                                    Stock Product Throughtout
+                                                    Session</p>
                                             </div>
                                             <div class="row avg-sessions pt-50">
                                                 <div class="col-12 mb-2" style="padding-left:5%;padding-right:5%;">
@@ -504,9 +566,125 @@
 
                         </div>
 
+
+                        <!-- new nav table -->
+                        <div class="row match-height">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                                <div class="card top-radius bottom-radius border-0">
+                                    <div class="card-header" style="border-radius: 12px !important;">
+                                        <h4 class="card-title"> Procurement Reports Overview</h4>
+                                        <!-- <span class="badge rounded-pill badge-light-primary">Top Five</span> -->
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="nav nav-tabs main_nav" role="tablist" style="margin-bottom: 10px;">
+                                            <li class="nav-item">
+                                                <a class="nav-link active nav_link" id="assets-detail-tab"
+                                                    data-bs-toggle="tab" href="#assets-detail" aria-controls="home"
+                                                    role="tab" aria-selected="true">
+                                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-home">
+                                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                                    </svg> -->
+                                                    Asset Report
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link nav_link" id="department-wise-tab"
+                                                    data-bs-toggle="tab" href="#department-wise" aria-controls="profile"
+                                                    role="tab" aria-selected="false">
+                                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-tool">
+                                                        <path
+                                                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                                                        </path>
+                                                    </svg> -->
+                                                    Dept. Summary
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#vendor-wise" id="vendor-wise-tab" class="nav-link nav_link"
+                                                    data-bs-toggle="tab" role="tab" aria-selected="false">
+                                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-eye-off">
+                                                        <path
+                                                            d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                                                        </path>
+                                                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                                                    </svg> -->
+                                                    Vendor Summary
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link nav_link" id="item-category-tab" data-bs-toggle="tab"
+                                                    href="#item-category" aria-controls="about" role="tab"
+                                                    aria-selected="false">
+                                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-user">
+                                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                        <circle cx="12" cy="7" r="4"></circle>
+                                                    </svg> -->
+                                                    	Category View
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link nav_link" id="cycle-vendor-wise-tab"
+                                                    data-bs-toggle="tab" href="#cycle-vendor-wise" aria-controls="about"
+                                                    role="tab" aria-selected="false">
+                                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-user">
+                                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                        <circle cx="12" cy="7" r="4"></circle>
+                                                    </svg> -->
+                                                    Cycle Analysis
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="assets-detail"
+                                                aria-labelledby="assets-detail-tab" role="tabpanel">
+                                                <datatable :limit="10" :data="adsdata" :columns="columns1"
+                                                    :on-click="click">
+                                                </datatable>
+                                            </div>
+                                            <div class="tab-pane" id="department-wise"
+                                                aria-labelledby="department-wise-tab" role="tabpanel">
+                                                <datatable :data="adsdata1" :columns="columns4"></datatable>
+                                            </div>
+                                            <div class="tab-pane" id="vendor-wise" aria-labelledby="vendor-wise-tab"
+                                                role="tabpanel">
+                                                <datatable :data="pr_vendor" :columns="columns5"></datatable>
+                                            </div>
+                                            <div class="tab-pane" id="item-category" aria-labelledby="item-category-tab"
+                                                role="tabpanel">
+                                                <datatable :data="pr_item" :columns="columns7"></datatable>
+                                            </div>
+                                            <div class="tab-pane" id="cycle-vendor-wise"
+                                                aria-labelledby="cycle-vendor-wise-tab" role="tabpanel">
+                                                <datatable :data="days_vendor" :columns="columns8"></datatable>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //new nav table -->
+
+
+
                         <div class="row match-height">
 
-                            <div class="col-xl-4 col-md-6 col-12">
+                            <!-- <div class="col-xl-4 col-md-6 col-12">
 
                                 <div class="row card-revenue-budget">
 
@@ -554,25 +732,12 @@
                                 </div>
 
 
-                                <div class="col-lg-12 col-md-12 col-6">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Average Procurement Cycle In Days</h4>
-                                    </div>
-                                    <div class="card">
-                                        <div v-if="loader1" class="text-center">
-                                            <div class="spinner-border spinner-border-sm" role="status"></div>
-                                            <span class="loading-text">Loading...</span>
-                                        </div>
-                                        <apexchart v-if="!loader1" type="bar" height="350" :options="chartOptions7"
-                                            :series="series8"></apexchart>
-                                    </div>
-                                </div>
 
 
-                            </div>
+                            </div> -->
 
 
-                            <div class="col-xl-8 col-md-6 col-12 ">
+                            <!-- <div class="col-xl-8 col-md-6 col-12 ">
                                 <div class="row card-revenue-budget">
 
                                     <div class="card">
@@ -581,7 +746,8 @@
                                         </div>
                                         <div class="card-body">
                                             <div>
-                                                <datatable :data="adsdata" :columns="columns1" :on-click="click">
+                                                <datatable :limit="10" :data="adsdata" :columns="columns1"
+                                                    :on-click="click">
                                                 </datatable>
                                             </div>
                                             <div class="card-body pb-50" style="position: relative;">
@@ -590,9 +756,9 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> -->
                             <!--/ Statistics Card -->
-                            <div class="col-xl-6 col-md-6 col-12 ">
+                            <!-- <div class="col-xl-6 col-md-6 col-12 ">
                                 <div class="row card-revenue-budget">
 
                                     <div class="card">
@@ -671,7 +837,7 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <!-- Apply for leave modal  -->
@@ -751,7 +917,7 @@ export default {
             options: {
                 chart: {
                     type: 'bar',
-                    height: 350
+                    height: 250
                 },
                 plotOptions: {
                     bar: {
@@ -1038,6 +1204,7 @@ export default {
         }
     },
     methods: {
+
         click(row, cell, name, index) {
             $('#addNewCard').modal('show');
             axios.get('accounts/RemainingAssets_Dashboard/' + row.Name)//use for single assets details
@@ -1106,9 +1273,11 @@ export default {
 
     },
     mounted() {
-
-
-
+        // this.$nextTick(() => {
+        //     $(this.$refs.myTable.$el).DataTable({
+        //         pageLength: 10
+        //     });
+        // });
 
         axios.get('account_stock_counter')
             .then(data => {
@@ -1170,10 +1339,12 @@ export default {
         axios.get('accounts/Assets_D')
             .then(response => {
                 this.Assets1 = response.data;
+                console.log(this.Assets1, "Assets1")
             })
         axios.get('accounts/Assets_Detail_CategoryWi')
             .then(response => {
                 this.adsdata = response.data;
+                console.log(this.adsdata, "ads")
 
             })
 
@@ -1226,9 +1397,25 @@ export default {
 
 </script>
 <style scoped>
+.main_nav {
+    /* border: 2px solid; */
+    border-radius: 9px;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.nav-tabs .nav-link:after {
+    /* background: linear-gradient(30deg, #7367f0, rgba(115, 103, 240, 0.5)) !important; */
+    background: none !important;
+}
+
+.nav_link {
+    border-radius: 9px !important;
+}
+
 #verticalLegendChart .apexcharts-legend {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
 }
 </style>

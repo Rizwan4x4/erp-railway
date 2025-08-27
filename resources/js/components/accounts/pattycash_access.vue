@@ -64,23 +64,24 @@
                                                                                     <th>Cash Limit</th>
                                                                                     <th>COA ID</th>
                                                                                     <th>COA Name</th>
+                                                                                    <th>Action</th>
 
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr class="odd"
                                                                                     v-for="adsdata1 in adsdata.data">
-                                                                                    <td>{{ adsdata1.EmployeeCode }}</td>
-                                                                                    <td>{{ adsdata1.AccountID }}</td>
-                                                                                    <td>{{ adsdata1.Name }}</td>
-                                                                                    <td>{{ adsdata1.Department }}</td>
-                                                                                    <td> Rs.
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.EmployeeCode }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.AccountID }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Name }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.Department }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;"> Rs.
                                                                                         {{ Number(adsdata1.Limit) }}/-
                                                                                     </td>
-                                                                                    <td>{{ adsdata1.COAID }}</td>
-                                                                                    <td>{{ adsdata1.COAName }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.COAID }}</td>
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;">{{ adsdata1.COAName }}</td>
 
-                                                                                    <td
+                                                                                    <td style="text-align: center; border-right: 1px solid lightgrey;"
                                                                                         v-if="adsdata1.COAID == null && adsdata1.AccountID == null && hasPermission('Accounting pettycash_access edit-pettyaccess')">
                                                                                         <a @click="fetch_pcashid(adsdata1.ID, adsdata1.Name)"
                                                                                             data-bs-toggle="modal"

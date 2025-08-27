@@ -83,8 +83,8 @@
                                         </thead>
                                         <tbody>
                                             <tr v-for="all_sals1 in all_sals.data">
-                                                <td class="td-center">{{all_sals1.EmployeeCode}}</td>
-                                                <td class="td-left">
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.EmployeeCode}}</td>
+                                                <td class="td-left" style="text-align:center;border-right:1px solid lightgrey">
                                                     <div class="d-flex flex-column">
                                                         <a class="user_name text-truncate text-body"><span class="fw-bolder">{{all_sals1.Name}} </span></a><small class="emp_post text-muted">
                                                             <span v-if="all_sals1.Department!=null">{{all_sals1.Department}} - </span>
@@ -94,12 +94,12 @@
                                                         </small>
                                                     </div>
                                                 </td>
-                                                <td class="td-right">{{Math.floor(all_sals1.Salary).toLocaleString()}}/-</td>
-                                                <td class="td-center" style="min-width:150px;">{{all_sals1.StartSession}}<br />{{all_sals1.ApplyDate}}</td>
-                                                <td class="td-center">{{all_sals1.AllowanceType}}</td>
-                                                <td class="td-right fw-bold">{{Math.floor(all_sals1.AllowanceAmount).toLocaleString()}}/-</td>
-                                                <td class="td-center">{{all_sals1.Descriptions}}</td>
-                                                <td class="td-center">
+                                                <td class="td-right" style="text-align:center;border-right:1px solid lightgrey">{{Math.floor(all_sals1.Salary).toLocaleString()}}/-</td>
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey;min-width:150px;">{{all_sals1.StartSession}}<br />{{all_sals1.ApplyDate}}</td>
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.AllowanceType}}</td>
+                                                <td class="td-right fw-bold" style="text-align:center;border-right:1px solid lightgrey">{{Math.floor(all_sals1.AllowanceAmount).toLocaleString()}}/-</td>
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">{{all_sals1.Descriptions}}</td>
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                     <a v-if="all_sals1.Status=='Pending'" @click="fetch_arrear_id(all_sals1.AllowanceID)" data-bs-toggle="modal" data-bs-target="#hireinterview1">
                                                         <span class="badge bg-gradient-warning" style="cursor: pointer;">Pending</span>
                                                     </a>
@@ -107,7 +107,7 @@
                                                         <span class="badge bg-gradient-success" style="cursor: pointer;">Approved</span>
                                                     </a>
                                                 </td>
-                                                <td class="td-center">
+                                                <td class="td-center" style="text-align:center;border-right:1px solid lightgrey">
                                                     <a v-if="hasPermission('Payroll update Allowance of employee') && all_sals1.Status=='Pending'" @click="fetch_emp_payroll(all_sals1.AllowanceID)" data-bs-toggle="modal" data-bs-target="#editpayroll">
                                                         <i style="color:#d42f2f" class="fa-solid fa-pencil"></i><span></span>
                                                     </a>

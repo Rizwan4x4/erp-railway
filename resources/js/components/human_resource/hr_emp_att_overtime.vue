@@ -24,12 +24,13 @@
                 <div class="content-body">
                     <topBar :active="active" />
                     <section class="app-user-view-account">
-                        <div class="row">
-                            <div class="card">
-                                <div class="row">
+                        <div class="row m-0">
+                            <div class="card top-radius bottom-radius border-0 p-3">
+                                <div class="row mb-lg-2">
                                     <div class="col-md-4">
                                         <label class="form-label"
-                                            >Department Name
+                                            ><img class="px-1"
+                                            :src="images.solar_filter_linear" alt="icon">Department Name
                                             <span
                                                 style="
                                                     color: #db4437;
@@ -59,14 +60,14 @@
                                     <div class="col-md-2">
                                         <button
                                             @click="get_result()"
-                                            style="margin-top: 30px"
+                                            style="margin-top: 31px;width: 100%"
                                             class="btn btn-secondary"
                                         >
                                             Search
                                         </button>
                                     </div>
-                                    <div class="col-md-4"></div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-3 text-end">
                                         <button v-if="hasPermission('HRMS Attendance Employees-Overtime Approve overtime')"
                                             @click="delay()"
                                             style="margin-top: 30px"
@@ -135,6 +136,10 @@ export default {
     },
     data: function () {
         return {
+            images: {
+                solar_filter_linear: "/images/solar_filter_linear.png",
+                search_icon: "/images/search_icon.png",
+            },
             active: "overtime",
             adsdatas: {},
             options2: [],

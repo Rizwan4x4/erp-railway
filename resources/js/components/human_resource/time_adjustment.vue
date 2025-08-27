@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <!-- BEGIN: Content-->
         <div class="app-content content">
             <div class="content-overlay"></div>
@@ -9,11 +9,7 @@
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <router-link
-                                    to="/hr/dashboard"
-                                    style="text-decoration: none"
-                                    >Dashboard</router-link
-                                >
+                                <router-link to="/hr/dashboard" style="text-decoration: none">Dashboard</router-link>
                             </li>
                             <li class="breadcrumb-item active">
                                 Attendance Details
@@ -24,58 +20,36 @@
                 <div class="content-body">
                     <topBar :active="active" />
                     <section class="app-user-view-account">
-                        <div class="app-calendar overflow-hidden border">
+                        <div class="app-calendar overflow-hidden ">
                             <div class="row g-0">
                                 <div class="col position-relative">
-                                    <div
-                                        class="card shadow-none border-0 mb-0 rounded-0"
-                                    >
+                                    <div class="card top-radius bottom-radius border-0">
                                         <div class="card-body pb-0">
-                                            <div
-                                                class="row"
-                                                id="table-hover-row"
-                                            >
+                                            <div class="row" id="table-hover-row">
                                                 <div class="col-12">
                                                     <div class="card-body">
                                                         <div class="row">
-                                                            <div
-                                                                class="col-md-8"
-                                                            >
+                                                            <div class="col-md-8">
                                                                 <h4>
                                                                     Employee's
                                                                     time
                                                                     adjustment
                                                                 </h4>
                                                             </div>
-                                                            <div
-                                                                class="col-md-4"
-                                                            >
-                                                                <input
-                                                                    autocomplete="off"
-                                                                    id="keyword3"
-                                                                    type="text"
-                                                                    name="keyword3"
-                                                                    v-model="
-                                                                        keyword3
-                                                                    "
-                                                                    class="form-control"
-                                                                    placeholder="Search By Emp. Name/Code"
-                                                                />
+                                                            <div class="col-md-4">
+                                                                <input autocomplete="off" id="keyword3" type="text"
+                                                                    name="keyword3" v-model="keyword3
+                                                                        " class="form-control"
+                                                                    placeholder="Search By Emp. Name/Code" />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card">
-                                                        <div
-                                                            class="table-responsive"
-                                                        >
-                                                            <table
-                                                                class="table table-hover"
-                                                            >
+                                                    <div class="card top-radius bottom-radius border-0">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th
-                                                                            class="text-center"
-                                                                        >
+                                                                        <th class="text-center">
                                                                             Emp.
                                                                             Code
                                                                         </th>
@@ -83,148 +57,105 @@
                                                                             Employee
                                                                             Name
                                                                         </th>
-                                                                        <th
-                                                                            class="text-center"
-                                                                        >
+                                                                        <th class="text-center">
                                                                             Date
                                                                         </th>
-                                                                        <th
-                                                                            class="text-center"
-                                                                        >
+                                                                        <th class="text-center">
                                                                             Adjustment
                                                                             in
                                                                         </th>
-                                                                        <th
-                                                                            class="text-center"
-                                                                        >
+                                                                        <th class="text-center">
                                                                             Time
                                                                         </th>
-                                                                        <th
-                                                                            class="text-center"
-                                                                        >
+                                                                        <th class="text-center">
                                                                             Manager<br />Status
                                                                         </th>
-                                                                        <th
-                                                                            class="text-center"
-                                                                        >
+                                                                        <th class="text-center">
                                                                             Hr<br />Status
                                                                         </th>
-                                                                        <th
-                                                                            class="text-center"
-                                                                        >
+                                                                        <th class="text-center">
                                                                             Reason
                                                                         </th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr
-                                                                        v-for="details1 in details.data"
-                                                                    >
-                                                                        <td
-                                                                            class="text-center"
-                                                                        >
+                                                                    <tr v-for="details1 in details.data">
+                                                                        <td class="text-center" style="text-align:center;border-right:1px solid lightgrey;border-left: 1px solid lightgray;">
                                                                             {{
                                                                                 details1.Employee_Code
                                                                             }}
                                                                         </td>
-                                                                        <td
-                                                                            class="sorting_1"
-                                                                        >
+                                                                        <td class="sorting_1"  style="text-align:center;border-right:1px solid lightgrey">
                                                                             <div
-                                                                                class="d-flex justify-content-left align-items-center"
-                                                                            >
-                                                                                <div
-                                                                                    class="avatar-wrapper"
-                                                                                >
-                                                                                    <div
-                                                                                        class="avatar me-1"
-                                                                                    >
-                                                                                        <img
-                                                                                            v-if="
-                                                                                                details1.Photo ==
-                                                                                                    '' ||
-                                                                                                details1.Photo ==
-                                                                                                    null
-                                                                                            "
+                                                                                class="d-flex justify-content-left align-items-center">
+                                                                                <div class="avatar-wrapper">
+                                                                                    <div class="avatar me-1">
+                                                                                        <img v-if="
+                                                                                            details1.Photo ==
+                                                                                            '' ||
+                                                                                            details1.Photo ==
+                                                                                            null
+                                                                                        "
                                                                                             src="public/images/profile_images/pro.png"
-                                                                                            alt="Avatar"
-                                                                                            height="32"
-                                                                                            width="32"
-                                                                                        />
-                                                                                        <img
-                                                                                            v-else
+                                                                                            alt="Avatar" height="32"
+                                                                                            width="32" />
+                                                                                        <img v-else
                                                                                             v-bind:src="`public/images/profile_images/${details1.Photo}`"
-                                                                                            alt="Avatar"
-                                                                                            height="32"
-                                                                                            width="32"
-                                                                                        />
+                                                                                            alt="Avatar" height="32"
+                                                                                            width="32" />
                                                                                     </div>
                                                                                 </div>
-                                                                                <div
-                                                                                    class="d-flex flex-column"
-                                                                                >
+                                                                                <div class="d-flex flex-column">
                                                                                     <a
-                                                                                        class="user_name text-truncate text-body"
-                                                                                        ><span
-                                                                                            class="fw-bolder"
-                                                                                            >{{
+                                                                                        class="user_name text-truncate text-body"><span
+                                                                                            class="fw-bolder">{{
                                                                                                 details1.Name
                                                                                             }}
-                                                                                        </span></a
-                                                                                    ><small
-                                                                                        class="emp_post text-muted"
-                                                                                    >
-                                                                                        <small
-                                                                                            >{{
-                                                                                                details1.Department
-                                                                                            }}-{{
+                                                                                        </span></a><small
+                                                                                        class="emp_post text-muted">
+                                                                                        <small>{{
+                                                                                            details1.Department
+                                                                                        }}-{{
                                                                                                 details1.Designation
-                                                                                            }}</small
-                                                                                        >
+                                                                                            }}</small>
                                                                                     </small>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
-                                                                        <td>
+                                                                        <td  style="text-align:center;border-right:1px solid lightgrey">
                                                                             {{
                                                                                 details1.att_date
                                                                             }}
                                                                         </td>
-                                                                        <td>
+                                                                        <td  style="text-align:center;border-right:1px solid lightgrey">
                                                                             {{
                                                                                 details1.TimeAdjFor
                                                                             }}
                                                                         </td>
-                                                                        <td>
-                                                                            <span
-                                                                                v-if="
-                                                                                    details1.Hours <
-                                                                                        10 &&
-                                                                                    details1.Hours >
-                                                                                        0
-                                                                                "
-                                                                                >0</span
-                                                                            >{{
-                                                                                details1.Hours
-                                                                            }}:<span
-                                                                                v-if="
-                                                                                    details1.Minutes <
-                                                                                        10 &&
-                                                                                    details1.Minutes >
-                                                                                        0
-                                                                                "
-                                                                                >0</span
-                                                                            >{{
-                                                                                details1.Minutes
-                                                                            }}
+                                                                        <td  style="text-align:center;border-right:1px solid lightgrey">
+                                                                            <span v-if="
+                                                                                details1.Hours <
+                                                                                10 &&
+                                                                                details1.Hours >
+                                                                                0
+                                                                            ">0</span>{{
+                                                                                    details1.Hours
+                                                                                }}:<span v-if="
+                                                                                details1.Minutes <
+                                                                                10 &&
+                                                                                details1.Minutes >
+                                                                                0
+                                                                            ">0</span>{{
+                                                                                    details1.Minutes
+                                                                                }}
                                                                             minuts
                                                                         </td>
-                                                                        <td>
-                                                                            <div v-if="hasPermission('HRMS Attendance Time-Adjustment update-manager-status')">
+                                                                        <td  style="text-align:center;border-right:1px solid lightgrey">
+                                                                            <div
+                                                                                v-if="hasPermission('HRMS Attendance Time-Adjustment update-manager-status')">
 
 
-                                                                            <span
-                                                                                @click="
+                                                                                <span @click="
                                                                                     updatestatus(
                                                                                         details1.Name,
                                                                                         details1.Employee_Code,
@@ -239,42 +170,28 @@
                                                                                         details1.Reason,
                                                                                         'man'
                                                                                     )
-                                                                                "
-                                                                                v-if="
+                                                                                    " v-if="
                                                                                     details1.ManagerApproval ==
                                                                                     'Pending'
-                                                                                "
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#updateloanstatus"
-                                                                                class="badge bg-gradient-warning"
-                                                                                >Pending</span
-                                                                            >
-                                                                            <span
-                                                                                class="badge bg-gradient-success"
-                                                                                v-if="
-                                                                                    details1.ManagerApproval ==
-                                                                                    'Approved'
-                                                                                "
-                                                                                >Approved</span
-                                                                            >
-                                                                            <span
-                                                                                class="badge bg-gradient-danger"
-                                                                                v-if="
-                                                                                    details1.ManagerApproval ==
-                                                                                    'Rejected'
-                                                                                "
-                                                                                >Rejected</span
-                                                                            >
-                                                                             </div>
+                                                                                " data-bs-toggle="modal"
+                                                                                    data-bs-target="#updateloanstatus"
+                                                                                    class="badge px-3 py-2 bg-gradient-warning">Pending</span>
+                                                                                <span class="badge px-3 py-2 bg-gradient-success"
+                                                                                    v-if="
+                                                                                        details1.ManagerApproval ==
+                                                                                        'Approved'
+                                                                                    ">Approved</span>
+                                                                                <span class="badge px-3 py-2 bg-gradient-danger"
+                                                                                    v-if="
+                                                                                        details1.ManagerApproval ==
+                                                                                        'Rejected'
+                                                                                    ">Rejected</span>
+                                                                            </div>
                                                                         </td>
-                                                                        <td
-                                                                            style="
-                                                                                text-align: center;
-                                                                            "
-                                                                        >
-                                                                        <div v-if="hasPermission('HRMS Attendance Time-Adjustment update-HR-status')">
-                                                                            <span
-                                                                                @click="
+                                                                        <td  style="text-align:center;border-right:1px solid lightgrey">
+                                                                            <div
+                                                                                v-if="hasPermission('HRMS Attendance Time-Adjustment update-HR-status')">
+                                                                                <span @click="
                                                                                     updatestatus(
                                                                                         details1.Name,
                                                                                         details1.Employee_Code,
@@ -289,39 +206,25 @@
                                                                                         details1.Reason,
                                                                                         'hr'
                                                                                     )
-                                                                                "
-                                                                                v-if="
+                                                                                    " v-if="
                                                                                     details1.HrApproval ==
                                                                                     'Pending'
-                                                                                "
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#updateloanstatus"
-                                                                                class="badge bg-gradient-warning"
-                                                                                >Pending</span
-                                                                            >
-                                                                            <span
-                                                                                class="badge bg-gradient-success"
-                                                                                v-if="
-                                                                                    details1.HrApproval ==
-                                                                                    'Approved'
-                                                                                "
-                                                                                >Approved</span
-                                                                            >
-                                                                            <span
-                                                                                class="badge bg-gradient-danger"
-                                                                                v-if="
-                                                                                    details1.HrApproval ==
-                                                                                    'Rejected'
-                                                                                "
-                                                                                >Rejected</span
-                                                                            >
-                                                                        </div>
+                                                                                " data-bs-toggle="modal"
+                                                                                    data-bs-target="#updateloanstatus"
+                                                                                    class="badge px-3 py-2 bg-gradient-warning">Pending</span>
+                                                                                <span class="badge px-3 py-2 bg-gradient-success"
+                                                                                    v-if="
+                                                                                        details1.HrApproval ==
+                                                                                        'Approved'
+                                                                                    ">Approved</span>
+                                                                                <span class="badge px-3 py-2 bg-gradient-danger"
+                                                                                    v-if="
+                                                                                        details1.HrApproval ==
+                                                                                        'Rejected'
+                                                                                    ">Rejected</span>
+                                                                            </div>
                                                                         </td>
-                                                                        <td
-                                                                            style="
-                                                                                text-align: center;
-                                                                            "
-                                                                        >
+                                                                        <td  style="text-align:center;border-right:1px solid lightgrey">
                                                                             {{
                                                                                 details1.Reason
                                                                             }}
@@ -330,19 +233,14 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <div
-                                                            style="
+                                                        <div style="
                                                                 text-align: center;
                                                                 padding-top: 20px;
-                                                            "
-                                                        >
-                                                            <pagination
-                                                                :limit="limit3"
-                                                                :data="details"
+                                                            ">
+                                                            <pagination :limit="limit3" :data="details"
                                                                 @pagination-change-page="
                                                                     getAdjustment
-                                                                "
-                                                            ></pagination>
+                                                                "></pagination>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -354,23 +252,12 @@
                             </div>
                         </div>
                     </section>
-                    <div
-                        class="modal fade"
-                        id="updateloanstatus"
-                        tabindex="-1"
-                        aria-hidden="true"
-                    >
-                        <div
-                            class="modal-dialog modal-lg modal-dialog-centered modal-edit-user"
-                        >
+                    <div class="modal fade" id="updateloanstatus" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-edit-user">
                             <div class="modal-content">
                                 <div class="modal-header bg-transparent">
-                                    <button
-                                        type="button"
-                                        class="btn-close"
-                                        data-bs-dismiss="modal"
-                                        aria-label="Close"
-                                    ></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body pb-5 px-sm-5 pt-50">
                                     <div class="text-center mb-2">
@@ -378,125 +265,48 @@
                                             Update Time Adjustment Status
                                         </h1>
                                     </div>
-                                    <form
-                                        id="editUserForm"
-                                        class="row gy-1 pt-75"
-                                        onsubmit="return false"
-                                    >
+                                    <form id="editUserForm" class="row gy-1 pt-75" onsubmit="return false">
                                         <div class="col-12 col-md-6">
-                                            <label class="form-label"
-                                                >Name</label
-                                            >
-                                            <input
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                v-model="emp_name1"
-                                            />
+                                            <label class="form-label">Name</label>
+                                            <input type="text" disabled class="form-control" v-model="emp_name1" />
                                         </div>
                                         <div class="col-12 col-md-3">
-                                            <label class="form-label"
-                                                >Employee Code</label
-                                            >
-                                            <input
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                v-model="emp_code1"
-                                            />
+                                            <label class="form-label">Employee Code</label>
+                                            <input type="text" disabled class="form-control" v-model="emp_code1" />
                                         </div>
                                         <div class="col-12 col-md-3">
-                                            <label class="form-label"
-                                                >Request For</label
-                                            >
-                                            <input
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                v-model="requestfor"
-                                            />
+                                            <label class="form-label">Request For</label>
+                                            <input type="text" disabled class="form-control" v-model="requestfor" />
                                         </div>
 
                                         <div class="col-12 col-md-3">
-                                            <label class="form-label"
-                                                >Date</label
-                                            >
-                                            <input
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                v-model="date"
-                                            />
+                                            <label class="form-label">Date</label>
+                                            <input type="text" disabled class="form-control" v-model="date" />
                                         </div>
                                         <div class="col-12 col-md-3">
-                                            <label class="form-label"
-                                                >Houres</label
-                                            >
-                                            <input
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                v-model="Houres"
-                                            />
+                                            <label class="form-label">Houres</label>
+                                            <input type="text" disabled class="form-control" v-model="Houres" />
                                         </div>
                                         <div class="col-12 col-md-3">
-                                            <label class="form-label"
-                                                >Minutes</label
-                                            >
-                                            <input
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                v-model="Minutes"
-                                            />
+                                            <label class="form-label">Minutes</label>
+                                            <input type="text" disabled class="form-control" v-model="Minutes" />
                                         </div>
-                                        <div
-                                            v-if="who != 'man'"
-                                            class="col-12 col-md-3"
-                                        >
-                                            <label class="form-label"
-                                                >Manager Status</label
-                                            >
-                                            <input
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                v-model="ManagerStatus"
-                                            />
+                                        <div v-if="who != 'man'" class="col-12 col-md-3">
+                                            <label class="form-label">Manager Status</label>
+                                            <input type="text" disabled class="form-control" v-model="ManagerStatus" />
                                         </div>
-                                        <div
-                                            v-if="who != 'hr'"
-                                            class="col-12 col-md-3"
-                                        >
-                                            <label class="form-label"
-                                                >HR Status</label
-                                            >
-                                            <input
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                v-model="HRStatus"
-                                            />
+                                        <div v-if="who != 'hr'" class="col-12 col-md-3">
+                                            <label class="form-label">HR Status</label>
+                                            <input type="text" disabled class="form-control" v-model="HRStatus" />
                                         </div>
                                         <div class="col-12 col-md-6">
-                                            <label class="form-label"
-                                                >Reason</label
-                                            >
-                                            <textarea
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                v-model="Reason"
-                                            ></textarea>
+                                            <label class="form-label">Reason</label>
+                                            <textarea type="text" disabled class="form-control"
+                                                v-model="Reason"></textarea>
                                         </div>
                                         <div class="col-12 col-md-6">
-                                            <label class="form-label"
-                                                >Update status</label
-                                            >
-                                            <select
-                                                v-model="newstatus"
-                                                class="form-select"
-                                            >
+                                            <label class="form-label">Update status</label>
+                                            <select v-model="newstatus" class="form-select">
                                                 <option value="" selected>
                                                     Select
                                                 </option>
@@ -510,44 +320,24 @@
                                                     Reject
                                                 </option>
                                             </select>
-                                            <span
-                                                style="
+                                            <span style="
                                                     color: #db4437;
                                                     font-size: 11px;
-                                                "
-                                                v-if="newstatus == ''"
-                                                >{{ newstatus_error }}</span
-                                            >
+                                                " v-if="newstatus == ''">{{ newstatus_error }}</span>
                                         </div>
-                                        <div
-                                            class="col-12 text-center mt-2 pt-50"
-                                        >
-                                            <button
-                                                v-if="newstatus == ''"
-                                                type="button"
-                                                :disabled="disabled1"
+                                        <div class="col-12 text-center mt-2 pt-50">
+                                            <button v-if="newstatus == ''" type="button" :disabled="disabled1"
                                                 @click="delay1()"
-                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light"
-                                            >
+                                                class="btn btn-primary bg-primary waves-effect waves-float waves-light">
                                                 Update
                                             </button>
-                                            <button
-                                                v-else
-                                                type="button"
-                                                :disabled="disabled1"
-                                                @click="delay1()"
+                                            <button v-else type="button" :disabled="disabled1" @click="delay1()"
                                                 class="btn btn-primary bg-primary waves-effect waves-float waves-light"
-                                                data-bs-dismiss="modal"
-                                                aria-label="Close"
-                                            >
+                                                data-bs-dismiss="modal" aria-label="Close">
                                                 Update
                                             </button>
-                                            <button
-                                                type="reset"
-                                                class="btn btn-outline-secondary"
-                                                data-bs-dismiss="modal"
-                                                aria-label="Close"
-                                            >
+                                            <button type="reset" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal" aria-label="Close">
                                                 Close
                                             </button>
                                         </div>
@@ -670,7 +460,7 @@ export default {
                     params: { keyword: this.keyword3 },
                 })
                 .then((response) => (this.details = response.data))
-                .catch((error) => {});
+                .catch((error) => { });
         },
     },
     watch: {
